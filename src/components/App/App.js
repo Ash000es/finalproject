@@ -10,6 +10,7 @@ import Hotel from '../Hotel/Hotel'
 import hotel from '../assets/hotel.png'
 import label from '../assets/label.png'
 import TA from '../assets/TA.png'
+import SearchBar from '../SearchBar/SearchBar'
 
 const hotelData = {
   name: 'Hotel Madrid',
@@ -60,7 +61,7 @@ function App () {
           </Route>
         </Switch>
         {/* <HotelPage /> */}
-
+        <SearcBar />
         <CardDeck>
           <Card>
             <Card.Img variant='top' src='holder.js/100px160' />
