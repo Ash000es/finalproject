@@ -5,10 +5,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
-import './App.css'
-import Hotel from './components/Hotel/Hotel'
-import img from './assets/hotel'
-import label from './assets/label'
+import '../App/App.css'
+import Hotel from '../Hotel/Hotel'
+import hotel from '../assets/hotel.png'
+import label from '../assets/label.png'
+import TA from '../assets/TA.png'
 
 const hotelData = {
   name: 'Hotel Madrid',
@@ -18,11 +19,13 @@ const hotelData = {
     zipCode: '28002'
   },
   amenities: [{ icon: '' }, { title: 'Free wifi' }, { icon: '', title: 'Pool' }, { icon: '', title: 'Bar' }],
-  image: img,
+  image: hotel,
   label: label,
+  TARating: TA,
   starRating: 3,
   price: 220,
   extrasprice: { breakfast: 10, cake: 20, redwine: 20 },
+  extrasimg: { breakfast: '', cake: '', redwine: '' },
   keyFact: ['Check-in: 3 PM. Check-out: 11 AM.', 'Photo ID and Credit Card required at Check-in']
 
 }
@@ -56,6 +59,7 @@ function App () {
             {/* <Users /> */}
           </Route>
         </Switch>
+        {/* <HotelPage /> */}
         <Hotel hotel={hotelData} />
       </Container>
     </MemoryRouter>
