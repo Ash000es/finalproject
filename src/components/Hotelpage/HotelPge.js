@@ -66,11 +66,14 @@ const HotelPage = ({ hotel }) => {
         <tbody>
           <tr>
             <td><img /></td>
-            <td>Mark</td>
-            <td>Otto</td>
+            <td>1</td>
+            <td>Free Wifi</td>
             <td>220$<button>Book Now</button></td>
           </tr>
 
+        </tbody>
+        <tbody>
+        <Extras/>
         </tbody>
       </Table>
     </div>

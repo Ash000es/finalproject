@@ -25,9 +25,15 @@ const hotelData = {
   TARating: TA,
   starRating: 3,
   price: 220,
-  extrasprice: { breakfast: 10, cake: 20, redwine: 20 },
   extrasimg: { breakfast: '', cake: '', redwine: '' },
   keyFact: ['Check-in: 3 PM. Check-out: 11 AM.', 'Photo ID and Credit Card required at Check-in']
+
+}
+const extras = {
+  extrasPrice: { breakfast: 10, cake: 20, redwine: 20 },
+  extrasImages: { breakfast:'', cake: '', redwine:'' }
+  extrasSummary:{breakfast:'Kings breakfast for served in bed', cake:' Double chocolate cake with strawberries', redwine:'A bottle of our berry sweet house red'},
+  extrasDescription: {breakfast:' Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee', cake:'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens', redwine:'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes'}
 
 }
 
@@ -61,7 +67,12 @@ function App () {
           </Route>
         </Switch>
         {/* <HotelPage /> */}
-        <SearcBar />
+        <div>
+          <img/>
+          <SearcBar />
+
+        </div>
+        
         <CardDeck>
           <Card>
             <Card.Img variant='top' src='holder.js/100px160' />

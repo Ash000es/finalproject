@@ -5,8 +5,8 @@ class SearchBar extends Component {
     render() { 
         return (  
             <div className='SearchBar-fields'>
-            <input placeholder='Search Businesses' />
             <input placeholder='Where?' />
+            <input placeholder='When?' />
           </div>
           <div className='SearchBar-submit'>
             <a >Let's Go</a>
