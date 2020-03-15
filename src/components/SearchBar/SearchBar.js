@@ -1,6 +1,8 @@
 import React from 'react'
 import DatePicker from '../DatePicker/DatePicker'
 import Sign from 'js-sha256'
+import InputGroup from 'react-bootstrap/InputGroup'
+import SearchField from '../SearchField/SearchField'
 
 class SearchBar extends React.Component {
     state = { }
@@ -29,7 +31,7 @@ class SearchBar extends React.Component {
         <>
           <div className='SearchBar-fields'>
             <input placeholder='Where?' />
-            {/* <search/> */}
+            <SearchField />
             {/* <DatePicker /> */}
           </div>
           <div className='SearchBar-submit'>
