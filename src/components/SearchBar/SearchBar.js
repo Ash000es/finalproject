@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
       const D = new Date()
 
       const getSignature = () => {
-        return Sign(apikey + sec + 1584307101)
+        return Sign(apikey + sec + Math.round(D.getTime() / 1000))
       }
       console.log(getSignature())
       fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&language=ENG&from=1&to=100&useSecondaryLanguage=false',
@@ -30,9 +30,9 @@ class SearchBar extends React.Component {
       return (
         <>
           <div className='SearchBar-fields'>
-            <input placeholder='Where?' />
+
             <SearchField />
-            {/* <DatePicker /> */}
+            <DatePicker />
           </div>
           <div className='SearchBar-submit'>
             <button onClick={this.handleClickButton}>Search</button>
