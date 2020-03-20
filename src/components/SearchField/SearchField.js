@@ -25,10 +25,16 @@ const useStyles = makeStyles(theme => ({
 export default function CustomizedInputBase () {
   const classes = useStyles()
 
+  handleChange(e) {
+    const name = e.target.value;
+    this.props.onChange(name);
+  }
+
   return (
-    <Paper component='form' className={classes.root}>
+    <Paper component='form' className={classes.root} >
 
       <InputBase
+      onChange={this.handleChange}
         className={classes.input}
         placeholder='Where to?'
         inputProps={{ 'aria-label': 'Where to?' }}

@@ -16,12 +16,16 @@ export default function MaterialUIPickers () {
   const handleDateChange = date => {
     setSelectedDate(date)
   }
-
+  handleChange(e) {
+    const name = e.target.value;
+    this.props.onChange(name);
+  }
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} >
       <Grid container justify='space-around'>
 
         <KeyboardDatePicker
+        onChange={this.handleChange}
           disableToolbar
           variant='inline'
           format='MM-dd-yyyy'
