@@ -11,6 +11,7 @@ export default function MaterialUIPickers () {
   // The first commit of Material-UI
   console.log('hello')
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'))
+  // dateFormat(new Date(), 'm-d-Y h:i:s');new Date().format('m-d-Y h:i:s');
 
   const handleDateChange = date => {
     setSelectedDate(date)
