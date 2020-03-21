@@ -50,20 +50,20 @@ const useStyles = makeStyles(theme => ({
 
 export default function CustomizedSelects () {
   const classes = useStyles()
-  const [Occupancey, setOccupancey] = React.useState('')
-  const handleChange = event => {
-    setAge(event.target.value)
-  }
+  const [occupancies, setoccupancies] = React.useState('')
+   const handleChange = event => {
+     setoccupancies(event.target.value)
+   }
   return (
     <div>
 
       <FormControl className={classes.margin}>
         <InputLabel id='demo-customized-select-label'>Adults</InputLabel>
         <Select
-          onChange={this.handleOccChange}
+          // onChange={this.handleOccChange}
           labelId='demo-customized-select-label'
           id='demo-customized-select'
-          value={Occupancey}
+          value={occupancies}
           onChange={handleChange}
           input={<BootstrapInput />}
         >

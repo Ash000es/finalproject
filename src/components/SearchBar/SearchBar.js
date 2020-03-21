@@ -3,7 +3,6 @@ import DatePicker from '../DatePicker/DatePicker'
 import Sign from 'js-sha256'
 import InputGroup from 'react-bootstrap/InputGroup'
 import SearchField from '../SearchField/SearchField'
-import SearchButton from '../SearchButton/SearchButton'
 import OccSelector from '../OccSelector/OccSelector'
 
 class SearchBar extends React.Component {
@@ -41,21 +40,13 @@ class SearchBar extends React.Component {
       const getSignature = () => {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))
       }
-      // should click button wrap and change set state?
-      console.log(getSignature())
-      fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-      {
-        method:'POST',
-        headers: {
-          'Api-key': apikey,
-          'X-Signature': getSignature(),
-          Accept: 'application/json',
-          'Accept-Encoding': 'gzip'
-        },
-        body: {
+
+      createRequestBody() {
+        return 
+        {
           "stay": {
-              "checkIn": "2020-06-15",
-              "checkOut": "2020-06-16"
+              {this.state.stay.props.checkIn}
+              {this.state.props.checkOut}
           },
           "occupancies": [
               {
@@ -68,6 +59,20 @@ class SearchBar extends React.Component {
               "code": "MCO"
           }
       }
+
+      }
+      
+      console.log(getSignature())
+      fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+      {
+        method:'POST',
+        headers: {
+          'Api-key': apikey,
+          'X-Signature': getSignature(),
+          Accept: 'application/json',
+          'Accept-Encoding': 'gzip'
+        },
+        body: createRequestBody()
     })
     }
     handleOccChange (event) {
@@ -94,7 +99,7 @@ class SearchBar extends React.Component {
             <OccSelector onChange={this.handleOccChange}/>
           </div>
           <div className='SearchBar-submit'>
-            <SearchButton onClick={this.handleClickButton}/>
+            <button onClick={this.handleClickButton}>Search</button>
             <button>Inspire me</button>
           </div>
         </>

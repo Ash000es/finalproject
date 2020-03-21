@@ -13,7 +13,7 @@ export class SearchButton extends React.Component {
 
   render () {
     return (
-      <button onClick={this.handleClick}>
+      <button onClick={this.handleClickButton}>
         Search
       </button>
     )

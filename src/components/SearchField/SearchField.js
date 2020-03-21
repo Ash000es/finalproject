@@ -27,14 +27,14 @@ export default function CustomizedInputBase () {
 
   handleChange(e) {
     const name = e.target.value;
-    this.props.onChange(name);
+    props.onChange(name);
   }
 
   return (
     <Paper component='form' className={classes.root} >
 
       <InputBase
-      onChange={this.handleChange}
+      onChange={()=> handleChange}
         className={classes.input}
         placeholder='Where to?'
         inputProps={{ 'aria-label': 'Where to?' }}
