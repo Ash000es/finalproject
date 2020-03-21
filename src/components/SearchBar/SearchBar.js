@@ -45,8 +45,8 @@ class SearchBar extends React.Component {
         return 
         {
           stay: {
-              {this.props.stay.checkIn}
-              {this.props.stay.checkOut}
+              {this.props.checkIn}
+              {this.props.checkOut}
           },
           occupancies: [
               {
