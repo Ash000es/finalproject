@@ -41,12 +41,12 @@ class SearchBar extends React.Component {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))
       }
 
-      createRequestBody() {
+      const createRequestBody= () => {
         return 
         {
           "stay": {
-              {this.state.stay.props.checkIn}
-              {this.state.props.checkOut}
+              {this.props.stay.checkIn}
+              {this.props.stay.checkOut}
           },
           "occupancies": [
               {
@@ -75,6 +75,7 @@ class SearchBar extends React.Component {
         body: createRequestBody()
     })
     }
+
     handleOccChange (event) {
       this.setState({ occupancies.adults: event.target.value })
     }
