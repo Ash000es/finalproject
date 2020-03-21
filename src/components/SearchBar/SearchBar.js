@@ -10,19 +10,19 @@ class SearchBar extends React.Component {
     super(props)
 
     this.state = {
-      "stay": {
-          "checkIn": "2020-06-15",
-          "checkOut": "2020-06-16"
+      stay: {
+          checkIn: "2020-06-15",
+          checkOut: "2020-06-16"
       },
-      "occupancies": [
+      occupancies: [
           {
-              "rooms": 1,
-              "adults": 1,
-              "children": 0
+              rooms: 1,
+              adults: 1,
+              children: 0
           }
       ],
-      "destination": {
-          "code": "MCO"
+      destination: {
+          code: "MCO"
       }
   }
     this.handleLocationChange = this.handleLocationChange.bind(this)
@@ -44,19 +44,17 @@ class SearchBar extends React.Component {
       const createRequestBody= () => {
         return 
         {
-          "stay": {
+          stay: {
               {this.props.stay.checkIn}
               {this.props.stay.checkOut}
           },
-          "occupancies": [
+          occupancies: [
               {
-                  "rooms": 1,
-                  "adults": 1,
-                  "children": 0
+                  {this.props.occupancies.adults}
               }
           ],
-          "destination": {
-              "code": "MCO"
+          destination: {
+              {this.props.destination.code}
           }
       }
 
