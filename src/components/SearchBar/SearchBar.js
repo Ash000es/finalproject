@@ -50,11 +50,11 @@ class SearchBar extends React.Component {
           },
           occupancies: [
               {
-                  {this.props.occupancies.adults}
+                  {this.props.adults}
               }
           ],
           destination: {
-              {this.props.destination.code}
+              {this.props.code}
           }
       }
 
