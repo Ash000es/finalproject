@@ -11,24 +11,25 @@ class SearchBar extends React.Component {
     super(props)
 
     this.state = {
-      date: {
-        "checkIn": "2020-06-15",
-        "checkOut": "2020-06-17",
-      location: {
-        "code": "BCN"
-    },
-      occ: [
-        {
-            "rooms": 1,
-            "adults": 2,
-            "children": 0
-        }
-    ],
-      
-    }
+      "stay": {
+          "checkIn": "2020-06-15",
+          "checkOut": "2020-06-16"
+      },
+      "occupancies": [
+          {
+              "rooms": 1,
+              "adults": 1,
+              "children": 0
+          }
+      ],
+      "destination": {
+          "code": "MCO"
+      }
+  }
     this.handleLocationChange = this.handleLocationChange.bind(this)
     this.handleOccChange = this.OccChange.bind(this)
-    this.handleDateChange = this.handleDateChange.bind(this)
+    this.handleDateChange1 = this.handleDateChange.bind(this)
+    this.handleDateChange2 = this.handleDateChange.bind(this)
     this.handleClickButton= this.handleClickButton.bind(this)
 
     
@@ -42,7 +43,7 @@ class SearchBar extends React.Component {
       }
       // should click button wrap and change set state?
       console.log(getSignature())
-      fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels/availabilityRQ/stay=2/@checkIn="2020-06-15"/@checkOut="2020-06-17"//occupancies/occupancy=2/@adults=2/@rooms=1/fields=all&language=ENG&from=1&to=100&useSecondaryLanguage=false',
+      fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
       {
         method:'POST',
         headers: {
@@ -51,21 +52,35 @@ class SearchBar extends React.Component {
           Accept: 'application/json',
           'Accept-Encoding': 'gzip'
         },
-        body: {"stay": {
-          "checkIn": "2020-06-15",
-          "checkOut": "2020-06-17"
-      },
-    }
+        body: {
+          "stay": {
+              "checkIn": "2020-06-15",
+              "checkOut": "2020-06-16"
+          },
+          "occupancies": [
+              {
+                  "rooms": 1,
+                  "adults": 1,
+                  "children": 0
+              }
+          ],
+          "destination": {
+              "code": "MCO"
+          }
+      }
     })
     }
     handleOccChange (event) {
-      this.setState({ occ: event.target.value })
+      this.setState({ occupancies.adults: event.target.value })
     }
     handleLocationChange (event) {
-      this.setState({ location: event.target.value })
+      this.setState({ destination.code: event.target.value })
     }
-    handleDateChange (event) {
-      this.setState({ date: event.target.value })
+    handleDateChange1 (event) {
+      this.setState({ stay.checkIn: event.target.value })
+    }
+    handleDateChange2 (event) {
+      this.setState({ stay.checkOut: event.target.value })
     }
     
     render () {
@@ -74,7 +89,8 @@ class SearchBar extends React.Component {
           <div className='SearchBar-fields'>
 
             <SearchField onChange={this.handleLocationChange} />
-            <DatePicker onChange={this.DateChange}/>
+            <DatePicker onChange={this.handleDateChange1}/>
+            <DatePicker onChange={this.handleDateChange2 }/>
             <OccSelector onChange={this.handleOccChange}/>
           </div>
           <div className='SearchBar-submit'>
