@@ -46,17 +46,18 @@ class SearchBar extends React.Component {
       const createRequestBody= () => {
         return {
           stay: {
-              {this.props.checkIn}
-              {this.props.checkOut}
+            checkIn:{this.props.checkIn}
+            CheckOut:{this.props.checkOut}
           },
           occupancies: [
               {
-                  {this.props.adults}
+                 Adults:{this.props.adults}
               }
           ],
           destination: {
-              {this.props.code}
-          } }
+              code:{this.props.code}
+          } 
+        }
 
       }
       
