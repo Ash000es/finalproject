@@ -25,11 +25,13 @@ class SearchBar extends React.Component {
           code: "MCO"
       }
   }
+
     this.handleLocationChange = this.handleLocationChange.bind(this)
     this.handleOccChange = this.OccChange.bind(this)
     this.handleDateChange1 = this.handleDateChange.bind(this)
     this.handleDateChange2 = this.handleDateChange.bind(this)
     this.handleClickButton= this.handleClickButton.bind(this)
+}
 
     
     handleClickButton= () => {
