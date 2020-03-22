@@ -27,9 +27,9 @@ class SearchBar extends React.Component {
   }
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
-    this.handleOccChange = this.OccChange.bind(this)
-    this.handleDateChange1 = this.handleDateChange.bind(this)
-    this.handleDateChange2 = this.handleDateChange.bind(this)
+    this.handleOccChange = this.handleOccChange.bind(this)
+    this.handleDateChange1 = this.handleDateChange1.bind(this)
+    this.handleDateChange2 = this.handleDateChange2.bind(this)
     this.handleClickButton= this.handleClickButton.bind(this)
 }
 
@@ -43,25 +43,17 @@ class SearchBar extends React.Component {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))
       }
 
-      const createRequestBody= () => {
+       const createRequestBody= () => {
+         const {checkIn,checkOut,occupancies,destination,stay}=this.state
         return {
-          stay: {
-            checkIn:{this.props.checkIn}
-            CheckOut:{this.props.checkOut}
-          },
-          occupancies: [
-              {
-                 Adults:{this.props.adults}
-              }
-          ],
-          destination: {
-              code:{this.props.code}
-          } 
+          stay,
+          occupancies,
+          destination
         }
 
       }
       
-      console.log(getSignature())
+       console.log(getSignature())
       fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
       {
         method:'POST',
@@ -72,20 +64,22 @@ class SearchBar extends React.Component {
           'Accept-Encoding': 'gzip'
         },
         body: createRequestBody()
+    }).then(Response => {
+      console.log(Response)
     })
     }
 
     handleOccChange (event) {
-      this.setState({ occupancies.adults: event.target.value })
+      this.setState({ occupancies:{adults:event.target.value} })
     }
     handleLocationChange (event) {
-      this.setState({ destination.code: event.target.value })
+      this.setState({ destination: {code:event.target.value} })
     }
     handleDateChange1 (event) {
-      this.setState({ stay.checkIn: event.target.value })
+      this.setState({ stay:{checkIn: event.target.value} })
     }
     handleDateChange2 (event) {
-      this.setState({ stay.checkOut: event.target.value })
+      this.setState({ stay:{checkOut: event.target.value} })
     }
     
     render () {

@@ -60,7 +60,7 @@ export default function CustomizedSelects () {
       <FormControl className={classes.margin}>
         <InputLabel id='demo-customized-select-label'>Adults</InputLabel>
         <Select
-          // onChange={this.handleOccChange}
+      
           labelId='demo-customized-select-label'
           id='demo-customized-select'
           value={occupancies}
