@@ -14,13 +14,21 @@ export default function MaterialUIPickers (props) {
   // dateFormat(new Date(), 'm-d-Y h:i:s');new Date().format('m-d-Y h:i:s');
 
   const handleDateChange = date => {
+    setSelectedDate(date)
       console.log(date)
     date = date.toLocaleDateString()
+  console.log(date)
+ const newDate = date.split('/');
+ console.log(newDate)
+const chars = newDate.reverse();
+console.log(chars);
+
+const strCopy = chars.join('/');
     //  const NewDate2 = date.target.value;
     //  console.log(NewDate2)
-      props.onChange(date);
-      console.log(date)
-      setSelectedDate(date)
+      props.onChange(strCopy);
+      console.log(strCopy)
+     
   }
   
   return (
@@ -30,7 +38,7 @@ export default function MaterialUIPickers (props) {
         <KeyboardDatePicker
           disableToolbar
           variant='inline'
-          format="yyy-MM-dd"
+          format="MM/dd/yyyy"
           margin='normal'
           id='date-picker-inline'
           label='Check Out Date'

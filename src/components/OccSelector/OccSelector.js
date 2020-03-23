@@ -59,6 +59,7 @@ export default function CustomizedSelects (props) {
      setoccupancies(newOcc)
    }
   return (
+    <>
     <div>
 
       <FormControl className={classes.margin}>
@@ -80,5 +81,9 @@ export default function CustomizedSelects (props) {
         </Select>
       </FormControl>
     </div>
+   
+
+
+</>
   )
 }

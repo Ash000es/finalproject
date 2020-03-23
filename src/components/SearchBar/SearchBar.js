@@ -82,13 +82,13 @@ const {adults, children, rooms}= occ
       const {destination}= this.state
        this.setState({ destination: {...destination, code} })
     }
-    handleDateChange1 (NewDate) {
+    handleDateChange1 (NewDate1) {
       const {stay}= this.state
-      this.setState({ stay:{...stay, checkIn: NewDate} })
+      this.setState({ stay:{...stay, checkIn: NewDate1} })
     }
-    handleDateChange2 (event) {
+    handleDateChange2 (NewDate2) {
       const {stay}= this.state
-      this.setState({ stay:{...stay, checkOut: event} })
+      this.setState({ stay:{...stay, checkOut: NewDate2} })
     }
     
     render () {
