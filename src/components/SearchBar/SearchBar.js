@@ -74,8 +74,8 @@ class SearchBar extends React.Component {
     }
 
     handleOccChange (occ) {
-const {adults, children, rooms}= occ
-      this.setState({occupancies: [{adults, children, rooms }]   })
+const {rooms,adults, children }= occ
+      this.setState({occupancies: [{rooms,adults, children }]   })
     }
     handleLocationChange (code) {
       
