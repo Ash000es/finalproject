@@ -17,9 +17,10 @@ export default function MaterialUIPickers (props) {
       console.log(date)
     date = date.toLocaleDateString()
     //  const NewDate2 = date.target.value;
-    //  props.onChange(NewDate2);
-    //   console.log(NewDate2)
-    //   setSelectedDate(NewDate2)
+    //  console.log(NewDate2)
+      props.onChange(date);
+      console.log(date)
+      setSelectedDate(date)
   }
   
   return (
@@ -27,7 +28,6 @@ export default function MaterialUIPickers (props) {
       <Grid container justify='space-around'>
 
         <KeyboardDatePicker
-        // onChange={()=> handleChange}
           disableToolbar
           variant='inline'
           format="MM/dd/yyyy"

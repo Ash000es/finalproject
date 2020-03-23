@@ -88,7 +88,7 @@ const {adults, children, rooms}= occ
     }
     handleDateChange2 (event) {
       const {stay}= this.state
-      this.setState({ stay:{...stay, checkOut: event.target.value} })
+      this.setState({ stay:{...stay, checkOut: event} })
     }
     
     render () {
