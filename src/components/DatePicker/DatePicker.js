@@ -18,12 +18,12 @@ export default function MaterialUIPickers (props) {
     console.log(date)
   date = date.toLocaleDateString()
 console.log(date)
-const newDate = date.split('/');
+const newDate = date.split('-');
 console.log(newDate)
 const chars = newDate.reverse();
 console.log(chars);
 
-const strCopy = chars.join('/');
+const strCopy = chars.join('-');
   //  const NewDate2 = date.target.value;
   //  console.log(NewDate2)
     props.onChange(strCopy);
@@ -37,7 +37,7 @@ const strCopy = chars.join('/');
         <KeyboardDatePicker
           disableToolbar
           variant='inline'
-          format="MM/dd/yyyy"
+          format="MM-dd-yyyy"
           margin='normal'
           id='date-picker-inline'
           label='Check in Date'
