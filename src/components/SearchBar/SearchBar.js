@@ -4,6 +4,7 @@ import Sign from 'js-sha256'
 import InputGroup from 'react-bootstrap/InputGroup'
 import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
+import DatePicker2 from '../DatePicker2/DatePicker2'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -44,42 +45,50 @@ class SearchBar extends React.Component {
       }
 
        const createRequestBody= () => {
-         const {checkIn,checkOut,occupancies,destination,stay}=this.state
+         const {occupancies,destination,stay}=this.state
         return {
           stay,
           occupancies,
-          destination
+          destination 
         }
 
       }
       
        console.log(getSignature())
-      fetch(' https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+       console.log(JSON.stringify(createRequestBody()))
+      fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
       {
         method:'POST',
         headers: {
           'Api-key': apikey,
           'X-Signature': getSignature(),
           Accept: 'application/json',
+          'Content-Type': 'application/json',
           'Accept-Encoding': 'gzip'
         },
-        body: createRequestBody()
-    }).then(Response => {
+    
+        body: JSON.stringify(createRequestBody())
+    }).then(res=> res.json()).then(Response => {
       console.log(Response)
     })
     }
 
-    handleOccChange (event) {
-      this.setState({ occupancies:{adults:event.target.value} })
+    handleOccChange (occ) {
+const {adults, children, rooms}= occ
+      this.setState({occupancies: [{adults, children, rooms }]   })
     }
-    handleLocationChange (event) {
-      this.setState({ destination: {code:event.target.value} })
+    handleLocationChange (code) {
+      
+      const {destination}= this.state
+       this.setState({ destination: {...destination, code} })
     }
-    handleDateChange1 (event) {
-      this.setState({ stay:{checkIn: event.target.value} })
+    handleDateChange1 (NewDate) {
+      const {stay}= this.state
+      this.setState({ stay:{...stay, checkIn: NewDate} })
     }
     handleDateChange2 (event) {
-      this.setState({ stay:{checkOut: event.target.value} })
+      const {stay}= this.state
+      this.setState({ stay:{...stay, checkOut: event.target.value} })
     }
     
     render () {
@@ -89,7 +98,7 @@ class SearchBar extends React.Component {
 
             <SearchField onChange={this.handleLocationChange} />
             <DatePicker onChange={this.handleDateChange1}/>
-            <DatePicker onChange={this.handleDateChange2 }/>
+            <DatePicker2 onChange={this.handleDateChange2 }/>
             <OccSelector onChange={this.handleOccChange}/>
           </div>
           <div className='SearchBar-submit'>

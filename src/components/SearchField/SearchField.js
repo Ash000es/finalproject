@@ -27,6 +27,7 @@ export default function CustomizedInputBase (props) {
 
   const handleChange = (e) => {
     const name = e.target.value;
+    console.log(name)
     props.onChange(name);
   }
 

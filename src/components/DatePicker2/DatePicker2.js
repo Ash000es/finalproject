@@ -9,18 +9,17 @@ import {
 
 export default function MaterialUIPickers (props) {
   // The first commit of Material-UI
-  console.log(props)
+  console.log('hello')
   const [selectedDate, setSelectedDate] = React.useState(new Date('2020-03-18T21:11:54'))
   // dateFormat(new Date(), 'm-d-Y h:i:s');new Date().format('m-d-Y h:i:s');
 
-  const handleDateChange = e => {
-    console.log(e)
-    e = e.toLocaleDateString()
-    console.log(e)
-    // const NewDate = e.target.value;
-    //  props.onChange(NewDate);
-    //  console.log(NewDate)
-    //  setSelectedDate(NewDate)
+  const handleDateChange = date => {
+      console.log(date)
+    date = date.toLocaleDateString()
+    //  const NewDate2 = date.target.value;
+    //  props.onChange(NewDate2);
+    //   console.log(NewDate2)
+    //   setSelectedDate(NewDate2)
   }
   
   return (
@@ -34,7 +33,7 @@ export default function MaterialUIPickers (props) {
           format="MM/dd/yyyy"
           margin='normal'
           id='date-picker-inline'
-          label='Check in Date'
+          label='Check Out Date'
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{

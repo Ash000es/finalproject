@@ -48,21 +48,17 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function CustomizedSelects (props) {
+export default function CustomizedSelects () {
   const classes = useStyles()
   const [occupancies, setoccupancies] = React.useState('')
-
    const handleChange = event => {
-     console.log(event)
-     const newOcc =event.target.value
-     props.onChange({adults:newOcc , children: 0, rooms:1 })
-     setoccupancies(newOcc)
+     setoccupancies(event.target.value)
    }
   return (
     <div>
 
       <FormControl className={classes.margin}>
-        <InputLabel id='demo-customized-select-label'>Adults</InputLabel>
+        <InputLabel id='demo-customized-select-label'>Room</InputLabel>
         <Select
       
           labelId='demo-customized-select-label'
