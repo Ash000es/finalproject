@@ -1,4 +1,4 @@
-/* import React from 'react'
+import React from 'react'
 const HotelPage = ({ hotel }) => {
   return (
     <div>
@@ -73,10 +73,10 @@ const HotelPage = ({ hotel }) => {
 
         </tbody>
         <tbody>
-        <Extras/>
+          <Extras />
         </tbody>
       </Table>
     </div>
 
   )
-} */
+}
