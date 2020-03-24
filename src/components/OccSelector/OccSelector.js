@@ -52,38 +52,36 @@ export default function CustomizedSelects (props) {
   const classes = useStyles()
   const [occupancies, setoccupancies] = React.useState('')
 
-   const handleChange = event => {
-     console.log(event)
-     const newOcc =event.target.value
-     props.onChange({adults:newOcc , children: 0, rooms:1 })
-     setoccupancies(newOcc)
-   }
+  const handleChange = event => {
+    console.log(event)
+    const newOcc = event.target.value
+    props.onChange({ adults: newOcc, children: 0, rooms: 1 })
+    setoccupancies(newOcc)
+  }
   return (
     <>
-    <div>
+      <div>
 
-      <FormControl className={classes.margin}>
-        <InputLabel id='demo-customized-select-label'>Adults</InputLabel>
-        <Select
-      
-          labelId='demo-customized-select-label'
-          id='demo-customized-select'
-          value={occupancies}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-          <MenuItem value=''>
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={1}>1</MenuItem>
-          <MenuItem value={2}>2</MenuItem>
-          <MenuItem value={3}>3</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-   
+        <FormControl className={classes.margin}>
+          <InputLabel id='demo-customized-select-label'>Adults</InputLabel>
+          <Select
 
+            labelId='demo-customized-select-label'
+            id='demo-customized-select'
+            value={occupancies}
+            onChange={handleChange}
+            input={<BootstrapInput />}
+          >
+            <MenuItem value=''>
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
 
-</>
+    </>
   )
 }

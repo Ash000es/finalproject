@@ -16,33 +16,35 @@ export default function MaterialUIPickers (props) {
   const handleDateChange = date => {
     setSelectedDate(date)
     console.log(date)
-  date = date.toLocaleDateString()
-console.log(date)
-const date1= date.replace('/', '-').replace('/', '-')
-console.log(date1)
-const newDate = date1.split('-');
-console.log(newDate)
-const chars = newDate.reverse();
-console.log(chars);
+    date = date.toLocaleDateString()
+    console.log(date)
+    const date1 = date.replace('/', '-').replace('/', '-')
+    console.log(date1)
+    const newDate = date1.split('-')
+    console.log(newDate)
+    const chars = newDate.reverse()
+    console.log(chars)
 
-const strCopy = chars.join('-');
-    props.onChange(strCopy);
+    const strCopy = chars.join('-')
+    props.onChange(strCopy)
     console.log(strCopy)
   }
-  
+
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils} >
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify='space-around'>
 
         <KeyboardDatePicker
           disableToolbar
           variant='inline'
-          format="MM/dd/yyyy"
+          format='MM/dd/yyyy'
           margin='normal'
           id='date-picker-inline'
           label='Check in Date'
           value={selectedDate}
           onChange={handleDateChange}
+          disablePast
+          autoOk
           KeyboardButtonProps={{
             'aria-label': 'change date'
           }}
