@@ -1,19 +1,29 @@
 import React from 'react'
-const HotelPage = ({ hotel }) => {
+import Carousel from 'react-bootstrap/Carousel'
+import HotelDetail from '../assets/HotelsDetails'
+import Table from 'react-bootstrap/Table'
+
+// on click we need content api call to pull the hotel information ( des+img)
+// we should have made the price and availability call before in search results so click on book will take you to the hotel page
+
+const HotelPage = ({ HotelDetail }) => {
   return (
     <div>
       <p>This hotel have spceial offer for you</p>
-      <p>{hotel.name}</p>
-      <p>{hotel.address}</p>
-      <p>{hotel.price + hotel.extrasprice.cake}</p>
-      <Button variant='primary'>Book</Button>
-      <p>{hotel.price}</p>
-      <Button variant='primary'>Book</Button>
+      <p>{HotelDetail.hotel.name}</p>
+      <p>{HotelDetail.hotel.address}
+        {HotelDetail.hotel.postalcode}
+        {HotelDetail.hotel.city}
+      </p>
+      <p />
+      <button variant='primary'>Book</button>
+      <p />
+      <button variant='primary'>Book</button>
       <Carousel>
         <Carousel.Item>
           <img
             className='d-block w-100'
-            src='https://img.nextpax.com/core/79d/79da52fa/f137/47fa/b553/1ed13c47abfe/79da52fa-f137-47fa-b553-1ed13c47abfe.jpg'
+            src=''
             alt='First slide'
           />
           <Carousel.Caption>
@@ -46,14 +56,14 @@ const HotelPage = ({ hotel }) => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      <div>amenities:
+      {/* <div>amenities:
         <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item =>
           <li key={item.title}>{item.icon}{item.title}</li>
         )}
         </ul>
-        <img src={hotel.TARating} alt='TA' />
-      </div>
-      <p>{hotel.KeyFact}</p>
+        <img src='' alt='TA' />
+      </div> */}
+      <p>key facts</p>
       <Table striped bordered hover size='sm'>
         <thead>
           <tr>
@@ -73,10 +83,11 @@ const HotelPage = ({ hotel }) => {
 
         </tbody>
         <tbody>
-          <Extras />
+          {/* <Extras /> */}
         </tbody>
       </Table>
     </div>
 
   )
 }
+export default HotelPage

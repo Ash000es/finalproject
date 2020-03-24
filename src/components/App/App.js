@@ -9,29 +9,13 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 
 import '../App/App.css'
-import Hotel from '../Hotel/Hotel'
+import Hotel from '../HotelCardSearch/HotelCardSearch'
 import hotel from '../assets/hotel.png'
 import label from '../assets/label.png'
 import TA from '../assets/TA.png'
 import SearchBar from '../SearchBar/SearchBar'
+import HotelPage from '../Hotelpage/HotelPage'
 
-const hotelData = {
-  name: 'Hotel Madrid',
-  address: {
-    street: '1 calle san jose ',
-    distanceToCenter: '5',
-    zipCode: '28002'
-  },
-  amenities: [{ icon: '' }, { title: 'Free wifi' }, { icon: '', title: 'Pool' }, { icon: '', title: 'Bar' }],
-  image: hotel,
-  label: label,
-  TARating: TA,
-  starRating: 3,
-  price: 220,
-  extrasimg: { breakfast: '', cake: '', redwine: '' },
-  keyFact: ['Check-in: 3 PM. Check-out: 11 AM.', 'Photo ID and Credit Card required at Check-in']
-
-}
 const extras = {
   extrasPrice: { breakfast: 10, cake: 20, redwine: 20 },
   extrasImages: { breakfast: '', cake: '', redwine: '' },
@@ -88,7 +72,7 @@ funtion to capture the sliders input and pass it to the recommmendation algorith
             <SearchBar />
 
           </div>
-          <p>Popular destinations</p>
+          {/* <p>Popular destinations</p>
 
           <CardDeck>
             <Card>
@@ -130,8 +114,8 @@ funtion to capture the sliders input and pass it to the recommmendation algorith
                 <small className='text-muted'>Last updated 3 mins ago</small>
               </Card.Footer>
             </Card>
-          </CardDeck>
-          {/* <Hotel hotel={hotelData} /> */}
+          </CardDeck> */}
+          <HotelPage />
         </Container>
       </MemoryRouter>
     </>
