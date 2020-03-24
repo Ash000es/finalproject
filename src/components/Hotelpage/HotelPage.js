@@ -1,29 +1,27 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import HotelDetail from '../assets/HotelsDetails'
+import HotelDetails from '../assets/HotelsDetails'
 import Table from 'react-bootstrap/Table'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
 
-const HotelPage = ({ HotelDetail }) => {
+const HotelPage = () => {
   return (
     <div>
-      <p>This hotel have spceial offer for you</p>
-      {/* <p>{props.hotel.name}</p> */}
-      {/* <p>{props.hotel.address} */}
-      {/* {props.hotel.postalcode} */}
-      {/* {props.hotel.city} */}
-      {/* </p> */}
-      <p />
+      <h4>This hotel have spceial offer for you</h4>
+      <p>{HotelDetails.hotel.name.content}</p>
+      <p>{HotelDetails.hotel.address.content},
+        {HotelDetails.hotel.postalCode},
+        {HotelDetails.hotel.city.content} show on map
+      </p>
       <button variant='primary'>Book</button>
-      <p />
       <button variant='primary'>Book</button>
       <Carousel>
         <Carousel.Item>
           <img
             className='d-block w-100'
-            src=''
+            src='https://img.nextpax.com/core/973/9733284a/4b25/445e/b397/5cdd540abe42/9733284a-4b25-445e-b397-5cdd540abe42.jpg'
             alt='First slide'
           />
           <Carousel.Caption>
@@ -63,7 +61,9 @@ const HotelPage = ({ HotelDetail }) => {
         </ul>
         <img src='' alt='TA' />
       </div> */}
-      <p>key facts</p>
+      <p>key facts:
+        {HotelDetails.hotel.description.content}
+      </p>
       <Table striped bordered hover size='sm'>
         <thead>
           <tr>

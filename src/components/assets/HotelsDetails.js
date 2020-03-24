@@ -1,4 +1,4 @@
-export const HotelDetail = {
+const HotelDetails = {
   auditData: {
     processTime: '81',
     timestamp: '2020-03-16 21:37:54.432',
@@ -1347,3 +1347,4 @@ export const HotelDetail = {
     ranking: 27
   }
 }
+export default HotelDetails

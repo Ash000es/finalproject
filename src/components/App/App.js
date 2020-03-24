@@ -16,6 +16,7 @@ import TA from '../assets/TA.png'
 import SearchBar from '../SearchBar/SearchBar'
 import HotelPage from '../Hotelpage/HotelPage'
 import HomePageResults from '../HomePageResults/HomepageResults'
+import HotelDetails from '../assets/HotelsDetails'
 
 const extras = {
   extrasPrice: { breakfast: 10, cake: 20, redwine: 20 },
@@ -110,7 +111,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <SearchBar />
           </div>
           {/* <HomePageResults/> */}
-          <HotelPage />
+          <HotelPage HotelDetails={HotelDetails} />
         </Container>
       </MemoryRouter>
     </>

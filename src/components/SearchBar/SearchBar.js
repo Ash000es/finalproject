@@ -38,6 +38,7 @@ class SearchBar extends React.Component {
       const apikey = '2t97t6954dckh4ynkwknr78j'
       const sec = 'nDD9BFXf5a'
       const D = new Date()
+      const results1 = {}
 
       const getSignature = () => {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))
@@ -68,6 +69,8 @@ class SearchBar extends React.Component {
           body: JSON.stringify(createRequestBody())
         }).then(res => res.json()).then(Response => {
         console.log(Response)
+        const { results1 } = Response
+        console.log(results1)
       })
     }
 
