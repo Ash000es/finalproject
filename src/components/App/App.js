@@ -15,6 +15,7 @@ import label from '../assets/label.png'
 import TA from '../assets/TA.png'
 import SearchBar from '../SearchBar/SearchBar'
 import HotelPage from '../Hotelpage/HotelPage'
+import HomePageResults from '../HomePageResults/HomepageResults'
 
 const extras = {
   extrasPrice: { breakfast: 10, cake: 20, redwine: 20 },
@@ -33,7 +34,44 @@ on click Inspire me button function to render <popUpSlider/> with the slider com
 funtion to capture the sliders input and pass it to the recommmendation algorithm.
  the return results is another components called <inspiremeResults/>
  <inspiremeResults/> component= 3 row destination card with 3 cards on top
+createRequestBody(){
+  return {
+      stay: {
+        checkIn: '2020-06-15',
+        checkOut: '2020-06-16'
+      },
+      occupancies: [
+        {
+          rooms: 1,
+          adults: 1,
+          children: 0
+        }
+      ],
+      destination: {
+        code: 'MCO',
+        Code: 'LON',
+        Code: 'BCN'
+      }
+    }
+}
+componentDidMount (){
+fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+        {
+          method: 'POST',
+          headers: {
+            'Api-key': apikey,
+            'X-Signature': getSignature(),
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Accept-Encoding': 'gzip'
+          },
 
+          body: JSON.stringify(createRequestBody())
+        }).then(res => res.json()).then(Response => {
+        console.log(Response)
+      })
+
+}
   */
 
   return (
@@ -70,51 +108,8 @@ funtion to capture the sliders input and pass it to the recommmendation algorith
           <div>
             <img />
             <SearchBar />
-
           </div>
-          {/* <p>Popular destinations</p>
-
-          <CardDeck>
-            <Card>
-              <Card.Img variant='top' src='holder.js/100px160' />
-              <Card.Body>
-                <Card.Title>Madrid</Card.Title>
-                <Card.Text>
-                  Hotels from 22$
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card>
-              <Card.Img variant='top' src='holder.js/100px160' />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This card has supporting text below as a natural lead-in to additional
-                  content.{' '}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card>
-              <Card.Img variant='top' src='holder.js/100px160' />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This is a wider card with supporting text below as a natural lead-in to
-                  additional content. This card has even longer content than the first to
-                  show that equal height action.
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-          </CardDeck> */}
+          {/* <HomePageResults/> */}
           <HotelPage />
         </Container>
       </MemoryRouter>

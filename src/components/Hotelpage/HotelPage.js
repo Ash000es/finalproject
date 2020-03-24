@@ -10,11 +10,11 @@ const HotelPage = ({ HotelDetail }) => {
   return (
     <div>
       <p>This hotel have spceial offer for you</p>
-      <p>{HotelDetail.hotel.name}</p>
-      <p>{HotelDetail.hotel.address}
-        {HotelDetail.hotel.postalcode}
-        {HotelDetail.hotel.city}
-      </p>
+      {/* <p>{props.hotel.name}</p> */}
+      {/* <p>{props.hotel.address} */}
+      {/* {props.hotel.postalcode} */}
+      {/* {props.hotel.city} */}
+      {/* </p> */}
       <p />
       <button variant='primary'>Book</button>
       <p />
