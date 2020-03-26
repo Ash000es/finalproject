@@ -1,7 +1,6 @@
 import React from 'react'
-import Carousel from 'react-bootstrap/Carousel'
 import HotelDetails from '../assets/HotelsDetails'
-import HotelPCarousel from '../HotelPCarousel/HotelPCarousel'
+import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
 
 // on click we need content api call to pull the hotel information ( des+img)
@@ -17,7 +16,7 @@ const HotelPage = () => {
       </p>
       <button variant='primary'>Book</button>
       <button variant='primary'>Book</button>
-      <HotelPCarousel />
+      <ControlledCarousel />
 
       {/* <div>amenities:
         <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item =>

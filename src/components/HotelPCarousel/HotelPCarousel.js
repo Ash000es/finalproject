@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import HotelDetails from '../assets/HotelsDetails'
+import { imageArray } from '../assets/HotelsDetails'
 
-function ControlledCarousel () {
+export function ControlledCarousel () {
   const [index, setIndex] = useState(0)
 
   const handleSelect = (selectedIndex, e) => {
@@ -11,7 +11,7 @@ function ControlledCarousel () {
 
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect} HotelDetails={HotelDetails}>
+      <Carousel activeIndex={index} onSelect={handleSelect}>
         {imageArray.map(arrayItem => {
           return (
             <Carousel.Item>
@@ -31,7 +31,4 @@ function ControlledCarousel () {
       </Carousel>
     </>
   )
-} export default HotelPCarousel
-// export default HotelPCarousel
-
-/* render(<ControlledCarousel />) */
+}; export default ControlledCarousel

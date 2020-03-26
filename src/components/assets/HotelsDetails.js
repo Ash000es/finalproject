@@ -1351,7 +1351,7 @@ const HotelDetails = {
 
 const imagesLinks = HotelDetails.hotel.images
 // console.log(imagesLinks)
-const imageArray = []
+export const imageArray = []
 
 function pushImages (arr) {
   arr.map(subarr => {
