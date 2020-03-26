@@ -1,5 +1,5 @@
 import React from 'react'
-import HotelDetails, { imageArray } from '../assets/HotelsDetails'
+import HotelDetails, { imageArray } from '../HotelsDetails'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
 

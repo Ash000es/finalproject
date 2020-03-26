@@ -7,7 +7,6 @@ import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
-
 import '../App/App.css'
 import Hotel from '../HotelCardSearch/HotelCardSearch'
 import hotel from '../assets/hotel.png'
@@ -16,7 +15,7 @@ import TA from '../assets/TA.png'
 import SearchBar from '../SearchBar/SearchBar'
 import HotelPage from '../Hotelpage/HotelPage'
 import HomePageResults from '../HomePageResults/HomepageResults'
-import HotelDetails from '../assets/HotelsDetails'
+import HotelDetails from '../HotelsDetails'
 
 const extras = {
   extrasPrice: { breakfast: 10, cake: 20, redwine: 20 },

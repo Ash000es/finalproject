@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import { imageArray } from '../assets/HotelsDetails'
+import HotelDetails, { imageArray } from '../HotelsDetails'
 
 export function ControlledCarousel (props) {
   const [index, setIndex] = useState(0)
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
+  }
+  const imagesLinks = HotelDetails.hotel.images
+  // console.log(imagesLinks)
+  const imageArray = []
+
+  function pushImages (arr) {
+    arr.map(subarr => {
+    // console.log(subarr)
+      const imageLink = `http://photos.hotelbeds.com/giata/${subarr.path}`
+      imageArray.push(imageLink)
+      console.log(imageLink)
+    })
   }
 
   return (
