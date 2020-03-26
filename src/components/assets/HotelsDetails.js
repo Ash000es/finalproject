@@ -1,4 +1,17 @@
 
+const imagesLinks = HotelDetails.hotel.images
+// console.log(imagesLinks)
+export const imageArray = []
+
+function pushImages (arr) {
+  arr.map(subarr => {
+    // console.log(subarr)
+    const imageLink = `http://photos.hotelbeds.com/giata/${subarr.path}`
+    imageArray.push(imageLink)
+    console.log(imageLink)
+  })
+}
+
 const HotelDetails = {
   auditData: {
     processTime: '81',
@@ -1349,16 +1362,4 @@ const HotelDetails = {
   }
 }
 
-const imagesLinks = HotelDetails.hotel.images
-// console.log(imagesLinks)
-export const imageArray = []
-
-function pushImages (arr) {
-  arr.map(subarr => {
-    // console.log(subarr)
-    const imageLink = `http://photos.hotelbeds.com/giata/${subarr.path}`
-    imageArray.push(imageLink)
-    console.log(imageLink)
-  })
-}
 export default HotelDetails

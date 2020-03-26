@@ -13,15 +13,13 @@ export function ControlledCarousel (props) {
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
 
-        {imageArray.map(arrayItem => {
-          const sortByOptionValue = arrayItem[arrayItem]
+        {imageArray.map((arrayItem) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={arrayItem}>
               <img
                 className='d-block w-100'
                 src={arrayItem}
-                alt='First slide'
-                key={sortByOptionValue}
+                alt='Hotel Pictures'
 
               />
               <Carousel.Caption>
