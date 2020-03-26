@@ -1,5 +1,5 @@
 import React from 'react'
-import HotelDetails from '../assets/HotelsDetails'
+import HotelDetails, { imageArray } from '../assets/HotelsDetails'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
 
@@ -16,7 +16,7 @@ const HotelPage = () => {
       </p>
       <button variant='primary'>Book</button>
       <button variant='primary'>Book</button>
-      <ControlledCarousel />
+      <ControlledCarousel foo={imageArray} />
 
       {/* <div>amenities:
         <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item =>
