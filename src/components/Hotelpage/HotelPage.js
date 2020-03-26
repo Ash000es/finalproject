@@ -1,14 +1,14 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import HotelDetails from '../assets/HotelsDetails'
+import HotelPCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
-
 const HotelPage = () => {
   return (
-    <div>
+    <>
       <h4>This hotel have spceial offer for you</h4>
       <p>{HotelDetails.hotel.name.content}</p>
       <p>{HotelDetails.hotel.address.content},
@@ -17,43 +17,8 @@ const HotelPage = () => {
       </p>
       <button variant='primary'>Book</button>
       <button variant='primary'>Book</button>
-      <Carousel>
-        <Carousel.Item>
-          <img
-            className='d-block w-100'
-            src='https://img.nextpax.com/core/973/9733284a/4b25/445e/b397/5cdd540abe42/9733284a-4b25-445e-b397-5cdd540abe42.jpg'
-            alt='First slide'
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className='d-block w-100'
-            src='https://img.nextpax.com/core/973/9733284a/4b25/445e/b397/5cdd540abe42/9733284a-4b25-445e-b397-5cdd540abe42.jpg'
-            alt='Secound slide'
-          />
+      <HotelPCarousel />
 
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className='d-block w-100'
-            src='https://img.nextpax.com/core/e39/e3940799/3440/4c2b/aff1/cd61ff711bf5/e3940799-3440-4c2b-aff1-cd61ff711bf5.jpg'
-            alt='Third slide'
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
       {/* <div>amenities:
         <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item =>
           <li key={item.title}>{item.icon}{item.title}</li>
@@ -86,8 +51,7 @@ const HotelPage = () => {
           {/* <Extras /> */}
         </tbody>
       </Table>
-    </div>
+    </>
 
   )
-}
-export default HotelPage
+}; export default HotelPage
