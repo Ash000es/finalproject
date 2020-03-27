@@ -1352,8 +1352,8 @@ const imagesLinks = HotelDetails.hotel.images
 // console.log(imagesLinks)
 export const imageArray = []
 
-function pushImages (arr) {
-  arr.map(subarr => {
+function pushImages (imagesLinks) {
+  imagesLinks.map(subarr => {
     // console.log(subarr)
     const imageLink = `http://photos.hotelbeds.com/giata/${subarr.path}`
     imageArray.push(imageLink)
