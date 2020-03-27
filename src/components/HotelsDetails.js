@@ -1347,18 +1347,4 @@ const HotelDetails = {
     S2C: '4*',
     ranking: 27
   }
-}
-const imagesLinks = HotelDetails.hotel.images
-// console.log(imagesLinks)
-export const imageArray = []
-
-function pushImages (imagesLinks) {
-  imagesLinks.map(subarr => {
-    // console.log(subarr)
-    const imageLink = `http://photos.hotelbeds.com/giata/${subarr.path}`
-    imageArray.push(imageLink)
-    console.log(imageLink)
-  })
-}
-
-export default HotelDetails
+}; export default HotelDetails
