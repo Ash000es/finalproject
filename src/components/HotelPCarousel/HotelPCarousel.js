@@ -21,13 +21,14 @@ export function ControlledCarousel (props) {
     })
   }
   pushImages(imagesLinks)
+  const imageSize = { width: '100%', height: '500px' }
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
 
         {imageArray.map((arrayItem) => {
           return (
-            <Carousel.Item key={arrayItem}>
+            <Carousel.Item key={arrayItem} style={imageSize}>
               <img
                 className='d-block w-100'
                 src={arrayItem}
