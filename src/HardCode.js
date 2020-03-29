@@ -75,6 +75,7 @@ const hardHotelObject= {
         Hairdryer: boolean,
         'Internet access': boolean
     },
+    description: "This modern hotel is excellently situated in the centre of Barcelona, just a few steps away from Plaça de Catalunya, La Rambla, Passeig de Gràcia and University of Barcelona. The hotel features a convention centre and is within walking distance from the trade fair centre Fira de Barcelona. The Sants railway station offering direct connection to the airport is within a 5-minute walk."
     address: "Carrer De Viladomat,197 ",
     postalCode: 08015,
     city: "BARCELONA",
