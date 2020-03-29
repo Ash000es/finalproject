@@ -16,7 +16,7 @@ const HotelPage = () => {
       </p>
       <button variant='primary'>Book</button>
       <button variant='primary'>Book</button>
-      <ControlledCarousel foo={HotelDetails} />
+      <ControlledCarousel />
 
       {/* <div>amenities:
         <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item =>
