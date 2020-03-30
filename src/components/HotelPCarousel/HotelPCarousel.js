@@ -16,10 +16,10 @@ export function ControlledCarousel (props) {
   function pushImages (arr) {
     arr.map(subarr => {
       // console.log(subarr)
-      const imageLink = `http://photos.hotelbeds.com/giata/xl/${subarr.path}`
+      const imageLink = `http://photos.hotelbeds.com/giata/${subarr.path}`
       const imageText = subarr.type.description.content
       imageArray.push(imageLink)
-      console.log(imageLink)
+      // console.log(imageLink)
     })
   }
   pushImages(imagesLinks)

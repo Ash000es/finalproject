@@ -4,6 +4,7 @@ import Sign from 'js-sha256'
 import InputGroup from 'react-bootstrap/InputGroup'
 import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
+import OccSelector2 from '../OccSelector2/OccSelector2'
 import DatePicker2 from '../DatePicker2/DatePicker2'
 
 class SearchBar extends React.Component {
@@ -19,7 +20,11 @@ class SearchBar extends React.Component {
         {
           rooms: 1,
           adults: 1,
-          children: 0
+          children: 0,
+          paxes: [{
+            type: 'CH',
+            age: 2
+          }]
         }
       ],
       destination: {
@@ -29,6 +34,7 @@ class SearchBar extends React.Component {
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
     this.handleOccChange = this.handleOccChange.bind(this)
+    this.handleOccChange2 = this.handleOccChange2.bind(this)
     this.handleDateChange1 = this.handleDateChange1.bind(this)
     this.handleDateChange2 = this.handleDateChange2.bind(this)
     this.handleClickButton = this.handleClickButton.bind(this)
@@ -79,6 +85,11 @@ class SearchBar extends React.Component {
       this.setState({ occupancies: [{ rooms, adults, children }] })
     }
 
+    handleOccChange2 (occ2) {
+      const { rooms, adults, children } = occ2
+      this.setState({ occupancies: [{ rooms, adults, children }] })
+    }
+
     handleLocationChange (code) {
       const { destination } = this.state
       this.setState({ destination: { ...destination, code } })
@@ -103,6 +114,7 @@ class SearchBar extends React.Component {
             <DatePicker onChange={this.handleDateChange1} />
             <DatePicker2 onChange={this.handleDateChange2} />
             <OccSelector onChange={this.handleOccChange} />
+            <OccSelector2 onChange={this.handleOccChange2} />
           </div>
           <div className='SearchBar-submit'>
             <button onClick={this.handleClickButton}>Search</button>

@@ -48,29 +48,28 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function CustomizedSelects (props) {
+const CustomizedSelects = (props) => {
   const classes = useStyles()
   const [occupancies, setoccupancies] = React.useState('')
 
-  const handleChange = event => {
+  const handleChange2 = event => {
     console.log(event)
     const newOcc = event.target.value
-    props.onChange({ adults: newOcc, children: 0, rooms: 1 })
+    props.onChange({ adults: 1, children: newOcc, rooms: 1 })
     setoccupancies(newOcc)
   }
-
   return (
     <>
       <div>
 
         <FormControl className={classes.margin}>
-          <InputLabel id='demo-customized-select-label'>Adults</InputLabel>
+          <InputLabel id='demo-customized-select-label'>Childerns</InputLabel>
           <Select
 
             labelId='demo-customized-select-label'
             id='demo-customized-select'
             value={occupancies}
-            onChange={handleChange}
+            onChange={handleChange2}
             input={<BootstrapInput />}
           >
             <MenuItem value=''>
@@ -85,4 +84,4 @@ export default function CustomizedSelects (props) {
 
     </>
   )
-}
+}; export default CustomizedSelects
