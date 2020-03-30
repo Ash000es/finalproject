@@ -2,6 +2,7 @@ import React from 'react'
 import HotelDetails, { imageArray } from '../HotelsDetails'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
+import SearchBar from '../SearchBar/SearchBar'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
@@ -34,7 +35,7 @@ const HotelPage = () => {
             <th>Room Type</th>
             <th>Adults</th>
             <th>Included</th>
-            <th>Price</th>
+            <th />
           </tr>
         </thead>
         <tbody>

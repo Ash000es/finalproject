@@ -44,7 +44,6 @@ class SearchBar extends React.Component {
       const apikey = '2t97t6954dckh4ynkwknr78j'
       const sec = 'nDD9BFXf5a'
       const D = new Date()
-      const hotels = []
 
       const getSignature = () => {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))

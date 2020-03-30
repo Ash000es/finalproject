@@ -12,7 +12,7 @@ import Hotel from '../HotelCardSearch/HotelCardSearch'
 import hotel from '../assets/hotel.png'
 import label from '../assets/label.png'
 import TA from '../assets/TA.png'
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar, { hotels } from '../SearchBar/SearchBar'
 import HotelPage from '../Hotelpage/HotelPage'
 import HomePageResults from '../HomePageResults/HomepageResults'
 import HotelDetails from '../HotelsDetails'
@@ -110,7 +110,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <SearchBar />
           </div>
           {/* <HomePageResults/> */}
-          <HotelPage HotelDetails={HotelDetails} />
+          <HotelPage HotelDetails={HotelDetails} hotelsRes={hotels} />
         </Container>
       </MemoryRouter>
     </>
