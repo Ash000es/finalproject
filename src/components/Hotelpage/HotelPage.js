@@ -4,7 +4,7 @@ import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
 import SearchBar from '../SearchBar/SearchBar'
 import { hardHotelObject } from '../assets/HardCode'
-import thumbilCarousel from '../thumbilCarousel/thumbilCarousel'
+import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
@@ -53,7 +53,7 @@ const HotelPage = () => {
             <td>{
               hardHotelObject.rooms[0].name
             }
-              <ControlledCarousel />
+            <ControlledCarousel1 />
 
             </td>
             <td>Adults {hardHotelObject.rooms[0].rates[0].adults}

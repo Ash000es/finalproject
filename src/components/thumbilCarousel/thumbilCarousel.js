@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import HotelDetails from '../HotelsDetails'
 import { hardHotelObject } from '../assets/HardCode'
 
-export const ControlledCarousel = (props) => {
+export const ControlledCarousel1 = (props) => {
   const [index, setIndex] = useState(0)
 
   const handleSelect = (selectedIndex, e) => {
@@ -24,30 +24,30 @@ export const ControlledCarousel = (props) => {
     })
   }
   pushImages(imagesLinks)
-  const imageSize = { width: '20px', height: '20px' }
+  const imageSize = { width: '250px', height: 'auto' }
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
 
         {imageArray.map((arrayItem) => {
-          if (arrayItem.roomCode === hardHotelObject.rooms[0].code) {
-            return (
-              <Carousel.Item key={arrayItem} style={imageSize}>
-                <img
-                  className='d-block w-100'
-                  src={arrayItem}
-                  alt='Hotel Pictures'
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p />
-                </Carousel.Caption>
-              </Carousel.Item>
+          { /* if (arrayItem.roomCode === hardHotelObject.rooms[0].code) { */ }
+          return (
+            <Carousel.Item key={arrayItem} style={imageSize}>
+              <img
+                className='d-block w-100'
+                src={arrayItem}
+                alt='Hotel Pictures'
+              />
+              <Carousel.Caption>
 
-            )
-          }
-        })}
+                <p />
+              </Carousel.Caption>
+            </Carousel.Item>
+
+          )
+        }
+        )}
       </Carousel>
     </>
   )
-}; export default ControlledCarousel
+}; export default ControlledCarousel1
