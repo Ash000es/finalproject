@@ -9,6 +9,7 @@ import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
 const HotelPage = () => {
+  const cancelationDate = hardHotelObject.rooms[0].rates[0].cancellationPolicies[0].from
   return (
     <>
       <h4>This hotel have spceial offer for you</h4>
@@ -53,14 +54,14 @@ const HotelPage = () => {
             <td>{
               hardHotelObject.rooms[0].name
             }
-            <ControlledCarousel1 />
+              <ControlledCarousel1 />
 
             </td>
             <td>Adults {hardHotelObject.rooms[0].rates[0].adults}
               Children {hardHotelObject.rooms[0].rates[0].children}
             </td>
             <td>Free Wifi</td>
-            <td>{hardHotelObject.rooms[0].rates[0].net}$<button>Book Now</button></td>
+            <td>{hardHotelObject.rooms[0].rates[0].net}$<button>Book Now</button> Free cancelation till{cancelationDate}</td>
           </tr>
 
         </tbody>
