@@ -12,6 +12,7 @@ class SearchBar extends React.Component {
     super(props)
 
     this.state = {
+      results: [],
       stay: {
         checkIn: '2020-06-15',
         checkOut: '2020-06-16'
@@ -29,6 +30,7 @@ class SearchBar extends React.Component {
       ],
       destination: {
         code: 'MCO'
+
       }
     }
 
@@ -60,7 +62,7 @@ class SearchBar extends React.Component {
 
       console.log(getSignature())
       console.log(JSON.stringify(createRequestBody()))
-      fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+      window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
         {
           method: 'POST',
           headers: {
@@ -75,7 +77,10 @@ class SearchBar extends React.Component {
         }).then(res => res.json()).then(Response => {
         console.log(Response)
         const { hotels } = Response
+
         console.log(hotels)
+
+        this.setState({ results: [hotels] })
       })
     }
 
