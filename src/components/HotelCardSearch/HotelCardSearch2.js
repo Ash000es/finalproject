@@ -13,6 +13,7 @@ import Divider from '@material-ui/core/Divider'
 import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import ErrorRadios from '../radioButton/radioButton'
+import ScrollableTabsButtonAuto from '../Extras/Extras'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,20 +81,21 @@ export default function DetailedExpansionPanel () {
             </div>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.details}>
-            <div className={classes.column} />
+            {/* <div className={classes.column} /> */}
             <div className={classes.column}>
               {/* <Chip label='Barbados' onDelete={() => {}} /> */}
+              <ScrollableTabsButtonAuto />
 
             </div>
-            <div className={clsx(classes.column, classes.helper)}>
-              <Typography variant='caption'>
-                Select your destination of choice
-                <br />
-                <a href='#secondary-heading-and-columns' className={classes.link}>
-                  Learn more
-                </a>
-              </Typography>
-            </div>
+            {/* <div className={clsx(classes.column, classes.helper)}> */}
+            {/* <Typography variant='caption'> */}
+            {/* Select your destination of choice */}
+            {/* <br /> */}
+            {/* <a href='#secondary-heading-and-columns' className={classes.link}> */}
+            {/* Learn more */}
+            {/* </a> */}
+            {/* </Typography> */}
+            {/* </div> */}
           </ExpansionPanelDetails>
           <Divider />
           <ExpansionPanelActions>
