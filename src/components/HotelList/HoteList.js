@@ -1,20 +1,20 @@
 import React from 'react'
-import '../HotelList/HotelList.css'
+// import '../HotelList/HotelList.css'
 
-import Hotel from '../Hotel/Hotel'
-import Extras from '../Extras/Extras'
+// import HotelCardSearch from '../HotelCardSearch/HotelCardSearch'
+import DetailedExpansionPanel from '../HotelCardSearch/HotelCardSearch2'
+// import Extras from '../Extras/Extras'
 
 class HotelList extends React.Component {
   render () {
     return (
       <div className='HotelList'>
-        <Hotel />
-        <Extras />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
+        <DetailedExpansionPanel />
+        {/* <Extras /> */}
+        <DetailedExpansionPanel />
+        <DetailedExpansionPanel />
+        <DetailedExpansionPanel />
+        <DetailedExpansionPanel />
 
       </div>
     )

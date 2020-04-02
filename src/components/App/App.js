@@ -17,6 +17,7 @@ import HotelPage from '../Hotelpage/HotelPage'
 import HomePageResults from '../HomePageResults/HomepageResults'
 import HotelDetails from '../HotelsDetails'
 import { hardHotelObject } from '../assets/HardCode'
+import HotelList from '../HotelList/HoteList'
 
 const extras = {
   extrasPrice: { breakfast: 10, cake: 20, redwine: 20 },
@@ -110,6 +111,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <img />
             <SearchBar />
           </div>
+          <HotelList />
           {/* <HomePageResults /> */}
           {/* <HotelPage HardCode={hardHotelObject} /> */}
         </Container>

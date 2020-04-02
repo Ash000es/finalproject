@@ -3,36 +3,37 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import './Hotel.css'
 import Image from 'react-bootstrap/Image'
-const Hotel = ({ hotel }) => {
+
+const HotelCardSearch = ({ hardHotelObject }) => {
   return (
     <div>
-      <img id='hello' src={hotel.image} />
+      <img id='hello' src='' />
 
-      <Card style={styles.card}>
+      <Card>
 
         <Card.Body>
-          <Card.Title>{hotel.name}</Card.Title>
-          <p>{hotel.address.street}{hotel.address.zipCode}</p>
+          <Card.Title></Card.Title>
+          <p />
 
           <Card.Text>
             amenities:
-            <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item =>
-              <li key={item.title}>{item.icon}{item.title}</li>
-            )}
-            </ul>
+            {/* <ul style={{ listStyleType: 'none' }}>{hotel.amenities.map(item => */}
+            {/* <li key={item.title}>{item.icon}{item.title}</li> */}
+            {/* )} */}
+            {/* </ul> */}
 
           </Card.Text>
-          <img src={hotel.label} />
-          <p>{hotel.price + hotel.extrasprice.cake}</p>
-          <Button variant='primary'>Book</Button>
-          <p>{hotel.price}</p>
+          {/* <img src={hotel.label} /> */}
+          {/* <p>{hotel.price + hotel.extrasprice.cake}</p> */}
+          {/* <Button variant='primary'>Book</Button> */}
+          {/* <p>{hotel.price}</p> */}
           <Button variant='primary'>Book</Button>
         </Card.Body>
       </Card>
     </div>
   )
 }
-export default Hotel
+export default HotelCardSearch
 const styles = {
   card: {
     width: '50%',
