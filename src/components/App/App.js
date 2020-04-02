@@ -111,7 +111,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <SearchBar />
           </div>
           {/* <HomePageResults /> */}
-          <HotelPage HardCode={hardHotelObject} />
+          {/* <HotelPage HardCode={hardHotelObject} /> */}
         </Container>
       </MemoryRouter>
     </>
