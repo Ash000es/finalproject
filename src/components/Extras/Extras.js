@@ -66,7 +66,7 @@ export default function ScrollableTabsButtonAuto () {
           scrollButtons='auto'
           aria-label='scrollable auto tabs example'
         >
-          <Tab label='Item One' {...a11yProps(0)} />
+          <Tab label={extras[0].title} {...a11yProps(0)} />
           <Tab label='Item Two' {...a11yProps(1)} />
           <Tab label='Item Three' {...a11yProps(2)} />
           <Tab label='Item Four' {...a11yProps(3)} />
@@ -76,7 +76,9 @@ export default function ScrollableTabsButtonAuto () {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <p>{extras[0].title}{extras[0].Summary}</p>
+        <p>
+          {extras[0].Summary}
+        </p>
         <p>{extras[0].price}Euros</p>
         <button>Add</button>
       </TabPanel>
