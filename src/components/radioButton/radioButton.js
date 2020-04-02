@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
+import { hardHotelObject } from '../assets/HardCode'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -50,7 +51,7 @@ export default function ErrorRadios () {
         <FormLabel component='legend' />
         <RadioGroup aria-label='quiz' name='quiz' value={value} onChange={handleRadioChange}>
           <FormControlLabel value='best' control={<Radio />} label='Room only' />
-          <p />
+          <p>{hardHotelObject.rooms[0].rates[0].net}</p>
           <Button type='submit' variant='outlined' color='primary' className={classes.button}>
             Book Now
           </Button>

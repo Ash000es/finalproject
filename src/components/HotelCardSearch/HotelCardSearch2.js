@@ -74,7 +74,7 @@ export default function DetailedExpansionPanel () {
                 <li key={item.title}>{item.Icon}{item.title}</li>
               )}
               </ul>
-              <p>{hardHotelObject.label.posh}{hardHotelObject.zoneName}{hardHotelObject.categoryName}</p>
+              <p>{hardHotelObject.label.posh}|{hardHotelObject.zoneName}|{hardHotelObject.categoryName}</p>
             </div>
             <div className={classes.column}>
               <ErrorRadios />
