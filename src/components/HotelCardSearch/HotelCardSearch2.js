@@ -86,8 +86,8 @@ export default function DetailedExpansionPanel () {
             {/* <div className={classes.column} /> */}
             <div className={classes.column}>
               {/* <Chip label='Barbados' onDelete={() => {}} /> */}
-              {/* <Extras /> */}
-              <SingleLineGridList />
+              <Extras />
+              {/* <SingleLineGridList /> */}
 
             </div>
             {/* <div className={clsx(classes.column, classes.helper)}> */}

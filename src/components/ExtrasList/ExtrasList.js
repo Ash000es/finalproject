@@ -80,7 +80,9 @@ export const SingleLineGridList = () => {
 
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={1}>
+      <GridList
+        className={classes.gridList} cols={6}
+      >
         {tileData.map((tile) => (
           <GridListTile key={tile.img}>
 
