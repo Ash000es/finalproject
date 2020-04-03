@@ -13,7 +13,8 @@ import Divider from '@material-ui/core/Divider'
 import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import ErrorRadios from '../radioButton/radioButton'
-import ScrollableTabsButtonAuto from '../Extras/Extras'
+import Extras from '../Extras/Extras'
+import { SingleLineGridList } from '../ExtrasList/ExtrasList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +56,7 @@ export default function DetailedExpansionPanel () {
 
   return (
     <>
+
       <Typography className={classes.heading}>{hardHotelObject.destinationName}</Typography>
       <div className={classes.root}>
         <ExpansionPanel defaultExpanded>
@@ -84,7 +86,8 @@ export default function DetailedExpansionPanel () {
             {/* <div className={classes.column} /> */}
             <div className={classes.column}>
               {/* <Chip label='Barbados' onDelete={() => {}} /> */}
-              <ScrollableTabsButtonAuto />
+              {/* <Extras /> */}
+              <SingleLineGridList />
 
             </div>
             {/* <div className={clsx(classes.column, classes.helper)}> */}

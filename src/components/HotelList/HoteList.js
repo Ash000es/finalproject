@@ -1,4 +1,5 @@
 import React from 'react'
+import { SearchResultsHero } from '../SearchResultsHero/SearchResultsHero'
 // import '../HotelList/HotelList.css'
 
 // import HotelCardSearch from '../HotelCardSearch/HotelCardSearch'
@@ -8,8 +9,8 @@ class HotelList extends React.Component {
   render () {
     return (
       <div className='HotelList'>
+        <SearchResultsHero />
         <DetailedExpansionPanel />
-        {/* <Extras /> */}
         <DetailedExpansionPanel />
         <DetailedExpansionPanel />
         <DetailedExpansionPanel />
