@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   column: {
-    flexBasis: '33.33%'
+    flexBasis: '%'
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -86,8 +86,8 @@ export default function DetailedExpansionPanel () {
             {/* <div className={classes.column} /> */}
             <div className={classes.column}>
               {/* <Chip label='Barbados' onDelete={() => {}} /> */}
-              <Extras />
-              {/* <SingleLineGridList /> */}
+              {/* <Extras /> */}
+              <SingleLineGridList />
 
             </div>
             {/* <div className={clsx(classes.column, classes.helper)}> */}

@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { Example } from '../PopOverButton/PopOverButton'
 import { extras } from '../App/App'
-// import tileData from './tileData'
+import OutlinedCard from '../GridlistCard/GridListCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,10 +102,16 @@ export const SingleLineGridList = () => {
                 <Example />
 
               }
+              cardTitle={
+
+                <OutlinedCard />
+              }
 
             />
           </GridListTile>
+
         ))}
+
       </GridList>
     </div>
   )
