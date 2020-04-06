@@ -22,9 +22,10 @@ import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
 
 export const extras = [
-  { title: 'Kings Breakfast ', price: 10, image: "https://source.unsplash.com/random", summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
-  { title: 'Double trouble', price: 10, image: "https://source.unsplash.com/random", summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
-  { title: 'House Red', price: 10, image: "https://source.unsplash.com/random", summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
+  { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
+
+  { title: 'Double trouble', price: 10, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
+  { title: 'House Red', price: 10, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
 
 ]
 function App () {
