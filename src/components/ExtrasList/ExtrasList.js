@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { Example } from '../PopOverButton/PopOverButton'
-import { extras } from '../App/App'
+ import { extras } from '../App/App'
 import OutlinedCard from '../GridlistCard/GridListCard'
 
 const useStyles = makeStyles((theme) => ({
@@ -56,6 +56,7 @@ const tileData = [
 
 ]
 
+
 export const SingleLineGridList = () => {
   const classes = useStyles()
 
@@ -68,22 +69,20 @@ export const SingleLineGridList = () => {
         className={classes.gridList} cols={3}
       >
         {extras.map((extra, i) => (
-          <GridListTile key={extra.image}>
+          <GridListTile key={extra[i].image}>
 
-            <img src={extra.img} alt={extra.title} />
+            <img src={extra[i].image} alt='' />
 
             <GridListTileBar
 
-              title={extra.title}
+              title={extra[i].title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title
               }}
               actionIcon={
-                // <IconButton aria-label={`star ${tile.title}`}>
-                //   <StarBorderIcon className={classes.title} />
-                // </IconButton>
-                <Example sum={extra.summary} />
+               
+                <Example sum={extra[i].summary} />
 
               }
 

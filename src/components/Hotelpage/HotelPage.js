@@ -70,7 +70,7 @@ const HotelPage = () => {
           <p>{hardHotelObject.rooms[0].rates[0].net}</p>
           <button>Book Now</button>
           <button>Add to cart</button>
-          {/* <Extras /> */}
+         
         </tbody>
       </Table>
     </>
