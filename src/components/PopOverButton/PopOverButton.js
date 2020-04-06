@@ -1,22 +1,51 @@
 import React from 'react'
-import Tooltip from 'react-bootstrap/Tooltip'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Button from 'react-bootstrap/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import Popover from '@material-ui/core/Popover'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
-function renderTooltip (props) {
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2)
+  }
+}))
+
+export default function SimplePopover () {
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
+
   return (
-    <Tooltip id='button-tooltip' {...props}>
-      there is so much shit that needs to go in here so I hope you can grow as much as needed
-    </Tooltip>
-  )
-}
-
-export const Example = () => (
-  <OverlayTrigger overlay={<Tooltip id='tooltip-disabled'>Lots of information goes here I hope</Tooltip>}>
-    <span className='d-inline-block'>
-      <Button disabled style={{ pointerEvents: 'none' }}>
+    <div>
+      <Button aria-describedby={id} variant='contained' color='primary' onClick={handleClick}>
         Learn more
       </Button>
-    </span>
-  </OverlayTrigger>
-)
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center'
+        }}
+      >
+        <Typography className={classes.typography}>The content of the Popover.</Typography>
+      </Popover>
+    </div>
+  )
+}

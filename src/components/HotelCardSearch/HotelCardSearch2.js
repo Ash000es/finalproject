@@ -9,11 +9,9 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Chip from '@material-ui/core/Chip'
 import Button from '@material-ui/core/Button'
-import Divider from '@material-ui/core/Divider'
 import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import ErrorRadios from '../radioButton/radioButton'
-import Extras from '../Extras/Extras'
 import { SingleLineGridList } from '../ExtrasList/ExtrasList'
 
 const useStyles = makeStyles((theme) => ({
@@ -83,17 +81,15 @@ export default function DetailedExpansionPanel () {
             </div>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.details}>
-           
+
             <div className={classes.column}>
-              
-              
+
               <SingleLineGridList />
 
             </div>
-            
-          
+
           </ExpansionPanelDetails>
-          
+
           <ExpansionPanelActions>
             <Button size='small'>Cancel</Button>
             <Button size='small' color='primary'>

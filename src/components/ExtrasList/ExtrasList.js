@@ -3,10 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
-import Button from '@material-ui/core/Button'
-import { Example } from '../PopOverButton/PopOverButton'
+import SimplePopover from '../PopOverButton/PopOverButton'
 import { extras } from '../App/App'
-import OutlinedCard from '../GridlistCard/GridListCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translateZ(0)'
   },
   title: {
-    color: theme.palette.primary.light
+    color: theme.palette.primary.contrastText
   },
   titleBar: {
     background:
@@ -31,24 +29,24 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-// const tileData = [
-// {
-// img: 'https://source.unsplash.com/random',
-// title: 'Image',
-// author: 'author'
-// },
-// {
-// img: 'https://source.unsplash.com/random',
-// title: 'Image',
-// author: 'author'
-// },
-// {
-// img: 'https://source.unsplash.com/random',
-// title: 'Image',
-// author: 'author'
-// }
+const tileData = [
+  {
+    img: 'https://source.unsplash.com/random',
+    title: 'Image',
+    author: 'author'
+  },
+  {
+    img: 'https://source.unsplash.com/random',
+    title: 'Image',
+    author: 'author'
+  },
+  {
+    img: 'https://source.unsplash.com/random',
+    title: 'Image',
+    author: 'author'
+  }
 
-// ]
+]
 
 export const SingleLineGridList = () => {
   const classes = useStyles()
@@ -56,26 +54,28 @@ export const SingleLineGridList = () => {
   return (
 
     <div className={classes.root}>
-      {console.log('extras', extras)}
+      {console.log('yaay', extras)}
 
       <GridList
         className={classes.gridList} cols={3}
-      >
-        {extras.map((extra, i) => (
-          <GridListTile key={extra[i].title}>
 
-            <img src={extra[i].image} alt='' />
+      >
+        {extras.map((extra) => (
+          <GridListTile key={extra.title}>
+
+            <img src={extra.image} alt='' />
 
             <GridListTileBar
 
-              title={extra[i].title}
+              title={extra.title}
+              subtitle={extra.price}
               classes={{
                 root: classes.titleBar,
                 title: classes.title
               }}
               actionIcon={
 
-                <Example sum={extra[i].summary} />
+                <SimplePopover sum={extra.summary} />
 
               }
 
