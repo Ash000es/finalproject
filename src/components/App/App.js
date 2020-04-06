@@ -1,6 +1,6 @@
 import React from 'react'
 import { MemoryRouter, Switch, Route } from 'react-router-dom'
-
+import MenuAppBar from '../NavBar/Navbar'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
