@@ -29,8 +29,8 @@ export const ControlledCarousel1 = (props) => {
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
 
-        {imageArray.map((arrayItem) => {
-          { /* if (arrayItem.roomCode === hardHotelObject.rooms[0].code) { */ }
+        {imageArray.map((arrayItem, i) => {
+          { /* if (arrayItem.roomCode === hardHotelObject.rooms[i].code) { */ }
           return (
             <Carousel.Item key={arrayItem} style={imageSize}>
               <img

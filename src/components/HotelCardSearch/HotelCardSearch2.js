@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   column: {
-    flexBasis: '%'
+    flexBasis: '100%'
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,

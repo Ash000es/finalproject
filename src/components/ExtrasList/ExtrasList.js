@@ -52,45 +52,29 @@ const tileData = [
     img: 'https://source.unsplash.com/random',
     title: 'Image',
     author: 'author'
-  },
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
-  },
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
-  },
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
-  },
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
   }
+
 ]
 
 export const SingleLineGridList = () => {
   const classes = useStyles()
 
   return (
-    <div className={classes.root}>
-      <GridList
-        className={classes.gridList} cols={6}
-      >
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
 
-            <img src={tile.img} alt={tile.title} />
+    <div className={classes.root}>
+      {console.log('extras', extras)}
+
+      <GridList
+        className={classes.gridList} cols={3}
+      >
+        {extras.map((extra, i) => (
+          <GridListTile key={extra.image}>
+
+            <img src={extra.img} alt={extra.title} />
 
             <GridListTileBar
 
-              title={extras.title}
+              title={extra.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title
@@ -99,12 +83,8 @@ export const SingleLineGridList = () => {
                 // <IconButton aria-label={`star ${tile.title}`}>
                 //   <StarBorderIcon className={classes.title} />
                 // </IconButton>
-                <Example />
+                <Example sum={extra.summary} />
 
-              }
-              cardTitle={
-
-                <OutlinedCard />
               }
 
             />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaBeer } from 'react-icons/fa'
 
 export const hardHotelObject = {
 
@@ -31,11 +32,11 @@ export const hardHotelObject = {
       boardName: 'ROOM ONLY',
       cancellationPolicies: [{
         amount: 60.86,
-        from: '2020-10-28T23:59:00+01:00'
+        from: '2020-10-28'
       },
       {
         amount: 121.72,
-        from: '2020-11-02T23:59:00+01:00'
+        from: '2020-11-02'
       }],
       taxes: {
         taxes: [{
@@ -53,11 +54,11 @@ export const hardHotelObject = {
   }],
   label: {
     posh: 'Posh',
-    original: 'Original',
+    essential: 'Essential',
     hip: 'Hip'
 
   },
-  images: [{ type: 'room', path: '' }],
+  images: [{ type: 'bar', path: '"00/000008/000008a_hb_ro_064.jpg",' },{ type: 'Double room', path: '"00/000008/000008a_hb_ro_064.jpg",' }],
   Checkin: {
     content: 'Check-in hour',
     timeFrom: '14:00:00',
@@ -83,7 +84,7 @@ export const hardHotelObject = {
     { title: 'Bathtub', Icon: '' },
     { title: 'Cable television', Icon: '' },
     { title: 'Coffee/Tea maker', Icon: '' },
-    { title: 'Free wifi', Icon: '' },
+    { title: 'Free wifi', Icon: <FaBeer /> },
     { title: 'Fitness Center', Icon: '' },
     { title: 'Restaurant facility', Icon: '' },
     { title: 'Rooftop deck', Icon: '' },
@@ -93,6 +94,7 @@ export const hardHotelObject = {
     { title: 'Luggage room', Icon: '' }
 
   ],
+  ranking: 27,
   description: 'This modern hotel is excellently situated in the centre of Barcelona, just a few steps away from Plaça de Catalunya, La Rambla, Passeig de Gràcia and University of Barcelona. The hotel features a convention centre and is within walking distance from the trade fair centre Fira de Barcelona. The Sants railway station offering direct connection to the airport is within a 5-minute walk.',
   address: 'Carrer De Viladomat,197 ',
   postalCode: '08015',
@@ -112,6 +114,18 @@ export const hardHotelObject = {
       { title: 'Desk with lamp', Icon: '' }
     ]
 
+  }],
+  RoomsOccupancey:[{
+    roomType: "FAM.ST-4",
+    roomCode: "FAM",
+    characteristicCode: "ST-4",
+    hotelRoomDescription: { content: "2 ADULTS + 4 CHILDS" }
+  },
+  {
+    roomType: "DBT.ST-3",
+    roomCode: "DBT",
+    characteristicCode: "ST-3",
+    hotelRoomDescription: { content: "STANDARD 2 ADULTS + 1 CHILD" }
   }]
 
 }

@@ -6,6 +6,7 @@ import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
 import OccSelector2 from '../OccSelector2/OccSelector2'
 import DatePicker2 from '../DatePicker2/DatePicker2'
+import FirebaseContext from '../Firebase/Firebase'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -40,6 +41,13 @@ class SearchBar extends React.Component {
     this.handleDateChange1 = this.handleDateChange1.bind(this)
     this.handleDateChange2 = this.handleDateChange2.bind(this)
     this.handleClickButton = this.handleClickButton.bind(this)
+  }
+
+  componentDidMount () {
+    console.log('yayyo')
+    const db = this.context
+    const destinationsRef = db.collection('destinations').doc('B')
+    destinationsRef.get().then(doc => console.log(doc.data()))
   }
 
     handleClickButton= () => {
@@ -130,3 +138,4 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar
+SearchBar.contextType = FirebaseContext

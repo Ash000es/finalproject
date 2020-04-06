@@ -18,6 +18,9 @@ import HomePageResults from '../HomePageResults/HomepageResults'
 import HotelDetails from '../HotelsDetails'
 import { hardHotelObject } from '../assets/HardCode'
 import HotelList from '../HotelList/HoteList'
+import { FiWifi } from 'react-icons/fa'
+import FirebaseContext, { db } from '../Firebase/Firebase'
+
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: '"https://source.unsplash.com/random",', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
   { title: 'Double trouble', price: 10, image: '"https://source.unsplash.com/random",', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
@@ -74,7 +77,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
   */
 
   return (
-    <>
+    <FirebaseContext.Provider value={db}>
       <MemoryRouter>
         <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
           <Navbar.Brand>Website</Navbar.Brand>
@@ -113,7 +116,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <HotelPage HardCode={hardHotelObject} /> */}
         </Container>
       </MemoryRouter>
-    </>
+    </FirebaseContext.Provider>
 
   )
 }
