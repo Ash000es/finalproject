@@ -30,25 +30,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const tileData = [
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
-  },
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
-  },
-  {
-    img: 'https://source.unsplash.com/random',
-    title: 'Image',
-    author: 'author'
-  }
-
-]
-
 export const SingleLineGridList = () => {
   const classes = useStyles()
 
