@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SimplePopover () {
+export default function SimplePopover (props) {
+  console.log('my name is props', props)
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -44,7 +45,7 @@ export default function SimplePopover () {
           horizontal: 'center'
         }}
       >
-        <Typography className={classes.typography}>The content of the Popover.</Typography>
+        <Typography className={classes.typography}>{props.summary}</Typography>
       </Popover>
     </div>
   )
