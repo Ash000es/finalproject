@@ -69,17 +69,17 @@ export const SingleLineGridList = () => {
             <GridListTileBar
 
               title={extra.title}
-              subtitle={extra.price}
+              subtitle={extra.price + 'Euros'}
               classes={{
                 root: classes.titleBar,
                 title: classes.title
               }}
               actionIcon={
-                // <>
-                // {/* <FloatingActionButtonSize /> */}
-                <SimplePopover sum={extra.summary} />
+                <>
+                  <FloatingActionButtonSize />
+                  <SimplePopover sum={extra.summary} />
 
-                // </>
+                </>
 
               }
 
