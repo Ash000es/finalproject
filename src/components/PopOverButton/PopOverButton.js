@@ -44,7 +44,7 @@ export default function SimplePopover (props) {
           horizontal: 'center'
         }}
       >
-        <Typography className={classes.typography}>{props.sum}</Typography>
+        <Typography className={classes.typography}>{props.subtitle}</Typography>
       </Popover>
     </div>
   )
