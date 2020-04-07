@@ -20,6 +20,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import HotelList from '../HotelList/HoteList'
 import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
+// import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -112,7 +113,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <img />
             <SearchBar />
           </div>
-          <HotelList />
+          {/* <HotelList /> */}
           {/* <HomePageResults /> */}
           {/* <HotelPage HardCode={hardHotelObject} /> */}
         </Container>
