@@ -75,11 +75,11 @@ export const SingleLineGridList = () => {
                 title: classes.title
               }}
               actionIcon={
-                <>
-                  <FloatingActionButtonSize />
-                  <SimplePopover sum={extra.summary} />
+                // <>
+                // {/* <FloatingActionButtonSize /> */}
+                <SimplePopover sum={extra.summary} />
 
-                </>
+                // </>
 
               }
 
