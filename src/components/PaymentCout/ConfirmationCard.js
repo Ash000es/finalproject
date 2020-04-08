@@ -50,7 +50,7 @@ export default function MediaCard () {
             City Tax (to pay at the hotel){3}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
-            Total: {hardHotelObject.rooms[0].rates[0].net}+{hardHotelObject.rooms[0].rates[0].taxes.taxes[0].amount}+{3}
+            {hardHotelObject.rooms[0].rates[0].net + hardHotelObject.rooms[0].rates[0].taxes.taxes[0].amount + 3}
           </Typography>
 
         </CardContent>
