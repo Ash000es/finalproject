@@ -6,6 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import BasicTextFields from './PaymentCout'
+import ConfirmationPage from './ConfirmationPage'
+import ReviewCart from './ReviewCart'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,19 +29,20 @@ function getSteps () {
 function getStepContent (stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Select campaign settings...'
+      return <ReviewCart />
     case 1:
-      return 'What is an ad group anyways?'
+      return <BasicTextFields />
     case 2:
-      return 'This is the bit I really care about!'
+      return <ConfirmationPage />
     default:
-      return 'Unknown stepIndex'
+      return 'Error'
   }
 }
 
 export default function HorizontalLabelPositionBelowStepper () {
   const classes = useStyles()
   const [activeStep, setActiveStep] = React.useState(0)
+
   const steps = getSteps()
 
   const handleNext = () => {
@@ -63,18 +66,15 @@ export default function HorizontalLabelPositionBelowStepper () {
           </Step>
         ))}
       </Stepper>
-      <BasicTextFields />
       <div>
-
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>All steps completed</Typography>
             <Button onClick={handleReset}>Reset</Button>
-
           </div>
         ) : (
           <div>
-            {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
+            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div>
               <Button
                 disabled={activeStep === 0}
@@ -87,7 +87,6 @@ export default function HorizontalLabelPositionBelowStepper () {
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>
-
           </div>
         )}
       </div>
