@@ -17,6 +17,8 @@ export const hardHotelObject = {
   minRate: 121.72,
   maxRate: 426.04,
   currency: 'EUR',
+  CheckinDate: '27-03-2020',
+  CheckoutDate: '30-03-2020',
   rooms: [{
     code: 'DBL.ST',
     name: 'DOUBLE STANDARD',
@@ -58,7 +60,7 @@ export const hardHotelObject = {
     hip: 'Hip'
 
   },
-  images: [{ type: 'bar', path: '"00/000008/000008a_hb_ro_064.jpg",' },{ type: 'Double room', path: '"00/000008/000008a_hb_ro_064.jpg",' }],
+  images: [{ type: 'bar', path: '"00/000008/000008a_hb_ro_064.jpg",' }, { type: 'Double room', path: '"00/000008/000008a_hb_ro_064.jpg",' }],
   Checkin: {
     content: 'Check-in hour',
     timeFrom: '14:00:00',
@@ -115,17 +117,17 @@ export const hardHotelObject = {
     ]
 
   }],
-  RoomsOccupancey:[{
-    roomType: "FAM.ST-4",
-    roomCode: "FAM",
-    characteristicCode: "ST-4",
-    hotelRoomDescription: { content: "2 ADULTS + 4 CHILDS" }
+  RoomsOccupancey: [{
+    roomType: 'FAM.ST-4',
+    roomCode: 'FAM',
+    characteristicCode: 'ST-4',
+    hotelRoomDescription: { content: '2 ADULTS + 4 CHILDS' }
   },
   {
-    roomType: "DBT.ST-3",
-    roomCode: "DBT",
-    characteristicCode: "ST-3",
-    hotelRoomDescription: { content: "STANDARD 2 ADULTS + 1 CHILD" }
+    roomType: 'DBT.ST-3',
+    roomCode: 'DBT',
+    characteristicCode: 'ST-3',
+    hotelRoomDescription: { content: 'STANDARD 2 ADULTS + 1 CHILD' }
   }]
 
 }

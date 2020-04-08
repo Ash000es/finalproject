@@ -6,6 +6,7 @@ import MultilineTextFields2 from './SpecialRequest'
 import CheckboxLabels from './CheckBox'
 import MultilineTextFields3 from './CardType'
 import DisableElevation from './PaymentButton'
+import MediaCard from './ConfirmationCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,7 @@ export default function BasicTextFields () {
   return (
     <>
       <form className={classes.root} noValidate autoComplete='off'>
+        <MediaCard />
         <h4>Billing details</h4>
         <MultilineTextFields />
         <TextField id='standard-basic' label='Name' />
@@ -37,7 +39,7 @@ export default function BasicTextFields () {
         </>
       </form>
       <form className={classes.root} noValidate autoComplete='off'>
-        <h4>Pay with</h4>
+        <h4>Payment details</h4>
         <TextField id='standard-basic' label='Name on card' />
         <MultilineTextFields3 />
         <TextField id='standard-basic' label='Credit card number' />
