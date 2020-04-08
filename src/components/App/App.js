@@ -20,6 +20,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import HotelList from '../HotelList/HoteList'
 import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
+import BasicTextFields from '../PaymentCout/PaymentCout'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -111,11 +112,12 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
 
           <div>
             <img />
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}
           {/* <HotelPage HardCode={hardHotelObject} /> */}
+          <BasicTextFields />
         </Container>
       </MemoryRouter>
     </FirebaseContext.Provider>
