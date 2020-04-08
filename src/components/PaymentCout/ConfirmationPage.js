@@ -1,6 +1,7 @@
 import React from 'react'
 import { hardHotelObject } from '../assets/HardCode'
 import Typography from '@material-ui/core/Typography'
+import DisableElevation from './PaymentButton'
 
 const ConfirmationPage = () => {
   return (
@@ -8,8 +9,9 @@ const ConfirmationPage = () => {
       <div>
         <h4>Thank you</h4>
         <p>Your payment has been successful and your booking is now confirmed</p>
+        <DisableElevation />
       </div>
-      <p>Check your booking details</p>
+      <h4>Check your order details</h4>
       <div>
         <Typography>Hotel name:{hardHotelObject.name}</Typography>
         <Typography>Confirmation number:2209387563</Typography>

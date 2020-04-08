@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button'
 export default function DisableElevation () {
   return (
     <Button variant='contained' color='primary' disableElevation>
-      Finish Payment
+      View my orders
     </Button>
   )
 }

@@ -7,6 +7,7 @@ import CheckboxLabels from './CheckBox'
 import MultilineTextFields3 from './CardType'
 import DisableElevation from './PaymentButton'
 import MediaCard from './ConfirmationCard'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,10 @@ export default function BasicTextFields () {
 
   return (
     <>
+      <h4>Payment</h4>
+      <Button size='small' color='primary'>
+        Sign in (Optional)
+      </Button>
       <form className={classes.root} noValidate autoComplete='off'>
         <MediaCard />
         <h4>Billing details</h4>
