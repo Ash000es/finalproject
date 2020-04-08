@@ -5,6 +5,7 @@ import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import BasicTextFields from './PaymentCout'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function getSteps () {
-  return ['Review Cart', 'Payment', 'Confirmation']
+  return ['Review cart', 'Payment', 'Confirmation']
 }
 
 function getStepContent (stepIndex) {
@@ -62,7 +63,9 @@ export default function HorizontalLabelPositionBelowStepper () {
           </Step>
         ))}
       </Stepper>
+      <BasicTextFields />
       <div>
+        <BasicTextFields />
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>All steps completed</Typography>
@@ -70,7 +73,7 @@ export default function HorizontalLabelPositionBelowStepper () {
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
             <div>
               <Button
                 disabled={activeStep === 0}

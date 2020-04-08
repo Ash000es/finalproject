@@ -6,7 +6,6 @@ import MultilineTextFields2 from './SpecialRequest'
 import CheckboxLabels from './CheckBox'
 import MultilineTextFields3 from './CardType'
 import DisableElevation from './PaymentButton'
-import HorizontalLabelPositionBelowStepper from './Stepper'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +21,6 @@ export default function BasicTextFields () {
 
   return (
     <>
-      <HorizontalLabelPositionBelowStepper />
       <form className={classes.root} noValidate autoComplete='off'>
         <h4>Billing details</h4>
         <MultilineTextFields />
@@ -45,7 +43,6 @@ export default function BasicTextFields () {
         <TextField id='standard-basic' label='Credit card number' />
         <TextField id='standard-basic' label='CVC' />
         <TextField id='standard-basic' label='MM/YY' />
-        <DisableElevation />
       </form>
 
     </>
