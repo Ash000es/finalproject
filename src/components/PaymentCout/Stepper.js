@@ -63,7 +63,7 @@ export default function HorizontalLabelPositionBelowStepper () {
           </Step>
         ))}
       </Stepper>
-
+      <BasicTextFields />
       <div>
 
         {activeStep === steps.length ? (
@@ -87,7 +87,7 @@ export default function HorizontalLabelPositionBelowStepper () {
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>
-            <BasicTextFields />
+
           </div>
         )}
       </div>
