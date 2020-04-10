@@ -38,18 +38,9 @@ export default function SimpleMenu (props) {
         onClose={handleClose}
         // onClick={props.handleChange}
       >
-        <MenuItem
-          onClick={() => {
-            handleClose()
-            props.handleChange()
-          }} name='profile'
-        >Profile
-        </MenuItem>
+        <MenuItem onClick={handleClose} name='profile'>Profile</MenuItem>
         <MenuItem onClick={handleClose} name='my account'>My account</MenuItem>
-        <MenuItem
-          onClick={handleClose} name='my settings'
-        >My settings
-        </MenuItem>
+        <MenuItem onClick={handleClose} name='my settings'>My settings</MenuItem>
       </Menu>
 
     </div>
