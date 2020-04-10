@@ -22,6 +22,8 @@ import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
 import BasicTextFields from '../PaymentCout/PaymentCout'
 import HorizontalLabelPositionBelowStepper from '../PaymentCout/Stepper'
+import MenuListComposition from '../MyProfile/OpenMenu'
+import ProfileContainer from '../MyProfile/ProfileContainer'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -95,6 +97,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <LinkContainer to='/about'>
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
+            <LinkContainer to='/Myprofile'>
+              <Nav.Link>My Profile</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar>
         <Container className='pt-3'>
@@ -108,6 +113,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <Route path='/users'>
               {/* <Users /> */}
             </Route>
+            <Route path='/Myprofile'>
+              <MenuListComposition />
+            </Route>
           </Switch>
           {/* <HotelPage /> */}
 
@@ -119,7 +127,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <HomePageResults /> */}
           {/* <HotelPage HardCode={hardHotelObject} /> */}
           {/* <BasicTextFields /> */}
-          <HorizontalLabelPositionBelowStepper />
+          {/* <HorizontalLabelPositionBelowStepper /> */}
+          <ProfileContainer />
+
         </Container>
       </MemoryRouter>
     </FirebaseContext.Provider>
