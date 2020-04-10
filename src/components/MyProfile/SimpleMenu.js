@@ -17,12 +17,12 @@ export default function SimpleMenu (props) {
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const handleChange = (e) => {
-    console.log('high again', e)
-    const name = e.target.value
-    console.log(name)
-    props.onChange(name)
-  }
+  // const handleChange = (e) => {
+  // console.log('high again', e)
+  // const name = e.target.value
+  // console.log(name)
+  // props.onChange(name)
+  // }
 
   return (
     <div>
@@ -36,9 +36,9 @@ export default function SimpleMenu (props) {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        // onClick={props.handleChange}
+        // onChange={props.handleChange}
       >
-        <MenuItem onClick={handleClose} onChange={props.handleChange} name='profile'>Profile</MenuItem>
+        <MenuItem onClick={handleClose} name='profile'>Profile</MenuItem>
         <MenuItem onClick={handleClose} name='my account'>My account</MenuItem>
         <MenuItem onClick={handleClose} name='my settings'>My settings</MenuItem>
       </Menu>
