@@ -14,9 +14,9 @@ class ProfileContainer extends React.Component {
     // this.getStepContent = this.getStepContent.bind(this)
   }
 
-  handleChange (event) {
-    console.log(event)
-    this.setState({ comp: event.target.name })
+  handleChange (name) {
+    console.log(name)
+    this.setState({ comp: name })
   }
 
   render () {
