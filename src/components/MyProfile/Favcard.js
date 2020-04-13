@@ -16,7 +16,7 @@ const FavCard = () => {
       <Card className='bg-dark text-white' text={variant.toLowerCase() === 'light' ? 'dark' : 'white'} bg={variant.toLowerCase()} style={{ width: '16.875rem', height: '16.875rem' }} thumbnail>
         <Card.Img src={hardHotelObject.images[1].path} alt='Card image' />
         <Card.ImgOverlay>
-          <FavoriteBorderRoundedIcon />
+          <FavoriteRoundedIcon style={{ color: 'orange' }} />
           <Card.Title>{hardHotelObject.name}</Card.Title>
           <LabelEssential />
           <Card.Text>{hardHotelObject.city.toLowerCase()}</Card.Text><Card.Text>2.5 km to city centre </Card.Text>
