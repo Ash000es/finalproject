@@ -27,6 +27,8 @@ import ProfileContainer from '../MyProfile/ProfileContainer'
 import FavCard from '../MyProfile/Favcard'
 import LabelHip from '../CatLabels/LabelBold'
 import MyFav from '../MyProfile/MyFav'
+import PrevCancelled from '../MyProfile/PrevCancelled'
+import UpComing from '../MyProfile/UpComing'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -133,7 +135,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <ProfileContainer /> */}
           {/* <FavCard /> */}
-          <MyFav />
+          {/* <MyFav /> */}
+          {/* <PrevCancelled /> */}
+          <upComing />
 
         </Container>
       </MemoryRouter>
