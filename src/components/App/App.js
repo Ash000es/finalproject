@@ -24,6 +24,9 @@ import BasicTextFields from '../PaymentCout/PaymentCout'
 import HorizontalLabelPositionBelowStepper from '../PaymentCout/Stepper'
 import MenuListComposition from '../MyProfile/OpenMenu'
 import ProfileContainer from '../MyProfile/ProfileContainer'
+import FavCard from '../MyProfile/Favcard'
+import LabelHip from '../CatLabels/LabelBold'
+import MyFav from '../MyProfile/MyFav'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -128,7 +131,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <HotelPage HardCode={hardHotelObject} /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          <ProfileContainer />
+          {/* <ProfileContainer /> */}
+          {/* <FavCard /> */}
+          <MyFav />
 
         </Container>
       </MemoryRouter>

@@ -1,5 +1,8 @@
 import React from 'react'
 import { FaBeer } from 'react-icons/fa'
+import LabelBold from '../CatLabels/LabelBold'
+import LabelEssential from '../CatLabels/LabelEssential'
+import Labelposh from '../CatLabels/LabelPosh'
 
 export const hardHotelObject = {
 
@@ -55,12 +58,12 @@ export const hardHotelObject = {
 
   }],
   label: {
-    posh: 'Posh',
-    essential: 'Essential',
-    hip: 'Hip'
+    posh: <Labelposh />,
+    essential: <LabelEssential />,
+    bold: <LabelBold />
 
   },
-  images: [{ type: 'bar', path: '"00/000008/000008a_hb_ro_064.jpg",' }, { type: 'Double room', path: '"00/000008/000008a_hb_ro_064.jpg",' }],
+  images: [{ type: 'bar', path: '"00/000008/000008a_hb_ro_064.jpg",' }, { type: 'Double room', path: 'http://photos.hotelbeds.com/giata/00/000001/000001a_hb_ro_005.jpg' }],
   Checkin: {
     content: 'Check-in hour',
     timeFrom: '14:00:00',
@@ -97,6 +100,8 @@ export const hardHotelObject = {
 
   ],
   ranking: 27,
+  distanceToCentre: 3,
+  reviewScore: 4,
   description: 'This modern hotel is excellently situated in the centre of Barcelona, just a few steps away from Plaça de Catalunya, La Rambla, Passeig de Gràcia and University of Barcelona. The hotel features a convention centre and is within walking distance from the trade fair centre Fira de Barcelona. The Sants railway station offering direct connection to the airport is within a 5-minute walk.',
   address: 'Carrer De Viladomat,197 ',
   postalCode: '08015',
