@@ -24,8 +24,9 @@ const UpComing = () => {
                 from {hardHotelObject.CheckinDate}- to {hardHotelObject.CheckoutDate}
 
               </Card.Text>
+              <Card.Text>Confirmation number 1234</Card.Text>
               <Button variant='primary'>Change dates</Button>
-              <Button variant='danger'>Cancel</Button>
+              <Button variant='danger'>Cancel booking</Button>
             </Card.Body>
           </Card>
         </Row>

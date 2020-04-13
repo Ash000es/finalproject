@@ -29,6 +29,7 @@ import LabelHip from '../CatLabels/LabelBold'
 import MyFav from '../MyProfile/MyFav'
 import PrevCancelled from '../MyProfile/PrevCancelled'
 import UpComing from '../MyProfile/UpComing'
+import MyBookings from '../MyProfile/MyBookings'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -137,7 +138,8 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <FavCard /> */}
           {/* <MyFav /> */}
           {/* <PrevCancelled /> */}
-          <upComing />
+          {/* <UpComing /> */}
+          <MyBookings />
 
         </Container>
       </MemoryRouter>
