@@ -12,11 +12,11 @@ const UpComing = () => {
 
     <>
       <h4>Up coming</h4>
-      <Container>
-        <Row>
+      <Container style={{ 'border-color': 'red' }}>
+        <Row nameClass='border border-primary'>
 
-          <Image src='https://source.unsplash.com/random' rounded style={{ width: '16.875rem', height: '16.875rem' }} />
-          <Card style={{ width: '70%', height: '16.875rem' }}>
+          <Image src='https://source.unsplash.com/random' style={{ width: '16.875rem', height: '16.875rem' }} className=' border-right-0 shadow-sm p-3 mb-5 bg-white rounded' />
+          <Card style={{ width: '70%', height: '16.875rem' }} className='shadow-sm p-3 mb-5 bg-white rounded border-left-0'>
             <Card.Header style={{ 'text-transform': 'capitalize', fontWeight: 'bold' }}> Stay in {hardHotelObject.city.toLowerCase()}</Card.Header>
             <Card.Body>
               <Card.Title>{hardHotelObject.name}</Card.Title>
