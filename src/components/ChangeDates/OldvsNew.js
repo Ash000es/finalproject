@@ -32,13 +32,14 @@ const ChangeDatesDiff = () => {
 
           <Card.Footer className='text-muted'><p>Refund due</p><p>20$</p></Card.Footer>
         </Card>
+        <br />
         <p>Please be aware of any price differences. This may be due to different rates on different days of the</p>
 
       </Modal.Body>
 
       <Modal.Footer>
         <Button variant='secondary'>Cancel</Button>
-        <Button variant='primary'>Sumbmit changes</Button>
+        <Button variant='primary'>Submit changes</Button>
       </Modal.Footer>
     </Modal.Dialog>
   )

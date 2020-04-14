@@ -15,28 +15,29 @@ class ProfileContainer extends React.Component {
   }
 
   handleChange (name) {
-    console.log(name)
+    console.log('profilecontainer', name)
     this.setState({ comp: name })
   }
 
    getStepContent = () => {
+     console.log(this.state.comp)
      switch (this.state.comp) {
-       case 'profile':
+       case 'Profile':
          return <MyFav />
-       case 'my account':
+       case 'My account':
          return <MyBookings />
-       case 'my settings':
+       case 'My settings':
          return <FormExample />
        default:
-         return 'Error'
+         return null
      }
    }
 
    render () {
      return (
        <>
-         <SimpleMenu onClick={this.handleChange} />
-         <div>{this.getStepContent}</div>
+         <SimpleMenu onSelect={this.handleChange} />
+         <div>{this.getStepContent()}</div>
        </>
 
      )

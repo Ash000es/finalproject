@@ -135,12 +135,13 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <HotelPage HardCode={hardHotelObject} /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <ProfileContainer /> */}
+          <ProfileContainer />
           {/* <FavCard /> */}
           {/* <MyFav /> */}
           {/* <PrevCancelled /> */}
           {/* <UpComing /> */}
           {/* <MyBookings /> */}
+          {/* <ChangeDatesDiff /> */}
 
         </Container>
       </MemoryRouter>

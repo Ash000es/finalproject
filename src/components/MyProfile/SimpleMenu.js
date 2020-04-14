@@ -6,9 +6,7 @@ import FormExample from './FormExample'
 import FallbackAvatars from './Avatar'
 import MyFav from './MyFav'
 
-const MENU_ITEMS = ['profile', 'account', 'settings']
-const key = ''
-const name = ''
+const MENU_ITEMS = ['Profile', 'My account', 'My settings']
 
 export default function SimpleMenu (props) {
   console.log('hello there', props)
@@ -24,17 +22,10 @@ export default function SimpleMenu (props) {
     setAnchorEl(event.currentTarget)
   }
 
-  const handleOnClick = key => {
-    switch (key) {
-      case 'profile':
-        return console.log('go to profile')
-      case 'account':
-        return <MyFav />
-      case 'settings':
-        return <FormExample />
-      default:
-        return null // return null, not "Error"
-    }
+  const handleOnClick = (item) => {
+    console.log(item)
+    props.onSelect(item)
+    handleClose()
   }
 
   return (
@@ -49,31 +40,12 @@ export default function SimpleMenu (props) {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        onClick={props.handleChange}
-      >
-        <MenuItem onClick={handleClose} onClickItem={() => handleOnClick(key)} key='profile'>Profile</MenuItem>
-        <MenuItem onClick={handleClose} onClickItem={() => handleOnClick(key)} key='account'>My account</MenuItem>
-        <MenuItem onClick={handleClose} onClickItem={() => handleOnClick(key)} key='settings'>My settings</MenuItem>
+        // onClick={props.handleChange}
+      >{MENU_ITEMS.map(item => <MenuItem onClick={() => handleOnClick(item)}>{item}</MenuItem>)}
+
       </Menu>
-      {function Menu () {
-        const handleOnClick = key => {
-          switch (key) {
-            case 'profile':
-              return console.log('go to profile')
-            case 'account':
-              return console.log('go to account')
-            case 'settings':
-              return <FormExample />
-            default:
-              return null // return null, not "Error"
-          }
-        }
-        return MENU_ITEMS.map(i => (
-          <MenuItem key={i} name={i} onClickItem={() => handleOnClick(i)} />
-        ))
-      }}
-      <div>{handleOnClick(key)}</div>
-      <FormExample />
+
+      {/* <FormExample /> */}
 
     </div>
   )

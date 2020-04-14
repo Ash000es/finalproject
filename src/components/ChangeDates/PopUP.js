@@ -3,8 +3,15 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import DatePicker from '../DatePicker/DatePicker'
 import DatePicker2 from '../DatePicker2/DatePicker2'
+import ChangeDatesDiff from './OldvsNew'
+import { ShowDatePicker } from './DatePicker'
 
 function MyVerticallyCenteredModal (props) {
+  const [showDatePicker, setShowDatePicker] = React.useState(true)
+  const displayOldvsNew = () => {
+    return <ChangeDatesDiff />
+  }
+
   return (
     <Modal
       {...props}
@@ -20,19 +27,19 @@ function MyVerticallyCenteredModal (props) {
       <Modal.Body>
         <h4>Centered Modal</h4>
         <p>
-          <DatePicker />
-          <DatePicker2 />
+          {showDatePicker ? <ShowDatePicker /> : <ChangeDatesDiff />}
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant='secondary' onClick={props.onHide}>Cancel</Button>
-        <Button variant='primary'>Change dates</Button>
+        <Button variant='primary' onClick={() => setShowDatePicker(false)}>Change dates</Button>
+        {/* need to display oldvsnew on click on change dates  */}
       </Modal.Footer>
     </Modal>
   )
 }
 
-export const App = () => {
+export const ChangeDatePopup = () => {
   const [modalShow, setModalShow] = React.useState(false)
 
   return (
