@@ -3,7 +3,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-
+import { App } from '../ChangeDates/PopUP'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
@@ -25,7 +25,8 @@ const UpComing = () => {
 
               </Card.Text>
               <Card.Text>Confirmation number 1234</Card.Text>
-              <Button variant='primary'>Change dates</Button>
+              <App />
+
               <Button variant='danger'>Cancel booking</Button>
             </Card.Body>
           </Card>
