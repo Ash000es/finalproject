@@ -30,6 +30,7 @@ import MyFav from '../MyProfile/MyFav'
 import PrevCancelled from '../MyProfile/PrevCancelled'
 import UpComing from '../MyProfile/UpComing'
 import MyBookings from '../MyProfile/MyBookings'
+import ChangeDatesDiff from '../ChangeDates/OldvsNew'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -139,7 +140,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <MyFav /> */}
           {/* <PrevCancelled /> */}
           {/* <UpComing /> */}
-          <MyBookings />
+          {/* <MyBookings /> */}
 
         </Container>
       </MemoryRouter>
