@@ -8,9 +8,6 @@ import { ShowDatePicker } from './DatePicker'
 
 function MyVerticallyCenteredModal (props) {
   const [showDatePicker, setShowDatePicker] = React.useState(true)
-  const displayOldvsNew = () => {
-    return <ChangeDatesDiff />
-  }
 
   return (
     <Modal
