@@ -122,15 +122,13 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <Route path='/users'>
               {/* <Users /> */}
             </Route>
-            <Route path='/Myprofile'>
-              <MenuListComposition />
-            </Route>
+            <Route path='/Myprofile' />
           </Switch>
           {/* <HotelPage /> */}
 
           <div>
             <img />
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}
@@ -144,6 +142,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <UpComing /> */}
           {/* <MyBookings /> */}
           {/* <ChangeDatesDiff /> */}
+          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
+          {/* <Root /> */}
+          {/* </MuiPickersUtilsProvider> */}
 
         </Container>
       </MemoryRouter>
