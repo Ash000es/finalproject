@@ -8,8 +8,6 @@ import OccSelector2 from '../OccSelector2/OccSelector2'
 import DatePicker2 from '../DatePicker2/DatePicker2'
 import FirebaseContext from '../Firebase/Firebase'
 import BasicDateRangePicker from '../DateRange/DateRange'
-import { MuiPickersUtilsProvider } from '@material-ui/pickers'
-import DateFnsUtils from '@date-io/date-fns'
 
 class SearchBar extends React.Component {
   constructor (props) {
