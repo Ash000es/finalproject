@@ -31,6 +31,8 @@ import PrevCancelled from '../MyProfile/PrevCancelled'
 import UpComing from '../MyProfile/UpComing'
 import MyBookings from '../MyProfile/MyBookings'
 import ChangeDatesDiff from '../ChangeDates/OldvsNew'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -128,14 +130,14 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
 
           <div>
             <img />
-            {/* <SearchBar /> */}
+            <SearchBar />
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}
           {/* <HotelPage HardCode={hardHotelObject} /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          <ProfileContainer />
+          {/* <ProfileContainer /> */}
           {/* <FavCard /> */}
           {/* <MyFav /> */}
           {/* <PrevCancelled /> */}
