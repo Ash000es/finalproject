@@ -24,7 +24,8 @@ function MyVerticallyCenteredModal (props) {
       <Modal.Body>
         <h4>Centered Modal</h4>
         <p>
-          {showDatePicker ? <ShowDatePicker /> : <ChangeDatesDiff />}
+          Hi there,s sssss
+          {/* {showDatePicker ? <ShowDatePicker /> : <ChangeDatesDiff />} */}
         </p>
       </Modal.Body>
       <Modal.Footer>

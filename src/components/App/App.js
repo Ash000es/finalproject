@@ -22,7 +22,7 @@ import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
 import BasicTextFields from '../PaymentCout/PaymentCout'
 import HorizontalLabelPositionBelowStepper from '../PaymentCout/Stepper'
-import MenuListComposition from '../MyProfile/OpenMenu'
+
 import ProfileContainer from '../MyProfile/ProfileContainer'
 import FavCard from '../MyProfile/Favcard'
 import LabelHip from '../CatLabels/LabelBold'
@@ -33,6 +33,7 @@ import MyBookings from '../MyProfile/MyBookings'
 import ChangeDatesDiff from '../ChangeDates/OldvsNew'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
+import Hero from '../Hero/Hero'
 // import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
@@ -92,65 +93,63 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
   */
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <FirebaseContext.Provider value={db}>
-        <MemoryRouter>
-          <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
-            <Navbar.Brand>Website</Navbar.Brand>
-            <Nav className='mr-auto'>
-              <LinkContainer to='/home'>
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/users'>
-                <Nav.Link>Users</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/about'>
-                <Nav.Link>About</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/Myprofile'>
-                <Nav.Link>My Profile</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar>
-          <Container className='pt-3'>
-            <Switch>
-              <Route path='/home'>
-                {/* <Home /> */}
-              </Route>
-              <Route path='/about'>
-                {/* <About /> */}
-              </Route>
-              <Route path='/users'>
-                {/* <Users /> */}
-              </Route>
-              <Route path='/Myprofile' />
-            </Switch>
-            {/* <HotelPage /> */}
 
-            <div>
-              <img />
-              <SearchBar />
-            </div>
-            {/* <HotelList /> */}
-            {/* <HomePageResults /> */}
-            {/* <HotelPage HardCode={hardHotelObject} /> */}
-            {/* <BasicTextFields /> */}
-            {/* <HorizontalLabelPositionBelowStepper /> */}
-            {/* <ProfileContainer /> */}
-            {/* <FavCard /> */}
-            {/* <MyFav /> */}
-            {/* <PrevCancelled /> */}
-            {/* <UpComing /> */}
-            {/* <MyBookings /> */}
-            {/* <ChangeDatesDiff /> */}
-            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
-            {/* <Root /> */}
-            {/* </MuiPickersUtilsProvider> */}
+    <FirebaseContext.Provider value={db}>
+      <MemoryRouter>
+        <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
+          <Navbar.Brand>Website</Navbar.Brand>
+          <Nav className='mr-auto'>
+            <LinkContainer to='/home'>
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/users'>
+              <Nav.Link>Users</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/about'>
+              <Nav.Link>About</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/Myprofile'>
+              <Nav.Link>My Profile</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar>
+        <Container className='pt-3'>
+          <Switch>
+            <Route path='/home'>
+              {/* <Home /> */}
+            </Route>
+            <Route path='/about'>
+              {/* <About /> */}
+            </Route>
+            <Route path='/users'>
+              {/* <Users /> */}
+            </Route>
+            <Route path='/Myprofile' />
+          </Switch>
+          {/* <HotelPage /> */}
 
-          </Container>
-        </MemoryRouter>
-      </FirebaseContext.Provider>
-    </MuiPickersUtilsProvider>
+          <div>
+            <img />
+            {/* <SearchBar /> */}
+          </div>
+          {/* <HotelList /> */}
+          {/* <HomePageResults /> */}
+          {/* <HotelPage HardCode={hardHotelObject} /> */}
+          {/* <BasicTextFields /> */}
+          {/* <HorizontalLabelPositionBelowStepper /> */}
+          {/* <ProfileContainer /> */}
+          {/* <FavCard /> */}
+          {/* <MyFav /> */}
+          {/* <PrevCancelled /> */}
+          {/* <UpComing /> */}
+          {/* <MyBookings /> */}
+          {/* <ChangeDatesDiff /> */}
+          <Hero />
+
+        </Container>
+      </MemoryRouter>
+    </FirebaseContext.Provider>
+
   )
 }
 

@@ -124,7 +124,7 @@ class SearchBar extends React.Component {
           <div className='SearchBar-fields'>
 
             <SearchField onChange={this.handleLocationChange} />
-            <BasicDateRangePicker />
+            {/* <BasicDateRangePicker /> */}
             {/* <DatePicker onChange={this.handleDateChange1} /> */}
             {/* <DatePicker2 onChange={this.handleDateChange2} /> */}
             <OccSelector onChange={this.handleOccChange} />
