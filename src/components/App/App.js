@@ -92,64 +92,65 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
   */
 
   return (
-    <FirebaseContext.Provider value={db}>
-      <MemoryRouter>
-        <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
-          <Navbar.Brand>Website</Navbar.Brand>
-          <Nav className='mr-auto'>
-            <LinkContainer to='/home'>
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/users'>
-              <Nav.Link>Users</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/about'>
-              <Nav.Link>About</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/Myprofile'>
-              <Nav.Link>My Profile</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar>
-        <Container className='pt-3'>
-          <Switch>
-            <Route path='/home'>
-              {/* <Home /> */}
-            </Route>
-            <Route path='/about'>
-              {/* <About /> */}
-            </Route>
-            <Route path='/users'>
-              {/* <Users /> */}
-            </Route>
-            <Route path='/Myprofile' />
-          </Switch>
-          {/* <HotelPage /> */}
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <FirebaseContext.Provider value={db}>
+        <MemoryRouter>
+          <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
+            <Navbar.Brand>Website</Navbar.Brand>
+            <Nav className='mr-auto'>
+              <LinkContainer to='/home'>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/users'>
+                <Nav.Link>Users</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/about'>
+                <Nav.Link>About</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/Myprofile'>
+                <Nav.Link>My Profile</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar>
+          <Container className='pt-3'>
+            <Switch>
+              <Route path='/home'>
+                {/* <Home /> */}
+              </Route>
+              <Route path='/about'>
+                {/* <About /> */}
+              </Route>
+              <Route path='/users'>
+                {/* <Users /> */}
+              </Route>
+              <Route path='/Myprofile' />
+            </Switch>
+            {/* <HotelPage /> */}
 
-          <div>
-            <img />
-            {/* <SearchBar /> */}
-          </div>
-          {/* <HotelList /> */}
-          {/* <HomePageResults /> */}
-          {/* <HotelPage HardCode={hardHotelObject} /> */}
-          {/* <BasicTextFields /> */}
-          {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <ProfileContainer /> */}
-          {/* <FavCard /> */}
-          {/* <MyFav /> */}
-          {/* <PrevCancelled /> */}
-          {/* <UpComing /> */}
-          {/* <MyBookings /> */}
-          {/* <ChangeDatesDiff /> */}
-          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
-          {/* <Root /> */}
-          {/* </MuiPickersUtilsProvider> */}
+            <div>
+              <img />
+              {/* <SearchBar /> */}
+            </div>
+            {/* <HotelList /> */}
+            {/* <HomePageResults /> */}
+            {/* <HotelPage HardCode={hardHotelObject} /> */}
+            {/* <BasicTextFields /> */}
+            {/* <HorizontalLabelPositionBelowStepper /> */}
+            {/* <ProfileContainer /> */}
+            {/* <FavCard /> */}
+            {/* <MyFav /> */}
+            {/* <PrevCancelled /> */}
+            {/* <UpComing /> */}
+            {/* <MyBookings /> */}
+            {/* <ChangeDatesDiff /> */}
+            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
+            {/* <Root /> */}
+            {/* </MuiPickersUtilsProvider> */}
 
-        </Container>
-      </MemoryRouter>
-    </FirebaseContext.Provider>
-
+          </Container>
+        </MemoryRouter>
+      </FirebaseContext.Provider>
+    </MuiPickersUtilsProvider>
   )
 }
 
