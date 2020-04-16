@@ -1,4 +1,5 @@
 import React from 'react'
+import 'rsuite/lib/styles/index.less'
 import { MemoryRouter, Switch, Route } from 'react-router-dom'
 import MenuAppBar from '../NavBar/Navbar'
 import Navbar from 'react-bootstrap/Navbar'
@@ -130,7 +131,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
 
           <div>
             <img />
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}

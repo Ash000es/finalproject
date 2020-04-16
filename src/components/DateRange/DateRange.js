@@ -3,7 +3,7 @@ import { DateRangePicker } from 'rsuite'
 
 function DateRange () {
   return (
+    <DateRangePicker block />
 
-    <DateRangePicker />
   )
 }; export default DateRange
