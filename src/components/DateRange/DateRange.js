@@ -1,4 +1,4 @@
-{ /* import * as React from 'react'
+import * as React from 'react'
 import { DateRangePicker, DateRange } from '@material-ui/pickers'
 
 function BasicDateRangePicker () {
@@ -14,4 +14,4 @@ function BasicDateRangePicker () {
   )
 }
 
-export default BasicDateRangePicker */ }
+export default BasicDateRangePicker
