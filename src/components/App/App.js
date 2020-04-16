@@ -31,11 +31,9 @@ import PrevCancelled from '../MyProfile/PrevCancelled'
 import UpComing from '../MyProfile/UpComing'
 import MyBookings from '../MyProfile/MyBookings'
 import ChangeDatesDiff from '../ChangeDates/OldvsNew'
-import { MuiPickersUtilsProvider } from '@material-ui/pickers'
-import DateFnsUtils from '@date-io/date-fns'
+
 import Hero from '../Hero/Hero'
 // import MenuAppBar from '../NavBar/Navbar'
-import BasicDateRangePicker from '../DateRange/DateRange'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -146,7 +144,6 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             {/* <MyBookings /> */}
             {/* <ChangeDatesDiff /> */}
             {/* <Hero /> */}
-            <BasicDateRangePicker />
 
           </Container>
         </MemoryRouter>

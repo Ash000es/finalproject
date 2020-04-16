@@ -1,13 +1,12 @@
 import React from 'react'
-// import DatePicker from '../DatePicker/DatePicker'
+import DatePicker from '../DatePicker/DatePicker'
 import Sign from 'js-sha256'
 import InputGroup from 'react-bootstrap/InputGroup'
 import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
 import OccSelector2 from '../OccSelector2/OccSelector2'
-// import DatePicker2 from '../DatePicker2/DatePicker2'
+import DatePicker2 from '../DatePicker2/DatePicker2'
 import FirebaseContext from '../Firebase/Firebase'
-import BasicDateRangePicker from '../DateRange/DateRange'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -124,9 +123,9 @@ class SearchBar extends React.Component {
           <div className='SearchBar-fields'>
 
             <SearchField onChange={this.handleLocationChange} />
-            <BasicDateRangePicker />
-            {/* <DatePicker onChange={this.handleDateChange1} /> */}
-            {/* <DatePicker2 onChange={this.handleDateChange2} /> */}
+
+            <DatePicker onChange={this.handleDateChange1} />
+            <DatePicker2 onChange={this.handleDateChange2} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
           </div>
