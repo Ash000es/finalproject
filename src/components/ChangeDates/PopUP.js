@@ -25,13 +25,13 @@ function MyVerticallyCenteredModal (props) {
         <h4>Centered Modal</h4>
         <p>
           Hi there,s sssss
-          {/* {showDatePicker ? <ShowDatePicker /> : <ChangeDatesDiff />} */}
+          {showDatePicker ? <ShowDatePicker /> : <ChangeDatesDiff />}
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant='secondary' onClick={props.onHide}>Cancel</Button>
         <Button variant='primary' onClick={() => setShowDatePicker(false)}>Change dates</Button>
-        {/* need to display oldvsnew on click on change dates  */}
+
       </Modal.Footer>
     </Modal>
   )
