@@ -35,10 +35,10 @@
     "rsuite": "^4.3.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app rewired eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
