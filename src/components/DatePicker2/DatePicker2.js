@@ -10,10 +10,9 @@ import {
 export default function MaterialUIPickers (props) {
   // The first commit of Material-UI
   const today = new Date()
-  console.log('hello')
+
   const [selectedDate, setSelectedDate] = React.useState(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate())
   // dateFormat(new Date(), 'm-d-Y h:i:s');new Date().format('m-d-Y h:i:s');
-  console.log(today)
 
   const handleDateChange = date => {
     setSelectedDate(date)

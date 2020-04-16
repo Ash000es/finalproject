@@ -7,6 +7,8 @@ import OccSelector from '../OccSelector/OccSelector'
 import OccSelector2 from '../OccSelector2/OccSelector2'
 import DatePicker2 from '../DatePicker2/DatePicker2'
 import FirebaseContext from '../Firebase/Firebase'
+import DateRange from '../DateRange/DateRange'
+import Button from 'react-bootstrap/Button'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -108,13 +110,21 @@ class SearchBar extends React.Component {
     }
 
     handleDateChange1 (NewDate1) {
+      console.log(NewDate1)
+      const checkIn = NewDate1[0]
+      const checkOut = NewDate1[1]
       const { stay } = this.state
-      this.setState({ stay: { ...stay, checkIn: NewDate1 } })
+
+      console.log(checkIn)
+      this.setState({ stay: { ...stay, checkIn, checkOut } })
+      console.log(stay)
     }
 
     handleDateChange2 (NewDate2) {
+      console.log(NewDate2)
       const { stay } = this.state
       this.setState({ stay: { ...stay, checkOut: NewDate2 } })
+      console.log(this.state.checkOut)
     }
 
     render () {
@@ -123,15 +133,17 @@ class SearchBar extends React.Component {
           <div className='SearchBar-fields'>
 
             <SearchField onChange={this.handleLocationChange} />
-
-            <DatePicker onChange={this.handleDateChange1} />
-            <DatePicker2 onChange={this.handleDateChange2} />
+            <DateRange onChange={this.handleDateChange1} />
+            {/* <DatePicker onChange={this.handleDateChange1} /> */}
+            {/* <DatePicker2 onChange={this.handleDateChange2} /> */}
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
           </div>
           <div className='SearchBar-submit'>
-            <button onClick={this.handleClickButton}>Search</button>
-            <button>Inspire me</button>
+
+            <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
+            <Button variant='success'>Inspire me</Button>{' '}
+
           </div>
         </>
       )
