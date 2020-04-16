@@ -35,6 +35,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 import Hero from '../Hero/Hero'
 // import MenuAppBar from '../NavBar/Navbar'
+import BasicDateRangePicker from '../DateRange/DateRange'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -93,63 +94,64 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
   */
 
   return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <FirebaseContext.Provider value={db}>
+        <MemoryRouter>
+          <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
+            <Navbar.Brand>Website</Navbar.Brand>
+            <Nav className='mr-auto'>
+              <LinkContainer to='/home'>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/users'>
+                <Nav.Link>Users</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/about'>
+                <Nav.Link>About</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/Myprofile'>
+                <Nav.Link>My Profile</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar>
+          <Container className='pt-3'>
+            <Switch>
+              <Route path='/home'>
+                {/* <Home /> */}
+              </Route>
+              <Route path='/about'>
+                {/* <About /> */}
+              </Route>
+              <Route path='/users'>
+                {/* <Users /> */}
+              </Route>
+              <Route path='/Myprofile' />
+            </Switch>
+            {/* <HotelPage /> */}
 
-    <FirebaseContext.Provider value={db}>
-      <MemoryRouter>
-        <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
-          <Navbar.Brand>Website</Navbar.Brand>
-          <Nav className='mr-auto'>
-            <LinkContainer to='/home'>
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/users'>
-              <Nav.Link>Users</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/about'>
-              <Nav.Link>About</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/Myprofile'>
-              <Nav.Link>My Profile</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar>
-        <Container className='pt-3'>
-          <Switch>
-            <Route path='/home'>
-              {/* <Home /> */}
-            </Route>
-            <Route path='/about'>
-              {/* <About /> */}
-            </Route>
-            <Route path='/users'>
-              {/* <Users /> */}
-            </Route>
-            <Route path='/Myprofile' />
-          </Switch>
-          {/* <HotelPage /> */}
+            <div>
+              <img />
+              {/* <SearchBar /> */}
+            </div>
+            {/* <HotelList /> */}
+            {/* <HomePageResults /> */}
+            {/* <HotelPage HardCode={hardHotelObject} /> */}
+            {/* <BasicTextFields /> */}
+            {/* <HorizontalLabelPositionBelowStepper /> */}
+            {/* <ProfileContainer /> */}
+            {/* <FavCard /> */}
+            {/* <MyFav /> */}
+            {/* <PrevCancelled /> */}
+            {/* <UpComing /> */}
+            {/* <MyBookings /> */}
+            {/* <ChangeDatesDiff /> */}
+            {/* <Hero /> */}
+            <BasicDateRangePicker />
 
-          <div>
-            <img />
-            {/* <SearchBar /> */}
-          </div>
-          {/* <HotelList /> */}
-          {/* <HomePageResults /> */}
-          {/* <HotelPage HardCode={hardHotelObject} /> */}
-          {/* <BasicTextFields /> */}
-          {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <ProfileContainer /> */}
-          {/* <FavCard /> */}
-          {/* <MyFav /> */}
-          {/* <PrevCancelled /> */}
-          {/* <UpComing /> */}
-          {/* <MyBookings /> */}
-          {/* <ChangeDatesDiff /> */}
-          <Hero />
-
-        </Container>
-      </MemoryRouter>
-    </FirebaseContext.Provider>
-
+          </Container>
+        </MemoryRouter>
+      </FirebaseContext.Provider>
+    </MuiPickersUtilsProvider>
   )
 }
 
