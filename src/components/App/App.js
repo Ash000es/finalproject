@@ -32,7 +32,9 @@ import PrevCancelled from '../MyProfile/PrevCancelled'
 import UpComing from '../MyProfile/UpComing'
 import MyBookings from '../MyProfile/MyBookings'
 import ChangeDatesDiff from '../ChangeDates/OldvsNew'
-import DateRange from '../DateRange/DateRange'
+// import DateRange from '../DateRange/DateRange'
+import 'rsuite/dist/styles/rsuite-default.css'
+import { Button, DateRangePicker } from 'rsuite'
 
 import Hero from '../Hero/Hero'
 // import MenuAppBar from '../NavBar/Navbar'
@@ -146,8 +148,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <MyBookings /> */}
           {/* <ChangeDatesDiff /> */}
           {/* <Hero /> */}
-          <DateRange />
-
+          {/* <DateRange /> */}
+          <DateRangePicker placeholder='Select Date Range' />
+          <Button appearance='primary'> Hello world </Button>
         </Container>
       </MemoryRouter>
     </FirebaseContext.Provider>
