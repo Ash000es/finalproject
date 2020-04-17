@@ -9,7 +9,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 import '../App/App.css'
-import Hotel from '../HotelCardSearch/HotelCardSearch'
 import hotel from '../assets/hotel.png'
 import label from '../assets/label.png'
 import TA from '../assets/TA.png'
@@ -133,7 +132,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <img />
             <SearchBar />
           </div>
-          {/* <HotelList /> */}
+          <HotelList />
           {/* <HomePageResults /> */}
           {/* <HotelPage HardCode={hardHotelObject} /> */}
           {/* <BasicTextFields /> */}

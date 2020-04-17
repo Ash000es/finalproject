@@ -1,8 +1,5 @@
 import React from 'react'
 import { SearchResultsHero } from '../SearchResultsHero/SearchResultsHero'
-// import '../HotelList/HotelList.css'
-
-// import HotelCardSearch from '../HotelCardSearch/HotelCardSearch'
 import DetailedExpansionPanel from '../HotelCardSearch/HotelCardSearch2'
 
 class HotelList extends React.Component {
