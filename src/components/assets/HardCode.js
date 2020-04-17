@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBeer } from 'react-icons/fa'
+import { FaGlassMartiniAlt, FaParking, FaWineGlassAlt, FaSpa, FaBath, FaSuitcaseRolling } from 'react-icons/fa'
 import LabelBold from '../CatLabels/LabelBold'
 import LabelEssential from '../CatLabels/LabelEssential'
 import Labelposh from '../CatLabels/LabelPosh'
@@ -79,24 +79,24 @@ export const hardHotelObject = {
   CheckinRules: { title: 'Identification card at arrival' },
   hotelAmenities: [
     { title: 'Airconditioning', Icon: '' },
-    { title: 'Bar', Icon: '' },
-    { title: 'Parking', Icon: '' },
-    { title: 'MiniBar', Icon: '' },
+    { title: 'Bar', Icon: <FaGlassMartiniAlt /> },
+    { title: 'Parking', Icon: <FaParking /> },
+    { title: 'MiniBar', Icon: <FaWineGlassAlt /> },
     { title: 'Room Service', Icon: '' },
-    { title: 'Spa', Icon: '' },
-    { title: 'Bathrobe', Icon: '' },
+    { title: 'Spa', Icon: <FaSpa /> },
+    { title: 'Bathrobe', Icon: <FaBath /> },
     { title: 'Bathroom amenities (free toiletries)', Icon: '' },
-    { title: 'Bathtub', Icon: '' },
+    { title: 'Bathtub', Icon: <FaBath /> },
     { title: 'Cable television', Icon: '' },
     { title: 'Coffee/Tea maker', Icon: '' },
-    { title: 'Free wifi', Icon: <FaBeer /> },
+    { title: 'Free wifi', Icon: '' },
     { title: 'Fitness Center', Icon: '' },
     { title: 'Restaurant facility', Icon: '' },
     { title: 'Rooftop deck', Icon: '' },
     { title: 'Sauna', Icon: '' },
     { title: 'Concierge', Icon: '' },
     { title: 'pool', Icon: '' },
-    { title: 'Luggage room', Icon: '' }
+    { title: 'Luggage room', Icon: <FaSuitcaseRolling /> }
 
   ],
   ranking: 27,

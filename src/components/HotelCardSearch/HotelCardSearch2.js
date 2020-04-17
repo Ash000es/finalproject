@@ -13,6 +13,7 @@ import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import ErrorRadios from '../radioButton/radioButton'
 import { SingleLineGridList } from '../ExtrasList/ExtrasList'
+import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +57,9 @@ export default function DetailedExpansionPanel () {
     <>
 
       <Typography className={classes.heading}>{hardHotelObject.destinationName}</Typography>
+      <DropDownFilter />
       <div className={classes.root}>
+
         <ExpansionPanel defaultExpanded>
 
           <ExpansionPanelSummary
@@ -64,6 +67,7 @@ export default function DetailedExpansionPanel () {
             aria-controls='panel1c-content'
             id='panel1c-header'
           >
+
             <div className={classes.column}>
               {/* <Typography className={classes.heading}>{hardHotelObject.destinationName}</Typography> */}
               <ControlledCarousel1 />

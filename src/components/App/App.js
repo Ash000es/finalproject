@@ -126,9 +126,9 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
 
           <div>
             <img />
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
-          {/* <HotelList /> */}
+          <HotelList />
           {/* <HomePageResults /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}

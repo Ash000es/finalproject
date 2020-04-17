@@ -7,6 +7,7 @@ class HotelList extends React.Component {
     return (
       <div className='HotelList'>
         <SearchResultsHero />
+
         <DetailedExpansionPanel />
         <DetailedExpansionPanel />
         <DetailedExpansionPanel />
