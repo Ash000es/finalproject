@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { MemoryRouter, Switch, Route } from 'react-router-dom'
-import MenuAppBar from '../NavBar/Navbar'
+
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -22,7 +22,6 @@ import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
 import BasicTextFields from '../PaymentCout/PaymentCout'
 import HorizontalLabelPositionBelowStepper from '../PaymentCout/Stepper'
-
 import ProfileContainer from '../MyProfile/ProfileContainer'
 import FavCard from '../MyProfile/Favcard'
 import LabelHip from '../CatLabels/LabelBold'
@@ -32,9 +31,7 @@ import UpComing from '../MyProfile/UpComing'
 import MyBookings from '../MyProfile/MyBookings'
 import ChangeDatesDiff from '../ChangeDates/OldvsNew'
 import DateRange from '../DateRange/DateRange'
-
 import Hero from '../Hero/Hero'
-// import MenuAppBar from '../NavBar/Navbar'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -132,9 +129,8 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             <img />
             <SearchBar />
           </div>
-          <HotelList />
+          {/* <HotelList /> */}
           {/* <HomePageResults /> */}
-          {/* <HotelPage HardCode={hardHotelObject} /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <ProfileContainer /> */}

@@ -7,6 +7,7 @@ import OccSelector2 from '../OccSelector2/OccSelector2'
 import FirebaseContext from '../Firebase/Firebase'
 import DateRange from '../DateRange/DateRange'
 import Button from 'react-bootstrap/Button'
+import CustomizedSlider from '../Sliders/PriceSlider'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -131,6 +132,7 @@ class SearchBar extends React.Component {
 
             <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
             <Button variant='success'>Inspire me</Button>{' '}
+            <CustomizedSlider />
 
           </div>
         </>
