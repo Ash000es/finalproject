@@ -40,16 +40,18 @@ const MenuProps = {
 }
 
 const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
+  'Pool',
+  'Free breakfast',
+  'Spa',
+  'Bar',
+  'Resturant',
+  'Free-Wifi',
+  'Room service',
+  'Fitness center',
+  'concierge',
+  'Air conditioning',
+  'TV',
+  'Pet friendly'
 ]
 
 function getStyles (name, personName, theme) {
