@@ -32,6 +32,7 @@ import MyBookings from '../MyProfile/MyBookings'
 import ChangeDatesDiff from '../ChangeDates/OldvsNew'
 import DateRange from '../DateRange/DateRange'
 import Hero from '../Hero/Hero'
+import CartDrawer from '../CartDrawer/CartDrawer'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -142,6 +143,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <ChangeDatesDiff /> */}
           {/* <Hero /> */}
           {/* <DateRange /> */}
+          <CartDrawer />
 
         </Container>
       </MemoryRouter>
