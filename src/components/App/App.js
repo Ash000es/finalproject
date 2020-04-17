@@ -128,13 +128,13 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
 
           <div>
             <img />
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <ProfileContainer /> */}
+          <ProfileContainer />
           {/* <FavCard /> */}
           {/* <MyFav /> */}
           {/* <PrevCancelled /> */}
@@ -143,7 +143,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <ChangeDatesDiff /> */}
           {/* <Hero /> */}
           {/* <DateRange /> */}
-          <CartDrawer />
+          {/* <CartDrawer /> */}
 
         </Container>
       </MemoryRouter>

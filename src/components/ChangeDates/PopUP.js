@@ -23,7 +23,7 @@ function MyVerticallyCenteredModal (props) {
       <Modal.Body>
         <h4>Centered Modal</h4>
         <p>
-          Hi there,s sssss
+
           {showDatePicker ? <DateRange /> : <ChangeDatesDiff />}
         </p>
       </Modal.Body>
@@ -42,7 +42,7 @@ export const ChangeDatePopup = () => {
   return (
     <>
       <Button variant='primary' onClick={() => setModalShow(true)}>
-        Check availability
+        Change dates
       </Button>
 
       <MyVerticallyCenteredModal

@@ -3,6 +3,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { Container } from '@material-ui/core'
+import { Divider } from 'rsuite'
 // import { Container } from 'react-bootstrap/lib/Tab'
 
 const ChangeDatesDiff = () => {
@@ -17,12 +18,14 @@ const ChangeDatesDiff = () => {
           <Card.Title>Old details</Card.Title>
           <div>
             <Card.Subtitle className='mb-2 text-muted'>Check-in</Card.Subtitle>
+            <Divider vertical />
             <Card.Text>Fri 4 Sept 2020</Card.Text>
           </div>
           <br />
           <div>
 
             <Card.Subtitle className='mb-2 text-muted'>Check-out</Card.Subtitle>
+            <Divider vertical />
             <Card.Text>Sun 6 Sept 2020</Card.Text>
           </div>
         </Card.Body>
@@ -30,15 +33,17 @@ const ChangeDatesDiff = () => {
       </Card>
       <Card>
         <Card.Body>
-          <Card.Title>New details <br />| <br />cost: 285$</Card.Title>
+          <Card.Title>New details <br /><Divider vertical /> <br />cost: 285$</Card.Title>
           <div>
             <Card.Subtitle className='mb-2 text-muted'>Check-in</Card.Subtitle>
+            <Divider vertical />
             <Card.Text>Fri 4 Sept 2020</Card.Text>
           </div>
           <br />
           <div>
 
             <Card.Subtitle className='mb-2 text-muted'>Check-out</Card.Subtitle>
+            <Divider vertical />
             <Card.Text>Sun 6 Sept 2020</Card.Text>
           </div>
 
