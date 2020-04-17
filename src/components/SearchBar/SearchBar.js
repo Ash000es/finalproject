@@ -8,6 +8,7 @@ import FirebaseContext from '../Firebase/Firebase'
 import DateRange from '../DateRange/DateRange'
 import Button from 'react-bootstrap/Button'
 import CustomizedSlider from '../Sliders/PriceSlider'
+import MultipleSelect from '../MultiCheckBox/MultiCheckBox'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -133,6 +134,7 @@ class SearchBar extends React.Component {
             <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
             <Button variant='success'>Inspire me</Button>{' '}
             <CustomizedSlider />
+            <MultipleSelect />
 
           </div>
         </>
