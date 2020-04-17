@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { MemoryRouter, Switch, Route } from 'react-router-dom'
-
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -33,6 +31,7 @@ import ChangeDatesDiff from '../ChangeDates/OldvsNew'
 import DateRange from '../DateRange/DateRange'
 import Hero from '../Hero/Hero'
 import CartDrawer from '../CartDrawer/CartDrawer'
+import { MultipleSelectStars } from '../'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -128,13 +127,13 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
 
           <div>
             <img />
-            {/* <SearchBar /> */}
+            <SearchBar />
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}
           {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          <ProfileContainer />
+          {/* <ProfileContainer /> */}
           {/* <FavCard /> */}
           {/* <MyFav /> */}
           {/* <PrevCancelled /> */}
