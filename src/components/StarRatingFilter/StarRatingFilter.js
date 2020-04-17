@@ -1,4 +1,4 @@
-import { FiWifi } from 'react-icons/fa'
+import { FaBeer } from 'react-icons/fa'
 import React from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -10,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Select from '@material-ui/core/Select'
 import Checkbox from '@material-ui/core/Checkbox'
 import Chip from '@material-ui/core/Chip'
+import { ListItem } from '@material-ui/core'
+import { Icon } from 'rsuite'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -41,16 +43,9 @@ const MenuProps = {
 }
 
 const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
+  '3 Stars',
+  '4 Stars',
+  '5 Stars'
 ]
 
 function getStyles (name, personName, theme) {
@@ -86,7 +81,7 @@ export default function MultipleSelectStars () {
     <div>
 
       <FormControl className={classes.formControl}>
-        <InputLabel id='demo-mutiple-checkbox-label'>Amenities</InputLabel>
+        <InputLabel id='demo-mutiple-checkbox-label'>Star Rating</InputLabel>
         <Select
           labelId='demo-mutiple-checkbox-label'
           id='demo-mutiple-checkbox'
@@ -97,13 +92,27 @@ export default function MultipleSelectStars () {
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-              <FiWifi />
-            </MenuItem>
-          ))}
+
+          <MenuItem key='3 Stars' value='3 Stars'>
+            <Checkbox checked={personName.indexOf('3 Stars') > -1} />
+            <ListItemText primary='3 Stars' />
+            <Icon icon='star' /><Icon icon='star' /><Icon icon='star' />
+
+          </MenuItem>
+
+          <MenuItem key='4 Stars' value='4 Stars'>
+            <Checkbox checked={personName.indexOf('4 Stars') > -1} />
+            <ListItemText primary='4 Stars' />
+            <Icon icon='star' /><Icon icon='star' /><Icon icon='star' /><Icon icon='star' />
+
+          </MenuItem>
+          <MenuItem key='5 Stars' value='5 Stars'>
+            <Checkbox checked={personName.indexOf('5 Stars') > -1} />
+            <ListItemText primary='5 Stars' />
+            <Icon icon='star' /><Icon icon='star' /><Icon icon='star' /><Icon icon='star' /><Icon icon='star' />
+
+          </MenuItem>
+
         </Select>
       </FormControl>
 
