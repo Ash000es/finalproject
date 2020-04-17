@@ -14,6 +14,12 @@ import { hardHotelObject } from '../assets/HardCode'
 import ErrorRadios from '../radioButton/radioButton'
 import { SingleLineGridList } from '../ExtrasList/ExtrasList'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
+import Card from 'react-bootstrap/Card'
+import Divider from '@material-ui/core/Divider'
+import Row from 'react-bootstrap/Row'
+import ListItem from '@material-ui/core/ListItem'
+import Image from 'react-bootstrap/Image'
+import List from '@material-ui/core/List'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,56 +56,50 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function DetailedExpansionPanel () {
+export const DetailedExpansionPanel = () => {
   const classes = useStyles()
 
   return (
     <>
 
-      <Typography className={classes.heading}>{hardHotelObject.destinationName}</Typography>
-      <DropDownFilter />
       <div className={classes.root}>
-
         <ExpansionPanel defaultExpanded>
-
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel1c-content'
             id='panel1c-header'
           >
-
             <div className={classes.column}>
-              {/* <Typography className={classes.heading}>{hardHotelObject.destinationName}</Typography> */}
-              <ControlledCarousel1 />
+              <Image src='https://source.unsplash.com/random' rounded style={{ width: '16.875rem', height: '16.875rem' }} />
             </div>
-            <div className={classes.column}>
-              <Typography className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
-              <ul style={{ listStyleType: 'none' }}>{hardHotelObject.hotelAmenities.map(item =>
-                <li key={item.title}>{item.Icon}{item.title}</li>
+            <Typography className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
+            <div className={classes.column} style={{ background: 'red', display: 'flex' }}>
+
+              <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', listStyleType: 'none', JustifyContent: 'space-around' }}> {hardHotelObject.hotelAmenities.map(item =>
+                <li key={item.title}>{item.Icon}{item.title}  </li>
               )}
               </ul>
-              <p>{hardHotelObject.label.posh}|{hardHotelObject.zoneName}|{hardHotelObject.categoryName}</p>
             </div>
+
+            <div>
+              <p>{hardHotelObject.label.posh}</p>
+              <Divider orientation='vertical' flexItem />
+              <p>{hardHotelObject.zoneName}</p>
+              <Divider orientation='vertical' flexItem />
+              <p>{hardHotelObject.categoryName}</p>
+            </div>
+
             <div className={classes.column}>
               <ErrorRadios />
             </div>
           </ExpansionPanelSummary>
+
           <ExpansionPanelDetails className={classes.details}>
-
             <div className={classes.column}>
-
               <SingleLineGridList />
-
             </div>
-
           </ExpansionPanelDetails>
 
-          <ExpansionPanelActions>
-            <Button size='small'>Cancel</Button>
-            <Button size='small' color='primary'>
-              Save
-            </Button>
-          </ExpansionPanelActions>
         </ExpansionPanel>
       </div>
     </>

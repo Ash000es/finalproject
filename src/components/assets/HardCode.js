@@ -3,6 +3,15 @@ import { FaGlassMartiniAlt, FaParking, FaWineGlassAlt, FaSpa, FaBath, FaSuitcase
 import LabelBold from '../CatLabels/LabelBold'
 import LabelEssential from '../CatLabels/LabelEssential'
 import Labelposh from '../CatLabels/LabelPosh'
+import AcUnitIcon from '@material-ui/icons/AcUnit'
+import FitnessCenter from '@material-ui/icons/AcUnit'
+import PoolIcon from '@material-ui/icons/AcUnit'
+import WifiIcon from '@material-ui/icons/Wifi'
+import LiveTvIcon from '@material-ui/icons/LiveTv'
+import FreeBreakfastIcon from '@material-ui/icons/FreeBreakfast'
+import RestaurantIcon from '@material-ui/icons/Restaurant'
+import RoomServiceIcon from '@material-ui/icons/RoomService'
+import DeckIcon from '@material-ui/icons/Deck'
 
 export const hardHotelObject = {
 
@@ -78,24 +87,24 @@ export const hardHotelObject = {
   Numberofrooms: { number: 150, Icon: '' },
   CheckinRules: { title: 'Identification card at arrival' },
   hotelAmenities: [
-    { title: 'Airconditioning', Icon: '' },
+    { title: 'Airconditioning', Icon: <AcUnitIcon /> },
     { title: 'Bar', Icon: <FaGlassMartiniAlt /> },
     { title: 'Parking', Icon: <FaParking /> },
     { title: 'MiniBar', Icon: <FaWineGlassAlt /> },
     { title: 'Room Service', Icon: '' },
     { title: 'Spa', Icon: <FaSpa /> },
     { title: 'Bathrobe', Icon: <FaBath /> },
-    { title: 'Bathroom amenities (free toiletries)', Icon: '' },
+    { title: 'Bathroom amenities (free toiletries)', Icon: <FaBath /> },
     { title: 'Bathtub', Icon: <FaBath /> },
-    { title: 'Cable television', Icon: '' },
-    { title: 'Coffee/Tea maker', Icon: '' },
-    { title: 'Free wifi', Icon: '' },
-    { title: 'Fitness Center', Icon: '' },
-    { title: 'Restaurant facility', Icon: '' },
-    { title: 'Rooftop deck', Icon: '' },
-    { title: 'Sauna', Icon: '' },
-    { title: 'Concierge', Icon: '' },
-    { title: 'pool', Icon: '' },
+    { title: 'Cable television', Icon: <LiveTvIcon /> },
+    { title: 'Coffee/Tea maker', Icon: <FreeBreakfastIcon /> },
+    { title: 'Free wifi', Icon: <WifiIcon /> },
+    { title: 'Fitness Center', Icon: <FitnessCenter /> },
+    { title: 'Restaurant facility', Icon: <RestaurantIcon /> },
+    { title: 'Rooftop deck', Icon: <DeckIcon /> },
+    { title: 'Sauna', Icon: <FaSpa /> },
+    { title: 'Concierge', Icon: <RoomServiceIcon /> },
+    { title: 'pool', Icon: <PoolIcon /> },
     { title: 'Luggage room', Icon: <FaSuitcaseRolling /> }
 
   ],
