@@ -1,12 +1,10 @@
 import React from 'react'
-import DatePicker from '../DatePicker/DatePicker'
-import DatePicker2 from '../DatePicker2/DatePicker2'
+import DateRange from '../DateRange/DateRange'
 
 export const ShowDatePicker = () => {
   return (
     <>
-      <DatePicker />
-      <DatePicker2 />
+      <DateRange />
     </>
   )
 }

@@ -1,11 +1,9 @@
 import React from 'react'
-import DatePicker from '../DatePicker/DatePicker'
 import Sign from 'js-sha256'
 import InputGroup from 'react-bootstrap/InputGroup'
 import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
 import OccSelector2 from '../OccSelector2/OccSelector2'
-import DatePicker2 from '../DatePicker2/DatePicker2'
 import FirebaseContext from '../Firebase/Firebase'
 import DateRange from '../DateRange/DateRange'
 import Button from 'react-bootstrap/Button'
@@ -41,7 +39,6 @@ class SearchBar extends React.Component {
     this.handleOccChange = this.handleOccChange.bind(this)
     this.handleOccChange2 = this.handleOccChange2.bind(this)
     this.handleDateChange1 = this.handleDateChange1.bind(this)
-    this.handleDateChange2 = this.handleDateChange2.bind(this)
     this.handleClickButton = this.handleClickButton.bind(this)
   }
 
@@ -120,13 +117,6 @@ class SearchBar extends React.Component {
       console.log(stay)
     }
 
-    handleDateChange2 (NewDate2) {
-      console.log(NewDate2)
-      const { stay } = this.state
-      this.setState({ stay: { ...stay, checkOut: NewDate2 } })
-      console.log(this.state.checkOut)
-    }
-
     render () {
       return (
         <>
@@ -134,8 +124,6 @@ class SearchBar extends React.Component {
 
             <SearchField onChange={this.handleLocationChange} />
             <DateRange onChange={this.handleDateChange1} />
-            {/* <DatePicker onChange={this.handleDateChange1} /> */}
-            {/* <DatePicker2 onChange={this.handleDateChange2} /> */}
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
           </div>
