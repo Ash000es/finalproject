@@ -65,14 +65,15 @@ export const DetailedExpansionPanel = () => {
       <div className={classes.root}>
         <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary
+
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel1c-content'
             id='panel1c-header'
           >
-            <div className={classes.column}>
+            <div style={{ background: 'red', display: 'flex' }} className={classes.column}>
               <Image src='https://source.unsplash.com/random' rounded style={{ width: '16.875rem', height: '16.875rem' }} />
             </div>
-            <Typography className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
+            <Typography style={{ background: 'yellow', display: 'flex' }} className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
             <div className={classes.column} style={{ background: 'red', display: 'flex' }}>
 
               <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', listStyleType: 'none', JustifyContent: 'space-around' }}> {hardHotelObject.hotelAmenities.map(item =>
@@ -81,7 +82,7 @@ export const DetailedExpansionPanel = () => {
               </ul>
             </div>
 
-            <div>
+            <div style={{ background: 'green', display: 'flex' }}>
               <p>{hardHotelObject.label.posh}</p>
               <Divider orientation='vertical' flexItem />
               <p>{hardHotelObject.zoneName}</p>
@@ -89,7 +90,7 @@ export const DetailedExpansionPanel = () => {
               <p>{hardHotelObject.categoryName}</p>
             </div>
 
-            <div className={classes.column}>
+            <div style={{ background: 'blue', display: 'flex' }} className={classes.column}>
               <ErrorRadios />
             </div>
           </ExpansionPanelSummary>
