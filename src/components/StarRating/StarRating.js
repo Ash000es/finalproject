@@ -22,11 +22,11 @@ class StarRating extends React.Component {
 
   displayStarCount () {
     if (hardHotelObject.categoryName === '3 STARS') {
-      this.setState({ stars: '3 Stars', starImage: starImageArr[0] })
+      this.setState({ stars: '3 Stars hotel', starImage: starImageArr[0] })
     } else if (hardHotelObject.categoryName === '4 STARS') {
-      this.setState({ stars: '4 Stars', starImage: starImageArr[1] })
+      this.setState({ stars: '4 Stars hotel', starImage: starImageArr[1] })
     } else if (hardHotelObject.categoryName === '5 STARS') {
-      this.setState({ stars: '5 Stars', starImage: starImageArr[2] })
+      this.setState({ stars: '5 Stars hotel', starImage: starImageArr[2] })
     } else {
       return null
     }

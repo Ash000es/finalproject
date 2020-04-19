@@ -18,7 +18,7 @@ export const hardHotelObject = {
   code: 228426,
   name: 'ibis Barcelona Santa Coloma',
   categoryCode: '2EST',
-  categoryName: '5 STARS',
+  categoryName: '4 STARS',
   destinationCode: 'BCN',
   destinationName: 'Barcelona',
   zoneCode: 25,
