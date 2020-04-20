@@ -123,11 +123,11 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             </Route>
             <Route path='/Myprofile' />
           </Switch>
-          <HotelPage />
+          {/* <HotelPage /> */}
 
           <div>
             <img />
-            {/* <SearchBar /> */}
+            <SearchBar />
           </div>
           {/* <HotelList /> */}
           {/* <HomePageResults /> */}

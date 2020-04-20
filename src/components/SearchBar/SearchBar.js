@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button'
 import CustomizedSlider from '../Sliders/PriceSlider'
 import MultipleSelect from '../MultiCheckBox/MultiCheckBox'
 import MultipleSelectStars from '../StarRatingFilter/StarRatingFilter'
+import DateRangePicker from '../DateRange/NewDateRange'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -117,7 +118,7 @@ class SearchBar extends React.Component {
 
       console.log(checkIn)
       this.setState({ stay: { ...stay, checkIn, checkOut } })
-      console.log(stay)
+      // console.log(stay)
     }
 
     render () {
@@ -126,7 +127,8 @@ class SearchBar extends React.Component {
           <div className='SearchBar-fields'>
 
             <SearchField onChange={this.handleLocationChange} />
-            <DateRange onChange={this.handleDateChange1} />
+            {/* <DateRange onChange={this.handleDateChange1} /> */}
+            <DateRangePicker onChange={this.handleDateChange1} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
           </div>

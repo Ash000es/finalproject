@@ -1,66 +1,81 @@
 import React from 'react'
-import { Drawer, Button, IconButton, Paragraph, Icon } from 'rsuite'
-import Typography from '@material-ui/core/Typography'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import Drawer from '@material-ui/core/Drawer'
+import Button from '@material-ui/core/Button'
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import InboxIcon from '@material-ui/icons/MoveToInbox'
+import MailIcon from '@material-ui/icons/Mail'
 
-class CartDrawer extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      size: 'sm',
-      show: false
+const useStyles = makeStyles({
+  list: {
+    width: 250
+  },
+  fullList: {
+    width: 'auto'
+  }
+})
+
+export default function CartDrawer () {
+  const classes = useStyles()
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false
+  })
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return
     }
-    this.close = this.close.bind(this)
-    this.toggleDrawer = this.toggleDrawer.bind(this)
+
+    setState({ ...state, [anchor]: open })
   }
 
-  close () {
-    this.setState({
-      show: false
-    })
-  }
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom'
+      })}
+      role='presentation'
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  )
 
-  toggleDrawer (placement) {
-    this.setState({
-      placement,
-      show: true
-    })
-  }
-
-  render () {
-    const { size, placement, show } = this.state
-
-    return (
-      <div>
-
-        <IconButton
-          icon={<Icon icon='angle-left' />}
-          onClick={() => this.toggleDrawer('right')}
-        >
-          Right
-        </IconButton>
-
-        <Drawer
-          size={size}
-          placement={placement}
-          show={show}
-          onHide={this.close}
-        >
-          <Drawer.Header>
-            <Drawer.Title>Drawer Title</Drawer.Title>
-          </Drawer.Header>
-          <Drawer.Body>
-            <Typography />
-          </Drawer.Body>
-          <Drawer.Footer>
-            <Button onClick={this.close} appearance='primary'>
-              Confirm
-            </Button>
-            <Button onClick={this.close} appearance='subtle'>
-              Cancel
-            </Button>
-          </Drawer.Footer>
-        </Drawer>
-      </div>
-    )
-  }
-}; export default CartDrawer
+  return (
+    <div>
+      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
+  )
+}

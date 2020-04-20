@@ -15,6 +15,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
+    "@wojtekmaj/react-daterange-picker": "^2.5.0",
     "bootstrap": "^4.4.1",
     "customize-cra": "^0.9.1",
     "date-fns": "^2.0.0-beta.5",
