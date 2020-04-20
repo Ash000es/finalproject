@@ -5,6 +5,9 @@ import Table from 'react-bootstrap/Table'
 import SearchBar from '../SearchBar/SearchBar'
 import { hardHotelObject } from '../assets/HardCode'
 import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
+import StarRating from '../StarRating/StarRating'
+import Button from 'react-bootstrap/Button'
+import image from '../assets/'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
@@ -20,7 +23,7 @@ const HotelPage = () => {
         {hardHotelObject.city} show on map
       </p>
       <p>{hardHotelObject.rooms[0].rates[0].net}</p>
-      <button variant='primary'>Book</button>
+      <Button variant='primary'>Book now</Button>{' '}
       <ControlledCarousel />
 
       <div>amenities:
@@ -31,7 +34,7 @@ const HotelPage = () => {
         </ul>
         <img src='' alt='TA' />
       </div>
-      <p>{hardHotelObject.categoryName}Hotel</p>
+      <StarRating />
       <p>key facts:
         {HotelDetails.hotel.description.content}
       </p>
@@ -61,16 +64,16 @@ const HotelPage = () => {
               Children {hardHotelObject.rooms[0].rates[0].children}
             </td>
             <td>Free Wifi</td>
-            <td>{hardHotelObject.rooms[0].rates[0].net}$<button>Book Now</button> Free cancelation till{cancelationDate}</td>
+            <td>{hardHotelObject.rooms[0].rates[0].net}$<Button variant='primary'>Book now</Button>{' '}Free cancelation till{cancelationDate}</td>
           </tr>
 
         </tbody>
         <tbody>
           <p>Your booknig from {} to {}</p>
           <p>{hardHotelObject.rooms[0].rates[0].net}</p>
-          <button>Book Now</button>
-          <button>Add to cart</button>
-         
+          <Button variant='primary'>Book now</Button>{' '}
+          <Button variant='outline-primary'>Add to cart</Button>{' '}
+
         </tbody>
       </Table>
     </>

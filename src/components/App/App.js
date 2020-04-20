@@ -123,7 +123,7 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
             </Route>
             <Route path='/Myprofile' />
           </Switch>
-          {/* <HotelPage /> */}
+          <HotelPage />
 
           <div>
             <img />
@@ -143,7 +143,6 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
           {/* <Hero /> */}
 
           {/* <CartDrawer /> */}
-          <StarRating />
 
         </Container>
       </MemoryRouter>
