@@ -1,4 +1,5 @@
 import React from 'react'
+import './HotelCardSearch.css'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'

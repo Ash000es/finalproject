@@ -40,55 +40,13 @@ export const extras = [
   { title: 'House Red', price: 30, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
 
 ]
+
+const mapStyles = {
+  width: '100%',
+  height: '100%'
+}
+
 function App () {
-  /* 1.fetch function here for top destination for defualte display
-  2.Handle card click function here which land them on the destination search results.
-  3.create onClick funtion here which return the <hoteList/>
-
-on click Inspire me button function to render <popUpSlider/> with the slider components
-funtion to capture the sliders input and pass it to the recommmendation algorithm.
- the return results is another components called <inspiremeResults/>
- <inspiremeResults/> component= 3 row destination card with 3 cards on top
-createRequestBody(){
-  return {
-      stay: {
-        checkIn: '2020-06-15',
-        checkOut: '2020-06-16'
-      },
-      occupancies: [
-        {
-          rooms: 1,
-          adults: 1,
-          children: 0
-        }
-      ],
-      destination: {
-        code: 'MCO',
-        Code: 'LON',
-        Code: 'BCN'
-      }
-    }
-}
-componentDidMount (){
-fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-        {
-          method: 'POST',
-          headers: {
-            'Api-key': apikey,
-            'X-Signature': getSignature(),
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            'Accept-Encoding': 'gzip'
-          },
-
-          body: JSON.stringify(createRequestBody())
-        }).then(res => res.json()).then(Response => {
-        console.log(Response)
-      })
-
-}
-  */
-
   return (
 
     <FirebaseContext.Provider value={db}>
@@ -112,43 +70,20 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-
         </Navbar>
         <Container className='pt-3'>
           <Switch>
-            <Route path='/home'>
-              {/* <Home /> */}
-            </Route>
-            <Route path='/about'>
-              {/* <About /> */}
-            </Route>
-            <Route path='/users'>
-              {/* <Users /> */}
-            </Route>
+            <Route path='/home' />
+            <Route path='/about' />
+            <Route path='/users' />
             <Route path='/Myprofile' />
           </Switch>
+
+          {/* <SearchBar /> */}
           {/* <HotelPage /> */}
-
-          <div>
-            <img />
-            <SearchBar />
-          </div>
-          {/* <HotelList /> */}
-          {/* <HomePageResults /> */}
-          {/* <BasicTextFields /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <ProfileContainer /> */}
-          {/* <FavCard /> */}
-          {/* <MyFav /> */}
-          {/* <PrevCancelled /> */}
-          {/* <UpComing /> */}
-          {/* <MyBookings /> */}
-          {/* <ChangeDatesDiff /> */}
-          {/* <Hero /> */}
-
-          {/* <CartDrawer /> */}
+          <HotelList />
 
         </Container>
       </MemoryRouter>
     </FirebaseContext.Provider>
 
   )
-}
-
-export default App
+} export default App
