@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { Button, DateRangePicker } from 'rsuite'
 const styles = { width: 260, display: 'block', marginBottom: 10 }
 const { combine, allowedMaxDays, beforeToday } = DateRangePicker
@@ -39,4 +39,4 @@ const DateRange = (props) => {
       />
     </div>
   )
-}; export default DateRange
+}; export default DateRange */
