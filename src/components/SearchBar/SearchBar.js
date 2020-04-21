@@ -125,7 +125,7 @@ class SearchBar extends React.Component {
     render () {
       return (
         <>
-          <div className='SearchBar-fields'>
+          <div className='SearchBar'>
 
             <SearchField onChange={this.handleLocationChange} />
             {/* <DateRange onChange={this.handleDateChange1} /> */}
@@ -135,7 +135,7 @@ class SearchBar extends React.Component {
             <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
             <Button variant='success'>Inspire me</Button>{' '}
           </div>
-          <div className='SearchBar-submit'>
+          <div className='SearchBarFilters'>
             <CustomizedSlider />
             <MultipleSelect />
             <MultipleSelectStars />

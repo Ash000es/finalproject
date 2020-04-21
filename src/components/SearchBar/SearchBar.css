@@ -1,0 +1,8 @@
+.SearchBar{
+    display:flex;
+    justify-content:space-around;
+}
+.SearchBarFilters{
+    display:flex;
+    justify-content:flex-start;
+}

@@ -76,11 +76,11 @@ function App () {
             <Route path='/Myprofile' />
           </Switch>
 
-          {/* <SearchBar /> */}
           {/* <HotelPage /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <HotelList /> */}
           <Hero />
+          <SearchBar />
 
         </Container>
       </MemoryRouter>
