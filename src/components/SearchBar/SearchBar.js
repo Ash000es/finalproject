@@ -11,6 +11,7 @@ import CustomizedSlider from '../Sliders/PriceSlider'
 import MultipleSelect from '../MultiCheckBox/MultiCheckBox'
 import MultipleSelectStars from '../StarRatingFilter/StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
+import './SearchBar.css'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -131,11 +132,10 @@ class SearchBar extends React.Component {
             <DateRangePicker onChange={this.handleDateChange1} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
-          </div>
-          <div className='SearchBar-submit'>
-
             <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
             <Button variant='success'>Inspire me</Button>{' '}
+          </div>
+          <div className='SearchBar-submit'>
             <CustomizedSlider />
             <MultipleSelect />
             <MultipleSelectStars />

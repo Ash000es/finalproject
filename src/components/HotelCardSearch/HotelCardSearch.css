@@ -1,0 +1,31 @@
+#cardImage{
+    
+    /* height: 50%; */
+    /* width:25% ; */
+}
+Typography {
+    display:block;
+  width: 400px;
+  height: 100px;
+}
+#ament{
+    display: flexbox;
+}
+#amentItems{
+    display: flexbox;
+}
+#bookButton{
+
+}
+ul {
+    margin: 20px auto;
+    padding: 0 10px;
+    text-align: center;
+  }
+  
+  li {
+    
+   
+    display: inline-block;
+    width: 80px;
+  }

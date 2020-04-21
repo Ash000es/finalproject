@@ -76,7 +76,7 @@ function App () {
             <Route path='/Myprofile' />
           </Switch>
 
-          {/* <SearchBar /> */}
+          <SearchBar />
           {/* <HotelPage /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           <HotelList />

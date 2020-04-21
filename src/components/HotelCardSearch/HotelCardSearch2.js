@@ -71,19 +71,19 @@ export const DetailedExpansionPanel = () => {
             aria-controls='panel1c-content'
             id='panel1c-header'
           >
-            <div style={{ background: 'red', display: 'flex' }} className={classes.column}>
+            <div style={{ background: 'red' }} className={classes.column} id='cardImage'>
               <Image src='https://source.unsplash.com/random' rounded style={{ width: '16.875rem', height: '16.875rem' }} />
             </div>
-            <Typography style={{ background: 'yellow', display: 'flex' }} className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
-            <div className={classes.column} style={{ background: 'red', display: 'flex' }}>
+            <Typography style={{ background: 'yellow' }} className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
+            <div className={classes.column} id='ament' style={{ background: 'red' }}>
 
-              <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', listStyleType: 'none', JustifyContent: 'space-around' }}> {hardHotelObject.hotelAmenities.map(item =>
+              <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
                 <li key={item.title}>{item.Icon}{item.title}  </li>
               )}
               </ul>
             </div>
 
-            <div style={{ background: 'green', display: 'flex' }}>
+            <div style={{ background: 'green' }}>
               <p>{hardHotelObject.label.posh}</p>
               <Divider orientation='vertical' flexItem />
               <p>{hardHotelObject.zoneName}</p>
@@ -91,7 +91,7 @@ export const DetailedExpansionPanel = () => {
               <p>{hardHotelObject.categoryName}</p>
             </div>
 
-            <div style={{ background: 'blue', display: 'flex' }} className={classes.column}>
+            <div style={{ background: 'blue' }} id='bookButton' className={classes.column}>
               <ErrorRadios />
             </div>
           </ExpansionPanelSummary>
