@@ -4,5 +4,6 @@
 }
 .SearchBarFilters{
     display:flex;
-    justify-content:flex-start;
+    justify-content:space-evenly;
+    align-items: baseline;
 }
