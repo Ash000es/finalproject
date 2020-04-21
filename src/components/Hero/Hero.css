@@ -1,0 +1,39 @@
+.bigCon{
+    display:flex;
+    margin-top: 100px;
+    width: 100%;
+    height: 500px;
+}
+.con1{
+    display:inline-flex;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    justify-content:center;
+    height: 400px;
+    width: 50%;
+   
+}
+
+.wrapDiv{
+    display: block;
+    height: 440px;
+    width: 50%;
+    margin-top: 20px;
+    
+}
+ .con2{
+     display: block;
+     width: 100%;
+     margin-bottom: 20px;
+     
+    
+ }
+ .con3{
+     display:block;
+     width: 100%;
+     
+     
+     
+ }
+ 

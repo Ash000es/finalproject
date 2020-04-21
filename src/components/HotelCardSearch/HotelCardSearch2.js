@@ -70,11 +70,12 @@ export const DetailedExpansionPanel = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel1c-content'
             id='panel1c-header'
+            className='bigDiv'
           >
             <div style={{ background: 'red' }} className={classes.column} id='cardImage'>
               <Image src='https://source.unsplash.com/random' rounded style={{ width: '16.875rem', height: '16.875rem' }} />
             </div>
-            <Typography style={{ background: 'yellow' }} className={classes.secondaryHeading}>{hardHotelObject.name}</Typography>
+            <Typography style={{ background: 'yellow' }} className={classes.secondaryHeading} id='typo'>{hardHotelObject.name}</Typography>
             <div className={classes.column} id='ament' style={{ background: 'red' }}>
 
               <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
@@ -83,7 +84,7 @@ export const DetailedExpansionPanel = () => {
               </ul>
             </div>
 
-            <div style={{ background: 'green' }}>
+            <div style={{ background: 'green' }} className='labelBar'>
               <p>{hardHotelObject.label.posh}</p>
               <Divider orientation='vertical' flexItem />
               <p>{hardHotelObject.zoneName}</p>

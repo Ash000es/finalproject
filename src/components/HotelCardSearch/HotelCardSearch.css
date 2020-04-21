@@ -1,31 +1,49 @@
-#cardImage{
-    
-    /* height: 50%; */
-    /* width:25% ; */
+.bigDiv{
+    display:flex;
 }
-Typography {
-    display:block;
-  width: 400px;
-  height: 100px;
+#cardImage{
+    display:flex;
+    align-items: center;
+     height: 100%; 
+     width:25% ; 
+
+}
+#typo {
+   
+  width: 50%;
+  height: 10%;
+  
 }
 #ament{
-    display: flexbox;
+    display: flex;
+  width:50%;
+  height:70%;
 }
 #amentItems{
-    display: flexbox;
+   
+    width:50%;
+    height:70%;
+    align-content:flex-start
+}
+.labelBar{
+    width: 50%;
+    height: 10%;
+    flex-wrap: wrap;
+    align-items: baseline;
 }
 #bookButton{
-
+    /* justify-content: flex-end */
+    width: 25%;
+    height: 100%;
 }
 ul {
     margin: 20px auto;
     padding: 0 10px;
-    text-align: center;
+   
   }
   
   li {
     
    
-    display: inline-block;
-    width: 80px;
+    
   }
