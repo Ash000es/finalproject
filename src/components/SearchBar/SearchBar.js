@@ -137,7 +137,7 @@ class SearchBar extends React.Component {
           </div>
           <div className='SearchBarFilters'>
             <CustomizedSlider />
-            <MultipleSelect className='logo1' />
+            <MultipleSelect />
             <MultipleSelectStars />
 
           </div>

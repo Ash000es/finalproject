@@ -1,9 +1,10 @@
 .SearchBar{
     display:flex;
     justify-content:space-around;
+    align-items: flex-end;
 }
 .SearchBarFilters{
     display:flex;
     justify-content:space-evenly;
-    align-items: baseline;
+    align-items: center;
 }
