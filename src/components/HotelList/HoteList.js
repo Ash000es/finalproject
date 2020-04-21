@@ -11,7 +11,7 @@ class HotelList extends React.Component {
   render () {
     return (
       <div className='HotelList'>
-        <SearchResultsHero />
+        {/* <SearchResultsHero /> */}
         <Typography>{hardHotelObject.destinationName}</Typography>
         <div className='sortButton'>
           <DropDownFilter />
