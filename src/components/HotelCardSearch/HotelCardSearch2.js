@@ -71,28 +71,31 @@ export const DetailedExpansionPanel = () => {
             aria-controls='panel1c-content'
             id='panel1c-header'
             className='bigDiv'
+
           >
-            <div style={{ background: 'red' }} className={classes.column} id='cardImage'>
-              <Image src='https://source.unsplash.com/random' rounded style={{ width: '16.875rem', height: '16.875rem' }} />
+            <div className={classes.column} id='cardImage'>
+              <img src='https://source.unsplash.com/random' style={{ height: '250px', width: '200px' }} />
             </div>
-            <Typography style={{ background: 'yellow' }} className={classes.secondaryHeading} id='typo'>{hardHotelObject.name}</Typography>
-            <div className={classes.column} id='ament' style={{ background: 'red' }}>
+            <div className='threeCon'>
+              <Typography className={classes.secondaryHeading} id='typo'>{hardHotelObject.name}</Typography>
+              <div className={classes.column} id='ament'>
 
-              <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
-                <li key={item.title}>{item.Icon}{item.title}  </li>
-              )}
-              </ul>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
+                  <li key={item.title}>{item.Icon}{item.title}  </li>
+                )}
+                </ul>
+              </div>
+
+              <div className='labelBar'>
+                <p>{hardHotelObject.label.posh}</p>
+                <Divider orientation='vertical' flexItem />
+                <p>{hardHotelObject.zoneName}</p>
+                <Divider orientation='vertical' flexItem />
+                <p>{hardHotelObject.categoryName}</p>
+              </div>
             </div>
 
-            <div style={{ background: 'green' }} className='labelBar'>
-              <p>{hardHotelObject.label.posh}</p>
-              <Divider orientation='vertical' flexItem />
-              <p>{hardHotelObject.zoneName}</p>
-              <Divider orientation='vertical' flexItem />
-              <p>{hardHotelObject.categoryName}</p>
-            </div>
-
-            <div style={{ background: 'blue' }} id='bookButton' className={classes.column}>
+            <div id='bookButton' className={classes.column} style={{ width: '170px' }}>
               <ErrorRadios />
             </div>
           </ExpansionPanelSummary>
