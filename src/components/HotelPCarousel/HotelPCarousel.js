@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import HotelDetails from '../HotelsDetails'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import './HotelPCarousel.css'
 
 export function ControlledCarousel (props) {
   const [index, setIndex] = useState(0)
@@ -30,13 +33,17 @@ export function ControlledCarousel (props) {
 
         {imageArray.map((arrayItem) => {
           return (
-            <Carousel.Item key={arrayItem} style={imageSize}>
+            <Carousel.Item key={arrayItem} style={imageSize} className='iconCon'>
+
               <img
-                className='d-block w-100'
+                className='d-block w-100 '
                 src={arrayItem}
                 alt='Hotel Pictures'
 
               />
+              <i className='iconHeart'><FavoriteIcon /></i>
+              <i className='iconHeart'><FavoriteBorderIcon /></i>
+
               <Carousel.Caption>
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

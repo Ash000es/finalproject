@@ -21,6 +21,8 @@ import Row from 'react-bootstrap/Row'
 import ListItem from '@material-ui/core/ListItem'
 import Image from 'react-bootstrap/Image'
 import List from '@material-ui/core/List'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,6 +77,8 @@ export const DetailedExpansionPanel = () => {
           >
             <div className={classes.column} id='cardImage'>
               <img src='https://source.unsplash.com/random' style={{ height: '250px', width: '200px' }} />
+              <FavoriteIcon />
+              <FavoriteBorderIcon />
             </div>
             <div className='threeCon'>
               <Typography className={classes.secondaryHeading} id='typo'>{hardHotelObject.name}</Typography>

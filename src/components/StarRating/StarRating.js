@@ -3,8 +3,11 @@ import { hardHotelObject } from '../assets/HardCode'
 import RestaurantIcon from '@material-ui/icons/Restaurant'
 import RoomServiceIcon from '@material-ui/icons/RoomService'
 import DeckIcon from '@material-ui/icons/Deck'
+import StarRateIcon from '@material-ui/icons/StarRate'
 
-const starImageArr = [<RestaurantIcon />, <RoomServiceIcon />, <DeckIcon />]
+const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 class StarRating extends React.Component {
   constructor (props) {
     super(props)
@@ -22,11 +25,11 @@ class StarRating extends React.Component {
 
   displayStarCount () {
     if (hardHotelObject.categoryName === '3 STARS') {
-      this.setState({ stars: '3 Stars hotel', starImage: starImageArr[0] })
+      this.setState({ stars: '3 Stars hotel', starImage: stars3 })
     } else if (hardHotelObject.categoryName === '4 STARS') {
-      this.setState({ stars: '4 Stars hotel', starImage: starImageArr[1] })
+      this.setState({ stars: '4 Stars hotel', starImage: stars4 })
     } else if (hardHotelObject.categoryName === '5 STARS') {
-      this.setState({ stars: '5 Stars hotel', starImage: starImageArr[2] })
+      this.setState({ stars: '5 Stars hotel', starImage: stars5 })
     } else {
       return null
     }
