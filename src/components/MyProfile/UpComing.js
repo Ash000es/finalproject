@@ -25,6 +25,7 @@ const UpComing = () => {
 
               </Card.Text>
               <Card.Text>Confirmation number 1234</Card.Text>
+              {/* the below popup is the change dates button on the webpage */}
               <ChangeDatePopup />
 
               <Button variant='danger'>Cancel booking</Button>

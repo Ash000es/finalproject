@@ -1,0 +1,18 @@
+.cardRow{
+    /* display:inline-flex; */
+    /* background-color: blue; */
+    width: 75%;
+    
+}
+.totalAmountCard{
+    width: 20%;
+    height: 16.875rem;
+    /* background-color: chartreuse; */
+   
+}
+.bigCon{
+    display:inline-flex;
+    width: 100%;
+    justify-content: space-around ;
+    /* background-color: crimson; */
+}
