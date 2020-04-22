@@ -79,10 +79,11 @@ function App () {
           {/* <SearchBar /> */}
           {/* <HotelList /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
-          <HotelPage />
+          {/* <HotelPage /> */}
           {/* <MyBookings /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <ReviewCart /> */}
+          <CartDrawer />
 
         </Container>
       </MemoryRouter>
