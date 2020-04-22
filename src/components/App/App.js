@@ -75,15 +75,15 @@ function App () {
             <Route path='/Myprofile' />
           </Switch>
 
-          {/* <Hero /> */}
-          {/* <SearchBar /> */}
-          {/* <HotelList /> */}
+          <Hero />
+          <SearchBar />
+          <HotelList />
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <HotelPage /> */}
           {/* <MyBookings /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <ReviewCart /> */}
-          <CartDrawer />
+          {/* <CartDrawer /> */}
 
         </Container>
       </MemoryRouter>
