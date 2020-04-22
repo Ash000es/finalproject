@@ -7,6 +7,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import StarRating from '../StarRating/StarRating'
 import Button from 'react-bootstrap/Button'
+import DateRangePicker from '../DateRange/NewDateRange'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
@@ -22,9 +23,12 @@ const HotelPage = () => {
         {hardHotelObject.city} show on map
       </p>
       <p>{hardHotelObject.rooms[0].rates[0].net}</p>
-      <Button variant='primary'>Book now</Button>{' '}
-      <ControlledCarousel />
+      <p>Edit your dates</p>
 
+      <DateRangePicker />
+      <div>
+        <ControlledCarousel />
+      </div>
       <div>amenities:
         <p>{hardHotelObject.Numberofrooms.number} Rooms</p>
         <ul style={{ listStyleType: 'none' }}>{hardHotelObject.hotelAmenities.map(item =>
@@ -56,7 +60,7 @@ const HotelPage = () => {
             <td>{
               hardHotelObject.rooms[0].name
             }
-            <ControlledCarousel1 />
+              <ControlledCarousel1 />
 
             </td>
             <td>Adults {hardHotelObject.rooms[0].rates[0].adults}
