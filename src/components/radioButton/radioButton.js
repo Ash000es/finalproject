@@ -23,6 +23,8 @@ export default function ErrorRadios () {
   const [value, setValue] = React.useState('')
   const [error, setError] = React.useState(false)
   const [helperText, setHelperText] = React.useState('')
+  const [showbookbutton, setBookButton] = React.useState(true)
+  const [showprice, SetShowPrice] = React.useState('')
 
   const handleRadioChange = (event) => {
     console.log(event)
@@ -56,9 +58,9 @@ export default function ErrorRadios () {
           <Button type='submit' variant='outlined' color='primary' className={classes.button}>
             Book Now
           </Button>
-          <FormControlLabel value='worst' control={<Radio />} label='Roomxtras' />
-          <p />
-          <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+          <FormControlLabel value='worst' control={<Radio />} label='With extras' />
+          <p>{hardHotelObject.rooms[0].rates[0].net} + extra price</p>
+          <Button type='submit' variant='outlined' color='primary' className={classes.button} onClick={() => setBookButton(false)}>
             Book Now
           </Button>
         </RadioGroup>

@@ -47,11 +47,31 @@ class SearchBar extends React.Component {
     this.handleClickButton = this.handleClickButton.bind(this)
   }
 
-  componentDidMount () {
-    console.log('yayyo')
+  fetchHotels=(destination) => {
+    console.log('searchME')
     const db = this.context
-    const destinationsRef = db.collection('destinations').doc('B')
-    destinationsRef.get().then(doc => console.log(doc.data()))
+    const hotelsRef = db.collection('hotels-limited')
+    const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '3EST')
+    query.get().then(snapShot => {
+      if (snapShot.length == 0) console.log('no results ')
+      snapShot.forEach(hotel => console.log(hotel.data()))
+    }
+    ).catch(error => console.log(error))
+  }
+
+  componentDidMount () {
+    // console.log('yayyo')
+    const db = this.context
+
+    // destinationsRef.get().then(doc => console.log(doc.data()))
+    // all your hotels are in a DB called hotels-limited
+    // all your facilites groups are in a 'facilites'
+    // facilityGroupCode 'facilityGroupCode'
+  }
+
+  handleSearch=() => {
+    console.log('search')
+    this.fetchHotels('IBZ')
   }
 
     handleClickButton= () => {
@@ -132,7 +152,7 @@ class SearchBar extends React.Component {
             <DateRangePicker onChange={this.handleDateChange1} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
-            <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
+            <Button variant='primary' onClick={this.handleSearch}>Search</Button>{' '}
             <Button variant='success'>Inspire me</Button>{' '}
           </div>
           <div className='SearchBarFilters'>
