@@ -1,5 +1,5 @@
 import React from 'react'
-import { MemoryRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, MemoryRouter, Switch, Route, Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
