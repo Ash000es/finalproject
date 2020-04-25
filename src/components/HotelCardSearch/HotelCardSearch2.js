@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const DetailedExpansionPanel = () => {
+export const DetailedExpansionPanel = (props) => {
   const classes = useStyles()
 
   return (
@@ -81,7 +81,7 @@ export const DetailedExpansionPanel = () => {
               <FavoriteBorderIcon />
             </div>
             <div className='threeCon'>
-              <Typography className={classes.secondaryHeading} id='typo'>{hardHotelObject.name}</Typography>
+              <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name}</Typography>
               <div className={classes.column} id='ament'>
 
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
@@ -93,9 +93,9 @@ export const DetailedExpansionPanel = () => {
               <div className='labelBar'>
                 <p>{hardHotelObject.label.posh}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{hardHotelObject.zoneName}</p>
+                <p>{props.hotel.zoneName}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{hardHotelObject.categoryName}</p>
+                <p>{props.hotel.categoryName}</p>
               </div>
             </div>
 

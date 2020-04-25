@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
     super(props)
 
     this.state = {
-      results: [],
+      results: {},
       stay: {
         checkIn: '2020-06-15',
         checkOut: '2020-06-16'
@@ -117,7 +117,7 @@ class SearchBar extends React.Component {
 
         console.log(hotels)
 
-        this.setState({ results: [hotels] })
+        this.setState({ results: hotels })
       })
     }
 

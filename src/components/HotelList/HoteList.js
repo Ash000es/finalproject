@@ -18,6 +18,8 @@ class HotelList extends React.Component {
   // }
 
   render () {
+    const newHotels = this.props.hotels.hotels
+    console.log(newHotels)
     return (
       <div className='HotelList'>
         <hotelsOnly /><vacationRental />
@@ -29,10 +31,11 @@ class HotelList extends React.Component {
         <br />
         <br />
         <div className='list'>
+
           {
-            this.props.hotels.map(hotel => {
+            newHotels ? newHotels.map(hotel => {
               return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
-            })
+            }) : console.log('I am not true')
           }
 
         </div>

@@ -41,8 +41,8 @@ const HotelPage = (props) => {
       <p>key facts:
         {HotelDetails.hotel.description.content}
       </p>
-      <p>Check-in from{hardHotelObject.Checkin.timeFrom}
-        Check-out from{hardHotelObject.Checkout.timeFrom}
+      <p>Check-in from{props.hotel.Checkin.timeFrom}
+        Check-out from{props.hotel.Checkout.timeFrom}
       </p>
       <p>{hardHotelObject.CheckinRules.title} required at Check-in</p>
       <p>City tax will be collected by hotel at check-in or check-out.</p>
@@ -60,7 +60,7 @@ const HotelPage = (props) => {
             <td>{
               props.hotel.rooms[0].name
             }
-              <ControlledCarousel1 />
+            <ControlledCarousel1 />
 
             </td>
             <td>Adults {props.hotel.rooms[0].rates[0].adults}
