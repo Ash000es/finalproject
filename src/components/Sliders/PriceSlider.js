@@ -4,7 +4,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
-const DEFAULT_SLIDER_VALUE = [0, 10000]
+const DEFAULT_SLIDER_VALUE = [0, 1000]
 
 const useStyles = makeStyles(theme => ({
   root: {

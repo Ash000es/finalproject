@@ -11,11 +11,11 @@ import { hotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 
 class HotelList extends React.Component {
   // sort function for the dropdown filter onClick
-  sortByReviews (arr) {
-    arr.sort(function (a, b) {
-      return b.vote_count - a.vote_count
-    })
-  }
+  // sortByReviews (arr) {
+  // arr.sort(function (a, b) {
+  // return b.vote_count - a.vote_count
+  // })
+  // }
 
   render () {
     return (
@@ -29,11 +29,13 @@ class HotelList extends React.Component {
         <br />
         <br />
         <div className='list'>
-          <DetailedExpansionPanel />
-          <DetailedExpansionPanel />
-          <DetailedExpansionPanel />
-          <DetailedExpansionPanel />
-          <DetailedExpansionPanel />
+
+          {
+            this.props.hotels.map(hotel => {
+              return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
+            })
+          }
+
         </div>
 
       </div>

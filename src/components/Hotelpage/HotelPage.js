@@ -11,18 +11,18 @@ import DateRangePicker from '../DateRange/NewDateRange'
 
 // on click we need content api call to pull the hotel information ( des+img)
 // we should have made the price and availability call before in search results so click on book will take you to the hotel page
-const HotelPage = () => {
+const HotelPage = (props) => {
   const cancelationDate = hardHotelObject.rooms[0].rates[0].cancellationPolicies[0].from
   return (
     <>
       <h4>This hotel have spceial offer for you</h4>
-      <p>{hardHotelObject.name}</p>
+      <p>{props.name}</p>
       <p>{hardHotelObject.label.posh}</p>
-      <p>{hardHotelObject.address},
-        {hardHotelObject.postalCode},
-        {hardHotelObject.city} show on map
+      <p>{props.address},
+        {props.postalCode},
+        {props.city} show on map
       </p>
-      <p>{hardHotelObject.rooms[0].rates[0].net}</p>
+      <p>{props.rooms[0].rates[0].net}</p>
       <p>Edit your dates</p>
 
       <DateRangePicker />
@@ -30,7 +30,7 @@ const HotelPage = () => {
         <ControlledCarousel />
       </div>
       <div>amenities:
-        <p>{hardHotelObject.Numberofrooms.number} Rooms</p>
+        <p>{props.Numberofrooms.number} Rooms</p>
         <ul style={{ listStyleType: 'none' }}>{hardHotelObject.hotelAmenities.map(item =>
           <li key={item.title}>{item.Icon}{item.title}</li>
         )}
@@ -58,22 +58,22 @@ const HotelPage = () => {
         <tbody>
           <tr>
             <td>{
-              hardHotelObject.rooms[0].name
+              props.rooms[0].name
             }
               <ControlledCarousel1 />
 
             </td>
-            <td>Adults {hardHotelObject.rooms[0].rates[0].adults}
-              Children {hardHotelObject.rooms[0].rates[0].children}
+            <td>Adults {props.rooms[0].rates[0].adults}
+              Children {props.rooms[0].rates[0].children}
             </td>
             <td>Free Wifi</td>
-            <td>{hardHotelObject.rooms[0].rates[0].net}$<Button variant='primary'>Book now</Button>{' '}Free cancelation till{cancelationDate}</td>
+            <td>{props.rooms[0].rates[0].net}$<Button variant='primary'>Book now</Button>{' '}Free cancelation till{cancelationDate}</td>
           </tr>
 
         </tbody>
         <tbody>
           <p>Your booknig from {} to {}</p>
-          <p>{hardHotelObject.rooms[0].rates[0].net}</p>
+          <p>{props.rooms[0].rates[0].net}</p>
           <Button variant='primary'>Book now</Button>{' '}
           <Button variant='outline-primary'>Add to cart</Button>{' '}
 

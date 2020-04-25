@@ -12,6 +12,8 @@ import MultipleSelect from '../MultiCheckBox/MultiCheckBox'
 import MultipleSelectStars from '../StarRatingFilter/StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
+import { hotelBeds } from '../Hotelbeds/Hotelbeds'
+import HotelList from '../HotelList/HoteList'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -35,7 +37,7 @@ class SearchBar extends React.Component {
         }
       ],
       destination: {
-        code: 'MCO'
+        code: 'IBZ'
 
       }
     }
@@ -50,8 +52,9 @@ class SearchBar extends React.Component {
   fetchHotels=(destination) => {
     console.log('searchME')
     const db = this.context
+    const arr212 = [182669, 78290, 256, 4975, 3411]
     const hotelsRef = db.collection('hotels-limited')
-    const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '3EST')
+    const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '3EST').where('code', 'in', arr212)
     query.get().then(snapShot => {
       if (snapShot.length == 0) console.log('no results ')
       snapShot.forEach(hotel => console.log(hotel.data()))
@@ -78,6 +81,8 @@ class SearchBar extends React.Component {
       const apikey = '2t97t6954dckh4ynkwknr78j'
       const sec = 'nDD9BFXf5a'
       const D = new Date()
+      const databaseDestination = this.state.destination.code
+      this.fetchHotels(databaseDestination)
 
       const getSignature = () => {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))
@@ -142,6 +147,12 @@ class SearchBar extends React.Component {
       // console.log(stay)
     }
 
+    searchHotelBeds () {
+      hotelBeds.handleClickButton().then(res => {
+        this.setState({ results: [res] })
+      })
+    }
+
     render () {
       return (
         <>
@@ -152,7 +163,7 @@ class SearchBar extends React.Component {
             <DateRangePicker onChange={this.handleDateChange1} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
-            <Button variant='primary' onClick={this.handleSearch}>Search</Button>{' '}
+            <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
             <Button variant='success'>Inspire me</Button>{' '}
           </div>
           <div className='SearchBarFilters'>
@@ -161,6 +172,7 @@ class SearchBar extends React.Component {
             <MultipleSelectStars />
 
           </div>
+          <HotelList hotels={this.state.results} />
         </>
       )
     }
