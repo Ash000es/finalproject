@@ -147,12 +147,6 @@ class SearchBar extends React.Component {
       // console.log(stay)
     }
 
-    searchHotelBeds () {
-      hotelBeds.handleClickButton().then(res => {
-        this.setState({ results: [res] })
-      })
-    }
-
     render () {
       return (
         <>

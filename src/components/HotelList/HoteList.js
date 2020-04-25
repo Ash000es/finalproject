@@ -29,7 +29,6 @@ class HotelList extends React.Component {
         <br />
         <br />
         <div className='list'>
-
           {
             this.props.hotels.map(hotel => {
               return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
