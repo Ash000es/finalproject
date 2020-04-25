@@ -77,7 +77,7 @@ function App () {
 
           <Hero />
           <SearchBar />
-          <HotelList />
+          {/* <HotelList /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <HotelPage /> */}
           {/* <MyBookings /> */}
