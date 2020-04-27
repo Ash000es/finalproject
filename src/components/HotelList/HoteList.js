@@ -19,12 +19,12 @@ class HotelList extends React.Component {
 
   render () {
     const newHotels = this.props.hotels.hotels
-    console.log(newHotels)
+    // console.log(newHotels)
     return (
       <div className='HotelList'>
         <hotelsOnly /><vacationRental />
         {/* <SearchResultsHero /> */}
-        <Typography>{hardHotelObject.destinationName}</Typography>
+        {/* {newHotels ? newHotels.map(hotel => <Typography>newHotels.destinationName</Typography> ) : null} */}
         <div className='sortButton'>
           <DropDownFilter />
         </div>
