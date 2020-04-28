@@ -6,4 +6,4 @@ const AboutUs = () => {
       <h4> About us goes here</h4>
     </div>
   )
-}
+}; export default AboutUs

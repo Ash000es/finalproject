@@ -31,6 +31,8 @@ import Hero from '../Hero/Hero'
 import CartDrawer from '../CartDrawer/CartDrawer'
 import StarRating from '../StarRating/StarRating'
 import ReviewCart from '../PaymentCout/ReviewCart'
+import AboutUs from '../AboutUs/AboutUs'
+import { HomePage } from '../HomePage/HomePage'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -56,27 +58,32 @@ function App () {
             <LinkContainer to='/home'>
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/users'>
-              <Nav.Link>Users</Nav.Link>
+            <LinkContainer to='/Thingstodo'>
+              <Nav.Link>Things to do</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/Travelessentials'>
+              <Nav.Link>Travel Essentials</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/about'>
               <Nav.Link>About</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/Myprofile'>
-              <Nav.Link>My Profile</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar>
         <Container className='pt-3'>
           <Switch>
-            <Route path='/home' />
-            <Route path='/about' />
-            <Route path='/users' />
-            <Route path='/Myprofile' />
-          </Switch>
+            <Route path='/' exact component={HomePage} />
+            <Route path='/home' exact component={HomePage} />
+            <Route path='/about' exact component={AboutUs} />
+            <Route path='/hotelpage' exact component={HotelPage} />
+            <Route path='/hotelpage:code' component={HotelPage} />
 
-          <Hero />
-          <SearchBar />
+          </Switch>
+          {/* <HomePage /> */}
+
+          {/* // <Hero /> */}
+          {/* // <SearchBar /> */}
+          {/* <HomePageResults /> */}
+
           {/* <HotelList /> */}
           {/* <HorizontalLabelPositionBelowStepper /> */}
           {/* <HotelPage /> */}

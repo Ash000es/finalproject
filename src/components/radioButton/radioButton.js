@@ -8,6 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { hardHotelObject } from '../assets/HardCode'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -60,9 +61,11 @@ export default function ErrorRadios () {
           </Button>
           <FormControlLabel value='worst' control={<Radio />} label='With extras' />
           <p>{hardHotelObject.rooms[0].rates[0].net} + extra price</p>
-          <Button type='submit' variant='outlined' color='primary' className={classes.button} onClick={() => setBookButton(false)}>
-            Book Now
-          </Button>
+          <Link to='/hotelpage'>
+            <Button type='submit' variant='outlined' color='primary' className={classes.button} onClick={() => setBookButton(false)}>
+              Book Now
+            </Button>
+          </Link>
         </RadioGroup>
         <FormHelperText>{helperText}</FormHelperText>
 

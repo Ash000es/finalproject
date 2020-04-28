@@ -8,6 +8,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import './HotelList.css'
 import { vacationRental } from '../DropDownFilter/VCFilter'
 import { hotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
+import { Link } from 'react-router-dom'
 
 class HotelList extends React.Component {
   // sort function for the dropdown filter onClick
@@ -19,12 +20,12 @@ class HotelList extends React.Component {
 
   render () {
     const newHotels = this.props.hotels.hotels
-    // console.log(newHotels)
+    console.log(newHotels)
     return (
       <div className='HotelList'>
         <hotelsOnly /><vacationRental />
-        {/* <SearchResultsHero /> */}
-        {/* {newHotels ? newHotels.map(hotel => <Typography>newHotels.destinationName</Typography> ) : null} */}
+
+        {newHotels ? newHotels.map(hotel => <Typography key={hotel}>{newHotels.destinationName}</Typography>) : null}
         <div className='sortButton'>
           <DropDownFilter />
         </div>

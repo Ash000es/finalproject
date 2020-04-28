@@ -23,6 +23,7 @@ import Image from 'react-bootstrap/Image'
 import List from '@material-ui/core/List'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {

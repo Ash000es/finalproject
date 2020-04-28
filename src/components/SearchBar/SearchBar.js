@@ -77,8 +77,8 @@ class SearchBar extends React.Component {
   }
 
     handleClickButton= () => {
-      const apikey = '2t97t6954dckh4ynkwknr78j'
-      const sec = 'nDD9BFXf5a'
+      const apikey = 'e2mfrt8fwnfchk95gyr7vfbj'
+      const sec = 'nmVvBjwddFw'
       const D = new Date()
       const databaseDestination = this.state.destination.code
       // this.fetchHotels(databaseDestination)
