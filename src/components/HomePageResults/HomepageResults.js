@@ -27,36 +27,7 @@ class HomePageResults extends React.Component {
             <Card className='cardHomePage'>
               <Card.Img variant='top' src='https://source.unsplash.com/random' />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This card has supporting text below as a natural lead-in to additional
-                  content.{' '}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card className='cardHomePage'>
-              <Card.Img variant='top' src='https://source.unsplash.com/random' />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This is a wider card with supporting text below as a natural lead-in to
-                  additional content. This card has even longer content than the first to
-                  show that equal height action.
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-          </Row>
-          <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-            <Card className='cardHomePage'>
-              <Card.Img variant='top' src='https://source.unsplash.com/random' />
-              <Card.Body>
-                <Card.Title>Madrid</Card.Title>
+                <Card.Title>Barcelona</Card.Title>
                 <Card.Text>
                   Hotels from 22$
                 </Card.Text>
@@ -68,24 +39,9 @@ class HomePageResults extends React.Component {
             <Card className='cardHomePage'>
               <Card.Img variant='top' src='https://source.unsplash.com/random' />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Ibiza</Card.Title>
                 <Card.Text>
-                  This card has supporting text below as a natural lead-in to additional
-                  content.{' '}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card className='cardHomePage'>
-              <Card.Img variant='top' src='https://source.unsplash.com/random' />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This is a wider card with supporting text below as a natural lead-in to
-                  additional content. This card has even longer content than the first to
-                  show that equal height action.
+                  Hotels from 22$
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -97,7 +53,7 @@ class HomePageResults extends React.Component {
             <Card className='cardHomePage'>
               <Card.Img variant='top' src='https://source.unsplash.com/random' />
               <Card.Body>
-                <Card.Title>Madrid</Card.Title>
+                <Card.Title>Split</Card.Title>
                 <Card.Text>
                   Hotels from 22$
                 </Card.Text>
@@ -109,10 +65,9 @@ class HomePageResults extends React.Component {
             <Card className='cardHomePage'>
               <Card.Img variant='top' src='https://source.unsplash.com/random' />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Napoli</Card.Title>
                 <Card.Text>
-                  This card has supporting text below as a natural lead-in to additional
-                  content.{' '}
+                  Hotels from 22$
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -122,11 +77,47 @@ class HomePageResults extends React.Component {
             <Card className='cardHomePage'>
               <Card.Img variant='top' src='https://source.unsplash.com/random' />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>Roheds</Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural lead-in to
-                  additional content. This card has even longer content than the first to
-                  show that equal height action.
+                  Hotels from 22$
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className='text-muted'>Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+          </Row>
+          <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
+            <Card className='cardHomePage'>
+              <Card.Img variant='top' src='https://source.unsplash.com/random' />
+              <Card.Body>
+                <Card.Title>Corfu</Card.Title>
+                <Card.Text>
+                  Hotels from 22$
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className='text-muted'>Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+            <Card className='cardHomePage'>
+              <Card.Img variant='top' src='https://source.unsplash.com/random' />
+              <Card.Body>
+                <Card.Title>Lisbon</Card.Title>
+                <Card.Text>
+                  Hotels from 22$
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className='text-muted'>Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+            <Card className='cardHomePage'>
+              <Card.Img variant='top' src='https://source.unsplash.com/random' />
+              <Card.Body>
+                <Card.Title>Porto</Card.Title>
+                <Card.Text>
+                  Hotels from 22$
                 </Card.Text>
               </Card.Body>
               <Card.Footer>

@@ -40,7 +40,6 @@ export const ControlledCarousel1 = (props) => {
               />
               <Carousel.Caption>
 
-               
               </Carousel.Caption>
             </Carousel.Item>
 

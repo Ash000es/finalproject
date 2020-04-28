@@ -11,7 +11,8 @@ export function ControlledCarousel (props) {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
-  const imagesLinks = HotelDetails.hotel.images
+  const imagesLinks = props.hotels
+  console.log(imagesLinks)
   // console.log(imagesLinks)
   const imageArray = []
   const textArray = []

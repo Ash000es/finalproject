@@ -14,6 +14,10 @@ import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { hotelBeds } from '../Hotelbeds/Hotelbeds'
 import HotelList from '../HotelList/HoteList'
+import { Link } from 'react-router-dom'
+import HotelPage from '../Hotelpage/HotelPage'
+import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
+const arrayDB = []
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -39,7 +43,8 @@ class SearchBar extends React.Component {
       destination: {
         code: 'IBZ'
 
-      }
+      },
+      DBHOTELS: []
     }
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
@@ -49,14 +54,31 @@ class SearchBar extends React.Component {
     this.handleClickButton = this.handleClickButton.bind(this)
   }
 
+  getHotelCode = () => {
+    const newHotelsDB = this.state.DBHOTELS
+    console.log(newHotelsDB)
+    arrayDB.push(newHotelsDB)
+    // newHotelsDB.map(hotel => console.log(hotel.code))
+    setTimeout(console.log(arrayDB), 5000)
+  }
+
   fetchHotels=(destination) => {
     console.log('searchME')
     const db = this.context
+    const array = [576022, 585184, 1447, 361785, 1431, 663, 1446, 6940, 24845, 710991]
+
     const hotelsRef = db.collection('hotels-limited')
-    const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '3EST')
+    const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
     query.get().then(snapShot => {
       if (snapShot.length == 0) console.log('no results ')
-      snapShot.forEach(hotel => console.log(hotel.data()))
+
+      snapShot.forEach(hotel => {
+        console.log(hotel.data())
+        const { DBHOTELS } = this.state
+        this.setState({ DBHOTELS: hotel.data() })
+        console.log(DBHOTELS)
+        this.getHotelCode()
+      })
     }
     ).catch(error => console.log(error))
   }
@@ -81,7 +103,7 @@ class SearchBar extends React.Component {
       const sec = 'nmVvBjwddFw'
       const D = new Date()
       const databaseDestination = this.state.destination.code
-      // this.fetchHotels(databaseDestination)
+      this.fetchHotels(databaseDestination)
 
       const getSignature = () => {
         return Sign(apikey + sec + Math.round(D.getTime() / 1000))
@@ -156,7 +178,9 @@ class SearchBar extends React.Component {
             <DateRangePicker onChange={this.handleDateChange1} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
-            <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
+            <Link to='/searchresults'>
+              <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
+            </Link>
             <Button variant='success'>Inspire me</Button>{' '}
           </div>
           <div className='SearchBarFilters'>
@@ -165,7 +189,7 @@ class SearchBar extends React.Component {
             <MultipleSelectStars />
 
           </div>
-          {/* <HotelList hotels={this.state.results} /> */}
+
         </>
       )
     }

@@ -64,7 +64,7 @@ const PrettoSlider = withStyles({
 export default function CustomizedSlider () {
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = React.useState(DEFAULT_SLIDER_VALUE)
-  console.log(sliderPrice)
+  // console.log(sliderPrice)
 
   return (
     <div className={classes.root}>
