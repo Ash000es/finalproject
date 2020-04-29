@@ -19,8 +19,6 @@ import HotelPage from '../Hotelpage/HotelPage'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import { Test } from './Test'
 
-const hotels1 = []
-
 class SearchBar extends React.Component {
   constructor (props) {
     super(props)
@@ -73,26 +71,12 @@ class SearchBar extends React.Component {
     // const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
 
     db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
-      .onSnapshot(function (querySnapshot) {
-        querySnapshot.forEach(function (hotel) {
-          hotels1.push(hotel.data())
-        })
-        console.log(hotels1)
-        return hotels1
+      .onSnapshot(querySnapshot => {
+        const hotels = []
+        querySnapshot.forEach((hotel) => hotels.push(hotel.data()))
+        this.setState({ hotels: hotels })
+        console.log(hotels)
       })
-    const { hotels } = this.state
-    this.setState({ hotels: hotels1 })
-    console.log(this.state.hotels)
-
-    /* query.get().then(snapShot => {
-      console.log(snapShot)
-      if (snapShot.length == 0) console.log('no results ')
-
-      snapShot.forEach(hotel => {
-        console.log(hotel.data())
-      }).catch(error => console.log(error))
-    }
-    ) */
   }
 
   componentDidMount () {
@@ -190,16 +174,16 @@ class SearchBar extends React.Component {
             <DateRangePicker onChange={this.handleDateChange1} />
             <OccSelector onChange={this.handleOccChange} />
             <OccSelector2 onChange={this.handleOccChange2} />
-            <Link to='/searchresults'>
-              <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
-            </Link>
+            {/* <Link to='/searchresults'> */}
+            <Button variant='primary' onClick={this.handleClickButton}>Search</Button>{' '}
+            {/* </Link> */}
             <Button variant='success'>Inspire me</Button>{' '}
           </div>
           <div className='SearchBarFilters'>
             <CustomizedSlider />
             <MultipleSelect />
             <MultipleSelectStars />
-            <Test hotels={this.state.hotels} />
+            {/* <Test hotels={this.state.hotels} /> */}
           </div>
 
         </>

@@ -34,8 +34,8 @@ import ReviewCart from '../PaymentCout/ReviewCart'
 import AboutUs from '../AboutUs/AboutUs'
 import { HomePage } from '../HomePage/HomePage'
 import { HoteList2 } from '../HotelList/HoteListTest'
-
 import { MyProvider } from '../Provider/Provider'
+const MyContext = React.createContext()
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -52,7 +52,7 @@ const mapStyles = {
 
 function App () {
   return (
-    <MyProvider>
+    <MyContext.Provider>
       <FirebaseContext.Provider value={db}>
         <MemoryRouter>
           <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
@@ -79,13 +79,13 @@ function App () {
               <Route path='/about' exact component={AboutUs} />
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/hotelpage:code' component={HotelPage} />
-              <Route path='/' exact component={HomePage} />
+              {/* <Route path='/' exact component={HomePage} /> */}
               <Route path='/searchresults' exact component={HoteList2} />
 
             </Switch>
             <HomePage />
 
-            {/* // <Hero /> */}
+            {/* <Hero /> */}
             {/* <SearchBar /> */}
             {/* <HomePageResults /> */}
 
@@ -100,7 +100,7 @@ function App () {
           </Container>
         </MemoryRouter>
       </FirebaseContext.Provider>
-    </MyProvider>
+    </MyContext.Provider>
 
   )
 } export default App
