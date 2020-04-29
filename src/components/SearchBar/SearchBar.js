@@ -17,7 +17,9 @@ import HotelList from '../HotelList/HoteList'
 import { Link } from 'react-router-dom'
 import HotelPage from '../Hotelpage/HotelPage'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
-const arrayDB = []
+import { Test } from './Test'
+
+const hotels1 = []
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -26,8 +28,8 @@ class SearchBar extends React.Component {
     this.state = {
       results: {},
       stay: {
-        checkIn: '2020-06-15',
-        checkOut: '2020-06-16'
+        checkIn: '2020-11-15',
+        checkOut: '2020-11-16'
       },
       occupancies: [
         {
@@ -35,8 +37,8 @@ class SearchBar extends React.Component {
           adults: 1,
           children: 0,
           paxes: [{
-            type: 'CH',
-            age: 2
+            type: '',
+            age: 0
           }]
         }
       ],
@@ -44,7 +46,7 @@ class SearchBar extends React.Component {
         code: 'IBZ'
 
       },
-      DBHOTELS: []
+      hotels: []
     }
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
@@ -57,30 +59,40 @@ class SearchBar extends React.Component {
   getHotelCode = () => {
     const newHotelsDB = this.state.DBHOTELS
     console.log(newHotelsDB)
-    arrayDB.push(newHotelsDB)
+    // arrayDB.push(newHotelsDB)
     // newHotelsDB.map(hotel => console.log(hotel.code))
-    setTimeout(console.log(arrayDB), 5000)
+    setTimeout(console.log(newHotelsDB), 5000)
   }
 
   fetchHotels=(destination) => {
     console.log('searchME')
     const db = this.context
-    const array = [576022, 585184, 1447, 361785, 1431, 663, 1446, 6940, 24845, 710991]
+    const array = [576022, 585184, 1447, 361785, 1431, 663, 1446, 6940, 24845]
 
-    const hotelsRef = db.collection('hotels-limited')
-    const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
-    query.get().then(snapShot => {
+    // const hotelsRef = db.collection('hotels-limited')
+    // const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
+
+    db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
+      .onSnapshot(function (querySnapshot) {
+        querySnapshot.forEach(function (hotel) {
+          hotels1.push(hotel.data())
+        })
+        console.log(hotels1)
+        return hotels1
+      })
+    const { hotels } = this.state
+    this.setState({ hotels: hotels1 })
+    console.log(this.state.hotels)
+
+    /* query.get().then(snapShot => {
+      console.log(snapShot)
       if (snapShot.length == 0) console.log('no results ')
 
       snapShot.forEach(hotel => {
         console.log(hotel.data())
-        const { DBHOTELS } = this.state
-        this.setState({ DBHOTELS: hotel.data() })
-        console.log(DBHOTELS)
-        this.getHotelCode()
-      })
+      }).catch(error => console.log(error))
     }
-    ).catch(error => console.log(error))
+    ) */
   }
 
   componentDidMount () {
@@ -187,7 +199,7 @@ class SearchBar extends React.Component {
             <CustomizedSlider />
             <MultipleSelect />
             <MultipleSelectStars />
-
+            <Test hotels={this.state.hotels} />
           </div>
 
         </>
