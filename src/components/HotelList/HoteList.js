@@ -9,7 +9,9 @@ import './HotelList.css'
 import { vacationRental } from '../DropDownFilter/VCFilter'
 import { hotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 import { Link } from 'react-router-dom'
+import { MyProvider } from '../Provider/Provider'
 
+const MyContext = React.createContext()
 class HotelList extends React.Component {
   // sort function for the dropdown filter onClick
   // sortByReviews (arr) {
@@ -19,29 +21,35 @@ class HotelList extends React.Component {
   // }
 
   render () {
-    const newHotels = this.props.hotels.hotels
-    console.log(newHotels)
+    // const newHotels = context.state.results.hotels.hotels
+    // console.log(newHotels)
     return (
       <div className='HotelList'>
-        <hotelsOnly /><vacationRental />
+        <MyContext.Consmer>
+          {(context) => (
+            <>
+              <hotelsOnly /><vacationRental />
+              <Typography>{context.state.results.hotels.hotels.destinationName}</Typography>
 
-        {newHotels ? newHotels.map(hotel => <Typography key={hotel}>{newHotels.destinationName}</Typography>) : null}
-        <div className='sortButton'>
-          <DropDownFilter />
-        </div>
-        <br />
-        <br />
-        <div className='list'>
+              <div className='sortButton'>
+                <DropDownFilter />
+              </div>
+              <br />
 
-          {
-            newHotels ? newHotels.map(hotel => {
-              return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
-            }) : console.log('I am not true')
-          }
+              <div className='list'>
 
-        </div>
+                {
+                  context.state.results.hotels.hotels ? context.state.results.hotels.hotels.map(hotel => {
+                    return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
+                  }) : console.log('I am not true')
+                }
 
+              </div>
+            </>
+          )}
+        </MyContext.Consmer>
       </div>
+
     )
   }
 }

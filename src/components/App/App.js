@@ -35,6 +35,8 @@ import AboutUs from '../AboutUs/AboutUs'
 import { HomePage } from '../HomePage/HomePage'
 import { HoteList2 } from '../HotelList/HoteListTest'
 
+import { MyProvider } from '../Provider/Provider'
+
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
 
@@ -50,54 +52,55 @@ const mapStyles = {
 
 function App () {
   return (
+    <MyProvider>
+      <FirebaseContext.Provider value={db}>
+        <MemoryRouter>
+          <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
+            <Navbar.Brand>Website</Navbar.Brand>
+            <Nav className='mr-auto'>
+              <LinkContainer to='/home'>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/Thingstodo'>
+                <Nav.Link>Things to do</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/Travelessentials'>
+                <Nav.Link>Travel Essentials</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/about'>
+                <Nav.Link>About</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar>
+          <Container className='pt-3'>
+            <Switch>
 
-    <FirebaseContext.Provider value={db}>
-      <MemoryRouter>
-        <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
-          <Navbar.Brand>Website</Navbar.Brand>
-          <Nav className='mr-auto'>
-            <LinkContainer to='/home'>
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/Thingstodo'>
-              <Nav.Link>Things to do</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/Travelessentials'>
-              <Nav.Link>Travel Essentials</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/about'>
-              <Nav.Link>About</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar>
-        <Container className='pt-3'>
-          <Switch>
+              {/* <Route path='/home' exact component={HomePage} /> */}
+              <Route path='/about' exact component={AboutUs} />
+              <Route path='/hotelpage' exact component={HotelPage} />
+              <Route path='/hotelpage:code' component={HotelPage} />
+              <Route path='/' exact component={HomePage} />
+              <Route path='/searchresults' exact component={HoteList2} />
 
-            {/* <Route path='/home' exact component={HomePage} /> */}
-            <Route path='/about' exact component={AboutUs} />
-            <Route path='/hotelpage' exact component={HotelPage} />
-            <Route path='/hotelpage:code' component={HotelPage} />
-            {/* <Route path='/' exact component={HomePage} /> */}
-            {/* <Route path='/searchresults' exact component={HoteList2} /> */}
+            </Switch>
+            <HomePage />
 
-          </Switch>
-          {/* <HomePage /> */}
+            {/* // <Hero /> */}
+            {/* <SearchBar /> */}
+            {/* <HomePageResults /> */}
 
-          {/* // <Hero /> */}
-          <SearchBar />
-          {/* <HomePageResults /> */}
+            {/* <HotelList /> */}
+            {/* <HorizontalLabelPositionBelowStepper /> */}
+            {/* <HotelPage /> */}
+            {/* <MyBookings /> */}
+            {/* <HorizontalLabelPositionBelowStepper /> */}
+            {/* <ReviewCart /> */}
+            {/* <CartDrawer /> */}
 
-          {/* <HotelList /> */}
-          {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <HotelPage /> */}
-          {/* <MyBookings /> */}
-          {/* <HorizontalLabelPositionBelowStepper /> */}
-          {/* <ReviewCart /> */}
-          {/* <CartDrawer /> */}
-
-        </Container>
-      </MemoryRouter>
-    </FirebaseContext.Provider>
+          </Container>
+        </MemoryRouter>
+      </FirebaseContext.Provider>
+    </MyProvider>
 
   )
 } export default App
