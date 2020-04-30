@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom'
 import HotelPage from '../Hotelpage/HotelPage'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import { Test } from './Test'
+import { Redirect } from 'react-router'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -44,7 +45,8 @@ class SearchBar extends React.Component {
         code: 'IBZ'
 
       },
-      hotels: []
+      hotels: [],
+      redirect: false
     }
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
@@ -54,22 +56,10 @@ class SearchBar extends React.Component {
     this.handleClickButton = this.handleClickButton.bind(this)
   }
 
-  getHotelCode = () => {
-    const newHotelsDB = this.state.DBHOTELS
-    console.log(newHotelsDB)
-    // arrayDB.push(newHotelsDB)
-    // newHotelsDB.map(hotel => console.log(hotel.code))
-    setTimeout(console.log(newHotelsDB), 5000)
-  }
-
   fetchHotels=(destination) => {
     console.log('searchME')
     const db = this.context
     const array = [576022, 585184, 1447, 361785, 1431, 663, 1446, 6940, 24845]
-
-    // const hotelsRef = db.collection('hotels-limited')
-    // const query = hotelsRef.where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
-
     db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST').where('code', 'in', array)
       .onSnapshot(querySnapshot => {
         const hotels = []
@@ -96,7 +86,7 @@ class SearchBar extends React.Component {
 
     handleClickButton= () => {
       const apikey = 'e2mfrt8fwnfchk95gyr7vfbj'
-      const sec = 'nmVvBjwddFw'
+      const sec = 'mVvBjwddFw'
       const D = new Date()
       const databaseDestination = this.state.destination.code
       this.fetchHotels(databaseDestination)
@@ -135,6 +125,7 @@ class SearchBar extends React.Component {
         console.log(hotels)
 
         this.setState({ results: hotels })
+        this.setState({ redirect: true })
       })
     }
 
@@ -165,6 +156,9 @@ class SearchBar extends React.Component {
     }
 
     render () {
+      if (this.state.redirect) {
+        return <Redirect exact push to='/searchresults' />
+      }
       return (
         <>
           <div className='SearchBar'>

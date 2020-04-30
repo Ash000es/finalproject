@@ -33,9 +33,8 @@ import StarRating from '../StarRating/StarRating'
 import ReviewCart from '../PaymentCout/ReviewCart'
 import AboutUs from '../AboutUs/AboutUs'
 import { HomePage } from '../HomePage/HomePage'
-import { HoteList2 } from '../HotelList/HoteListTest'
-import { MyProvider } from '../Provider/Provider'
-const MyContext = React.createContext()
+import { HotelList2 } from '../HotelList/HoteListTest'
+import { MyProvider, MyContext } from '../Provider/Provider'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -75,15 +74,13 @@ function App () {
           <Container className='pt-3'>
             <Switch>
 
-              {/* <Route path='/home' exact component={HomePage} /> */}
               <Route path='/about' exact component={AboutUs} />
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/hotelpage:code' component={HotelPage} />
-              {/* <Route path='/' exact component={HomePage} /> */}
-              <Route path='/searchresults' exact component={HoteList2} />
+              <Route path='/searchresults' exact component={HotelList2} />
+              <Route path='/' exact component={HomePage} />
 
             </Switch>
-            <HomePage />
 
             {/* <Hero /> */}
             {/* <SearchBar /> */}

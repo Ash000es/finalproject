@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { SearchResultsHero } from '../SearchResultsHero/SearchResultsHero'
 import { DetailedExpansionPanel } from '../HotelCardSearch/HotelCardSearch2'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
@@ -9,49 +9,45 @@ import './HotelList.css'
 import { vacationRental } from '../DropDownFilter/VCFilter'
 import { hotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 import { Link } from 'react-router-dom'
-import { MyProvider } from '../Provider/Provider'
+import { MyProvider, MyContext } from '../Provider/Provider'
 
-const MyContext = React.createContext()
-class HotelList extends React.Component {
-  // sort function for the dropdown filter onClick
-  // sortByReviews (arr) {
-  // arr.sort(function (a, b) {
-  // return b.vote_count - a.vote_count
-  // })
-  // }
+const HotelList = () => {
+  // const newHotels = context.state.results.hotels.hotels
+  // console.log(newHotels)
+  const [project, setProject] = useContext(MyContext)
+  return (
+    <div className='HotelList'>
+      {/* <MyContext.Consumer> */}
+      {/* {(context) => ( */}
 
-  render () {
-    // const newHotels = context.state.results.hotels.hotels
-    // console.log(newHotels)
-    return (
-      <div className='HotelList'>
-        <MyContext.Consmer>
-          {(context) => (
-            <>
-              <hotelsOnly /><vacationRental />
-              <Typography>{context.state.results.hotels.hotels.destinationName}</Typography>
+      <>
+        <hotelsOnly /><vacationRental />
+        <Typography />
 
-              <div className='sortButton'>
-                <DropDownFilter />
-              </div>
-              <br />
+        <div className='sortButton'>
+          <DropDownFilter />
+        </div>
+        <br />
 
-              <div className='list'>
+        <div className='list'>
+          <h4>I am here</h4>
 
-                {
-                  context.state.results.hotels.hotels ? context.state.results.hotels.hotels.map(hotel => {
-                    return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
-                  }) : console.log('I am not true')
-                }
+          {/* { */}
+          {/* MyContext.state.results.hotels.hotels ? MyContext.state.results.hotels.hotels.map(hotel => { */}
+          {/* return <DetailedExpansionPanel key={hotel.code} hotel={hotel} /> */}
+          {/* }) : console.log('I am not true') */}
+          {/* } */}
 
-              </div>
-            </>
-          )}
-        </MyContext.Consmer>
-      </div>
+        </div>
 
-    )
-  }
+      </>
+      {/* )} */}
+
+      {/* </MyContext.Consumer> */}
+
+    </div>
+
+  )
 }
 
 export default HotelList

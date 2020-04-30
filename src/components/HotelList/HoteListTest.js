@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import HotelList from '../HotelList/HoteList'
 import Hero from '../Hero/Hero'
 
-export const HoteList2 = () => {
+export const HotelList2 = () => {
   return (
     <div>
       <Hero />

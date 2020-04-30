@@ -1,8 +1,12 @@
-import React from 'react'
-const MyContext = React.createContext()
+import React, { useState } from 'react'
+import HotelList from '../HotelList/HoteList'
+import HotelPage from '../Hotelpage/HotelPage'
+import SearchBar from '../SearchBar/SearchBar'
+export const MyContext = React.createContext()
 
-export class MyProvider extends React.Component {
-    state = {
+export const MyProvider = () => {
+  const [project, setProject] = useState([
+    {
       results: {},
       stay: {
         checkIn: '2020-11-15',
@@ -23,15 +27,16 @@ export class MyProvider extends React.Component {
         code: 'IBZ'
 
       },
-      hotels: []
-    }
+      hotels: [],
+      redirect: false
+    }])
+const
+  return (
+    <MyContext.Provider value={ [project: setProject ]}>
+      <HotelList />
+      <HotelPage />
 
-    render () {
-      return (
-        <MyContext.Provider value={{ state: this.state }}>
-          {this.props.HotelList}
-        </MyContext.Provider>
+    </MyContext.Provider>
 
-      )
-    }
+  )
 }

@@ -4,6 +4,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
+import HomePageResults from '../HomePageResults/HomepageResults'
 const DEFAULT_SLIDER_VALUE = [0, 1000]
 
 const useStyles = makeStyles(theme => ({
@@ -61,10 +62,19 @@ const PrettoSlider = withStyles({
   }
 })(Slider)
 
-export default function CustomizedSlider () {
+export default function CustomizedSlider (props) {
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = React.useState(DEFAULT_SLIDER_VALUE)
-  // console.log(sliderPrice)
+  console.log(sliderPrice)
+  /*
+  const sliderPrice=[100,200]
+  const arr=[{},{},{},{}]
+   function updatePrice (arr) {
+      const min = sliderPrice[0]
+      const max = sliderPrice[1]
+      const results= arr.filter(hotel=> {
+         { (hotel.minRate >= min && hotel.maxRate <= max)? setState(results:results): null }
+      })} */
 
   return (
     <div className={classes.root}>
@@ -77,7 +87,7 @@ export default function CustomizedSlider () {
       <div className={classes.margin} />
       <Typography gutterBottom>Price Slider</Typography>
 
-      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} valueLabelDisplay='auto' aria-label='pretto slider' defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} valueLabelDisplay='auto' aria-label='pretto slider' defaultValue={DEFAULT_SLIDER_VALUE} onClick={updatePrice} />
     </div>
 
   )
