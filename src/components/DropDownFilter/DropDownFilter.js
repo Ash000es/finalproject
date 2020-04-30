@@ -7,7 +7,7 @@ export const DropDownFilter = () => {
     arr.sort(function (a, b) {
       return b.minRate - a.minRate
     })
-    setState({ results: arr })
+    // setState({ results: arr })
   }
   return (
     <DropdownButton id='dropdown-item-button' title='Dropdown button'>

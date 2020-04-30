@@ -30,9 +30,9 @@ export const MyProvider = () => {
       hotels: [],
       redirect: false
     }])
-const
+
   return (
-    <MyContext.Provider value={ [project: setProject ]}>
+    <MyContext.Provider value={[project: setProject]}>
       <HotelList />
       <HotelPage />
 
