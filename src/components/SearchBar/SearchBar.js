@@ -19,6 +19,7 @@ import HotelPage from '../Hotelpage/HotelPage'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import { Test } from './Test'
 import { Redirect } from 'react-router'
+const hotels = []
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -46,7 +47,12 @@ class SearchBar extends React.Component {
 
       },
       hotels: [],
-      redirect: false
+      redirect: false,
+      reviews: [{
+        type: 'TRIPADVISOR',
+        maxRate: 5,
+        minReviewCount: 3
+      }]
     }
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
@@ -65,19 +71,29 @@ class SearchBar extends React.Component {
         const hotels = []
         querySnapshot.forEach((hotel) => hotels.push(hotel.data()))
         this.setState({ hotels: hotels })
+
         console.log(hotels)
       })
   }
 
-  componentDidMount () {
-    // console.log('yayyo')
-    const db = this.context
+   savetoLocalStorage=() => {
+     window.localStorage.setItem('Objectmapping', JSON.stringfy(hotels))
+   }
 
-    // destinationsRef.get().then(doc => console.log(doc.data()))
-    // all your hotels are in a DB called hotels-limited
-    // all your facilites groups are in a 'facilites'
-    // facilityGroupCode 'facilityGroupCode'
-  }
+   getfromLocalStorage=() => {
+     const res = window.localStorage.getItem('Objectmapping')
+     JSON.parse(res)
+   }
+
+   componentDidMount () {
+     // console.log('yayyo')
+     const db = this.context
+
+     // destinationsRef.get().then(doc => console.log(doc.data()))
+     // all your hotels are in a DB called hotels-limited
+     // all your facilites groups are in a 'facilites'
+     // facilityGroupCode 'facilityGroupCode'
+   }
 
   handleSearch=() => {
     console.log('search')
@@ -96,11 +112,12 @@ class SearchBar extends React.Component {
       }
 
       const createRequestBody = () => {
-        const { occupancies, destination, stay } = this.state
+        const { occupancies, destination, stay, reviews } = this.state
         return {
           stay,
           occupancies,
-          destination
+          destination,
+          reviews
         }
       }
 
