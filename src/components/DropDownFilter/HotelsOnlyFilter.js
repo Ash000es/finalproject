@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const hotelsOnly = () => {
+export const HotelsOnly = () => {
   const classes = useStyles
 
   const showHotelsOnly = (results) => {

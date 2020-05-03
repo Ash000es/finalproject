@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { hardHotelObject } from '../assets/HardCode'
 import './HotelList.css'
-import { vacationRental } from '../DropDownFilter/VCFilter'
-import { hotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
+import { VacationRental } from '../DropDownFilter/VCFilter'
+import { HotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 
@@ -17,7 +17,7 @@ const HotelList = () => {
     <div className='HotelList'>
 
       <>
-        <hotelsOnly /><vacationRental />
+        <HotelsOnly /><VacationRental />
         <Typography />
 
         <div className='sortButton'>
