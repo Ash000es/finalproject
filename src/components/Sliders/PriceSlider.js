@@ -77,15 +77,10 @@ export default function CustomizedSlider (props) {
   return (
     <div className={classes.root}>
 
-      {/* <div className={classes.margin} /> */}
-      {/* <Typography gutterBottom>pretto.fr</Typography> */}
-      {/* <PrettoSlider valueLabelDisplay='auto' aria-label='pretto slider' defaultValue={20} /> */}
-      {/* <div className={classes.margin} /> */}
-
       <div className={classes.margin} />
       <Typography gutterBottom>Price Slider</Typography>
 
-      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} valueLabelDisplay='auto' aria-label='pretto slider' defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
 
   )

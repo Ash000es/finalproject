@@ -12,6 +12,17 @@ const ControlledCarousel1 = (props) => {
     setIndex(selectedIndex)
   }
   const [rooms] = project.results.hotels.rooms
+  const getRoomPicture = (props) => {
+    const [rooms] = project.results.hotels.rooms
+    const [images] = project.hotels.images
+
+    for (const room of rooms) {
+      for (const image of images) {
+        if (room.code === image.roomCode) return image.path
+        break
+      }
+    }
+  }
 
   return (
 

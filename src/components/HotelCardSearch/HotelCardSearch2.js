@@ -79,7 +79,7 @@ export const DetailedExpansionPanel = (props) => {
             //  'https://source.unsplash.com/random'
           >
             <div className={classes.column} id='cardImage'>
-              <ControlledCarousel1 />
+              {/* <ControlledCarousel1 /> */}
 
             </div>
             <div className='threeCon'>

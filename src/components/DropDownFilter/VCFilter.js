@@ -21,7 +21,7 @@ export const VacationRental = () => {
   }
   return (
     <div className={classes.root}>
-      <Button onClick={VCFilter} variant='outlined'>Vacation Rentals</Button>
+      <Button onClick={VCFilter} variant='outlined'>Homes</Button>
 
     </div>
   )

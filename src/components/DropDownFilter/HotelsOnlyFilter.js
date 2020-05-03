@@ -21,7 +21,7 @@ export const HotelsOnly = () => {
   }
   return (
     <div className={classes.root}>
-      <Button onClick={showHotelsOnly} variant='outlined'>All Hotels</Button>
+      <Button onClick={showHotelsOnly} variant='outlined'>Hotels</Button>
 
     </div>
   )
