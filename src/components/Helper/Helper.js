@@ -1,9 +1,10 @@
 import { MyProvider, ProjectContext } from '../Provider/Provider'
-const { project, setProject } = useContext(ProjectContext)
+import React, { useContext, useState } from 'react'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js
-export const getRoomPicture = () => {
+// const { project, setProject } = useContext(ProjectContext)
+export const getRoomPicture = (props) => {
   const [rooms] = project.results.hotels.rooms
   const [images] = project.hotels.images
 

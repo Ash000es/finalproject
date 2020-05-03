@@ -24,7 +24,6 @@ import List from '@material-ui/core/List'
 
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
-import { getRoomPicture } from '../Helper/Helper'
 
 const useStyles = makeStyles((theme) => ({
   root: {
