@@ -4,37 +4,13 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
-import CardDeck from 'react-bootstrap/CardDeck'
-import Card from 'react-bootstrap/Card'
 import '../App/App.css'
-import hotel from '../assets/hotel.png'
-import label from '../assets/label.png'
-import TA from '../assets/TA.png'
-import SearchBar from '../SearchBar/SearchBar'
 import HotelPage from '../Hotelpage/HotelPage'
-import HomePageResults from '../HomePageResults/HomepageResults'
-import HotelDetails from '../HotelsDetails'
-import { hardHotelObject } from '../assets/HardCode'
-import HotelList from '../HotelList/HoteList'
-import { FiWifi } from 'react-icons/fa'
 import FirebaseContext, { db } from '../Firebase/Firebase'
-import BasicTextFields from '../PaymentCout/PaymentCout'
-import HorizontalLabelPositionBelowStepper from '../PaymentCout/Stepper'
-import ProfileContainer from '../MyProfile/ProfileContainer'
-import MyFav from '../MyProfile/MyFav'
-import PrevCancelled from '../MyProfile/PrevCancelled'
-import UpComing from '../MyProfile/UpComing'
-import MyBookings from '../MyProfile/MyBookings'
-import ChangeDatesDiff from '../ChangeDates/OldvsNew'
-import DateRange from '../DateRange/DateRange'
-import Hero from '../Hero/Hero'
-import CartDrawer from '../CartDrawer/CartDrawer'
-import StarRating from '../StarRating/StarRating'
-import ReviewCart from '../PaymentCout/ReviewCart'
 import AboutUs from '../AboutUs/AboutUs'
 import { HomePage } from '../HomePage/HomePage'
 import { HotelList2 } from '../HotelList/HoteListTest'
-import { MyProvider, MyContext } from '../Provider/Provider'
+import ProjectProvider from '../Provider/Provider'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -44,14 +20,9 @@ export const extras = [
 
 ]
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-}
-
 function App () {
   return (
-    <MyContext.Provider>
+    <ProjectProvider>
       <FirebaseContext.Provider value={db}>
         <MemoryRouter>
           <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
@@ -78,26 +49,14 @@ function App () {
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/hotelpage:code' component={HotelPage} />
               <Route path='/searchresults' exact component={HotelList2} />
-              <Route path='/' exact component={HomePage} />
+              <Route path='/' component={HomePage} />
 
             </Switch>
-
-            {/* <Hero /> */}
-            {/* <SearchBar /> */}
-            {/* <HomePageResults /> */}
-
-            {/* <HotelList /> */}
-            {/* <HorizontalLabelPositionBelowStepper /> */}
-            {/* <HotelPage /> */}
-            {/* <MyBookings /> */}
-            {/* <HorizontalLabelPositionBelowStepper /> */}
-            {/* <ReviewCart /> */}
-            {/* <CartDrawer /> */}
 
           </Container>
         </MemoryRouter>
       </FirebaseContext.Provider>
-    </MyContext.Provider>
+    </ProjectProvider>
 
   )
 } export default App

@@ -1,42 +1,31 @@
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import HotelDetails from '../HotelsDetails'
-import { hardHotelObject } from '../assets/HardCode'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import { MyProvider, ProjectContext } from '../Provider/Provider'
 
-export const ControlledCarousel1 = (props) => {
+const ControlledCarousel1 = (props) => {
   const [index, setIndex] = useState(0)
-
+  const { project, setProject } = useContext(ProjectContext)
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
-  const imagesLinks = HotelDetails.hotel.images
-  // console.log(imagesLinks)
-  const imageArray = []
-  const textArray = []
+  const [rooms] = project.results.hotels.rooms
 
-  function pushImages (arr) {
-    arr.map(subarr => {
-      // console.log(subarr)
-      const imageLink = `http://photos.hotelbeds.com/giata/small/${subarr.path}`
-      const imageText = subarr.type.description.content
-      imageArray.push(imageLink)
-      // console.log(imageLink)
-    })
-  }
-  pushImages(imagesLinks)
-  const imageSize = { width: '250px', height: 'auto' }
   return (
+
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
-
-        {imageArray.map((arrayItem) => {
-          { /* if (arrayItem.roomCode === hardHotelObject.rooms[i].code) { */ }
+        <FavoriteIcon />
+        <FavoriteBorderIcon />
+        {rooms.map(room => {
           return (
-            <Carousel.Item key={arrayItem} style={imageSize}>
+            <Carousel.Item key={room} style={{ height: '250px', width: '200px' }}>
               <img
                 className='d-block w-100'
-                src={arrayItem}
                 alt='Hotel Pictures'
+                src={`http://photos.hotelbeds.com/giata/medium/${getRoomPicture()}`}
+                style={{ height: '250px', width: '200px' }}
               />
               <Carousel.Caption>
 
@@ -45,6 +34,7 @@ export const ControlledCarousel1 = (props) => {
 
           )
         }
+
         )}
       </Carousel>
     </>

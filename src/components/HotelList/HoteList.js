@@ -9,16 +9,12 @@ import './HotelList.css'
 import { vacationRental } from '../DropDownFilter/VCFilter'
 import { hotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 import { Link } from 'react-router-dom'
-import { MyProvider, MyContext } from '../Provider/Provider'
+import { MyProvider, ProjectContext } from '../Provider/Provider'
 
 const HotelList = () => {
-  // const newHotels = context.state.results.hotels.hotels
-  // console.log(newHotels)
-  const [project, setProject] = useContext(MyContext)
+  const { project, setProject } = useContext(ProjectContext)
   return (
     <div className='HotelList'>
-      {/* <MyContext.Consumer> */}
-      {/* {(context) => ( */}
 
       <>
         <hotelsOnly /><vacationRental />
@@ -28,22 +24,12 @@ const HotelList = () => {
           <DropDownFilter />
         </div>
         <br />
-
-        <div className='list'>
-          <h4>I am here</h4>
-
-          {/* { */}
-          {/* MyContext.state.results.hotels.hotels ? MyContext.state.results.hotels.hotels.map(hotel => { */}
-          {/* return <DetailedExpansionPanel key={hotel.code} hotel={hotel} /> */}
-          {/* }) : console.log('I am not true') */}
-          {/* } */}
-
-        </div>
+        {/* { */}
+        {project.hotels ? project.hotels.map(hotel => {
+          return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
+        }) : console.log('I am not true')}
 
       </>
-      {/* )} */}
-
-      {/* </MyContext.Consumer> */}
 
     </div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './HotelCardSearch.css'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
@@ -21,9 +21,10 @@ import Row from 'react-bootstrap/Row'
 import ListItem from '@material-ui/core/ListItem'
 import Image from 'react-bootstrap/Image'
 import List from '@material-ui/core/List'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import FavoriteIcon from '@material-ui/icons/Favorite'
+
 import { Link } from 'react-router-dom'
+import { MyProvider, ProjectContext } from '../Provider/Provider'
+import { getRoomPicture } from '../Helper/Helper'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +63,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const DetailedExpansionPanel = (props) => {
   const classes = useStyles()
+  const { project, setProject } = useContext(ProjectContext)
+  // const hotel={project.hotels}
 
   return (
     <>
@@ -74,29 +77,28 @@ export const DetailedExpansionPanel = (props) => {
             aria-controls='panel1c-content'
             id='panel1c-header'
             className='bigDiv'
-
+            //  'https://source.unsplash.com/random'
           >
             <div className={classes.column} id='cardImage'>
-              <img src='https://source.unsplash.com/random' style={{ height: '250px', width: '200px' }} />
-              <FavoriteIcon />
-              <FavoriteBorderIcon />
+              <ControlledCarousel1 />
+
             </div>
             <div className='threeCon'>
-              <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name}</Typography>
-              <div className={classes.column} id='ament'>
+              <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
+              {/* <div className={classes.column} id='ament'>
 
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
                   <li key={item.title}>{item.Icon}{item.title}  </li>
                 )}
                 </ul>
-              </div>
+              </div> */}
 
               <div className='labelBar'>
                 <p>{hardHotelObject.label.posh}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{props.hotel.zoneName}</p>
+                <p>{props.hotel.address.content}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{props.hotel.categoryName}</p>
+                <p>{props.hotel.city.content}</p>
               </div>
             </div>
 

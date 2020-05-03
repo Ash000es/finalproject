@@ -43,7 +43,7 @@ const MenuProps = {
   }
 }
 
-const names = [
+const stars = [
   '3 Stars',
   '4 Stars',
   '5 Stars'
@@ -61,12 +61,12 @@ function getStyles (name, personName, theme) {
 export default function MultipleSelectStars () {
   const classes = useStyles()
   const theme = useTheme()
-  const [personName, setPersonName] = React.useState([])
-  console.log(personName, 'person name')
+  const [starRating, setStarRating] = React.useState([])
+  console.log(starRating, 'person name')
 
   const handleChange = (event) => {
     console.log(event, 'event')
-    setPersonName(event.target.value)
+    setStarRating(event.target.value)
   }
 
   const handleChangeMultiple = (event) => {
@@ -78,11 +78,11 @@ export default function MultipleSelectStars () {
         value.push(options[i].value)
       }
     }
-    setPersonName(value)
+    setStarRating(value)
     console.log(value, 'value')
   }
   const updateStarRatings = (arr) => {
-    const res = arr.filter(hotel => !personName.includes(hotel.categoryName))
+    const res = arr.filter(hotel => !starRating.includes(hotel.categoryName))
     // console.log(res)
     // How to add it to onChange ?
     // setstate({ results: res })
@@ -97,7 +97,7 @@ export default function MultipleSelectStars () {
           labelId='demo-mutiple-checkbox-label'
           id='demo-mutiple-checkbox'
           multiple
-          value={personName}
+          value={starRating}
           onChange={handleChange}
           input={<Input />}
           renderValue={(selected) => selected.join(', ')}
@@ -105,20 +105,20 @@ export default function MultipleSelectStars () {
         >
 
           <MenuItem key='3 Stars' value='3 Stars'>
-            <Checkbox checked={personName.indexOf('3 Stars') > -1} />
+            <Checkbox checked={starRating.indexOf('3 Stars') > -1} />
             <ListItemText primary='3 Stars' />
             <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
 
           </MenuItem>
 
           <MenuItem key='4 Stars' value='4 Stars'>
-            <Checkbox checked={personName.indexOf('4 Stars') > -1} />
+            <Checkbox checked={starRating.indexOf('4 Stars') > -1} />
             <ListItemText primary='4 Stars' />
             <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
 
           </MenuItem>
           <MenuItem key='5 Stars' value='5 Stars'>
-            <Checkbox checked={personName.indexOf('5 Stars') > -1} />
+            <Checkbox checked={starRating.indexOf('5 Stars') > -1} />
             <ListItemText primary='5 Stars' />
             <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
 

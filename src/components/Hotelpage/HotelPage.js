@@ -9,9 +9,6 @@ import StarRating from '../StarRating/StarRating'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
 
-// on click we need content api call to pull the hotel information ( des+img)
-// we should have made the price and availability call before in search results so click on book will take you to the hotel page
-
 const HotelPage = (props) => {
   const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
   return (
