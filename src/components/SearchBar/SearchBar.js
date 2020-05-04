@@ -12,8 +12,6 @@ import MultipleSelect from '../MultiCheckBox/MultiCheckBox'
 import MultipleSelectStars from '../StarRatingFilter/StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
-import { hotelBeds } from '../Hotelbeds/Hotelbeds'
-import HotelList from '../HotelList/HoteList'
 import { Link } from 'react-router-dom'
 import HotelPage from '../Hotelpage/HotelPage'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
@@ -78,7 +76,7 @@ const SearchBar = () => {
 
         console.log(hotels)
       })
-    //  Get facilityCode 10
+
     const facilitiesRef = db.collection('facilities')
     const query = facilitiesRef.where('code', '==', 10).where('facilityGroupCode', '==', 20)
     query.get().then(snapshot => {
