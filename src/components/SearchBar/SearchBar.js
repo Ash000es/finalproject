@@ -135,8 +135,8 @@ const SearchBar = () => {
           'Api-Key': apikey,
           'X-Signature': getSignature(),
           Accept: 'application/json',
-          'Content-Type': 'application/json'
-          // 'Accept-Encoding': 'gzip'
+          'Content-Type': 'application/json',
+          'Accept-Encoding': 'gzip'
         },
 
         body: JSON.stringify(createRequestBody())
