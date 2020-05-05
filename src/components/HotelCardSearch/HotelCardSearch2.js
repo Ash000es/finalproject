@@ -76,7 +76,7 @@ export const DetailedExpansionPanel = (props) => {
         return null
       }
     }))
-    return finalAmenitiesArray
+    
   }
 
   return (
