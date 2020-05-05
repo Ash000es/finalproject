@@ -68,7 +68,7 @@ export const DetailedExpansionPanel = (props) => {
   // not sure destructuring facilites like below works? otherwise I will have to take hotelDB and map it to get to facilites like in the commented line, can I just chain forEach on it or it has to be inside the map? 
   const {facilites} = hotelsDB.facilites
   const finalAmenitiesArray = []
-  // hotelsDB.map(hotel=> hotel.facilites).forEach( carry on the below)
+  // hotelsDB.map(hotel=> hotel.facilites).forEach(facility=> carry on same as the below)
   const getamenitiesArray = () => {
     facilites.forEach(facility => amenities.forEach(amenity => {
       if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
