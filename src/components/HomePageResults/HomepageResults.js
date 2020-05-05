@@ -115,9 +115,9 @@ const HomePageResults = () => {
               <Card className='cardHomePage' key={city} city={city}>
                 <Card.Img variant='top' src='https://source.unsplash.com/random' />
                 <Card.Body>
-                  <Card.Title>{res2Map2Card.city}</Card.Title>
+                  <Card.Title>{city.name}</Card.Title>
                   <Card.Text>
-                    Hotels from {res2Map2Card.rate}
+                    Hotels from {city.rate}
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer>
