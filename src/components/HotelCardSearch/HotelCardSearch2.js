@@ -64,8 +64,9 @@ export const DetailedExpansionPanel = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   // const hotel={project.hotels}
-  const hotelsDB = project.hotels
-  const facilites = hotelsDB.facilites
+  const {hotelsDB} = project.hotels
+  // not sure destructuring facilites like below works? otherwise I will have to take hotelDB and map it to get to facilites? correct? 
+  const {facilites} = hotelsDB.facilites
   const finalAmenitiesArray = []
 
   const getamenitiesArray = () => {
