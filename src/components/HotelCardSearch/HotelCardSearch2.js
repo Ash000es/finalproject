@@ -21,7 +21,7 @@ import Row from 'react-bootstrap/Row'
 import ListItem from '@material-ui/core/ListItem'
 import Image from 'react-bootstrap/Image'
 import List from '@material-ui/core/List'
-
+import { amenities } from '../assets/amenities'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 
@@ -64,6 +64,20 @@ export const DetailedExpansionPanel = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   // const hotel={project.hotels}
+  const hotelsDB = project.hotels
+  const facilites = hotelsDB.facilites
+  const finalAmenitiesArray = []
+
+  const getamenitiesArray = () => {
+    facilites.forEach(facility => amenities.forEach(amenity => {
+      if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
+        return finalAmenitiesArray.push(amenity)
+      } else {
+        return null
+      }
+    }))
+    return finalAmenitiesArray
+  }
 
   return (
     <>
@@ -84,13 +98,13 @@ export const DetailedExpansionPanel = (props) => {
             </div>
             <div className='threeCon'>
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
-              {/* <div className={classes.column} id='ament'>
+              <div className={classes.column} id='ament'>
 
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
-                  <li key={item.title}>{item.Icon}{item.title}  </li>
+                  <li key={amenities.title}>{amenities.icon}{amenities.name}  </li>
                 )}
                 </ul>
-              </div> */}
+              </div>
 
               <div className='labelBar'>
                 <p>{hardHotelObject.label.posh}</p>
