@@ -1,28 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 
-export const getImages = (props) => {
+export const GetImages = () => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
-  const hotelsArray = props.hotels
-  console.log(hotelsArray)
+  const hotelsArray = project.hotels
+  // console.log(hotelsArray)
 
   const imageSize = { width: '100%', height: '500px' }
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
 
-        {(hotelsArray) => {
+        {
           hotelsArray.map(hotel => {
             console.log(hotel)
-            return hotel.images.map((imgArray, i) => {
-              console.log(imgArray, i)
-              const pathy = imgArray.path
+            hotel.images.map((imgArray) => {
+              const pathy = []
+              console.log(imgArray)
+              pathy.push(imgArray.path)
               console.log(pathy)
 
               return (
@@ -45,7 +46,7 @@ export const getImages = (props) => {
             })
           }
           )
-        }}
+        }
       </Carousel>
     </>
   )

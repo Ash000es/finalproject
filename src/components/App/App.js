@@ -31,7 +31,7 @@ function App () {
               <LinkContainer to='/home'>
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/Thingstodo'>
+              <LinkContainer to='/hotelpage'>
                 <Nav.Link>Things to do</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/Travelessentials'>

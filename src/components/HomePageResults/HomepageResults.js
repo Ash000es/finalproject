@@ -6,10 +6,10 @@ import Row from 'react-bootstrap/Row'
 import Constants from '../assets/Constants'
 
 const HomePageResults = () => {
-  useEffect(() => {
-    getEachCityResults()
-    findCheapestHotel()
-  }, [])
+  // useEffect(() => {
+  //   getEachCityResults()
+  //   findCheapestHotel()
+  // }, [])
 
   const [state, setState] = useState(
     {
@@ -89,21 +89,21 @@ const HomePageResults = () => {
       createAPIRequest(city)
     })
   }
-  const findCheapestHotel = () => {
-    state.homePageBooking.foreach(des => {
-      const res212 = des.reduce(function (prev, curr) {
-        if (prev.minRate < curr.minRate) {
-          setState({
-            ...state,
-            homePageContent: {
-              rate: prev.minRate,
-              city: prev.destinationName
-            }
-          })
-        }
-      })
-    })
-  }
+  // const findCheapestHotel = () => {
+  //   state.homePageBooking.forEach(des => {
+  //     const res212 = des.reduce(function (prev, curr) {
+  //       if (prev.minRate < curr.minRate) {
+  //         setState({
+  //           ...state,
+  //           homePageContent: {
+  //             rate: prev.minRate,
+  //             city: prev.destinationName
+  //           }
+  //         })
+  //       }
+  //     })
+  //   })
+  // }
   // still need to capture this object for each city, is it better to make new state and push it there or in a varible as below is fine?
 
   return (

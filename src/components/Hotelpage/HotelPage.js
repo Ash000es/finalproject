@@ -8,30 +8,31 @@ import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import StarRating from '../StarRating/StarRating'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
-import { getImages } from '../SearchBar/HotelCarousel'
+import { GetImages } from '../SearchBar/HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
+import CartDrawer from '../CartDrawer/CartDrawer'
 
 const HotelPage = (props) => {
-  const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
+  // const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
   const { project, setProject } = useContext(ProjectContext)
   return (
     <>
       <h4>This hotel have spceial offer for you</h4>
-      <p>{props.hotel.name}</p>
+      <p>{hardHotelObject.name}</p>
       <p>{hardHotelObject.label.posh}</p>
-      <p>{props.hotel.address},
-        {props.hotel.postalCode},
-        {props.hotel.city} show on map
+      <p>{hardHotelObject.address},
+        {hardHotelObject.postalCode},
+        {hardHotelObject.city} show on map
       </p>
-      <p>{props.hotel.rooms[0].rates[0].net}</p>
+      <p>nothing</p>
       <p>Edit your dates</p>
 
       <DateRangePicker />
       <div>
-        <getImages />
+        <GetImages />
       </div>
       <div>amenities:bn
-        <p>{props.hotel.Numberofrooms.number} Rooms</p>
+        <p>70 Rooms</p>
         <ul style={{ listStyleType: 'none' }}>{hardHotelObject.hotelAmenities.map(item =>
           <li key={item.title}>{item.Icon}{item.title}</li>
         )}
@@ -40,10 +41,10 @@ const HotelPage = (props) => {
       </div>
       <StarRating />
       <p>key facts:
-        {HotelDetails.hotel.description.content}
+        nothing
       </p>
-      <p>Check-in from{props.hotel.Checkin.timeFrom}
-        Check-out from{props.hotel.Checkout.timeFrom}
+      <p>Check-in from
+        Check-out from
       </p>
       <p>{hardHotelObject.CheckinRules.title} required at Check-in</p>
       <p>City tax will be collected by hotel at check-in or check-out.</p>
@@ -59,23 +60,22 @@ const HotelPage = (props) => {
         </thead>
         <tbody>
           <tr>
-            <td>{
-              props.hotel.rooms[0].name
-            }
-            <ControlledCarousel1 />
+            <td>
+              {/* <ControlledCarousel1 /> */}
+              <img src='' alt='not' />
 
             </td>
-            <td>Adults {props.hotel.rooms[0].rates[0].adults}
-              Children {props.hotel.rooms[0].rates[0].children}
+            <td>Adults 2
+              Children 1
             </td>
             <td>Free Wifi</td>
-            <td>{props.hotel.rooms[0].rates[0].net}$<Button variant='primary'>Book now</Button>{' '}Free cancelation till{cancelationDate}</td>
+            <td>120 $<Button variant='primary'>Book now</Button>{' '}Free cancelation till</td>
           </tr>
 
         </tbody>
         <tbody>
           <p>Your booknig from {} to {}</p>
-          <p>{props.hotel.rooms[0].rates[0].net}</p>
+          <p>130</p>
           <Button variant='primary'>Book now</Button>{' '}
           <Button variant='outline-primary'>Add to cart</Button>{' '}
 

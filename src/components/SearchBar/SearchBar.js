@@ -59,8 +59,8 @@ const SearchBar = () => {
   const fetchHotels = (destination) => {
     console.log('searchME')
 
-    // map the results and get an array of hotel IDS
-    const arrayCodes = getHotelsCodes()
+    // map the results and get an array of hotel IDS getHotelsCodes()
+    const arrayCodes = [663, 1431, 1446, 6940, 576022, 585184]
     db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST')
 
       .onSnapshot(querySnapshot => {

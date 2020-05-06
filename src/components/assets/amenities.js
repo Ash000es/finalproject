@@ -1703,96 +1703,96 @@ export const amenities = [
 
   }
 ]
-const results={
-    hello:false
-    facilities:[{
-  facilityCode: 20
-  facilityGroupCode: 10
-  number: 1969
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 30
-  facilityGroupCode: 10
-  number: 2003
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 70
-  facilityGroupCode: 10
-  indYesOrNo: false
-  number: 153
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 50
-  facilityGroupCode: 10
-  number: 0
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 80
-  facilityGroupCode: 10
-  number: 10
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 90
-  facilityGroupCode: 10
-  number: 141
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 100
-  facilityGroupCode: 10
-  number: 2
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 56
-  facilityGroupCode: 10
-  indYesOrNo: false
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 10
-  facilityGroupCode: 20
-  indFee: false
-  indLogic: true
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 10
-  facilityGroupCode: 30
-  indFee: false
-  indLogic: true
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 40
-  facilityGroupCode: 30
-  indFee: false
-  indLogic: true
-  order: 1
-  voucher: false
-  },
-  {
-  facilityCode: 50
-  facilityGroupCode: 30
-  indFee: false
-  indLogic: true
-  order: 1
-  voucher: false
-  }],
-  final:true
-  }
+// const results={
+//     hello:false,
+//     facilities:[{
+//   facilityCode: 20
+//   facilityGroupCode: 10
+//   number: 1969
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 30
+//   facilityGroupCode: 10
+//   number: 2003
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 70
+//   facilityGroupCode: 10
+//   indYesOrNo: false
+//   number: 153
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 50
+//   facilityGroupCode: 10
+//   number: 0
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 80
+//   facilityGroupCode: 10
+//   number: 10
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 90
+//   facilityGroupCode: 10
+//   number: 141
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 100
+//   facilityGroupCode: 10
+//   number: 2
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 56
+//   facilityGroupCode: 10
+//   indYesOrNo: false
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 10
+//   facilityGroupCode: 20
+//   indFee: false
+//   indLogic: true
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 10
+//   facilityGroupCode: 30
+//   indFee: false
+//   indLogic: true
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 40
+//   facilityGroupCode: 30
+//   indFee: false
+//   indLogic: true
+//   order: 1
+//   voucher: false
+//   },
+//   {
+//   facilityCode: 50
+//   facilityGroupCode: 30
+//   indFee: false
+//   indLogic: true
+//   order: 1
+//   voucher: false
+//   }],
+//   final:true
+//   }
