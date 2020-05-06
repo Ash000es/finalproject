@@ -60,24 +60,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const DetailedExpansionPanel = (props) => {
+export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   // const hotel={project.hotels}
-  const {hotelsDB} = project.hotels
-  // not sure destructuring facilites like below works? otherwise I will have to take hotelDB and map it to get to facilites like in the commented line, can I just chain forEach on it or it has to be inside the map? 
-  const {facilites} = hotelsDB.facilites
+  const { hotelsDB } = project.hotels
+  // not sure destructuring facilites like below works? otherwise I will have to take hotelDB and map it to get to facilites like in the commented line, can I just chain forEach on it or it has to be inside the map?
+  const { facilites } = hotelsDB.facilites
   const finalAmenitiesArray = []
   // hotelsDB.map(hotel=> hotel.facilites).forEach(facility=> carry on same as the below)
-  const getamenitiesArray = () => {
+  const getAmenitiesArray = () => {
     facilites.forEach(facility => amenities.forEach(amenity => {
       if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
         return finalAmenitiesArray.push(amenity)
-      } else {
-        return null
       }
     }))
-    
   }
 
   return (
@@ -94,7 +91,7 @@ export const DetailedExpansionPanel = (props) => {
             //  'https://source.unsplash.com/random'
           >
             <div className={classes.column} id='cardImage'>
-              {/* <ControlledCarousel1 /> */}
+              <ControlledCarousel1 />
 
             </div>
             <div className='threeCon'>

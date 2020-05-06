@@ -3,6 +3,7 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 import SearchBar from '../SearchBar/SearchBar'
 import Row from 'react-bootstrap/Row'
+import Constants from '../assets/Constants'
 
 const HomePageResults = () => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const HomePageResults = () => {
     {
       // created special state for multi destinations and the reason the below is nested is because it is more than one destination
       homePageBooking: [[{}, {}, {}], [{}, {}, {}], [{}, {}, {}], [{}, {}, {}]],
-      homePageContent: [[{}, {}, {}], [{}, {}, {}], [{}, {}, {}], [{}, {}, {}]],
+      homePageContent: [],
       stay: {
         checkIn: '2020-11-15',
         checkOut: '2020-11-16'
@@ -86,23 +87,24 @@ const HomePageResults = () => {
   const getEachCityResults = () => {
     popularCities.map(city => {
       createAPIRequest(city)
-      // fetchHotels(city) same idea as above /problem now both fetchhotels call and bookingAPI call have to be rewrriten here, can't re use the one in search bar and can't stick it in helper either
     })
   }
   const findCheapestHotel = () => {
     state.homePageBooking.foreach(des => {
       const res212 = des.reduce(function (prev, curr) {
         if (prev.minRate < curr.minRate) {
-          return {
-            rate: prev.minRate,
-            city: prev.destinationName
-          }
+          setState({
+            ...state,
+            homePageContent: {
+              rate: prev.minRate,
+              city: prev.destinationName
+            }
+          })
         }
       })
     })
   }
   // still need to capture this object for each city, is it better to make new state and push it there or in a varible as below is fine?
-  const res2Map2Card = findCheapestHotel()
 
   return (
     <div className='cardsDeck'>
@@ -110,7 +112,7 @@ const HomePageResults = () => {
 
       <CardDeck>
         <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-          {res2Map2Card.map(city => {
+          {/* {homePageContent.map(city => {
             return (
               <Card className='cardHomePage' key={city} city={city}>
                 <Card.Img variant='top' src='https://source.unsplash.com/random' />
@@ -125,9 +127,9 @@ const HomePageResults = () => {
                 </Card.Footer>
               </Card>
             )
-          })}
+          })} */}
 
-          {/* <Card className='cardHomePage'>
+          <Card className='cardHomePage'>
             <Card.Img variant='top' src='https://source.unsplash.com/random' />
             <Card.Body>
               <Card.Title>Barcelona</Card.Title>
@@ -226,7 +228,7 @@ const HomePageResults = () => {
             <Card.Footer>
               <small className='text-muted'>Last updated 3 mins ago</small>
             </Card.Footer>
-          </Card> */}
+          </Card>
         </Row>
       </CardDeck>
     </div>

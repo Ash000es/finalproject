@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { SearchResultsHero } from '../SearchResultsHero/SearchResultsHero'
-import { DetailedExpansionPanel } from '../HotelCardSearch/HotelCardSearch2'
+import { HotelCardSearch } from '../HotelCardSearch/HotelCardSearch2'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -26,7 +26,7 @@ const HotelList = () => {
         <br />
         {/* { */}
         {project.hotels ? project.hotels.map(hotel => {
-          return <DetailedExpansionPanel key={hotel.code} hotel={hotel} />
+          return <HotelCardSearch key={hotel.code} hotel={hotel} />
         }) : console.log('I am not true')}
 
       </>

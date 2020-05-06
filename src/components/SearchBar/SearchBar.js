@@ -18,6 +18,7 @@ import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import { Test } from './Test'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 import { Redirect } from 'react-router'
+import { getHotelsCodes } from '../Helper/Helper'
 
 const SearchBar = () => {
   const intialState = {
@@ -60,7 +61,7 @@ const SearchBar = () => {
     console.log('searchME')
 
     // map the results and get an array of hotel IDS
-    const array = [576022, 585184, 1447, 361785, 1431, 1446, 6940, 24845]
+    const arrayCodes = getHotelsCodes()
     db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST')
 
       .onSnapshot(querySnapshot => {
@@ -68,7 +69,7 @@ const SearchBar = () => {
         querySnapshot.forEach((hotel) => {
           const hotelData = hotel.data()
           // if hotelData.code
-          if (array.includes(hotelData.code)) {
+          if (arrayCodes.includes(hotelData.code)) {
             hotels.push(hotel.data())
           }
         })
