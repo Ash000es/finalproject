@@ -77,7 +77,7 @@ const HotelPage = (props) => {
           <p>Your booknig from {} to {}</p>
           <p>130</p>
           <Button variant='primary'>Book now</Button>{' '}
-          <Button variant='outline-primary'>Add to cart</Button>{' '}
+          <CartDrawer />
 
         </tbody>
       </Table>
