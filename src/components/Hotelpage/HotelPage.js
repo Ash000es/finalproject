@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import HotelDetails from '../HotelsDetails'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import Table from 'react-bootstrap/Table'
@@ -8,9 +8,12 @@ import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import StarRating from '../StarRating/StarRating'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
+import { getImages } from '../SearchBar/HotelCarousel'
+import { MyProvider, ProjectContext } from '../Provider/Provider'
 
 const HotelPage = (props) => {
   const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
+  const { project, setProject } = useContext(ProjectContext)
   return (
     <>
       <h4>This hotel have spceial offer for you</h4>
@@ -25,7 +28,7 @@ const HotelPage = (props) => {
 
       <DateRangePicker />
       <div>
-        <ControlledCarousel />
+        <getImages />
       </div>
       <div>amenities:bn
         <p>{props.hotel.Numberofrooms.number} Rooms</p>
@@ -44,6 +47,7 @@ const HotelPage = (props) => {
       </p>
       <p>{hardHotelObject.CheckinRules.title} required at Check-in</p>
       <p>City tax will be collected by hotel at check-in or check-out.</p>
+      {/* function to map rooms here to return many rooms in the table, also where extras will go here? */}
       <Table striped bordered hover size='sm'>
         <thead>
           <tr>

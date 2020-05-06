@@ -9,7 +9,9 @@ const ProjectProvider = (props) => {
     {
       results: {},
       hotels: [],
-      redirect: false
+      redirect: false,
+      cartOpen: false,
+      cartItems: []
     })
   console.log(project, setProject)
   return (

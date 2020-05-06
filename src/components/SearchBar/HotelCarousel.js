@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import { MyProvider, ProjectContext } from '../Provider/Provider'
 
-export const Test = (props) => {
+export const getImages = (props) => {
   const [index, setIndex] = useState(0)
+  const { project, setProject } = useContext(ProjectContext)
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)

@@ -15,7 +15,6 @@ import './SearchBar.css'
 import { Link } from 'react-router-dom'
 import HotelPage from '../Hotelpage/HotelPage'
 import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
-import { Test } from './Test'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 import { Redirect } from 'react-router'
 import { getHotelsCodes } from '../Helper/Helper'
@@ -194,13 +193,13 @@ const SearchBar = () => {
         {/* <Link to='/searchresults'> */}
         <Button variant='primary' onClick={handleClickButton}>Search</Button>{' '}
         {/* </Link> */}
-        <Button variant='success'>Inspire me</Button>{' '}
+
       </div>
       <div className='SearchBarFilters'>
         <CustomizedSlider />
         <MultipleSelect />
         <MultipleSelectStars />
-        {/* <Test hotels={state.hotels} /> */}
+
       </div>
 
     </>
