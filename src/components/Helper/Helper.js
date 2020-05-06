@@ -24,3 +24,6 @@ import React, { useContext, useState } from 'react'
 //   })
 //   return hotelCodes
 // }
+export const addCartItem = () => {
+
+}

@@ -11,10 +11,12 @@ import DateRangePicker from '../DateRange/NewDateRange'
 import { GetImages } from '../SearchBar/HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 import CartDrawer from '../CartDrawer/CartDrawer'
+import { addCartItem } from '../Helper/Helper'
 
 const HotelPage = (props) => {
   // const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
   const { project, setProject } = useContext(ProjectContext)
+
   return (
     <>
       <h4>This hotel have spceial offer for you</h4>
@@ -77,6 +79,7 @@ const HotelPage = (props) => {
           <p>Your booknig from {} to {}</p>
           <p>130</p>
           <Button variant='primary'>Book now</Button>{' '}
+          <Button variant='outline-primary' onClick={addCartItem}>Add to cart</Button>{' '}
           <CartDrawer />
 
         </tbody>

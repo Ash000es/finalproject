@@ -12,6 +12,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import MyFav from '../MyProfile/MyFav'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
+import { CartBadge } from '../CartDrawer/CartBadge'
+import { CartItem } from '../CartDrawer/CartItem'
 
 const useStyles = makeStyles({
   list: {
@@ -32,7 +34,7 @@ export default function CartDrawer () {
     right: false
   })
   console.log(state)
-  const { cartcartItems } = project.cartItems
+  const { cartItems } = project.cartItems
 
   const toggleDrawer = (anchor, open) => (event) => {
     console.log(event)
@@ -53,9 +55,9 @@ export default function CartDrawer () {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {/* {cartcartItems.map(item => {
-        return <card />
-      })} */}
+      {cartItems ? cartItems.map(item => {
+        return <CartItem key={item} item={item} />
+      }) : null}
     </div>
   )
 
@@ -63,7 +65,7 @@ export default function CartDrawer () {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Add to cart</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>View your cart</Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
