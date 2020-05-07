@@ -20,7 +20,7 @@ export const CartItem = (props) => {
       return (
       <Toast>
         <Toast.Header>
-          <i onClick={removeItem}><CloseIcon /></i>
+          <i onClick={removeItem} code={props.code}><CloseIcon /></i>
           <img src='https://source.unsplash.com/random' className='rounded mr-2' alt='' style={{ width: 300 }} />
           <strong className='mr-auto'>{props.name}</strong>
           <small>{props.price}</small>
