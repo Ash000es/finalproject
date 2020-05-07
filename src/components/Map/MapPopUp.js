@@ -10,6 +10,7 @@ const MapPopUp = () => {
 
   return (
     <>
+      {/* click here */}
       <Button variant='primary' onClick={() => setShow(true)}>
         Show on Map
       </Button>
