@@ -11,6 +11,7 @@ import AboutUs from '../AboutUs/AboutUs'
 import { HomePage } from '../HomePage/HomePage'
 import { HotelList2 } from '../HotelList/HoteListTest'
 import ProjectProvider from '../Provider/Provider'
+import MapPopUp from '../Map/MapPopUp'
 
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -48,6 +49,7 @@ function App () {
               <Route path='/about' exact component={AboutUs} />
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/hotelpage:code' component={HotelPage} />
+              <Route path='/Travelessentials' exact component={MapPopUp} />
               <Route path='/searchresults' exact component={HotelList2} />
               <Route path='/' component={HomePage} />
 
