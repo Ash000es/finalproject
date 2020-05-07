@@ -14,9 +14,8 @@ import CartDrawer from '../CartDrawer/CartDrawer'
 import { addCartItem } from '../Helper/Helper'
 
 const HotelPage = (props) => {
-  // const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
   const { project, setProject } = useContext(ProjectContext)
-
+  // add to cart function to add the item to the cart drawer
   const addToCart = () => {
     const hotelCartItem = { name: props.hotel.name, image: props.hotel.images[0], price: props.hotel.price, code: props.hotel.code }
     setProject({ ...project, cartItems: hotelCartItem })

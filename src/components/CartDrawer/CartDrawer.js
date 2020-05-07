@@ -34,8 +34,9 @@ export default function CartDrawer () {
     right: false
   })
   console.log(state)
-  const hotelsArray = []
-  const totalPrice = project.cartItems.reduce((acc, curr) => acc + curr.price, 0)
+  const cartItems = project.cartItems
+  // getting the total price of the cart items
+  const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
 
   const toggleDrawer = (anchor, open) => (event) => {
     console.log(event)
@@ -44,6 +45,7 @@ export default function CartDrawer () {
     }
 
     setState({ ...state, [anchor]: open })
+    // not sure if this is needed?
     setProject({ ...project, cartOpen: true })
   }
 
@@ -56,11 +58,12 @@ export default function CartDrawer () {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      {/* mapping inside the cart drwarer a number of items  */}
       <span>{project.cartItems.length}</span>
-      {hotelsArray ? hotelsArray.map(item => {
-        return <CartItem key={item} item={item} />
+      {cartItems ? cartItems.map(item => {
+        return <CartItem key={item.code} item={item} />
       }) : null}
-      <span>Total price:0</span>
+      <span>{totalPrice}</span>
     </div>
   )
 
