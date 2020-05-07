@@ -11,7 +11,8 @@ const ProjectProvider = (props) => {
       hotels: [],
       redirect: false,
       cartOpen: false,
-      cartItems: []
+      cartItems: [],
+      totalPrice: 0
     })
   console.log(project, setProject)
   return (

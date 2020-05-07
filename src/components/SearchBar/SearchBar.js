@@ -18,6 +18,7 @@ import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 import { Redirect } from 'react-router'
 import { getHotelsCodes } from '../Helper/Helper'
+import { db, project, setProject } from '../assets/Constants'
 
 const SearchBar = () => {
   const intialState = {
@@ -54,6 +55,7 @@ const SearchBar = () => {
   const [state, setState] = useState(intialState)
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
+
   console.log(project, 'first project')
 
   const fetchHotels = (destination) => {

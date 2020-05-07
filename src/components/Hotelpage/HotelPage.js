@@ -17,6 +17,11 @@ const HotelPage = (props) => {
   // const cancelationDate = props.hotel.rooms[0].rates[0].cancellationPolicies[0].from
   const { project, setProject } = useContext(ProjectContext)
 
+  const addToCart = () => {
+    const hotelCartItem = { name: props.hotel.name, image: props.hotel.images[0], price: props.hotel.price, code: props.hotel.code }
+    setProject({ ...project, cartItems: hotelCartItem })
+  }
+
   return (
     <>
       <h4>This hotel have spceial offer for you</h4>
@@ -79,7 +84,7 @@ const HotelPage = (props) => {
           <p>Your booknig from {} to {}</p>
           <p>130</p>
           <Button variant='primary'>Book now</Button>{' '}
-          <Button variant='outline-primary' onClick={addCartItem}>Add to cart</Button>{' '}
+          <Button variant='outline-primary' onClick={addToCart}>Add to cart</Button>{' '}
           <CartDrawer />
 
         </tbody>

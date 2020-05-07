@@ -1,5 +1,6 @@
 import { MyProvider, ProjectContext } from '../Provider/Provider'
 import React, { useContext, useState } from 'react'
+import { db, project, setProject } from '../assets/Constants'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js
@@ -24,6 +25,29 @@ import React, { useContext, useState } from 'react'
 //   })
 //   return hotelCodes
 // }
-export const addCartItem = () => {
+// export const handleClick = (hotel.code) => {
+//     addToCart(code)=>setProject({...project,addedItems:code})
 
-}
+// }
+
+// export const fetchHotels = (destination) => {
+//   console.log('searchME')
+
+//   // map the results and get an array of hotel IDS getHotelsCodes()
+//   const arrayCodes = [663, 1431, 1446, 6940, 576022, 585184]
+//   db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST')
+
+//     .onSnapshot(querySnapshot => {
+//       const hotels = []
+//       querySnapshot.forEach((hotel) => {
+//         const hotelData = hotel.data()
+//         // if hotelData.code
+//         if (arrayCodes.includes(hotelData.code)) {
+//           hotels.push(hotel.data())
+//         }
+//       })
+
+//       console.log(hotels)
+//       setProject({ ...project, hotels })
+//     })
+// }
