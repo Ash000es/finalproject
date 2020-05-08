@@ -7,4 +7,18 @@ export const D = new Date()
 export const getSignature = () => {
   return (apikey + sec + Math.round(D.getTime() / 1000))
 }
-// context
+// cont
+export const amenities = [
+  'Pool',
+  'Free breakfast',
+  'Spa',
+  'Bar',
+  'Resturant',
+  'Free-Wifi',
+  'Room service',
+  'Fitness center',
+  'concierge',
+  'Air conditioning',
+  'TV',
+  'Pet friendly'
+]

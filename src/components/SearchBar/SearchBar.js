@@ -8,7 +8,7 @@ import FirebaseContext from '../Firebase/Firebase'
 import DateRange from '../DateRange/DateRange'
 import Button from 'react-bootstrap/Button'
 import CustomizedSlider from '../Sliders/PriceSlider'
-import MultipleSelect from '../MultiCheckBox/MultiCheckBox'
+import AmenitiesSelect from '../MultiCheckBox/MultiCheckBox'
 import MultipleSelectStars from '../StarRatingFilter/StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
@@ -199,7 +199,7 @@ const SearchBar = () => {
       </div>
       <div className='SearchBarFilters'>
         <CustomizedSlider />
-        <MultipleSelect />
+        <AmenitiesSelect />
         <MultipleSelectStars />
 
       </div>
