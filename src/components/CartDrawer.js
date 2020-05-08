@@ -10,10 +10,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
-import MyFav from '../MyProfile/MyFav'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
-import { CartBadge } from '../CartDrawer/CartBadge'
-import { CartItem } from '../CartDrawer/CartItem'
+import MyFav from './MyProfile/MyFav'
+import { MyProvider, ProjectContext } from './Provider/Provider'
+import { CartBadge } from './CartBadge'
+import { CartItem } from './CartItem'
 
 const useStyles = makeStyles({
   list: {

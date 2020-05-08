@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
 import { GetImages } from '../SearchBar/HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
-import CartDrawer from '../CartDrawer/CartDrawer'
+import CartDrawer from '../CartDrawer'
 import { addCartItem } from '../Helper/Helper'
 
 const HotelPage = (props) => {
