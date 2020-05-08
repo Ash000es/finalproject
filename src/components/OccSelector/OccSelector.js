@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function CustomizedSelects (props) {
+export default function OccSelector (props) {
   const classes = useStyles()
   const [occupancies, setoccupancies] = React.useState('')
 

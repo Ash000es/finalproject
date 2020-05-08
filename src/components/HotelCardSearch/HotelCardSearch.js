@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Chip from '@material-ui/core/Chip'
 import Button from '@material-ui/core/Button'
-import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
+import ThumbilCarousel from '../thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import SelectPrice from '../SelectPrice'
 import { SingleLineGridList } from '../ExtrasList'
@@ -23,7 +23,7 @@ import Image from 'react-bootstrap/Image'
 import List from '@material-ui/core/List'
 import { amenities } from '../assets/amenities'
 import { Link } from 'react-router-dom'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
+import { MyProvider, ProjectContext } from '../Provider'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,7 +91,7 @@ export const HotelCardSearch = (props) => {
             //  'https://source.unsplash.com/random'
           >
             <div className={classes.column} id='cardImage'>
-              <ControlledCarousel1 />
+              <ThumbilCarousel />
 
             </div>
             <div className='threeCon'>

@@ -7,15 +7,15 @@ import OccSelector2 from '../OccSelector2/OccSelector2'
 import FirebaseContext from '../Firebase'
 import DateRange from '../DateRange/DateRange'
 import Button from 'react-bootstrap/Button'
-import CustomizedSlider from '../Sliders/PriceSlider'
-import AmenitiesSelect from '../MultiCheckBox/MultiCheckBox'
-import MultipleSelectStars from '../StarRatingFilter/StarRatingFilter'
+import PriceSlider from '../PriceSlider'
+import AmenitiesSelect from '../AmenitiesSelect'
+import StarRatingFilter from '../StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { Link } from 'react-router-dom'
 import HotelPage from '../Hotelpage/HotelPage'
-import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
+
+import { MyProvider, ProjectContext } from '../Provider'
 import { Redirect } from 'react-router'
 import { getHotelsCodes } from '../Helper'
 import { db, project, setProject } from '../assets/Constants'
@@ -198,9 +198,9 @@ const SearchBar = () => {
 
       </div>
       <div className='SearchBarFilters'>
-        <CustomizedSlider />
+        <PriceSlider />
         <AmenitiesSelect />
-        <MultipleSelectStars />
+        <StarRatingFilter />
 
       </div>
 

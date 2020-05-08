@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
+import './HotelPCarousel.css'
+import { MyProvider, ProjectContext } from './Provider'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 
 export const GetImages = () => {
   const [index, setIndex] = useState(0)
@@ -35,7 +38,8 @@ export const GetImages = () => {
                     alt='Hotel Pictures'
 
                   />
-
+                  <i className='iconHeart'><FavoriteIcon /></i>
+                  <i className='iconHeart'><FavoriteBorderIcon /></i>
                   <Carousel.Caption>
                     <h3>{imgArray.order}</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

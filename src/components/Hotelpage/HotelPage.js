@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react'
 import HotelDetails from '../HotelsDetails'
-import ControlledCarousel from '../HotelPCarousel/HotelPCarousel'
+
 import Table from 'react-bootstrap/Table'
 import SearchBar from '../SearchBar/SearchBar'
 import { hardHotelObject } from '../assets/HardCode'
-import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
-import StarRating from '../StarRating/StarRating'
+import ThumbilCarousel from '../thumbilCarousel'
+import StarRatingDisplay from '../StarRatingDisplay'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
-import { GetImages } from '../SearchBar/HotelCarousel'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
+import { GetImages } from '../HotelCarousel'
+import { MyProvider, ProjectContext } from '../Provider'
 import CartDrawer from '../CartDrawer'
 import { addCartItem } from '../Helper'
 
@@ -45,7 +45,7 @@ const HotelPage = (props) => {
         </ul>
         <img src='' alt='TA' />
       </div>
-      <StarRating />
+      <StarRatingDisplay />
       <p>key facts:
         nothing
       </p>
@@ -67,7 +67,7 @@ const HotelPage = (props) => {
         <tbody>
           <tr>
             <td>
-              {/* <ControlledCarousel1 /> */}
+              {/* <ThumbilCarousel /> */}
               <img src='' alt='not' />
 
             </td>

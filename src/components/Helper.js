@@ -1,4 +1,4 @@
-import { MyProvider, ProjectContext } from './Provider/Provider'
+import { MyProvider, ProjectContext } from './Provider'
 import React, { useContext, useState } from 'react'
 import { db, project, setProject } from './assets/Constants'
 

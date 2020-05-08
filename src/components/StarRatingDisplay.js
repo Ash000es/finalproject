@@ -1,14 +1,12 @@
 import React from 'react'
-import { hardHotelObject } from '../assets/HardCode'
+import { hardHotelObject } from './assets/HardCode'
 import RestaurantIcon from '@material-ui/icons/Restaurant'
 import RoomServiceIcon from '@material-ui/icons/RoomService'
 import DeckIcon from '@material-ui/icons/Deck'
 import StarRateIcon from '@material-ui/icons/StarRate'
+import { stars3, stars4, stars5 } from './assets/Constants'
 
-const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-class StarRating extends React.Component {
+class StarRatingDisplay extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -47,4 +45,4 @@ class StarRating extends React.Component {
   }
 }
 
-export default StarRating
+export default StarRatingDisplay

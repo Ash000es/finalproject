@@ -5,7 +5,7 @@ import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import SimplePopover from './PopOverButton/PopOverButton'
 import { extras } from './assets/Constants'
-import FloatingActionButtonSize from './AddButton/AddButton'
+import ExtrasAddButton from './ExtrasAddButton'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +57,7 @@ export const SingleLineGridList = () => {
               }}
               actionIcon={
                 <>
-                  <FloatingActionButtonSize />
+                  <ExtrasAddButton />
                   <SimplePopover sum={extra.summary} />
 
                 </>

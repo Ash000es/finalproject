@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { MyProvider, ProjectContext } from './Provider/Provider'
+import { MyProvider, ProjectContext } from './Provider'
 import Toast from 'react-bootstrap/Toast'
 import CloseIcon from '@material-ui/icons/Close'
 

@@ -1,3 +1,5 @@
+import StarRateIcon from '@material-ui/icons/StarRate'
+import React from 'react'
 // homepage results const
 export const googleAPIKey = 'AIzaSyDn0Lsji2c2LyyRPWgG4WRIprFqdcsTf90'
 export const popularCities = ['IBZ', 'BCN', 'LON', 'MAD', 'MCO']
@@ -29,3 +31,6 @@ export const extras = [
   { title: 'House Red', price: 30, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
 
 ]
+export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]

@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card'
 import './Hero.css'
 
-const Hero = () => {
+const HomePageHero = () => {
   return (
     <div className='bigCon'>
       <div className='con1'>
@@ -52,4 +52,4 @@ const Hero = () => {
 
     </div>
   )
-}; export default Hero
+}; export default HomePageHero

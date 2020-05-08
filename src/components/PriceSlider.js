@@ -4,7 +4,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
-import HomePageResults from '../HomePageResults/HomepageResults'
+import HomePageResults from './HomePageResults/HomepageResults'
 const DEFAULT_SLIDER_VALUE = [0, 1000]
 
 const useStyles = makeStyles(theme => ({
@@ -62,7 +62,7 @@ const PrettoSlider = withStyles({
   }
 })(Slider)
 
-export default function CustomizedSlider (props) {
+export default function PriceSlider (props) {
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = React.useState(DEFAULT_SLIDER_VALUE)
   console.log(sliderPrice)

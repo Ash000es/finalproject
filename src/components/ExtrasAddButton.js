@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function FloatingActionButtonSize () {
+export default function ExtrasAddButton () {
   const classes = useStyles()
 
   return (

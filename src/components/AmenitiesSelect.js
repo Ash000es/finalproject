@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Input from '@material-ui/core/Input'
@@ -10,9 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Select from '@material-ui/core/Select'
 import Checkbox from '@material-ui/core/Checkbox'
 import Chip from '@material-ui/core/Chip'
-import { ListItem } from '@material-ui/core'
-
-import StarRateIcon from '@material-ui/icons/StarRate'
+import { amenities } from './assets/Constants'
+import { MyProvider, ProjectContext } from './Provider'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -43,12 +41,6 @@ const MenuProps = {
   }
 }
 
-const stars = [
-  '3 Stars',
-  '4 Stars',
-  '5 Stars'
-]
-
 function getStyles (name, personName, theme) {
   return {
     fontWeight:
@@ -58,75 +50,80 @@ function getStyles (name, personName, theme) {
   }
 }
 
-export default function MultipleSelectStars () {
+const AmenitiesSelect = () => {
   const classes = useStyles()
   const theme = useTheme()
-  const [starRating, setStarRating] = React.useState([])
-  console.log(starRating, 'person name')
+  const [amenitiesName, setamenitiesName] = React.useState([])
+  console.log(amenitiesName, 'I amhere')
+  const { project, setProject } = useContext(ProjectContext)
+
+  const chossenAmenities = []
+  // had to comment out cause it return undefined
+  // const { hotels } = project.hotels
+  // const { amenitesArray } = hotels.amenities
+
+  // const filterHotelsByAmenities = () => {
+  //   amenitiesName.forEach(amenityName => amenities.forEach(amenity => {
+  //     if (amenityName === amenity.name) {
+  //       chossenAmenities.push({
+  //         amenitieCode: amenity.FacilityCode,
+  //         amenitiGroupCode: amenity.FacilityGroupCode
+  //       })
+  //     }
+  //   }))
+  // }
+  // const filterOutHotels = () => {
+  //   amenitesArray.forEach(amenObject => chossenAmenities.forEach(chossenAmen => {
+  //     if (amenObject.facilityCode === chossenAmen.amenitieCode && amenObject.facilityGroupCode === chossenAmen.amenitiGroupCode) {
+  //       // need to return a new array of hotel here to update state but I was comparing the amenites
+  //       setProject({ ...project })
+  //     }
+  //   })
+  //   )
+  // }
 
   const handleChange = (event) => {
-    console.log(event, 'event')
-    setStarRating(event.target.value)
+    console.log(event, 'i am event')
+    setamenitiesName(event.target.value)
   }
 
   const handleChangeMultiple = (event) => {
     const { options } = event.target
     console.log(options, 'options')
     const value = []
+    console.log(value, 'value')
     for (let i = 0, l = options.length; i < l; i += 1) {
       if (options[i].selected) {
         value.push(options[i].value)
       }
     }
-    setStarRating(value)
-    console.log(value, 'value')
-  }
-  const updateStarRatings = (arr) => {
-    const res = arr.filter(hotel => !starRating.includes(hotel.categoryName))
-    // console.log(res)
-    // How to add it to onChange ?
-    // setstate({ results: res })
+    setamenitiesName(value)
   }
 
   return (
     <div>
 
       <FormControl className={classes.formControl}>
-        <InputLabel id='demo-mutiple-checkbox-label'>Star Rating</InputLabel>
+        <InputLabel id='demo-mutiple-checkbox-label'>Amenities</InputLabel>
         <Select
           labelId='demo-mutiple-checkbox-label'
           id='demo-mutiple-checkbox'
           multiple
-          value={starRating}
+          value={amenitiesName}
           onChange={handleChange}
           input={<Input />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-
-          <MenuItem key='3 Stars' value='3 Stars'>
-            <Checkbox checked={starRating.indexOf('3 Stars') > -1} />
-            <ListItemText primary='3 Stars' />
-            <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
-
-          </MenuItem>
-
-          <MenuItem key='4 Stars' value='4 Stars'>
-            <Checkbox checked={starRating.indexOf('4 Stars') > -1} />
-            <ListItemText primary='4 Stars' />
-            <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
-
-          </MenuItem>
-          <MenuItem key='5 Stars' value='5 Stars'>
-            <Checkbox checked={starRating.indexOf('5 Stars') > -1} />
-            <ListItemText primary='5 Stars' />
-            <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
-
-          </MenuItem>
-
+          {amenities.map((name) => (
+            <MenuItem key={name} value={name}>
+              <Checkbox checked={amenitiesName.indexOf(name) > -1} />
+              <ListItemText primary={name} />
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
 
     </div>
   )
-}
+}; export default AmenitiesSelect

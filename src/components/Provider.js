@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import HotelList from '../HotelList/HoteList'
-import HotelPage from '../Hotelpage/HotelPage'
-import SearchBar from '../SearchBar/SearchBar'
+import HotelList from './HotelList/HoteList'
+import HotelPage from './Hotelpage/HotelPage'
+import SearchBar from './SearchBar/SearchBar'
 export const ProjectContext = React.createContext()
 
 const ProjectProvider = (props) => {

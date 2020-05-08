@@ -9,8 +9,8 @@ import HotelPage from '../Hotelpage/HotelPage'
 import FirebaseContext, { db } from '../Firebase'
 import AboutUs from '../AboutUs'
 import { HomePage } from '../../Pages/HomePage'
-import { HotelList2 } from '../HotelList/HoteListTest'
-import ProjectProvider from '../Provider/Provider'
+import { HotelList2 } from '../assets/HoteListTest'
+import ProjectProvider from '../Provider'
 import MapPopUp from '../Map/MapPopUp'
 
 function App () {

@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
-import { getRoomPicture } from '../Helper'
+import { MyProvider, ProjectContext } from './Provider'
+import { getRoomPicture } from './Helper'
 
-const ControlledCarousel1 = (props) => {
+const ThumbilCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
   const handleSelect = (selectedIndex, e) => {
@@ -51,4 +51,4 @@ const ControlledCarousel1 = (props) => {
       </Carousel>
     </>
   )
-}; export default ControlledCarousel1
+}; export default ThumbilCarousel

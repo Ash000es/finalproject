@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import { GoogleMapPopUp, WrapperMap } from './GoogleMapPopUp'
 import Button from 'react-bootstrap/Button'
 import { googleAPIKey } from '../assets/Constants'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
+import { MyProvider, ProjectContext } from '../Provider'
 
 const MapPopUp = () => {
   const [show, setShow] = useState(false)

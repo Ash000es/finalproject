@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { SearchResultsHero } from '../SearchResultsHero/SearchResultsHero'
-import { HotelCardSearch } from '../HotelCardSearch/HotelCardSearch2'
+import { HotelCardSearch } from '../HotelCardSearch/HotelCardSearch'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -9,7 +9,7 @@ import './HotelList.css'
 import { VacationRental } from '../DropDownFilter/VCFilter'
 import { HotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 import { Link } from 'react-router-dom'
-import { MyProvider, ProjectContext } from '../Provider/Provider'
+import { MyProvider, ProjectContext } from '../Provider'
 
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)

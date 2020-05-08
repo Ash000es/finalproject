@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const CustomizedSelects = (props) => {
+const OccSelector2 = (props) => {
   const classes = useStyles()
   const [occupancies, setoccupancies] = React.useState('')
 
@@ -84,4 +84,4 @@ const CustomizedSelects = (props) => {
 
     </>
   )
-}; export default CustomizedSelects
+}; export default OccSelector2

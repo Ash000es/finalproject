@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import { hardHotelObject } from '../assets/HardCode'
 import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded'
 import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded'
-import LabelEssential from '../CatLabels/LabelEssential'
+import LabelEssential from '../LabelEssential'
 
 const variant = ''
 
