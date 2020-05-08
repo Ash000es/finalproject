@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
-import SimplePopover from '../PopOverButton/PopOverButton'
-import { extras } from '../App/App'
-import FloatingActionButtonSize from '../AddButton/AddButton'
+import SimplePopover from './PopOverButton/PopOverButton'
+import { extras } from './assets/Constants'
+import FloatingActionButtonSize from './AddButton/AddButton'
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
-import { hardHotelObject } from '../assets/HardCode'
+import { hardHotelObject } from './assets/HardCode'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function ErrorRadios () {
+export default function SelectPrice () {
   const classes = useStyles()
   const [value, setValue] = React.useState('')
   const [error, setError] = React.useState(false)

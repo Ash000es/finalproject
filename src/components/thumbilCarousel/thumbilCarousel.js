@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { MyProvider, ProjectContext } from '../Provider/Provider'
-import { getRoomPicture } from '../Helper/Helper'
+import { getRoomPicture } from '../Helper'
 
 const ControlledCarousel1 = (props) => {
   const [index, setIndex] = useState(0)

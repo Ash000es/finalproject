@@ -6,20 +6,12 @@ import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
 import '../App/App.css'
 import HotelPage from '../Hotelpage/HotelPage'
-import FirebaseContext, { db } from '../Firebase/Firebase'
+import FirebaseContext, { db } from '../Firebase'
 import AboutUs from '../AboutUs'
 import { HomePage } from '../../Pages/HomePage'
 import { HotelList2 } from '../HotelList/HoteListTest'
 import ProjectProvider from '../Provider/Provider'
 import MapPopUp from '../Map/MapPopUp'
-
-export const extras = [
-  { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
-
-  { title: 'Double trouble', price: 20, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
-  { title: 'House Red', price: 30, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
-
-]
 
 function App () {
   return (

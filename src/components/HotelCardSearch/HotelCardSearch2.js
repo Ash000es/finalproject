@@ -12,8 +12,8 @@ import Chip from '@material-ui/core/Chip'
 import Button from '@material-ui/core/Button'
 import ControlledCarousel1 from '../thumbilCarousel/thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
-import ErrorRadios from '../radioButton/radioButton'
-import { SingleLineGridList } from '../ExtrasList/ExtrasList'
+import SelectPrice from '../SelectPrice'
+import { SingleLineGridList } from '../ExtrasList'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
 import Card from 'react-bootstrap/Card'
 import Divider from '@material-ui/core/Divider'
@@ -114,7 +114,7 @@ export const HotelCardSearch = (props) => {
             </div>
 
             <div id='bookButton' className={classes.column} style={{ width: '170px' }}>
-              <ErrorRadios />
+              <SelectPrice />
             </div>
           </ExpansionPanelSummary>
 
