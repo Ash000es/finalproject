@@ -32,7 +32,7 @@ export const SearchResultsHero = () => {
       <div> <img
 
         src='/static/images/cards/paella.jpg'
-      />
+            />
       </div>
 
       <Typography variant='h5' align='center' color='textSecondary' paragraph>
