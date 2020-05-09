@@ -98,8 +98,8 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hardHotelObject.hotelAmenities.map(item =>
-                  <li key={amenities.title}>{amenities.icon}{amenities.name}  </li>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {finalAmenitiesArray.map(item =>
+                  <li key={item.title}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
               </div>
