@@ -14,10 +14,10 @@ import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { Link } from 'react-router-dom'
 import HotelPage from '../Hotelpage/HotelPage'
-
+import { mergeArrayObjects, getHotelsCodes } from '../Helper'
 import { MyProvider, ProjectContext } from '../Provider'
 import { Redirect } from 'react-router'
-import { getHotelsCodes } from '../Helper'
+
 import { db, project, setProject } from '../assets/Constants'
 
 const SearchBar = () => {
@@ -59,15 +59,15 @@ const SearchBar = () => {
   console.log(project, 'first project')
 
   // TODO: This logic is way too much to be connected to a searchbar. Seperate fetchHotels from searchBar by moving it to another component. Watch my video about "Refactoring"
-  const fetchHotels = (destination) => {
-    console.log('searchME')
 
+  const fetchHotels = (Destination) => {
+    console.log('searchME')
+    const hotels = []
     // map the results and get an array of hotel IDS getHotelsCodes()
     const arrayCodes = [663, 1431, 1446, 6940, 576022, 585184]
-    db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST')
+    db.collection('hotels-limited').where('destinationCode', '==', Destination).where('categoryCode', '==', '4EST')
 
       .onSnapshot(querySnapshot => {
-        const hotels = []
         querySnapshot.forEach((hotel) => {
           const hotelData = hotel.data()
           // if hotelData.code
@@ -78,47 +78,30 @@ const SearchBar = () => {
             // Rename anything you want to fit your needs. Add a field for amenities and fetch it from your constants array, same for icon.
             // In the end you should be left with an array of hotel objects that are ready to be used.
             hotels.push(hotel.data())
+            console.log(hotels, 'pus')
           }
         })
-        setProject({ ...project, hotels: hotels })
-
-        console.log(hotels)
       })
-
-    const facilitiesRef = db.collection('facilities')
-    const query = facilitiesRef.where('code', '==', 10).where('facilityGroupCode', '==', 20)
-    query.get().then(snapshot => {
-      snapshot.forEach(item => {
-        console.log(item.id, item.data())
-      })
-    }).catch(err => console.log(err))
+      // take away setproject from here and return hotels array?
+    return hotels
   }
 
-  const savetoLocalStorage = () => {
-    //  window.localStorage.setItem('Objectmapping', JSON.stringfy(hotels))
-  }
+  // const savetoLocalStorage = () => {
+  //   //  window.localStorage.setItem('Objectmapping', JSON.stringfy(hotels))
+  // }
 
-  const getfromLocalStorage = () => {
-    const res = window.localStorage.getItem('Objectmapping')
-    JSON.parse(res)
-  }
-
-  // destinationsRef.get().then(doc => console.log(doc.data()))
-  // all your hotels are in a DB called hotels-limited
-  // all your facilites groups are in a 'facilites'
-  // facilityGroupCode 'facilityGroupCode'
-
-  const handleSearch = () => {
-    console.log('search')
-    fetchHotels('IBZ')
-  }
+  // const getfromLocalStorage = () => {
+  //   const res = window.localStorage.getItem('Objectmapping')
+  //   JSON.parse(res)
+  // }
 
   const handleClickButton = () => {
     const apikey = '2t97t6954dckh4ynkwknr78j'
     const sec = 'nDD9BFXf5a'
     const D = new Date()
     const databaseDestination = state.destination.code
-    fetchHotels(databaseDestination)
+    const hotelsdb = fetchHotels('IBZ')
+    // doesn't see to be working though
 
     const getSignature = () => {
       return Sign(apikey + sec + Math.round(D.getTime() / 1000))
@@ -154,15 +137,20 @@ const SearchBar = () => {
       console.log(hotels, 'i am results NEW')
       const results = hotels.hotels
       console.log(results, 'fuck this')
-
-      setProject({ ...project, results: results })
-      // setProject like this here seems to overrite the other value in project like hotels: to empty value
-      // which it shouldn't really as fetch hotels just populated hotels  from db
-      //  where is the best place to merge the two objects ? a seperate functions for that?
       setState({ redirect: true })
-      console.log(project, 'di you see me?')
+      // is that what you meant? set project 2x1?
+      setProject({
+        ...project,
+        results: results,
+        hotels: hotelsdb
+
+      })
     })
   }
+
+  // const results = mergeArrayObjects(handleClickButton, fetchHotels)
+  // console.log(results, '3')
+  // setProject({ ...project, results: results })
 
   const handleOccChange = (occ) => {
     const { rooms, adults, children } = occ
@@ -189,6 +177,12 @@ const SearchBar = () => {
     setState({ stay: { ...stay, checkIn, checkOut } })
     // console.log(stay)
   }
+  // const handleSearch = () => {
+  //   const arr1 = handleClickButton()
+  //   console.log(arr1, '1')
+  //   const arr2 = fetchHotels('IBZ')
+  //   console.log(arr2, '2')
+  // }
 
   if (state.redirect) {
     return <Redirect exact push to='/searchresults' />

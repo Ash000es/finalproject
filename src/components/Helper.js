@@ -51,3 +51,11 @@ import { db, project, setProject } from './assets/Constants'
 //       setProject({ ...project, hotels })
 //     })
 // }
+export function mergeArrayObjects (arr1, arr2) {
+  return arr1.map((item, i) => {
+    if (item.code === arr2[i].code) {
+      // merging two objects
+      return Object.assign({}, item, arr2[i])
+    }
+  })
+}
