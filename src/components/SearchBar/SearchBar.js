@@ -58,6 +58,7 @@ const SearchBar = () => {
 
   console.log(project, 'first project')
 
+  // TODO: This logic is way too much to be connected to a searchbar. Seperate fetchHotels from searchBar by moving it to another component. Watch my video about "Refactoring"
   const fetchHotels = (destination) => {
     console.log('searchME')
 
@@ -71,6 +72,11 @@ const SearchBar = () => {
           const hotelData = hotel.data()
           // if hotelData.code
           if (arrayCodes.includes(hotelData.code)) {
+            // TODO: THIS IS THE MOST IMPORTANT PART
+            // don't push hotel.data(), instead create a function called mapResultToHotel and pass it the hotel.data()
+            // inside the function you loop through the data and for every hotel you create a new object that fits your needs for this app.
+            // Rename anything you want to fit your needs. Add a field for amenities and fetch it from your constants array, same for icon.
+            // In the end you should be left with an array of hotel objects that are ready to be used.
             hotels.push(hotel.data())
           }
         })

@@ -1,3 +1,4 @@
+// TODO clean up unused imports
 import React, { useContext, useState } from 'react'
 import './HotelCardSearch.css'
 import { makeStyles } from '@material-ui/core/styles'
@@ -69,6 +70,8 @@ export const HotelCardSearch = (props) => {
   const finalAmenitiesArray = []
   console.log(finalAmenitiesArray, 'I am finalarray')
   // hotelsDB.map(hotel=> hotel.facilites).forEach(facility=> carry on same as the below)
+
+  // TODO: Don't do this here, or you'll have to do it each time you display a hotel. Instead do it before you save hotels to your context for the first time, so each hotel object has all the amenities ready to display
   const getAmenitiesArray = () => {
     project.results.facilites.forEach(facility => amenities.forEach(amenity => {
       if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {

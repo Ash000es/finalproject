@@ -26,8 +26,13 @@ const HotelList = () => {
           <DropDownFilter />
         </div>
         <br />
+<<<<<<< HEAD
         {/* { */}
         {project.results ? project.results.map(hotel => {
+=======
+        {/* TODO: you can write `project.hotels && project.hotels.map()` instead and skip the else-statement */}
+        {project.hotels ? project.hotels.map(hotel => {
+>>>>>>> 65b67195c4812dc080ef9903ff3f123b5228a4da
           return <HotelCardSearch key={hotel.code} hotel={hotel} />
         }) : console.log('I am not true')}
 
