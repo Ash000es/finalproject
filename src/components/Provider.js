@@ -7,7 +7,7 @@ export const ProjectContext = React.createContext()
 const ProjectProvider = (props) => {
   const [project, setProject] = useState(
     {
-      results: {},
+      results: [],
       hotels: [],
       redirect: false,
       cartOpen: false,

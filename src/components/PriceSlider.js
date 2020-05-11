@@ -65,7 +65,7 @@ const PrettoSlider = withStyles({
 export default function PriceSlider (props) {
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = React.useState(DEFAULT_SLIDER_VALUE)
-  console.log(sliderPrice)
+  // console.log(sliderPrice)
 
   //  const updatePrice =(arr)=> {
   const min = sliderPrice[0]

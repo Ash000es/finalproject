@@ -63,14 +63,14 @@ const useStyles = makeStyles((theme) => ({
 export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
-  // const hotel={project.hotels}
-  const { hotelsDB } = project.hotels
-  // not sure destructuring facilites like below works? otherwise I will have to take hotelDB and map it to get to facilites like in the commented line, can I just chain forEach on it or it has to be inside the map?
-  const { facilites } = hotelsDB.facilites
+  console.log(project, 'I am project from card search')
+  // this line above prints a project with results only while hotels is empty
+
   const finalAmenitiesArray = []
+  console.log(finalAmenitiesArray, 'I am finalarray')
   // hotelsDB.map(hotel=> hotel.facilites).forEach(facility=> carry on same as the below)
   const getAmenitiesArray = () => {
-    facilites.forEach(facility => amenities.forEach(amenity => {
+    project.results.facilites.forEach(facility => amenities.forEach(amenity => {
       if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
         return finalAmenitiesArray.push(amenity)
       }
@@ -88,20 +88,21 @@ export const HotelCardSearch = (props) => {
             aria-controls='panel1c-content'
             id='panel1c-header'
             className='bigDiv'
-            //  'https://source.unsplash.com/random'
+            //  '
           >
             <div className={classes.column} id='cardImage'>
-              <ThumbilCarousel />
+              {/* <ThumbilCarousel /> */}
+              <img src='https://source.unsplash.com/random' alt='nothing' />
 
             </div>
             <div className='threeCon'>
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
-
+                {/*
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {finalAmenitiesArray.map(item =>
                   <li key={item.title}>{item.icon}{item.name}  </li>
                 )}
-                </ul>
+                </ul> */}
               </div>
 
               <div className='labelBar'>

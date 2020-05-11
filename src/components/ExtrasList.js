@@ -36,7 +36,7 @@ export const SingleLineGridList = () => {
   return (
 
     <div className={classes.root}>
-      {console.log('yaay', extras)}
+      {/* {console.log('yaay', extras)} */}
 
       <GridList
         className={classes.gridList} cols={3}

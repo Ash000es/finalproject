@@ -13,6 +13,8 @@ import { MyProvider, ProjectContext } from '../Provider'
 
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
+  // I just relaized that I need to merge the two state after the api call to be able to map below
+  //  the info needed to map below is coming from both results and hotels from project state
   return (
     <div className='HotelList'>
 
@@ -25,7 +27,7 @@ const HotelList = () => {
         </div>
         <br />
         {/* { */}
-        {project.hotels ? project.hotels.map(hotel => {
+        {project.results ? project.results.map(hotel => {
           return <HotelCardSearch key={hotel.code} hotel={hotel} />
         }) : console.log('I am not true')}
 

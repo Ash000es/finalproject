@@ -74,7 +74,7 @@ const SearchBar = () => {
             hotels.push(hotel.data())
           }
         })
-        setProject({ ...project, hotels })
+        setProject({ ...project, hotels: hotels })
 
         console.log(hotels)
       })
@@ -108,8 +108,8 @@ const SearchBar = () => {
   }
 
   const handleClickButton = () => {
-    const apikey = 'kw7vpx3nefnq47b8dk6kehg4'
-    const sec = 'nyM8qx6n8S'
+    const apikey = '2t97t6954dckh4ynkwknr78j'
+    const sec = 'nDD9BFXf5a'
     const D = new Date()
     const databaseDestination = state.destination.code
     fetchHotels(databaseDestination)
@@ -145,11 +145,16 @@ const SearchBar = () => {
       }).then(res => res.json()).then(Response => {
       console.log(Response)
       const { hotels } = Response
+      console.log(hotels, 'i am results NEW')
+      const results = hotels.hotels
+      console.log(results, 'fuck this')
 
-      console.log(hotels)
-
-      setState({ results: hotels })
+      setProject({ ...project, results: results })
+      // setProject like this here seems to overrite the other value in project like hotels: to empty value
+      // which it shouldn't really as fetch hotels just populated hotels  from db
+      //  where is the best place to merge the two objects ? a seperate functions for that?
       setState({ redirect: true })
+      console.log(project, 'di you see me?')
     })
   }
 
@@ -182,7 +187,7 @@ const SearchBar = () => {
   if (state.redirect) {
     return <Redirect exact push to='/searchresults' />
   }
-  console.log(project)
+  // console.log(project)
   return (
     <>
       <div className='SearchBar'>

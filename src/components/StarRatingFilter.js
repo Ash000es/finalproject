@@ -62,7 +62,7 @@ export default function StarRatingFilter () {
   const classes = useStyles()
   const theme = useTheme()
   const [starRating, setStarRating] = React.useState([])
-  console.log(starRating, 'person name')
+  // console.log(starRating, 'person name')
 
   const handleChange = (event) => {
     console.log(event, 'event')

@@ -54,7 +54,7 @@ const AmenitiesSelect = () => {
   const classes = useStyles()
   const theme = useTheme()
   const [amenitiesName, setamenitiesName] = React.useState([])
-  console.log(amenitiesName, 'I amhere')
+  // console.log(amenitiesName, 'I amhere')
   const { project, setProject } = useContext(ProjectContext)
 
   const chossenAmenities = []
