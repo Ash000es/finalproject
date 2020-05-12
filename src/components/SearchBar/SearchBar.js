@@ -57,7 +57,7 @@ const SearchBar = () => {
   const handleClickButton = () => {
     const { occupancies, destination, stay, reviews } = state
     const payLoad = { occupancies, destination, stay, reviews }
-    requestAvailableHotels(payLoad)
+    requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
         setProject(
           { ...project, results: hotelsProject }
