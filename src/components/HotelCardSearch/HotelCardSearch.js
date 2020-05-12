@@ -22,7 +22,7 @@ import Row from 'react-bootstrap/Row'
 import ListItem from '@material-ui/core/ListItem'
 import Image from 'react-bootstrap/Image'
 import List from '@material-ui/core/List'
-import { amenities } from '../assets/amenities'
+import { amenities } from '../Constants/amenities.js'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider'
 
@@ -65,20 +65,6 @@ export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   console.log(project, 'I am project from card search')
-  // this line above prints a project with results only while hotels is empty
-
-  const finalAmenitiesArray = []
-  console.log(finalAmenitiesArray, 'I am finalarray')
-  // hotelsDB.map(hotel=> hotel.facilites).forEach(facility=> carry on same as the below)
-
-  // TODO: Don't do this here, or you'll have to do it each time you display a hotel. Instead do it before you save hotels to your context for the first time, so each hotel object has all the amenities ready to display
-  const getAmenitiesArray = () => {
-    project.results.facilites.forEach(facility => amenities.forEach(amenity => {
-      if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
-        return finalAmenitiesArray.push(amenity)
-      }
-    }))
-  }
 
   return (
     <>
@@ -102,7 +88,7 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
                 {/*
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {finalAmenitiesArray.map(item =>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {project.results.facilites.map(item =>
                   <li key={item.title}>{item.icon}{item.name}  </li>
                 )}
                 </ul> */}

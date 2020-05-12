@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { GoogleMapPopUp, WrapperMap } from './GoogleMapPopUp'
 import Button from 'react-bootstrap/Button'
-import { googleAPIKey } from '../assets/Constants'
+import { googleAPIKey } from '../Constants/Constants'
 import { MyProvider, ProjectContext } from '../Provider'
 
 const MapPopUp = () => {

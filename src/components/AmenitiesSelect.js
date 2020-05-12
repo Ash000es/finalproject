@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Select from '@material-ui/core/Select'
 import Checkbox from '@material-ui/core/Checkbox'
 import Chip from '@material-ui/core/Chip'
-import { amenities } from './assets/Constants'
+import { amenitiesToFilter } from './Constants/Constants.js'
 import { MyProvider, ProjectContext } from './Provider'
 
 const useStyles = makeStyles((theme) => ({
@@ -115,7 +115,7 @@ const AmenitiesSelect = () => {
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {amenities.map((name) => (
+          {amenitiesToFilter.map((name) => (
             <MenuItem key={name} value={name}>
               <Checkbox checked={amenitiesName.indexOf(name) > -1} />
               <ListItemText primary={name} />

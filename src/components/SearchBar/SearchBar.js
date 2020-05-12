@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider'
 import { Redirect } from 'react-router'
 import { requestAvailableHotels } from '../ApiHandler'
-import { db, project, setProject } from '../assets/Constants'
+import { db, project, setProject } from '../Constants/Constants'
 
 const SearchBar = () => {
   const intialState = {

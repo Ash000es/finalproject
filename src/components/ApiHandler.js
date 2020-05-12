@@ -1,5 +1,7 @@
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
+import { getAmenitiesArray } from '../components/Helper'
+
 export const requestAvailableHotels = (db, { occupancies, destination, stay, reviews }) => {
   const D = new Date()
 
@@ -37,6 +39,7 @@ export const requestAvailableHotels = (db, { occupancies, destination, stay, rev
     const apiHotelResults = hotels.hotels
     const hotelIDS = apiHotelResults.map(hotel => hotel.code)
     const dbHotels = fetchHotels(destination.code, hotelIDS, db)
+
     const hotelsProject = mapResultToHotel(dbHotels, apiHotelResults)
     return hotelsProject
   })
@@ -59,8 +62,8 @@ const fetchHotels = (destination, hotelIDS, db) => {
       return hotels
     })
 }
-const mapResultToHotel = (dbHotels, apiHotelResults) => {
-  dbHotels.map(dbHotel => apiHotelResults.map(apiHotel => {
+const mapResultToHotel = (arr1, arr2) => {
+  arr1.map(dbHotel => arr2.map(apiHotel => {
     if (dbHotel.code === apiHotel.code) {
       return {
 
@@ -93,7 +96,7 @@ const mapResultToHotel = (dbHotels, apiHotelResults) => {
         segmentCodes: dbHotel.segmentCodes,
         stateCode: dbHotel.stateCode,
         images: dbHotel.images,
-        facilities: dbHotel.facilities
+        amenities: getAmenitiesArray(dbHotel)
 
       }
     }

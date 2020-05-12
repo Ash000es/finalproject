@@ -1,5 +1,4 @@
 import React from 'react'
-// TODO: assets are images only, move these JS files to a constants/ folder instead. So this would be under constants/amenities.js
 
 export const amenities = [
   {

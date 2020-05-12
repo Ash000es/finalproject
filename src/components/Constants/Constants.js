@@ -12,7 +12,7 @@ export const getSignature = () => {
   return (apikey + sec + Math.round(D.getTime() / 1000))
 }
 // cont
-export const amenities = [
+export const amenitiesToFilter = [
   'Pool',
   'Free breakfast',
   'Spa',

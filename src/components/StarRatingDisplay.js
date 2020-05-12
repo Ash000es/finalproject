@@ -4,7 +4,7 @@ import RestaurantIcon from '@material-ui/icons/Restaurant'
 import RoomServiceIcon from '@material-ui/icons/RoomService'
 import DeckIcon from '@material-ui/icons/Deck'
 import StarRateIcon from '@material-ui/icons/StarRate'
-import { stars3, stars4, stars5 } from './assets/Constants'
+import { stars3, stars4, stars5 } from './Constants/Constants.js'
 
 class StarRatingDisplay extends React.Component {
   constructor (props) {

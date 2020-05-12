@@ -4,7 +4,7 @@ import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import SimplePopover from './PopOverButton/PopOverButton'
-import { extras } from './assets/Constants'
+import { extras } from './Constants/Constants.js'
 import ExtrasAddButton from './ExtrasAddButton'
 
 const useStyles = makeStyles((theme) => ({

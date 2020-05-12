@@ -1,6 +1,6 @@
 import { MyProvider, ProjectContext } from './Provider'
 import React, { useContext, useState } from 'react'
-import { db, project, setProject } from './assets/Constants'
+import { db, project, setProject } from './Constants/Constants.js'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js
@@ -58,4 +58,11 @@ export function mergeArrayObjects (arr1, arr2) {
       return Object.assign({}, item, arr2[i])
     }
   })
+}
+export const getAmenitiesArray = (arr1, arr2) => {
+  arr1.results.facilites.forEach(facility => arr2.forEach(amenity => {
+    if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
+      return amenity
+    }
+  }))
 }
