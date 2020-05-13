@@ -3,7 +3,7 @@ import { apikey, sec } from '../Keys.json'
 import { getAmenitiesArray } from '../components/Helper'
 import { amenities } from '../components/Constants/amenities'
 
-export const requestAvailableHotels = (db, { occupancies, destination, stay, reviews }) => {
+export async function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
   const D = new Date()
 
   const getSignature = () => {
@@ -39,7 +39,9 @@ export const requestAvailableHotels = (db, { occupancies, destination, stay, rev
 
     const apiHotelResults = hotels.hotels
     const hotelIDS = apiHotelResults.map(hotel => hotel.code)
+    console.log(hotelIDS)
     const dbHotels = fetchHotels(destination.code, hotelIDS, db)
+    console.log(dbHotels)
 
     const hotelsProject = mapResultToHotel(dbHotels, apiHotelResults)
     return hotelsProject
@@ -48,13 +50,11 @@ export const requestAvailableHotels = (db, { occupancies, destination, stay, rev
 
 const fetchHotels = (destination, hotelIDS, db) => {
   const hotels = []
-
-  db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST')
+  db.collection('hotels-limited').where('destinationCode', '==', destination)
 
     .onSnapshot(querySnapshot => {
       querySnapshot.forEach((hotel) => {
         const hotelData = hotel.data()
-        // if hotelData.code
         if (hotelIDS.includes(hotelData.code)) {
           hotels.push(hotel.data())
           console.log(hotels, 'pus')
