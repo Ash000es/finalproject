@@ -10,19 +10,11 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Chip from '@material-ui/core/Chip'
-import Button from '@material-ui/core/Button'
-import ThumbilCarousel from '../thumbilCarousel'
+import { SearchResultsCarousel } from '../SearchResultsCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import SelectPrice from '../SelectPrice'
 import { ExtrasList } from '../ExtrasList'
-import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
-import Card from 'react-bootstrap/Card'
 import Divider from '@material-ui/core/Divider'
-import Row from 'react-bootstrap/Row'
-import ListItem from '@material-ui/core/ListItem'
-import Image from 'react-bootstrap/Image'
-import List from '@material-ui/core/List'
-import { amenities } from '../Constants/amenities.js'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider'
 
@@ -65,6 +57,7 @@ export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   console.log(project, 'I am project from card search')
+  const hotels = project.results
 
   return (
     <>
@@ -77,21 +70,20 @@ export const HotelCardSearch = (props) => {
             aria-controls='panel1c-content'
             id='panel1c-header'
             className='bigDiv'
-            //  '
+
           >
             <div className={classes.column} id='cardImage'>
-              {/* <ThumbilCarousel /> */}
-              <img src='https://source.unsplash.com/random' alt='nothing' />
+              <SearchResultsCarousel />
 
             </div>
             <div className='threeCon'>
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
-                {/*
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {project.results.facilites.map(item =>
-                  <li key={item.title}>{item.icon}{item.name}  </li>
+
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hotels.amenities && hotels.amenities.map(item =>
+                  <li key={item}>{item.icon}{item.name}  </li>
                 )}
-                </ul> */}
+                </ul>
               </div>
 
               <div className='labelBar'>

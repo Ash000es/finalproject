@@ -7,7 +7,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import { getLargePictures } from '../components/Helper'
 import { masterLinkLarge } from '../components/Constants/Constants'
 
-export const HotelCarousel = () => {
+export const SearchResultsCarousel = () => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
 
@@ -17,7 +17,7 @@ export const HotelCarousel = () => {
 
   const imagesArray = project.results.map(H => H.images)
   const readyImagesArray = getLargePictures(imagesArray, masterLinkLarge)
-  const imageSize = { width: '100%', height: '500px' }
+  const imageSize = { width: '250px', height: '250px' }
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>

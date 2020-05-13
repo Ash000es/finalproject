@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react'
 import Table from 'react-bootstrap/Table'
 import { hardHotelObject } from '../assets/HardCode'
-import ThumbilCarousel from '../thumbilCarousel'
+import RoomCarousel from '../thumbilCarousel'
 import StarRatingDisplay from '../StarRatingDisplay'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
-import { GetImages } from '../HotelCarousel'
+import { HotelCarousel } from '../HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider'
 import CartDrawer from '../CartDrawer'
 import { addCartItem } from '../Helper'
@@ -32,7 +32,7 @@ const HotelPage = (props) => {
 
       <DateRangePicker />
       <div>
-        <GetImages />
+        <HotelCarousel />
       </div>
       <div>amenities:bn
         <p>70 Rooms</p>
@@ -64,7 +64,7 @@ const HotelPage = (props) => {
         <tbody>
           <tr>
             <td>
-              {/* <ThumbilCarousel /> */}
+              <RoomCarousel />
               <img src='' alt='not' />
 
             </td>

@@ -1,6 +1,6 @@
 import { MyProvider, ProjectContext } from './Provider'
 import React, { useContext, useState } from 'react'
-import { db, project, setProject } from './Constants/Constants.js'
+import { db, project, setProject, masterLinkLarge } from './Constants/Constants.js'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js
@@ -66,3 +66,53 @@ export const getAmenitiesArray = (arr1, arr2) => {
     }
   }))
 }
+
+// write helper function for the hotel page big carsoul and the search results thum carsoul and each room image
+
+export const getLargePictures = (ImageArr, masterLinkLarge) => {
+  ImageArr.map((imageObject) => {
+    const imageObjectPath = imageObject.path
+    const newPath = `${masterLinkLarge}${imageObjectPath}`
+    return {
+      imageTypeCode: imageObject.imageTypeCode,
+      path: newPath,
+      roomCode: imageObject.roomCode,
+      roomType: imageObject.roomType,
+      visualOrder: imageObject.visualOrder,
+      order: imageObject.order
+    }
+  })
+}
+export const getSmallPictures = (ImageArr, masterLinkSmall) => {
+  ImageArr.map((imageObject) => {
+    const imageObjectPath = imageObject.path
+    const newPath = `${masterLinkSmall}${imageObjectPath}`
+    return {
+      imageTypeCode: imageObject.imageTypeCode,
+      path: newPath,
+      roomCode: imageObject.roomCode,
+      roomType: imageObject.roomType,
+      visualOrder: imageObject.visualOrder,
+      order: imageObject.order
+    }
+  })
+}
+
+export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
+  arr1.map(imageObject => arr2.map(roomObject => {
+    if (imageObject.roomCode === roomObject.code) {
+      const newPath = `${masterLinkSmall}${imageObject.path}`
+      return newPath
+    }
+  }))
+}
+
+// {
+//   "imageTypeCode": "HAB",
+//   "path": "00/000016/000016a_hb_ro_253.jpg",
+//   "roomCode": "APT.VM-2",
+//   "roomType": "APT",
+//   "characteristicCode": "VM-2",
+//   "order": 253,
+//   "visualOrder": 100
+// },
