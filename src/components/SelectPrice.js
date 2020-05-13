@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
@@ -9,8 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { hardHotelObject } from './assets/HardCode'
 import { Link } from 'react-router-dom'
-import { MyProvider, ProjectContext } from '../Provider'
-const { project, setProject } = useContext(ProjectContext)
+import { MyProvider, ProjectContext } from '../components/Provider'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -28,6 +27,7 @@ export default function SelectPrice () {
   const [helperText, setHelperText] = React.useState('')
   const [showbookbutton, setBookButton] = React.useState(true)
   const [showprice, SetShowPrice] = React.useState('')
+  const { project, setProject } = useContext(ProjectContext)
 
   const handleRadioChange = (event) => {
     console.log(event)
