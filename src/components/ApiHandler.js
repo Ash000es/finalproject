@@ -38,6 +38,7 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
     const { hotels } = Response
 
     const apiHotelResults = hotels.hotels
+    console.log(apiHotelResults)
     const hotelIDS = apiHotelResults.map(hotel => hotel.code)
     console.log(hotelIDS)
     const dbHotels = fetchHotels(destination.code, hotelIDS, db)

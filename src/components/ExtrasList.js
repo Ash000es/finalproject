@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const SingleLineGridList = () => {
+export const ExtrasList = () => {
   const classes = useStyles()
 
   return (

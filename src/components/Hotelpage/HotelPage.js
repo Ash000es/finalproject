@@ -1,8 +1,5 @@
 import React, { useState, useContext } from 'react'
-import HotelDetails from '../HotelsDetails'
-
 import Table from 'react-bootstrap/Table'
-import SearchBar from '../SearchBar/SearchBar'
 import { hardHotelObject } from '../assets/HardCode'
 import ThumbilCarousel from '../thumbilCarousel'
 import StarRatingDisplay from '../StarRatingDisplay'

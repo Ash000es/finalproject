@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button'
 import ThumbilCarousel from '../thumbilCarousel'
 import { hardHotelObject } from '../assets/HardCode'
 import SelectPrice from '../SelectPrice'
-import { SingleLineGridList } from '../ExtrasList'
+import { ExtrasList } from '../ExtrasList'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
 import Card from 'react-bootstrap/Card'
 import Divider from '@material-ui/core/Divider'
@@ -110,7 +110,7 @@ export const HotelCardSearch = (props) => {
 
           <ExpansionPanelDetails className={classes.details}>
             <div className={classes.column}>
-              <SingleLineGridList />
+              <ExtrasList />
             </div>
           </ExpansionPanelDetails>
 
