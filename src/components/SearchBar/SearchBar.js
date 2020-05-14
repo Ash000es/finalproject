@@ -45,7 +45,8 @@ const SearchBar = () => {
       type: 'TRIPADVISOR',
       minRate: 3,
       minReviewCount: 3
-    }]
+    }],
+    fullBar: false
   }
 
   const [state, setState] = useState(intialState)
@@ -63,7 +64,7 @@ const SearchBar = () => {
           { ...project, results: hotelsProject }
         )
       })
-    setState({ redirect: true })
+    setState({ redirect: true, fullBar: true })
   }
 
   const handleOccChange = (occ) => {
@@ -109,12 +110,13 @@ const SearchBar = () => {
         {/* </Link> */}
 
       </div>
-      <div className='SearchBarFilters'>
-        <PriceSlider />
-        <AmenitiesSelect />
-        <StarRatingFilter />
+      {state.fullBar
+        ? <div className='SearchBarFilters'>
+          <PriceSlider />
+          <AmenitiesSelect />
+          <StarRatingFilter />
 
-      </div>
+        </div> : null}
 
     </>
   )
