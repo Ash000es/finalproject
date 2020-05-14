@@ -8,7 +8,7 @@ import DateRangePicker from '../DateRange/NewDateRange'
 import { HotelCarousel } from '../HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider'
 import CartDrawer from '../CartDrawer'
-import { addCartItem, showFreeCancelationPolicy } from '../Helper'
+import { addCartItem, showCancelationPolicy } from '../Helper'
 
 const HotelPage = (props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -67,17 +67,18 @@ const HotelPage = (props) => {
           {project.results.rooms.map((room, i) => {
             return (
 
-              <tr key={room} hotel={room}>
+              <tr key={room[i]} room={room[i]}>
 
                 <td>
-                  <RoomCarousel />
-                  <p>{room.name}</p>
+                  <RoomCarousel room={room[i]} />
+                  {/* passing the room object here is ok? */}
+                  <p>{room.name[i]}</p>
 
                 </td>
-                <td>{room.rates.map(rate => rate.adults)}</td>
+                <td>{room[i].rates.map((rate, i) => rate.adults)}</td>
 
                 <td>Function to display only room amentities based on group facilites code</td>
-                <td>{room.rates.map(rate => rate.net)}<Button variant='primary'>Book now</Button>{' '}Free cancelation till {showFreeCancelationPolicy(room)}</td>
+                <td><p>{room.rates.map(rate => rate.net)}</p><Button variant='primary'>Book now</Button>{' '}<p>{showCancelationPolicy(room)}</p></td>
               </tr>
 
             )

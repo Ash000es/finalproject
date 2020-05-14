@@ -103,23 +103,22 @@ export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
     if (imageObject.roomCode === roomObject.code) {
       const newPath = `${masterLinkSmall}${imageObject.path}`
       return newPath
+      // maybe I need to skip  mapping the secound arr?
     }
   }))
 }
-export const showFreeCancelationPolicy = (room) => {
+export const showCancelationPolicy = (room) => {
   room.rates.map(rate => {
     const cancelationArray = rate.cancellationPolicies
-
     const cancelationFeeFrom = cancelationArray[0].from
-    const showFreeCancelDate = (cancelationFeeFrom) => {
-      // take that date, change the format and return the day before
+    const newDate = cancelationFeeFrom.slice(0, 10)
+    const cancelationFee = cancelationArray[0].amount
+    const refundableStatus = rate.rateClass
+    if (refundableStatus === 'NRF') {
+      return 'None refundable'
+    } else {
+      return `Free Cancelation before ${newDate}`
     }
-    // I need to display free cancelation till the from date (med)
-    // Need to change the date format first then function to display the date before that date ?
-    // also need to check if free cancelation is true based on today's date and the penalty date
-    // alos need to display amount from the date(easy)
-    // need to check for arra.lenght to see how many cancelation policy there is
-    // const cancelationFee = cancelationArray[0].amount
   })
 }
 

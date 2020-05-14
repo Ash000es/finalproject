@@ -9,17 +9,18 @@ import { masterLinkSmall } from '../components/Constants/Constants'
 const RoomCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
+  const [iconClicked, setIconClicked] = useState(false)
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
   const imagesArray = project.results.map(H => H.images)
-  const readyImagesArray = getRoomPicture(imagesArray, masterLinkSmall)
+  const readyImagesArray = getRoomPicture(imagesArray, props.room, masterLinkSmall)
+  // passing it here as argumnet is ok? see helper
   return (
 
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        <FavoriteIcon />
-        <FavoriteBorderIcon />
+        {iconClicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         {imagesArray.map(imageObject => {
           return (
             <Carousel.Item key={imageObject} style={{ height: '250px', width: '200px' }}>
