@@ -8,7 +8,7 @@ import DateRangePicker from '../DateRange/NewDateRange'
 import { HotelCarousel } from '../HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider'
 import CartDrawer from '../CartDrawer'
-import { addCartItem } from '../Helper'
+import { addCartItem, showFreeCancelationPolicy } from '../Helper'
 
 const HotelPage = (props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -38,7 +38,7 @@ const HotelPage = (props) => {
       <div>amenities:bn
         <p>70 Rooms</p>
         <ul style={{ listStyleType: 'none' }}>{hardHotelObject.hotelAmenities.map(item =>
-          <li key={item.title}>{item.Icon}{item.title}</li>
+          <li key={item.title}>{item.icon}{item.title}</li>
         )}
         </ul>
         <img src='' alt='TA' />
@@ -63,18 +63,25 @@ const HotelPage = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <RoomCarousel />
-              <img src='' alt='not' />
 
-            </td>
-            <td>Adults 2
-              Children 1
-            </td>
-            <td>Free Wifi</td>
-            <td>120 $<Button variant='primary'>Book now</Button>{' '}Free cancelation till</td>
-          </tr>
+          {project.results.rooms.map((room, i) => {
+            return (
+
+              <tr key={room} hotel={room}>
+
+                <td>
+                  <RoomCarousel />
+                  <p>{room.name}</p>
+
+                </td>
+                <td>{room.rates.map(rate => rate.adults)}</td>
+
+                <td>Function to display only room amentities based on group facilites code</td>
+                <td>{room.rates.map(rate => rate.net)}<Button variant='primary'>Book now</Button>{' '}Free cancelation till {showFreeCancelationPolicy(room)}</td>
+              </tr>
+
+            )
+          })}
 
         </tbody>
         <tbody>

@@ -106,6 +106,26 @@ export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
     }
   }))
 }
+export const showFreeCancelationPolicy = (room) => {
+  room.rates.map(rate => {
+    const cancelationArray = rate.cancellationPolicies
+
+    const cancelationFeeFrom = cancelationArray[0].from
+    const showFreeCancelDate = (cancelationFeeFrom) => {
+      // take that date, change the format and return the day before
+    }
+    // I need to display free cancelation till the from date (med)
+    // Need to change the date format first then function to display the date before that date ?
+    // also need to check if free cancelation is true based on today's date and the penalty date
+    // alos need to display amount from the date(easy)
+    // need to check for arra.lenght to see how many cancelation policy there is
+    // const cancelationFee = cancelationArray[0].amount
+  })
+}
+
+// cancellationPolicies: [Array(1)
+// 0: {amount: "103.68", from: "2020-11-12T16:00:00+01:00"}
+// ]
 
 // {
 //   "imageTypeCode": "HAB",
