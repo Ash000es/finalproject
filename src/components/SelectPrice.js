@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button'
 import { hardHotelObject } from './assets/HardCode'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../components/Provider'
+import PriceSlider from './PriceSlider'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -25,7 +26,7 @@ export default function SelectPrice () {
   const [value, setValue] = React.useState('')
   const [error, setError] = React.useState(false)
   const [helperText, setHelperText] = React.useState('')
-  const [showbookbutton, setBookButton] = React.useState(true)
+  const [showbookbutton, setShowBookButton] = React.useState(true)
   const [showprice, SetShowPrice] = React.useState('')
   const { project, setProject } = useContext(ProjectContext)
 
@@ -51,10 +52,16 @@ export default function SelectPrice () {
     }
   }
   const hotels = project.results
-  const calculatePrice = () => {
-    // on button click triggers this function which set the local state to room only price or room plus extra.
-    // how do you become aware here of which extra being selected and its price ? we can get extra value from context.
-    // probably have to use contenxt and on click functions to update its value so local state now is not an option
+  const lowestPrice = project.results.map(hotel => hotel.rooms[0].rates[0].net)
+  const showHotelPrice = () => {
+    // take lowestPrice plus extra const, also remove should refresh amount.
+    // likly we need context. HOW DOES HOTELPAGE KNOWs which hotel is this when it renders?
+    SetShowPrice('30')
+  }
+
+  const handelButtonClick = () => {
+    setShowBookButton(!showbookbutton)
+    showHotelPrice()
   }
   return (
     <>
@@ -64,17 +71,25 @@ export default function SelectPrice () {
             <FormControl component='fieldset' error={error} className={classes.formControl}>
               <FormLabel component='legend' />
               <RadioGroup aria-label='quiz' name='quiz' value={value} onChange={handleRadioChange}>
-                <FormControlLabel value='best' control={<Radio />} label='Room only' />
-                <p>{hotel.rooms[0].rates[0].net}</p>
-                <Button type='submit' variant='outlined' color='primary' className={classes.button}>
-                  Book Now
-                </Button>
-                <FormControlLabel value='worst' control={<Radio />} label='With extras' />
-                <p>{hotel.rooms[0].rates[0].net} + extra price</p>
+                <FormControlLabel value='best' control={<Radio />} label='Room only' onClick={handelButtonClick} />
+
                 <Link to='/hotelpage'>
-                  <Button type='submit' variant='outlined' color='primary' className={classes.button} onClick={() => setBookButton(false)}>
-                    Book Now
-                  </Button>
+                  {showbookbutton
+                    ? <><p>{lowestPrice}</p>
+                      <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+                        Book Now
+                      </Button>
+                      </> : null}
+                </Link>
+                <FormControlLabel value='worst' control={<Radio />} label='With extras' onClick={handelButtonClick} />
+
+                <Link to='/hotelpage'>
+                  {!showbookbutton
+                    ? <><p>{() => showHotelPrice()} </p>
+                      <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+                        Book Now
+                      </Button>
+                      </> : null}
                 </Link>
               </RadioGroup>
               <FormHelperText>{helperText}</FormHelperText>
