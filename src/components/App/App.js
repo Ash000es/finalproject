@@ -13,6 +13,7 @@ import { HotelList2 } from '../assets/HoteListTest'
 import ProjectProvider from '../Provider'
 import MapPopUp from '../Map/MapPopUp'
 
+// TODO: APP IS A PAGE, NOT A COMPONENT
 function App () {
   return (
     <ProjectProvider>

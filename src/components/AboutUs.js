@@ -1,5 +1,6 @@
 import React from 'react'
 
+// TODO: ARE YOU USING THIS? DELETE IF NOT.
 const AboutUs = () => {
   return (
     <div>

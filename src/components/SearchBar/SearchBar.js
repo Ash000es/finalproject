@@ -96,6 +96,8 @@ const SearchBar = () => {
     return <Redirect exact push to='/searchresults' />
   }
 
+// TODO OccSelector and OccSelector2 are exactly the same. The point of React is to reuse components
+// You only need one. If there are any variables int he component you should send it as props
   return (
     <>
       <div className='SearchBar'>

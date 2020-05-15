@@ -1,3 +1,5 @@
+
+// TODO: MOVE TO CONTANTS
 const Amenittes = {
   Airconditioning: boolean,
   Alarmclock: boolean,

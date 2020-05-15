@@ -3,6 +3,7 @@ import { apikey, sec } from '../Keys.json'
 import { getAmenitiesArray } from '../components/Helper'
 import { amenities } from '../components/Constants/amenities'
 
+// TODO: THIS IS NOT A COMPONENT. SHOULD GO INTO UTILS OR HELPER OR HANDLER FOLDER
 export async function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
   const D = new Date()
 
@@ -41,34 +42,57 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
     console.log(apiHotelResults)
     const hotelIDS = apiHotelResults.map(hotel => hotel.code)
     console.log(hotelIDS)
-    const dbHotels = fetchHotels(destination.code, hotelIDS, db)
-    console.log(dbHotels)
-
-    const hotelsProject = mapResultToHotel(dbHotels, apiHotelResults)
-    return hotelsProject
+    return fetchHotels(destination.code, hotelIDS, db)
+      .then(dbHotels => {
+        console.log('dbHotel', dbHotels)
+        const hotelsProject = mapResultToHotel(dbHotels, apiHotelResults)
+        console.log('hotelsProject', hotelsProject)
+        return hotelsProject
+      })
   })
 }
 
 const fetchHotels = (destination, hotelIDS, db) => {
+  console.log('fetching..')
   const hotels = []
-  db.collection('hotels-limited').where('destinationCode', '==', destination)
 
-    .onSnapshot(querySnapshot => {
-      querySnapshot.forEach((hotel) => {
-        const hotelData = hotel.data()
-        if (hotelIDS.includes(hotelData.code)) {
-          hotels.push(hotel.data())
-          console.log(hotels, 'pus')
-        }
+  // TODO: I created a promise, this is just for you to see how it's done. Instead of return I use resolve()
+  return new Promise((resolve) => {
+    db.collection('hotels-limited').where('destinationCode', '==', destination)
+      .onSnapshot(querySnapshot => {
+        querySnapshot.forEach((hotel) => {
+          const hotelData = hotel.data()
+          if (hotelIDS.includes(hotelData.code)) {
+            hotels.push(hotel.data())
+          }
+        })
+        resolve(hotels)      
       })
-      return hotels
     })
 }
 const mapResultToHotel = (arr1, arr2) => {
+  console.log('arr1', arr1)
   arr1.map(dbHotel => arr2.map(apiHotel => {
     if (dbHotel.code === apiHotel.code) {
       return {
+        // TODO: are these all the values or just the ones you want?
+        // remember that you can use destructuring: 
+        // const {code, name} = apiHotel
 
+        // then you can write it like this instead:
+
+        /*
+
+        {
+          code,
+          name
+          ...
+        }
+        
+         */
+
+        // TODO: add a field for icon and images
+        // icon: getAmenityIcon() can return the icon component
         code: apiHotel.code,
         name: apiHotel.name,
         categoryCode: apiHotel.categoryCode,
