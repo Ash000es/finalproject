@@ -14,87 +14,88 @@ const HotelPage = (props) => {
   const { project, setProject } = useContext(ProjectContext)
   // add to cart function to add the item to the cart drawer
   const hotels = project.results
-  const addToCart = () => {
-    const hotelCartItem = { name: props.hotel.name, image: props.hotel.images[0], price: props.hotel.price, code: props.hotel.code }
-    setProject({ ...project, cartItems: hotelCartItem })
-  }
-
+  // const addToCart = () => {
+  //   const hotelCartItem = { name: props.hotel.name, image: props.hotel.images[0], price: props.hotel.price, code: props.hotel.code }
+  //   setProject({ ...project, cartItems: hotelCartItem })
+  // }
+  // onClick={addToCart}
   return (
+
     <>
-      <h4>This hotel have spceial offer for you</h4>
-      <p>{hardHotelObject.name}</p>
-      <p>{hardHotelObject.label.posh}</p>
-      <p>{hardHotelObject.address},
-        {hardHotelObject.postalCode},
-        {hardHotelObject.city} show on map
-      </p>
-      <p>nothing</p>
-      <p>Edit your dates</p>
+      {hotels && hotels.map(hotel => {
+        return (
+          <>
+            <h4>This hotel have spceial offer for you</h4>
+            <div> <p>{hotel.name}{hardHotelObject.label.posh}{hotel.address},{hardHotelObject.postalCode},{hotel.city} show on map</p></div>
 
-      <DateRangePicker />
-      <div>
-        <HotelCarousel />
-      </div>
-      <div>amenities:bn
-        <p>70 Rooms</p>
-        <ul style={{ listStyleType: 'none' }}>{hardHotelObject.hotelAmenities.map(item =>
-          <li key={item.title}>{item.icon}{item.title}</li>
-        )}
-        </ul>
-        <img src='' alt='TA' />
-      </div>
-      <StarRatingDisplay />
-      <p>key facts:
-        nothing
-      </p>
-      <p>Check-in from
-        Check-out from
-      </p>
-      <p>{hardHotelObject.CheckinRules.title} required at Check-in</p>
-      <p>City tax will be collected by hotel at check-in or check-out.</p>
-      {/* function to map rooms here to return many rooms in the table, also where extras will go here? */}
-      <Table striped bordered hover size='sm'>
-        <thead>
-          <tr>
-            <th>Room Type</th>
-            <th>Adults</th>
-            <th>Included</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
+            <div>
+              <p>Edit your dates</p>
+              <DateRangePicker />
+            </div>
 
-          {project.results.rooms.map((room, i) => {
-            return (
+            <HotelCarousel />
 
-              <tr key={room[i]} room={room[i]}>
+            <div>amenities:bn
+              <p>70 Rooms</p>
+              <ul style={{ listStyleType: 'none' }}>{hotel.amenities2.map(item =>
+                <li key={item}>{item.icon}{item.title}</li>
+              )}
+              </ul>
 
-                <td>
-                  <RoomCarousel room={room[i]} />
-                  {/* passing the room object here is ok? */}
-                  <p>{room.name[i]}</p>
+            </div>
+            <img src='' alt='TA' />
+            <StarRatingDisplay />
+            <p>key facts:nothing</p>
+            <p>Check-in from
+              Check-out from
+            </p>
+            <p>{hardHotelObject.CheckinRules.title} required at Check-in</p>
+            <p>City tax will be collected by hotel at check-in or check-out.</p>
+            {/* function to map rooms here to return many rooms in the table, also where extras will go here? */}
+            <Table striped bordered hover size='sm'>
+              <thead>
+                <tr>
+                  <th>Room Type</th>
+                  <th>Adults</th>
+                  <th>Included</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
 
-                </td>
-                <td>{room[i].rates.map((rate, i) => rate.adults)}</td>
+                {hotel.rooms.map((room, i) => {
+                  return (
 
-                <td>Function to display only room amentities based on group facilites code</td>
-                <td><p>{room.rates.map(rate => rate.net)}</p><Button variant='primary'>Book now</Button>{' '}<p>{showCancelationPolicy(room)}</p></td>
-              </tr>
+                    <tr key={room[i]} room={room[i]}>
 
-            )
-          })}
+                      <td>
+                        {/* <RoomCarousel room={room[i]} /> */}
+                        {/* passing the room object here is ok? */}
+                        <p>{room.name[i]}</p>
 
-        </tbody>
-        <tbody>
-          <p>Your booknig from {} to {}</p>
-          <p>130</p>
-          <Button variant='primary'>Book now</Button>{' '}
-          <Button variant='outline-primary' onClick={addToCart}>Add to cart</Button>{' '}
-          <CartDrawer />
+                      </td>
+                      <td>{room.rates.map((rate, i) => rate.adults)}</td>
 
-        </tbody>
-      </Table>
+                      <td>Function to display only room amentities based on group facilites code</td>
+                      {/* <td><p>{room.rates.map(rate => rate.net)}</p><Button variant='primary'>Book now</Button>{' '}<p>{showCancelationPolicy(room)}</p></td> */}
+                    </tr>
+
+                  )
+                })}
+
+              </tbody>
+              <tbody>
+                <p>Your booknig from {} to {}</p>
+                <p>130</p>
+                <Button variant='primary'>Book now</Button>{' '}
+                <Button variant='outline-primary'>Add to cart</Button>{' '}
+                <CartDrawer />
+
+              </tbody>
+            </Table>
+          </>
+        )
+      })}
     </>
-
   )
 }; export default HotelPage

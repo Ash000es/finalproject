@@ -56,7 +56,6 @@ export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   console.log(project, 'I am project from card search')
-  const hotels = project.results
 
   return (
     <>
@@ -79,8 +78,8 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {hotels.amenities && hotels.amenities.map(item =>
-                  <li key={item}>{item.icon}{item.name}  </li>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {props.hotel.amenities2 && props.hotel.amenities2.map(item =>
+                  <li key={item} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
               </div>
@@ -90,7 +89,7 @@ export const HotelCardSearch = (props) => {
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.address.content}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{props.hotel.city.content}</p>
+                {/* <p>{props.hotel.city.content}</p> */}
               </div>
             </div>
 

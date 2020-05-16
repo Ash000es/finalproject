@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SelectPrice () {
+export default function SelectPrice (props) {
   const classes = useStyles()
   const [value, setValue] = React.useState('')
   const [error, setError] = React.useState(false)
@@ -52,7 +52,7 @@ export default function SelectPrice () {
     }
   }
   const hotels = project.results
-  const lowestPrice = project.results.map(hotel => hotel.rooms[0].rates[0].net)
+  const lowestPrice = 30
   const showHotelPrice = () => {
     // take lowestPrice plus extra const, also remove should refresh amount.
     // likly we need context. HOW DOES HOTELPAGE KNOWs which hotel is this when it renders?
@@ -65,39 +65,37 @@ export default function SelectPrice () {
   }
   return (
     <>
-      {hotels && hotels.map(hotel => {
-        return (
-          <form onSubmit={handleSubmit} key={hotel} hotel={hotel}>
-            <FormControl component='fieldset' error={error} className={classes.formControl}>
-              <FormLabel component='legend' />
-              <RadioGroup aria-label='quiz' name='quiz' value={value} onChange={handleRadioChange}>
-                <FormControlLabel value='best' control={<Radio />} label='Room only' onClick={handelButtonClick} />
 
-                <Link to='/hotelpage'>
-                  {showbookbutton
-                    ? <><p>{lowestPrice}</p>
-                      <Button type='submit' variant='outlined' color='primary' className={classes.button}>
-                        Book Now
-                      </Button>
-                      </> : null}
-                </Link>
-                <FormControlLabel value='worst' control={<Radio />} label='With extras' onClick={handelButtonClick} />
+      <form onSubmit={handleSubmit}>
+        <FormControl component='fieldset' error={error} className={classes.formControl}>
+          <FormLabel component='legend' />
+          <RadioGroup aria-label='quiz' name='quiz' value={value} onChange={handleRadioChange}>
+            <FormControlLabel value='best' control={<Radio />} label='Room only' onClick={handelButtonClick} />
 
-                <Link to='/hotelpage'>
-                  {!showbookbutton
-                    ? <><p>{() => showHotelPrice()} </p>
-                      <Button type='submit' variant='outlined' color='primary' className={classes.button}>
-                        Book Now
-                      </Button>
-                      </> : null}
-                </Link>
-              </RadioGroup>
-              <FormHelperText>{helperText}</FormHelperText>
+            <Link to='/hotelpage'>
+              {showbookbutton
+                ? <><p>{lowestPrice}</p>
+                  <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+                    Book Now
+                  </Button>
+                </> : null}
+            </Link>
+            <FormControlLabel value='worst' control={<Radio />} label='With extras' onClick={handelButtonClick} />
 
-            </FormControl>
-          </form>
-        )
-      })}
+            <Link to='/hotelpage'>
+              {!showbookbutton
+                ? <><p>{() => showHotelPrice()} </p>
+                  <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+                    Book Now
+                  </Button>
+                </> : null}
+            </Link>
+          </RadioGroup>
+          <FormHelperText>{helperText}</FormHelperText>
+
+        </FormControl>
+      </form>
+
     </>
   )
 }

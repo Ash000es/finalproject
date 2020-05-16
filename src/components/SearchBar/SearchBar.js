@@ -21,8 +21,8 @@ const SearchBar = () => {
 
     results: {},
     stay: {
-      checkIn: '2020-06-15',
-      checkOut: '2020-06-16'
+      checkIn: '2020-11-15',
+      checkOut: '2020-11-16'
     },
     occupancies: [
       {
@@ -116,7 +116,7 @@ const SearchBar = () => {
           <AmenitiesSelect />
           <StarRatingFilter />
 
-          </div> : null}
+        </div> : null}
 
     </>
   )

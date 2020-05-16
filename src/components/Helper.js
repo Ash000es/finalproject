@@ -1,6 +1,6 @@
 import { MyProvider, ProjectContext } from './Provider'
 import React, { useContext, useState } from 'react'
-import { db, project, setProject, masterLinkLarge } from './Constants/Constants.js'
+import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Constants/Constants.js'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js
@@ -51,6 +51,8 @@ import { db, project, setProject, masterLinkLarge } from './Constants/Constants.
 //       setProject({ ...project, hotels })
 //     })
 // }
+const matches = (obj, source) =>
+  Object.keys(source).every(key => obj.hasOwnProperty(key) && obj[key] === source[key])
 export function mergeArrayObjects (arr1, arr2) {
   return arr1.map((item, i) => {
     if (item.code === arr2[i].code) {
@@ -60,11 +62,13 @@ export function mergeArrayObjects (arr1, arr2) {
   })
 }
 export const getAmenitiesArray = (arr1, arr2) => {
-  arr1.results.facilites.forEach(facility => arr2.forEach(amenity => {
-    if (facility.facilityCode === amenity.FacilityCode && facility.facilityGroupCode === amenity.FacilityGroupCode) {
-      return amenity
+  const finalShit = []
+  arr1.forEach(facility => arr2.forEach(amenity => {
+    if ((facility.facilityGroupCode === 70 || 71) && (facility.facilityCode === amenity.FacilityCode)) {
+      finalShit.push(amenity)
     }
   }))
+  return finalShit
 }
 
 // write helper function for the hotel page big carsoul and the search results thum carsoul and each room image
@@ -83,18 +87,13 @@ export const getLargePictures = (ImageArr, masterLinkLarge) => {
     }
   })
 }
-export const getSmallPictures = (ImageArr, masterLinkSmall) => {
-  ImageArr.map((imageObject) => {
+export const getSmallPictures = (imageArr, masterLinkSmall) => {
+  return imageArr.forEach(imageObject => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkSmall}${imageObjectPath}`
-    return {
-      imageTypeCode: imageObject.imageTypeCode,
-      path: newPath,
-      roomCode: imageObject.roomCode,
-      roomType: imageObject.roomType,
-      visualOrder: imageObject.visualOrder,
-      order: imageObject.order
-    }
+    imageObject = { ...imageObject, path: newPath }
+    console.log(imageObject, 'yolo')
+    return imageObject
   })
 }
 
