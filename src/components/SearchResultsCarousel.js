@@ -7,7 +7,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import { getSmallPictures } from '../components/Helper'
 import { masterLinkSmall } from '../components/Constants/Constants'
 
-export const SearchResultsCarousel = () => {
+export const SearchResultsCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
 
@@ -15,15 +15,17 @@ export const SearchResultsCarousel = () => {
     setIndex(selectedIndex)
   }
 
-  const hotelsArray = project.results
-  const readyImages = hotelsArray.map(H => H.images1)
+  // const hotelsArray = project.results
+  const readyImages = props.hotel.images
+  console.log(readyImages, 'am I here?')
   // className='iconCon'
-  // style={imageSize}
+
   const readyImagesArray = getSmallPictures(readyImages, masterLinkSmall)
-  // const imageSize = { width: '250px', height: '250px' }
+  console.log(readyImagesArray, 'iam to be mapped')
+  const imageSize = { width: '250px', height: '250px' }
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect}>
+      <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize}>
 
         {
           readyImagesArray.map(image => {
@@ -36,11 +38,12 @@ export const SearchResultsCarousel = () => {
                   alt='Hotel Pictures'
 
                 />
-                {/* <i className='iconHeart'><FavoriteIcon /></i> */}
-                {/* <i className='iconHeart'><FavoriteBorderIcon /></i> */}
+
                 <Carousel.Caption>
                   <h3>{image.order}</h3>
                   <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  {/* <i className='iconHeart'><FavoriteIcon /></i> */}
+                  {/* <i className='iconHeart'><FavoriteBorderIcon /></i> */}
                 </Carousel.Caption>
               </Carousel.Item>
 

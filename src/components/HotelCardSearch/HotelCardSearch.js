@@ -71,7 +71,7 @@ export const HotelCardSearch = (props) => {
 
           >
             <div className={classes.column} id='cardImage'>
-              <SearchResultsCarousel />
+              <SearchResultsCarousel hotel={props.hotel} />
 
             </div>
             <div className='threeCon'>

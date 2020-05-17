@@ -88,13 +88,15 @@ export const getLargePictures = (ImageArr, masterLinkLarge) => {
   })
 }
 export const getSmallPictures = (imageArr, masterLinkSmall) => {
-  return imageArr.forEach(imageObject => {
+  const hotels = []
+  imageArr.forEach(imageObject => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkSmall}${imageObjectPath}`
     imageObject = { ...imageObject, path: newPath }
-    console.log(imageObject, 'yolo')
-    return imageObject
+
+    hotels.push(imageObject)
   })
+  return hotels
 }
 
 export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
