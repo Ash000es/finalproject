@@ -1,3 +1,5 @@
+// TODO: APP IS A PAGE, NOT A COMPONENT. Move to pages.
+
 import React from 'react'
 import { BrowserRouter as Router, MemoryRouter, Switch, Route, Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
