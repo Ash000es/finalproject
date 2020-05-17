@@ -13,8 +13,8 @@ import './SearchBar.css'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Provider'
 import { Redirect } from 'react-router'
-import { requestAvailableHotels } from '../ApiHandler'
-import { db, project, setProject } from '../Constants/Constants'
+import { requestAvailableHotels } from '../../Helper/ApiHandler'
+import { db, project, setProject } from '../../Helper/Constants'
 
 const SearchBar = () => {
   const intialState = {

@@ -1,4 +1,3 @@
-// TODO: create a folder out of this file. Make a new file for each array
 
 import StarRateIcon from '@material-ui/icons/StarRate'
 import React from 'react'

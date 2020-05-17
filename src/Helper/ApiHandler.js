@@ -1,9 +1,9 @@
-// TODO: THIS IS NOT A COMPONENT. SHOULD GO INTO UTILS OR HELPER OR HANDLER FOLDER
+
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
-import { getAmenitiesArray, getSmallPictures } from '../components/Helper'
+import { getAmenitiesArray, getSmallPictures } from './Helper'
 import { amenities } from '../components/Constants/amenities'
-import { masterLinkLarge, masterLinkSmall } from './Constants/Constants.js'
+import { masterLinkLarge, masterLinkSmall } from './Constants.js'
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
   const D = new Date()

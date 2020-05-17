@@ -4,8 +4,8 @@ import './HotelPCarousel.css'
 import { MyProvider, ProjectContext } from './Provider'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import { getSmallPictures } from '../components/Helper'
-import { masterLinkSmall } from '../components/Constants/Constants'
+import { getSmallPictures } from '../Helper/Helper'
+import { masterLinkSmall } from '../Helper/Constants'
 
 export const SearchResultsCarousel = (props) => {
   const [index, setIndex] = useState(0)

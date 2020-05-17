@@ -1,4 +1,3 @@
-// TODO: APP IS A PAGE, NOT A COMPONENT. Move to pages.
 
 import React from 'react'
 import { BrowserRouter as Router, MemoryRouter, Switch, Route, Link } from 'react-router-dom'
@@ -6,14 +5,14 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
-import '../App/App.css'
-import HotelPage from '../Hotelpage/HotelPage'
-import FirebaseContext, { db } from '../Firebase'
-import AboutUs from '../AboutUs'
-import { HomePage } from '../../Pages/HomePage'
-import { HotelList2 } from '../assets/HoteListTest'
-import ProjectProvider from '../Provider'
-import MapPopUp from '../Map/MapPopUp'
+import './App.css'
+import HotelPage from '../components/Hotelpage/HotelPage'
+import FirebaseContext, { db } from '../components/Firebase'
+import AboutUs from '../components/AboutUs'
+import { HomePage } from './HomePage'
+import { HotelList2 } from '../components/assets/HoteListTest'
+import ProjectProvider from '../components/Provider'
+import MapPopUp from '../components/Map/MapPopUp'
 
 function App () {
   return (

@@ -8,7 +8,7 @@ import DateRangePicker from '../DateRange/NewDateRange'
 import { HotelCarousel } from '../HotelCarousel'
 import { MyProvider, ProjectContext } from '../Provider'
 import CartDrawer from '../CartDrawer'
-import { addCartItem, showCancelationPolicy } from '../Helper'
+import { addCartItem, showCancelationPolicy } from '../../Helper/Helper'
 
 const HotelPage = (props) => {
   const { project, setProject } = useContext(ProjectContext)

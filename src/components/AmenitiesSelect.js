@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Select from '@material-ui/core/Select'
 import Checkbox from '@material-ui/core/Checkbox'
 import Chip from '@material-ui/core/Chip'
-import { amenitiesToFilter } from './Constants/Constants.js'
+import { amenitiesToFilter } from '../Helper/Constants.js'
 import { MyProvider, ProjectContext } from './Provider'
 
 const useStyles = makeStyles((theme) => ({

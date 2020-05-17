@@ -1,6 +1,6 @@
-import { MyProvider, ProjectContext } from './Provider'
+import { MyProvider, ProjectContext } from '../components/Provider'
 import React, { useContext, useState } from 'react'
-import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Constants/Constants.js'
+import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Constants.js'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js

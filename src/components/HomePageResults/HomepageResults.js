@@ -3,7 +3,7 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 import SearchBar from '../SearchBar/SearchBar'
 import Row from 'react-bootstrap/Row'
-import Constants from '../Constants/Constants.js'
+import Constants from '../../Helper/Constants.js'
 
 const HomePageResults = () => {
   // useEffect(() => {

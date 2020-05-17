@@ -3,8 +3,8 @@ import Carousel from 'react-bootstrap/Carousel'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { MyProvider, ProjectContext } from './Provider'
-import { getRoomPicture } from './Helper'
-import { masterLinkSmall } from '../components/Constants/Constants'
+import { getRoomPicture } from '../Helper/Helper'
+import { masterLinkSmall } from '../Helper/Constants'
 
 const RoomCarousel = (props) => {
   const [index, setIndex] = useState(0)
