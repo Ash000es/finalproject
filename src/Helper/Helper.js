@@ -73,19 +73,16 @@ export const getAmenitiesArray = (arr1, arr2) => {
 
 // write helper function for the hotel page big carsoul and the search results thum carsoul and each room image
 
-export const getLargePictures = (ImageArr, masterLinkLarge) => {
-  ImageArr.map((imageObject) => {
+export const getLargePictures = (imageArr, masterLinkLarge) => {
+  const hotelsLarge = []
+  imageArr.forEach(imageObject => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkLarge}${imageObjectPath}`
-    return {
-      imageTypeCode: imageObject.imageTypeCode,
-      path: newPath,
-      roomCode: imageObject.roomCode,
-      roomType: imageObject.roomType,
-      visualOrder: imageObject.visualOrder,
-      order: imageObject.order
-    }
+    imageObject = { ...imageObject, path: newPath }
+
+    hotelsLarge.push(imageObject)
   })
+  return hotelsLarge
 }
 export const getSmallPictures = (imageArr, masterLinkSmall) => {
   const hotels = []

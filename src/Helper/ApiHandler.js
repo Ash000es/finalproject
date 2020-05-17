@@ -1,8 +1,7 @@
-
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
 import { getAmenitiesArray, getSmallPictures } from './Helper'
-import { amenities } from '../components/Constants/amenities'
+import { amenities } from './amenities'
 import { masterLinkLarge, masterLinkSmall } from './Constants.js'
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
@@ -89,86 +88,8 @@ const mapResultToHotel = (dbHotels, apiHotelResults) => {
   return final
 }
 
-// const mapResultToHotel = (arr1, arr2) => {
-//   const apihotel = arr2.map(apih => apih)
-//   return arr1.map(hotel => {
-//     if (hotel.code === apihotel.code) {
-//       return [{
-//         images: hotel.images,
-//         amenities: hotel.facilities,
-//         rooms: apihotel.rooms
-
-//       }]
-//     }
-//   })
-// }
-
-// const IDSapi = apiHotelResults.map(ids => ids.code)
-// return dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
-//   if (dbHotel.code === apiHotel.code) {
-// return {
-
-//   code: apiHotel.code,
-//   name: apiHotel.name,
-//   categoryCode: apiHotel.categoryCode,
-//   categoryName: apiHotel.categoryName,
-//   rooms: apiHotel.rooms,
-//   currency: apiHotel.currencey,
-//   destinationCode: apiHotel.destinationCode,
-//   destinationName: apiHotel.destinationName,
-//   latitude: apiHotel.latitude,
-//   longitude: apiHotel.longitude,
-//   maxRate: apiHotel.maxRate,
-//   minRate: apiHotel.minRate,
-//   reviews: apiHotel.reviews,
-//   zoneCode: apiHotel.zoneCode,
-//   zoneName: apiHotel.zoneName,
-//   accommodationType: dbHotel.accommodationTypeCode,
-//   address: dbHotel.address,
-//   postalCode: dbHotel.postalCode,
-//   boardCodes: dbHotel.boardCodes,
-//   description: dbHotel.description,
-//   countryCode: dbHotel.countryCode,
-//   email: dbHotel.email,
-//   phones: dbHotel.phones,
-//   lastUpdate: dbHotel.lastUpdate,
-//   license: dbHotel.license,
-//   ranking: dbHotel.ranking,
-//   segmentCodes: dbHotel.segmentCodes,
-//   stateCode: dbHotel.stateCode,
-//   images: dbHotel.images,
-//   facilities: dbHotel.facilities
-
-// }
-
-// const mapResultToHotel = (arr1, arr2) => {
-//   return arr1.map(dbHotel=>)
-// }
-// {
-//       if (dbHotel.code === apiHotel.code) {
-//         console.log(dbHotel.code, 'dbcode')
-//         console.log(apiHotel.code, 'apicode')
-//         return {
-
-//           code: apiHotel.code,
-//           name: apiHotel.name,
-//           categoryCode: apiHotel.categoryCode
-
-//         }
-//       }
-//     }))
-// }
 // const mapResultToHotel = (a1, a2) =>
 //   a1.map(itm => ({
 //     ...a2.find((item) => (item.code === itm.code) && item),
 //     ...itm
 //   }))
-
-// const mapResultToHotel = (arr1, arr2) => {
-//   return arr1.map((dbHotel, i) => {
-//     if (dbHotel[i].code === arr2[i].code) {
-//       // merging two objects
-//       return Object.assign({}, dbHotel[i], arr2[i])
-//     }
-//   })
-// }
