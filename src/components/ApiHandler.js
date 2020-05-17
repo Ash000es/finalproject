@@ -1,3 +1,4 @@
+// TODO: THIS IS NOT A COMPONENT. SHOULD GO INTO UTILS OR HELPER OR HANDLER FOLDER
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
 import { getAmenitiesArray, getSmallPictures } from '../components/Helper'
