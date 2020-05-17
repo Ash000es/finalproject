@@ -11,7 +11,7 @@ import FirebaseContext, { db } from '../components/Firebase'
 import AboutUs from '../components/AboutUs'
 import { HomePage } from './HomePage'
 import { HotelList2 } from '../components/assets/HoteListTest'
-import ProjectProvider from '../components/Provider'
+import ProjectProvider from '../Helper/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
 
 function App () {
