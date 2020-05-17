@@ -1,4 +1,4 @@
-import { MyProvider, ProjectContext } from '../components/Provider'
+import { MyProvider, ProjectContext } from './Provider'
 import React, { useContext, useState } from 'react'
 import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Constants.js'
 

@@ -6,7 +6,7 @@ import StarRatingDisplay from '../StarRatingDisplay'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../DateRange/NewDateRange'
 import { HotelCarousel } from '../HotelCarousel'
-import { MyProvider, ProjectContext } from '../Provider'
+import { MyProvider, ProjectContext } from '../../Helper/Provider'
 import CartDrawer from '../CartDrawer'
 import { addCartItem, showCancelationPolicy } from '../../Helper/Helper'
 

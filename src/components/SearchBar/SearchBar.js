@@ -11,7 +11,7 @@ import StarRatingFilter from '../StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { Link } from 'react-router-dom'
-import { MyProvider, ProjectContext } from '../Provider'
+import { MyProvider, ProjectContext } from '../../Helper/Provider'
 import { Redirect } from 'react-router'
 import { requestAvailableHotels } from '../../Helper/ApiHandler'
 import { db, project, setProject } from '../../Helper/Constants'
@@ -116,7 +116,7 @@ const SearchBar = () => {
         <AmenitiesSelect />
         <StarRatingFilter />
 
-                             </div> : console.log(intialState.fullBar, 'I am not true')}
+      </div> : console.log(intialState.fullBar, 'I am not true')}
 
     </>
   )

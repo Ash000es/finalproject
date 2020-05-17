@@ -9,7 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { hardHotelObject } from './assets/HardCode'
 import { Link } from 'react-router-dom'
-import { MyProvider, ProjectContext } from '../components/Provider'
+import { MyProvider, ProjectContext } from '../Helper/Provider'
 import PriceSlider from './PriceSlider'
 
 const useStyles = makeStyles((theme) => ({
@@ -78,7 +78,7 @@ export default function SelectPrice (props) {
                   <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                     Book Now
                   </Button>
-                </> : null}
+                  </> : null}
             </Link>
             <FormControlLabel value='worst' control={<Radio />} label='With extras' onClick={handelButtonClick} />
 
@@ -88,7 +88,7 @@ export default function SelectPrice (props) {
                   <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                     Book Now
                   </Button>
-                </> : null}
+                  </> : null}
             </Link>
           </RadioGroup>
           <FormHelperText>{helperText}</FormHelperText>

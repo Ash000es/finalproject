@@ -12,7 +12,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import SelectPrice from '../SelectPrice'
 import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
-import { MyProvider, ProjectContext } from '../Provider'
+import { MyProvider, ProjectContext } from '../../Helper/Provider'
 
 const useStyles = makeStyles((theme) => ({
   root: {
