@@ -13,6 +13,7 @@ import { HomePage } from './HomePage'
 import { HotelList2 } from '../components/assets/HoteListTest'
 import ProjectProvider from '../Helper/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
+import SelectPrice from '../components/SelectPrice'
 
 function App () {
   return (
@@ -40,7 +41,7 @@ function App () {
             <Switch>
 
               <Route path='/about' exact component={AboutUs} />
-              <Route path='/hotelpage' exact component={HotelPage} />
+              <Route path='/hotelpage' exact component={SelectPrice} />
               <Route path='/hotelpage:code' component={HotelPage} />
               <Route path='/Travelessentials' exact component={MapPopUp} />
               <Route path='/searchresults' exact component={HotelList2} />

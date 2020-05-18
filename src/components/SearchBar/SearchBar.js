@@ -116,7 +116,7 @@ const SearchBar = () => {
         <AmenitiesSelect />
         <StarRatingFilter />
 
-      </div> : console.log(intialState.fullBar, 'I am not true')}
+                             </div> : null}
 
     </>
   )

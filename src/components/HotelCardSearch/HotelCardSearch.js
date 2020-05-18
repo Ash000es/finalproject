@@ -91,7 +91,7 @@ export const HotelCardSearch = (props) => {
             </div>
 
             <div id='bookButton' className={classes.column} style={{ width: '170px' }}>
-              <SelectPrice />
+              <SelectPrice hotel={props.hotel} />
             </div>
           </ExpansionPanelSummary>
 

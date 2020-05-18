@@ -7,11 +7,10 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
-import { hardHotelObject } from './assets/HardCode'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Helper/Provider'
-import PriceSlider from './PriceSlider'
-
+const lowestPrice = 30
+const extraPrice = 40
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(3)
@@ -22,19 +21,49 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SelectPrice (props) {
+  const roomOnlyPrice = 30
+  const roomPlusPrice = 40
   const classes = useStyles()
-  const [value, setValue] = React.useState('')
-  const [error, setError] = React.useState(false)
+
+  const [value, setValue] = React.useState(true)
+  console.log(value, 'value')
+  const [valuechecked, setValueChecked] = React.useState(true)
+  console.log(valuechecked, 'value is checked ?')
+  const [value1, setValue1] = React.useState(false)
+  console.log(value1, 'value1')
+  const [value1checked, setValue1Checked] = React.useState(false)
+  console.log(value1checked, 'value1 is checked ?')
+  const [extraprice, setExtraPrice] = React.useState(false)
+  const [showprice, SetShowPrice] = React.useState(roomOnlyPrice)
+  const [showpriceplus, SetShowPricePlus] = React.useState(roomPlusPrice)
+
   const [helperText, setHelperText] = React.useState('')
-  const [showbookbutton, setShowBookButton] = React.useState(true)
-  const [showprice, SetShowPrice] = React.useState('')
+
   const { project, setProject } = useContext(ProjectContext)
+  const [error, setError] = React.useState(false)
 
   const handleRadioChange = (event) => {
     console.log(event)
-    setValue(event.target.value)
+
     setHelperText(' ')
     setError(false)
+  }
+  const showRoomOnlyPrice = (event) => {
+    console.log(event.target.value, 'roomonly')
+    setValue(!value)
+    setValue1(!value1)
+    setValueChecked(event.target.checked)
+    setValue1Checked(!event.target.checked)
+  }
+  const showRoomPlusPrice = (event) => {
+    console.log(event.target.value, 'plusprice')
+    setValue(!value)
+    setValue1(!value1)
+    setValueChecked(!event.target.checked)
+    setValue1Checked(event.target.checked)
+  }
+  const sendCurrentHotel = () => {
+
   }
 
   const handleSubmit = (event) => {
@@ -51,51 +80,40 @@ export default function SelectPrice (props) {
       setError(true)
     }
   }
-  const hotels = project.results
-  const lowestPrice = 30
-  const showHotelPrice = () => {
-    // take lowestPrice plus extra const, also remove should refresh amount.
-    // likly we need context. HOW DOES HOTELPAGE KNOWs which hotel is this when it renders?
-    SetShowPrice('30')
-  }
 
-  const handelButtonClick = () => {
-    setShowBookButton(!showbookbutton)
-    showHotelPrice()
-  }
   return (
-    <>
+    <form onSubmit={handleSubmit}>
+      <FormControl component='fieldset' error={error} className={classes.formControl}>
+        {/* value={value} onChange={handleRadioChange} */}
+        <RadioGroup aria-label='quiz' name='quiz' value={value} value1={value1}>
+          {value ? <div>
+            <FormLabel component='legend'>Room only</FormLabel>
+            <FormControlLabel value control={<Radio />} label={props.hotel.rooms[0].rates[0].net} checked />
 
-      <form onSubmit={handleSubmit}>
-        <FormControl component='fieldset' error={error} className={classes.formControl}>
-          <FormLabel component='legend' />
-          <RadioGroup aria-label='quiz' name='quiz' value={value} onChange={handleRadioChange}>
-            <FormControlLabel value='best' control={<Radio />} label='Room only' onClick={handelButtonClick} />
+            <FormHelperText>{helperText}</FormHelperText>
+            <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+              continue
+            </Button>
+            <FormLabel component='legend'>Room plus extra</FormLabel>
+            <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
+          </div>
 
-            <Link to='/hotelpage'>
-              {showbookbutton
-                ? <><p>{lowestPrice}</p>
-                  <Button type='submit' variant='outlined' color='primary' className={classes.button}>
-                    Book Now
-                  </Button>
-                  </> : null}
-            </Link>
-            <FormControlLabel value='worst' control={<Radio />} label='With extras' onClick={handelButtonClick} />
+            : <div>
+              <FormLabel component='legend'>Room only</FormLabel>
+              <FormControlLabel checked={false} value={!value} control={<Radio onChange={showRoomOnlyPrice} />} label={props.hotel.rooms[0].rates[0].net} />
+              <FormLabel component='legend'>Room plus extra</FormLabel>
 
-            <Link to='/hotelpage'>
-              {!showbookbutton
-                ? <><p>{() => showHotelPrice()} </p>
-                  <Button type='submit' variant='outlined' color='primary' className={classes.button}>
-                    Book Now
-                  </Button>
-                  </> : null}
-            </Link>
-          </RadioGroup>
-          <FormHelperText>{helperText}</FormHelperText>
+              <FormControlLabel value1={!value1} checked control={<Radio />} label={showpriceplus} />
 
-        </FormControl>
-      </form>
+              <FormHelperText>{helperText}</FormHelperText>
+              <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+                continue
+              </Button>
+              </div>}
 
-    </>
+        </RadioGroup>
+
+      </FormControl>
+    </form>
   )
 }
