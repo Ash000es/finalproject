@@ -51,24 +51,30 @@ import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Con
 //       setProject({ ...project, hotels })
 //     })
 // }
-const matches = (obj, source) =>
-  Object.keys(source).every(key => obj.hasOwnProperty(key) && obj[key] === source[key])
-export function mergeArrayObjects (arr1, arr2) {
-  return arr1.map((item, i) => {
-    if (item.code === arr2[i].code) {
-      // merging two objects
-      return Object.assign({}, item, arr2[i])
-    }
-  })
-}
+
 export const getAmenitiesArray = (arr1, arr2) => {
-  const finalShit = []
-  arr1.forEach(facility => arr2.forEach(amenity => {
-    if ((facility.facilityGroupCode === 70 || 71) && (facility.facilityCode === amenity.FacilityCode)) {
-      finalShit.push(amenity)
+  const finalArray = []
+  console.log(arr1, 'arr1')
+  const arr3 = arr1.filter(item => item.facilityGroupCode === 70)
+  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70)
+  const final = arr3.forEach(itemAPI => arr4.forEach(itemHardCode => {
+    if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
+      finalArray.push(itemHardCode)
     }
+    // console.log(finalArray)
+    return finalArray
   }))
-  return finalShit
+  return finalArray
+}
+
+/**
+ * using ES6 Map
+ **/
+export function removeDuplicates (arr) {
+  const jsonObject = arr.map(JSON.stringify)
+  const uniqueSet = new Set(jsonObject)
+  const uniqueArray = Array.from(uniqueSet).map(JSON.parse)
+  return uniqueArray
 }
 
 // write helper function for the hotel page big carsoul and the search results thum carsoul and each room image

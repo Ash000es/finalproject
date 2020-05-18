@@ -17,11 +17,11 @@ export const SearchResultsCarousel = (props) => {
 
   // const hotelsArray = project.results
   const readyImages = props.hotel.images
-  console.log(readyImages, 'am I here?')
+
   // className='iconCon'
 
   const readyImagesArray = getSmallPictures(readyImages, masterLinkSmall)
-  console.log(readyImagesArray, 'iam to be mapped')
+  // console.log(readyImagesArray, 'iam to be mapped')
   const imageSize = { width: '250px', height: '250px' }
   return (
     <>

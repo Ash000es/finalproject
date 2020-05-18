@@ -8,7 +8,7 @@ const ProjectProvider = (props) => {
   const [project, setProject] = useState(
     {
       results: [],
-      hotels: [],
+      currentHotel: {},
       redirect: false,
       cartOpen: false,
       cartItems: [],

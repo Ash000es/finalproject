@@ -13,6 +13,8 @@ import SelectPrice from '../SelectPrice'
 import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
+import { amenities } from '../../Helper/amenities'
+import { getAmenitiesArray } from '../../Helper/Helper'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,8 +54,11 @@ const useStyles = makeStyles((theme) => ({
 export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
-  console.log(project, 'I am project from card search')
-
+  // console.log(project, 'I am project from card search')
+  const toMap = props.hotel.amenities2
+  console.log(toMap, '333')
+  const amenities3 = getAmenitiesArray(toMap, amenities)
+  console.log(amenities3, 'lplplp')
   return (
     <>
 
@@ -75,7 +80,7 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {props.hotel.amenities2 && props.hotel.amenities2.map(item =>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenities3 && amenities3.map(item =>
                   <li key={item} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>

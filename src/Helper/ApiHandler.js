@@ -1,6 +1,6 @@
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
-import { getAmenitiesArray, getSmallPictures } from './Helper'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates } from './Helper'
 import { amenities } from './amenities'
 import { masterLinkLarge, masterLinkSmall } from './Constants.js'
 
@@ -76,12 +76,12 @@ const mapResultToHotel = (dbHotels, apiHotelResults) => {
   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
     const address = dbHotel.address
     const images = dbHotel.images
-    // const images1 = getSmallPictures(images, masterLinkSmall)
     const amenities1 = dbHotel.facilities
-    const amenities2 = getAmenitiesArray(amenities1, amenities)
+    const amenities2 = removeDuplicates(amenities1)
+
     if (dbHotel.code === apiHotel.code) {
       apiHotel = { ...apiHotel, images, amenities2, address }
-      console.log(apiHotel, 'new')
+      // console.log(apiHotel, 'new')
       final.push(apiHotel)
     }
   }))

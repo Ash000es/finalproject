@@ -26,13 +26,13 @@ export default function SelectPrice (props) {
   const classes = useStyles()
 
   const [value, setValue] = React.useState(true)
-  console.log(value, 'value')
+  // console.log(value, 'value')
   const [valuechecked, setValueChecked] = React.useState(true)
-  console.log(valuechecked, 'value is checked ?')
+  // console.log(valuechecked, 'value is checked ?')
   const [value1, setValue1] = React.useState(false)
-  console.log(value1, 'value1')
+  // console.log(value1, 'value1')
   const [value1checked, setValue1Checked] = React.useState(false)
-  console.log(value1checked, 'value1 is checked ?')
+  // console.log(value1checked, 'value1 is checked ?')
   const [extraprice, setExtraPrice] = React.useState(false)
   const [showprice, SetShowPrice] = React.useState(roomOnlyPrice)
   const [showpriceplus, SetShowPricePlus] = React.useState(roomPlusPrice)
@@ -63,7 +63,9 @@ export default function SelectPrice (props) {
     setValue1Checked(event.target.checked)
   }
   const sendCurrentHotel = () => {
-
+    setProject(
+      { ...project, currentHotel: props.hotel }
+    )
   }
 
   const handleSubmit = (event) => {
@@ -91,12 +93,14 @@ export default function SelectPrice (props) {
             <FormControlLabel value control={<Radio />} label={props.hotel.rooms[0].rates[0].net} checked />
 
             <FormHelperText>{helperText}</FormHelperText>
-            <Button type='submit' variant='outlined' color='primary' className={classes.button}>
-              continue
-            </Button>
+            <Link to='/hotelpage:code'>
+              <Button type='submit' variant='outlined' color='primary' onClick={sendCurrentHotel} className={classes.button}>
+                continue
+              </Button>
+            </Link>
             <FormLabel component='legend'>Room plus extra</FormLabel>
             <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
-          </div>
+                   </div>
 
             : <div>
               <FormLabel component='legend'>Room only</FormLabel>
@@ -109,7 +113,7 @@ export default function SelectPrice (props) {
               <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                 continue
               </Button>
-              </div>}
+            </div>}
 
         </RadioGroup>
 

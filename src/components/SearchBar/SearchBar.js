@@ -116,7 +116,7 @@ const SearchBar = () => {
         <AmenitiesSelect />
         <StarRatingFilter />
 
-                             </div> : null}
+      </div> : null}
 
     </>
   )
