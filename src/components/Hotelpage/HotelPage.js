@@ -15,7 +15,7 @@ const HotelPage = () => {
   // add to cart function to add the item to the cart drawer
 
   const currentSelection = project.currentHotel
-  console.log(currentSelection, 'mfers')
+  console.log(currentSelection.name, 'mfers')
 
   // const addToCart = () => {
   //   const hotelCartItem = { name: props.hotel.name, image: props.hotel.images[0], price: props.hotel.price, code: props.hotel.code }
@@ -24,28 +24,31 @@ const HotelPage = () => {
   // onClick={addToCart}
   return (
 
-    <>
+    <div className='fillit'>
 
       <h4>This hotel have spceial offer for you</h4>
-      <div> <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address},{currentSelection.postalCode},{currentSelection.city} show on map</p></div>
+
+      <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address},{currentSelection.postalCode},{currentSelection.city} show on map</p>
 
       <div>
         <p>Edit your dates</p>
         <DateRangePicker />
       </div>
 
-      <HotelCarousel />
+      <HotelCarousel currentSelection={currentSelection} />
 
       <div>amenities:bn
         <p>70 Rooms</p>
         <ul style={{ listStyleType: 'none' }}>{currentSelection.amenities2.map(item =>
           <li key={item}>{item.icon}{item.title}</li>
+
         )}
         </ul>
 
       </div>
       <img src='' alt='TA' />
-      <StarRatingDisplay />
+
+      {/* <StarRatingDisplay /> */}
       <p>key facts:nothing</p>
       <p>Check-in from
         Check-out from
@@ -90,11 +93,11 @@ const HotelPage = () => {
           <p>130</p>
           <Button variant='primary'>Book now</Button>{' '}
           <Button variant='outline-primary'>Add to cart</Button>{' '}
-          <CartDrawer />
+          {/* <CartDrawer /> */}
 
         </tbody>
       </Table>
 
-    </>
+    </div>
   )
 }; export default HotelPage

@@ -7,7 +7,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import { getLargePictures } from '../Helper/Helper'
 import { masterLinkLarge } from '../Helper/Constants'
 
-export const HotelCarousel = () => {
+export const HotelCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
 
@@ -15,7 +15,7 @@ export const HotelCarousel = () => {
     setIndex(selectedIndex)
   }
 
-  const imagesArray = project.results.map(H => H.images)
+  const imagesArray = props.currentSelection.images
   const readyImagesArray = getLargePictures(imagesArray, masterLinkLarge)
   const imageSize = { width: '100%', height: '500px' }
   return (

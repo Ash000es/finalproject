@@ -36,4 +36,4 @@ export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/small/'
-export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/xl/'
+export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/large/'

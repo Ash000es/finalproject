@@ -26,7 +26,7 @@ function App () {
               <LinkContainer to='/home'>
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/hotelpage'>
+              <LinkContainer to=''>
                 <Nav.Link>Things to do</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/Travelessentials'>
@@ -39,10 +39,9 @@ function App () {
           </Navbar>
           <Container className='pt-3'>
             <Switch>
-
+              <Route path='/hotelpage' excat component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
-              <Route path='/hotelpage' exact component={SelectPrice} />
-              <Route path='/hotelpage:code' component={HotelPage} />
+              {/* <Route path='/hotelpage:code' component={HotelPage} /> */}
               <Route path='/Travelessentials' exact component={MapPopUp} />
               <Route path='/searchresults' exact component={HotelList2} />
               <Route path='/' component={HomePage} />

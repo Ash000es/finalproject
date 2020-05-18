@@ -9,6 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../Helper/Provider'
+import { Redirect } from 'react-router'
 const lowestPrice = 30
 const extraPrice = 40
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,7 @@ export default function SelectPrice (props) {
 
   const { project, setProject } = useContext(ProjectContext)
   const [error, setError] = React.useState(false)
+  const [redirect, setRedirect] = React.useState(false)
 
   const handleRadioChange = (event) => {
     console.log(event)
@@ -66,6 +68,8 @@ export default function SelectPrice (props) {
     setProject(
       { ...project, currentHotel: props.hotel }
     )
+
+    setRedirect({ redirect: true })
   }
 
   const handleSubmit = (event) => {
@@ -82,6 +86,9 @@ export default function SelectPrice (props) {
       setError(true)
     }
   }
+  if (redirect) {
+    return <Redirect exact push to='/hotelpage' />
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -93,11 +100,11 @@ export default function SelectPrice (props) {
             <FormControlLabel value control={<Radio />} label={props.hotel.rooms[0].rates[0].net} checked />
 
             <FormHelperText>{helperText}</FormHelperText>
-            <Link to='/hotelpage:code'>
-              <Button type='submit' variant='outlined' color='primary' onClick={sendCurrentHotel} className={classes.button}>
-                continue
-              </Button>
-            </Link>
+
+            <Button type='submit' variant='outlined' color='primary' onClick={sendCurrentHotel} className={classes.button}>
+              continue
+            </Button>
+
             <FormLabel component='legend'>Room plus extra</FormLabel>
             <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
                    </div>
