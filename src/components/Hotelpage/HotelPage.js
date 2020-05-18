@@ -13,10 +13,10 @@ import { addCartItem, showCancelationPolicy } from '../../Helper/Helper'
 const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
   // add to cart function to add the item to the cart drawer
-  const test = project.results
-  console.log(test, 'test')
-  const currentSelection = test.currentHotel
+
+  const currentSelection = project.currentHotel
   console.log(currentSelection, 'mfers')
+
   // const addToCart = () => {
   //   const hotelCartItem = { name: props.hotel.name, image: props.hotel.images[0], price: props.hotel.price, code: props.hotel.code }
   //   setProject({ ...project, cartItems: hotelCartItem })
@@ -27,7 +27,7 @@ const HotelPage = () => {
     <>
 
       <h4>This hotel have spceial offer for you</h4>
-      <div> <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address},{hardHotelObject.postalCode},{currentSelection.city} show on map</p></div>
+      <div> <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address},{currentSelection.postalCode},{currentSelection.city} show on map</p></div>
 
       <div>
         <p>Edit your dates</p>

@@ -9,6 +9,7 @@ const ProjectProvider = (props) => {
     {
       results: [],
       currentHotel: {},
+      currentSelectionPrice: {},
       redirect: false,
       cartOpen: false,
       cartItems: [],
