@@ -54,11 +54,11 @@ const useStyles = makeStyles((theme) => ({
 export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
-  // console.log(project, 'I am project from card search')
+
   const toMap = props.hotel.amenities2
-  console.log(toMap, '333')
+
   const amenities3 = getAmenitiesArray(toMap, amenities)
-  console.log(amenities3, 'lplplp')
+
   return (
     <>
 
@@ -96,7 +96,7 @@ export const HotelCardSearch = (props) => {
             </div>
 
             <div id='bookButton' className={classes.column} style={{ width: '170px' }}>
-              <SelectPrice hotel={props.hotel} />
+              <SelectPrice done={() => props.done()} hotel={props.hotel} />
             </div>
           </ExpansionPanelSummary>
 

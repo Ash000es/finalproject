@@ -68,8 +68,7 @@ export default function SelectPrice (props) {
     setProject(
       { ...project, currentHotel: props.hotel }
     )
-
-    setRedirect({ redirect: true })
+    props.done()
   }
 
   const handleSubmit = (event) => {

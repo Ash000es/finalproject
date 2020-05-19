@@ -16,7 +16,7 @@ import { Redirect } from 'react-router'
 import { requestAvailableHotels } from '../../Helper/ApiHandler'
 import { db, project, setProject } from '../../Helper/Constants'
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const intialState = {
 
     results: {},
@@ -63,7 +63,9 @@ const SearchBar = () => {
         setProject(
           { ...project, results: hotelsProject }
         )
-        setState({ redirect: true, fullBar: !intialState.fullBar })
+        setState({ fullBar: !intialState.fullBar })
+      }).then(() => {
+        props.done()
       })
   }
 
@@ -92,10 +94,6 @@ const SearchBar = () => {
     setState({ stay: { ...stay, checkIn, checkOut } })
   }
 
-  if (state.redirect) {
-    return <Redirect exact push to='/searchresults' />
-  }
-
   return (
     <>
       <div className='SearchBar'>
@@ -103,20 +101,19 @@ const SearchBar = () => {
         <SearchField onChange={handleLocationChange} />
         {/* <DateRange onChange={handleDateChange1} /> */}
         <DateRangePicker onChange={handleDateChange1} />
-        <OccSelector onChange={handleOccChange} />
-        <OccSelector2 onChange={handleOccChange2} />
+        <OccSelector label='Adult' onChange={handleOccChange} />
+        <OccSelector2 label='Children' onChange={handleOccChange2} />
         {/* <Link to='/searchresults'> */}
         <Button variant='primary' onClick={handleClickButton}>Search</Button>{' '}
         {/* </Link> */}
 
       </div>
 
-      {intialState.fullBar ? <div className='SearchBarFilters'>
+      {intialState.fullBar && <div className='SearchBarFilters'>
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-
-      </div> : null}
+      </div>}
 
     </>
   )

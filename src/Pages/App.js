@@ -14,6 +14,9 @@ import { HotelList2 } from '../components/assets/HoteListTest'
 import ProjectProvider from '../Helper/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
 import SelectPrice from '../components/SelectPrice'
+import ReviewCart from '../components/PaymentCout/ReviewCart'
+// import { SearchResultsPage } from '../Pages/SearchResults'
+import HotelList from '../components/HotelList/HoteList'
 
 function App () {
   return (
@@ -26,7 +29,7 @@ function App () {
               <LinkContainer to='/home'>
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to=''>
+              <LinkContainer to='/reviewcart'>
                 <Nav.Link>Things to do</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/Travelessentials'>
@@ -39,11 +42,11 @@ function App () {
           </Navbar>
           <Container className='pt-3'>
             <Switch>
-              <Route path='/hotelpage' excat component={HotelPage} />
+              <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
-              {/* <Route path='/hotelpage:code' component={HotelPage} /> */}
+              <Route path='/reviewcart' component={ReviewCart} />
               <Route path='/Travelessentials' exact component={MapPopUp} />
-              <Route path='/searchresults' exact component={HotelList2} />
+              <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />
 
             </Switch>

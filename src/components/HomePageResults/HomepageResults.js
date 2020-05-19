@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar, { handleClickButton } from '../SearchBar/SearchBar'
 import Row from 'react-bootstrap/Row'
-import Constants from '../../Helper/Constants.js'
+import {popularCities} from Constants from '../../Helper/Constants.js'
+
 
 const HomePageResults = () => {
   // useEffect(() => {
@@ -39,56 +40,22 @@ const HomePageResults = () => {
 
     }
   )
-  const popularCities = ['IBZ', 'BCN', 'LON', 'MAD', 'MCO']
-  const apikey = 'kw7vpx3nefnq47b8dk6kehg4'
-  const sec = 'nyM8qx6n8S'
-  const D = new Date()
-  const getSignature = () => {
-    return (apikey + sec + Math.round(D.getTime() / 1000))
-  }
 
-  const createAPIRequest = (city) => {
-    // will createRequestBody be able to fetch city here?
-    const { destination } = city
-    const createRequestBody = () => {
-      const { occupancies, stay, reviews } = state
+  // const getHomePageHotels=(popularCities)=>{
+  //   return popularCities.map(destination=>{
+  //     handleHomePageSearch (destination)
+  //   })
+  // }
 
-      return {
-        stay,
-        occupancies,
-        destination,
-        reviews
-      }
-    }
-    window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-      {
-        method: 'POST',
-        headers: {
-          'Api-Key': apikey,
-          'X-Signature': getSignature(),
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Accept-Encoding': 'gzip'
-        },
+  // const handleHomePageSearch = (destination) => {
+  //   const { occupancies, destination, stay, reviews } = state
+  //   const payLoad = { occupancies, destination, stay, reviews }
+  //   requestAvailableHotels(db, payLoad)
+  //     .then((hotelsProject) => {
+  //       setState({ homePageBooking: hotelsProject})
+  //     })
+  // }
 
-        body: JSON.stringify(createRequestBody())
-      }).then(res => res.json()).then(Response => {
-      console.log(Response)
-      const { hotels } = Response
-      // can I do double destructing like below ? since the real results is actually hotels.hotels
-      const { hotelsArray } = hotels.hotels
-
-      console.log(hotelsArray)
-
-      setState({ ...state, homePageBooking: hotelsArray })
-    })
-  }
-
-  const getEachCityResults = () => {
-    popularCities.map(city => {
-      createAPIRequest(city)
-    })
-  }
   // const findCheapestHotel = () => {
   //   state.homePageBooking.forEach(des => {
   //     const res212 = des.reduce(function (prev, curr) {

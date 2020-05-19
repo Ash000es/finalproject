@@ -23,12 +23,15 @@ const HotelPage = () => {
   // }
   // onClick={addToCart}
   return (
+    <p>Hi</p>
+  )
+  return (
 
     <div className='fillit'>
 
       <h4>This hotel have spceial offer for you</h4>
 
-      <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address},{currentSelection.postalCode},{currentSelection.city} show on map</p>
+      {/* <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address},{currentSelection.postalCode},{currentSelection.city} show on map</p> */}
 
       <div>
         <p>Edit your dates</p>
