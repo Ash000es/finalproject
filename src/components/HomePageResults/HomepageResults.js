@@ -3,8 +3,7 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 import SearchBar, { handleClickButton } from '../SearchBar/SearchBar'
 import Row from 'react-bootstrap/Row'
-import {popularCities} from Constants from '../../Helper/Constants.js'
-
+import { popularCities } from '../../Helper/Constants.js'
 
 const HomePageResults = () => {
   // useEffect(() => {

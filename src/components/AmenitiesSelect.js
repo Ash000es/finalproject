@@ -83,15 +83,12 @@ const AmenitiesSelect = () => {
   // }
 
   const handleChange = (event) => {
-    console.log(event, 'i am event')
     setamenitiesName(event.target.value)
   }
 
   const handleChangeMultiple = (event) => {
     const { options } = event.target
-    console.log(options, 'options')
     const value = []
-    console.log(value, 'value')
     for (let i = 0, l = options.length; i < l; i += 1) {
       if (options[i].selected) {
         value.push(options[i].value)

@@ -25,7 +25,7 @@ export const HotelCarousel = (props) => {
         {
           readyImagesArray.map((image) => {
             return (
-              <Carousel.Item key={image} style={imageSize} className='iconCon'>
+              <Carousel.Item key={Math.random()} style={imageSize} className='iconCon'>
 
                 <img
                   className='d-block w-100 '

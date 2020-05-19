@@ -3,18 +3,14 @@ import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
 import OccSelector2 from '../OccSelector2/OccSelector2'
 import FirebaseContext from '../Firebase'
-import DateRange from '../DateRange/DateRange'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from '../PriceSlider'
 import AmenitiesSelect from '../AmenitiesSelect'
 import StarRatingFilter from '../StarRatingFilter'
 import DateRangePicker from '../DateRange/NewDateRange'
 import './SearchBar.css'
-import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
-import { Redirect } from 'react-router'
 import { requestAvailableHotels } from '../../Helper/ApiHandler'
-import { db, project, setProject } from '../../Helper/Constants'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -113,7 +109,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-      </div>}
+                              </div>}
 
     </>
   )

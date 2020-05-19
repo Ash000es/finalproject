@@ -22,9 +22,7 @@ const HotelPage = () => {
   //   setProject({ ...project, cartItems: hotelCartItem })
   // }
   // onClick={addToCart}
-  return (
-    <p>Hi</p>
-  )
+
   return (
 
     <div className='fillit'>
@@ -43,7 +41,7 @@ const HotelPage = () => {
       <div>amenities:bn
         <p>70 Rooms</p>
         <ul style={{ listStyleType: 'none' }}>{currentSelection.amenities2.map(item =>
-          <li key={item}>{item.icon}{item.title}</li>
+          <li key={item.title}>{item.icon}{item.title}</li>
 
         )}
         </ul>

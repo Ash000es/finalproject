@@ -33,13 +33,11 @@ export default function CartDrawer () {
     bottom: false,
     right: false
   })
-  console.log(state)
   const cartItems = project.cartItems
   // getting the total price of the cart items
   const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
 
   const toggleDrawer = (anchor, open) => (event) => {
-    console.log(event)
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
     }

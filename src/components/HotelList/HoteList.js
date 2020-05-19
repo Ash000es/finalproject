@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react'
-
 import { HotelCardSearch } from '../HotelCardSearch/HotelCardSearch'
 import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
-import SearchBar from '../components/SearchBar/SearchBar'
-import { SearchResultsHero } from '../components/SearchResultsHero/SearchResultsHero'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import { SearchResultsHero } from '../../components/SearchResultsHero/SearchResultsHero'
 import './HotelList.css'
 import { VacationRental } from '../DropDownFilter/VCFilter'
 import { HotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'

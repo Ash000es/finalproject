@@ -37,4 +37,3 @@ export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <St
 export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/small/'
 export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/large/'
-export const popularCities = ['IBZ', 'BCN', 'LON', 'MAD', 'MCO']

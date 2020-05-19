@@ -23,6 +23,7 @@ export const SearchResultsCarousel = (props) => {
   const readyImagesArray = getSmallPictures(readyImages, masterLinkSmall)
   // console.log(readyImagesArray, 'iam to be mapped')
   const imageSize = { width: '250px', height: '250px' }
+  console.log('searchresultscarousel')
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize}>
@@ -30,7 +31,7 @@ export const SearchResultsCarousel = (props) => {
         {
           readyImagesArray.map(image => {
             return (
-              <Carousel.Item key={image.path} image={image}>
+              <Carousel.Item key={Math.random()} image={image}>
 
                 <img
                   className='d-block w-100 '
