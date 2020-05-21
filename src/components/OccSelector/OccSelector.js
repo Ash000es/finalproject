@@ -51,27 +51,19 @@ const useStyles = makeStyles(theme => ({
 export default function OccSelector (props) {
   const classes = useStyles()
   const [occupancies, setOccupancies] = React.useState('')
-  const [occupancieschild, setOccupanciesChild] = React.useState('')
-
-  const handleChange = event => {
-    console.log(event)
-    const newOcc = event.target.value
-    props.onChange({ adults: newOcc, children: 0, rooms: 1 })
-    setOccupancies(newOcc)
-  }
 
   return (
     <>
       <div>
 
         <FormControl className={classes.margin}>
-          <InputLabel id='demo-customized-select-label'>{props.lable}</InputLabel>
+          <InputLabel id='demo-customized-select-label'>{props.label}</InputLabel>
           <Select
 
             labelId='demo-customized-select-label'
             id='demo-customized-select'
             value={occupancies}
-            onChange={handleChange}
+            onChange={props.onChange}
 
             input={<BootstrapInput />}
           >
@@ -81,6 +73,9 @@ export default function OccSelector (props) {
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
             <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={6}>6</MenuItem>
           </Select>
         </FormControl>
       </div>

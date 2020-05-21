@@ -7,7 +7,6 @@ import { SearchResultsHero } from '../../components/SearchResultsHero/SearchResu
 import './HotelList.css'
 import { VacationRental } from '../DropDownFilter/VCFilter'
 import { HotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
-import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
 import { Redirect } from 'react-router'
 
