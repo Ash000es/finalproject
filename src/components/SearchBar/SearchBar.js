@@ -15,11 +15,11 @@ const SearchBar = (props) => {
   const intialState = {
     results: {},
     hotels: [],
-    redirect: false,
-    fullBar: false
+    redirect: false
   }
 
   const [state, setState] = useState(intialState)
+  const [fullbar, setFullBar] = useState(false)
   const [destination, setDestination] = useState({
     code: 'IBZ'
   }
@@ -65,9 +65,9 @@ const SearchBar = (props) => {
         setProject(
           { ...project, results: hotelsProject }
         )
-        setState({ fullBar: !intialState.fullBar })
       }).then(() => {
         props.done()
+        setFullBar(true)
       })
   }
   const handleLocationChange = (code) => {
@@ -111,11 +111,11 @@ const SearchBar = (props) => {
 
       </div>
 
-      {intialState.fullBar && <div className='SearchBarFilters'>
+      {fullbar && <div className='SearchBarFilters'>
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-                              </div>}
+      </div>}
 
     </>
   )

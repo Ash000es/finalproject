@@ -54,16 +54,21 @@ const useStyles = makeStyles((theme) => ({
 export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
+  const [expanded, setExpanded] = useState(false)
 
   const toMap = props.hotel.amenities2
 
   const amenities3 = getAmenitiesArray(toMap, amenities)
+  const showMe = (event) => {
+    console.log(event)
+    setExpanded(!expanded)
+  }
 
   return (
     <>
 
       <div className={classes.root}>
-        <ExpansionPanel defaultExpanded>
+        <ExpansionPanel expanded={expanded} square={false} onClick={showMe}>
           <ExpansionPanelSummary
 
             expandIcon={<ExpandMoreIcon />}
