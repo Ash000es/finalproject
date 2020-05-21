@@ -54,7 +54,6 @@ import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Con
 
 export const getAmenitiesArray = (arr1, arr2) => {
   const finalArray = []
-  console.log(arr1, 'arr1')
   const arr3 = arr1.filter(item => item.facilityGroupCode === 70)
   const arr4 = arr2.filter(item => item.FacilityGroupCode === 70)
   const final = arr3.forEach(itemAPI => arr4.forEach(itemHardCode => {
@@ -101,11 +100,13 @@ export const getSmallPictures = (imageArr, masterLinkSmall) => {
   })
   return hotels
 }
+//  imagesArray, props.room, masterLinkSmall)
 
 export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
-  arr1.map(imageObject => arr2.map(roomObject => {
+  return arr1.map(imageObject => arr2.filter(roomObject => {
     if (imageObject.roomCode === roomObject.code) {
       const newPath = `${masterLinkSmall}${imageObject.path}`
+      console.log(newPath, 'newpath')
       return newPath
       // maybe I need to skip  mapping the secound arr?
     }

@@ -24,7 +24,7 @@ const SearchBar = (props) => {
     code: 'IBZ'
   }
   )
-  console.log(destination, 'desty')
+
   const [reviews, setReviews] = useState(
     [{
       type: 'TRIPADVISOR',
@@ -38,7 +38,7 @@ const SearchBar = (props) => {
       checkOut: '2020-11-16'
     }
   )
-  console.log(stay, 'staying')
+
   const [occupancies, setOccupancies] = useState([
     {
       rooms: 1,
@@ -51,13 +51,11 @@ const SearchBar = (props) => {
     }
   ]
   )
-  console.log(occupancies, 'oaky')
 
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
 
   const handleClickButton = () => {
-    // const { occupancies, destination, stay, reviews } = state
     const payLoad = { occupancies, destination, stay, reviews }
     console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
@@ -71,7 +69,6 @@ const SearchBar = (props) => {
       })
   }
   const handleLocationChange = (code) => {
-    console.log(code, 'code')
     setDestination({ code })
   }
 
@@ -87,8 +84,6 @@ const SearchBar = (props) => {
 
     setOccupancies([{ rooms: 1, adults: newOcc, children: 0 }])
   }
-
-  // { adults: newOcc, children: 0, rooms: 1 }
 
   const handleOccChange2 = (event) => {
     const newOcc = event.target.value
@@ -115,7 +110,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-      </div>}
+                  </div>}
 
     </>
   )

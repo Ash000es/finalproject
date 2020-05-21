@@ -13,7 +13,7 @@ const RoomCarousel = (props) => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
-  const imagesArray = project.results.map(H => H.images)
+  const imagesArray = props.currentSelection.images
   const readyImagesArray = getRoomPicture(imagesArray, props.room, masterLinkSmall)
   // passing it here as argumnet is ok? see helper
   return (
@@ -27,7 +27,7 @@ const RoomCarousel = (props) => {
               <img
                 className='d-block w-100'
                 alt='Hotel Pictures'
-                src={readyImagesArray}
+                src={imageObject.path}
                 style={{ height: '250px', width: '200px' }}
               />
               <Carousel.Caption>
