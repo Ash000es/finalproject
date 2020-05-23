@@ -10,6 +10,7 @@ import { MyProvider, ProjectContext } from '../../Helper/Provider'
 import CartDrawer from '../CartDrawer'
 import { addCartItem, showCancelationPolicy, getAmenitiesArray } from '../../Helper/Helper'
 import { amenities } from '../../Helper/amenities'
+import SelectRoom from '../SelectRoom'
 
 const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
@@ -25,6 +26,7 @@ const HotelPage = () => {
   //   setProject({ ...project, cartItems: hotelCartItem })
   // }
   // onClick={addToCart}
+  const size = { width: '200px' }
 
   return (
 
@@ -59,48 +61,52 @@ const HotelPage = () => {
       {/* <p>{hardHotelObject.CheckinRules.title} required at Check-in</p>
       <p>City tax will be collected by hotel at check-in or check-out.</p> */}
       {/* function to map rooms here to return many rooms in the table, also where extras will go here? */}
-      <Table striped bordered hover size='sm'>
-        <thead>
-          <tr>
-            <th>Room Type</th>
-            <th>Included</th>
-            <th>Number of rooms</th>
-            <th>Price</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
+      <div>
+        <Table striped bordered hover size='lg'>
+          <thead>
+            <tr>
+              <th>Room Type</th>
+              <th>Included</th>
+              <th>Number of rooms</th>
+              <th>Price</th>
 
-          {currentSelection.rooms.map((room, i) => {
-            return (
+            </tr>
+          </thead>
 
-              <tr key={Math.random()} room={room}>
+          <tbody>
 
-                <td>
-                  <p>{room.name}</p>
-                  {/* <RoomCarousel room={room[i]} currentSelection={currentSelection} /> */}
+            {currentSelection.rooms.map(room => {
+              return (
+                <tr key={room} room={room}>
+                  <td>{room.name}</td>
+                  {room.rates.map(rate => {
+                    return (
+                      <tr key={rate} rate={rate}>
+                        <td style={size}>{rate.boardName}</td>
+                        <td style={size}>{rate.allotment}</td>
+                        <td style={size}>{rate.net}</td>
+                      </tr>
+                    )
+                  })}
 
-                </td>
-                <td>Function to display only room amentities based on group facilites code</td>
-                <td>select component</td>
-                <td>{room.rates.map((rate) => rate.net)}</td>
+                </tr>
+              )
+            })}
 
-                {/* <td><p>{room.rates.map(rate => rate.net)}</p><Button variant='primary'>Book now</Button>{' '}<p>{showCancelationPolicy(room)}</p></td> */}
-              </tr>
+          </tbody>
+          {/* <RoomCarousel room={room[i]} currentSelection={currentSelection} />  */}
+          {/* <td><p>{room.rates.map(rate => rate.net)}</p><Button variant='primary'>Book now</Button>{' '}<p>{showCancelationPolicy(room)}</p></td> */}
 
-            )
-          })}
-
-        </tbody>
-        {/* <tbody>
-          <p>Your booknig from {} to {}</p>
+          {/* <p>Your booknig from {} to {}</p>
           <p>130</p>
           <Button variant='primary'>Book now</Button>{' '}
           <Button variant='outline-primary'>Add to cart</Button>{' '} */}
-        {/* <CartDrawer /> */}
+          {/* <CartDrawer /> */}
 
-        {/* </tbody> */}
-      </Table>
+        </Table>
+        <div><p><Button variant='primary'>Book now</Button>{' '}</p></div>
+
+      </div>
 
     </div>
   )
