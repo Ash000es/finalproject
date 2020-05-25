@@ -14,7 +14,7 @@ import ProjectProvider from '../Helper/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
 import getSteps from '../components/PaymentCout/Stepper'
 import HotelList from '../components/HotelList/HoteList'
-import { Testing } from '../components/Test'
+import { testing } from '../components/Test'
 
 function App () {
   return (
@@ -41,7 +41,7 @@ function App () {
           <Container className='pt-3'>
             <Switch>
               <Route path='/hotelpage' exact component={HotelPage} />
-              <Route path='/about' exact component={Testing} />
+              <Route path='/about' exact component={HotelPage} />
               <Route path='/reviewcart' component={getSteps} />
               <Route path='/Travelessentials' exact component={MapPopUp} />
               <Route path='/searchresults' exact component={HotelList} />
