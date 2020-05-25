@@ -72,36 +72,31 @@ const HotelPage = () => {
 
             </tr>
           </thead>
+          {currentSelection.rooms.map(room => {
+            return (
 
-          <tbody>
+              <tbody key={room.name} room={room}>
+                <tr>
+                  <td>{room.name} </td>
 
-            {currentSelection.rooms.map(room => {
-              return (
-                <tr key={room} room={room}>
-                  <td>{room.name}</td>
-                  {room.rates.map(rate => {
-                    return (
-                      <tr key={rate} rate={rate}>
-                        <td style={size}>{rate.boardName}</td>
-                        <td style={size}>{rate.allotment}</td>
-                        <td style={size}>{rate.net}</td>
-                      </tr>
-                    )
-                  })}
+                  <td>
+                    {room.rates.map(rate => <tr key={Math.random()} rate={rate}><td>{rate.boardName}</td></tr>)}
+                    {/* <tr><td>Wifi</td></tr> */}
+                  </td>
+                  <td>
+                    {room.rates.map(rate => <tr key={Math.random()} rate={rate}><td><SelectRoom rate={rate} /></td></tr>)}
+
+                  </td>
+                  <td>
+                    {room.rates.map(rate => <tr key={Math.random()} rate={rate}><td>{rate.net}</td></tr>)}
+                    {/* <tr><td>140</td></tr> */}
+                  </td>
 
                 </tr>
-              )
-            })}
 
-          </tbody>
-          {/* <RoomCarousel room={room[i]} currentSelection={currentSelection} />  */}
-          {/* <td><p>{room.rates.map(rate => rate.net)}</p><Button variant='primary'>Book now</Button>{' '}<p>{showCancelationPolicy(room)}</p></td> */}
-
-          {/* <p>Your booknig from {} to {}</p>
-          <p>130</p>
-          <Button variant='primary'>Book now</Button>{' '}
-          <Button variant='outline-primary'>Add to cart</Button>{' '} */}
-          {/* <CartDrawer /> */}
+              </tbody>
+            )
+          })}
 
         </Table>
         <div><p><Button variant='primary'>Book now</Button>{' '}</p></div>
