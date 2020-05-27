@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
@@ -16,6 +16,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import SelectRoom from '../components/SelectRoom'
 import { extras } from '../Helper/Constants'
+import { roomsCost } from '../Helper/Helper'
 
 const useRowStyles = makeStyles({
   root: {
@@ -26,36 +27,47 @@ const useRowStyles = makeStyles({
 })
 
 function Row (props) {
-  console.log(props, 'Iam props')
   const { room } = props
   const row = room
-  console.log(row, 'Iam row')
 
   const [open, setOpen] = React.useState(false)
   const classes = useRowStyles()
-  const selectedRoom = (event) => {
-    console.log(event, 'iam event')
-    const value = event.target.value
-    console.log(value, 'iam value')
+  const collectValues = (rate, roomName, event) => {
+    const roomType = roomName
+    const roomNumber = event.target.value
+    const price = rate.net
+    const totalSelectionPrice = roomsCost(price, roomNumber)
+    const roomSelectionInfo = { ...rate, roomType, roomNumber, totalSelectionPrice }
+    console.log(roomSelectionInfo, 'here iam')
+    props.onChange(roomSelectionInfo)
   }
 
   return (
     <>
+
       <TableRow className={classes.root}>
         <TableCell>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component='th' scope='row'>
-          {row.name}
-        </TableCell>
-        <TableCell align='right'>2</TableCell>
-        <TableCell>{row.rates.map(rate => <TableRow><TableCell key={rate.boardName} align='right'> {rate.boardName}</TableCell></TableRow>)}</TableCell>
-        <TableCell>{row.rates.map(rate => <TableRow><TableCell key={rate.net} align='right'> <SelectRoom rate={rate} onChange={selectedRoom} /></TableCell></TableRow>)}</TableCell>
-        <TableCell>{row.rates.map(rate => <TableRow><TableCell key={rate.net} align='right'> {rate.net}</TableCell></TableRow>)} </TableCell>
+
+        <TableCell component='th' scope='row'>{row.name}</TableCell>
+        {row.rates.map(rate => (
+
+          <TableRow key={rate.net} onChange={(e) => collectValues(rate, row.name, e)}>
+
+            <TableCell>  <TableRow><TableCell align='right'>2</TableCell></TableRow></TableCell>
+            <TableCell>  <TableRow><TableCell align='right'> {rate.boardName}</TableCell></TableRow></TableCell>
+            <TableCell>  <TableRow> <TableCell align='right'> <SelectRoom rate={rate} /></TableCell></TableRow></TableCell>
+            <TableCell>  <TableRow> <TableCell align='right'> {rate.net}</TableCell></TableRow></TableCell>
+
+          </TableRow>
+
+        ))}
 
       </TableRow>
+
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout='auto' unmountOnExit>
@@ -85,11 +97,14 @@ function Row (props) {
                       </TableCell>
                     </TableRow>
                   ))}
+
                 </TableBody>
               </Table>
             </Box>
           </Collapse>
+
         </TableCell>
+
       </TableRow>
     </>
   )
@@ -127,12 +142,14 @@ export default function CollapsibleTable (props) {
             <TableCell align='right'>Included</TableCell>
             <TableCell align='right'>selectrooms</TableCell>
             <TableCell align='right'>price</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
           {rooms.map((room) => (
-            <Row key={room.name} room={room} />
+            <Row key={room.name} room={room} onChange={props.onChange} />
           ))}
+
         </TableBody>
       </Table>
     </TableContainer>

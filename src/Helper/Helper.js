@@ -126,6 +126,9 @@ export const showCancelationPolicy = (room) => {
     }
   })
 }
+export const roomsCost = (a, b) => {
+  return a * b
+}
 
 // cancellationPolicies: [Array(1)
 // 0: {amount: "103.68", from: "2020-11-12T16:00:00+01:00"}

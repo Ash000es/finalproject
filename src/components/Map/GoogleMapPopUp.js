@@ -2,38 +2,51 @@ import React, { useContext, useState } from 'react'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
 
-export const GoogleMapPopUp = () => {
+export const GoogleMapPopUp = (props) => {
   const { project, setProject } = useContext(ProjectContext)
-  const [selectedHotel, setSelectedHotel] = useState(null)
+  const [selectedhotel, setSelectedHotel] = useState(null)
+  console.log(project, 'project from map')
+  const locationsArray = project.results
+  console.log(locationsArray, 'array to map')
   return (
 
-    <GoogleMap defaultZoom={10} defaultCenter={{ lat: 52.370216, lng: 4.895168 }}>
-      {/* need to create object with lat long and feed it to map below */}
-      {/* {project.hotels.hotels.map(hotel => {
-        return (
+    <GoogleMap defaultZoom={10} defaultCenter={{ lat: 38.906986, lng: 1.421416 }}>
+
+      {locationsArray && locationsArray.map(hotel =>
+
+        (
+
           <Marker
             key={hotel.code}
+            hotel={hotel}
             position={{
               lat: hotel.latitude,
               lng: hotel.longitude
             }}
-            onClick={() => { setSelectedHotel(hotel) }}
+            // position={{ lat: 38.906986, lng: 1.421416 }}
+            onClick={() => setSelectedHotel(hotel)}
           />
+
         )
-      })} */}
-      {selectedHotel && (
+      )}
+
+      {selectedhotel && (
+
         <InfoWindow
           position={{
-            lat: selectedHotel.latitude,
-            lng: selectedHotel.longitude
+            lat: selectedhotel.latitude,
+            lng: selectedhotel.longitude
           }}
+
           onCloseClick={() => setSelectedHotel(null)}
         >
-          <p>hotel image</p>
-          <p>Hotel name</p>
-          <p>hotel price</p>
-          <p>Room name</p>
-          <p>TA score</p>
+          <div>
+            <p>hotel image</p>
+            <p>hotel nam</p>
+            <p>hotel price</p>
+            <p>Room name</p>
+            <p>TA score</p>
+          </div>
         </InfoWindow>
       )}
 

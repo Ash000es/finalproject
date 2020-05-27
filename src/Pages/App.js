@@ -41,8 +41,8 @@ function App () {
           <Container className='pt-3'>
             <Switch>
               <Route path='/hotelpage' exact component={HotelPage} />
-              <Route path='/about' exact component={HotelPage} />
-              <Route path='/reviewcart' component={getSteps} />
+              <Route path='/about' exact component={AboutUs} />
+              <Route path='/reviewcart' excat component={getSteps} />
               <Route path='/Travelessentials' exact component={MapPopUp} />
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />

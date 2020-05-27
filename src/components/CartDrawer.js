@@ -24,8 +24,11 @@ const useStyles = makeStyles({
   }
 })
 
-export default function CartDrawer () {
+export default function CartDrawer (props) {
+  console.log(props, 'props from cartdrawer')
   const classes = useStyles()
+  const { currentCartItem } = props
+  console.log(currentCartItem, 'new name')
   const { project, setProject } = useContext(ProjectContext)
   const [state, setState] = React.useState({
     top: false,
@@ -33,12 +36,17 @@ export default function CartDrawer () {
     bottom: false,
     right: false
   })
-  const cartItems = project.cartItems
+  const addToCart = () => {
+    setProject({ ...project, cartItems: currentCartItem })
+  }
+  const cartItems1 = project.cartItems
+  console.log(project, 'newest project')
   // getting the total price of the cart items
-  const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
+  // const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      addToCart()
       return
     }
 
@@ -57,11 +65,12 @@ export default function CartDrawer () {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       {/* mapping inside the cart drwarer a number of items  */}
-      <span>{project.cartItems.length}</span>
-      {cartItems ? cartItems.map(item => {
+      <span>{currentCartItem.length}</span>
+      {currentCartItem && currentCartItem.map(item => {
+        console.log(item, 'item')
         return <CartItem key={item.code} item={item} />
-      }) : null}
-      <span>{totalPrice}</span>
+      })}
+      <span>{project.currentHotel.name}</span>
     </div>
   )
 
@@ -69,7 +78,7 @@ export default function CartDrawer () {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>View your cart</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>Add to cart</Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>

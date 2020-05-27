@@ -9,6 +9,7 @@ import { VacationRental } from '../DropDownFilter/VCFilter'
 import { HotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
 import { Redirect } from 'react-router'
+import MapPopUp from '../Map/MapPopUp'
 
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
@@ -25,7 +26,7 @@ const HotelList = () => {
       <SearchResultsHero />
       <SearchBar />
       <>
-        <HotelsOnly /><VacationRental />
+        <HotelsOnly /><VacationRental /><MapPopUp />
         <Typography />
 
         <div className='sortButton'>
