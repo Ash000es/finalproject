@@ -113,7 +113,7 @@ const AmenitiesSelect = () => {
           MenuProps={MenuProps}
         >
           {amenitiesToFilter.map((name) => (
-            <MenuItem key={name} value={name}>
+            <MenuItem key={Math.random()} value={name}>
               <Checkbox checked={amenitiesName.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>

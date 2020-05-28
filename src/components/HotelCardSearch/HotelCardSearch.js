@@ -54,24 +54,20 @@ const useStyles = makeStyles((theme) => ({
 export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(false)
 
   const toMap = props.hotel.amenities2
 
   const amenities3 = getAmenitiesArray(toMap, amenities)
-  const showMe = (event) => {
-    console.log(event)
-    setExpanded(!expanded)
-  }
 
   return (
     <>
 
       <div className={classes.root}>
-        <ExpansionPanel defaultExpanded expanded={expanded} square={false} onClick={showMe}>
+        <ExpansionPanel expanded={expanded} square={false}>
           <ExpansionPanelSummary
 
-            expandIcon={<ExpandMoreIcon />}
+            expandIcon={<ExpandMoreIcon onClick={() => setExpanded(!expanded)} />}
             aria-controls='panel1c-content'
             id='panel1c-header'
             className='bigDiv'
@@ -86,7 +82,7 @@ export const HotelCardSearch = (props) => {
               <div className={classes.column} id='ament'>
 
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenities3 && amenities3.map(item =>
-                  <li key={item.number} item={item}>{item.icon}{item.name}  </li>
+                  <li key={Math.random()} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
               </div>

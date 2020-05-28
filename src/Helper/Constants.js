@@ -11,6 +11,7 @@ export const getSignature = () => {
   return (apikey + sec + Math.round(D.getTime() / 1000))
 }
 // cont
+export const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
 export const amenitiesToFilter = [
   'Pool',
   'Free breakfast',
@@ -35,5 +36,5 @@ export const extras = [
 export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/'
+export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/bigger/'
 export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/bigger/'

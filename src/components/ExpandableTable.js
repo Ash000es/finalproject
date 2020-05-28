@@ -147,7 +147,7 @@ export default function CollapsibleTable (props) {
         </TableHead>
         <TableBody>
           {rooms.map((room) => (
-            <Row key={room.name} room={room} onChange={props.onChange} />
+            <Row key={Math.random()} room={room} onChange={props.onChange} />
           ))}
 
         </TableBody>

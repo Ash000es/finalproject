@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
-import RestaurantIcon from '@material-ui/icons/Restaurant'
-import RoomServiceIcon from '@material-ui/icons/RoomService'
-import DeckIcon from '@material-ui/icons/Deck'
-import StarRateIcon from '@material-ui/icons/StarRate'
 import { stars3, stars4, stars5 } from '../Helper/Constants.js'
 
 const StarRatingDisplay = (props) => {

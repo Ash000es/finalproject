@@ -1,8 +1,8 @@
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates } from './Helper'
+import { removeDuplicates } from './Helper'
 import { amenities } from './amenities'
-import { masterLinkLarge, masterLinkSmall } from './Constants.js'
+import { masterLinkLarge, masterLinkSmall, categoryCodes } from './Constants.js'
 import { TableCell } from '@material-ui/core'
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
@@ -38,7 +38,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     }).then(res => res.json()).then(Response => {
     console.log(Response)
     const { hotels } = Response
-    const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
+
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
     const insertDates = hotels.hotels.map(hotel => {

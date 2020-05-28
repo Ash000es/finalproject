@@ -17,6 +17,7 @@ export const HotelCarousel = (props) => {
 
   const imagesArray = props.currentSelection.images
   const readyImagesArray = getLargePictures(imagesArray, masterLinkLarge)
+  console.log(readyImagesArray, 'bigimages')
   const imageSize = { width: '100%', height: '500px' }
   return (
     <>
@@ -25,7 +26,7 @@ export const HotelCarousel = (props) => {
         {
           readyImagesArray.map((image) => {
             return (
-              <Carousel.Item key={image.visualOrder} style={imageSize} className='iconCon'>
+              <Carousel.Item key={Math.random()} style={imageSize} className='iconCon'>
 
                 <img
                   className='d-block w-100 '

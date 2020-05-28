@@ -16,13 +16,10 @@ const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [currentselectedinfo, setCurrentSelectedInfo] = useState()
   const [redirect, setRedirect] = useState(false)
-  console.log(project, 'top')
-  console.log(currentselectedinfo, 'nelly')
 
   const currentSelection = project.currentHotel
   const toMap = currentSelection.amenities2
   const readyAmenities = getAmenitiesArray(toMap, amenities)
-  console.log(readyAmenities, 'I am ready')
 
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
     console.log(roomSelectionInfo, 'object here')
@@ -60,7 +57,7 @@ const HotelPage = () => {
       <div>
         <p>Amenities:</p>
         <ul style={{ listStyleType: 'none' }}>{readyAmenities && readyAmenities.map(item =>
-          <li key={item.number}>{item.icon}{item.name}</li>
+          <li key={Math.random()}>{item.icon}{item.name}</li>
 
         )}
         </ul>
@@ -72,18 +69,20 @@ const HotelPage = () => {
 
       <StarRatingDisplay currentSelection={currentSelection} />
       <div><CollapsibleTable rooms={roomy} onChange={displaySelectedRoomInfo} /></div>
-      {currentselectedinfo && currentselectedinfo.map(object => {
+      {currentselectedinfo && currentselectedinfo.map(room => {
+        console.log(room, 'iam trouble')
         return (
-          <div key={object.totalSelectionPrice}>
-            <p>Room Type:{object.roomType}</p>
-            <p>Included:{object.boardName}</p>
-            <p>Price per night: {object.net}</p>
-            <p>Room count: {object.roomNumber}</p>
-            <p>Total price: {object.totalSelectionPrice}</p>
-
-            <Button done={onCompelet} onClick={(object) => handleClickButton(object)} variant='primary'>Book</Button>{' '}
+          <div key={room.rateKey}>
+            <p>Room Type:{room.roomType}</p>
+            <p>Included:{room.boardName}</p>
+            <p>Price per night: {room.net}</p>
+            <p>Room count: {room.roomNumber}</p>
+            <p>Total price: {room.totalSelectionPrice}</p>
+            <Button onClick={(room) => handleClickButton(room)} variant='primary'>Book</Button>{' '}
             <CartDrawer currentCartItem={currentselectedinfo} />
+
           </div>
+
         )
       })}
 
