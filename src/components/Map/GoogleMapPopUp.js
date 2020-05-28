@@ -5,17 +5,22 @@ import { MyProvider, ProjectContext } from '../../Helper/Provider'
 export const GoogleMapPopUp = (props) => {
   const { project, setProject } = useContext(ProjectContext)
   const [selectedhotel, setSelectedHotel] = useState(null)
-  console.log(project, 'project from map')
+
   const locationsArray = project.results
-  console.log(typeof locationsArray[0].latitude, 'array to map')
+  const firstLat = parseFloat(props.lat)
+  const firstLong = parseFloat(props.long)
+  const latlongObject = {
+    lat: firstLat,
+    lng: firstLong
+  }
+  console.log(latlongObject, 'llobject')
+
   return (
 
-    <GoogleMap defaultZoom={10} defaultCenter={{ lat: 38.906986, lng: 1.421416 }}>
+    <GoogleMap defaultZoom={10} defaultCenter={latlongObject}>
 
       {locationsArray && locationsArray.map(hotel => {
-        console.log(hotel, 'yay')
         const laty = parseFloat(hotel.latitude)
-        console.log(typeof laty, 'laty here')
         const longy = parseFloat(hotel.longitude)
         return (
 

@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/Button'
 import { googleAPIKey } from '../../Helper/Constants'
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
 
-const MapPopUp = () => {
+const MapPopUp = (props) => {
+  console.log(props, 'map pop up')
   const [show, setShow] = useState(false)
 
   return (
@@ -34,6 +35,8 @@ const MapPopUp = () => {
               loadingElement={<div style={{ height: '100%' }} />}
               containerElement={<div style={{ height: '100%' }} />}
               mapElement={<div style={{ height: '100%' }} />}
+              lat={props.lat}
+              long={props.long}
             />
           </div>
         </Modal.Body>

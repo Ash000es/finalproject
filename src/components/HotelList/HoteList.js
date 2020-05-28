@@ -14,6 +14,9 @@ import MapPopUp from '../Map/MapPopUp'
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
+  const hotelsResults = project.results
+  const googleLandingLat = hotelsResults[0].latitude
+  const googleLandingLong = hotelsResults[0].longitude
   const onCompelet = () => {
     setRedirect(true)
   }
@@ -26,7 +29,7 @@ const HotelList = () => {
       <SearchResultsHero />
       <SearchBar />
       <>
-        <HotelsOnly /><VacationRental /><MapPopUp />
+        <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} />
         <Typography />
 
         <div className='sortButton'>
@@ -34,7 +37,7 @@ const HotelList = () => {
         </div>
         <br />
 
-        {project.results && project.results.map(hotel => {
+        {hotelsResults && hotelsResults.map(hotel => {
           return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
         })}
 
