@@ -31,7 +31,7 @@ export const SearchResultsCarousel = (props) => {
         {
           readyImagesArray.map(image => {
             return (
-              <Carousel.Item key={image.path} image={image}>
+              <Carousel.Item key={image.visualOrder} image={image}>
 
                 <img
                   className='d-block w-100 '

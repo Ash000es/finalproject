@@ -60,7 +60,7 @@ const HotelPage = () => {
       <div>
         <p>Amenities:</p>
         <ul style={{ listStyleType: 'none' }}>{readyAmenities && readyAmenities.map(item =>
-          <li key={item.name}>{item.icon}{item.name}</li>
+          <li key={item.number}>{item.icon}{item.name}</li>
 
         )}
         </ul>

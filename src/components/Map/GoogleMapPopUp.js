@@ -7,27 +7,30 @@ export const GoogleMapPopUp = (props) => {
   const [selectedhotel, setSelectedHotel] = useState(null)
   console.log(project, 'project from map')
   const locationsArray = project.results
-  console.log(locationsArray, 'array to map')
+  console.log(typeof locationsArray[0].latitude, 'array to map')
   return (
 
     <GoogleMap defaultZoom={10} defaultCenter={{ lat: 38.906986, lng: 1.421416 }}>
 
-      {locationsArray && locationsArray.map(hotel =>
-
-        (
+      {locationsArray && locationsArray.map(hotel => {
+        console.log(hotel, 'yay')
+        const laty = parseFloat(hotel.latitude)
+        console.log(typeof laty, 'laty here')
+        const longy = parseFloat(hotel.longitude)
+        return (
 
           <Marker
             key={hotel.code}
-            hotel={hotel}
             position={{
-              lat: hotel.latitude,
-              lng: hotel.longitude
+              lat: laty,
+              lng: longy
             }}
             // position={{ lat: 38.906986, lng: 1.421416 }}
             onClick={() => setSelectedHotel(hotel)}
           />
 
         )
+      }
       )}
 
       {selectedhotel && (

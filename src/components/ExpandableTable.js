@@ -55,7 +55,7 @@ function Row (props) {
         <TableCell component='th' scope='row'>{row.name}</TableCell>
         {row.rates.map(rate => (
 
-          <TableRow key={rate.net} onChange={(e) => collectValues(rate, row.name, e)}>
+          <TableRow key={rate.rateKey} onChange={(e) => collectValues(rate, row.name, e)}>
 
             <TableCell>  <TableRow><TableCell align='right'>2</TableCell></TableRow></TableCell>
             <TableCell>  <TableRow><TableCell align='right'> {rate.boardName}</TableCell></TableRow></TableCell>

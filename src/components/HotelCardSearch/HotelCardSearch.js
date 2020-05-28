@@ -86,7 +86,7 @@ export const HotelCardSearch = (props) => {
               <div className={classes.column} id='ament'>
 
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenities3 && amenities3.map(item =>
-                  <li key={item.name} item={item}>{item.icon}{item.name}  </li>
+                  <li key={item.number} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
               </div>

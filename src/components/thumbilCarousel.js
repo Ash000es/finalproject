@@ -23,7 +23,7 @@ const RoomCarousel = (props) => {
         {iconClicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         {imagesArray.map(imageObject => {
           return (
-            <Carousel.Item key={imageObject} style={{ height: '250px', width: '200px' }}>
+            <Carousel.Item key={imageObject.visualOrder} style={{ height: '250px', width: '200px' }}>
               <img
                 className='d-block w-100'
                 alt='Hotel Pictures'
