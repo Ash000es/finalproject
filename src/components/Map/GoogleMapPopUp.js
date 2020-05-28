@@ -3,43 +3,48 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'reac
 import { MyProvider, ProjectContext } from '../../Helper/Provider'
 
 export const GoogleMapPopUp = (props) => {
+  console.log(props, 'props from map')
   const { project, setProject } = useContext(ProjectContext)
   const [selectedhotel, setSelectedHotel] = useState(null)
 
-  const locationsArray = project.results
-  const firstLat = parseFloat(props.lat)
+  const firstLaty = parseFloat(props.lat)
   const firstLong = parseFloat(props.long)
-  const latlongObject = {
-    lat: firstLat,
+  const firstLatLong = {
+    lat: firstLaty,
     lng: firstLong
   }
-  console.log(latlongObject, 'llobject')
+
+  const hotelsArray = project.results
+  if (selectedhotel) {
+    console.log(typeof selectedhotel.latitude)
+  }
 
   return (
 
-    <GoogleMap defaultZoom={10} defaultCenter={latlongObject}>
+    <GoogleMap defaultZoom={10} defaultCenter={firstLatLong}>
 
-      {locationsArray && locationsArray.map(hotel => {
+      {hotelsArray && hotelsArray.map(hotel => {
         const laty = parseFloat(hotel.latitude)
         const longy = parseFloat(hotel.longitude)
+        const newHotel = { ...hotel, latitude: laty, longitude: longy }
         return (
 
           <Marker
-            key={hotel.code}
+            key={newHotel.code}
             position={{
-              lat: laty,
-              lng: longy
+              lat: newHotel.latitude,
+              lng: newHotel.longitude
             }}
-            // position={{ lat: 38.906986, lng: 1.421416 }}
-            onClick={() => setSelectedHotel(hotel)}
+
+            onClick={() => setSelectedHotel(newHotel)}
           />
 
         )
       }
       )}
 
-      {selectedhotel && (
-
+      {selectedhotel &&
+      (
         <InfoWindow
           position={{
             lat: selectedhotel.latitude,
@@ -56,6 +61,7 @@ export const GoogleMapPopUp = (props) => {
             <p>TA score</p>
           </div>
         </InfoWindow>
+
       )}
 
     </GoogleMap>
