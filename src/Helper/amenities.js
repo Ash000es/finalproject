@@ -1,3 +1,5 @@
+// TODO amenities looks like a constant, so why not move it into Contants and delete this file?
+
 import React from 'react'
 
 export const amenities = [

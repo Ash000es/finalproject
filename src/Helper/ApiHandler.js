@@ -1,3 +1,5 @@
+// TODO: this file is not a helper. It should be in a folder called handlers
+
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
 import { removeDuplicates } from './Helper'
@@ -82,6 +84,7 @@ const fetchHotels = (destination, hotelIDS, db) => {
 const mapResultToHotel = (dbHotels, apiHotelResults) => {
   const final = []
   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
+    // TODO: const {address, etc, etc...} = dbHotel
     const address = dbHotel.address
     const images = dbHotel.images
     const description = dbHotel.description
