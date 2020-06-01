@@ -70,6 +70,7 @@ const HotelPage = () => {
       <StarRatingDisplay currentSelection={currentSelection} />
       <div><CollapsibleTable rooms={roomy} onChange={displaySelectedRoomInfo} /></div>
       {currentselectedinfo && currentselectedinfo.map(room => {
+        { /* TODO: const {rateKey, etc, etc.} = room */ }
         console.log(room, 'iam trouble')
         return (
           <div key={room.rateKey}>

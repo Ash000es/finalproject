@@ -69,6 +69,11 @@ export const getAmenitiesArray = (arr1, arr2) => {
 /**
  * using ES6 Map
  **/
+
+// TODO: HOW TO REMOVE DUPLICATES
+// Create a new array and Set and add your items to it in one go
+// a Set is a data structure that only has one of each item in it === unique
+// return [...new Set(arr)]
 export function removeDuplicates (arr) {
   return [...new Set(arr)]
 }

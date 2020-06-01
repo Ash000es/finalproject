@@ -1,3 +1,6 @@
+// TODO: these files are in assets folder, but the assets folder should not be inside components
+// it should be directly under src
+
 import React from 'react'
 import { FaGlassMartiniAlt, FaParking, FaWineGlassAlt, FaSpa, FaBath, FaSuitcaseRolling } from 'react-icons/fa'
 import LabelBold from '../LabelBold'
