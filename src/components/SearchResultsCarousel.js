@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useMemo } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import './HotelPCarousel.css'
 import { MyProvider, ProjectContext } from '../providers/Provider'
@@ -15,16 +15,20 @@ export const SearchResultsCarousel = (props) => {
     setIndex(selectedIndex)
   }
 
+  const notValidImage = []
+  const handleImageError = (e, imagesarray) => {
+    notValidImage.push(e.target.src)
+    console.log(notValidImage, 'links')
+  }
+
   const imageSize = { width: '250px', height: '250px' }
   console.log('searchresultscarousel')
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize} interval={null}>
+      <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize} interval={null} touch pause='hover'>
 
         {
           props.images.map(image => {
-            { /* const newImage = getSmallPictures(image, masterLinkSmall) */ }
-
             return (
               <Carousel.Item key={Math.random()} image={image}>
 
@@ -32,6 +36,7 @@ export const SearchResultsCarousel = (props) => {
                   className='d-block w-100 '
                   src={image.path}
                   alt='Hotel Pictures'
+                  onError={(e) => handleImageError(e)}
 
                 />
 

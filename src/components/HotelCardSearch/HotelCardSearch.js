@@ -1,5 +1,5 @@
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useMemo } from 'react'
 import './HotelCardSearch.css'
 import { makeStyles } from '@material-ui/core/styles'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
@@ -56,12 +56,17 @@ export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
+  // const [imagesarray, SetImagesArray] = useState(props.hotel.images)
 
   const toMap = props.hotel.facilities
 
   const amenities3 = getAmenitiesArray(toMap, amenities)
+
   const readyImages = getSmallPictures(props.hotel.images, masterLinkSmall)
-  console.log(readyImages, 'ready images')
+
+  const stopRerendering = useMemo(() => {
+    return <SearchResultsCarousel images={readyImages} />
+  }, [])
 
   return (
     <>
@@ -77,7 +82,7 @@ export const HotelCardSearch = (props) => {
 
           >
             <div className={classes.column} id='cardImage'>
-              <SearchResultsCarousel images={readyImages} />
+              {stopRerendering}
 
             </div>
             <div className='threeCon'>

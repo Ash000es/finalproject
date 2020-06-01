@@ -48,7 +48,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       return newHotel
     })
     const apiHotelResults1 = insertDates
-    console.log(apiHotelResults1, 'changes')
+    // console.log(apiHotelResults1, 'changes')
 
     const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
