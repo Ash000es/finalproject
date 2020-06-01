@@ -10,15 +10,17 @@ import { masterLinkSmall } from '../Helper/Constants'
 export const SearchResultsCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
+  const [newimages, seNewImages] = useState(props.images)
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
 
-  const notValidImage = []
-  const handleImageError = (e, imagesarray) => {
-    notValidImage.push(e.target.src)
-    console.log(notValidImage, 'links')
+  const handleImageError = (e) => {
+    const newbei = newimages.filter((image, e) => {
+      return image.path !== e
+    })
+    seNewImages(newbei)
   }
 
   const imageSize = { width: '250px', height: '250px' }
@@ -28,16 +30,16 @@ export const SearchResultsCarousel = (props) => {
       <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize} interval={null} touch pause='hover'>
 
         {
-          props.images.map(image => {
+          newimages.map((image) => {
+            const imagLink = image.path
             return (
-              <Carousel.Item key={Math.random()} image={image}>
+              <Carousel.Item key={image.path} image={image}>
 
                 <img
                   className='d-block w-100 '
-                  src={image.path}
+                  src={imagLink}
                   alt='Hotel Pictures'
-                  onError={(e) => handleImageError(e)}
-
+                  onError={(e) => handleImageError(e.target.src)}
                 />
 
                 <Carousel.Caption>
