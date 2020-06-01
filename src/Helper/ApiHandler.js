@@ -84,12 +84,14 @@ const mapResultToHotel = (dbHotels, apiHotelResults) => {
   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
     const address = dbHotel.address
     const images = dbHotel.images
+    // console.log(images, 'removing duplicates images')
     const description = dbHotel.description
     const interestPoints = dbHotel.interestPoints
     const lastUpdate = dbHotel.lastUpdate
     const license = dbHotel.license
     const amenities1 = dbHotel.facilities
     const amenities2 = removeDuplicates(amenities1)
+    // console.log(amenities2, 'iam 2')
 
     if (dbHotel.code === apiHotel.code) {
       apiHotel = { ...apiHotel, images, amenities2, address, description, interestPoints, lastUpdate, license }

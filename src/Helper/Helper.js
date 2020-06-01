@@ -70,35 +70,41 @@ export const getAmenitiesArray = (arr1, arr2) => {
  * using ES6 Map
  **/
 export function removeDuplicates (arr) {
-  const jsonObject = arr.map(JSON.stringify)
-  const uniqueSet = new Set(jsonObject)
-  const uniqueArray = Array.from(uniqueSet).map(JSON.parse)
-  return uniqueArray
+  return [...new Set(arr)]
 }
 
 // write helper function for the hotel page big carsoul and the search results thum carsoul and each room image
 
 export const getLargePictures = (imageArr, masterLinkLarge) => {
   const hotelsLarge = []
-  imageArr.forEach(imageObject => {
+  imageArr.map(imageObject => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkLarge}${imageObjectPath}`
+
     imageObject = { ...imageObject, path: newPath }
 
     hotelsLarge.push(imageObject)
   })
   return hotelsLarge
 }
-export const getSmallPictures = (imageArr, masterLinkSmall) => {
-  const hotels = []
-  imageArr.forEach(imageObject => {
-    const imageObjectPath = imageObject.path
-    const newPath = `${masterLinkSmall}${imageObjectPath}`
-    imageObject = { ...imageObject, path: newPath }
+// export const getSmallPictures = (imageArr, masterLinkSmall) => {
+//   const hotels = []
+//   imageArr.forEach(imageObject => {
+//     const imageObjectPath = imageObject.path
+//     const newPath = `${masterLinkSmall}${imageObjectPath}`
 
-    hotels.push(imageObject)
-  })
-  return hotels
+//     imageObject = { ...imageObject, path: newPath }
+
+//     hotels.push(imageObject)
+//   })
+//   return hotels
+// }
+export const getSmallPictures = (image, masterLinkSmall) => {
+  const imageObjectPath = image.path
+  const newPath = `${masterLinkSmall}${imageObjectPath}`
+
+  const imageObject = { ...image, path: newPath }
+  return imageObject
 }
 //  imagesArray, props.room, masterLinkSmall)
 

@@ -57,7 +57,7 @@ const HotelPage = () => {
       <div>
         <p>Amenities:</p>
         <ul style={{ listStyleType: 'none' }}>{readyAmenities && readyAmenities.map(item =>
-          <li key={Math.random()}>{item.icon}{item.name}</li>
+          <li key={item.facilityCode}>{item.icon}{item.name}</li>
 
         )}
         </ul>

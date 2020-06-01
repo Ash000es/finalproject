@@ -4,7 +4,7 @@ import './HotelPCarousel.css'
 import { MyProvider, ProjectContext } from '../Helper/Provider'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import { getSmallPictures } from '../Helper/Helper'
+import { getSmallPictures, removeDuplicates } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 
 export const SearchResultsCarousel = (props) => {
@@ -15,13 +15,9 @@ export const SearchResultsCarousel = (props) => {
     setIndex(selectedIndex)
   }
 
-  // const hotelsArray = project.results
   const readyImages = props.hotel.images
+  console.log(readyImages, 'ready images')
 
-  // className='iconCon'
-
-  const readyImagesArray = getSmallPictures(readyImages, masterLinkSmall)
-  console.log(readyImagesArray, 'small images')
   const imageSize = { width: '250px', height: '250px' }
   console.log('searchresultscarousel')
   return (
@@ -29,13 +25,15 @@ export const SearchResultsCarousel = (props) => {
       <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize}>
 
         {
-          readyImagesArray.map(image => {
+          readyImages.map(image => {
+            const newImage = getSmallPictures(image, masterLinkSmall)
+
             return (
               <Carousel.Item key={Math.random()} image={image}>
 
                 <img
                   className='d-block w-100 '
-                  src={image.path}
+                  src={newImage.path}
                   alt='Hotel Pictures'
 
                 />
