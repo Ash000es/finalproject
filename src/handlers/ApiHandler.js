@@ -81,32 +81,32 @@ const fetchHotels = (destination, hotelIDS, db) => {
       })
   })
 }
-const mapResultToHotel = (dbHotels, apiHotelResults) => {
-  const final = []
-  dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
-    const { address, images, description, interestPoints, lastUpdate, license } = dbHotel
-    // const address = dbHotel.address
-    // const images = dbHotel.images
-    // console.log(images, 'removing duplicates images')
-    // const description = dbHotel.description
-    // const interestPoints = dbHotel.interestPoints
-    // const lastUpdate = dbHotel.lastUpdate
-    // const license = dbHotel.license
-    const amenities1 = dbHotel.facilities
-    const amenities2 = removeDuplicates(amenities1)
-    // console.log(amenities2, 'iam 2')
+// const mapResultToHotel = (dbHotels, apiHotelResults) => {
+//   const final = []
+//   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
+//     // const { address, images, description, interestPoints, lastUpdate, license } = dbHotel
+//     const address = dbHotel.address
+//     const images = dbHotel.images
+//     console.log(images, ' images in api hand')
+//     const description = dbHotel.description
+//     const interestPoints = dbHotel.interestPoints
+//     const lastUpdate = dbHotel.lastUpdate
+//     const license = dbHotel.license
+//     const amenities1 = dbHotel.facilities
+//     const amenities2 = removeDuplicates(amenities1)
+//     // console.log(amenities2, 'iam 2')
 
-    if (dbHotel.code === apiHotel.code) {
-      apiHotel = { ...apiHotel, dbHotel, amenities2 }
-      // console.log(apiHotel, 'new')
-      final.push(apiHotel)
-    }
-  }))
-  return final
-}
-
-// const mapResultToHotel = (a1, a2) =>
-//   a1.map(itm => ({
-//     ...a2.find((item) => (item.code === itm.code) && item),
-//     ...itm
+//     if (dbHotel.code === apiHotel.code) {
+//       apiHotel = { ...apiHotel, amenities2, address, images, description, interestPoints, lastUpdate, license }
+//       // console.log(apiHotel, 'new')
+//       final.push(apiHotel)
+//     }
 //   }))
+//   return final
+// }
+
+const mapResultToHotel = (a1, a2) =>
+  a2.map(itm => ({
+    ...a1.find((item) => (item.code === itm.code) && item),
+    ...itm
+  }))

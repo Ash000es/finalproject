@@ -15,32 +15,28 @@ export const SearchResultsCarousel = (props) => {
     setIndex(selectedIndex)
   }
 
-  // const readyImages = props.hotel.images
-  // console.log(readyImages, 'ready images')
-
   const imageSize = { width: '250px', height: '250px' }
   console.log('searchresultscarousel')
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize}>
+      <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize} interval={null}>
 
         {
           props.images.map(image => {
-            const newImage = getSmallPictures(image, masterLinkSmall)
+            { /* const newImage = getSmallPictures(image, masterLinkSmall) */ }
 
             return (
               <Carousel.Item key={Math.random()} image={image}>
 
                 <img
                   className='d-block w-100 '
-                  src={newImage.path}
+                  src={image.path}
                   alt='Hotel Pictures'
 
                 />
 
                 <Carousel.Caption>
-                  <h3>{image.order}</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+
                   {/* <i className='iconHeart'><FavoriteIcon /></i> */}
                   {/* <i className='iconHeart'><FavoriteBorderIcon /></i> */}
                 </Carousel.Caption>

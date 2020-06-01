@@ -14,7 +14,8 @@ import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { amenities } from '../../Helper/amenities'
-import { getAmenitiesArray } from '../../Helper/Helper'
+import { getAmenitiesArray, getSmallPictures } from '../../Helper/Helper'
+import { masterLinkSmall } from '../../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,10 +57,11 @@ export const HotelCardSearch = (props) => {
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
 
-  const toMap = props.hotel.amenities2
+  const toMap = props.hotel.facilities
 
   const amenities3 = getAmenitiesArray(toMap, amenities)
-  const readyImages = props.hotel.images
+  const readyImages = getSmallPictures(props.hotel.images, masterLinkSmall)
+  console.log(readyImages, 'ready images')
 
   return (
     <>
@@ -75,7 +77,7 @@ export const HotelCardSearch = (props) => {
 
           >
             <div className={classes.column} id='cardImage'>
-              <SearchResultsCarousel images={props.readyImages} />
+              <SearchResultsCarousel images={readyImages} />
 
             </div>
             <div className='threeCon'>

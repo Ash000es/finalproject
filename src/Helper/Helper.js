@@ -84,25 +84,25 @@ export const getLargePictures = (imageArr, masterLinkLarge) => {
   })
   return hotelsLarge
 }
-// export const getSmallPictures = (imageArr, masterLinkSmall) => {
-//   const hotels = []
-//   imageArr.forEach(imageObject => {
-//     const imageObjectPath = imageObject.path
-//     const newPath = `${masterLinkSmall}${imageObjectPath}`
+export const getSmallPictures = (imageArr, masterLinkSmall) => {
+  const hotels = []
+  imageArr.forEach(imageObject => {
+    const imageObjectPath = imageObject.path
+    const newPath = `${masterLinkSmall}${imageObjectPath}`
 
-//     imageObject = { ...imageObject, path: newPath }
+    imageObject = { ...imageObject, path: newPath }
 
-//     hotels.push(imageObject)
-//   })
-//   return hotels
-// }
-export const getSmallPictures = (image, masterLinkSmall) => {
-  const imageObjectPath = image.path
-  const newPath = `${masterLinkSmall}${imageObjectPath}`
-
-  const imageObject = { ...image, path: newPath }
-  return imageObject
+    hotels.push(imageObject)
+  })
+  return hotels
 }
+// export const getSmallPictures = (image, masterLinkSmall) => {
+//   const imageObjectPath = image.path
+//   const newPath = `${masterLinkSmall}${imageObjectPath}`
+
+//   const imageObject = { ...image, path: newPath }
+//   return imageObject
+// }
 //  imagesArray, props.room, masterLinkSmall)
 
 export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
