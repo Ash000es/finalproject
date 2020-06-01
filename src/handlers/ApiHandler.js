@@ -2,9 +2,9 @@
 
 import Sign from 'js-sha256'
 import { apikey, sec } from '../Keys.json'
-import { removeDuplicates } from './Helper'
-import { amenities } from './amenities'
-import { masterLinkLarge, masterLinkSmall, categoryCodes } from './Constants.js'
+import { removeDuplicates } from '../Helper/Helper'
+import { amenities } from '../Helper/amenities'
+import { masterLinkLarge, masterLinkSmall, categoryCodes } from '../Helper/Constants.js'
 import { TableCell } from '@material-ui/core'
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
@@ -84,20 +84,20 @@ const fetchHotels = (destination, hotelIDS, db) => {
 const mapResultToHotel = (dbHotels, apiHotelResults) => {
   const final = []
   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
-    // TODO: const {address, etc, etc...} = dbHotel
-    const address = dbHotel.address
-    const images = dbHotel.images
+    const { address, images, description, interestPoints, lastUpdate, license } = dbHotel
+    // const address = dbHotel.address
+    // const images = dbHotel.images
     // console.log(images, 'removing duplicates images')
-    const description = dbHotel.description
-    const interestPoints = dbHotel.interestPoints
-    const lastUpdate = dbHotel.lastUpdate
-    const license = dbHotel.license
+    // const description = dbHotel.description
+    // const interestPoints = dbHotel.interestPoints
+    // const lastUpdate = dbHotel.lastUpdate
+    // const license = dbHotel.license
     const amenities1 = dbHotel.facilities
     const amenities2 = removeDuplicates(amenities1)
     // console.log(amenities2, 'iam 2')
 
     if (dbHotel.code === apiHotel.code) {
-      apiHotel = { ...apiHotel, images, amenities2, address, description, interestPoints, lastUpdate, license }
+      apiHotel = { ...apiHotel, dbHotel, amenities2 }
       // console.log(apiHotel, 'new')
       final.push(apiHotel)
     }

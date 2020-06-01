@@ -8,7 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
-import { MyProvider, ProjectContext } from '../Helper/Provider'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
 const lowestPrice = 30
 const extraPrice = 40
@@ -106,7 +106,7 @@ export default function SelectPrice (props) {
 
             <FormLabel component='legend'>Room plus extra</FormLabel>
             <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
-                   </div>
+          </div>
 
             : <div>
               <FormLabel component='legend'>Room only</FormLabel>
@@ -119,7 +119,7 @@ export default function SelectPrice (props) {
               <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                 continue
               </Button>
-            </div>}
+              </div>}
 
         </RadioGroup>
 

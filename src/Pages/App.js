@@ -6,14 +6,14 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
 import './App.css'
-import HotelPage from '../components/Hotelpage/HotelPage'
-import FirebaseContext, { db } from '../components/Firebase'
-import AboutUs from '../components/AboutUs'
+import HotelPage from './HotelPage'
+import FirebaseContext, { db } from '../providers/Firebase'
+import AboutUs from './AboutUs'
 import { HomePage } from './HomePage'
-import ProjectProvider from '../Helper/Provider'
+import ProjectProvider from '../providers/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
 import getSteps from '../components/PaymentCout/Stepper'
-import HotelList from '../components/HotelList/HoteList'
+import HotelList from './HoteList'
 import { testing } from '../components/Test'
 
 function App () {
@@ -47,7 +47,7 @@ function App () {
               {/* TODO: Do you really want to display just your Map component when going to this route?
               usually it's better to have a Page that contains your map component.
                */}
-              <Route path='/Travelessentials' exact component={MapPopUp} />
+
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />
 

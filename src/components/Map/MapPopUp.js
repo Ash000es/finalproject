@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
-
-// TODO: You can write this as './GoogleMapPopUp'
-import { GoogleMapPopUp, WrapperMap } from '../Map/GoogleMapPopUp'
+import { GoogleMapPopUp, WrapperMap } from './GoogleMapPopUp'
 import Button from 'react-bootstrap/Button'
-import { googleAPIKey } from '../../Helper/Constants'
-import { MyProvider, ProjectContext } from '../../Helper/Provider'
+import { googleAPIKey, googleURL } from '../../Helper/Constants'
+import { MyProvider, ProjectContext } from '../../providers/Provider'
 
 const MapPopUp = (props) => {
   console.log(props, 'map pop up')
@@ -33,8 +31,7 @@ const MapPopUp = (props) => {
 
           <div style={{ width: '100%', height: '600px' }}>
             <WrapperMap
-            {/* TODO: Put the url in your constants file and import it */}
-              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleAPIKey}`}
+              googleMapURL={googleURL}
               loadingElement={<div style={{ height: '100%' }} />}
               containerElement={<div style={{ height: '100%' }} />}
               mapElement={<div style={{ height: '100%' }} />}

@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react'
 import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
-import FirebaseContext from '../Firebase'
+import FirebaseContext from '../../providers/Firebase'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from '../PriceSlider'
 import AmenitiesSelect from '../AmenitiesSelect'
 import StarRatingFilter from '../StarRatingFilter'
 import NewDateRange from '../DateRange/NewDateRange'
 import './SearchBar.css'
-import { MyProvider, ProjectContext } from '../../Helper/Provider'
-import { requestAvailableHotels } from '../../Helper/ApiHandler'
+import { MyProvider, ProjectContext } from '../../providers/Provider'
+import { requestAvailableHotels } from '../../handlers/ApiHandler'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -110,7 +110,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-      </div>}
+                  </div>}
 
     </>
   )

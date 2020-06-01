@@ -10,7 +10,7 @@ import Select from '@material-ui/core/Select'
 import Checkbox from '@material-ui/core/Checkbox'
 import Chip from '@material-ui/core/Chip'
 import { amenitiesToFilter } from '../Helper/Constants.js'
-import { MyProvider, ProjectContext } from '../Helper/Provider'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

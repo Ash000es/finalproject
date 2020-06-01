@@ -1,4 +1,4 @@
-import { MyProvider, ProjectContext } from './Provider'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 import React, { useContext, useState } from 'react'
 import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Constants.js'
 
@@ -66,14 +66,6 @@ export const getAmenitiesArray = (arr1, arr2) => {
   return finalArray
 }
 
-/**
- * using ES6 Map
- **/
-
-// TODO: HOW TO REMOVE DUPLICATES
-// Create a new array and Set and add your items to it in one go
-// a Set is a data structure that only has one of each item in it === unique
-// return [...new Set(arr)]
 export function removeDuplicates (arr) {
   return [...new Set(arr)]
 }

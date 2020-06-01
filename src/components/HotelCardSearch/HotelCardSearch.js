@@ -12,7 +12,7 @@ import { hardHotelObject } from '../assets/HardCode'
 import SelectPrice from '../SelectPrice'
 import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
-import { MyProvider, ProjectContext } from '../../Helper/Provider'
+import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { amenities } from '../../Helper/amenities'
 import { getAmenitiesArray } from '../../Helper/Helper'
 

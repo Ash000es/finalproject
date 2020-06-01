@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import { MyProvider, ProjectContext } from '../Helper/Provider'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 import { getRoomPicture } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 

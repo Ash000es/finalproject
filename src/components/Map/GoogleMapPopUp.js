@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
-import { MyProvider, ProjectContext } from '../../Helper/Provider'
+import { MyProvider, ProjectContext } from '../../providers/Provider'
 
 export const GoogleMapPopUp = (props) => {
   console.log(props, 'props from map')

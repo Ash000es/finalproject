@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import './HotelPCarousel.css'
-import { MyProvider, ProjectContext } from '../Helper/Provider'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { getLargePictures } from '../Helper/Helper'

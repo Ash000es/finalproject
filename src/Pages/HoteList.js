@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { HotelCardSearch } from '../HotelCardSearch/HotelCardSearch'
-import { DropDownFilter } from '../DropDownFilter/DropDownFilter'
+import { HotelCardSearch } from '../components/HotelCardSearch/HotelCardSearch'
+import { DropDownFilter } from '../components/DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
-import SearchBar from '../../components/SearchBar/SearchBar'
-import { SearchResultsHero } from '../../components/SearchResultsHero/SearchResultsHero'
+import SearchBar from '../components/SearchBar/SearchBar'
+import { SearchResultsHero } from '../components/SearchResultsHero/SearchResultsHero'
 import './HotelList.css'
-import { VacationRental } from '../DropDownFilter/VCFilter'
-import { HotelsOnly } from '../DropDownFilter/HotelsOnlyFilter'
-import { MyProvider, ProjectContext } from '../../Helper/Provider'
+import { VacationRental } from '../components/DropDownFilter/VCFilter'
+import { HotelsOnly } from '../components/DropDownFilter/HotelsOnlyFilter'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
-import MapPopUp from '../Map/MapPopUp'
+import MapPopUp from '../components/Map/MapPopUp'
 
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)

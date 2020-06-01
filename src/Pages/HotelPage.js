@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react'
-import { hardHotelObject } from '../assets/HardCode'
-import RoomCarousel from '../thumbilCarousel'
-import StarRatingDisplay from '../StarRatingDisplay'
+import { hardHotelObject } from '../components/assets/HardCode'
+import RoomCarousel from '../components/thumbilCarousel'
+import StarRatingDisplay from '../components/StarRatingDisplay'
 import Button from 'react-bootstrap/Button'
-import DateRangePicker from '../DateRange/NewDateRange'
-import { HotelCarousel } from '../HotelCarousel'
-import { MyProvider, ProjectContext } from '../../Helper/Provider'
-import CartDrawer from '../CartDrawer'
-import { addCartItem, showCancelationPolicy, getAmenitiesArray } from '../../Helper/Helper'
-import { amenities } from '../../Helper/amenities'
-import CollapsibleTable from '../ExpandableTable'
+import DateRangePicker from '../components/DateRange/NewDateRange'
+import { HotelCarousel } from '../components/HotelCarousel'
+import { MyProvider, ProjectContext } from '../providers/Provider'
+import CartDrawer from '../components/CartDrawer'
+import { addCartItem, showCancelationPolicy, getAmenitiesArray } from '../Helper/Helper'
+import { amenities } from '../Helper/amenities'
+import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 
 const HotelPage = () => {
@@ -70,7 +70,7 @@ const HotelPage = () => {
       <StarRatingDisplay currentSelection={currentSelection} />
       <div><CollapsibleTable rooms={roomy} onChange={displaySelectedRoomInfo} /></div>
       {currentselectedinfo && currentselectedinfo.map(room => {
-        { /* TODO: const {rateKey, etc, etc.} = room */ }
+        { /* TODO: const {rateKey, etc, etc.} = room / I don't understand why should I do that ? */ }
         console.log(room, 'iam trouble')
         return (
           <div key={room.rateKey}>

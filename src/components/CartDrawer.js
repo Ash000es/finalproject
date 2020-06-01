@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import MyFav from './MyProfile/MyFav'
-import { MyProvider, ProjectContext } from '../Helper/Provider'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartBadge } from './CartBadge'
 import { CartItem } from './CartItem'
 

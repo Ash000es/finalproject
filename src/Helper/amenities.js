@@ -1,4 +1,4 @@
-// TODO amenities looks like a constant, so why not move it into Contants and delete this file?
+// TODO amenities looks like a constant, so why not move it into Contants and delete this file? cause it is too big and I still need to add to it, I rather have it alone
 
 import React from 'react'
 

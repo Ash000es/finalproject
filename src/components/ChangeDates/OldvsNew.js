@@ -1,4 +1,4 @@
-// TODO: is this component being used? It's all hardcoded. Delete if not.
+// TODO: is this component being used? It's all hardcoded. Delete if not. this is for change booking details, logic still to come later when I carry on alone.
 
 import React from 'react'
 import Button from 'react-bootstrap/Button'
