@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { hardHotelObject } from '../assets/hotelobject'
+import { hardHotelObject } from '../assets/HardCode'
 import RoomCarousel from '../components/thumbilCarousel'
 import StarRatingDisplay from '../components/StarRatingDisplay'
 import Button from 'react-bootstrap/Button'
@@ -18,7 +18,7 @@ const HotelPage = () => {
   const [redirect, setRedirect] = useState(false)
 
   const currentSelection = project.currentHotel
-  const toMap = currentSelection.amenities2
+  const toMap = currentSelection.facilities
   const readyAmenities = getAmenitiesArray(toMap, amenities)
 
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
