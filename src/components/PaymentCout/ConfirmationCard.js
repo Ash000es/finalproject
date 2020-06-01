@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { hardHotelObject } from '../assets/HardCode'
+import { hardHotelObject } from '../../assets/HardCode'
 
 const useStyles = makeStyles({
   root: {

@@ -3,9 +3,9 @@
 
 import React from 'react'
 import { FaGlassMartiniAlt, FaParking, FaWineGlassAlt, FaSpa, FaBath, FaSuitcaseRolling } from 'react-icons/fa'
-import LabelBold from '../LabelBold'
-import LabelEssential from '../LabelEssential'
-import Labelposh from '../LabelPosh'
+import LabelBold from '../components/LabelBold'
+import LabelEssential from '../components/LabelEssential'
+import Labelposh from '../components/LabelPosh'
 import AcUnitIcon from '@material-ui/icons/AcUnit'
 import FitnessCenter from '@material-ui/icons/AcUnit'
 import PoolIcon from '@material-ui/icons/AcUnit'

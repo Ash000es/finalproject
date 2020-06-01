@@ -15,8 +15,8 @@ export const SearchResultsCarousel = (props) => {
     setIndex(selectedIndex)
   }
 
-  const readyImages = props.hotel.images
-  console.log(readyImages, 'ready images')
+  // const readyImages = props.hotel.images
+  // console.log(readyImages, 'ready images')
 
   const imageSize = { width: '250px', height: '250px' }
   console.log('searchresultscarousel')
@@ -25,7 +25,7 @@ export const SearchResultsCarousel = (props) => {
       <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize}>
 
         {
-          readyImages.map(image => {
+          props.images.map(image => {
             const newImage = getSmallPictures(image, masterLinkSmall)
 
             return (

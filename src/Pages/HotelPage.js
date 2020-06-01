@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { hardHotelObject } from '../components/assets/HardCode'
+import { hardHotelObject } from '../assets/hotelobject'
 import RoomCarousel from '../components/thumbilCarousel'
 import StarRatingDisplay from '../components/StarRatingDisplay'
 import Button from 'react-bootstrap/Button'

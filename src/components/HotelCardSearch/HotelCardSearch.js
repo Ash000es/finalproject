@@ -8,7 +8,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { SearchResultsCarousel } from '../SearchResultsCarousel'
-import { hardHotelObject } from '../assets/HardCode'
+import { hardHotelObject } from '../../assets/HardCode'
 import SelectPrice from '../SelectPrice'
 import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
@@ -59,6 +59,7 @@ export const HotelCardSearch = (props) => {
   const toMap = props.hotel.amenities2
 
   const amenities3 = getAmenitiesArray(toMap, amenities)
+  const readyImages = props.hotel.images
 
   return (
     <>
@@ -74,7 +75,7 @@ export const HotelCardSearch = (props) => {
 
           >
             <div className={classes.column} id='cardImage'>
-              <SearchResultsCarousel hotel={props.hotel} />
+              <SearchResultsCarousel images={props.readyImages} />
 
             </div>
             <div className='threeCon'>
