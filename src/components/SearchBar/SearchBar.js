@@ -63,7 +63,7 @@ const SearchBar = (props) => {
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
         setProject(
-          { ...project, loading: false, results: hotelsProject }
+          { ...project, results: hotelsProject, loading: false }
         )
       }).then(() => {
         props.done()
@@ -112,7 +112,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-      </div>}
+                  </div>}
 
     </>
   )

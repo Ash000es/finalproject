@@ -10,24 +10,28 @@ import { masterLinkSmall } from '../Helper/Constants'
 export const SearchResultsCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
-  const [newimages, seNewImages] = useState(props.images)
+  const [newimages, setNewImages] = useState(props.images)
+  const [style, setStyle] = useState({ width: '250px', height: '250px', display: 'show' })
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
 
   const handleImageError = (e) => {
-    const newbei = newimages.filter((image, e) => {
-      return image.path !== e
-    })
-    seNewImages(newbei)
+    console.log(e)
+    const style1 = e.target
+    console.log(style1)
+    setStyle({ ...style, display: 'none' })
+    // const newbei = newimages.filter((image, e) => {
+    //   return image.path !== e
+    // })
+    // setNewImages(newbei)
   }
 
-  const imageSize = { width: '250px', height: '250px' }
   console.log('searchresultscarousel')
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect} style={imageSize} interval={null} touch pause='hover'>
+      <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
         {
           newimages.map((image) => {
@@ -39,7 +43,8 @@ export const SearchResultsCarousel = (props) => {
                   className='d-block w-100 '
                   src={imagLink}
                   alt='Hotel Pictures'
-                  onError={(e) => handleImageError(e.target.src)}
+                  style={style}
+                  onError={(e) => handleImageError(e)}
                 />
 
                 <Carousel.Caption>
