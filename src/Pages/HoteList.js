@@ -10,13 +10,17 @@ import { HotelsOnly } from '../components/DropDownFilter/HotelsOnlyFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
+import { Spinning } from '../components/Spinner'
 
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
+
   const hotelsResults = project.results
   const googleLandingLat = hotelsResults[0].latitude
   const googleLandingLong = hotelsResults[0].longitude
+  const isLoading = project.loading
+  console.log(isLoading, '...')
   const onCompelet = () => {
     setRedirect(true)
   }
@@ -28,20 +32,21 @@ const HotelList = () => {
     <div className='HotelList'>
       <SearchResultsHero />
       <SearchBar />
-      <>
-        <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} />
-        <Typography />
+      {isLoading ? <Spinning />
+        : <div>
+          <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} />
+          <Typography />
 
-        <div className='sortButton'>
-          <DropDownFilter />
-        </div>
-        <br />
+          <div className='sortButton'>
+            <DropDownFilter />
+          </div>
+          <br />
 
-        {hotelsResults && hotelsResults.map(hotel => {
-          return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
-        })}
+          {hotelsResults && hotelsResults.map(hotel => {
+            return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
+          })}
 
-      </>
+          </div>}
 
     </div>
 

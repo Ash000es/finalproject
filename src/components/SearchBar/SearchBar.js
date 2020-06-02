@@ -54,19 +54,22 @@ const SearchBar = (props) => {
 
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
+  console.log(project, 'project from search bar')
 
   const handleClickButton = () => {
+    setProject({ ...project, loading: true })
     const payLoad = { occupancies, destination, stay, reviews }
     console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
         setProject(
-          { ...project, results: hotelsProject }
+          { ...project, loading: false, results: hotelsProject }
         )
       }).then(() => {
         props.done()
       }).then(() => setFullBar(true))
   }
+
   const handleLocationChange = (code) => {
     setDestination({ code })
   }
@@ -109,7 +112,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-                  </div>}
+      </div>}
 
     </>
   )

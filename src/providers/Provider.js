@@ -13,7 +13,9 @@ const ProjectProvider = (props) => {
       currentRoomSelection: [],
       redirect: false,
       cartOpen: false,
-      cartItems: []
+      cartItems: [],
+      loading: false
+
     })
   console.log(project, setProject)
   return (
