@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useMemo } from 'react'
 import { hardHotelObject } from '../assets/HardCode'
 import RoomCarousel from '../components/thumbilCarousel'
 import StarRatingDisplay from '../components/StarRatingDisplay'
@@ -16,7 +16,6 @@ const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [currentselectedinfo, setCurrentSelectedInfo] = useState()
   const [redirect, setRedirect] = useState(false)
-
   const currentSelection = project.currentHotel
   const toMap = currentSelection.facilities
   const readyAmenities = getAmenitiesArray(toMap, amenities)
@@ -32,6 +31,9 @@ const HotelPage = () => {
   const onCompelet = () => {
     setRedirect(true)
   }
+  const stopRerendering = useMemo(() => {
+    return <HotelCarousel currentSelection={currentSelection} />
+  }, [])
 
   const size = { width: '200px' }
   const roomy = currentSelection.rooms.map(room => room)
@@ -51,8 +53,7 @@ const HotelPage = () => {
         <p>Edit your dates</p>
         <DateRangePicker />
       </div>
-
-      <HotelCarousel currentSelection={currentSelection} />
+      {stopRerendering}
 
       <div>
         <p>Amenities:</p>
