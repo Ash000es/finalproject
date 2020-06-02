@@ -65,8 +65,7 @@ const SearchBar = (props) => {
         )
       }).then(() => {
         props.done()
-        setFullBar(true)
-      })
+      }).then(() => setFullBar(true))
   }
   const handleLocationChange = (code) => {
     setDestination({ code })

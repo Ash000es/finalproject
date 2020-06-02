@@ -16,6 +16,8 @@ firebase.initializeApp({
   authDomain: firebaseConfig.authDomain,
   projectId: firebaseConfig.projectId
 })
+export const provider = new firebase.auth.GoogleAuthProvider()
+
 export const db = firebase.firestore()
 const FirebaseContext = React.createContext(db)
 export default FirebaseContext
