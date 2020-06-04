@@ -100,7 +100,7 @@ function App () {
           </Navbar>
           <Container className='pt-3'>
             <Switch>
-              {/* TODO: Move all components below into Pages/ folder */}
+
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
               <Route path='/reviewcart' excat component={getSteps} />

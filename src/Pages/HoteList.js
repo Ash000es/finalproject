@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import React, { useContext, useState, useEffect } from 'react'
 import { HotelCardSearch } from '../components/HotelCardSearch/HotelCardSearch'
 import { DropDownFilter } from '../components/DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
@@ -11,16 +12,47 @@ import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
+import Button from 'react-bootstrap/Button'
+
+const style = {
+  height: 30,
+  border: '1px solid green',
+  margin: 6,
+  padding: 8
+}
 
 const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [hotelsresults, setHotelsResults] = useState()
+  console.log(hotelsresults, 'I am inital results state')
 
-  const hotelsResults = project.results
-  const googleLandingLat = hotelsResults[0].latitude
-  const googleLandingLong = hotelsResults[0].longitude
-  const isLoading = project.loading
-  console.log(isLoading, '...')
+  const [resultsPerPage, setResultsPerPage] = useState(5)
+  const [resultsstart, setResultsStart] = useState(0)
+  console.log(resultsstart, 'new start')
+  const allHotelsResults = project.results
+
+  const googleLandingLat = allHotelsResults[0].latitude
+  const googleLandingLong = allHotelsResults[0].longitude
+
+  useEffect(() => {
+    // setIsLoading(true)
+    console.log('useeffect123')
+    const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
+    setHotelsResults(intialLoad)
+    // setIsLoading(false)
+  }, [])
+
+  const fetchMoreData = () => {
+    console.log('fetchdata on scroll 123')
+    const indexOfFirstHotel = resultsstart + resultsPerPage
+    const indexOfFLastHotel = indexOfFirstHotel + resultsPerPage
+    const newLoad = allHotelsResults.slice(indexOfFirstHotel, indexOfFLastHotel)
+    setResultsStart(indexOfFirstHotel)
+    setHotelsResults(hotelsresults.concat(newLoad))
+  }
+
   const onCompelet = () => {
     setRedirect(true)
   }
@@ -29,28 +61,40 @@ const HotelList = () => {
   }
 
   return (
-    <div className='HotelList'>
-      <SearchResultsHero />
-      <SearchBar />
-      {isLoading ? <Spinning />
-        : <div>
-          <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} />
-          <Typography />
 
-          <div className='sortButton'>
-            <DropDownFilter />
+    <div id='scrollableDiv' style={{ height: 2000, overflow: 'auto' }}>
+      <InfiniteScroll
+        dataLength={allHotelsResults.length}
+        next={fetchMoreData}
+        hasMore
+        loader={<h4>Loading...</h4>}
+        scrollableTarget='scrollableDiv'
+
+      >
+        <div className='HotelList'>
+          <SearchResultsHero />
+          <SearchBar />
+
+          <div>
+            <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} />
+            <Typography />
+
+            <div className='sortButton'>
+              <DropDownFilter />
+            </div>
+            <br />
+
+            {hotelsresults && hotelsresults.map(hotel => {
+              return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
+            })}
+
           </div>
-          <br />
 
-          {hotelsResults && hotelsResults.map(hotel => {
-            return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
-          })}
+        </div>
 
-          </div>}
-
+      </InfiniteScroll>
     </div>
 
   )
 }
-
 export default HotelList

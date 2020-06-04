@@ -54,7 +54,6 @@ const SearchBar = (props) => {
 
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
-  console.log(project, 'project from search bar')
 
   const handleClickButton = () => {
     setProject({ ...project, loading: true })
@@ -112,7 +111,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-                  </div>}
+      </div>}
 
     </>
   )
