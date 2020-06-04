@@ -37,6 +37,7 @@ const MapPopUp = (props) => {
               mapElement={<div style={{ height: '100%' }} />}
               lat={props.lat}
               long={props.long}
+              mapHotelsResults={props.mapHotelsResults}
             />
           </div>
         </Modal.Body>

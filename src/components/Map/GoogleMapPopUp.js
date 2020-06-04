@@ -6,6 +6,8 @@ export const GoogleMapPopUp = (props) => {
   console.log(props, 'props from map')
   const { project, setProject } = useContext(ProjectContext)
   const [selectedhotel, setSelectedHotel] = useState(null)
+  const [hotelsArray, setHotelsArray] = useState(props.mapHotelsResults)
+  console.log(hotelsArray, 'to map in google')
 
   const firstLaty = parseFloat(props.lat)
   const firstLong = parseFloat(props.long)
@@ -14,7 +16,6 @@ export const GoogleMapPopUp = (props) => {
     lng: firstLong
   }
 
-  const hotelsArray = project.results
   if (selectedhotel) {
     console.log(typeof selectedhotel.latitude)
   }

@@ -79,7 +79,7 @@ const HotelList = () => {
           <SearchBar />
 
           <div>
-            <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} />
+            <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
             <Typography />
 
             <div className='sortButton'>
