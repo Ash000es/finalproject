@@ -32,6 +32,7 @@ const HotelList = () => {
   const [resultsstart, setResultsStart] = useState(0)
   console.log(resultsstart, 'new start')
   const allHotelsResults = project.results
+  console.log(allHotelsResults.length)
 
   const googleLandingLat = allHotelsResults[0].latitude
   const googleLandingLong = allHotelsResults[0].longitude
@@ -47,7 +48,9 @@ const HotelList = () => {
   const fetchMoreData = () => {
     console.log('fetchdata on scroll 123')
     const indexOfFirstHotel = resultsstart + resultsPerPage
+    console.log(indexOfFirstHotel, '<>')
     const indexOfFLastHotel = indexOfFirstHotel + resultsPerPage
+    console.log(indexOfFLastHotel, '<>')
     const newLoad = allHotelsResults.slice(indexOfFirstHotel, indexOfFLastHotel)
     setResultsStart(indexOfFirstHotel)
     setHotelsResults(hotelsresults.concat(newLoad))

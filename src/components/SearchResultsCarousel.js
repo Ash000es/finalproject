@@ -18,9 +18,9 @@ export const SearchResultsCarousel = (props) => {
   }
 
   const handleImageError = (e) => {
-    console.log(e)
+    // console.log(e)
     const style1 = e.target
-    console.log(style1)
+    // console.log(style1)
     setStyle({ ...style, display: 'none' })
     // const newbei = newimages.filter((image, e) => {
     //   return image.path !== e
