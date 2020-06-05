@@ -111,7 +111,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-      </div>}
+                  </div>}
 
     </>
   )

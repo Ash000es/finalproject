@@ -110,3 +110,51 @@ const mapResultToHotel = (a1, a2) =>
     ...a1.find((item) => (item.code === itm.code) && item),
     ...itm
   }))
+  // popular destinations handler
+export function requestPopularDest ({ occupancies, destination, stay, reviews }) {
+  const D = new Date()
+
+  const getSignature = () => {
+    return Sign(apikey + sec + Math.round(D.getTime() / 1000))
+  }
+
+  const createRequestBody = () => {
+    return {
+      stay,
+      occupancies,
+      destination,
+      reviews
+    }
+  }
+
+  console.log(getSignature())
+  console.log(JSON.stringify(createRequestBody()))
+  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+    {
+      method: 'POST',
+      headers: {
+        'Api-Key': apikey,
+        'X-Signature': getSignature(),
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'gzip'
+      },
+
+      body: JSON.stringify(createRequestBody())
+    }).then(res => res.json()).then(Response => {
+    console.log(Response)
+    const { hotels } = Response
+
+    const checkInDate = hotels.checkIn
+    const checkInOut = hotels.checkOut
+    const insertDates = hotels.hotels.map(hotel => {
+      const newHotel = { ...hotel, checkInDate, checkInOut }
+      return newHotel
+    })
+    const apiHotelResults1 = insertDates
+    // console.log(apiHotelResults1, 'changes')
+
+    const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
+    return apiHotelResults
+  })
+}

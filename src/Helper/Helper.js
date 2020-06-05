@@ -1,6 +1,8 @@
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import React, { useContext, useState } from 'react'
-import { db, project, setProject, masterLinkLarge, masterLinkSmall } from './Constants.js'
+import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities } from './Constants.js'
+
+import { requestPopularDest } from '../handlers/ApiHandler'
 
 // this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
 // this function is used in file thumbilCarsoel.js
@@ -132,6 +134,28 @@ export const showCancelationPolicy = (room) => {
 export const roomsCost = (a, b) => {
   return a * b
 }
+
+export const handleHomePageSearch = (destination1, state) => {
+  const { occupancies, stay, reviews } = state
+  const destination = destination1
+  const payLoad = { occupancies, destination, stay, reviews }
+  return requestPopularDest(payLoad)
+}
+// export const findCheapestHotel = () => {
+//   state.homePageBooking.forEach(des => {
+//     const res212 = des.reduce(function (prev, curr) {
+//       if (prev.minRate < curr.minRate) {
+//         setState({
+//           ...state,
+//           homePageContent: {
+//             rate: prev.minRate,
+//             city: prev.destinationName
+//           }
+//         })
+//       }
+//     })
+//   })
+// }
 
 // cancellationPolicies: [Array(1)
 // 0: {amount: "103.68", from: "2020-11-12T16:00:00+01:00"}

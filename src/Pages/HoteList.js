@@ -30,6 +30,7 @@ const HotelList = () => {
 
   const [resultsPerPage, setResultsPerPage] = useState(5)
   const [resultsstart, setResultsStart] = useState(0)
+  const [hasmore, setHasMore] = useState(true)
   console.log(resultsstart, 'new start')
   const allHotelsResults = project.results
   console.log(allHotelsResults.length)
@@ -72,6 +73,12 @@ const HotelList = () => {
         hasMore
         loader={<h4>Loading...</h4>}
         scrollableTarget='scrollableDiv'
+        scrollThreshold={0.5}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
 
       >
         <div className='HotelList'>
