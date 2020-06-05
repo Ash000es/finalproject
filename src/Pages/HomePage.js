@@ -12,7 +12,7 @@ import { handleHomePageSearch } from '../Helper/Helper'
 export const HomePage = () => {
   const [redirect, setRedirect] = useState(false)
   const { project, setProject } = useContext(ProjectContext)
-  const [state1, setState1] = useState()
+  const [destres, setDesRes] = useState()
   const [popularCities, setPopularCities] = useState(['BCN', 'LON', 'MAD', 'MCO'])
   const [state, setState] = useState(
     {
@@ -63,9 +63,9 @@ export const HomePage = () => {
       const res3 = await handleHomePageSearch('IBZ', state)
       console.log(res3)
     }
-
+    // setting to state after fetch
     // .then( destinationsResults => {
-    //   setState1(destinationsResults)
+    //   setDesRes(destinationsResults)
     // })
   }, [])
 
