@@ -139,23 +139,19 @@ export const handleHomePageSearch = (destination1, state) => {
   const { occupancies, stay, reviews } = state
   const destination = destination1
   const payLoad = { occupancies, destination, stay, reviews }
+  console.log(payLoad, 'payload')
   return requestPopularDest(payLoad)
 }
-// export const findCheapestHotel = () => {
-//   state.homePageBooking.forEach(des => {
-//     const res212 = des.reduce(function (prev, curr) {
-//       if (prev.minRate < curr.minRate) {
-//         setState({
-//           ...state,
-//           homePageContent: {
-//             rate: prev.minRate,
-//             city: prev.destinationName
-//           }
-//         })
-//       }
-//     })
-//   })
-// }
+export const findCheapestHotel = (arr) => {
+  // arr.map(des => {
+  console.log(arr)
+  return arr.reduce(function (prev, curr) {
+    if (prev.minRate < curr.minRate) {
+      return prev.minRate
+    }
+  })
+  // })
+}
 
 // cancellationPolicies: [Array(1)
 // 0: {amount: "103.68", from: "2020-11-12T16:00:00+01:00"}

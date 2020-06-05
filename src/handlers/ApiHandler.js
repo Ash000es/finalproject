@@ -112,6 +112,7 @@ const mapResultToHotel = (a1, a2) =>
   }))
   // popular destinations handler
 export function requestPopularDest ({ occupancies, destination, stay, reviews }) {
+  console.log({ occupancies, destination, stay, reviews }, 'populardest()')
   const D = new Date()
 
   const getSignature = () => {
