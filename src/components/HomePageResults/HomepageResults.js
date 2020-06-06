@@ -73,53 +73,25 @@ const HomePageResults = (props) => {
 
       <CardDeck>
         <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-          {destresults && destresults.map(des => {
-            console.log(des, 'arrrraay')
+          {destresults && destresults.map((des, i) => {
             const cheap = findCheapestHotel(des)
+            console.log(cheap, 'cheap')
 
-            { /* arr.map(city => {
-              console.log(city, 'city')
-              return (
-                <Card className='cardHomePage' key={city} city={city}>
-                  <Card.Img variant='top' src='https://source.unsplash.com/random' />
-                  <Card.Body>
-                    <Card.Title>{city[0].destinationName}</Card.Title>
-                    <Card.Text>
-                      Hotels from {findCheapestHotel(city)}
-                    </Card.Text>
-                  </Card.Body>
-                  <Card.Footer>
-                    <small className='text-muted'>Last updated 3 mins ago</small>
-                  </Card.Footer>
-                </Card>
-              )
-            }) */ }
+            return (
+              <Card className='cardHomePage' key={i} des={des}>
+                <Card.Img variant='top' src='https://source.unsplash.com/random' />
+                <Card.Body>
+                  <Card.Title>{des[0].destinationName}</Card.Title>
+                  <Card.Text>
+                    Hotels from {cheap.minRate}
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  <small className='text-muted'>Last updated 3 mins ago</small>
+                </Card.Footer>
+              </Card>
+            )
           })}
-
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Barcelona</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Ibiza</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
         </Row>
         <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
           <Card className='cardHomePage'>

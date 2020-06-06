@@ -113,12 +113,19 @@ export const handleHomePageSearch = (destination1, state) => {
 export const findCheapestHotel = (arr) => {
   // arr.map(des => {
   console.log(arr, 'god damn')
-  arr.map(des => {
-    const lowestRates = des.minRate
-    const lowestRate = Math.min([lowestRates])
-    console.log(lowestRate, 'yop')
-    console.log('is it working')
+  return arr.reduce(function (prev, curr) {
+    console.log(typeof prev)
+    const changedPrevNumber = parseFloat(prev.minRate)
+    const changedCurrNumber = parseFloat(curr.minRate)
+    return changedPrevNumber < changedCurrNumber ? prev : curr
   })
+
+  // arr.map(des => {
+  //   const lowestRates = [des.minRate]
+  //   // const lowestRate = Math.min(...lowestRates)
+  //   console.log(lowestRates, 'yop')
+
+  // })
 
   // return arr.reduce(function (prev, curr) {
   //   if (prev.minRate < curr.minRate) {
