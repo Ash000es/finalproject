@@ -73,9 +73,10 @@ const HomePageResults = (props) => {
 
       <CardDeck>
         <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-          {destresults && destresults.map(arr => {
-            const cheap = findCheapestHotel(arr)
-            console.log(cheap, 'arrrraay')
+          {destresults && destresults.map(des => {
+            console.log(des, 'arrrraay')
+            const cheap = findCheapestHotel(des)
+
             { /* arr.map(city => {
               console.log(city, 'city')
               return (

@@ -112,7 +112,7 @@ const mapResultToHotel = (a1, a2) =>
   }))
   // popular destinations handler
 export function requestPopularDest ({ occupancies, destination, stay, reviews }) {
-  console.log({ occupancies, destination, stay, reviews }, 'populardest()')
+  // console.log({ occupancies, destination, stay, reviews }, 'populardest()')
   const D = new Date()
 
   const getSignature = () => {
@@ -128,8 +128,8 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
     }
   }
 
-  console.log(getSignature())
-  console.log(JSON.stringify(createRequestBody()))
+  // console.log(getSignature())
+  // console.log(JSON.stringify(createRequestBody()))
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
       method: 'POST',

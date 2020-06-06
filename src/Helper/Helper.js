@@ -1,11 +1,7 @@
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import React, { useContext, useState } from 'react'
 import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities } from './Constants.js'
-
 import { requestPopularDest } from '../handlers/ApiHandler'
-
-// this function to match each room from bookingAPI to the right image from contentAPI, looping going through two arrays of objects.
-// this function is used in file thumbilCarsoel.js
 
 // export const getRoomPicture = (resultsarray, hotelsarray) => {
 //   const [rooms] = project.results.hotels.rooms
@@ -19,39 +15,11 @@ import { requestPopularDest } from '../handlers/ApiHandler'
 //   }
 // }
 
-// function to get hotels codes from results to query db for hotels array results
-// export const getHotelsCodes = (resultsArray) => {
-//   const hotelCodes = []
-//   resultsArray.map(hotel => {
-//     hotelCodes.push(hotel.code)
-//   })
-//   return hotelCodes
-// }
 // export const handleClick = (hotel.code) => {
 //     addToCart(code)=>setProject({...project,addedItems:code})
 
 // }
 
-// export const fetchHotels = (destination) => {
-//   console.log('searchME')
-
-//   // map the results and get an array of hotel IDS getHotelsCodes()
-//   const arrayCodes = [663, 1431, 1446, 6940, 576022, 585184]
-//   db.collection('hotels-limited').where('destinationCode', '==', destination).where('categoryCode', '==', '4EST')
-
-//     .onSnapshot(querySnapshot => {
-//       const hotels = []
-//       querySnapshot.forEach((hotel) => {
-//         const hotelData = hotel.data()
-//         // if hotelData.code
-//         if (arrayCodes.includes(hotelData.code)) {
-//           hotels.push(hotel.data())
-//         }
-//       })
-
-//       console.log(hotels)
-//       setProject({ ...project, hotels })
-//     })
 // }
 
 export const getAmenitiesArray = (arr1, arr2) => {
@@ -139,17 +107,24 @@ export const handleHomePageSearch = (destination1, state) => {
   const { occupancies, stay, reviews } = state
   const destination = destination1
   const payLoad = { occupancies, destination, stay, reviews }
-  console.log(payLoad, 'payload')
+  // console.log(payLoad, 'payload')
   return requestPopularDest(payLoad)
 }
 export const findCheapestHotel = (arr) => {
   // arr.map(des => {
-  console.log(arr)
-  return arr.reduce(function (prev, curr) {
-    if (prev.minRate < curr.minRate) {
-      return prev.minRate
-    }
+  console.log(arr, 'god damn')
+  arr.map(des => {
+    const lowestRates = des.minRate
+    const lowestRate = Math.min([lowestRates])
+    console.log(lowestRate, 'yop')
+    console.log('is it working')
   })
+
+  // return arr.reduce(function (prev, curr) {
+  //   if (prev.minRate < curr.minRate) {
+  //     return prev.minRate
+  //   }
+  // })
   // })
 }
 
