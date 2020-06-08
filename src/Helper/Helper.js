@@ -112,9 +112,9 @@ export const handleHomePageSearch = (destination1, state) => {
 }
 export const findCheapestHotel = (arr) => {
   // arr.map(des => {
-  console.log(arr, 'god damn')
+  // console.log(arr, 'god damn')
   return arr.reduce(function (prev, curr) {
-    console.log(typeof prev)
+    // console.log(typeof prev)
     const changedPrevNumber = parseFloat(prev.minRate)
     const changedCurrNumber = parseFloat(curr.minRate)
     return changedPrevNumber < changedCurrNumber ? prev : curr

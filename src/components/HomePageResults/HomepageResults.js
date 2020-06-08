@@ -37,7 +37,7 @@ const HomePageResults = (props) => {
 
     }
   )
-  console.log(destresults, 'desres')
+  // console.log(destresults, 'desres')
 
   // const getHomePageHotels = (arr) => {
   //   console.log(arr)
@@ -51,20 +51,20 @@ const HomePageResults = (props) => {
     // getHomePageHotels(popularCities)
 
     // version 2 doesn't work, nothing happens
-    const fetchDestinations = async () => {
-      const res1 = await handleHomePageSearch(popularCities[0], state)
-      console.log(res1)
-      const res2 = await handleHomePageSearch(popularCities[1], state)
-      console.log(res2)
-      const res3 = await handleHomePageSearch(popularCities[2], state)
-      console.log(res3)
-      const res4 = await handleHomePageSearch(popularCities[3], state)
-      return [res1, res2, res3, res4]
-    }
-    fetchDestinations().then(destinationsResults => {
-      console.log(destinationsResults, 'api')
-      setDesResults(destinationsResults)
-    })
+    // const fetchDestinations = async () => {
+    //   const res1 = await handleHomePageSearch(popularCities[0], state)
+    //   console.log(res1)
+    //   const res2 = await handleHomePageSearch(popularCities[1], state)
+    //   console.log(res2)
+    //   const res3 = await handleHomePageSearch(popularCities[2], state)
+    //   console.log(res3)
+    //   const res4 = await handleHomePageSearch(popularCities[3], state)
+    //   return [res1, res2, res3, res4]
+    // }
+    // fetchDestinations().then(destinationsResults => {
+    //   // console.log(destinationsResults, 'api')
+    //   setDesResults(destinationsResults)
+    // })
   }, [])
 
   return (

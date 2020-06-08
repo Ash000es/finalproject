@@ -43,12 +43,56 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
-    const insertDates = hotels.hotels.map(hotel => {
-      const newHotel = { ...hotel, checkInDate, checkInOut }
+    const hotelsOnly = hotels.hotels
+    console.log(hotelsOnly, 'am I defined')
+    // const hotelsRooms = hotelsOnly.forEach(rooms => {
+    //   const roomsArray = rooms.rooms
+    //   return roomsArray.forEach(room => {
+    //     const ratesArray = room.rates
+    //     console.log(ratesArray, 'lol')
+    //     return ratesArray.forEach(rate => {
+    //       const netRate = rate.netRate
+    //       const mySellingRate = (netRate * 113) / 100
+    //       const newRate = { ...rate, mySellingRate }
+    //       return newRate
+    //     })
+    //   })
+    // })
+    // console.log(hotelsRooms, 'lol')
+    // const hotelsSellingRates = hotelsRooms.map(rates => {
+    //   console.log(rates.rates, 'ememem')
+
+    //   // const netRate = rate.net
+    //   // const mySelllingRate = (netRate * 110) / 100
+    //   // console.log(mySelllingRate, '22222222')
+    // })
+    const insertDates = hotelsOnly.map(hotel => {
+      const hotelRoom = hotel.rooms.map(room => {
+        const roomRatesArray = room.rates.map(rate => {
+          const mySellingRate = (rate.net * 113) / 100
+          const newRateObject = { ...rate, mySellingRate }
+          console.log(newRateObject, 'new rate')
+          return newRateObject
+        })
+        const newRoom = { ...room, rates: roomRatesArray }
+        return newRoom
+      })
+      console.log(hotelRoom, 'newrooms')
+
+      const newHotel = { ...hotel, checkInDate, checkInOut, rooms: hotelRoom }
       return newHotel
     })
     const apiHotelResults1 = insertDates
     // console.log(apiHotelResults1, 'changes')
+    // const marginRanking = hotels.hotels.rooms.map(room => {
+    //   room.rates.map(rate => {
+    //   if (rate.sellingRate) {
+    //     const marginValue = (rate.sellingRate - rate.net) - rate.net * 100
+    //     return marginValue
+    //   }
+
+    //   })
+    // })
 
     const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
@@ -148,6 +192,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
+
     const insertDates = hotels.hotels.map(hotel => {
       const newHotel = { ...hotel, checkInDate, checkInOut }
       return newHotel
