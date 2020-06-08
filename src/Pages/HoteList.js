@@ -63,17 +63,21 @@ const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
+  const handleFilteredHotels = (res) => {
+    console.log(res, 'new valueeee')
+    setHotelsResults(res)
+  }
 
   return (
 
-    <div id='scrollableDiv' style={{ height: 2000, overflow: 'auto' }}>
+    <div style={{ height: 1000, overflow: 'auto' }}>
       <InfiniteScroll
         dataLength={allHotelsResults.length}
         next={fetchMoreData}
         hasMore
         loader={<h4>Loading...</h4>}
-        scrollableTarget='scrollableDiv'
         scrollThreshold={0.5}
+        onScroll={fetchMoreData}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>
@@ -86,7 +90,7 @@ const HotelList = () => {
           <SearchBar />
 
           <div>
-            <HotelsOnly /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
+            <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
             <Typography />
 
             <div className='sortButton'>

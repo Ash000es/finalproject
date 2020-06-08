@@ -6,7 +6,7 @@ import { googleAPIKey, googleURL } from '../../Helper/Constants'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 
 const MapPopUp = (props) => {
-  console.log(props, 'map pop up')
+  // console.log(props, 'map pop up')
   const [show, setShow] = useState(false)
 
   return (

@@ -75,12 +75,12 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
 
     const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
-    console.log(apiHotelResults)
+    // console.log(apiHotelResults)
     const hotelIDS = apiHotelResults.map(hotel => hotel.code)
-    console.log(hotelIDS)
+    // console.log(hotelIDS)
     return fetchHotels(destination.code, hotelIDS, db)
       .then(dbHotels => {
-        console.log('dbHotel', dbHotels)
+        // console.log('dbHotel', dbHotels)
         const hotelsProject = mapResultToHotel(dbHotels, apiHotelResults)
         console.log(hotelsProject, 'hotelsproject')
         return hotelsProject

@@ -5,7 +5,7 @@ import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 class NewDateRange extends React.Component {
   constructor (props) {
     super(props)
-    console.log(props)
+    // console.log(props)
     this.state = {
       date: [new Date(), new Date()]
     }
@@ -16,22 +16,22 @@ class NewDateRange extends React.Component {
    handleDateChange = date => {
      console.log(date, 'orgin')
      this.setState(date)
-     console.log(date)
+     //  console.log(date)
      const date1 = date.map(i => i.toLocaleDateString())
 
-     console.log(date1, '1')
+     //  console.log(date1, '1')
 
      const date2 = date1.map(i => i.replace('/', '-').replace('/', '-'))
-     console.log(date2, '2')
+     //  console.log(date2, '2')
      const date3 = date2.map(i => i.split('-'))
-     console.log(date3, '3')
+     //  console.log(date3, '3')
 
      const date4 = date3.map(i => i.reverse())
-     console.log(date4, '4')
+     //  console.log(date4, '4')
 
      const finalDate = date4.map(i => i.join('-'))
      this.props.onChange(finalDate)
-     console.log(finalDate, 'fin')
+     //  console.log(finalDate, 'fin')
    }
 
    render () {

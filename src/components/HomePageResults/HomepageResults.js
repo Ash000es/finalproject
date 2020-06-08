@@ -51,37 +51,36 @@ const HomePageResults = (props) => {
   //     handleHomePageSearch(destination1, state)
   //   })
   // }
-  useEffect(() => {
-    // version 1 returns erros but the request to the api is done correctly
-    // getHomePageHotels(popularCities)
+  // useEffect(() => {
+  //   // version 1 returns erros but the request to the api is done correctly
+  //   // getHomePageHotels(popularCities)
 
-    // version 2 doesn't work, nothing happens
-    const fetchDestinations = async () => {
-      const res1 = await handleHomePageSearch(popularCities[0], state)
-      console.log(res1)
-      const res2 = await handleHomePageSearch(popularCities[1], state)
-      console.log(res2)
-      const res3 = await handleHomePageSearch(popularCities[2], state)
-      console.log(res3)
-      const res4 = await handleHomePageSearch(popularCities[3], state)
-      console.log(res4)
-      const res5 = await handleHomePageSearch(popularCities[4], state)
-      console.log(res5)
-      const res6 = await handleHomePageSearch(popularCities[5], state)
-      console.log(res6)
-      const res7 = await handleHomePageSearch(popularCities[6], state)
-      console.log(res7)
-      const res8 = await handleHomePageSearch(popularCities[7], state)
-      console.log(res8)
-      const res9 = await handleHomePageSearch(popularCities[8], state)
-      console.log(res9)
-      return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
-    }
-    fetchDestinations().then(destinationsResults => {
-      // console.log(destinationsResults, 'api')
-      setDesResults(destinationsResults)
-    })
-  }, [])
+  //   // version 2 doesn't work, nothing happens
+  //   const fetchDestinations = async () => {
+  //     const res1 = await handleHomePageSearch(popularCities[0], state)
+  //     console.log(res1)
+  //     const res2 = await handleHomePageSearch(popularCities[1], state)
+  //     console.log(res2)
+  //     const res3 = await handleHomePageSearch(popularCities[2], state)
+  //     console.log(res3)
+  //     const res4 = await handleHomePageSearch(popularCities[3], state)
+  //     console.log(res4)
+  //     const res5 = await handleHomePageSearch(popularCities[4], state)
+  //     console.log(res5)
+  //     const res6 = await handleHomePageSearch(popularCities[5], state)
+  //     console.log(res6)
+  //     const res7 = await handleHomePageSearch(popularCities[6], state)
+  //     console.log(res7)
+  //     const res8 = await handleHomePageSearch(popularCities[7], state)
+  //     console.log(res8)
+  //     const res9 = await handleHomePageSearch(popularCities[8], state)
+  //     console.log(res9)
+  //     return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
+  //   }
+  //   fetchDestinations().then(destinationsResults => {
+  //     setDesResults(destinationsResults)
+  //   })
+  // }, [])
 
   const handleClick = (des) => {
     setProject({ ...project, loading: true })
