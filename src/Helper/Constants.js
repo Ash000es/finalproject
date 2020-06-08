@@ -4,7 +4,7 @@ import React from 'react'
 // homepage results const
 export const googleAPIKey = 'AIzaSyArQla27kHz9uEus_Zyhh-rDHhg6nYTXEs'
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleAPIKey}`
-export const popularCities = ['IBZ', 'BCN', 'LON', 'MAD', 'MCO']
+export const popularCities = [{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }]
 export const apikey = 'kw7vpx3nefnq47b8dk6kehg4'
 export const sec = 'nyM8qx6n8S'
 export const D = new Date()

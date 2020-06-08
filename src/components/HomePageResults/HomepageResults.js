@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
-import SearchBar, { handleClickButton } from '../SearchBar/SearchBar'
+import SearchBar from '../SearchBar/SearchBar'
 import Row from 'react-bootstrap/Row'
-
 import { findCheapestHotel, handleHomePageSearch } from '../../Helper/Helper'
-import { requestPopularDest } from '../../handlers/ApiHandler'
+import { MyProvider, ProjectContext } from '../../providers/Provider'
+import FirebaseContext from '../../providers/Firebase'
+import { fetchPopularDestData } from '../../handlers/ApiHandler'
+import { Redirect } from 'react-router'
 
 const HomePageResults = (props) => {
   const [destresults, setDesResults] = useState()
-  const [popularCities, setPopularCities] = useState([{ code: 'MAD' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'MCO' }])
+  const [redirect, setRedirect] = useState(false)
+  const [popularCities, setPopularCities] = useState([{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }])
+  const db = useContext(FirebaseContext)
+  const { project, setProject } = useContext(ProjectContext)
 
   const [state, setState] = useState(
     {
@@ -51,124 +56,73 @@ const HomePageResults = (props) => {
     // getHomePageHotels(popularCities)
 
     // version 2 doesn't work, nothing happens
-    // const fetchDestinations = async () => {
-    //   const res1 = await handleHomePageSearch(popularCities[0], state)
-    //   console.log(res1)
-    //   const res2 = await handleHomePageSearch(popularCities[1], state)
-    //   console.log(res2)
-    //   const res3 = await handleHomePageSearch(popularCities[2], state)
-    //   console.log(res3)
-    //   const res4 = await handleHomePageSearch(popularCities[3], state)
-    //   return [res1, res2, res3, res4]
-    // }
-    // fetchDestinations().then(destinationsResults => {
-    //   // console.log(destinationsResults, 'api')
-    //   setDesResults(destinationsResults)
-    // })
+    const fetchDestinations = async () => {
+      const res1 = await handleHomePageSearch(popularCities[0], state)
+      console.log(res1)
+      const res2 = await handleHomePageSearch(popularCities[1], state)
+      console.log(res2)
+      const res3 = await handleHomePageSearch(popularCities[2], state)
+      console.log(res3)
+      const res4 = await handleHomePageSearch(popularCities[3], state)
+      console.log(res4)
+      const res5 = await handleHomePageSearch(popularCities[4], state)
+      console.log(res5)
+      const res6 = await handleHomePageSearch(popularCities[5], state)
+      console.log(res6)
+      const res7 = await handleHomePageSearch(popularCities[6], state)
+      console.log(res7)
+      const res8 = await handleHomePageSearch(popularCities[7], state)
+      console.log(res8)
+      const res9 = await handleHomePageSearch(popularCities[8], state)
+      console.log(res9)
+      return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
+    }
+    fetchDestinations().then(destinationsResults => {
+      // console.log(destinationsResults, 'api')
+      setDesResults(destinationsResults)
+    })
   }, [])
+
+  const handleClick = (des) => {
+    setProject({ ...project, loading: true })
+    fetchPopularDestData(des, db)
+      .then((hotelsProject) => {
+        setProject(
+          { ...project, results: hotelsProject, loading: false }
+        )
+      }).then(() => setRedirect(true))
+  }
+  if (redirect) {
+    return <Redirect exact push to='/searchresults' />
+  }
 
   return (
     <div className='cardsDeck'>
       <p>Popular destinations</p>
 
       <CardDeck>
-        <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-          {destresults && destresults.map((des, i) => {
-            const cheap = findCheapestHotel(des)
-            console.log(cheap, 'cheap')
+        {/* <Row style={{ marginTop: '20px', marginBottom: '20px' }}> */}
+        {destresults && destresults.map((des, i) => {
+          const cheap = findCheapestHotel(des)
+          console.log(cheap, 'cheap')
 
-            return (
-              <Card className='cardHomePage' key={i} des={des}>
-                <Card.Img variant='top' src='https://source.unsplash.com/random' />
-                <Card.Body>
-                  <Card.Title>{des[0].destinationName}</Card.Title>
-                  <Card.Text>
-                    Hotels from {cheap.minRate}
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <small className='text-muted'>Last updated 3 mins ago</small>
-                </Card.Footer>
-              </Card>
-            )
-          })}
-        </Row>
-        <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Split</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Napoli</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Roheds</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-        </Row>
-        <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Corfu</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Lisbon</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-          <Card className='cardHomePage'>
-            <Card.Img variant='top' src='https://source.unsplash.com/random' />
-            <Card.Body>
-              <Card.Title>Porto</Card.Title>
-              <Card.Text>
-                Hotels from 22$
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className='text-muted'>Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-        </Row>
+          return (
+            <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
+              <Card.Img variant='top' src='https://source.unsplash.com/random' />
+              <Card.Body>
+                <Card.Title>{des[0].destinationName}</Card.Title>
+                <Card.Text>
+                  Hotels from {cheap.minRate}
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className='text-muted'>Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+          )
+        })}
+        {/* </Row> */}
+
       </CardDeck>
     </div>
   )

@@ -44,40 +44,19 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
     const hotelsOnly = hotels.hotels
-    console.log(hotelsOnly, 'am I defined')
-    // const hotelsRooms = hotelsOnly.forEach(rooms => {
-    //   const roomsArray = rooms.rooms
-    //   return roomsArray.forEach(room => {
-    //     const ratesArray = room.rates
-    //     console.log(ratesArray, 'lol')
-    //     return ratesArray.forEach(rate => {
-    //       const netRate = rate.netRate
-    //       const mySellingRate = (netRate * 113) / 100
-    //       const newRate = { ...rate, mySellingRate }
-    //       return newRate
-    //     })
-    //   })
-    // })
-    // console.log(hotelsRooms, 'lol')
-    // const hotelsSellingRates = hotelsRooms.map(rates => {
-    //   console.log(rates.rates, 'ememem')
 
-    //   // const netRate = rate.net
-    //   // const mySelllingRate = (netRate * 110) / 100
-    //   // console.log(mySelllingRate, '22222222')
-    // })
     const insertDates = hotelsOnly.map(hotel => {
       const hotelRoom = hotel.rooms.map(room => {
         const roomRatesArray = room.rates.map(rate => {
           const mySellingRate = (rate.net * 113) / 100
           const newRateObject = { ...rate, mySellingRate }
-          console.log(newRateObject, 'new rate')
+          // console.log(newRateObject, 'new rate')
           return newRateObject
         })
         const newRoom = { ...room, rates: roomRatesArray }
         return newRoom
       })
-      console.log(hotelRoom, 'newrooms')
+      // console.log(hotelRoom, 'newrooms')
 
       const newHotel = { ...hotel, checkInDate, checkInOut, rooms: hotelRoom }
       return newHotel
@@ -154,7 +133,7 @@ const mapResultToHotel = (a1, a2) =>
     ...a1.find((item) => (item.code === itm.code) && item),
     ...itm
   }))
-  // popular destinations handler
+  // popular destinations initial handler
 export function requestPopularDest ({ occupancies, destination, stay, reviews }) {
   // console.log({ occupancies, destination, stay, reviews }, 'populardest()')
   const D = new Date()
@@ -192,15 +171,44 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
+    const hotelsOnly = hotels.hotels
 
-    const insertDates = hotels.hotels.map(hotel => {
-      const newHotel = { ...hotel, checkInDate, checkInOut }
+    const insertDates = hotelsOnly.map(hotel => {
+      const hotelRoom = hotel.rooms.map(room => {
+        const roomRatesArray = room.rates.map(rate => {
+          const mySellingRate = (rate.net * 113) / 100
+          const newRateObject = { ...rate, mySellingRate }
+          // console.log(newRateObject, 'new rate')
+          return newRateObject
+        })
+        const newRoom = { ...room, rates: roomRatesArray }
+        return newRoom
+      })
+      // console.log(hotelRoom, 'newrooms')
+
+      const newHotel = { ...hotel, checkInDate, checkInOut, rooms: hotelRoom }
       return newHotel
     })
+
     const apiHotelResults1 = insertDates
     // console.log(apiHotelResults1, 'changes')
 
     const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
     return apiHotelResults
   })
+}
+// popular destinations secound handler
+export const fetchPopularDestData = (des, db) => {
+  console.log(des, 'lp[')
+  const destinationCode = des[0].destinationCode
+  console.log(destinationCode)
+
+  const hotelIDS = des.map(hotel => hotel.code)
+  return fetchHotels(destinationCode, hotelIDS, db)
+    .then(dbHotels => {
+      console.log('dbHotel', dbHotels)
+      const hotelsProject = mapResultToHotel(dbHotels, des)
+      console.log(hotelsProject, 'hotelsproject')
+      return hotelsProject
+    })
 }
