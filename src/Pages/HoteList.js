@@ -66,6 +66,9 @@ const HotelList = () => {
   const handleFilteredHotels = (res) => {
     setHotelsResults(res)
   }
+  const updatePriceResults = (results) => {
+    setHotelsResults(results)
+  }
 
   return (
 
@@ -85,7 +88,7 @@ const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar />
+          <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} />
 
           <div>
             <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />

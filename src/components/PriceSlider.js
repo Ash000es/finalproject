@@ -66,13 +66,18 @@ export default function PriceSlider (props) {
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = React.useState(DEFAULT_SLIDER_VALUE)
   // console.log(sliderPrice)
+  const arr = props.hotelsresults
 
-  //  const updatePrice =(arr)=> {
-  const min = sliderPrice[0]
-  const max = sliderPrice[1]
-  // const results= arr.filter(hotel=> {
-  //  { (hotel.minRate >= min && hotel.maxRate <= max)? setState(results:results): null }
-  // })}
+  const updatePrice = (arr) => {
+    const min = sliderPrice[0]
+    const max = sliderPrice[1]
+    const results = arr.filter(hotel => {
+      if (hotel.minRate >= min && hotel.maxRate <= max) {
+        return hotel
+      }
+      props.onChange(results)
+    })
+  }
 
   return (
     <div className={classes.root}>
@@ -80,7 +85,7 @@ export default function PriceSlider (props) {
       <div className={classes.margin} />
       <Typography gutterBottom>Price Slider</Typography>
 
-      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
 
   )

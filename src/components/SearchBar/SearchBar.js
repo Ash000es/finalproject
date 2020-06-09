@@ -91,6 +91,9 @@ const SearchBar = (props) => {
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
+  const updatePriceSelection = (results) => {
+    props.onChange(results)
+  }
 
   return (
     <>
@@ -108,10 +111,10 @@ const SearchBar = (props) => {
       </div>
 
       {fullbar && <div className='SearchBarFilters'>
-        <PriceSlider />
+        <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} />
         <AmenitiesSelect />
         <StarRatingFilter />
-      </div>}
+                  </div>}
 
     </>
   )
