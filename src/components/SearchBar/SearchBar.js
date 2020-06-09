@@ -58,7 +58,7 @@ const SearchBar = (props) => {
   const handleClickButton = () => {
     setProject({ ...project, loading: true })
     const payLoad = { occupancies, destination, stay, reviews }
-    console.log(payLoad, 'payload')
+    // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
         setProject(
@@ -111,7 +111,7 @@ const SearchBar = (props) => {
         <PriceSlider />
         <AmenitiesSelect />
         <StarRatingFilter />
-                  </div>}
+      </div>}
 
     </>
   )

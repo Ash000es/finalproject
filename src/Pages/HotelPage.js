@@ -14,15 +14,18 @@ import { Redirect } from 'react-router'
 
 const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
-  const [currentselectedinfo, setCurrentSelectedInfo] = useState()
+  const [currentselectedinfo, setCurrentSelectedInfo] = useState([])
+  console.log(currentselectedinfo, 'currentselectedinfo')
   const [redirect, setRedirect] = useState(false)
   const currentSelection = project.currentHotel
   const toMap = currentSelection.facilities
   const readyAmenities = getAmenitiesArray(toMap, amenities)
+  const size = { width: '200px' }
+  const roomy = currentSelection.rooms.map(room => room)
 
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
-    console.log(roomSelectionInfo, 'object here')
-    setCurrentSelectedInfo([roomSelectionInfo])
+    // console.log(roomSelectionInfo, 'object here')
+    setCurrentSelectedInfo(currentselectedinfo.concat(roomSelectionInfo))
   }
   const handleClickButton = () => {
     onCompelet()
@@ -31,12 +34,10 @@ const HotelPage = () => {
   const onCompelet = () => {
     setRedirect(true)
   }
-  const stopRerendering = useMemo(() => {
+  const stopRerenderingHotelCarousel = useMemo(() => {
     return <HotelCarousel currentSelection={currentSelection} />
   }, [])
 
-  const size = { width: '200px' }
-  const roomy = currentSelection.rooms.map(room => room)
   if (redirect) {
     return <Redirect exact push to='/reviewcart' />
   }
@@ -53,7 +54,7 @@ const HotelPage = () => {
         <p>Edit your dates</p>
         <DateRangePicker />
       </div>
-      {stopRerendering}
+      {stopRerenderingHotelCarousel}
 
       <div>
         <p>Amenities:</p>
@@ -72,7 +73,7 @@ const HotelPage = () => {
       <div><CollapsibleTable rooms={roomy} onChange={displaySelectedRoomInfo} /></div>
       {currentselectedinfo && currentselectedinfo.map(room => {
         { /* TODO: const {rateKey, etc, etc.} = room / I don't understand why should I do that ? */ }
-        console.log(room, 'iam trouble')
+        { /* console.log(room, 'iam room') */ }
         return (
           <div key={room.rateKey}>
             <p>Room Type:{room.roomType}</p>

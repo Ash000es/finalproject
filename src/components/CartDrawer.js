@@ -40,11 +40,12 @@ export default function CartDrawer (props) {
     setProject({ ...project, cartItems: currentCartItem })
   }
   const cartItems1 = project.cartItems
-  console.log(project, 'newest project')
+  // console.log(project, 'newest project')
   // getting the total price of the cart items
   // const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
 
   const toggleDrawer = (anchor, open) => (event) => {
+    console.log(event.target.value, 'I am event from cartdrawer')
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       addToCart()
       return

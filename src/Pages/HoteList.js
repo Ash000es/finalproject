@@ -64,7 +64,6 @@ const HotelList = () => {
     return <Redirect exact push to='/hotelpage' />
   }
   const handleFilteredHotels = (res) => {
-    console.log(res, 'new valueeee')
     setHotelsResults(res)
   }
 

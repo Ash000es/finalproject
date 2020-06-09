@@ -129,7 +129,7 @@ Row.propTypes = {
 export default function CollapsibleTable (props) {
   console.log(props, 'Iam props from collapse')
   const { rooms } = props
-  console.log(rooms, 'roomy here')
+  // console.log(rooms, 'roomy here')
 
   return (
     <TableContainer component={Paper}>

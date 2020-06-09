@@ -59,12 +59,9 @@ export const HotelCardSearch = (props) => {
   // const [imagesarray, setImagesArray] = useState(props.hotel.images)
 
   const toMap = props.hotel.facilities
-
   const amenities3 = getAmenitiesArray(toMap, amenities)
   const imagesarray = props.hotel.images
-
   const readyImages = getSmallPictures(imagesarray, masterLinkSmall)
-
   const stopRerendering = useMemo(() => {
     return <SearchResultsCarousel images={readyImages} />
   }, [imagesarray])

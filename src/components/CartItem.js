@@ -8,6 +8,7 @@ export const CartItem = (props) => {
   const { project, setProject } = useContext(ProjectContext)
   // onClick function to remove the clicked item from the cart drawer
   const removeItem = (e) => {
+    console.log(e, 'eeee')
     const { cartItems } = project.cartItems
     cartItems.filter(item => {
       item.code = !e.code
@@ -18,7 +19,6 @@ export const CartItem = (props) => {
   return (
     <div>
 
-      return (
       <Toast>
         <Toast.Header>
           <i onClick={removeItem} code={props.item.code}><CloseIcon /></i>
@@ -28,8 +28,6 @@ export const CartItem = (props) => {
         </Toast.Header>
         <Toast.Body>{props.item.roomType}</Toast.Body>
       </Toast>
-
-      )
 
     </div>
   )

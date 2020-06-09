@@ -17,7 +17,7 @@ export const HotelCarousel = (props) => {
 
   const imagesArray = props.currentSelection.images
   const readyImagesArray = getLargePictures(imagesArray, masterLinkLarge)
-  console.log(readyImagesArray, 'bigimages')
+  // console.log(readyImagesArray, 'bigimages')
   const imageSize = { width: '100%', height: '500px' }
   return (
     <>
