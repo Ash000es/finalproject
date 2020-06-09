@@ -72,7 +72,7 @@ const HotelList = () => {
 
   return (
 
-    <div style={{ height: 1000, overflow: 'auto' }}>
+    <div style={{ height: 3000, overflow: 'auto' }}>
       <InfiniteScroll
         dataLength={allHotelsResults.length}
         next={fetchMoreData}

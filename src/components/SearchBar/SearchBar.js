@@ -20,6 +20,7 @@ const SearchBar = (props) => {
 
   const [state, setState] = useState(intialState)
   const [fullbar, setFullBar] = useState(false)
+  console.log(fullbar, 'fullbar')
   const [destination, setDestination] = useState({
     code: 'IBZ'
   }
