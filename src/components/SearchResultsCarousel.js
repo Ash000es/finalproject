@@ -17,11 +17,14 @@ export const SearchResultsCarousel = (props) => {
     setIndex(selectedIndex)
   }
 
-  const handleImageError = (e) => {
-    // console.log(e)
-    const style1 = e.target
+  const handleImageError = (i) => {
+    const filteredImages = [...newimages]
+    filteredImages.splice(i, 1)
+
+    setNewImages(filteredImages)
+    // const style1 = e.target
     // console.log(style1)
-    setStyle({ ...style, display: 'none' })
+    // setStyle({ ...style, display: 'none' })
     // const newbei = newimages.filter((image, e) => {
     //   return image.path !== e
     // })
@@ -34,7 +37,7 @@ export const SearchResultsCarousel = (props) => {
       <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
         {
-          newimages.map((image) => {
+          newimages.map((image, i) => {
             const imagLink = image.path
             return (
               <Carousel.Item key={image.path} image={image}>
@@ -44,7 +47,7 @@ export const SearchResultsCarousel = (props) => {
                   src={imagLink}
                   alt='Hotel Pictures'
                   style={style}
-                  onError={(e) => handleImageError(e)}
+                  onError={() => handleImageError(i)}
                 />
 
                 <Carousel.Caption>

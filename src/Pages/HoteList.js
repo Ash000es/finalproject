@@ -25,13 +25,12 @@ const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [hotelsresults, setHotelsResults] = useState()
+  const [hotelsresults, setHotelsResults] = useState([])
   console.log(hotelsresults, 'I am inital results state')
 
-  const [resultsPerPage, setResultsPerPage] = useState(5)
+  const resultsPerPage = 5
   const [resultsstart, setResultsStart] = useState(0)
   const [hasmore, setHasMore] = useState(true)
-  console.log(resultsstart, 'new start')
   const allHotelsResults = project.results
   console.log(allHotelsResults.length)
 
@@ -69,6 +68,7 @@ const HotelList = () => {
   const updatePriceResults = (results) => {
     setHotelsResults(results)
   }
+  console.log('temp results: ', hotelsresults.length, 'all results:', allHotelsResults.length)
 
   return (
 
@@ -76,7 +76,7 @@ const HotelList = () => {
       <InfiniteScroll
         dataLength={allHotelsResults.length}
         next={fetchMoreData}
-        hasMore
+        hasMore={hotelsresults.length < allHotelsResults.length}
         loader={<h4>Loading...</h4>}
         scrollThreshold={0.5}
         endMessage={

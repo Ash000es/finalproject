@@ -16,6 +16,15 @@ const HomePageResults = (props) => {
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
 
+  const checkIn = 'YYYY-MM-DD'
+  // split by '-' to get an array of 3
+  const arr = checkIn.split('-')[2]
+  // get days from arr
+  // let days = arr[2]
+  // cast into number
+  // Number(days)
+  // days = days + 1
+
   const [state, setState] = useState(
     {
 
@@ -56,7 +65,17 @@ const HomePageResults = (props) => {
   //   // getHomePageHotels(popularCities)
 
   //   // version 2 doesn't work, nothing happens
+  //   // TODO: Think about how this can be doen with a for loop
   //   const fetchDestinations = async () => {
+  //     /**
+  //      const ALL_RESULTS = []
+
+  //     for (let i = 0; i < popularCities.length; i++) {
+  //       const res = await handleHomePageSearch(popularCities[i], state)
+  //       ALL_RESULTS.push(res)
+
+  //     }
+  //      */
   //     const res1 = await handleHomePageSearch(popularCities[0], state)
   //     console.log(res1)
   //     const res2 = await handleHomePageSearch(popularCities[1], state)
@@ -104,7 +123,8 @@ const HomePageResults = (props) => {
         {destresults && destresults.map((des, i) => {
           const cheap = findCheapestHotel(des)
           console.log(cheap, 'cheap')
-
+          // TODO: Split up array into 3 groups of 3 CardDecks
+          if (i > 3) return null
           return (
             <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
               <Card.Img variant='top' src='https://source.unsplash.com/random' />

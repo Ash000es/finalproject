@@ -35,6 +35,7 @@ const HotelPage = () => {
     setRedirect(true)
   }
   const stopRerenderingHotelCarousel = useMemo(() => {
+    // TODO: change HotelCarousel to SearchResultsCarousel and send in Images as props instead of context. Same with currentSelection
     return <HotelCarousel currentSelection={currentSelection} />
   }, [])
 
@@ -66,7 +67,7 @@ const HotelPage = () => {
 
       </div>
       <p>Key facts</p>
-      <p>{currentSelection.description.content}</p>
+      {/* <p>{currentSelection.description.content.length > 200 ? /TODO google shorten text javascript}</p> */}
       <img src='' alt='TA' />
 
       <StarRatingDisplay currentSelection={currentSelection} />
@@ -92,3 +93,28 @@ const HotelPage = () => {
     </div>
   )
 }; export default HotelPage
+
+/*
+Create a sepatate useState for each field that you want to update
+
+- room type: useState([])
+- room count: useState(0)
+- etc
+- price: calculatePrice()
+
+...
+
+// creates the list of results room types
+const displayRoomTypes = () => {
+  const result = ''
+  roomTypes.forEach(room => {
+    ressult = result + room + " + "
+  })
+  return result
+}
+
+....
+
+onClickBook
+
+*/

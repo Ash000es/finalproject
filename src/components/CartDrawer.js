@@ -75,11 +75,15 @@ export default function CartDrawer (props) {
     </div>
   )
 
+  const handleOnClick = () => {
+    // TODOtoggle Drawer
+  }
+
   return (
     <div>
-      {['right'].map((anchor) => (
+      {['right'].map((anchor, i) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Add to cart</Button>
+          <Button onClick={toggleDrawer(anchor, true, i)}>Add to cart</Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
