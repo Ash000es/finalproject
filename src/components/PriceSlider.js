@@ -70,22 +70,18 @@ export default function PriceSlider (props) {
   // console.log(arr, 'arr from price slider ')
 
   const updatePrice = (arr) => {
-    console.log(arr, 'arr')
     const hotelsResults = props.hotelsresults
-    console.log(hotelsResults, 'hotels from price slider ')
-
     const min = arr[0]
-    console.log(typeof min, 'min type')
     const max = arr[1]
     const results = hotelsResults.filter(hotel => {
       const hotelMinRate = parseInt(hotel.minRate, 10)
       const hotelMaxRate = parseInt(hotel.maxRate, 10)
-      console.log(typeof hotelprice, 'hotel price type')
+
       if (hotelMinRate >= min && hotelMaxRate <= max) {
         return hotel
       }
     })
-    console.log(results, 'iam price filter results')
+
     props.onChange(results)
   }
 

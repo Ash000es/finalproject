@@ -69,42 +69,40 @@ export const HotelList = () => {
 
   return (
 
-    <div style={{ height: 3000, overflow: 'auto' }}>
-      {isloading
+    <div>
+      <InfiniteScroll
+        dataLength={allHotelsResults.length}
+        next={fetchMoreData}
+        hasMore={hotelsresults.length < allHotelsResults.length}
+        loader={<h4>Loading...</h4>}
+        scrollThreshold={0.5}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <div className='HotelList'>
+          <SearchResultsHero />
+          <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} />
+          <div>
+            <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
+            <Typography />
 
-        ? <Spinning /> : <InfiniteScroll
-          dataLength={allHotelsResults.length}
-          next={fetchMoreData}
-          hasMore={hotelsresults.length < allHotelsResults.length}
-          loader={<h4>Loading...</h4>}
-          scrollThreshold={0.5}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-                         >
-          <div className='HotelList'>
-            <SearchResultsHero />
-            <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} />
-            <div>
-              <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
-              <Typography />
-
-              <div className='sortButton'>
-                <DropDownFilter />
-              </div>
-              <br />
-
-              {hotelsresults && hotelsresults.map(hotel => {
-                return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
-              })}
-
+            <div className='sortButton'>
+              <DropDownFilter />
             </div>
+            <br />
+
+            {hotelsresults && hotelsresults.map(hotel => {
+              return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
+            })}
 
           </div>
 
-                         </InfiniteScroll>}
+        </div>
+
+      </InfiniteScroll>
     </div>
 
   )
