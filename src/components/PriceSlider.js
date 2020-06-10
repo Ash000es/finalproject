@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
@@ -64,19 +64,29 @@ const PrettoSlider = withStyles({
 
 export default function PriceSlider (props) {
   const classes = useStyles()
-  const [sliderPrice, setSliderPrice] = React.useState(DEFAULT_SLIDER_VALUE)
-  // console.log(sliderPrice)
-  const arr = props.hotelsresults
+  const [sliderPrice, setSliderPrice] = useState(DEFAULT_SLIDER_VALUE)
+  console.log(sliderPrice, 'priceslider')
+
+  // console.log(arr, 'arr from price slider ')
 
   const updatePrice = (arr) => {
-    const min = sliderPrice[0]
-    const max = sliderPrice[1]
-    const results = arr.filter(hotel => {
-      if (hotel.minRate >= min && hotel.maxRate <= max) {
+    console.log(arr, 'arr')
+    const hotelsResults = props.hotelsresults
+    console.log(hotelsResults, 'hotels from price slider ')
+
+    const min = arr[0]
+    console.log(typeof min, 'min type')
+    const max = arr[1]
+    const results = hotelsResults.filter(hotel => {
+      const hotelMinRate = parseInt(hotel.minRate, 10)
+      const hotelMaxRate = parseInt(hotel.maxRate, 10)
+      console.log(typeof hotelprice, 'hotel price type')
+      if (hotelMinRate >= min && hotelMaxRate <= max) {
         return hotel
       }
-      props.onChange(results)
     })
+    console.log(results, 'iam price filter results')
+    props.onChange(results)
   }
 
   return (
@@ -85,7 +95,7 @@ export default function PriceSlider (props) {
       <div className={classes.margin} />
       <Typography gutterBottom>Price Slider</Typography>
 
-      <PrettoSlider onChange={(_, v) => setSliderPrice(v)} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider onChange={(_, v) => updatePrice(v)} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
 
   )

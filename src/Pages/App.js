@@ -14,7 +14,7 @@ import { HomePage } from './HomePage'
 import ProjectProvider from '../providers/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
 import getSteps from '../components/PaymentCout/Stepper'
-import HoteList from './HoteList'
+import { HotelList } from './HoteList'
 import { testing } from '../components/Test'
 
 function App () {
@@ -108,7 +108,7 @@ function App () {
               usually it's better to have a Page that contains your map component.
                */}
 
-              <Route path='/searchresults' exact component={HoteList} />
+              <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />
 
             </Switch>

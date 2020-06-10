@@ -21,36 +21,32 @@ const style = {
   padding: 8
 }
 
-const HotelList = () => {
+export const HotelList = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [hotelsresults, setHotelsResults] = useState([])
-  console.log(hotelsresults, 'I am inital results state')
-
-  const resultsPerPage = 5
   const [resultsstart, setResultsStart] = useState(0)
   const [hasmore, setHasMore] = useState(true)
+  const [isloading, setIsLoading] = useState(false)
+  const resultsPerPage = 5
   const allHotelsResults = project.results
-  console.log(allHotelsResults.length)
+  // console.log(allHotelsResults.length)
 
   const googleLandingLat = allHotelsResults[0].latitude
   const googleLandingLong = allHotelsResults[0].longitude
 
   useEffect(() => {
-    // setIsLoading(true)
-    console.log('useeffect123')
+    // console.log('useeffect123')
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
     setHotelsResults(intialLoad)
-    // setIsLoading(false)
   }, [])
 
   const fetchMoreData = () => {
     console.log('fetchdata on scroll 123')
     const indexOfFirstHotel = resultsstart + resultsPerPage
-    console.log(indexOfFirstHotel, '<>')
+    // console.log(indexOfFirstHotel, '<>')
     const indexOfFLastHotel = indexOfFirstHotel + resultsPerPage
-    console.log(indexOfFLastHotel, '<>')
+    // console.log(indexOfFLastHotel, '<>')
     const newLoad = allHotelsResults.slice(indexOfFirstHotel, indexOfFLastHotel)
     setResultsStart(indexOfFirstHotel)
     setHotelsResults(hotelsresults.concat(newLoad))
@@ -66,50 +62,50 @@ const HotelList = () => {
     setHotelsResults(res)
   }
   const updatePriceResults = (results) => {
+    console.log(results, 'new filtred price results here')
     setHotelsResults(results)
   }
-  console.log('temp results: ', hotelsresults.length, 'all results:', allHotelsResults.length)
+  // console.log('temp results: ', hotelsresults.length, 'all results:', allHotelsResults.length)
 
   return (
 
     <div style={{ height: 3000, overflow: 'auto' }}>
-      <InfiniteScroll
-        dataLength={allHotelsResults.length}
-        next={fetchMoreData}
-        hasMore={hotelsresults.length < allHotelsResults.length}
-        loader={<h4>Loading...</h4>}
-        scrollThreshold={0.5}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
+      {isloading
 
-      >
-        <div className='HotelList'>
-          <SearchResultsHero />
-          <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} />
+        ? <Spinning /> : <InfiniteScroll
+          dataLength={allHotelsResults.length}
+          next={fetchMoreData}
+          hasMore={hotelsresults.length < allHotelsResults.length}
+          loader={<h4>Loading...</h4>}
+          scrollThreshold={0.5}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+                         >
+          <div className='HotelList'>
+            <SearchResultsHero />
+            <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} />
+            <div>
+              <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
+              <Typography />
 
-          <div>
-            <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
-            <Typography />
+              <div className='sortButton'>
+                <DropDownFilter />
+              </div>
+              <br />
 
-            <div className='sortButton'>
-              <DropDownFilter />
+              {hotelsresults && hotelsresults.map(hotel => {
+                return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
+              })}
+
             </div>
-            <br />
-
-            {hotelsresults && hotelsresults.map(hotel => {
-              return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
-            })}
 
           </div>
 
-        </div>
-
-      </InfiniteScroll>
+                         </InfiniteScroll>}
     </div>
 
   )
 }
-export default HotelList

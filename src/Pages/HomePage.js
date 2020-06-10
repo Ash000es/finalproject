@@ -9,6 +9,10 @@ import { MyProvider, ProjectContext } from '../providers/Provider'
 export const HomePage = () => {
   const [redirect, setRedirect] = useState(false)
   const { project, setProject } = useContext(ProjectContext)
+  const [fullbar, setFullBar] = useState(false)
+  // console.log(fullbar, 'fullbar')
+  const [isloading, setIsLoading] = useState(false)
+  // console.log(isloading, 'isloading')
 
   const onCompelet = () => {
     setRedirect(true)
@@ -19,7 +23,7 @@ export const HomePage = () => {
   return (
     <>
       <HomePageHero />
-      <SearchBar done={onCompelet} />
+      <SearchBar done={onCompelet} isloading={isloading} fullbar={fullbar} />
       <HomePageResults />
     </>
   )

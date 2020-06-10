@@ -10,6 +10,7 @@ import NewDateRange from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { requestAvailableHotels } from '../../handlers/ApiHandler'
+import { Spinning } from '../Spinner'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -17,10 +18,14 @@ const SearchBar = (props) => {
     hotels: [],
     redirect: false
   }
-
+  const db = useContext(FirebaseContext)
+  const { project, setProject } = useContext(ProjectContext)
   const [state, setState] = useState(intialState)
   const [fullbar, setFullBar] = useState(false)
-  console.log(fullbar, 'fullbar')
+  // console.log(fullbar, 'fullbar')
+  const [isloading, setIsLoading] = useState(false)
+  // console.log(isloading, 'isloading')
+
   const [destination, setDestination] = useState({
     code: 'IBZ'
   }
@@ -53,21 +58,17 @@ const SearchBar = (props) => {
   ]
   )
 
-  const db = useContext(FirebaseContext)
-  const { project, setProject } = useContext(ProjectContext)
-
   const handleClickButton = () => {
-    setProject({ ...project, loading: true })
     const payLoad = { occupancies, destination, stay, reviews }
     // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
         setProject(
-          { ...project, results: hotelsProject, loading: false }
+          { ...project, results: hotelsProject }
         )
       }).then(() => {
         props.done()
-      }).then(() => setFullBar(true))
+      })
   }
 
   const handleLocationChange = (code) => {
@@ -93,11 +94,13 @@ const SearchBar = (props) => {
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
   const updatePriceSelection = (results) => {
+    console.log(results, 'props results')
     props.onChange(results)
   }
 
   return (
     <>
+
       <div className='SearchBar'>
 
         <SearchField onChange={handleLocationChange} />
@@ -110,14 +113,16 @@ const SearchBar = (props) => {
         {/* </Link> */}
 
       </div>
+      <div className='SearchBarFilters'>
 
-      {fullbar && <div className='SearchBarFilters'>
         <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} />
         <AmenitiesSelect />
         <StarRatingFilter />
-                  </div>}
+
+      </div>
 
     </>
+
   )
 }
 
