@@ -1,35 +1,79 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+import PropTypes from 'prop-types'
+import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
+import Typography from '@material-ui/core/Typography'
+import Tooltip from '@material-ui/core/Tooltip'
 import HomePageResults from './HomePageResults/HomepageResults'
+const DEFAULT_SLIDER_VALUE = [0, 1000]
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    width: 300
+    width: 300 + theme.spacing(3) * 2
+  },
+  margin: {
+    height: theme.spacing(3)
   }
-})
+}))
 
-function valuetext (value) {
-  return `${value}$`
+function ValueLabelComponent (props) {
+  const { children, open, value } = props
+
+  return (
+    <Tooltip open={open} enterTouchDelay={0} placement='top' title={value}>
+      {children}
+    </Tooltip>
+  )
 }
 
-export const PriceSlider = (props) => {
-  const classes = useStyles()
-  const [value, setValue] = useState([0, 900])
+ValueLabelComponent.propTypes = {
+  children: PropTypes.element.isRequired,
+  open: PropTypes.bool.isRequired,
+  value: PropTypes.number.isRequired
+}
 
-  //   const handleChange = (event, newValue) => {
-  //     setValue(newValue)
-  //   }
+const PrettoSlider = withStyles({
+  root: {
+    color: '#52af77',
+    height: 8
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus, &:hover, &$active': {
+      boxShadow: 'inherit'
+    }
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)'
+  },
+  track: {
+    height: 8,
+    borderRadius: 4
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4
+  }
+})(Slider)
+
+export default function PriceSlider (props) {
   console.log(props, ' I am props from slider')
+  const classes = useStyles()
+  const [sliderPrice, setSliderPrice] = useState(DEFAULT_SLIDER_VALUE)
 
-  const updatePrice = (event, newValue) => {
-    setValue(newValue)
-    console.log(value, 'arr')
+  // console.log(arr, 'arr from price slider ')
+
+  const updatePrice = (arr) => {
     const hotelsResults = props.hotelsresults
     const filteredHotels = props.tempfilteredhotels
-    const min = value[0]
-    const max = value[1]
+    const min = arr[0]
+    const max = arr[1]
     console.log(min, 'priceslider')
     console.log(max, 'priceslider')
     if (filteredHotels.length < 1) {
@@ -46,21 +90,15 @@ export const PriceSlider = (props) => {
       return props.onChange(false)
     }
   }
+
   return (
     <div className={classes.root}>
-      <Typography id='range-slider' gutterBottom>
-        Price range
-      </Typography>
-      <Slider
-        value={value}
-        // onChange={handleChange}
-        valueLabelDisplay='auto'
-        aria-labelledby='range-slider'
-        getAriaValueText={valuetext}
-        onChange={updatePrice}
-        tempfilteredhotels={props.tempfilteredhotels}
-        hotelsresults={props.hotelsresults}
-      />
+
+      <div className={classes.margin} />
+      <Typography gutterBottom>Price Slider</Typography>
+
+      <PrettoSlider onChange={(_, v) => updatePrice(v)} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
+
   )
 }

@@ -87,6 +87,7 @@ export const HotelList = () => {
     }
   }
   const valueToMap = resultstomap(tempfilteredhotels, hotelsresults)
+  console.log(valueToMap, 'value to map')
 
   return (
 
@@ -96,7 +97,7 @@ export const HotelList = () => {
         next={fetchMoreData}
         hasMore={hotelsresults.length < allHotelsResults.length}
         loader={<h4>Loading...</h4>}
-        scrollThreshold={0.8}
+        scrollThreshold={0.5}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>
