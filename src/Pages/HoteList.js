@@ -71,12 +71,6 @@ export const HotelList = () => {
     }
   }
 
-  // if (tempfilteredhotels.length > 1) {
-  //   setValueToMap(hotelsresults)
-  // } else {
-  //   setValueToMap(tempfilteredhotels)
-  // }
-
   const resultstomap = (arr1, arr) => {
     if (arr1.length > 1) {
       console.log(arr1.length, 'numer1')

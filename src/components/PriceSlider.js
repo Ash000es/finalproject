@@ -79,7 +79,9 @@ export default function PriceSlider (props) {
     if (filteredHotels.length < 1) {
       const results = hotelsResults.filter(hotel => {
         const hotelMinRate = parseInt(hotel.minRate, 10)
+        console.log(hotelMinRate)
         const hotelMaxRate = parseInt(hotel.maxRate, 10)
+        console.log(hotelMaxRate)
 
         if (hotelMinRate >= min && hotelMaxRate <= max) {
           return hotel

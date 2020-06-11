@@ -14,6 +14,7 @@ export const SearchResultsCarousel = (props) => {
   const [style, setStyle] = useState({ width: '340px', height: '250px', display: 'show' })
   // console.log(newimages.length, 'before')
   const testinimages = removeDuplicates(newimages)
+  const [isloading, setIsLoading] = useState(true)
   // console.log(testinimages.length, 'after')
 
   const handleSelect = (selectedIndex, e) => {
@@ -43,9 +44,10 @@ export const SearchResultsCarousel = (props) => {
                   src={imagLink}
                   alt='Hotel Pictures'
                   style={style}
+                  onLoad={() => setIsLoading(false)}
                   onError={() => handleImageError(i)}
                 />
-
+                {isloading && 'Loading'}
                 <Carousel.Caption>
 
                   {/* <i className='iconHeart'><FavoriteIcon /></i> */}
