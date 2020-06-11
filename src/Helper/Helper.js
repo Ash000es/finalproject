@@ -107,7 +107,6 @@ export const handleHomePageSearch = (destination1, state) => {
   const { occupancies, stay, reviews } = state
   const destination = destination1
   const payLoad = { occupancies, destination, stay, reviews }
-  // console.log(payLoad, 'payload')
   return requestPopularDest(payLoad)
 }
 export const findCheapestHotel = (arr) => {

@@ -28,25 +28,24 @@ export const HotelList = () => {
   const [resultsstart, setResultsStart] = useState(0)
   const [hasmore, setHasMore] = useState(true)
   const [isloading, setIsLoading] = useState(false)
+  const [tempfilteredhotels, setTempFilteredHotels] = useState([])
+  const [valueToMap, setValueToMap] = useState([])
+  console.log(hotelsresults, 'results to dispaly')
+  console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
+
   const resultsPerPage = 5
   const allHotelsResults = project.results
-  // console.log(allHotelsResults.length)
-
   const googleLandingLat = allHotelsResults[0].latitude
   const googleLandingLong = allHotelsResults[0].longitude
 
   useEffect(() => {
-    // console.log('useeffect123')
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
     setHotelsResults(intialLoad)
   }, [])
 
   const fetchMoreData = () => {
-    console.log('fetchdata on scroll 123')
     const indexOfFirstHotel = resultsstart + resultsPerPage
-    // console.log(indexOfFirstHotel, '<>')
     const indexOfFLastHotel = indexOfFirstHotel + resultsPerPage
-    // console.log(indexOfFLastHotel, '<>')
     const newLoad = allHotelsResults.slice(indexOfFirstHotel, indexOfFLastHotel)
     setResultsStart(indexOfFirstHotel)
     setHotelsResults(hotelsresults.concat(newLoad))
@@ -59,23 +58,26 @@ export const HotelList = () => {
     return <Redirect exact push to='/hotelpage' />
   }
   const handleFilteredHotels = (res) => {
-    setHotelsResults(res)
+    if (res) {
+      setTempFilteredHotels(res)
+    } else {
+      setTempFilteredHotels([])
+    }
   }
   const updatePriceResults = (results) => {
-    console.log(results, 'new filtred price results here')
-    setHotelsResults(results)
+    console.log(results, 'filtred hotels to display')
+    setTempFilteredHotels(results)
   }
-  // console.log('temp results: ', hotelsresults.length, 'all results:', allHotelsResults.length)
 
   return (
 
     <div>
       <InfiniteScroll
-        dataLength={allHotelsResults.length}
+        dataLength={hotelsresults.length}
         next={fetchMoreData}
         hasMore={hotelsresults.length < allHotelsResults.length}
         loader={<h4>Loading...</h4>}
-        scrollThreshold={0.5}
+        scrollThreshold={0.9}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>
@@ -84,9 +86,9 @@ export const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} />
+          <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} tempfilteredhotels={tempfilteredhotels} valueToMap={valueToMap} />
           <div>
-            <HotelsOnly hotels={hotelsresults} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
+            <HotelsOnly hotels={hotelsresults} tempfilteredhotels={tempfilteredhotels} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
             <Typography />
 
             <div className='sortButton'>

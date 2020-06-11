@@ -14,7 +14,7 @@ import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { amenities } from '../../Helper/amenities'
-import { getAmenitiesArray, getSmallPictures } from '../../Helper/Helper'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates } from '../../Helper/Helper'
 import { masterLinkSmall } from '../../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -56,11 +56,16 @@ export const HotelCardSearch = (props) => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
-  // const [imagesarray, setImagesArray] = useState(props.hotel.images)
+  const testfac = props.hotel.facilities
+  // console.log(testfac, 'before')
 
-  const toMap = props.hotel.facilities
-  const amenities3 = getAmenitiesArray(toMap, amenities)
-  const imagesarray = props.hotel.images
+  const toMap = removeDuplicates(testfac)
+  // console.log(toMap, 'after')
+  const amenitiesToMap = getAmenitiesArray(toMap, amenities)
+  const testinimages = props.hotel.images
+  // console.log(testinimages.length, 'before')
+  const imagesarray = removeDuplicates(testinimages)
+  // console.log(imagesarray.length, 'after')
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
   const stopRerendering = useMemo(() => {
     return <SearchResultsCarousel images={readyImages} />
@@ -87,7 +92,7 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenities3 && amenities3.map(item =>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap && amenitiesToMap.map(item =>
                   <li key={item.facilityCode} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
@@ -98,7 +103,7 @@ export const HotelCardSearch = (props) => {
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.address.content}</p>
                 <Divider orientation='vertical' flexItem />
-                {/* <p>{props.hotel.city.content}</p> */}
+                <p>{props.hotel.city.content}</p>
               </div>
             </div>
 

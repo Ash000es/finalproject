@@ -63,9 +63,9 @@ const PrettoSlider = withStyles({
 })(Slider)
 
 export default function PriceSlider (props) {
+  console.log(props, ' I am props from slider')
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = useState(DEFAULT_SLIDER_VALUE)
-  console.log(sliderPrice, 'priceslider')
 
   // console.log(arr, 'arr from price slider ')
 
@@ -73,16 +73,19 @@ export default function PriceSlider (props) {
     const hotelsResults = props.hotelsresults
     const min = arr[0]
     const max = arr[1]
-    const results = hotelsResults.filter(hotel => {
-      const hotelMinRate = parseInt(hotel.minRate, 10)
-      const hotelMaxRate = parseInt(hotel.maxRate, 10)
+    console.log(min, 'priceslider')
+    console.log(max, 'priceslider')
+    if (hotelsResults) {
+      const results = hotelsResults.filter(hotel => {
+        const hotelMinRate = parseInt(hotel.minRate, 10)
+        const hotelMaxRate = parseInt(hotel.maxRate, 10)
 
-      if (hotelMinRate >= min && hotelMaxRate <= max) {
-        return hotel
-      }
-    })
-
-    props.onChange(results)
+        if (hotelMinRate >= min && hotelMaxRate <= max) {
+          return hotel
+        }
+      })
+      return props.onChange(results)
+    }
   }
 
   return (
@@ -91,7 +94,7 @@ export default function PriceSlider (props) {
       <div className={classes.margin} />
       <Typography gutterBottom>Price Slider</Typography>
 
-      <PrettoSlider onChange={(_, v) => updatePrice(v)} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider onChange={(_, v) => updatePrice(v)} valueToMap={props.valueToMap} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
 
   )

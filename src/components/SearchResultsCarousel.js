@@ -11,7 +11,10 @@ export const SearchResultsCarousel = (props) => {
   const [index, setIndex] = useState(0)
   const { project, setProject } = useContext(ProjectContext)
   const [newimages, setNewImages] = useState(props.images)
-  const [style, setStyle] = useState({ width: '250px', height: '250px', display: 'show' })
+  const [style, setStyle] = useState({ width: '340px', height: '250px', display: 'show' })
+  // console.log(newimages.length, 'before')
+  const testinimages = removeDuplicates(newimages)
+  // console.log(testinimages.length, 'after')
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
@@ -22,16 +25,9 @@ export const SearchResultsCarousel = (props) => {
     filteredImages.splice(i, 1)
 
     setNewImages(filteredImages)
-    // const style1 = e.target
-    // console.log(style1)
-    // setStyle({ ...style, display: 'none' })
-    // const newbei = newimages.filter((image, e) => {
-    //   return image.path !== e
-    // })
-    // setNewImages(newbei)
   }
 
-  console.log('searchresultscarousel')
+  // console.log('searchresultscarousel')
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>

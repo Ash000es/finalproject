@@ -25,7 +25,6 @@ const SearchBar = (props) => {
   // console.log(fullbar, 'fullbar')
   const [isloading, setIsLoading] = useState(false)
   // console.log(isloading, 'isloading')
-
   const [destination, setDestination] = useState({
     code: 'IBZ'
   }
@@ -93,9 +92,8 @@ const SearchBar = (props) => {
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
-  const updatePriceSelection = (results) => {
-    console.log(results, 'props results')
-    props.onChange(results)
+  const updatePriceSelection = (hotelsResults) => {
+    props.onChange(hotelsResults)
   }
 
   return (
@@ -115,7 +113,7 @@ const SearchBar = (props) => {
       </div>
       <div className='SearchBarFilters'>
 
-        <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} />
+        <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} tempfilteredhotels={props.tempfilteredhotels} valueToMap={props.valueToMap} />
         <AmenitiesSelect />
         <StarRatingFilter />
 

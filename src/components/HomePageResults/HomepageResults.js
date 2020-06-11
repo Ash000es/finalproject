@@ -8,17 +8,20 @@ import { MyProvider, ProjectContext } from '../../providers/Provider'
 import FirebaseContext from '../../providers/Firebase'
 import { fetchPopularDestData } from '../../handlers/ApiHandler'
 import { Redirect } from 'react-router'
+import { Spinning } from '../Spinner'
 
 const HomePageResults = (props) => {
   const [destresults, setDesResults] = useState()
   const [redirect, setRedirect] = useState(false)
+  const [isloading, setIsLoading] = useState(false)
   const [popularCities, setPopularCities] = useState([{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }])
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
+  console.log(destresults, 'des results')
 
-  const checkIn = 'YYYY-MM-DD'
+  // const checkIn = 'YYYY-MM-DD'
   // split by '-' to get an array of 3
-  const arr = checkIn.split('-')[2]
+  // const arr = checkIn.split('-')[2]
   // get days from arr
   // let days = arr[2]
   // cast into number
@@ -60,14 +63,7 @@ const HomePageResults = (props) => {
   //     handleHomePageSearch(destination1, state)
   //   })
   // }
-  // useEffect(() => {
-  //   // version 1 returns erros but the request to the api is done correctly
-  //   // getHomePageHotels(popularCities)
-
-  //   // version 2 doesn't work, nothing happens
-  //   // TODO: Think about how this can be doen with a for loop
-  //   const fetchDestinations = async () => {
-  //     /**
+  // getHomePageHotels(popularCities)
   //      const ALL_RESULTS = []
 
   //     for (let i = 0; i < popularCities.length; i++) {
@@ -75,25 +71,18 @@ const HomePageResults = (props) => {
   //       ALL_RESULTS.push(res)
 
   //     }
-  //      */
+  // useEffect(() => {
+  //   const fetchDestinations = async () => {
   //     const res1 = await handleHomePageSearch(popularCities[0], state)
-  //     console.log(res1)
   //     const res2 = await handleHomePageSearch(popularCities[1], state)
-  //     console.log(res2)
   //     const res3 = await handleHomePageSearch(popularCities[2], state)
-  //     console.log(res3)
   //     const res4 = await handleHomePageSearch(popularCities[3], state)
-  //     console.log(res4)
   //     const res5 = await handleHomePageSearch(popularCities[4], state)
-  //     console.log(res5)
   //     const res6 = await handleHomePageSearch(popularCities[5], state)
-  //     console.log(res6)
   //     const res7 = await handleHomePageSearch(popularCities[6], state)
-  //     console.log(res7)
   //     const res8 = await handleHomePageSearch(popularCities[7], state)
-  //     console.log(res8)
   //     const res9 = await handleHomePageSearch(popularCities[8], state)
-  //     console.log(res9)
+
   //     return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
   //   }
   //   fetchDestinations().then(destinationsResults => {
@@ -102,13 +91,13 @@ const HomePageResults = (props) => {
   // }, [])
 
   const handleClick = (des) => {
-    setProject({ ...project, loading: true })
+    setIsLoading(true)
     fetchPopularDestData(des, db)
       .then((hotelsProject) => {
         setProject(
-          { ...project, results: hotelsProject, loading: false }
+          { ...project, results: hotelsProject }
         )
-      }).then(() => setRedirect(true))
+      }).then(() => setIsLoading(false)).then(() => setRedirect(true))
   }
   if (redirect) {
     return <Redirect exact push to='/searchresults' />
@@ -117,32 +106,84 @@ const HomePageResults = (props) => {
   return (
     <div className='cardsDeck'>
       <p>Popular destinations</p>
+      {isloading ? <Spinning />
+        : <>
+          <CardDeck>
+            <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
+              {destresults && destresults.map((des, i) => {
+                const cheap = findCheapestHotel(des)
 
-      <CardDeck>
-        {/* <Row style={{ marginTop: '20px', marginBottom: '20px' }}> */}
-        {destresults && destresults.map((des, i) => {
-          const cheap = findCheapestHotel(des)
-          console.log(cheap, 'cheap')
-          // TODO: Split up array into 3 groups of 3 CardDecks
-          if (i > 3) return null
-          return (
-            <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
-              <Card.Img variant='top' src='https://source.unsplash.com/random' />
-              <Card.Body>
-                <Card.Title>{des[0].destinationName}</Card.Title>
-                <Card.Text>
-                  Hotels from {cheap.minRate}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-          )
-        })}
-        {/* </Row> */}
+                if (i <= 2) {
+                  return (
+                    <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
+                      <Card.Img variant='top' src='https://source.unsplash.com/random' />
+                      <Card.Body>
+                        <Card.Title>{des[0].destinationName}</Card.Title>
+                        <Card.Text>
+                          Hotels from {cheap.minRate}¢
+                        </Card.Text>
+                      </Card.Body>
+                      <Card.Footer>
+                        <small className='text-muted'>Last updated 3 mins ago</small>
+                      </Card.Footer>
+                    </Card>
+                  )
+                }
+              })}
+            </Row>
 
-      </CardDeck>
+          </CardDeck>
+          <CardDeck>
+            <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
+              {destresults && destresults.map((des, i) => {
+                const cheap = findCheapestHotel(des)
+
+                if (i > 2 && i <= 5) {
+                  return (
+                    <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
+                      <Card.Img variant='top' src='https://source.unsplash.com/random' />
+                      <Card.Body>
+                        <Card.Title>{des[0].destinationName}</Card.Title>
+                        <Card.Text>
+                          Hotels from {cheap.minRate}¢
+                        </Card.Text>
+                      </Card.Body>
+                      <Card.Footer>
+                        <small className='text-muted'>Last updated 3 mins ago</small>
+                      </Card.Footer>
+                    </Card>
+                  )
+                }
+              })}
+            </Row>
+
+          </CardDeck>
+          <CardDeck>
+            <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
+              {destresults && destresults.map((des, i) => {
+                const cheap = findCheapestHotel(des)
+
+                if (i > 5) {
+                  return (
+                    <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
+                      <Card.Img variant='top' src='https://source.unsplash.com/random' />
+                      <Card.Body>
+                        <Card.Title>{des[0].destinationName}</Card.Title>
+                        <Card.Text>
+                          Hotels from {cheap.minRate}¢
+                        </Card.Text>
+                      </Card.Body>
+                      <Card.Footer>
+                        <small className='text-muted'>Last updated 3 mins ago</small>
+                      </Card.Footer>
+                    </Card>
+                  )
+                }
+              })}
+            </Row>
+
+          </CardDeck>
+        </>}
     </div>
   )
 }
