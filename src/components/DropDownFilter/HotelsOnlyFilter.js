@@ -11,17 +11,17 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const HotelsOnly = (props) => {
-  console.log(props, 'props from hotel filter')
+  // console.log(props, 'props from hotel filter')
   const classes = useStyles
   const hotels = props.hotels
   const filteredHotels = props.tempfilteredhotels
-  console.log(filteredHotels.length, 'true')
+  // console.log(filteredHotels.length, 'true')
 
   const showHotelsOnly = () => {
     if (filteredHotels.length < 1) {
       const vcCodes = ['3LL', 'VILLA', 'APTH3', 'APTH5', 'RSORT']
       const res = hotels.filter(hotel => !vcCodes.includes(hotel.categoryCode))
-      console.log(res, 'filtrest')
+      // console.log(res, 'filtrest')
 
       props.onClick(res)
     } else {

@@ -29,7 +29,6 @@ export const HotelList = () => {
   const [hasmore, setHasMore] = useState(true)
   const [isloading, setIsLoading] = useState(false)
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
-  const [valueToMap, setValueToMap] = useState([])
   console.log(hotelsresults, 'results to dispaly')
   console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
 
@@ -64,10 +63,30 @@ export const HotelList = () => {
       setTempFilteredHotels([])
     }
   }
-  const updatePriceResults = (results) => {
-    console.log(results, 'filtred hotels to display')
-    setTempFilteredHotels(results)
+  const updatePriceResults = (res) => {
+    if (res) {
+      setTempFilteredHotels(res)
+    } else {
+      setTempFilteredHotels([])
+    }
   }
+
+  // if (tempfilteredhotels.length > 1) {
+  //   setValueToMap(hotelsresults)
+  // } else {
+  //   setValueToMap(tempfilteredhotels)
+  // }
+
+  const resultstomap = (arr1, arr) => {
+    if (arr1.length > 1) {
+      console.log(arr1.length, 'numer1')
+      console.log(arr.length, 'numer 2')
+      return arr1
+    } else {
+      return arr
+    }
+  }
+  const valueToMap = resultstomap(tempfilteredhotels, hotelsresults)
 
   return (
 
@@ -77,7 +96,7 @@ export const HotelList = () => {
         next={fetchMoreData}
         hasMore={hotelsresults.length < allHotelsResults.length}
         loader={<h4>Loading...</h4>}
-        scrollThreshold={0.9}
+        scrollThreshold={0.8}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>
@@ -96,7 +115,7 @@ export const HotelList = () => {
             </div>
             <br />
 
-            {hotelsresults && hotelsresults.map(hotel => {
+            {valueToMap && valueToMap.map(hotel => {
               return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
             })}
 

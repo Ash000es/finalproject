@@ -3,7 +3,7 @@ import SearchField from '../SearchField/SearchField'
 import OccSelector from '../OccSelector/OccSelector'
 import FirebaseContext from '../../providers/Firebase'
 import Button from 'react-bootstrap/Button'
-import PriceSlider from '../PriceSlider'
+import { PriceSlider } from '../PriceSlider'
 import AmenitiesSelect from '../AmenitiesSelect'
 import StarRatingFilter from '../StarRatingFilter'
 import NewDateRange from '../DateRange/NewDateRange'
@@ -113,7 +113,7 @@ const SearchBar = (props) => {
       </div>
       <div className='SearchBarFilters'>
 
-        <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} tempfilteredhotels={props.tempfilteredhotels} valueToMap={props.valueToMap} />
+        <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} tempfilteredhotels={props.tempfilteredhotels} />
         <AmenitiesSelect />
         <StarRatingFilter />
 
