@@ -14,7 +14,7 @@ import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, readyTheArgument, updateStarRatings } from '../Helper/Helper'
 import { vcCodes, hotelcodes } from '../Helper/Constants'
 
 const style = {
@@ -33,7 +33,7 @@ export const HotelList = () => {
   const [isloading, setIsLoading] = useState(false)
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
   console.log(hotelsresults, 'results to dispaly')
-  console.log(tempfilteredhotels.length, 'tempfilteredhotels to dispaly')
+  console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
@@ -78,8 +78,17 @@ export const HotelList = () => {
     }
   }
 
+  const updateStarRating = (proby) => {
+    const res = updateStarRatings(hotelsresults, proby)
+    if (res) {
+      setTempFilteredHotels(res)
+    } else {
+      setTempFilteredHotels([])
+    }
+  }
   const updatePriceResults = (sliderrange) => {
     const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
+
     if (res) {
       setTempFilteredHotels(res)
     } else {
@@ -114,7 +123,7 @@ export const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar onChange={updatePriceResults} />
+          <SearchBar onChange={updatePriceResults} onClick={updateStarRating} />
           <div>
             <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
             <Typography />

@@ -63,7 +63,6 @@ const PrettoSlider = withStyles({
 })(Slider)
 
 export default function PriceSlider (props) {
-  console.log(props, ' I am props from slider')
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = useState(DEFAULT_SLIDER_VALUE)
 

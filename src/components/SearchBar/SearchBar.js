@@ -115,7 +115,7 @@ const SearchBar = (props) => {
 
         <PriceSlider onChange={props.onChange} />
         <AmenitiesSelect />
-        <StarRatingFilter />
+        <StarRatingFilter onChange={props.onClick} />
 
       </div>
 

@@ -58,7 +58,7 @@ function getStyles (name, personName, theme) {
   }
 }
 
-export default function StarRatingFilter () {
+export default function StarRatingFilter (props) {
   const classes = useStyles()
   const theme = useTheme()
   const [starRating, setStarRating] = React.useState([])
@@ -67,6 +67,8 @@ export default function StarRatingFilter () {
   const handleChange = (event) => {
     console.log(event, 'event')
     setStarRating(event.target.value)
+    props.onChange(event.target.value)
+    console.log(event.target.value, 'event')
   }
 
   const handleChangeMultiple = (event) => {
@@ -79,13 +81,6 @@ export default function StarRatingFilter () {
       }
     }
     setStarRating(value)
-    console.log(value, 'value')
-  }
-  const updateStarRatings = (arr) => {
-    const res = arr.filter(hotel => !starRating.includes(hotel.categoryName))
-    // console.log(res)
-    // How to add it to onChange ?
-    // setstate({ results: res })
   }
 
   return (
@@ -104,21 +99,21 @@ export default function StarRatingFilter () {
           MenuProps={MenuProps}
         >
 
-          <MenuItem key='3 Stars' value='3 Stars'>
-            <Checkbox checked={starRating.indexOf('3 Stars') > -1} />
+          <MenuItem key='3 STARS' value='3 STARS'>
+            <Checkbox checked={starRating.indexOf('3 STARS') > -1} />
             <ListItemText primary='3 Stars' />
             <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
 
           </MenuItem>
 
-          <MenuItem key='4 Stars' value='4 Stars'>
-            <Checkbox checked={starRating.indexOf('4 Stars') > -1} />
+          <MenuItem key='4 STARS' value='4 STARS'>
+            <Checkbox checked={starRating.indexOf('4 STARS') > -1} />
             <ListItemText primary='4 Stars' />
             <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
 
           </MenuItem>
-          <MenuItem key='5 Stars' value='5 Stars'>
-            <Checkbox checked={starRating.indexOf('5 Stars') > -1} />
+          <MenuItem key='5 STARS' value='5 STARS'>
+            <Checkbox checked={starRating.indexOf('5 STARS') > -1} />
             <ListItemText primary='5 Stars' />
             <StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' /><StarRateIcon icon='star' />
 

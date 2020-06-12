@@ -21,6 +21,18 @@ import { requestPopularDest } from '../handlers/ApiHandler'
 // }
 
 // }
+export const updateStarRatings = (arr1, arr2) => {
+  const res = arr1.filter(hotel => !arr2.includes(hotel.categoryName))
+  return res
+}
+export const readyTheArgument = (propey) => {
+  const checkMe = propey.target.value
+  if (checkMe[1] === Number) {
+    return checkMe
+  } else {
+    return checkMe
+  }
+}
 export const showHotelsOnly = (arr1, arr2, arr3) => {
   if (arr1.length < 1) {
     const res = arr2.filter(hotel => !arr3.includes(hotel.categoryCode))
