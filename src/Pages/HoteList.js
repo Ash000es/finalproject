@@ -86,6 +86,9 @@ export const HotelList = () => {
       setTempFilteredHotels([])
     }
   }
+  const updateAmenSelection = (arr) => {
+    // function here
+  }
   const updatePriceResults = (sliderrange) => {
     const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
 
@@ -123,7 +126,7 @@ export const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar onChange={updatePriceResults} onClick={updateStarRating} />
+          <SearchBar onChange={updatePriceResults} onClick={updateStarRating} updateAmenities={updateAmenSelection} />
           <div>
             <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
             <Typography />
