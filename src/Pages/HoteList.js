@@ -13,6 +13,8 @@ import { Redirect } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
+import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
+import { updatePrice } from '../Helper/Helper'
 
 const style = {
   height: 30,
@@ -63,7 +65,10 @@ export const HotelList = () => {
       setTempFilteredHotels([])
     }
   }
-  const updatePriceResults = (res) => {
+
+  const updatePriceResults = (sliderrange) => {
+    console.log(sliderrange, 'i am range from hotelist')
+    const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
     if (res) {
       setTempFilteredHotels(res)
     } else {
@@ -72,7 +77,7 @@ export const HotelList = () => {
   }
 
   const resultstomap = (arr1, arr) => {
-    if (arr1.length > 1) {
+    if (arr1.length >= 1) {
       console.log(arr1.length, 'numer1')
       console.log(arr.length, 'numer 2')
       return arr1
@@ -90,7 +95,7 @@ export const HotelList = () => {
         dataLength={hotelsresults.length}
         next={fetchMoreData}
         hasMore={hotelsresults.length < allHotelsResults.length}
-        loader={<h4>Loading...</h4>}
+        loader={tempfilteredhotels.length >= 1 ? null : <h4>Loading...</h4>}
         scrollThreshold={0.5}
         endMessage={
           <p style={{ textAlign: 'center' }}>
@@ -100,7 +105,7 @@ export const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar onChange={updatePriceResults} hotelsresults={hotelsresults} tempfilteredhotels={tempfilteredhotels} valueToMap={valueToMap} />
+          <SearchBar onChange={updatePriceResults} />
           <div>
             <HotelsOnly hotels={hotelsresults} tempfilteredhotels={tempfilteredhotels} onClick={handleFilteredHotels} /><VacationRental homes={hotelsresults} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
             <Typography />

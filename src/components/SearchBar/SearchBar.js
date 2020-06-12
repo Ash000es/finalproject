@@ -113,7 +113,7 @@ const SearchBar = (props) => {
       </div>
       <div className='SearchBarFilters'>
 
-        <PriceSlider onChange={updatePriceSelection} hotelsresults={props.hotelsresults} tempfilteredhotels={props.tempfilteredhotels} />
+        <PriceSlider onChange={props.onChange} />
         <AmenitiesSelect />
         <StarRatingFilter />
 

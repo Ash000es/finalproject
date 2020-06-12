@@ -21,6 +21,31 @@ import { requestPopularDest } from '../handlers/ApiHandler'
 // }
 
 // }
+export const updatePrice = (arr1, arr2, arr3) => {
+  console.log(arr1, 'arr')
+
+  const min = arr1[0]
+  const max = arr1[1]
+
+  const status = arr1.every(function (element, index) {
+    return element === arr2[index]
+  })
+  console.log(status, 'look at me')
+
+  if (!status) {
+    const results = arr3.filter(hotel => {
+      const hotelMinRate = parseInt(hotel.minRate, 10)
+      const hotelMaxRate = parseInt(hotel.maxRate, 10)
+
+      if (hotelMinRate >= min && hotelMaxRate <= max) {
+        return hotel
+      }
+    })
+    return results
+  } else {
+    return false
+  }
+}
 
 export const getAmenitiesArray = (arr1, arr2) => {
   const finalArray = []
