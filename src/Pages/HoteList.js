@@ -14,8 +14,8 @@ import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly } from '../Helper/Helper'
-import { vcCodes } from '../Helper/Constants'
+import { updatePrice, showHotelsOnly, showHomesOnly } from '../Helper/Helper'
+import { vcCodes, hotelcodes } from '../Helper/Constants'
 
 const style = {
   height: 30,
@@ -59,9 +59,17 @@ export const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
+  const handleFilteredHomes = () => {
+    const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
+    if (res) {
+      setTempFilteredHotels(res)
+    } else {
+      setTempFilteredHotels([])
+    }
+  }
 
   const handleFilteredHotels = (e) => {
-    console.log(e.target.value)
+    console.log(e)
     const res = showHotelsOnly(tempfilteredhotels, hotelsresults, vcCodes)
     if (res) {
       setTempFilteredHotels(res)
@@ -71,7 +79,6 @@ export const HotelList = () => {
   }
 
   const updatePriceResults = (sliderrange) => {
-    console.log(sliderrange, 'i am range from hotelist')
     const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
     if (res) {
       setTempFilteredHotels(res)
@@ -80,16 +87,14 @@ export const HotelList = () => {
     }
   }
 
-  const resultstomap = (arr1, arr) => {
+  const resultsToMap = (arr1, arr) => {
     if (arr1.length >= 1) {
-      console.log(arr1.length, 'numer1')
-      console.log(arr.length, 'numer 2')
       return arr1
     } else {
       return arr
     }
   }
-  const valueToMap = resultstomap(tempfilteredhotels, hotelsresults)
+  const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
   console.log(valueToMap, 'value to map')
 
   return (
@@ -111,7 +116,7 @@ export const HotelList = () => {
           <SearchResultsHero />
           <SearchBar onChange={updatePriceResults} />
           <div>
-            <HotelsOnly onClick={handleFilteredHotels} /><VacationRental /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={hotelsresults} />
+            <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
             <Typography />
 
             <div className='sortButton'>

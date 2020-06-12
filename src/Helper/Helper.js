@@ -31,6 +31,16 @@ export const showHotelsOnly = (arr1, arr2, arr3) => {
     return false
   }
 }
+export const showHomesOnly = (arr1, arr2, arr3) => {
+  if (arr1.length < 1) {
+    const res = arr2.filter(hotel => !arr3.includes(hotel.categoryCode))
+    // console.log(res, 'filtrest')
+
+    return res
+  } else {
+    return false
+  }
+}
 export const updatePrice = (arr1, arr2, arr3) => {
   console.log(arr1, 'arr')
 

@@ -13,6 +13,7 @@ export const getSignature = () => {
 }
 // cont
 export const vcCodes = ['3LL', 'VILLA', 'APTH3', 'APTH5', 'RSORT']
+export const hotelcodes = ['4EST', '3EST', '5EST', '5LUX', 'RSORT']
 export const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
 export const amenitiesToFilter = [
   'Pool',

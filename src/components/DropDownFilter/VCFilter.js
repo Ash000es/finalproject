@@ -10,18 +10,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const VacationRental = () => {
+export const VacationRental = (props) => {
   const classes = useStyles
 
-  const VCFilter = (results) => {
-    const hotelcodes = ['4EST', '3EST', '5EST', '5LUX', 'RSORT']
-    const res = results.filter(hotel => !hotelcodes.includes(hotel.categoryCode))
-    // console.log(res)  Villas
-    // setstate({ results: res })
-  }
   return (
     <div className={classes.root}>
-      <Button onClick={VCFilter} variant='outlined'>Homes</Button>
+      <Button onClick={props.onClick} variant='outlined'>Homes</Button>
 
     </div>
   )
