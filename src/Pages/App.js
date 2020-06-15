@@ -16,63 +16,64 @@ import MapPopUp from '../components/Map/MapPopUp'
 import getSteps from '../components/PaymentCout/Stepper'
 import { HotelList } from './HoteList'
 import { testing } from '../components/Test'
+import { LoginButton } from '../components/LoginButton'
 
-function App () {
-  const [errormessage, setErrorMessage] = useState('')
-  const [authbuttonlabel, setAuthButtonLabel] = useState('Login')
-  const [user, setUser] = useState(undefined)
+function App (props) {
+  // const [errormessage, setErrorMessage] = useState('')
+  // const [authbuttonlabel, setAuthButtonLabel] = useState('Login')
+  // const [user, setUser] = useState(undefined)
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in.
-      handleUserSignedin(user)
-    } else {
-      // No user is signed in.
-      handleUserNotSignedin()
-    }
-  })
-  const handleUserSignedin = (user) => {
-    setUser(user)
-    setAuthButtonLabel('Logout')
-    if (user.providerData.length) {
-      console.log(user.providerData[0], 'userData')
-    }
-  }
-  const handleUserNotSignedin = () => {
-    setAuthButtonLabel('Login')
-  }
-  const logOut = () => {
-    firebase.auth().signOut().then(function () {
-    // Sign-out successful.
-    }).catch(function (error) {
-    // An error happened.
-    })
-  }
-  const onClickAuth = () => {
-    if (user) {
-      return logOut()
-    }
-    firebase.auth().signInWithPopup(provider).then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = result.credential.accessToken
-      console.log(token, 'token')
-      // The signed-in user info.
-      const user = result.user
-      console.log(user, 'user')
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code
-      const errorMessage = error.message
-      // The email of the user's account used.
-      const email = error.email
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential
-      if (errorCode || errorMessage || email || credential) {
-        setErrorMessage('An error has occurred ')
-      }
-    })
-  }
+  // firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     // User is signed in.
+  //     handleUserSignedin(user)
+  //   } else {
+  //     // No user is signed in.
+  //     handleUserNotSignedin()
+  //   }
+  // })
+  // const handleUserSignedin = (user) => {
+  //   setUser(user)
+  //   setAuthButtonLabel('Logout')
+  //   if (user.providerData.length) {
+  //     console.log(user.providerData[0], 'userData')
+  //   }
+  // }
+  // const handleUserNotSignedin = () => {
+  //   setAuthButtonLabel('Login')
+  // }
+  // const logOut = () => {
+  //   firebase.auth().signOut().then(function () {
+  //   // Sign-out successful.
+  //   }).catch(function (error) {
+  //   // An error happened.
+  //   })
+  // }
+  // const onClickAuth = () => {
+  //   if (user) {
+  //     return logOut()
+  //   }
+  //   firebase.auth().signInWithPopup(provider).then((result) => {
+  //     // This gives you a Google Access Token. You can use it to access the Google API.
+  //     const token = result.credential.accessToken
+  //     console.log(token, 'token')
+  //     // The signed-in user info.
+  //     const user = result.user
+  //     console.log(user, 'user')
+  //     // ...
+  //   }).catch((error) => {
+  //     // Handle Errors here.
+  //     const errorCode = error.code
+  //     const errorMessage = error.message
+  //     // The email of the user's account used.
+  //     const email = error.email
+  //     // The firebase.auth.AuthCredential type that was used.
+  //     const credential = error.credential
+  //     if (errorCode || errorMessage || email || credential) {
+  //       setErrorMessage('An error has occurred ')
+  //     }
+  //   })
+  // }
 
   return (
     <ProjectProvider>
@@ -94,7 +95,7 @@ function App () {
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
               <LinkContainer to='#'>
-                <Nav.Link onClick={onClickAuth}>{authbuttonlabel}</Nav.Link>
+                <Nav.Link><LoginButton /></Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar>

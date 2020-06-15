@@ -7,14 +7,13 @@ export const DropDownFilter = (props) => {
   const hotelsResults = props.HotelsResults
   console.log(hotelsResults, 'props')
   const sortbyPrice = (e) => {
-    console.log(e.target.value, 'checking the argument ')
+    console.log(e, 'checking the argument ')
     const res = hotelsResults.sort(function (a, b) {
       console.log('sorting ..')
       return parseFloat(a.minRate) - parseFloat(b.minRate)
     })
     console.log(res, 'iam res')
     props.onClick(res)
-    // setState({ results: arr })
   }
 
   const sortByReview = (e) => {
