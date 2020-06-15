@@ -105,9 +105,6 @@ function App (props) {
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
               <Route path='/reviewcart' excat component={getSteps} />
-              {/* TODO: Do you really want to display just your Map component when going to this route?
-              usually it's better to have a Page that contains your map component.
-               */}
 
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />

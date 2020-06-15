@@ -59,8 +59,9 @@ export const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
-  const handleSortByPrice = (res) => {
+  const handleSort = (res) => {
     console.log(res, 'sorted here')
+
     setTempFilteredHotels(res)
   }
   const handleFilteredHomes = () => {
@@ -95,6 +96,7 @@ export const HotelList = () => {
   }
   const updatePriceResults = (sliderrange) => {
     const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
+    console.log(res, 'am I true or false')
 
     if (res) {
       setTempFilteredHotels(res)
@@ -136,7 +138,7 @@ export const HotelList = () => {
             <Typography />
 
             <div className='sortButton'>
-              <DropDownFilter HotelsResults={valueToMap} onClick={handleSortByPrice} />
+              <DropDownFilter hotelsResults={hotelsresults} tempHotels={tempfilteredhotels} onClick={handleSort} />
             </div>
             <br />
 
