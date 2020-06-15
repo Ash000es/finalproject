@@ -21,6 +21,11 @@ import { requestPopularDest } from '../handlers/ApiHandler'
 // }
 
 // }
+export const sortbyPrice = (arr) => {
+  arr.sort(function (a, b) {
+    return b.minRate - a.minRate
+  })
+}
 export const updateStarRatings = (arr1, arr2) => {
   const res = arr1.filter(hotel => !arr2.includes(hotel.categoryName))
   return res

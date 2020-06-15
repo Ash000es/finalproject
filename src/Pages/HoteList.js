@@ -59,6 +59,10 @@ export const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
+  const handleSortByPrice = (res) => {
+    console.log(res, 'sorted here')
+    setTempFilteredHotels(res)
+  }
   const handleFilteredHomes = () => {
     const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
     if (res) {
@@ -132,7 +136,7 @@ export const HotelList = () => {
             <Typography />
 
             <div className='sortButton'>
-              <DropDownFilter />
+              <DropDownFilter HotelsResults={valueToMap} onClick={handleSortByPrice} />
             </div>
             <br />
 

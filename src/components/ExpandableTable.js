@@ -53,14 +53,19 @@ function Row (props) {
         </TableCell>
 
         <TableCell component='th' scope='row'>{row.name}</TableCell>
+
         {row.rates.map(rate => (
 
           <TableRow key={rate.rateKey} onChange={(e) => collectValues(rate, row.name, e)}>
-
-            <TableCell>  <TableRow><TableCell align='right'>2</TableCell></TableRow></TableCell>
-            <TableCell>  <TableRow><TableCell align='right'> {rate.boardName}</TableCell></TableRow></TableCell>
-            <TableCell>  <TableRow> <TableCell align='right'> <SelectRoom rate={rate} /></TableCell></TableRow></TableCell>
-            <TableCell>  <TableRow> <TableCell align='right'> {rate.net}</TableCell></TableRow></TableCell>
+            <TableCell />
+            <TableCell align='right'>2</TableCell>
+            <TableCell />
+            <TableCell align='right'> {rate.boardName}</TableCell>
+            <TableCell />
+            <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
+            <TableCell />
+            <TableCell align='right'> {rate.net}</TableCell>
+            <TableCell />
 
           </TableRow>
 
@@ -138,10 +143,10 @@ export default function CollapsibleTable (props) {
           <TableRow>
             <TableCell />
             <TableCell>Room Type</TableCell>
-            <TableCell align='right'>sleeps</TableCell>
-            <TableCell align='right'>Included</TableCell>
-            <TableCell align='right'>selectrooms</TableCell>
-            <TableCell align='right'>price</TableCell>
+            <TableCell>sleeps</TableCell>
+            <TableCell>Included</TableCell>
+            <TableCell>selectrooms</TableCell>
+            <TableCell>price</TableCell>
 
           </TableRow>
         </TableHead>
