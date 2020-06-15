@@ -61,6 +61,11 @@ export const HotelList = () => {
   }
   const handleSort = (res) => {
     console.log(res, 'sorted here')
+    if (res.length > hotelsresults.length) {
+      setTempFilteredHotels(res)
+    } else {
+      setHotelsResults(res)
+    }
 
     setTempFilteredHotels(res)
   }
