@@ -18,19 +18,11 @@ export const DropDownFilter = (props) => {
   }
 
   const sortByReview = (e) => {
-    console.log(e.target.value, 'checking the argument ')
     const res = hotelsResults.sort(function (a, b) {
-      console.log('sorting review 1..')
-      return parseFloat(b.reviews[0].reviewCount) - parseFloat(a.reviews[0].reviewCount)
+      return parseFloat(b.reviews[0].rate) - parseFloat(a.reviews[0].rate) || parseFloat(b.reviews[0].reviewCount) - parseFloat(a.reviews[0].reviewCount)
     })
-    console.log(res, 'first res')
-    // const finalRes = res.sort(function (a, b) {
-    //   console.log('sorting review2 ..')
-    //   return parseFloat(b.reviews[0].rate) - parseFloat(a.reviews[0].rate)
-    // })
-    console.log(res, 'iam final res')
+
     props.onClick(res)
-    // setState({ results: arr })
   }
   return (
     <DropdownButton id='dropdown-item-button' title='Dropdown button'>
