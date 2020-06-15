@@ -14,7 +14,7 @@ import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly, readyTheArgument, updateStarRatings } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, readyTheArgument, updateStarRatings, sortbyPrice, sortByReview } from '../Helper/Helper'
 import { vcCodes, hotelcodes } from '../Helper/Constants'
 
 const style = {
@@ -59,16 +59,19 @@ export const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
-  const handleSort = (res) => {
-    console.log(res, 'sorted here')
-    if (res.length > hotelsresults.length) {
+  const handleSort = (sortByValue) => {
+    console.log(sortByValue, 'value')
+    if (sortByValue === 'Sortby Price') {
+      const res = sortbyPrice(tempfilteredhotels, hotelsresults)
+      console.log(res, 'am I true or false')
       setTempFilteredHotels(res)
-    } else {
-      setHotelsResults(res)
+    } else if (sortByValue === 'Sortby review') {
+      const res2 = sortByReview(tempfilteredhotels, hotelsresults)
+      console.log(res2, 'am I true or false')
+      setTempFilteredHotels(res2)
     }
-
-    setTempFilteredHotels(res)
   }
+
   const handleFilteredHomes = () => {
     const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
     if (res) {
@@ -101,7 +104,7 @@ export const HotelList = () => {
   }
   const updatePriceResults = (sliderrange) => {
     const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
-    console.log(res, 'am I true or false')
+    // console.log(res, 'am I true or false')
 
     if (res) {
       setTempFilteredHotels(res)
@@ -143,7 +146,7 @@ export const HotelList = () => {
             <Typography />
 
             <div className='sortButton'>
-              <DropDownFilter hotelsResults={hotelsresults} tempHotels={tempfilteredhotels} onClick={handleSort} />
+              <DropDownFilter onClick={handleSort} />
             </div>
             <br />
 

@@ -21,11 +21,7 @@ import { requestPopularDest } from '../handlers/ApiHandler'
 // }
 
 // }
-export const sortbyPrice = (arr) => {
-  arr.sort(function (a, b) {
-    return b.minRate - a.minRate
-  })
-}
+
 export const updateStarRatings = (arr1, arr2) => {
   const res = arr1.filter(hotel => !arr2.includes(hotel.categoryName))
   return res
@@ -82,6 +78,21 @@ export const updatePrice = (arr1, arr2, arr3) => {
   } else {
     return false
   }
+}
+export const sortbyPrice = (arr1, arr2) => {
+  const valueToSort = arr1.length >= 1 ? arr1 : arr2
+  return valueToSort.sort(function (a, b) {
+    console.log('sorting price..')
+    return a.minRate - b.minRate
+  })
+}
+
+export const sortByReview = (arr1, arr2) => {
+  const valueToSort = arr1.length >= 1 ? arr1 : arr2
+  return valueToSort.sort(function (a, b) {
+    console.log('sorting review..')
+    return parseFloat(b.reviews[0].rate) - parseFloat(a.reviews[0].rate) || parseFloat(b.reviews[0].reviewCount) - parseFloat(a.reviews[0].reviewCount)
+  })
 }
 
 export const getAmenitiesArray = (arr1, arr2) => {
