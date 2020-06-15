@@ -63,11 +63,11 @@ export const HotelList = () => {
     console.log(sortByValue, 'value')
     if (sortByValue === 'Sortby Price') {
       const res = sortbyPrice(tempfilteredhotels, hotelsresults)
-      console.log(res, 'am I true or false')
+      console.log(res, 'by price')
       setTempFilteredHotels(res)
     } else if (sortByValue === 'Sortby review') {
       const res2 = sortByReview(tempfilteredhotels, hotelsresults)
-      console.log(res2, 'am I true or false')
+      console.log(res2, 'by reviews')
       setTempFilteredHotels(res2)
     }
   }
