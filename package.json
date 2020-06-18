@@ -16,6 +16,7 @@
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
     "@wojtekmaj/react-daterange-picker": "^2.5.0",
+    "antd": "^4.3.4",
     "bootstrap": "^4.4.1",
     "customize-cra": "^0.9.1",
     "date-fns": "^2.0.0-beta.5",

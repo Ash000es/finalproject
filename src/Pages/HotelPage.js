@@ -6,17 +6,19 @@ import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../components/DateRange/NewDateRange'
 import { HotelCarousel } from '../components/HotelCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
-import CartDrawer from '../components/CartDrawer'
-import { addCartItem, showCancelationPolicy, getAmenitiesArray } from '../Helper/Helper'
+import { CartDrawer } from '../components/CartDrawerN'
+import { addCartItem, showCancelationPolicy, getAmenitiesArray, sumUp } from '../Helper/Helper'
 import { amenities } from '../Helper/amenities'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 
 const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
-  const [currentselectedinfo, setCurrentSelectedInfo] = useState([])
-  console.log(currentselectedinfo, 'currentselectedinfo')
+  const [totalSelectedRoomsInfo, setTotalSelectedRoomsInfo] = useState([])
+  console.log(totalSelectedRoomsInfo, 'totalSelectedRoomsInfo')
   const [redirect, setRedirect] = useState(false)
+  const [roomsnum, setRoomsNum] = useState([])
+  const [roomspricearr, setRoomsPriceArr] = useState([])
   const currentSelection = project.currentHotel
   const toMap = currentSelection.facilities
   const readyAmenities = getAmenitiesArray(toMap, amenities)
@@ -24,12 +26,15 @@ const HotelPage = () => {
   const roomy = currentSelection.rooms.map(room => room)
 
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
-    // console.log(roomSelectionInfo, 'object here')
-    setCurrentSelectedInfo(currentselectedinfo.concat(roomSelectionInfo))
+    const num = parseFloat(roomSelectionInfo.roomNumber)
+    const price = roomSelectionInfo.mySellingRate ? parseFloat(roomSelectionInfo.mySellingRate) : parseFloat(roomSelectionInfo.totalSelectionPrice)
+    setRoomsNum(roomsnum.concat(num))
+    setRoomsPriceArr(roomspricearr.concat(price))
+    setTotalSelectedRoomsInfo(totalSelectedRoomsInfo.concat(roomSelectionInfo))
   }
   const handleClickButton = () => {
     onCompelet()
-    setProject({ ...project, cartItems: currentselectedinfo })
+    setProject({ ...project, cartItems: totalSelectedRoomsInfo.concat({ value: 123, type: 'test' }) })
   }
   const onCompelet = () => {
     setRedirect(true)
@@ -37,7 +42,7 @@ const HotelPage = () => {
   const stopRerenderingHotelCarousel = useMemo(() => {
     // TODO: change HotelCarousel to SearchResultsCarousel and send in Images as props instead of context. Same with currentSelection
     return <HotelCarousel currentSelection={currentSelection} />
-  }, [])
+  }, [1])
 
   if (redirect) {
     return <Redirect exact push to='/reviewcart' />
@@ -72,37 +77,22 @@ const HotelPage = () => {
 
       <StarRatingDisplay currentSelection={currentSelection} />
       <div><CollapsibleTable rooms={roomy} onChange={displaySelectedRoomInfo} /></div>
-      {currentselectedinfo && currentselectedinfo.map(room => {
-        { /* TODO: const {rateKey, etc, etc.} = room / I don't understand why should I do that ? */ }
-        { /* console.log(room, 'iam room') */ }
-        return (
-          <div key={room.rateKey}>
-            <p>Room Type:{room.roomType}</p>
-            <p>Included:{room.boardName}</p>
-            <p>Price per night: {room.net}</p>
-            <p>Room count: {room.roomNumber}</p>
-            <p>Total price: {room.totalSelectionPrice}</p>
-            <Button onClick={(room) => handleClickButton(room)} variant='primary'>Book</Button>{' '}
-            <CartDrawer currentCartItem={currentselectedinfo} />
 
-          </div>
+      {totalSelectedRoomsInfo.length > 0 &&
+        <div>
 
-        )
-      })}
+          <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
+          <p>Total price: {roomspricearr.reduce(sumUp)}</p>
+          <Button onClick={(room) => handleClickButton(room)} variant='primary'>Book</Button>{' '}
+          <CartDrawer totalSelectedRoomsInfo={totalSelectedRoomsInfo} />
+
+        </div>}
 
     </div>
   )
 }; export default HotelPage
 
 /*
-Create a sepatate useState for each field that you want to update
-
-- room type: useState([])
-- room count: useState(0)
-- etc
-- price: calculatePrice()
-
-...
 
 // creates the list of results room types
 const displayRoomTypes = () => {

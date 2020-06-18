@@ -25,35 +25,35 @@ const useStyles = makeStyles({
 })
 
 export default function CartDrawer (props) {
-  console.log(props, 'props from cartdrawer')
   const classes = useStyles()
-  const { currentCartItem } = props
-  console.log(currentCartItem, 'new name')
   const { project, setProject } = useContext(ProjectContext)
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
     right: false
   })
-  const addToCart = () => {
-    setProject({ ...project, cartItems: currentCartItem })
-  }
-  const cartItems1 = project.cartItems
-  // console.log(project, 'newest project')
-  // getting the total price of the cart items
-  // const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
+  const [updatecart, setUpdateCart] = useState(false)
+  const totalSelectedRoomsInfo = props.totalSelectedRoomsInfo
+  console.log(totalSelectedRoomsInfo, ' from cartdrawer')
 
   const toggleDrawer = (anchor, open) => (event) => {
-    console.log(event.target.value, 'I am event from cartdrawer')
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      addToCart()
       return
     }
-
     setState({ ...state, [anchor]: open })
-    // not sure if this is needed?
-    setProject({ ...project, cartOpen: true })
+    setUpdateCart(!updatecart)
+  }
+  const handleRemovedItem = (e) => {
+    const argument = e.target.value
+    console.log(argument)
+    const removeItem = (argument) => {
+      totalSelectedRoomsInfo.filter(item => {
+        item.code = !argument
+        return item
+      // setProject({ ...project, cartItems: })
+      })
+    }
   }
 
   const list = (anchor) => (
@@ -66,18 +66,14 @@ export default function CartDrawer (props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       {/* mapping inside the cart drwarer a number of items  */}
-      <span>{currentCartItem.length}</span>
-      {currentCartItem && currentCartItem.map(item => {
+      <span>{totalSelectedRoomsInfo ? totalSelectedRoomsInfo.length + 1 : null}</span>
+      {totalSelectedRoomsInfo && totalSelectedRoomsInfo.map(item => {
         console.log(item, 'item')
-        return <CartItem key={item.code} item={item} />
+        return <CartItem key={item.code} item={item} onClick={handleRemovedItem} />
       })}
-      <span>{project.currentHotel.name}</span>
+      <span>Hotel:{project.currentHotel.name}</span>
     </div>
   )
-
-  const handleOnClick = () => {
-    // TODOtoggle Drawer
-  }
 
   return (
     <div>

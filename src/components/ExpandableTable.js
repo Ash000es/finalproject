@@ -35,11 +35,14 @@ function Row (props) {
   const collectValues = (rate, roomName, event) => {
     const roomType = roomName
     const roomNumber = event.target.value
-    const price = rate.net
+    const price = rate.mySellingRate
     const totalSelectionPrice = roomsCost(price, roomNumber)
     const roomSelectionInfo = { ...rate, roomType, roomNumber, totalSelectionPrice }
-    console.log(roomSelectionInfo, 'here iam')
+    // console.log(roomSelectionInfo, 'here iam')
     props.onChange(roomSelectionInfo)
+  }
+  const collectExtrasValues = (e, extraRow) => {
+    console.log(e, extraRow, 'extras scope')
   }
 
   return (
@@ -91,7 +94,7 @@ function Row (props) {
                 </TableHead>
                 <TableBody>
                   {extras.map((extraRow) => (
-                    <TableRow key={extraRow.title}>
+                    <TableRow key={extraRow.title} onChange={(e) => collectExtrasValues(extraRow, e)}>
                       <TableCell component='th' scope='row'>
                         {extraRow.title}
                       </TableCell>
@@ -132,7 +135,7 @@ Row.propTypes = {
 }
 
 export default function CollapsibleTable (props) {
-  console.log(props, 'Iam props from collapse')
+  // console.log(props, 'Iam props from collapse')
   const { rooms } = props
   // console.log(rooms, 'roomy here')
 
@@ -151,8 +154,8 @@ export default function CollapsibleTable (props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rooms.map((room) => (
-            <Row key={Math.random()} room={room} onChange={props.onChange} />
+          {rooms.map((room, i) => (
+            <Row key={i} room={room} onChange={props.onChange} />
           ))}
 
         </TableBody>

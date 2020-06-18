@@ -10,9 +10,6 @@ const ProjectProvider = (props) => {
     {
       results: [],
       currentHotel: {},
-      currentRoomSelection: [],
-      redirect: false,
-      cartOpen: false,
       cartItems: []
 
     })

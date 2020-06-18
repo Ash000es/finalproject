@@ -191,21 +191,23 @@ export const findCheapestHotel = (arr) => {
     const changedCurrNumber = parseFloat(curr.minRate)
     return changedPrevNumber < changedCurrNumber ? prev : curr
   })
-
-  // arr.map(des => {
-  //   const lowestRates = [des.minRate]
-  //   // const lowestRate = Math.min(...lowestRates)
-  //   console.log(lowestRates, 'yop')
-
-  // })
-
-  // return arr.reduce(function (prev, curr) {
-  //   if (prev.minRate < curr.minRate) {
-  //     return prev.minRate
-  //   }
-  // })
-  // })
 }
+
+export const sumUp = (accumulator, currentValue) => accumulator + currentValue
+
+// arr.map(des => {
+//   const lowestRates = [des.minRate]
+//   // const lowestRate = Math.min(...lowestRates)
+//   console.log(lowestRates, 'yop')
+
+// })
+
+// return arr.reduce(function (prev, curr) {
+//   if (prev.minRate < curr.minRate) {
+//     return prev.minRate
+//   }
+// })
+// })
 
 // cancellationPolicies: [Array(1)
 // 0: {amount: "103.68", from: "2020-11-12T16:00:00+01:00"}
