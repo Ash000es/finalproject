@@ -44,6 +44,13 @@ export const HotelList = () => {
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
     setHotelsResults(intialLoad)
   }, [])
+  const onCompelet = () => {
+    setIsLoading(false)
+    setRedirect(true)
+  }
+  const startLoading = () => {
+    setIsLoading(true)
+  }
 
   const fetchMoreData = () => {
     const indexOfFirstHotel = resultsstart + resultsPerPage
@@ -53,9 +60,6 @@ export const HotelList = () => {
     setHotelsResults(hotelsresults.concat(newLoad))
   }
 
-  const onCompelet = () => {
-    setRedirect(true)
-  }
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
@@ -103,14 +107,16 @@ export const HotelList = () => {
     // function here
   }
   const updatePriceResults = (sliderrange) => {
-    const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
+    // const res = updatePrice(sliderrange, DEFAULT_SLIDER_VALUE, hotelsresults)
+    // if the slider has not changed
+    if (sliderrange[0] === DEFAULT_SLIDER_VALUE[0] && sliderrange[1] === DEFAULT_SLIDER_VALUE[1]) {
+      setTempFilteredHotels([])
+      return
+    }
+    const res = updatePrice(sliderrange[0], sliderrange[1], hotelsresults)
     // console.log(res, 'am I true or false')
 
-    if (res) {
-      setTempFilteredHotels(res)
-    } else {
-      setTempFilteredHotels([])
-    }
+    setTempFilteredHotels(res)
   }
 
   const resultsToMap = (arr1, arr) => {
@@ -140,7 +146,7 @@ export const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar onChange={updatePriceResults} onClick={updateStarRating} updateAmenities={updateAmenSelection} />
+          <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} updateAmenities={updateAmenSelection} fullbar />
           <div>
             <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
             <Typography />

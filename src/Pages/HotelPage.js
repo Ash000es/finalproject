@@ -15,7 +15,11 @@ import { Redirect } from 'react-router'
 const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [totalSelectedRoomsInfo, setTotalSelectedRoomsInfo] = useState([])
+  const [totalSelectedExtrasInfo, setTotalSelectedExtrasInfo] = useState([])
   console.log(totalSelectedRoomsInfo, 'totalSelectedRoomsInfo')
+  console.log(totalSelectedExtrasInfo, 'totalSelectedextrassInfo')
+  const [extrassnum, setExtrasNum] = useState([])
+  const [extrasspricearr, setExtrasPriceArr] = useState([])
   const [redirect, setRedirect] = useState(false)
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
@@ -25,6 +29,13 @@ const HotelPage = () => {
   const size = { width: '200px' }
   const roomy = currentSelection.rooms.map(room => room)
 
+  const selectionWrapper = (showme) => {
+    const roomSelectionInfo = showme.rateKey ? showme : null
+    const ExtrasSelectionInfo = showme.summary ? showme : null
+
+    roomSelectionInfo && displaySelectedRoomInfo(roomSelectionInfo)
+    ExtrasSelectionInfo && displaySelectedExtrasInfo(ExtrasSelectionInfo)
+  }
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
     const num = parseFloat(roomSelectionInfo.roomNumber)
     const price = roomSelectionInfo.mySellingRate ? parseFloat(roomSelectionInfo.mySellingRate) : parseFloat(roomSelectionInfo.totalSelectionPrice)
@@ -32,9 +43,18 @@ const HotelPage = () => {
     setRoomsPriceArr(roomspricearr.concat(price))
     setTotalSelectedRoomsInfo(totalSelectedRoomsInfo.concat(roomSelectionInfo))
   }
+  const displaySelectedExtrasInfo = (ExtrasSelectionInfo) => {
+    console.log(ExtrasSelectionInfo, 'iam extra in hotelpage')
+    const num = ExtrasSelectionInfo.extraSelectionNum
+    const ExtraPrice = num * ExtrasSelectionInfo.price
+    setExtrasNum(extrassnum.concat(num))
+    setExtrasPriceArr(extrasspricearr.concat(ExtraPrice))
+    setTotalSelectedExtrasInfo(totalSelectedExtrasInfo.concat(ExtrasSelectionInfo))
+  }
+
   const handleClickButton = () => {
     onCompelet()
-    setProject({ ...project, cartItems: totalSelectedRoomsInfo.concat({ value: 123, type: 'test' }) })
+    setProject({ ...project, cartItems: totalSelectedRoomsInfo.concat(totalSelectedExtrasInfo) })
   }
   const onCompelet = () => {
     setRedirect(true)
@@ -76,7 +96,7 @@ const HotelPage = () => {
       <img src='' alt='TA' />
 
       <StarRatingDisplay currentSelection={currentSelection} />
-      <div><CollapsibleTable rooms={roomy} onChange={displaySelectedRoomInfo} /></div>
+      <div><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
 
       {totalSelectedRoomsInfo.length > 0 &&
         <div>
@@ -84,9 +104,18 @@ const HotelPage = () => {
           <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
           <p>Total price: {roomspricearr.reduce(sumUp)}</p>
           <Button onClick={(room) => handleClickButton(room)} variant='primary'>Book</Button>{' '}
-          <CartDrawer totalSelectedRoomsInfo={totalSelectedRoomsInfo} />
 
         </div>}
+      {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
+        return (
+          <div key={i} extra={extra}>
+            <p>{extra.title}</p>
+            <p>{extra.price}</p>
+
+            <CartDrawer totalSelectedExtrasInfo={totalSelectedExtrasInfo} totalSelectedRoomsInfo={totalSelectedRoomsInfo} />
+          </div>
+        )
+      })}
 
     </div>
   )

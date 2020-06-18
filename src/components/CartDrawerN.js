@@ -4,8 +4,10 @@ import 'antd/dist/antd.css'
 // import './index.css'
 import { Drawer, Button } from 'antd'
 
-export const CartDrawer = () => {
+export const CartDrawer = (props) => {
   const [visible, setVisible] = useState(false)
+  const extrasCartItems = props.totalSelectedExtrasInfo
+  const roomssCartItems = props.totalSelectedRoomsInfo
 
   const showDrawer = () => {
     setVisible(true)
@@ -19,7 +21,7 @@ export const CartDrawer = () => {
   return (
     <>
       <Button type='primary' onClick={showDrawer}>
-        Open
+        Show Cart
       </Button>
       <Drawer
         title='Basic Drawer'
@@ -29,9 +31,24 @@ export const CartDrawer = () => {
         visible={visible}
 
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        {roomssCartItems && roomssCartItems.map((room, i) => {
+          return (
+            <div key={i} room={room}>
+              <p>{room.roomType}</p>
+              <p>{room.mySellingRate}</p>
+            </div>
+
+          )
+        })}
+        {extrasCartItems && extrasCartItems.map((extra, i) => {
+          return (
+            <div key={i} extra={extra}>
+              <p>{extra.title}</p>
+              <p>{extra.price}</p>
+            </div>
+          )
+        })}
+
       </Drawer>
     </>
   )

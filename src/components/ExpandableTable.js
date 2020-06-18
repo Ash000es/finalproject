@@ -34,8 +34,6 @@ function Row (props) {
   const [open, setOpen] = React.useState(false)
   const classes = useRowStyles()
   const collectValues = (rate, roomName, event) => {
-    console.log(event, 'event for rooms')
-    console.log(rate, 'rate for rooms')
     const roomType = roomName
     const roomNumber = event.target.value
     const price = rate.mySellingRate
@@ -44,8 +42,11 @@ function Row (props) {
     // console.log(roomSelectionInfo, 'here iam')
     props.onChange(roomSelectionInfo)
   }
-  const collectExtrasValues = (event, extraRow) => {
-    console.log(event, extraRow, 'extras scope')
+  const collectExtrasValues = (extraRow, e) => {
+    const extraSelectionNum = parseFloat(e.target.value)
+    const extraObj = { ...extraRow, extraSelectionNum }
+
+    props.onChange(extraObj)
   }
 
   return (
@@ -101,7 +102,7 @@ function Row (props) {
                       <TableCell component='th' scope='row'>
                         {extraRow.title}
                       </TableCell>
-                      <TableCell><SelectExtra extraRow={extraRow} />,</TableCell>
+                      <TableCell><SelectExtra extraRow={extraRow} /></TableCell>
                       <TableCell align='right'>{extraRow.summary}</TableCell>
                       <TableCell align='right'>
                         {extraRow.price}

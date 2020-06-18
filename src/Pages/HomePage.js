@@ -10,13 +10,16 @@ import { Spinning } from '../components/Spinner'
 export const HomePage = () => {
   const [redirect, setRedirect] = useState(false)
   const { project, setProject } = useContext(ProjectContext)
-  const [fullbar, setFullBar] = useState(false)
   // console.log(fullbar, 'fullbar')
   const [isloading, setIsLoading] = useState(false)
   console.log(isloading, 'isloading')
 
   const onCompelet = () => {
+    setIsLoading(false)
     setRedirect(true)
+  }
+  const startLoading = () => {
+    setIsLoading(true)
   }
   if (redirect) {
     return <Redirect exact push to='/searchresults' />
@@ -24,7 +27,7 @@ export const HomePage = () => {
   return (
     <>
       <HomePageHero />
-      <SearchBar done={onCompelet} isloading={isloading} fullbar={fullbar} />
+      <SearchBar done={onCompelet} fullbar={false} startLoading={startLoading} />
       {isloading ? <Spinning /> : <HomePageResults />}
     </>
   )

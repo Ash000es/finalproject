@@ -2,6 +2,7 @@ import { MyProvider, ProjectContext } from '../providers/Provider'
 import React, { useContext, useState } from 'react'
 import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities } from './Constants.js'
 import { requestPopularDest } from '../handlers/ApiHandler'
+import { maxTime } from 'date-fns/esm'
 
 // export const getRoomPicture = (resultsarray, hotelsarray) => {
 //   const [rooms] = project.results.hotels.rooms
@@ -54,31 +55,21 @@ export const showHomesOnly = (arr1, arr2, arr3) => {
     return false
   }
 }
-export const updatePrice = (arr1, arr2, arr3) => {
-  console.log(arr1, 'arr')
+// export const updatePrice = (arr1, arr2, arr3) => {
+// go through results and remove hotels that are not within the price range
+export const updatePrice = (min, max, resultsToFilter) => {
+  console.log('filtering holtes between ', min, max)
+  const results = resultsToFilter.filter(hotel => {
+    const hotelMinRate = Number(hotel.minRate)
+    const hotelMaxRate = Number(hotel.maxRate)
 
-  const min = arr1[0]
-  const max = arr1[1]
-
-  const status = arr1.every(function (element, index) {
-    return element === arr2[index]
+    if (hotelMinRate >= min && hotelMaxRate <= max) {
+      return hotel
+    }
   })
-  console.log(status, 'look at me')
-
-  if (!status) {
-    const results = arr3.filter(hotel => {
-      const hotelMinRate = parseInt(hotel.minRate, 10)
-      const hotelMaxRate = parseInt(hotel.maxRate, 10)
-
-      if (hotelMinRate >= min && hotelMaxRate <= max) {
-        return hotel
-      }
-    })
-    return results
-  } else {
-    return false
-  }
+  return results
 }
+
 export const sortbyPrice = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {

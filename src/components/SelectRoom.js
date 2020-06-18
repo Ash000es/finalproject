@@ -19,7 +19,7 @@ const SelectRoom = (props) => {
     return array
   }
   const res = mapAllot(allot)
-  console.log(props, 'props from rooms')
+
   return (
     <Form style={size}>
       <Form.Group onChange={props.onChange} controlId='exampleForm.SelectCustomSizeSm'>

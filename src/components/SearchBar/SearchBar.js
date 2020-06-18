@@ -21,7 +21,6 @@ const SearchBar = (props) => {
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
   const [state, setState] = useState(intialState)
-  const [fullbar, setFullBar] = useState(false)
   // console.log(fullbar, 'fullbar')
   const [isloading, setIsLoading] = useState(false)
   // console.log(isloading, 'isloading')
@@ -58,6 +57,8 @@ const SearchBar = (props) => {
   )
 
   const handleClickButton = () => {
+    // set loading to true
+    props.startLoading()
     const payLoad = { occupancies, destination, stay, reviews }
     // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
@@ -92,9 +93,6 @@ const SearchBar = (props) => {
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
-  const updatePriceSelection = (hotelsResults) => {
-    props.onChange(hotelsResults)
-  }
 
   return (
     <>
@@ -111,13 +109,13 @@ const SearchBar = (props) => {
         {/* </Link> */}
 
       </div>
-      <div className='SearchBarFilters'>
+      {props.fullbar && <div className='SearchBarFilters'>
 
         <PriceSlider onChange={props.onChange} />
         <AmenitiesSelect onChange={props.onChange} />
         <StarRatingFilter onChange={props.onClick} />
 
-      </div>
+                        </div>}
 
     </>
 
