@@ -17,6 +17,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import SelectRoom from '../components/SelectRoom'
 import { extras } from '../Helper/Constants'
 import { roomsCost } from '../Helper/Helper'
+import SelectExtra from '../components/SelectExtra'
 
 const useRowStyles = makeStyles({
   root: {
@@ -33,6 +34,8 @@ function Row (props) {
   const [open, setOpen] = React.useState(false)
   const classes = useRowStyles()
   const collectValues = (rate, roomName, event) => {
+    console.log(event, 'event for rooms')
+    console.log(rate, 'rate for rooms')
     const roomType = roomName
     const roomNumber = event.target.value
     const price = rate.mySellingRate
@@ -41,8 +44,8 @@ function Row (props) {
     // console.log(roomSelectionInfo, 'here iam')
     props.onChange(roomSelectionInfo)
   }
-  const collectExtrasValues = (e, extraRow) => {
-    console.log(e, extraRow, 'extras scope')
+  const collectExtrasValues = (event, extraRow) => {
+    console.log(event, extraRow, 'extras scope')
   }
 
   return (
@@ -94,11 +97,11 @@ function Row (props) {
                 </TableHead>
                 <TableBody>
                   {extras.map((extraRow) => (
-                    <TableRow key={extraRow.title} onChange={(e) => collectExtrasValues(extraRow, e)}>
+                    <TableRow key={extraRow.title} onChange={(e) => collectExtrasValues(extraRow, e, extraRow.title)}>
                       <TableCell component='th' scope='row'>
                         {extraRow.title}
                       </TableCell>
-                      <TableCell>{extraRow.price}</TableCell>
+                      <TableCell><SelectExtra extraRow={extraRow} />,</TableCell>
                       <TableCell align='right'>{extraRow.summary}</TableCell>
                       <TableCell align='right'>
                         {extraRow.price}

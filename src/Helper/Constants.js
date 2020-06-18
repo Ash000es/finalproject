@@ -1,6 +1,7 @@
 
 import StarRateIcon from '@material-ui/icons/StarRate'
 import React from 'react'
+import SelectRoom from '../components/SelectRoom'
 // homepage results const
 export const googleAPIKey = 'AIzaSyArQla27kHz9uEus_Zyhh-rDHhg6nYTXEs'
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleAPIKey}`
@@ -30,10 +31,10 @@ export const amenitiesToFilter = [
   'Pet friendly'
 ]
 export const extras = [
-  { title: 'Kings Breakfast ', price: 10, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
+  { title: 'Kings Breakfast ', price: 10, select: <SelectRoom />, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
 
-  { title: 'Double trouble', price: 20, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
-  { title: 'House Red', price: 30, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
+  { title: 'Double trouble', price: 20, select: <SelectRoom />, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
+  { title: 'House Red', price: 30, select: <SelectRoom />, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
 
 ]
 export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
