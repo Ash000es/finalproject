@@ -53,11 +53,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const HotelCardSearch = (props) => {
+  // console.log(props, 'props here')
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
-  const testfac = props.hotel.facilities
+  const [testfac, setTestFac] = useState(props.hotel.facilities)
+  // const testfac = props.hotel.facilities
   // console.log(testfac, 'before')
+
+  // console.log(testfac.length, 'look here')
 
   const toMap = removeDuplicates(testfac)
   // console.log(toMap, 'after')

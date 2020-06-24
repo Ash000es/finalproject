@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities } from './Constants.js'
 import { requestPopularDest } from '../handlers/ApiHandler'
 import { maxTime } from 'date-fns/esm'
+import { OmitProps } from 'antd/lib/transfer/ListBody'
 
 // export const getRoomPicture = (resultsarray, hotelsarray) => {
 //   const [rooms] = project.results.hotels.rooms
@@ -22,7 +23,17 @@ import { maxTime } from 'date-fns/esm'
 // }
 
 // }
-
+export function debounce (func, wait) {
+  let timeout
+  return function (...args) {
+    const context = this
+    if (timeout) clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      timeout = null
+      func.apply(context, args)
+    }, wait)
+  }
+}
 export const updateStarRatings = (arr1, arr2) => {
   const res = arr1.filter(hotel => !arr2.includes(hotel.categoryName))
   return res
@@ -74,7 +85,7 @@ export const sortbyPrice = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {
     console.log('sorting price..')
-    return a.minRate - b.minRate
+    return Number(a.minRate) - Number(b.minRate)
   })
 }
 
@@ -82,11 +93,12 @@ export const sortByReview = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {
     console.log('sorting review..')
-    return parseFloat(b.reviews[0].rate) - parseFloat(a.reviews[0].rate) || parseFloat(b.reviews[0].reviewCount) - parseFloat(a.reviews[0].reviewCount)
+    return Number(b.reviews[0].rate) - Number(a.reviews[0].rate) || Number(b.reviews[0].reviewCount) - Number(a.reviews[0].reviewCount)
   })
 }
 
 export const getAmenitiesArray = (arr1, arr2) => {
+  // console.log(arr1, arr2, 'array')
   const finalArray = []
   const arr3 = arr1.filter(item => item.facilityGroupCode === 70)
   const arr4 = arr2.filter(item => item.FacilityGroupCode === 70)

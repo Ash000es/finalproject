@@ -42,3 +42,60 @@ export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <St
 export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/'
 export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/original/'
+export const objectToMap = [{
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}, {
+  image: 'https://source.unsplash.com/random',
+  headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
+  descripText: 'nothing yet',
+  price: 32
+
+}
+
+]

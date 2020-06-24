@@ -57,7 +57,10 @@ const SearchBar = (props) => {
   )
 
   const handleClickButton = () => {
-    // set loading to true
+    setProject(
+      { ...project, results: [] }
+    )
+    console.log(project, 'results here')
     props.startLoading()
     const payLoad = { occupancies, destination, stay, reviews }
     // console.log(payLoad, 'payload')
@@ -115,7 +118,7 @@ const SearchBar = (props) => {
         <AmenitiesSelect onChange={props.onChange} />
         <StarRatingFilter onChange={props.onClick} />
 
-                        </div>}
+      </div>}
 
     </>
 

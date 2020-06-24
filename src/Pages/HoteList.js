@@ -32,11 +32,14 @@ export const HotelList = () => {
   const [hasmore, setHasMore] = useState(true)
   const [isloading, setIsLoading] = useState(false)
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
+  const [filter, setFilter] = useState(false)
   console.log(hotelsresults, 'results to dispaly')
   console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
+  console.log(filter, 'filter status')
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
+  // console.log(allHotelsResults, 'lol')
   const googleLandingLat = allHotelsResults[0].latitude
   const googleLandingLong = allHotelsResults[0].longitude
 
@@ -63,25 +66,15 @@ export const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
-  const handleSort = (sortByValue) => {
-    console.log(sortByValue, 'value')
-    if (sortByValue === 'Sortby Price') {
-      const res = sortbyPrice(tempfilteredhotels, hotelsresults)
-      console.log(res, 'by price')
-      setTempFilteredHotels(res)
-    } else if (sortByValue === 'Sortby review') {
-      const res2 = sortByReview(tempfilteredhotels, hotelsresults)
-      console.log(res2, 'by reviews')
-      setTempFilteredHotels(res2)
-    }
-  }
 
   const handleFilteredHomes = () => {
     const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
     if (res) {
       setTempFilteredHotels(res)
+      setFilter(true)
     } else {
       setTempFilteredHotels([])
+      setFilter(false)
     }
   }
 
@@ -90,8 +83,10 @@ export const HotelList = () => {
     const res = showHotelsOnly(tempfilteredhotels, hotelsresults, vcCodes)
     if (res) {
       setTempFilteredHotels(res)
+      setFilter(true)
     } else {
       setTempFilteredHotels([])
+      setFilter(false)
     }
   }
 
@@ -99,8 +94,10 @@ export const HotelList = () => {
     const res = updateStarRatings(hotelsresults, proby)
     if (res) {
       setTempFilteredHotels(res)
+      setFilter(true)
     } else {
       setTempFilteredHotels([])
+      setFilter(false)
     }
   }
   const updateAmenSelection = (arr) => {
@@ -111,16 +108,18 @@ export const HotelList = () => {
     // if the slider has not changed
     if (sliderrange[0] === DEFAULT_SLIDER_VALUE[0] && sliderrange[1] === DEFAULT_SLIDER_VALUE[1]) {
       setTempFilteredHotels([])
+      setFilter(false)
       return
     }
     const res = updatePrice(sliderrange[0], sliderrange[1], hotelsresults)
     // console.log(res, 'am I true or false')
 
     setTempFilteredHotels(res)
+    setFilter(true)
   }
 
   const resultsToMap = (arr1, arr) => {
-    if (arr1.length >= 1) {
+    if (filter) {
       return arr1
     } else {
       return arr
@@ -128,16 +127,29 @@ export const HotelList = () => {
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
   console.log(valueToMap, 'value to map')
+  const handleSort = (sortByValue) => {
+    console.log(sortByValue, 'value')
+    if (sortByValue === 'Sortby Price') {
+      const res = sortbyPrice(tempfilteredhotels, hotelsresults)
+      console.log(res, 'by price')
+      setTempFilteredHotels(res)
+    } else if (sortByValue === 'Sortby review') {
+      const res2 = sortByReview(tempfilteredhotels, hotelsresults)
+      console.log(res2, 'by reviews')
+
+      setTempFilteredHotels(res2)
+    }
+  }
 
   return (
 
     <div>
       <InfiniteScroll
-        dataLength={hotelsresults.length}
+        dataLength={valueToMap.length}
         next={fetchMoreData}
-        hasMore={hotelsresults.length < allHotelsResults.length}
-        loader={tempfilteredhotels.length >= 1 ? null : <h4>Loading...</h4>}
-        scrollThreshold={0.5}
+        hasMore={valueToMap.length < allHotelsResults.length}
+        // loader={valueToMap.length >= 1 ? null : <h4>Loading...</h4>}
+        scrollThreshold={0.8}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>

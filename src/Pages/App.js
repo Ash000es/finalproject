@@ -17,6 +17,7 @@ import getSteps from '../components/PaymentCout/Stepper'
 import { HotelList } from './HoteList'
 import { testing } from '../components/Test'
 import { LoginButton } from '../components/LoginButton'
+import ShoppingCart from '../components/ShoppingCard'
 
 function App (props) {
   // const [errormessage, setErrorMessage] = useState('')
@@ -105,7 +106,7 @@ function App (props) {
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
               <Route path='/reviewcart' excat component={getSteps} />
-
+              <Route path='/Travelessentials' exact component={ShoppingCart} />
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />
 
