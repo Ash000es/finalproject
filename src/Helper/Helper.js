@@ -23,19 +23,11 @@ import { OmitProps } from 'antd/lib/transfer/ListBody'
 // }
 
 // }
-export function debounce (func, wait) {
-  let timeout
-  return function (...args) {
-    const context = this
-    if (timeout) clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      timeout = null
-      func.apply(context, args)
-    }, wait)
-  }
-}
-export const updateStarRatings = (arr1, arr2) => {
-  const res = arr1.filter(hotel => !arr2.includes(hotel.categoryName))
+
+export const updateStarRatings = (arr1, arr2, arr3) => {
+  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
+  const res = valueToFilter.filter(hotel => !arr3.includes(hotel.categoryName))
+  console.log(res, 'filtrest hotels with star rating')
   return res
 }
 export const readyTheArgument = (propey) => {
@@ -47,28 +39,24 @@ export const readyTheArgument = (propey) => {
   }
 }
 export const showHotelsOnly = (arr1, arr2, arr3) => {
-  if (arr1.length < 1) {
-    const res = arr2.filter(hotel => !arr3.includes(hotel.categoryCode))
-    // console.log(res, 'filtrest')
+  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
 
-    return res
-  } else {
-    return false
-  }
+  const res = valueToFilter.filter(hotel => !arr3.includes(hotel.categoryCode))
+  // console.log(res, 'filtrest hotels only')
+
+  return res
 }
 export const showHomesOnly = (arr1, arr2, arr3) => {
-  if (arr1.length < 1) {
-    const res = arr2.filter(hotel => !arr3.includes(hotel.categoryCode))
-    // console.log(res, 'filtrest')
+  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
+  const res = valueToFilter.filter(hotel => !arr3.includes(hotel.categoryCode))
+  // console.log(res, 'filtrest homes only')
 
-    return res
-  } else {
-    return false
-  }
+  return res
 }
 // export const updatePrice = (arr1, arr2, arr3) => {
 // go through results and remove hotels that are not within the price range
-export const updatePrice = (min, max, resultsToFilter) => {
+export const updatePrice = (min, max, arr1, arr2) => {
+  const resultsToFilter = arr1.length >= 1 ? arr1 : arr2
   console.log('filtering holtes between ', min, max)
   const results = resultsToFilter.filter(hotel => {
     const hotelMinRate = Number(hotel.minRate)
