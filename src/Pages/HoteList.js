@@ -14,7 +14,7 @@ import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly, readyTheArgument, updateStarRatings, sortbyPrice, sortByReview } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview } from '../Helper/Helper'
 import { vcCodes, hotelcodes } from '../Helper/Constants'
 
 const style = {
@@ -22,6 +22,13 @@ const style = {
   border: '1px solid green',
   margin: 6,
   padding: 8
+}
+const initialFilterState = {
+  hotelsOnly: false,
+  villasOnly: false,
+  starRating: [],
+  priceFilter: [0, 300],
+  sortBy: ''
 }
 
 export const HotelList = () => {
@@ -32,9 +39,11 @@ export const HotelList = () => {
   const [hasmore, setHasMore] = useState(true)
   const [isloading, setIsLoading] = useState(false)
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
+  const [filters, setFilters] = useState(initialFilterState)
+  const [filterHistory, setFilterHistory] = useState([])
 
-  console.log(hotelsresults, 'results to dispaly')
-  console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
+  // console.log(hotelsresults, 'results to dispaly')
+  // console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
@@ -65,34 +74,89 @@ export const HotelList = () => {
   if (redirect) {
     return <Redirect exact push to='/hotelpage' />
   }
-
+  // ture= on false= off villasOnly
   const handleFilteredHomes = () => {
-    const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
-    setTempFilteredHotels(res)
-  }
+    const change = { ...filters, villasOnly: !filters.villasOnly }
+    setFilters(change)
+    setFilterHistory([...filterHistory, change])
+    filterAll()
 
+    // const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
+    // setTempFilteredHotels(res)
+  }
+  // ture= on false= off hotelsOnly
   const handleFilteredHotels = (e) => {
-    const res = showHotelsOnly(tempfilteredhotels, hotelsresults, vcCodes)
-    setTempFilteredHotels(res)
+    const change = { ...filters, hotelsOnly: !filters.hotelsOnly }
+    setFilters(change)
+    setFilterHistory([...filterHistory, change])
+    filterAll()
+    //
+    // setFilters({ ...filters, hotelsOnly: true })
+    // setTempFilteredHotels(res)
   }
+  const filterAll = () => {
+    console.log(filterHistory, 'hostopry')
+    console.log(filters, 'filters ')
+    let res
 
-  const updateStarRating = (proby) => {
-    const res = updateStarRatings(tempfilteredhotels, hotelsresults, proby)
-
-    setTempFilteredHotels(res)
-  }
-
-  const updatePriceResults = (sliderrange) => {
-    // if the slider has not changed
-    if (sliderrange[0] === DEFAULT_SLIDER_VALUE[0] && sliderrange[1] === DEFAULT_SLIDER_VALUE[1]) {
-      // setTempFilteredHotels([])
-
-      return
+    if (filters.hotelsOnly) {
+      res = showHotelsOnly(tempfilteredhotels, hotelsresults, vcCodes)
     }
-    const res = updatePrice(sliderrange[0], sliderrange[1], tempfilteredhotels, hotelsresults)
-    // console.log(res, 'am I true or false')
+    if (!filters.hotelsOnly) {
+      res = hotelsresults
+    }
 
-    setTempFilteredHotels(res)
+    if (filters.starRating.includes('3 STARS') || filters.starRating.includes('4 STARS') || filters.starRating.includes('5 STARS')) {
+      const res = updateStarRatings(tempfilteredhotels, hotelsresults, filters.starRating)
+    }
+    // setTempFilteredHotels(res)
+  }
+
+  // ["3 STARS", "4 STARS"] starRatings
+  const updateStarRating = (proby) => {
+    console.log(proby, 'here')
+    const change = { ...filters, starRating: proby }
+    setFilters(change)
+    setFilterHistory([...filterHistory, change])
+    filterAll()
+
+    // setTempFilteredHotels(res)
+  }
+  // [2, 100] priceFilter
+  const updatePriceResults = (sliderrange) => {
+    const change = { ...filters, priceFilter: sliderrange }
+    setFilters(change)
+    setFilterHistory([...filterHistory, change])
+    filterAll()
+    // if the slider has not changed
+    // if (sliderrange[0] === DEFAULT_SLIDER_VALUE[0] && sliderrange[1] === DEFAULT_SLIDER_VALUE[1]) {
+    //   // setTempFilteredHotels([])
+
+    //   return
+    // }
+    // const res = updatePrice(sliderrange[0], sliderrange[1], tempfilteredhotels, hotelsresults)
+    // // console.log(res, 'am I true or false')
+
+    // setTempFilteredHotels(res)
+  }
+  // 'Sortby Price','Sortby review', sortBy
+  const handleSort = (sortByValue) => {
+    const change = { ...filters, sortBy: sortByValue }
+    setFilters(change)
+    setFilterHistory([...filterHistory, change])
+    filterAll()
+
+    // console.log(sortByValue, 'value')
+    // if (sortByValue === 'Sortby Price') {
+    //   const res = sortbyPrice(tempfilteredhotels, hotelsresults)
+    //   console.log(res, 'by price')
+    //   setTempFilteredHotels(res)
+    // } else if (sortByValue === 'Sortby review') {
+    //   const res2 = sortByReview(tempfilteredhotels, hotelsresults)
+    //   console.log(res2, 'by reviews')
+
+    //   setTempFilteredHotels(res2)
+    // }
   }
 
   const resultsToMap = (arr1, arr) => {
@@ -103,21 +167,8 @@ export const HotelList = () => {
     }
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
-  console.log(valueToMap, 'value to map')
+  // console.log(valueToMap, 'value to map')
 
-  const handleSort = (sortByValue) => {
-    console.log(sortByValue, 'value')
-    if (sortByValue === 'Sortby Price') {
-      const res = sortbyPrice(tempfilteredhotels, hotelsresults)
-      console.log(res, 'by price')
-      setTempFilteredHotels(res)
-    } else if (sortByValue === 'Sortby review') {
-      const res2 = sortByReview(tempfilteredhotels, hotelsresults)
-      console.log(res2, 'by reviews')
-
-      setTempFilteredHotels(res2)
-    }
-  }
   const updateAmenSelection = (arr) => {
     // function here
   }

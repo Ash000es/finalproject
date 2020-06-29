@@ -28,6 +28,7 @@ const HotelPage = () => {
   const readyAmenities = getAmenitiesArray(toMap, amenities)
   const size = { width: '200px' }
   const roomy = currentSelection.rooms.map(room => room)
+  console.log(project)
 
   const selectionWrapper = (showme) => {
     const roomSelectionInfo = showme.rateKey ? showme : null

@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 // import ReactDOM from 'react-dom'
 import 'antd/dist/antd.css'
 // import './index.css'
 import { Drawer, Button } from 'antd'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 
 export const CartDrawer = (props) => {
   const [visible, setVisible] = useState(false)
   const extrasCartItems = props.totalSelectedExtrasInfo
   const roomssCartItems = props.totalSelectedRoomsInfo
+  const { project, setProject } = useContext(ProjectContext)
+  console.log(project)
 
   const showDrawer = () => {
     setVisible(true)
@@ -15,6 +18,10 @@ export const CartDrawer = (props) => {
 
   const onClose = () => {
     setVisible(false)
+  }
+
+  const deletItem = () => {
+
   }
   const style = { width: 350 }
 
@@ -33,7 +40,7 @@ export const CartDrawer = (props) => {
       >
         {roomssCartItems && roomssCartItems.map((room, i) => {
           return (
-            <div key={i} room={room}>
+            <div key={i} room={room} onClick={() => deletItem(room)}>
               <p>{room.roomType}</p>
               <p>{room.mySellingRate}</p>
             </div>
