@@ -66,11 +66,14 @@ const PrettoSlider = withStyles({
 export default function PriceSlider (props) {
   const classes = useStyles()
   const [sliderPrice, setSliderPrice] = useState(DEFAULT_SLIDER_VALUE)
+
+  const debouncedOnChange = debounce((v) => {
+    console.log('debounce called')
+    props.onChange(v)
+  }, 2000)
   const onChangeSlider = (v) => {
-    const debouncedOnChange = debounce(() => {
-      props.onChange(v)
-    }, 2000)
-    debouncedOnChange()
+    console.log('onchange slider called')
+    debouncedOnChange(v)
   }
 
   return (

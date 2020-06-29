@@ -23,11 +23,14 @@ const style = {
   margin: 6,
   padding: 8
 }
+
+const PRICE_FILTER_MIN = 0
+const PRICE_FILTER_MAX = 330
 const initialFilterState = {
   hotelsOnly: false,
   villasOnly: false,
   starRating: [],
-  priceFilter: [0, 300],
+  priceFilter: [PRICE_FILTER_MIN, PRICE_FILTER_MAX],
   sortBy: ''
 }
 
@@ -40,10 +43,9 @@ export const HotelList = () => {
   const [isloading, setIsLoading] = useState(false)
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
   const [filters, setFilters] = useState(initialFilterState)
-  const [filterHistory, setFilterHistory] = useState([])
 
-  // console.log(hotelsresults, 'results to dispaly')
-  // console.log(tempfilteredhotels, 'tempfilteredhotels to dispaly')
+  console.log('hotelsresults', hotelsresults)
+  console.log('tempfilteredhotels', tempfilteredhotels)
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
@@ -77,57 +79,54 @@ export const HotelList = () => {
   // ture= on false= off villasOnly
   const handleFilteredHomes = () => {
     const change = { ...filters, villasOnly: !filters.villasOnly }
-    setFilters(change)
-    setFilterHistory([...filterHistory, change])
-    filterAll()
-
-    // const res = showHomesOnly(tempfilteredhotels, hotelsresults, hotelcodes)
-    // setTempFilteredHotels(res)
+    filterAll(change)
   }
   // ture= on false= off hotelsOnly
   const handleFilteredHotels = (e) => {
     const change = { ...filters, hotelsOnly: !filters.hotelsOnly }
-    setFilters(change)
-    setFilterHistory([...filterHistory, change])
-    filterAll()
-    //
-    // setFilters({ ...filters, hotelsOnly: true })
-    // setTempFilteredHotels(res)
+    filterAll(change)
   }
-  const filterAll = () => {
-    console.log(filterHistory, 'hostopry')
-    console.log(filters, 'filters ')
-    let res
 
+  const filterAll = (filters) => {
+    // start by setting it to neutral
+    let res = hotelsresults
+
+    // begin applying all special cases of filters that are ON
     if (filters.hotelsOnly) {
-      res = showHotelsOnly(tempfilteredhotels, hotelsresults, vcCodes)
+      res = showHotelsOnly(res, hotelsresults, vcCodes)
     }
-    if (!filters.hotelsOnly) {
-      res = hotelsresults
+    if (filters.villasOnly) {
+      res = showHomesOnly(res, hotelsresults, vcCodes)
     }
-
     if (filters.starRating.includes('3 STARS') || filters.starRating.includes('4 STARS') || filters.starRating.includes('5 STARS')) {
-      const res = updateStarRatings(tempfilteredhotels, hotelsresults, filters.starRating)
+      res = updateStarRatings(res, hotelsresults, filters.starRating)
     }
-    // setTempFilteredHotels(res)
+    if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
+      res = updatePrice(filters.priceFilter[0], filters.priceFilter[1], res, hotelsresults)
+    }
+    if (filters.sortBy === 'Sortby Price') {
+      res = sortbyPrice(res, hotelsresults)
+    }
+    if (filters.sortBy === 'Sortby review') {
+      res = sortByReview(res, hotelsresults)
+    }
+    setTempFilteredHotels(res)
+    setFilters(filters)
   }
 
   // ["3 STARS", "4 STARS"] starRatings
   const updateStarRating = (proby) => {
     console.log(proby, 'here')
     const change = { ...filters, starRating: proby }
-    setFilters(change)
-    setFilterHistory([...filterHistory, change])
-    filterAll()
+    filterAll(change)
 
     // setTempFilteredHotels(res)
   }
   // [2, 100] priceFilter
   const updatePriceResults = (sliderrange) => {
     const change = { ...filters, priceFilter: sliderrange }
-    setFilters(change)
-    setFilterHistory([...filterHistory, change])
-    filterAll()
+    filterAll(change)
+
     // if the slider has not changed
     // if (sliderrange[0] === DEFAULT_SLIDER_VALUE[0] && sliderrange[1] === DEFAULT_SLIDER_VALUE[1]) {
     //   // setTempFilteredHotels([])
@@ -142,9 +141,7 @@ export const HotelList = () => {
   // 'Sortby Price','Sortby review', sortBy
   const handleSort = (sortByValue) => {
     const change = { ...filters, sortBy: sortByValue }
-    setFilters(change)
-    setFilterHistory([...filterHistory, change])
-    filterAll()
+    filterAll(change)
 
     // console.log(sortByValue, 'value')
     // if (sortByValue === 'Sortby Price') {
