@@ -26,7 +26,7 @@ import { OmitProps } from 'antd/lib/transfer/ListBody'
 
 export const updateStarRatings = (arr1, arr2, arr3) => {
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
-  const res = valueToFilter.filter(hotel => !arr3.includes(hotel.categoryName))
+  const res = valueToFilter.filter(hotel => arr3.includes(hotel.categoryName))
   console.log(res, 'filtrest hotels with star rating')
   return res
 }

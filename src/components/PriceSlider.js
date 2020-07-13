@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
 import HomePageResults from './HomePageResults/HomepageResults'
 import { debounce } from 'debounce'
-export const DEFAULT_SLIDER_VALUE = [0, 300]
+export const DEFAULT_SLIDER_VALUE = [0, 1000]
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -82,7 +82,7 @@ export default function PriceSlider (props) {
       <div className={classes.margin} />
       <Typography gutterBottom>Price Slider</Typography>
 
-      <PrettoSlider max={300} onChange={(_, v) => onChangeSlider(v)} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider max={1000} onChange={(_, v) => onChangeSlider(v)} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
 
   )

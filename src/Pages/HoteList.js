@@ -25,7 +25,7 @@ const style = {
 }
 
 const PRICE_FILTER_MIN = 0
-const PRICE_FILTER_MAX = 330
+const PRICE_FILTER_MAX = 1000
 const initialFilterState = {
   hotelsOnly: false,
   villasOnly: false,
@@ -46,6 +46,7 @@ export const HotelList = () => {
 
   console.log('hotelsresults', hotelsresults)
   console.log('tempfilteredhotels', tempfilteredhotels)
+  console.log(filters, 'filters status')
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
@@ -96,7 +97,7 @@ export const HotelList = () => {
       res = showHotelsOnly(res, hotelsresults, vcCodes)
     }
     if (filters.villasOnly) {
-      res = showHomesOnly(res, hotelsresults, vcCodes)
+      res = showHomesOnly(res, hotelsresults, hotelcodes)
     }
     if (filters.starRating.includes('3 STARS') || filters.starRating.includes('4 STARS') || filters.starRating.includes('5 STARS')) {
       res = updateStarRatings(res, hotelsresults, filters.starRating)
