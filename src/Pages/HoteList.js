@@ -14,7 +14,7 @@ import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended } from '../Helper/Helper'
 import { vcCodes, hotelcodes } from '../Helper/Constants'
 
 const style = {
@@ -111,6 +111,9 @@ export const HotelList = () => {
     if (filters.sortBy === 'Sortby review') {
       res = sortByReview(res, hotelsresults)
     }
+    if (filters.sortBy === 'Sortby recommended') {
+      res = sortByRecommended(res, hotelsresults)
+    }
     setTempFilteredHotels(res)
     setFilters(filters)
   }
@@ -127,34 +130,11 @@ export const HotelList = () => {
   const updatePriceResults = (sliderrange) => {
     const change = { ...filters, priceFilter: sliderrange }
     filterAll(change)
-
-    // if the slider has not changed
-    // if (sliderrange[0] === DEFAULT_SLIDER_VALUE[0] && sliderrange[1] === DEFAULT_SLIDER_VALUE[1]) {
-    //   // setTempFilteredHotels([])
-
-    //   return
-    // }
-    // const res = updatePrice(sliderrange[0], sliderrange[1], tempfilteredhotels, hotelsresults)
-    // // console.log(res, 'am I true or false')
-
-    // setTempFilteredHotels(res)
   }
   // 'Sortby Price','Sortby review', sortBy
   const handleSort = (sortByValue) => {
     const change = { ...filters, sortBy: sortByValue }
     filterAll(change)
-
-    // console.log(sortByValue, 'value')
-    // if (sortByValue === 'Sortby Price') {
-    //   const res = sortbyPrice(tempfilteredhotels, hotelsresults)
-    //   console.log(res, 'by price')
-    //   setTempFilteredHotels(res)
-    // } else if (sortByValue === 'Sortby review') {
-    //   const res2 = sortByReview(tempfilteredhotels, hotelsresults)
-    //   console.log(res2, 'by reviews')
-
-    //   setTempFilteredHotels(res2)
-    // }
   }
 
   const resultsToMap = (arr1, arr) => {
@@ -165,7 +145,6 @@ export const HotelList = () => {
     }
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
-  // console.log(valueToMap, 'value to map')
 
   const updateAmenSelection = (arr) => {
     // function here

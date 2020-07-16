@@ -76,6 +76,13 @@ export const sortbyPrice = (arr1, arr2) => {
     return Number(a.minRate) - Number(b.minRate)
   })
 }
+export const sortByRecommended = (arr1, arr2) => {
+  const valueToSort = arr1.length >= 1 ? arr1 : arr2
+  return valueToSort.sort(function (a, b) {
+    console.log('sorting recommended..')
+    return Number(b.reviews[0].rate) - Number(a.reviews[0].rate) || Number(a.minRate) - Number(b.minRate)
+  })
+}
 
 export const sortByReview = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
