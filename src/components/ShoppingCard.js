@@ -14,6 +14,9 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 320,
     maxHeight: 650
+  },
+  media: {
+    height: 450
   }
 })
 
@@ -21,7 +24,7 @@ const ShoppingCard = () => {
   const classes = useStyles()
 
   return (
-    <>
+    <div className='container'>
       {
         objectToMap.map((objy, i) => {
           return (
@@ -30,11 +33,9 @@ const ShoppingCard = () => {
               <CardActionArea>
                 <CardMedia
                   component='img'
-                  alt='Contemplative Reptile'
-                  height='140'
+                  className={classes.media}
                   image={objy.image}
-                  title='Contemplative Reptile'
-                  style={{ height: 450 }}
+
                 />
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='h2'>
@@ -57,7 +58,7 @@ const ShoppingCard = () => {
           )
         })
       }
-    </>
+    </div>
   )
 }
 export default ShoppingCard
