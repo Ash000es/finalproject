@@ -15,7 +15,7 @@ import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
 import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended } from '../Helper/Helper'
-import { vcCodes, hotelcodes } from '../Helper/Constants'
+import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
 
 const style = {
   height: 30,

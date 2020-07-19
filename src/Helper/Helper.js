@@ -95,8 +95,8 @@ export const sortByReview = (arr1, arr2) => {
 export const getAmenitiesArray = (arr1, arr2) => {
   // console.log(arr1, arr2, 'array')
   const finalArray = []
-  const arr3 = arr1.filter(item => item.facilityGroupCode === 70)
-  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70)
+  const arr3 = arr1.filter(item => item.facilityGroupCode === 70 || 60 || 71 || 74 || 80)
+  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70 || 60 || 71 || 74 || 80)
   const final = arr3.forEach(itemAPI => arr4.forEach(itemHardCode => {
     if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
       finalArray.push(itemHardCode)

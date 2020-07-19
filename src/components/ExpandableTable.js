@@ -40,7 +40,7 @@ function Row (props) {
     // console.log(price, 'shoiuld be realp')
     const totalSelectionPrice = roomsCost(price, roomNumber)
     const roomSelectionInfo = { ...rate, roomType, roomNumber, totalSelectionPrice }
-    console.log(roomSelectionInfo, 'here iam')
+    // console.log(roomSelectionInfo, 'here iam')
     props.onChange(roomSelectionInfo)
   }
   const collectExtrasValues = (extraRow, e) => {

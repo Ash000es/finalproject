@@ -99,3 +99,146 @@ export const objectToMap = [{
 }
 
 ]
+export const amenCodes = [
+  {
+    FacilityCode: 130,
+    FacilityGroupCode: 71,
+    icon: 3,
+    name: 'Bar'
+
+  },
+  {
+    FacilityCode: 306,
+    FacilityGroupCode: 60,
+    icon: 29,
+    name: 'Outdoor swimming pool'
+
+  },
+  {
+    FacilityCode: 326,
+    FacilityGroupCode: 60,
+    icon: 8,
+    name: 'Private Pool'
+
+  },
+  {
+    FacilityCode: 250,
+    FacilityGroupCode: 70,
+    icon: 22,
+    name: 'Wired Internet'
+
+  },
+  {
+    FacilityCode: 100,
+    FacilityGroupCode: 60,
+    icon: 22,
+    name: 'Internet access'
+
+  },
+  {
+    FacilityCode: 460,
+    FacilityGroupCode: 74,
+    icon: 12,
+    name: 'Spa treatments'
+
+  },
+  {
+    FacilityCode: 620,
+    FacilityGroupCode: 74,
+    icon: 30,
+    name: 'Spa centre'
+
+  },
+  {
+    FacilityCode: 200,
+    FacilityGroupCode: 71,
+    icon: 8,
+    name: 'Restaurant'
+
+  },
+  {
+    FacilityCode: 270,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: 'Room service'
+
+  },
+  {
+    FacilityCode: 180,
+    FacilityGroupCode: 60,
+    icon: 24,
+    name: 'Individually adjustable air conditioning'
+
+  },
+  {
+    FacilityCode: 535,
+    FacilityGroupCode: 70,
+    icon: 22,
+    name: 'Small pets allowed (under 5 kg)'
+
+  },
+  {
+    FacilityCode: 540,
+    FacilityGroupCode: 70,
+    icon: 22,
+    name: 'Large pets allowed (over 5 kg)'
+
+  },
+  {
+    FacilityCode: 55,
+    FacilityGroupCode: 60,
+    icon: 12,
+    name: 'TV'
+
+  },
+  {
+    FacilityCode: 288,
+    FacilityGroupCode: 60,
+    icon: 3,
+    name: 'Satellite TV '
+
+  },
+  {
+    FacilityCode: 289,
+    FacilityGroupCode: 60,
+    icon: 3,
+    name: 'Cable TV'
+
+  },
+  {
+    FacilityCode: 35,
+    FacilityGroupCode: 80,
+    icon: 31,
+    name: 'Continental breakfast'
+
+  },
+  {
+    FacilityCode: 180,
+    FacilityGroupCode: 80,
+    icon: 3,
+    name: 'Hot breakfast'
+
+  },
+  {
+    FacilityCode: 264,
+    FacilityGroupCode: 80,
+    icon: 3,
+    name: 'Breakfast a la carte'
+
+  },
+  {
+    FacilityCode: 30,
+    FacilityGroupCode: 80,
+    icon: 31,
+    name: 'Breakfast buffet'
+
+  },
+  {
+    FacilityCode: 470,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: 'Gym'
+
+  }
+
+]

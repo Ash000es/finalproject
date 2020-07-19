@@ -16,18 +16,15 @@ const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
   const [totalSelectedRoomsInfo, setTotalSelectedRoomsInfo] = useState([])
   const [totalSelectedExtrasInfo, setTotalSelectedExtrasInfo] = useState([])
-  console.log(totalSelectedRoomsInfo, 'totalSelectedRoomsInfo')
-  console.log(totalSelectedExtrasInfo, 'totalSelectedextrassInfo')
+  // console.log(totalSelectedRoomsInfo, 'totalSelectedRoomsInfo')
+  // console.log(totalSelectedExtrasInfo, 'totalSelectedextrassInfo')
   const [extrasnum, setExtrasNum] = useState([])
   const [extraspricearr, setExtrasPriceArr] = useState([])
   const [redirect, setRedirect] = useState(false)
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
-  console.log(roomsnum, roomspricearr, 'rooms price and number ')
-  console.log(extrasnum, extraspricearr, 'extra price and number ')
   const currentSelection = project.currentHotel
   const toMap = currentSelection.facilities
-  const readyAmenities = getAmenitiesArray(toMap, amenities)
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
@@ -35,9 +32,9 @@ const HotelPage = () => {
   const roomy = currentSelection.rooms.map(room => room)
   console.log(project, 'project')
   const cartItems = project.cartItems
+  const readyAmenities = getAmenitiesArray(toMap, amenities)
 
   const selectionWrapper = (showme) => {
-    console.log(showme, 'showme')
     const roomSelectionInfo = showme.rateKey ? showme : null
     const ExtrasSelectionInfo = showme.summary ? showme : null
 
@@ -53,7 +50,6 @@ const HotelPage = () => {
     setTotalSelectedRoomsInfo(totalSelectedRoomsInfo.concat(newRoomSelectionInfo))
   }
   const displaySelectedExtrasInfo = (ExtrasSelectionInfo) => {
-    console.log(ExtrasSelectionInfo, 'iam extra in hotelpage')
     const num = ExtrasSelectionInfo.extraSelectionNum
     const ExtraPrice = num * ExtrasSelectionInfo.price
     setExtrasNum(extrasnum.concat(num))
