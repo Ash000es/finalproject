@@ -176,6 +176,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
     const insertDates = hotelsOnly.map(hotel => {
       const hotelRoom = hotel.rooms.map(room => {
         const roomRatesArray = room.rates.map(rate => {
+          // const numberOfRooms = rate.roomNumber
           const mySellingRate = (rate.net * 113) / 100
           const newRateObject = { ...rate, mySellingRate }
           // console.log(newRateObject, 'new rate')

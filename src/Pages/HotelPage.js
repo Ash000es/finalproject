@@ -18,19 +18,26 @@ const HotelPage = () => {
   const [totalSelectedExtrasInfo, setTotalSelectedExtrasInfo] = useState([])
   console.log(totalSelectedRoomsInfo, 'totalSelectedRoomsInfo')
   console.log(totalSelectedExtrasInfo, 'totalSelectedextrassInfo')
-  const [extrassnum, setExtrasNum] = useState([])
-  const [extrasspricearr, setExtrasPriceArr] = useState([])
+  const [extrasnum, setExtrasNum] = useState([])
+  const [extraspricearr, setExtrasPriceArr] = useState([])
   const [redirect, setRedirect] = useState(false)
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
+  console.log(roomsnum, roomspricearr, 'rooms price and number ')
+  console.log(extrasnum, extraspricearr, 'extra price and number ')
   const currentSelection = project.currentHotel
   const toMap = currentSelection.facilities
   const readyAmenities = getAmenitiesArray(toMap, amenities)
+  const checkinDate = currentSelection.checkInDate
+  const checkoutDate = currentSelection.checkInOut
+  const hotelName = currentSelection.name
   const size = { width: '200px' }
   const roomy = currentSelection.rooms.map(room => room)
-  console.log(project)
+  console.log(project, 'project')
+  const cartItems = project.cartItems
 
   const selectionWrapper = (showme) => {
+    console.log(showme, 'showme')
     const roomSelectionInfo = showme.rateKey ? showme : null
     const ExtrasSelectionInfo = showme.summary ? showme : null
 
@@ -38,24 +45,25 @@ const HotelPage = () => {
     ExtrasSelectionInfo && displaySelectedExtrasInfo(ExtrasSelectionInfo)
   }
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
-    const num = parseFloat(roomSelectionInfo.roomNumber)
-    const price = roomSelectionInfo.mySellingRate ? parseFloat(roomSelectionInfo.mySellingRate) : parseFloat(roomSelectionInfo.totalSelectionPrice)
+    const num = Number(roomSelectionInfo.roomNumber)
+    const price = roomSelectionInfo.totalSelectionPrice
+    const newRoomSelectionInfo = { ...roomSelectionInfo, image: 'https://source.unsplash.com/random', checkinDate, checkoutDate, hotelName }
     setRoomsNum(roomsnum.concat(num))
     setRoomsPriceArr(roomspricearr.concat(price))
-    setTotalSelectedRoomsInfo(totalSelectedRoomsInfo.concat(roomSelectionInfo))
+    setTotalSelectedRoomsInfo(totalSelectedRoomsInfo.concat(newRoomSelectionInfo))
   }
   const displaySelectedExtrasInfo = (ExtrasSelectionInfo) => {
     console.log(ExtrasSelectionInfo, 'iam extra in hotelpage')
     const num = ExtrasSelectionInfo.extraSelectionNum
     const ExtraPrice = num * ExtrasSelectionInfo.price
-    setExtrasNum(extrassnum.concat(num))
-    setExtrasPriceArr(extrasspricearr.concat(ExtraPrice))
+    setExtrasNum(extrasnum.concat(num))
+    setExtrasPriceArr(extraspricearr.concat(ExtraPrice))
     setTotalSelectedExtrasInfo(totalSelectedExtrasInfo.concat(ExtrasSelectionInfo))
   }
 
   const handleClickButton = () => {
     onCompelet()
-    setProject({ ...project, cartItems: totalSelectedRoomsInfo.concat(totalSelectedExtrasInfo) })
+    setProject({ ...project, cartItems: cartItems.concat(totalSelectedExtrasInfo).concat(totalSelectedRoomsInfo) })
   }
   const onCompelet = () => {
     setRedirect(true)
@@ -104,7 +112,7 @@ const HotelPage = () => {
 
           <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
           <p>Total price: {roomspricearr.reduce(sumUp)}</p>
-          <Button onClick={(room) => handleClickButton(room)} variant='primary'>Book</Button>{' '}
+          <Button onClick={(room) => handleClickButton(room)} variant='primary'>continue</Button>{' '}
 
         </div>}
       {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
@@ -113,7 +121,6 @@ const HotelPage = () => {
             <p>{extra.title}</p>
             <p>{extra.price}</p>
 
-            <CartDrawer totalSelectedExtrasInfo={totalSelectedExtrasInfo} totalSelectedRoomsInfo={totalSelectedRoomsInfo} />
           </div>
         )
       })}
@@ -121,20 +128,3 @@ const HotelPage = () => {
     </div>
   )
 }; export default HotelPage
-
-/*
-
-// creates the list of results room types
-const displayRoomTypes = () => {
-  const result = ''
-  roomTypes.forEach(room => {
-    ressult = result + room + " + "
-  })
-  return result
-}
-
-....
-
-onClickBook
-
-*/

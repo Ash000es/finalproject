@@ -37,13 +37,14 @@ function Row (props) {
     const roomType = roomName
     const roomNumber = event.target.value
     const price = rate.mySellingRate
+    // console.log(price, 'shoiuld be realp')
     const totalSelectionPrice = roomsCost(price, roomNumber)
     const roomSelectionInfo = { ...rate, roomType, roomNumber, totalSelectionPrice }
-    // console.log(roomSelectionInfo, 'here iam')
+    console.log(roomSelectionInfo, 'here iam')
     props.onChange(roomSelectionInfo)
   }
   const collectExtrasValues = (extraRow, e) => {
-    const extraSelectionNum = parseFloat(e.target.value)
+    const extraSelectionNum = Number(e.target.value)
     const extraObj = { ...extraRow, extraSelectionNum }
 
     props.onChange(extraObj)

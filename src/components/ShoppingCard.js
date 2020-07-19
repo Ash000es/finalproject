@@ -13,18 +13,28 @@ import { objectToMap } from '../Helper/Constants'
 const useStyles = makeStyles({
   root: {
     maxWidth: 320,
-    maxHeight: 650
+    maxHeight: 650,
+    margin: 20
   },
   media: {
     height: 450
+  },
+  container: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    alignContent: 'space-around'
+
   }
+
 })
 
 const ShoppingCard = () => {
   const classes = useStyles()
 
   return (
-    <div className='container'>
+    <div className={classes.container}>
       {
         objectToMap.map((objy, i) => {
           return (
