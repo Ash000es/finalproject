@@ -13,22 +13,157 @@ export const getSignature = () => {
   return (apikey + sec + Math.round(D.getTime() / 1000))
 }
 // cont
+
+const codes_Pool = [
+  {
+    FacilityCode: 306,
+    FacilityGroupCode: 60,
+    icon: 29,
+    name: 'Outdoor swimming pool'
+
+  },
+  {
+    FacilityCode: 326,
+    FacilityGroupCode: 60,
+    icon: 8,
+    name: 'Private Pool'
+
+  }
+]
+const codes_TV = [
+  {
+    FacilityCode: 55,
+    FacilityGroupCode: 60,
+    icon: 12,
+    name: 'TV'
+
+  },
+  {
+    FacilityCode: 288,
+    FacilityGroupCode: 60,
+    icon: 3,
+    name: 'Satellite TV '
+
+  },
+  {
+    FacilityCode: 289,
+    FacilityGroupCode: 60,
+    icon: 3,
+    name: 'Cable TV'
+
+  }
+]
+const codes_Internet = [
+  {
+    FacilityCode: 250,
+    FacilityGroupCode: 70,
+    icon: 22,
+    name: 'Wired Internet'
+
+  },
+  {
+    FacilityCode: 100,
+    FacilityGroupCode: 60,
+    icon: 22,
+    name: 'Internet access'
+
+  },
+  {
+    FacilityCode: 261,
+    facilityGroupCode: 60,
+    icon: 22,
+    name: 'Wi-fi'
+  },
+  {
+    FacilityCode: 550,
+    facilityGroupCode: 70,
+    icon: 22,
+    name: 'Wi-fi'
+  }
+]
+const codes_petFriendly = [
+  {
+    FacilityCode: 535,
+    FacilityGroupCode: 70,
+    icon: 22,
+    name: 'Small pets allowed (under 5 kg)'
+
+  },
+  {
+    FacilityCode: 540,
+    FacilityGroupCode: 70,
+    icon: 22,
+    name: 'Large pets allowed (over 5 kg)'
+
+  }
+]
+const codes_Spa = [
+  {
+    FacilityCode: 460,
+    FacilityGroupCode: 74,
+    icon: 12,
+    name: 'Spa treatments'
+
+  },
+  {
+    FacilityCode: 620,
+    FacilityGroupCode: 74,
+    icon: 30,
+    name: 'Spa centre'
+
+  }
+]
+const codes_Breakfast = [
+  {
+    FacilityCode: 35,
+    FacilityGroupCode: 80,
+    icon: 31,
+    name: 'Continental breakfast'
+
+  },
+  {
+    FacilityCode: 180,
+    FacilityGroupCode: 80,
+    icon: 3,
+    name: 'Hot breakfast'
+
+  },
+  {
+    FacilityCode: 264,
+    FacilityGroupCode: 80,
+    icon: 3,
+    name: 'Breakfast a la carte'
+
+  },
+  {
+    FacilityCode: 30,
+    FacilityGroupCode: 80,
+    icon: 31,
+    name: 'Breakfast buffet'
+
+  }
+]
+export const amenDirectory = {
+  TV: codes_TV,
+  Pool: codes_Pool,
+  Internet: codes_Internet,
+  'Pet Friendly': codes_petFriendly,
+  Spa: codes_Spa,
+  Breakfast: codes_Breakfast
+}
+
 export const vcCodes = ['3LL', '4LL', '5LL', 'VILLA', 'AT3', 'VTV']
 export const hotelcodes = ['3EST', '4EST', '5EST', '4LUX', '5LUX', 'APTH3', 'APTH4', 'APTH5', 'BB3', 'BB4', 'BB5', 'BOU', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'HR4', 'HR5', 'HRS']
 export const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
 export const amenitiesToFilter = [
-  'Pool',
-  'Free breakfast',
-  'Spa',
-  'Resturant',
-  'Free-Wifi',
+  ...Object.keys(amenDirectory),
+  'Restaurant',
   'Bar',
   'Room service',
-  'Fitness center',
+  'Gym',
   'concierge',
-  'Air conditioning',
-  'TV',
-  'Pet friendly'
+  'Air conditioning'
+
 ]
 export const extras = [
   { title: 'Kings Breakfast ', price: 10, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
@@ -99,54 +234,15 @@ export const objectToMap = [{
 }
 
 ]
+// const thirdarr = [...firstst, ...amncode]
+
 export const amenCodes = [
+  ...codes_TV, ...codes_Pool, ...codes_Internet, ...codes_petFriendly, ...codes_Spa, ...codes_Breakfast,
   {
     FacilityCode: 130,
     FacilityGroupCode: 71,
     icon: 3,
     name: 'Bar'
-
-  },
-  {
-    FacilityCode: 306,
-    FacilityGroupCode: 60,
-    icon: 29,
-    name: 'Outdoor swimming pool'
-
-  },
-  {
-    FacilityCode: 326,
-    FacilityGroupCode: 60,
-    icon: 8,
-    name: 'Private Pool'
-
-  },
-  {
-    FacilityCode: 250,
-    FacilityGroupCode: 70,
-    icon: 22,
-    name: 'Wired Internet'
-
-  },
-  {
-    FacilityCode: 100,
-    FacilityGroupCode: 60,
-    icon: 22,
-    name: 'Internet access'
-
-  },
-  {
-    FacilityCode: 460,
-    FacilityGroupCode: 74,
-    icon: 12,
-    name: 'Spa treatments'
-
-  },
-  {
-    FacilityCode: 620,
-    FacilityGroupCode: 74,
-    icon: 30,
-    name: 'Spa centre'
 
   },
   {
@@ -170,69 +266,7 @@ export const amenCodes = [
     name: 'Individually adjustable air conditioning'
 
   },
-  {
-    FacilityCode: 535,
-    FacilityGroupCode: 70,
-    icon: 22,
-    name: 'Small pets allowed (under 5 kg)'
 
-  },
-  {
-    FacilityCode: 540,
-    FacilityGroupCode: 70,
-    icon: 22,
-    name: 'Large pets allowed (over 5 kg)'
-
-  },
-  {
-    FacilityCode: 55,
-    FacilityGroupCode: 60,
-    icon: 12,
-    name: 'TV'
-
-  },
-  {
-    FacilityCode: 288,
-    FacilityGroupCode: 60,
-    icon: 3,
-    name: 'Satellite TV '
-
-  },
-  {
-    FacilityCode: 289,
-    FacilityGroupCode: 60,
-    icon: 3,
-    name: 'Cable TV'
-
-  },
-  {
-    FacilityCode: 35,
-    FacilityGroupCode: 80,
-    icon: 31,
-    name: 'Continental breakfast'
-
-  },
-  {
-    FacilityCode: 180,
-    FacilityGroupCode: 80,
-    icon: 3,
-    name: 'Hot breakfast'
-
-  },
-  {
-    FacilityCode: 264,
-    FacilityGroupCode: 80,
-    icon: 3,
-    name: 'Breakfast a la carte'
-
-  },
-  {
-    FacilityCode: 30,
-    FacilityGroupCode: 80,
-    icon: 31,
-    name: 'Breakfast buffet'
-
-  },
   {
     FacilityCode: 470,
     FacilityGroupCode: 70,

@@ -49,7 +49,7 @@ function Row (props) {
 
     props.onChange(extraObj)
   }
-
+  console.log(row.rates, 'rates')
   return (
     <>
 
@@ -63,19 +63,19 @@ function Row (props) {
         <TableCell component='th' scope='row'>{row.name}</TableCell>
 
         {row.rates.map(rate => (
+          <>
+            <TableRow key={rate.rateKey} onChange={(e) => collectValues(rate, row.name, e)}>
 
-          <TableRow key={rate.rateKey} onChange={(e) => collectValues(rate, row.name, e)}>
-            <TableCell />
-            <TableCell align='right'>2</TableCell>
-            <TableCell />
-            <TableCell align='right'> {rate.boardName}</TableCell>
-            <TableCell />
-            <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
-            <TableCell />
-            <TableCell align='right'> {rate.net}</TableCell>
-            <TableCell />
+              <TableCell align='right'>2</TableCell>
 
-          </TableRow>
+              <TableCell align='right'> {rate.boardName}</TableCell>
+
+              <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
+
+              <TableCell align='right'> {rate.net}</TableCell>
+
+            </TableRow>
+          </>
 
         ))}
 

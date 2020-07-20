@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Select from '@material-ui/core/Select'
 import Checkbox from '@material-ui/core/Checkbox'
 import Chip from '@material-ui/core/Chip'
-import { amenitiesToFilter } from '../Helper/Constants.js'
+import { amenitiesToFilter, amenDirectory } from '../Helper/Constants.js'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 
 const useStyles = makeStyles((theme) => ({
@@ -56,6 +56,7 @@ const AmenitiesSelect = () => {
   const [amenitiesName, setamenitiesName] = React.useState([])
   // console.log(amenitiesName, 'I amhere')
   const { project, setProject } = useContext(ProjectContext)
+  const { flattenedarray, setFlattenedArray } = useState()
 
   const chossenAmenities = []
   // had to comment out cause it return undefined
@@ -83,7 +84,16 @@ const AmenitiesSelect = () => {
   // }
 
   const handleChange = (event) => {
-    setamenitiesName(event.target.value)
+    // ['TV', 'Pool']
+    const { value } = event.target
+    console.log(value, 'value')
+    const nestedArr = value.map(item => {
+      return amenDirectory[item]
+    })
+    const res = nestedArr.flat()
+    console.log(res, 'results')
+    setFlattenedArray(res)
+    setamenitiesName(value)
   }
 
   const handleChangeMultiple = (event) => {
