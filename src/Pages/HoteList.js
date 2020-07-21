@@ -16,6 +16,7 @@ import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
 import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
+import { TableCell } from '@material-ui/core'
 
 const style = {
   height: 30,
@@ -50,7 +51,6 @@ export const HotelList = () => {
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
-  // console.log(allHotelsResults, 'lol')
   const googleLandingLat = allHotelsResults[0].latitude
   const googleLandingLong = allHotelsResults[0].longitude
 
@@ -149,11 +149,16 @@ export const HotelList = () => {
   const updateAmenSelection = (arr) => {
     // function here
   }
+  const style = {
+    height: '100%',
+    width: '100%'
+  }
 
   return (
 
-    <div>
+    <div style={style}>
       <InfiniteScroll
+        style={style}
         dataLength={valueToMap.length}
         next={fetchMoreData}
         hasMore={valueToMap.length < allHotelsResults.length}

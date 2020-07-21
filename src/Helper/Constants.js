@@ -13,7 +13,46 @@ export const getSignature = () => {
   return (apikey + sec + Math.round(D.getTime() / 1000))
 }
 // cont
+const codes_Gym = [
+  {
+    FacilityCode: 470,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: 'Gym'
 
+  },
+  {
+    FacilityCode: 295,
+    FacilityGroupCode: 90,
+    icon: 12,
+    name: 'Fitness'
+
+  },
+  {
+    FacilityCode: 308,
+    FacilityGroupCode: 60,
+    icon: 12,
+    name: 'Fitness room'
+
+  }
+
+]
+const codes_Air_conditioning = [
+  {
+    FacilityCode: 20,
+    FacilityGroupCode: 30,
+    icon: 3,
+    name: 'EC'
+
+  },
+  {
+    FacilityCode: 180,
+    FacilityGroupCode: 60,
+    icon: 24,
+    name: 'Individually adjustable air conditioning'
+
+  }
+]
 const codes_Pool = [
   {
     FacilityCode: 306,
@@ -28,31 +67,66 @@ const codes_Pool = [
     icon: 8,
     name: 'Private Pool'
 
-  }
-]
-const codes_TV = [
+  },
   {
-    FacilityCode: 55,
-    FacilityGroupCode: 60,
-    icon: 12,
-    name: 'TV'
+    FacilityCode: 363,
+    FacilityGroupCode: 73,
+    icon: 29,
+    name: 'Outdoor freshwater pool'
 
   },
   {
-    FacilityCode: 288,
-    FacilityGroupCode: 60,
-    icon: 3,
-    name: 'Satellite TV '
+    FacilityCode: 364,
+    FacilityGroupCode: 73,
+    icon: 29,
+    name: 'Outdoor saltwater pool'
 
   },
   {
-    FacilityCode: 289,
+    FacilityCode: 365,
+    FacilityGroupCode: 73,
+    icon: 29,
+    name: 'Outdoor heated pool'
+
+  },
+  {
+    FacilityCode: 360,
+    FacilityGroupCode: 73,
+    icon: 29,
+    name: 'Indoor freshwater pool'
+
+  },
+
+  {
+    FacilityCode: 361,
+    FacilityGroupCode: 73,
+    icon: 29,
+    name: 'Indoor saltwater pool'
+
+  },
+  {
+    FacilityCode: 362,
+    FacilityGroupCode: 73,
+    icon: 29,
+    name: 'Indoor heated pool'
+
+  },
+  {
+    FacilityCode: 313,
     FacilityGroupCode: 60,
-    icon: 3,
-    name: 'Cable TV'
+    icon: 29,
+    name: 'Indoor swimming pool'
+
+  },
+  {
+    FacilityCode: 573,
+    FacilityGroupCode: 70,
+    icon: 8,
+    name: 'Private pool'
 
   }
 ]
+
 const codes_Internet = [
   {
     FacilityCode: 250,
@@ -144,12 +218,12 @@ const codes_Breakfast = [
   }
 ]
 export const amenDirectory = {
-  TV: codes_TV,
   Pool: codes_Pool,
   Internet: codes_Internet,
   'Pet Friendly': codes_petFriendly,
   Spa: codes_Spa,
-  Breakfast: codes_Breakfast
+  'Air Conditioning': codes_Air_conditioning,
+  Gym: codes_Gym
 }
 
 export const vcCodes = ['3LL', '4LL', '5LL', 'VILLA', 'AT3', 'VTV']
@@ -160,9 +234,7 @@ export const amenitiesToFilter = [
   'Restaurant',
   'Bar',
   'Room service',
-  'Gym',
-  'concierge',
-  'Air conditioning'
+  'concierge'
 
 ]
 export const extras = [
@@ -237,7 +309,7 @@ export const objectToMap = [{
 // const thirdarr = [...firstst, ...amncode]
 
 export const amenCodes = [
-  ...codes_TV, ...codes_Pool, ...codes_Internet, ...codes_petFriendly, ...codes_Spa, ...codes_Breakfast,
+  ...codes_Pool, ...codes_Internet, ...codes_petFriendly, ...codes_Spa, ...codes_Gym, ...codes_Air_conditioning,
   {
     FacilityCode: 130,
     FacilityGroupCode: 71,
@@ -257,21 +329,6 @@ export const amenCodes = [
     FacilityGroupCode: 70,
     icon: 12,
     name: 'Room service'
-
-  },
-  {
-    FacilityCode: 180,
-    FacilityGroupCode: 60,
-    icon: 24,
-    name: 'Individually adjustable air conditioning'
-
-  },
-
-  {
-    FacilityCode: 470,
-    FacilityGroupCode: 70,
-    icon: 12,
-    name: 'Gym'
 
   }
 

@@ -95,20 +95,33 @@ export const sortByReview = (arr1, arr2) => {
 export const getAmenitiesArray = (arr1, arr2) => {
   // console.log(arr1, arr2, 'array')
   const finalArray = []
-  const arr3 = arr1.filter(item => item.facilityGroupCode === 70 || 60 || 71 || 74 || 80)
-  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70 || 60 || 71 || 74 || 80)
-  const final = arr3.forEach(itemAPI => arr4.forEach(itemHardCode => {
+  const arr3 = arr1.filter(item => item.facilityGroupCode === 70 || 60 || 73)
+  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70 || 60 || 73)
+  const final = arr3.map(itemAPI => arr4.forEach(itemHardCode => {
     if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
-      finalArray.push(itemHardCode)
+      finalArray.push({ name: itemHardCode.name, icon: itemHardCode.icon })
     }
-    // console.log(finalArray)
+
     return finalArray
   }))
   return finalArray
 }
+export const removy = (arr) => arr.filter((v, i) => arr.indexOf(v) === i)
 
 export function removeDuplicates (arr) {
   return [...new Set(arr)]
+}
+export function getUnique (arr, comp) {
+  // store the comparison  values in array
+  const unique = arr.map(e => e[comp])
+
+  // store the indexes of the unique objects
+    .map((e, i, final) => final.indexOf(e) === i && i)
+
+  // eliminate the false indexes & return unique objects
+    .filter((e) => arr[e]).map(e => arr[e])
+
+  return unique
 }
 
 // write helper function for the hotel page big carsoul and the search results thum carsoul and each room image

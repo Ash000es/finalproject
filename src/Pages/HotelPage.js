@@ -7,10 +7,11 @@ import DateRangePicker from '../components/DateRange/NewDateRange'
 import { HotelCarousel } from '../components/HotelCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartDrawer } from '../components/CartDrawerN'
-import { addCartItem, showCancelationPolicy, getAmenitiesArray, sumUp } from '../Helper/Helper'
+import { addCartItem, showCancelationPolicy, getAmenitiesArray, sumUp, getUnique } from '../Helper/Helper'
 import { amenities } from '../Helper/amenities'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
+import { hotelAmen } from '../Helper/SearchResultsAmen'
 
 const HotelPage = () => {
   const { project, setProject } = useContext(ProjectContext)
@@ -24,15 +25,18 @@ const HotelPage = () => {
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
   const currentSelection = project.currentHotel
-  const toMap = currentSelection.facilities
+  const facilitiesArray = currentSelection.facilities
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
-  const size = { width: '200px' }
   const roomy = currentSelection.rooms.map(room => room)
-  console.log(project, 'project')
+
   const cartItems = project.cartItems
-  const readyAmenities = getAmenitiesArray(toMap, amenities)
+  const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
+  const readyAmenities1 = getUnique(readyAmenities, 'name')
+
+  console.log(readyAmenities, 'readyAmenities')
+  console.log(readyAmenities1, 'readyAmenities1')
 
   const selectionWrapper = (showme) => {
     const roomSelectionInfo = showme.rateKey ? showme : null
@@ -89,7 +93,7 @@ const HotelPage = () => {
 
       <div>
         <p>Amenities:</p>
-        <ul style={{ listStyleType: 'none' }}>{readyAmenities && readyAmenities.map(item =>
+        <ul style={{ listStyleType: 'none' }}>{readyAmenities1 && readyAmenities1.map(item =>
           <li key={item.facilityCode}>{item.icon}{item.name}</li>
 
         )}

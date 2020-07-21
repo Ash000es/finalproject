@@ -13,8 +13,8 @@ import SelectPrice from '../SelectPrice'
 import { ExtrasList } from '../ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
-import { amenities } from '../../Helper/amenities'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates } from '../../Helper/Helper'
+import { searchResultsAmen } from '../../Helper/SearchResultsAmen'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique } from '../../Helper/Helper'
 import { masterLinkSmall } from '../../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -53,23 +53,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const HotelCardSearch = (props) => {
-  // console.log(props, 'props here')
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
-  const [testfac, setTestFac] = useState(props.hotel.facilities)
-  // const testfac = props.hotel.facilities
-  // console.log(testfac, 'before')
+  const [facilitiesArr, setFacilitiesArr] = useState(props.hotel.facilities)
+  const imagesarray = props.hotel.images
+  const amenitiesToMap = getAmenitiesArray(facilitiesArr, searchResultsAmen)
+  const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
-  // console.log(testfac.length, 'look here')
-
-  const toMap = removeDuplicates(testfac)
-  // console.log(toMap, 'after')
-  const amenitiesToMap = getAmenitiesArray(toMap, amenities)
-  const testinimages = props.hotel.images
-  // console.log(testinimages.length, 'before')
-  const imagesarray = removeDuplicates(testinimages)
-  // console.log(imagesarray.length, 'after')
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
   const stopRerendering = useMemo(() => {
     return <SearchResultsCarousel images={readyImages} />
@@ -96,7 +87,7 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap && amenitiesToMap.map(item =>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap1 && amenitiesToMap1.map(item =>
                   <li key={item.facilityCode} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
