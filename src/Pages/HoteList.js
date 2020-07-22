@@ -111,7 +111,7 @@ export const HotelList = () => {
     if (filters.starRating.includes('3 STARS') || filters.starRating.includes('4 STARS') || filters.starRating.includes('5 STARS')) {
       res = updateStarRatings(res, hotelsresults, filters.starRating)
     }
-    if (filters.Amenities) {
+    if (filters.Amenities.length > 0) {
       res = filterAmenSelection(res, hotelsresults, filters.Amenities)
       // .name.includes('Pool') || filters.Amenities.name.includes('Pet Friendly') || filters.Amenities.name.includes('Internet') || filters.Amenities.name.includes('Spa') || filters.Amenities.name.includes('Parking') || filters.Amenities.name.includes('Gym') || filters.Amenities.name.includes('Restaurant') || filters.Amenities.name.includes('Bar') || filters.Amenities.names.includes('Room service')
     }

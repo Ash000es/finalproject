@@ -37,7 +37,7 @@ export const SearchResultsCarousel = (props) => {
           newimages.map((image, i) => {
             const imagLink = image.path
             return (
-              <Carousel.Item key={image.path} image={image}>
+              <Carousel.Item key={i} image={image}>
 
                 <img
                   className='d-block w-100 '
