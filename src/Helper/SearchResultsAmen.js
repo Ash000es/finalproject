@@ -6,21 +6,21 @@ export const searchResultsAmen = [
     FacilityCode: 500,
     FacilityGroupCode: 70,
     icon: 12,
-    name: ' parking'
+    name: 'parking'
 
   },
   {
     FacilityCode: 560,
     FacilityGroupCode: 70,
     icon: 12,
-    name: ' parking'
+    name: 'parking'
 
   },
   {
     FacilityCode: 330,
     FacilityGroupCode: 70,
     icon: 12,
-    name: ' parking'
+    name: 'parking'
 
   },
   {
@@ -34,21 +34,21 @@ export const searchResultsAmen = [
     FacilityCode: 620,
     FacilityGroupCode: 74,
     icon: 30,
-    name: 'Spa '
+    name: 'Spa'
 
   },
   {
     FacilityCode: 535,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Small pets allowed '
+    name: 'pets allowed'
 
   },
   {
     FacilityCode: 540,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Large pets allowed '
+    name: 'pets allowed'
 
   },
   {
@@ -62,7 +62,7 @@ export const searchResultsAmen = [
     FacilityCode: 100,
     FacilityGroupCode: 60,
     icon: 22,
-    name: 'Internet '
+    name: 'Internet'
 
   },
   {
@@ -95,7 +95,7 @@ export const searchResultsAmen = [
     FacilityCode: 363,
     FacilityGroupCode: 73,
     icon: 29,
-    name: ' pool'
+    name: 'pool'
 
   },
   {
@@ -215,12 +215,13 @@ export const searchResultsAmen = [
     FacilityCode: 320,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Car park'
+    name: 'parking'
 
   }
 
 ]
 export const hotelAmen = [
+  ...searchResultsAmen,
   {
     FacilityCode: 312,
     FacilityGroupCode: 60,
