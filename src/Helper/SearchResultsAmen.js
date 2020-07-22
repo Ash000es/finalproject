@@ -17,6 +17,13 @@ export const searchResultsAmen = [
 
   },
   {
+    FacilityCode: 330,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: ' parking'
+
+  },
+  {
     FacilityCode: 460,
     FacilityGroupCode: 74,
     icon: 12,
@@ -215,6 +222,13 @@ export const searchResultsAmen = [
 ]
 export const hotelAmen = [
   {
+    FacilityCode: 312,
+    FacilityGroupCode: 60,
+    icon: 17,
+    name: 'Solarium'
+
+  },
+  {
     FacilityCode: 295,
     FacilityGroupCode: 70,
     icon: 17,
@@ -332,6 +346,13 @@ export const hotelAmen = [
   {
     FacilityCode: 307,
     FacilityGroupCode: 60,
+    icon: 12,
+    name: 'Sauna'
+
+  },
+  {
+    FacilityCode: 420,
+    FacilityGroupCode: 74,
     icon: 12,
     name: 'Sauna'
 
@@ -489,6 +510,13 @@ export const hotelAmen = [
     FacilityGroupCode: 70,
     icon: 12,
     name: 'Laundry service'
+
+  },
+  {
+    FacilityCode: 525,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: 'Bellboy service'
 
   }
 
@@ -817,6 +845,20 @@ export const roomsAmen = [
     FacilityGroupCode: 10,
     icon: 17,
     name: 'Connecting rooms'
+
+  },
+  {
+    FacilityCode: 303,
+    FacilityGroupCode: 60,
+    icon: 17,
+    name: 'Soundproof room'
+
+  },
+  {
+    FacilityCode: 274,
+    FacilityGroupCode: 60,
+    icon: 17,
+    name: 'Video games console"'
 
   }
 

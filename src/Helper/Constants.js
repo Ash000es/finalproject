@@ -12,6 +12,21 @@ export const D = new Date()
 export const getSignature = () => {
   return (apikey + sec + Math.round(D.getTime() / 1000))
 }
+export const vcCodes = ['3LL', '4LL', '5LL', 'VILLA', 'AT3', 'VTV']
+export const hotelcodes = ['3EST', '4EST', '5EST', '4LUX', '5LUX', 'APTH3', 'APTH4', 'APTH5', 'BB3', 'BB4', 'BB5', 'BOU', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'HR4', 'HR5', 'HRS']
+export const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
+export const extras = [
+  { title: 'Kings Breakfast ', price: 10, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
+
+  { title: 'Double trouble', price: 20, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
+  { title: 'House Red', price: 30, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
+
+]
+export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
+export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/'
+export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/original/'
 // cont
 const codes_Gym = [
   {
@@ -25,14 +40,14 @@ const codes_Gym = [
     FacilityCode: 295,
     FacilityGroupCode: 90,
     icon: 12,
-    name: 'Fitness'
+    name: 'Gym'
 
   },
   {
     FacilityCode: 308,
     FacilityGroupCode: 60,
     icon: 12,
-    name: 'Fitness room'
+    name: 'Gym'
 
   }
 
@@ -42,14 +57,14 @@ const codes_Air_conditioning = [
     FacilityCode: 20,
     FacilityGroupCode: 30,
     icon: 3,
-    name: 'EC'
+    name: 'Air conditioning'
 
   },
   {
     FacilityCode: 180,
     FacilityGroupCode: 60,
     icon: 24,
-    name: 'Individually adjustable air conditioning'
+    name: 'Air conditioning'
 
   }
 ]
@@ -58,42 +73,42 @@ const codes_Pool = [
     FacilityCode: 306,
     FacilityGroupCode: 60,
     icon: 29,
-    name: 'Outdoor swimming pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 326,
     FacilityGroupCode: 60,
     icon: 8,
-    name: 'Private Pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 363,
     FacilityGroupCode: 73,
     icon: 29,
-    name: 'Outdoor freshwater pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 364,
     FacilityGroupCode: 73,
     icon: 29,
-    name: 'Outdoor saltwater pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 365,
     FacilityGroupCode: 73,
     icon: 29,
-    name: 'Outdoor heated pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 360,
     FacilityGroupCode: 73,
     icon: 29,
-    name: 'Indoor freshwater pool'
+    name: 'Pool'
 
   },
 
@@ -101,28 +116,28 @@ const codes_Pool = [
     FacilityCode: 361,
     FacilityGroupCode: 73,
     icon: 29,
-    name: 'Indoor saltwater pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 362,
     FacilityGroupCode: 73,
     icon: 29,
-    name: 'Indoor heated pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 313,
     FacilityGroupCode: 60,
     icon: 29,
-    name: 'Indoor swimming pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 573,
     FacilityGroupCode: 70,
     icon: 8,
-    name: 'Private pool'
+    name: 'Pool'
 
   }
 ]
@@ -132,27 +147,27 @@ const codes_Internet = [
     FacilityCode: 250,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Wired Internet'
+    name: 'Internet'
 
   },
   {
     FacilityCode: 100,
     FacilityGroupCode: 60,
     icon: 22,
-    name: 'Internet access'
+    name: 'Internet'
 
   },
   {
     FacilityCode: 261,
     facilityGroupCode: 60,
     icon: 22,
-    name: 'Wi-fi'
+    name: 'Internet'
   },
   {
     FacilityCode: 550,
     facilityGroupCode: 70,
     icon: 22,
-    name: 'Wi-fi'
+    name: 'Internet'
   }
 ]
 const codes_petFriendly = [
@@ -160,14 +175,14 @@ const codes_petFriendly = [
     FacilityCode: 535,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Small pets allowed (under 5 kg)'
+    name: 'Pet Friendly'
 
   },
   {
     FacilityCode: 540,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Large pets allowed (over 5 kg)'
+    name: 'Pet Friendly'
 
   }
 ]
@@ -176,14 +191,14 @@ const codes_Spa = [
     FacilityCode: 460,
     FacilityGroupCode: 74,
     icon: 12,
-    name: 'Spa treatments'
+    name: 'Spa'
 
   },
   {
     FacilityCode: 620,
     FacilityGroupCode: 74,
     icon: 30,
-    name: 'Spa centre'
+    name: 'Spa'
 
   }
 ]
@@ -192,63 +207,100 @@ const codes_Breakfast = [
     FacilityCode: 35,
     FacilityGroupCode: 80,
     icon: 31,
-    name: 'Continental breakfast'
+    name: 'Breakfast'
 
   },
   {
     FacilityCode: 180,
     FacilityGroupCode: 80,
     icon: 3,
-    name: 'Hot breakfast'
+    name: 'Breakfast'
 
   },
   {
     FacilityCode: 264,
     FacilityGroupCode: 80,
     icon: 3,
-    name: 'Breakfast a la carte'
+    name: 'Breakfast'
 
   },
   {
     FacilityCode: 30,
     FacilityGroupCode: 80,
     icon: 31,
-    name: 'Breakfast buffet'
+    name: 'Breakfast'
+
+  }
+]
+const codes_Parking = [
+  {
+    FacilityCode: 500,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: ' parking'
+
+  },
+  {
+    FacilityCode: 560,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: ' parking'
+
+  },
+  {
+    FacilityCode: 330,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: ' parking'
 
   }
 ]
 export const amenDirectory = {
   Pool: codes_Pool,
-  Internet: codes_Internet,
   'Pet Friendly': codes_petFriendly,
+  Internet: codes_Internet,
   Spa: codes_Spa,
-  'Air Conditioning': codes_Air_conditioning,
+  Parking: codes_Parking,
   Gym: codes_Gym
 }
 
-export const vcCodes = ['3LL', '4LL', '5LL', 'VILLA', 'AT3', 'VTV']
-export const hotelcodes = ['3EST', '4EST', '5EST', '4LUX', '5LUX', 'APTH3', 'APTH4', 'APTH5', 'BB3', 'BB4', 'BB5', 'BOU', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'HR4', 'HR5', 'HRS']
-export const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
 export const amenitiesToFilter = [
   ...Object.keys(amenDirectory),
   'Restaurant',
   'Bar',
-  'Room service',
-  'concierge'
+  'Room service'
 
 ]
-export const extras = [
-  { title: 'Kings Breakfast ', price: 10, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
 
-  { title: 'Double trouble', price: 20, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
-  { title: 'House Red', price: 30, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
+// const thirdarr = [...firstst, ...amncode]
+
+export const amenCodes = [
+  ...codes_Pool, ...codes_petFriendly, ...codes_Internet, ...codes_Spa, ...codes_Parking, ...codes_Gym,
+
+  {
+    FacilityCode: 200,
+    FacilityGroupCode: 71,
+    icon: 8,
+    name: 'Restaurant'
+
+  },
+  {
+    FacilityCode: 130,
+    FacilityGroupCode: 71,
+    icon: 3,
+    name: 'Bar'
+
+  },
+  {
+    FacilityCode: 270,
+    FacilityGroupCode: 70,
+    icon: 12,
+    name: 'Room service'
+
+  }
 
 ]
-export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
-export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/'
-export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/original/'
+
 export const objectToMap = [{
   image: 'https://source.unsplash.com/random',
   headLine: 'ASOS DESIGN Maternity lounge jumpsuit',
@@ -304,32 +356,5 @@ export const objectToMap = [{
   price: 32
 
 }
-
-]
-// const thirdarr = [...firstst, ...amncode]
-
-export const amenCodes = [
-  ...codes_Pool, ...codes_Internet, ...codes_petFriendly, ...codes_Spa, ...codes_Gym, ...codes_Air_conditioning,
-  {
-    FacilityCode: 130,
-    FacilityGroupCode: 71,
-    icon: 3,
-    name: 'Bar'
-
-  },
-  {
-    FacilityCode: 200,
-    FacilityGroupCode: 71,
-    icon: 8,
-    name: 'Restaurant'
-
-  },
-  {
-    FacilityCode: 270,
-    FacilityGroupCode: 70,
-    icon: 12,
-    name: 'Room service'
-
-  }
 
 ]

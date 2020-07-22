@@ -50,29 +50,19 @@ function getStyles (name, personName, theme) {
   }
 }
 
-const AmenitiesSelect = () => {
+const AmenitiesSelect = (props) => {
   const classes = useStyles()
   const theme = useTheme()
   const [amenitiesName, setamenitiesName] = React.useState([])
   // console.log(amenitiesName, 'I amhere')
   const { project, setProject } = useContext(ProjectContext)
-  const { flattenedarray, setFlattenedArray } = useState()
+  const [chossenAmenities, setChossenAmenities] = useState()
 
-  const chossenAmenities = []
+  // const chossenAmenities = []
   // had to comment out cause it return undefined
   // const { hotels } = project.hotels
   // const { amenitesArray } = hotels.amenities
 
-  // const filterHotelsByAmenities = () => {
-  //   amenitiesName.forEach(amenityName => amenities.forEach(amenity => {
-  //     if (amenityName === amenity.name) {
-  //       chossenAmenities.push({
-  //         amenitieCode: amenity.FacilityCode,
-  //         amenitiGroupCode: amenity.FacilityGroupCode
-  //       })
-  //     }
-  //   }))
-  // }
   // const filterOutHotels = () => {
   //   amenitesArray.forEach(amenObject => chossenAmenities.forEach(chossenAmen => {
   //     if (amenObject.facilityCode === chossenAmen.amenitieCode && amenObject.facilityGroupCode === chossenAmen.amenitiGroupCode) {
@@ -91,10 +81,25 @@ const AmenitiesSelect = () => {
       return amenDirectory[item]
     })
     const res = nestedArr.flat()
-    console.log(res, 'results')
-    setFlattenedArray(res)
+    console.log(res, 'results flatned')
+    setChossenAmenities(res)
     setamenitiesName(value)
+    props.onChange(res)
   }
+
+  // const filterAmenSelection = (amenitiesArray, hotelsresults) => {
+  //   // function here
+  //   const finalHotels = []
+  //   const hotelsresultsAmen = hotelsresults.map(hotel => {
+  //     const amenAmen = hotel.facilites.map(hotelResAmen => amenitiesArray.forEach(amenArr => {
+  //       if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.GroupCode === amenArr.GroupCode) {
+  //         finalHotels.push(hotel)
+  //       }
+  //     }))
+  //     return finalHotels
+  //   })
+  //   return finalHotels
+  // }
 
   const handleChangeMultiple = (event) => {
     const { options } = event.target

@@ -115,10 +115,10 @@ const SearchBar = (props) => {
       {props.fullbar && <div className='SearchBarFilters'>
 
         <PriceSlider onChange={props.onChange} />
-        <AmenitiesSelect onChange={props.onChange} />
+        <AmenitiesSelect onChange={props.handleAmenSelection} />
         <StarRatingFilter onChange={props.onClick} />
 
-      </div>}
+                        </div>}
 
     </>
 

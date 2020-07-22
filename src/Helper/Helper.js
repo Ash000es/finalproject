@@ -23,6 +23,25 @@ import { OmitProps } from 'antd/lib/transfer/ListBody'
 // }
 
 // }
+export const filterAmenSelection = (arr1, arr2, arr3) => {
+  // console.log(arr1, arr2, arr3, 'Working...')
+  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
+
+  // function here
+  const finalHotels = []
+  const hotelsresultsAmen = valueToFilter.map(hotel => {
+    const amenAmen = hotel.facilities
+
+    amenAmen.map(hotelResAmen => arr3.forEach(amenArr => {
+      if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.GroupCode === amenArr.GroupCode) {
+        finalHotels.push(hotel)
+      }
+    }))
+    return finalHotels
+  })
+  console.log(finalHotels, 'final hotels')
+  return finalHotels
+}
 
 export const updateStarRatings = (arr1, arr2, arr3) => {
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2

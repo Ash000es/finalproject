@@ -14,7 +14,7 @@ import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
 import { TableCell } from '@material-ui/core'
 
@@ -31,6 +31,7 @@ const initialFilterState = {
   hotelsOnly: false,
   villasOnly: false,
   starRating: [],
+  Amenities: [],
   priceFilter: [PRICE_FILTER_MIN, PRICE_FILTER_MAX],
   sortBy: ''
 }
@@ -87,10 +88,18 @@ export const HotelList = () => {
     const change = { ...filters, hotelsOnly: !filters.hotelsOnly }
     filterAll(change)
   }
+  // ['TV', 'Pool']
+  const handleAmenSelection = (arr) => {
+    console.log(arr, 'pros here')
+    const change = { ...filters, Amenities: arr }
+
+    filterAll(change)
+  }
 
   const filterAll = (filters) => {
     // start by setting it to neutral
     let res = hotelsresults
+    console.log(filters, '121')
 
     // begin applying all special cases of filters that are ON
     if (filters.hotelsOnly) {
@@ -101,6 +110,10 @@ export const HotelList = () => {
     }
     if (filters.starRating.includes('3 STARS') || filters.starRating.includes('4 STARS') || filters.starRating.includes('5 STARS')) {
       res = updateStarRatings(res, hotelsresults, filters.starRating)
+    }
+    if (filters.Amenities) {
+      res = filterAmenSelection(res, hotelsresults, filters.Amenities)
+      // .name.includes('Pool') || filters.Amenities.name.includes('Pet Friendly') || filters.Amenities.name.includes('Internet') || filters.Amenities.name.includes('Spa') || filters.Amenities.name.includes('Parking') || filters.Amenities.name.includes('Gym') || filters.Amenities.name.includes('Restaurant') || filters.Amenities.name.includes('Bar') || filters.Amenities.names.includes('Room service')
     }
     if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
       res = updatePrice(filters.priceFilter[0], filters.priceFilter[1], res, hotelsresults)
@@ -114,6 +127,7 @@ export const HotelList = () => {
     if (filters.sortBy === 'Sortby recommended') {
       res = sortByRecommended(res, hotelsresults)
     }
+    console.log(res, 'resy here')
     setTempFilteredHotels(res)
     setFilters(filters)
   }
@@ -146,9 +160,6 @@ export const HotelList = () => {
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
 
-  const updateAmenSelection = (arr) => {
-    // function here
-  }
   const style = {
     height: '100%',
     width: '100%'
@@ -172,7 +183,7 @@ export const HotelList = () => {
       >
         <div className='HotelList'>
           <SearchResultsHero />
-          <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} updateAmenities={updateAmenSelection} fullbar />
+          <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
           <div>
             <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
             <Typography />
