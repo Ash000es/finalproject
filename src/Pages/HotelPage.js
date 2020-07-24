@@ -7,7 +7,7 @@ import DateRangePicker from '../components/DateRange/NewDateRange'
 import { HotelCarousel } from '../components/HotelCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartDrawer } from '../components/CartDrawerN'
-import { addCartItem, showCancelationPolicy, getAmenitiesArray, sumUp, getUnique } from '../Helper/Helper'
+import { addCartItem, showCancelationPolicy, getAmenitiesArray, sumUp, getUnique, truncateString } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
@@ -29,6 +29,9 @@ const HotelPage = () => {
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
   const roomy = currentSelection.rooms.map(room => room)
+  const keyFacts = currentSelection.description.content
+  console.log(typeof keyFacts, 'LOOK HERE')
+  console.log(keyFacts)
 
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
@@ -100,7 +103,7 @@ const HotelPage = () => {
 
       </div>
       <p>Key facts</p>
-      {/* <p>{currentSelection.description.content.length > 200 ? /TODO google shorten text javascript}</p> */}
+      <p>{truncateString(keyFacts, 5000)} </p>
       <img src='' alt='TA' />
 
       <StarRatingDisplay currentSelection={currentSelection} />

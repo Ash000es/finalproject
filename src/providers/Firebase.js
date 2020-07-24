@@ -11,13 +11,13 @@ const firebaseConfig = {
   appId: '1:644316071720:web:0ad929033bc48022e8321d'
 }
 // Initialize Cloud Firestore through Firebase
+export const db = firebase.firestore()
+export const provider = new firebase.auth.GoogleAuthProvider()
+const FirebaseContext = React.createContext(db)
+export default FirebaseContext
+
 firebase.initializeApp({
   apiKey: firebaseConfig.apiKey,
   authDomain: firebaseConfig.authDomain,
   projectId: firebaseConfig.projectId
 })
-export const provider = new firebase.auth.GoogleAuthProvider()
-
-export const db = firebase.firestore()
-const FirebaseContext = React.createContext(db)
-export default FirebaseContext

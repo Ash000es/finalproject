@@ -23,6 +23,12 @@ import { OmitProps } from 'antd/lib/transfer/ListBody'
 // }
 
 // }
+export function truncateString (str, num) {
+  if (str.length <= num) {
+    return str
+  }
+  return str.slice(0, num) + '...'
+}
 export const filterAmenSelection = (arr1, arr2, arr3) => {
   // console.log(arr1, arr2, arr3, 'Working...')
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
@@ -39,14 +45,14 @@ export const filterAmenSelection = (arr1, arr2, arr3) => {
     }))
     return finalHotels
   })
-  console.log(finalHotels, 'final hotels')
+  // console.log(finalHotels, 'final hotels')
   return finalHotels
 }
 
 export const updateStarRatings = (arr1, arr2, arr3) => {
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
   const res = valueToFilter.filter(hotel => arr3.includes(hotel.categoryName))
-  console.log(res, 'filtrest hotels with star rating')
+  // console.log(res, 'filtrest hotels with star rating')
   return res
 }
 export const readyTheArgument = (propey) => {
