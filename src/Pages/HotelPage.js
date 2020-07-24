@@ -37,9 +37,6 @@ const HotelPage = () => {
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
   const readyAmenities1 = getUnique(readyAmenities, 'name')
 
-  console.log(readyAmenities, 'readyAmenities')
-  console.log(readyAmenities1, 'readyAmenities1')
-
   const selectionWrapper = (showme) => {
     const roomSelectionInfo = showme.rateKey ? showme : null
     const ExtrasSelectionInfo = showme.summary ? showme : null
