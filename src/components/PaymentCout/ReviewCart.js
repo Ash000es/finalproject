@@ -12,6 +12,7 @@ const ReviewCart = () => {
   const hotelsCartArr = []
   const extrasCartArr = []
   const cartItemsToMap = project.cartItems
+  // console.log(cartItemsToMap, 'here')
 
   const removeFromCart = (item, e) => {
     console.log(e, 'e')
@@ -30,7 +31,7 @@ const ReviewCart = () => {
 
                 <Image src={item.image} rounded style={{ width: '16.875rem', height: '16.875rem' }} />
                 <Card style={{ width: '50%', height: '16.875rem' }}>
-                  <Card.Header style={{ 'text-transform': 'capitalize', fontWeight: 'bold' }}> Stay in {item.hotelName.toLowerCase()}</Card.Header>
+                  <Card.Header style={{ 'text-transform': 'capitalize', fontWeight: 'bold' }}> Stay in {item.hotelName.content.toLowerCase()}</Card.Header>
                   <Card.Body>
                     <Card.Title>{item.roomType.toLowerCase()}</Card.Title>
                     <Card.Text>
