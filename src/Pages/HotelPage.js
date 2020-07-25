@@ -78,7 +78,6 @@ const HotelPage = () => {
 
     <div className='fillit'>
 
-      console.log
       <h4>This hotel have spceial offer for you</h4>
 
       <p>{currentSelection.name.content}{hardHotelObject.label.posh}{currentSelection.address.content},{currentSelection.destinationName} show on map</p>
