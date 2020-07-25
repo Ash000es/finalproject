@@ -103,7 +103,7 @@ const HotelPage = () => {
       <p>{truncateString(keyFacts, 5000)} </p>
       <img src='' alt='TA' />
 
-      <StarRatingDisplay currentSelection={currentSelection} /> */} */}
+      <StarRatingDisplay currentSelection={currentSelection} />
       <div><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
 
       {totalSelectedRoomsInfo.length > 0 &&

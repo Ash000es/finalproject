@@ -64,20 +64,19 @@ function Row (props) {
 
         <TableCell component='th' scope='row'>{row.name}</TableCell>
 
-        {row.rates.map(rate => (
-          <TableCell>
-            <TableRow key={rate.rateKey} onChange={(e) => collectValues(rate, row.name, e)}>
+        {row.rates.map((rate, i) => (
 
-              <TableCell align='right'>2</TableCell>
+          <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)}>
 
-              <TableCell align='right'> {rate.boardName}</TableCell>
+            <TableCell align='right'>2</TableCell>
 
-              <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
+            <TableCell align='right'> {rate.boardName}</TableCell>
 
-              <TableCell align='right'> {rate.mySellingRate}</TableCell>
+            <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
 
-            </TableRow>
-          </TableCell>
+            <TableCell align='right'> {rate.mySellingRate}</TableCell>
+
+          </TableRow>
 
         ))}
 
@@ -126,7 +125,7 @@ function Row (props) {
 }
 
 Row.propTypes = {
-  row: PropTypes.arrayOf({
+  row: PropTypes.shape({
     sleeps: PropTypes.string.isRequired,
     selectrooms: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

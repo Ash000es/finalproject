@@ -24,7 +24,7 @@ const SelectRoom = (props) => {
     <Form style={size}>
       <Form.Group onChange={props.onChange} controlId='exampleForm.SelectCustomSizeSm'>
 
-        <Form.Control onChange={props.onChange} as='select' size='sm' custom>
+        <Form.Control as='select' size='sm' custom>
 
           {res.map(number => <option onChange={props.onChange} key={number} number={number} value={number}>{number}</option>)}
 
