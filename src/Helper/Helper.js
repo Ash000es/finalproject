@@ -194,19 +194,19 @@ export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
     }
   }))
 }
-export const showCancelationPolicy = (room) => {
-  room.rates.map(rate => {
-    const cancelationArray = rate.cancellationPolicies
-    const cancelationFeeFrom = cancelationArray[0].from
-    const newDate = cancelationFeeFrom.slice(0, 10)
-    const cancelationFee = cancelationArray[0].amount
-    const refundableStatus = rate.rateClass
-    if (refundableStatus === 'NRF') {
-      return 'None refundable'
-    } else {
-      return `Free Cancelation before ${newDate}`
-    }
-  })
+export const showCancelationPolicy = (rate) => {
+  // room.rates.map(rate => {
+  const cancelationArray = rate.cancellationPolicies
+  const cancelationFeeFrom = cancelationArray[0].from
+  const newDate = cancelationFeeFrom.slice(0, 10)
+  const cancelationFee = cancelationArray[0].amount
+  const refundableStatus = rate.rateClass
+  if (refundableStatus === 'NRF') {
+    return 'None refundable'
+  } else {
+    return `Free Cancelation before ${newDate}`
+  }
+  // })
 }
 export const roomsCost = (a, b) => {
   return a * b

@@ -16,7 +16,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import SelectRoom from '../components/SelectRoom'
 import { extras } from '../Helper/Constants'
-import { roomsCost } from '../Helper/Helper'
+import { roomsCost, showCancelationPolicy } from '../Helper/Helper'
 import SelectExtra from '../components/SelectExtra'
 
 const useRowStyles = makeStyles({
@@ -67,7 +67,11 @@ function Row (props) {
 
           <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)}>
 
-            <TableCell align='right'>2</TableCell>
+            <TableCell align='right'>
+              <p>2</p>
+              {showCancelationPolicy(rate)}
+
+            </TableCell>
 
             <TableCell align='right'> {rate.boardName}</TableCell>
 
