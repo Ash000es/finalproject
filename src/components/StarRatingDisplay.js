@@ -23,7 +23,7 @@ const StarRatingDisplay = (props) => {
       return null
     }
   }
-  console.log(state.starImage, 'starimage')
+  // console.log(state.starImage, 'starimage')
 
   return (
     <div>

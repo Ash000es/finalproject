@@ -30,7 +30,6 @@ const HotelPage = () => {
   const hotelName = currentSelection.name
   const roomy = currentSelection.apiRooms.map(room => room)
   const keyFacts = currentSelection.description.content
-  console.log(currentSelection, 'current')
 
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
