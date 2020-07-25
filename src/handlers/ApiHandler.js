@@ -46,9 +46,11 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     const hotelsOnly = hotels.hotels
 
     const insertDates = hotelsOnly.map(hotel => {
-      const hotelRoom = hotel.rooms.map(room => {
+      const apiRooms = hotel.rooms
+      const hotelRoom = apiRooms.map(room => {
         const roomRatesArray = room.rates.map(rate => {
-          const mySellingRate = (rate.net * 113) / 100
+          const mySellingRate1 = (rate.net * 113) / 100
+          const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
           const newRateObject = { ...rate, mySellingRate }
           // console.log(newRateObject, 'new rate')
           return newRateObject
@@ -58,7 +60,8 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       })
       // console.log(hotelRoom, 'newrooms')
 
-      const newHotel = { ...hotel, checkInDate, checkInOut, rooms: hotelRoom }
+      const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+
       return newHotel
     })
     const apiHotelResults1 = insertDates
@@ -80,8 +83,8 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     // console.log(hotelIDS)
     return fetchHotels(destination.code, hotelIDS, db)
       .then(dbHotels => {
-        // console.log('dbHotel', dbHotels)
-        const hotelsProject = mapResultToHotel(dbHotels, apiHotelResults)
+        console.log('dbHotel', dbHotels)
+        const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
         console.log(hotelsProject, 'hotelsproject')
         return hotelsProject
       })

@@ -15,7 +15,7 @@ const StarRatingDisplay = (props) => {
   const displayStarCount = () => {
     if (props.currentSelection.categoryName === '3 STARS') {
       setState({ stars: '3 Stars hotel', starImage: stars3 })
-    } else if (props.currentSelection.categoryName === '4 STARS') {
+    } if (props.currentSelection.categoryName === '4 STARS') {
       setState({ stars: '4 Stars hotel', starImage: stars4 })
     } else if (props.currentSelection.categoryName === '5 STARS') {
       setState({ stars: '5 Stars hotel', starImage: stars5 })
@@ -23,6 +23,7 @@ const StarRatingDisplay = (props) => {
       return null
     }
   }
+  console.log(state.starImage, 'starimage')
 
   return (
     <div>

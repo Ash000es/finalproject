@@ -96,7 +96,7 @@ export default function SelectPrice (props) {
         <RadioGroup aria-label='quiz' name='quiz' value={value} value1={value1}>
           {value ? <div>
             <FormLabel component='legend'>Room only</FormLabel>
-            <FormControlLabel value control={<Radio />} label={props.hotel.rooms[0].rates[0].net} checked />
+            <FormControlLabel value control={<Radio />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} checked />
 
             <FormHelperText>{helperText}</FormHelperText>
 
@@ -106,11 +106,11 @@ export default function SelectPrice (props) {
 
             <FormLabel component='legend'>Room plus extra</FormLabel>
             <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
-          </div>
+                   </div>
 
             : <div>
               <FormLabel component='legend'>Room only</FormLabel>
-              <FormControlLabel checked={false} value={!value} control={<Radio onChange={showRoomOnlyPrice} />} label={props.hotel.rooms[0].rates[0].net} />
+              <FormControlLabel checked={false} value={!value} control={<Radio onChange={showRoomOnlyPrice} />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} />
               <FormLabel component='legend'>Room plus extra</FormLabel>
 
               <FormControlLabel value1={!value1} checked control={<Radio />} label={showpriceplus} />
@@ -119,7 +119,7 @@ export default function SelectPrice (props) {
               <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                 continue
               </Button>
-              </div>}
+            </div>}
 
         </RadioGroup>
 

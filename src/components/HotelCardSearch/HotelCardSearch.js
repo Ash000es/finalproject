@@ -87,8 +87,8 @@ export const HotelCardSearch = (props) => {
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap1 && amenitiesToMap1.map(item =>
-                  <li key={item.facilityCode} item={item}>{item.icon}{item.name}  </li>
+                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
+                  <li key={i} item={item}>{item.icon}{item.name}  </li>
                 )}
                 </ul>
               </div>

@@ -28,10 +28,9 @@ const HotelPage = () => {
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
-  const roomy = currentSelection.rooms.map(room => room)
+  const roomy = currentSelection.apiRooms.map(room => room)
   const keyFacts = currentSelection.description.content
-  console.log(typeof keyFacts, 'LOOK HERE')
-  console.log(keyFacts)
+  console.log(currentSelection, 'current')
 
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
@@ -79,11 +78,12 @@ const HotelPage = () => {
   return (
 
     <div className='fillit'>
-      <div>
-        <h4>This hotel have spceial offer for you</h4>
 
-        <p>{currentSelection.name}{hardHotelObject.label.posh}{currentSelection.address.content},{currentSelection.destinationName} show on map</p>
-      </div>
+      console.log
+      <h4>This hotel have spceial offer for you</h4>
+
+      <p>{currentSelection.name.content}{hardHotelObject.label.posh}{currentSelection.address.content},{currentSelection.destinationName} show on map</p>
+
       <div>
         <p>Edit your dates</p>
         <DateRangePicker />
@@ -92,8 +92,8 @@ const HotelPage = () => {
 
       <div>
         <p>Amenities:</p>
-        <ul style={{ listStyleType: 'none' }}>{readyAmenities1 && readyAmenities1.map(item =>
-          <li key={item.facilityCode}>{item.icon}{item.name}</li>
+        <ul style={{ listStyleType: 'none' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
+          <li key={i} item={item}>{item.icon}{item.name}</li>
 
         )}
         </ul>
@@ -103,7 +103,7 @@ const HotelPage = () => {
       <p>{truncateString(keyFacts, 5000)} </p>
       <img src='' alt='TA' />
 
-      <StarRatingDisplay currentSelection={currentSelection} />
+      <StarRatingDisplay currentSelection={currentSelection} /> */} */}
       <div><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
 
       {totalSelectedRoomsInfo.length > 0 &&

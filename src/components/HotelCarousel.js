@@ -24,9 +24,9 @@ export const HotelCarousel = (props) => {
       <Carousel activeIndex={index} onSelect={handleSelect}>
 
         {
-          readyImagesArray.map((image) => {
+          readyImagesArray.map((image, i) => {
             return (
-              <Carousel.Item key={Math.random()} style={imageSize} className='iconCon'>
+              <Carousel.Item key={i} style={imageSize} className='iconCon'>
 
                 <img
                   className='d-block w-100 '
@@ -38,7 +38,7 @@ export const HotelCarousel = (props) => {
                 <i className='iconHeart'><FavoriteBorderIcon /></i>
                 <Carousel.Caption>
                   <h3>{image.order}</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+
                 </Carousel.Caption>
               </Carousel.Item>
 

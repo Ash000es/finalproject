@@ -28,8 +28,10 @@ const useRowStyles = makeStyles({
 })
 
 function Row (props) {
+  console.log(props, 'props')
   const { room } = props
   const row = room
+  console.log(row, 'row')
 
   const [open, setOpen] = React.useState(false)
   const classes = useRowStyles()
@@ -49,7 +51,7 @@ function Row (props) {
 
     props.onChange(extraObj)
   }
-  console.log(row.rates, 'rates')
+
   return (
     <>
 
@@ -63,7 +65,7 @@ function Row (props) {
         <TableCell component='th' scope='row'>{row.name}</TableCell>
 
         {row.rates.map(rate => (
-          <>
+          <TableCell>
             <TableRow key={rate.rateKey} onChange={(e) => collectValues(rate, row.name, e)}>
 
               <TableCell align='right'>2</TableCell>
@@ -72,10 +74,10 @@ function Row (props) {
 
               <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
 
-              <TableCell align='right'> {rate.net}</TableCell>
+              <TableCell align='right'> {rate.mySellingRate}</TableCell>
 
             </TableRow>
-          </>
+          </TableCell>
 
         ))}
 
@@ -124,7 +126,7 @@ function Row (props) {
 }
 
 Row.propTypes = {
-  row: PropTypes.shape({
+  row: PropTypes.arrayOf({
     sleeps: PropTypes.string.isRequired,
     selectrooms: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -140,9 +142,9 @@ Row.propTypes = {
 }
 
 export default function CollapsibleTable (props) {
-  // console.log(props, 'Iam props from collapse')
+  console.log(props, 'Iam props from collapse')
   const { rooms } = props
-  // console.log(rooms, 'roomy here')
+  console.log(rooms, 'roomy here')
 
   return (
     <TableContainer component={Paper}>

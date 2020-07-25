@@ -48,7 +48,7 @@ export const HotelList = () => {
 
   console.log('hotelsresults', hotelsresults)
   console.log('tempfilteredhotels', tempfilteredhotels)
-  console.log(filters, 'filters status')
+  // console.log(filters, 'filters status')
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
