@@ -51,37 +51,44 @@ function Row (props) {
     props.onChange(extraObj)
   }
 
+  const renderRow = (rate) => {
+    return (
+      <TableRow>
+        {/* 2 */}
+        <TableCell align='left'>
+          <p>2</p>
+          {showCancelationPolicy(rate)}
+        </TableCell>
+        {/* 3 */}
+        <TableCell align='left'> {rate.boardName}</TableCell>
+
+        {/* 4 */}
+        <TableCell align='left'> <SelectRoom rate={rate} /></TableCell>
+
+        {/* 5 */}
+        <TableCell align='left'> {rate.mySellingRate}</TableCell>
+      </TableRow>
+    )
+  }
+  // key={i} onChange={(e) => collectValues(rate, row.name, e)}
   return (
     <>
 
       <TableRow className={classes.root}>
+        {/* 0 */}
         <TableCell>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
 
+        {/* 1 */}
         <TableCell scope='row'>{row.name}</TableCell>
-
-        {row.rates.map((rate, i) => (
-
-          <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)}>
-
-            <TableCell align='right'>
-              <p>2</p>
-              {showCancelationPolicy(rate)}
-
-            </TableCell>
-
-            <TableCell align='right'> {rate.boardName}</TableCell>
-
-            <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
-
-            <TableCell align='right'> {rate.mySellingRate}</TableCell>
-
-          </TableRow>
-
-        ))}
+        <TableCell colSpan={4}>
+          {row.rates.map(r => {
+            return renderRow(r)
+          })}
+        </TableCell>
 
       </TableRow>
 
@@ -152,13 +159,18 @@ export default function CollapsibleTable (props) {
       <Table aria-label='collapsible table'>
         <TableHead>
           <TableRow>
+            {/* 0 */}
             <TableCell />
-            <TableCell>Room Type</TableCell>
-            <TableCell>sleeps</TableCell>
-            <TableCell>Included</TableCell>
-            <TableCell>selectrooms</TableCell>
-            <TableCell>price</TableCell>
-
+            {/* 1 */}
+            <TableCell align='left'>Room Type</TableCell>
+            {/* 2 */}
+            <TableCell align='left'>sleeps</TableCell>
+            {/* 3 */}
+            <TableCell align='left'>Included</TableCell>
+            {/* 4 */}
+            <TableCell align='left'>selectrooms</TableCell>
+            {/* 5 */}
+            <TableCell align='left'>price</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
