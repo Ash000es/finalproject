@@ -84,7 +84,7 @@ function Row (props) {
 
         {/* 1 */}
         <TableCell scope='row'>{row.name}</TableCell>
-        <TableCell style={{ display: 'flex' }} colSpan={4}>
+        <TableCell colSpan={4}>
           {row.rates.map((r, i) => {
             return renderRow(r, i)
           })}

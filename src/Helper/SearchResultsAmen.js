@@ -194,7 +194,7 @@ export const searchResultsAmen = [
     FacilityCode: 20,
     FacilityGroupCode: 30,
     icon: <AcUnitOutlinedIcon />,
-    name: 'EC'
+    name: 'Air conditioning'
 
   },
   {
