@@ -51,22 +51,22 @@ function Row (props) {
     props.onChange(extraObj)
   }
 
-  const renderRow = (rate) => {
+  const renderRow = (rate, i) => {
     return (
-      <TableRow>
+      <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)}>
         {/* 2 */}
-        <TableCell align='left'>
+        <TableCell align='right'>
           <p>2</p>
-          {showCancelationPolicy(rate)}
+          {/* {showCancelationPolicy(rate)} */}
         </TableCell>
         {/* 3 */}
-        <TableCell align='left'> {rate.boardName}</TableCell>
+        <TableCell align='right'> {rate.boardName}</TableCell>
 
         {/* 4 */}
-        <TableCell align='left'> <SelectRoom rate={rate} /></TableCell>
+        <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
 
         {/* 5 */}
-        <TableCell align='left'> {rate.mySellingRate}</TableCell>
+        <TableCell align='right'> {rate.mySellingRate}</TableCell>
       </TableRow>
     )
   }
@@ -84,9 +84,9 @@ function Row (props) {
 
         {/* 1 */}
         <TableCell scope='row'>{row.name}</TableCell>
-        <TableCell colSpan={4}>
-          {row.rates.map(r => {
-            return renderRow(r)
+        <TableCell style={{ display: 'flex' }} colSpan={4}>
+          {row.rates.map((r, i) => {
+            return renderRow(r, i)
           })}
         </TableCell>
 

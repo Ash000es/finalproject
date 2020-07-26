@@ -49,16 +49,17 @@ export const HotelList = () => {
   console.log('hotelsresults', hotelsresults)
   console.log('tempfilteredhotels', tempfilteredhotels)
   // console.log(filters, 'filters status')
-
-  const resultsPerPage = 5
-  const allHotelsResults = project.results
-  const googleLandingLat = allHotelsResults[0].latitude
-  const googleLandingLong = allHotelsResults[0].longitude
-
   useEffect(() => {
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
     setHotelsResults(intialLoad)
   }, [])
+
+  const resultsPerPage = 5
+  const allHotelsResults = project.results
+  if (!allHotelsResults.length) return null
+  const googleLandingLat = allHotelsResults[0].latitude
+  const googleLandingLong = allHotelsResults[0].longitude
+
   const onCompelet = () => {
     setIsLoading(false)
     setRedirect(true)

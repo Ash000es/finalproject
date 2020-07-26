@@ -24,11 +24,14 @@ const HotelPage = () => {
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
   const currentSelection = project.currentHotel
+  if (!Object.keys(currentSelection).length) return null
   const facilitiesArray = currentSelection.facilities
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
-  const roomy = currentSelection.apiRooms.map(room => room)
+  console.log(currentSelection, 'hotel object')
+  const roomy = currentSelection.apiRooms
+
   const keyFacts = currentSelection.description.content
 
   const cartItems = project.cartItems
@@ -65,10 +68,6 @@ const HotelPage = () => {
   const onCompelet = () => {
     setRedirect(true)
   }
-  const stopRerenderingHotelCarousel = useMemo(() => {
-    // TODO: change HotelCarousel to SearchResultsCarousel and send in Images as props instead of context. Same with currentSelection
-    return <HotelCarousel currentSelection={currentSelection} />
-  }, [1])
 
   if (redirect) {
     return <Redirect exact push to='/reviewcart' />
@@ -86,7 +85,7 @@ const HotelPage = () => {
         <p>Edit your dates</p>
         <DateRangePicker />
       </div>
-      {stopRerenderingHotelCarousel}
+      <HotelCarousel currentSelection={currentSelection} />
 
       <div>
         <p>Amenities:</p>
