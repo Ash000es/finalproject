@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import windsurfing from '../assets/windsurfing.svg'
+import safebox from '../assets/safebox.svg'
+import heating from '../assets/thermometer.svg'
+import PeopleIcon from '@material-ui/icons/People'
+import PersonIcon from '@material-ui/icons/Person'
 import HotelOutlinedIcon from '@material-ui/icons/HotelOutlined'
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
 import ApartmentOutlinedIcon from '@material-ui/icons/ApartmentOutlined'
@@ -40,7 +45,7 @@ import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined'
 import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
 import WcOutlinedIcon from '@material-ui/icons/WcOutlined'
 import KitchenOutlinedIcon from '@material-ui/icons/KitchenOutlined'
-// import { SurfIcon } from '../Icons/Surf'
+import surfing from '../assets/surfing.svg'
 
 export const searchResultsAmen = [
 
@@ -332,7 +337,7 @@ export const hotelAmen = [
   {
     FacilityCode: 410,
     FacilityGroupCode: 90,
-    icon: 30,
+    icon: <img src={surfing} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Surfing'
 
   },
@@ -488,7 +493,7 @@ export const hotelAmen = [
   {
     FacilityCode: 190,
     FacilityGroupCode: 60,
-    icon: 3,
+    icon: <img src={heating} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Central heating'
 
   },
@@ -509,7 +514,7 @@ export const hotelAmen = [
   {
     FacilityCode: 210,
     FacilityGroupCode: 90,
-    icon: 12,
+    icon: <img src={windsurfing} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Windsurfing'
 
   },
@@ -780,7 +785,7 @@ export const roomsAmen = [
   {
     FacilityCode: 200,
     FacilityGroupCode: 60,
-    icon: 26,
+    icon: <img src={safebox} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Safe'
 
   },
