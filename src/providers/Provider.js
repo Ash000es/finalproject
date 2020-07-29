@@ -9,7 +9,6 @@ const ProjectProvider = (props) => {
   const [project, setProject] = useState(
     {
       results: [],
-      currentHotel: {},
       cartItems: []
 
     })

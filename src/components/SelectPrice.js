@@ -51,24 +51,23 @@ export default function SelectPrice (props) {
     setError(false)
   }
   const showRoomOnlyPrice = (event) => {
-    console.log(event.target.value, 'roomonly')
+    // console.log(event.target.value, 'roomonly')
     setValue(!value)
     setValue1(!value1)
     setValueChecked(event.target.checked)
     setValue1Checked(!event.target.checked)
   }
   const showRoomPlusPrice = (event) => {
-    console.log(event.target.value, 'plusprice')
+    // console.log(event.target.value, 'plusprice')
     setValue(!value)
     setValue1(!value1)
     setValueChecked(!event.target.checked)
     setValue1Checked(event.target.checked)
   }
   const sendCurrentHotel = () => {
-    setProject(
-      { ...project, currentHotel: props.hotel }
-    )
-    props.done()
+    const currentHotel = props.hotel
+
+    props.done(currentHotel)
   }
 
   const handleSubmit = (event) => {
@@ -85,9 +84,9 @@ export default function SelectPrice (props) {
       setError(true)
     }
   }
-  if (redirect) {
-    return <Redirect exact push to='/hotelpage' />
-  }
+  // if (redirect) {
+  //   return <Redirect exact push to='/hotelpage' />
+  // }
 
   return (
     <form onSubmit={handleSubmit}>

@@ -12,7 +12,8 @@ import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
 
-const HotelPage = () => {
+const HotelPage = React.memo((props) => {
+  console.log(props, 'props')
   const { project, setProject } = useContext(ProjectContext)
   const [totalSelectedRoomsInfo, setTotalSelectedRoomsInfo] = useState([])
   const [totalSelectedExtrasInfo, setTotalSelectedExtrasInfo] = useState([])
@@ -23,16 +24,21 @@ const HotelPage = () => {
   const [redirect, setRedirect] = useState(false)
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
-  const currentSelection = project.currentHotel
-  if (!Object.keys(currentSelection).length) return null
+  const currentSelection = props.location.state.currentHotel
+  if (!currentSelection) {
+    return <Redirect exact push to='/searchresults' />
+  }
+  console.log(currentSelection, 'current')
+  // if (!Object.keys(currentSelection).length) return null
   const facilitiesArray = currentSelection.facilities
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
-  console.log(currentSelection, 'hotel object')
+  // console.log(currentSelection, 'hotel object')
   const roomy = currentSelection.apiRooms
 
-  const keyFacts = currentSelection.description.content
+  const keyFacts = currentSelection.description
+  const keyFacts1 = keyFacts.content
 
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
@@ -97,7 +103,7 @@ const HotelPage = () => {
 
       </div>
       <p>Key facts</p>
-      <p>{truncateString(keyFacts, 5000)} </p>
+      <p>{truncateString(keyFacts1, 5000)} </p>
       <img src='' alt='TA' />
 
       <StarRatingDisplay currentSelection={currentSelection} />
@@ -122,5 +128,6 @@ const HotelPage = () => {
       })}
 
     </div>
+
   )
-}; export default HotelPage
+}); export default HotelPage

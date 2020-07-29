@@ -1,5 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useMemo } from 'react'
 import { HotelCardSearch } from '../components/HotelCardSearch/HotelCardSearch'
 import { DropDownFilter } from '../components/DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
@@ -9,7 +9,7 @@ import './HotelList.css'
 import { VacationRental } from '../components/DropDownFilter/VCFilter'
 import { HotelsOnly } from '../components/DropDownFilter/HotelsOnlyFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
-import { Redirect } from 'react-router'
+import { Redirect, Route } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import Button from 'react-bootstrap/Button'
@@ -17,6 +17,7 @@ import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
 import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
 import { TableCell } from '@material-ui/core'
+import HotelPage from '../Pages/HotelPage'
 
 const style = {
   height: 30,
@@ -45,9 +46,12 @@ export const HotelList = () => {
   const [isloading, setIsLoading] = useState(false)
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
   const [filters, setFilters] = useState(initialFilterState)
+  const [currentHotel, setCurrentHotel] = useState({})
+  console.log(currentHotel, 'currenthotel')
 
   console.log('hotelsresults', hotelsresults)
   console.log('tempfilteredhotels', tempfilteredhotels)
+  console.log(redirect, 'redirect hotelist')
   // console.log(filters, 'filters status')
   useEffect(() => {
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
@@ -56,11 +60,16 @@ export const HotelList = () => {
 
   const resultsPerPage = 5
   const allHotelsResults = project.results
-  if (!allHotelsResults.length) return null
-  const googleLandingLat = allHotelsResults[0].latitude
-  const googleLandingLong = allHotelsResults[0].longitude
 
-  const onCompelet = () => {
+  console.log(allHotelsResults, 'did I make it to hotel list?')
+  // if (!allHotelsResults.length) return null
+
+  const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
+  const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
+
+  const onCompelet = (currentHotel) => {
+    setCurrentHotel(currentHotel)
+    console.log(currentHotel, 'viewing')
     setIsLoading(false)
     setRedirect(true)
   }
@@ -77,7 +86,12 @@ export const HotelList = () => {
   }
 
   if (redirect) {
-    return <Redirect exact push to='/hotelpage' />
+    return <Redirect
+      to={{
+        pathname: '/hotelpage',
+        state: { currentHotel }
+      }}
+    />
   }
   // ture= on false= off villasOnly
   const handleFilteredHomes = () => {
@@ -160,6 +174,7 @@ export const HotelList = () => {
     }
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
+  console.log(valueToMap, 'value to map')
 
   const style = {
     height: '100%',
@@ -167,43 +182,44 @@ export const HotelList = () => {
   }
 
   return (
+    <>
+      {!allHotelsResults.length ? <Spinning />
+        : <div style={style}>
+          <InfiniteScroll
+            style={style}
+            dataLength={valueToMap.length}
+            next={fetchMoreData}
+            hasMore={valueToMap.length < allHotelsResults.length}
+            // loader={valueToMap.length >= 1 ? null : <h4>Loading...</h4>}
+            scrollThreshold={0.8}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            <div className='HotelList'>
+              <SearchResultsHero />
+              <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
+              <div>
+                <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
+                <Typography />
 
-    <div style={style}>
-      <InfiniteScroll
-        style={style}
-        dataLength={valueToMap.length}
-        next={fetchMoreData}
-        hasMore={valueToMap.length < allHotelsResults.length}
-        // loader={valueToMap.length >= 1 ? null : <h4>Loading...</h4>}
-        scrollThreshold={0.8}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-      >
-        <div className='HotelList'>
-          <SearchResultsHero />
-          <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
-          <div>
-            <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
-            <Typography />
+                <div className='sortButton'>
+                  <DropDownFilter onClick={handleSort} />
+                </div>
+                <br />
 
-            <div className='sortButton'>
-              <DropDownFilter onClick={handleSort} />
+                {valueToMap && valueToMap.map(hotel => {
+                  return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
+                })}
+
+              </div>
+
             </div>
-            <br />
 
-            {valueToMap && valueToMap.map(hotel => {
-              return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
-            })}
-
-          </div>
-
-        </div>
-
-      </InfiniteScroll>
-    </div>
-
+          </InfiniteScroll>
+        </div>}
+    </>
   )
 }

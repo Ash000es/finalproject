@@ -66,6 +66,7 @@ const SearchBar = (props) => {
     // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
+        console.log(hotelsProject, 'before setting to context')
         setProject(
           { ...project, results: hotelsProject }
         )
@@ -118,7 +119,7 @@ const SearchBar = (props) => {
         <AmenitiesSelect onChange={props.handleAmenSelection} />
         <StarRatingFilter onChange={props.onClick} />
 
-                        </div>}
+      </div>}
 
     </>
 

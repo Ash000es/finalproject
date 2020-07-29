@@ -65,6 +65,7 @@ export const HotelCardSearch = (props) => {
   const stopRerendering = useMemo(() => {
     return <SearchResultsCarousel images={readyImages} />
   }, [1])
+  // console.log(props.hotel.city.content, 'see')
 
   return (
     <>
@@ -85,6 +86,7 @@ export const HotelCardSearch = (props) => {
             </div>
             <div className='threeCon'>
               <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
+
               <div className={classes.column} id='ament'>
 
                 <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
@@ -103,7 +105,7 @@ export const HotelCardSearch = (props) => {
             </div>
 
             <div id='bookButton' className={classes.column} style={{ width: '170px' }}>
-              <SelectPrice done={() => props.done()} hotel={props.hotel} />
+              <SelectPrice done={props.done} hotel={props.hotel} />
             </div>
           </ExpansionPanelSummary>
 
