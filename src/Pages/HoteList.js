@@ -1,5 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
-import React, { useContext, useState, useEffect, useMemo } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { HotelCardSearch } from '../components/HotelCardSearch/HotelCardSearch'
 import { DropDownFilter } from '../components/DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
@@ -9,15 +9,12 @@ import './HotelList.css'
 import { VacationRental } from '../components/DropDownFilter/VCFilter'
 import { HotelsOnly } from '../components/DropDownFilter/HotelsOnlyFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
-import { Redirect, Route } from 'react-router'
+import { Redirect } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
 import { Spinning } from '../components/Spinner'
-import Button from 'react-bootstrap/Button'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
 import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
-import { TableCell } from '@material-ui/core'
-import HotelPage from '../Pages/HotelPage'
 
 const style = {
   height: 30,
@@ -47,36 +44,27 @@ export const HotelList = () => {
   const [tempfilteredhotels, setTempFilteredHotels] = useState([])
   const [filters, setFilters] = useState(initialFilterState)
   const [currentHotel, setCurrentHotel] = useState({})
-  console.log(currentHotel, 'currenthotel')
+  const resultsPerPage = 5
+  const allHotelsResults = project.results
+  const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
+  const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
 
-  console.log('hotelsresults', hotelsresults)
-  console.log('tempfilteredhotels', tempfilteredhotels)
-  console.log(redirect, 'redirect hotelist')
-  // console.log(filters, 'filters status')
+  // fetch from context first 5 results to display
   useEffect(() => {
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
     setHotelsResults(intialLoad)
   }, [])
 
-  const resultsPerPage = 5
-  const allHotelsResults = project.results
-
-  console.log(allHotelsResults, 'did I make it to hotel list?')
-  // if (!allHotelsResults.length) return null
-
-  const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
-  const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
-
   const onCompelet = (currentHotel) => {
     setCurrentHotel(currentHotel)
-    console.log(currentHotel, 'viewing')
+
     setIsLoading(false)
     setRedirect(true)
   }
   const startLoading = () => {
     setIsLoading(true)
   }
-
+  // as user scroll down, results gets populated with 5 new hotels at the time
   const fetchMoreData = () => {
     const indexOfFirstHotel = resultsstart + resultsPerPage
     const indexOfFLastHotel = indexOfFirstHotel + resultsPerPage
@@ -85,14 +73,16 @@ export const HotelList = () => {
     setHotelsResults(hotelsresults.concat(newLoad))
   }
 
+  // when a user selects a hotel, props is passed to <HotelPage/> via redirect
   if (redirect) {
     return <Redirect
       to={{
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-    />
+           />
   }
+  // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
   const handleFilteredHomes = () => {
     const change = { ...filters, villasOnly: !filters.villasOnly }
@@ -105,16 +95,32 @@ export const HotelList = () => {
   }
   // ['TV', 'Pool']
   const handleAmenSelection = (arr) => {
-    console.log(arr, 'pros here')
     const change = { ...filters, Amenities: arr }
 
     filterAll(change)
   }
+  // ["3 STARS", "4 STARS"] starRatings
+  const updateStarRating = (proby) => {
+    const change = { ...filters, starRating: proby }
+    filterAll(change)
 
+    // setTempFilteredHotels(res)
+  }
+  // [2, 100] priceFilter
+  const updatePriceResults = (sliderrange) => {
+    const change = { ...filters, priceFilter: sliderrange }
+    filterAll(change)
+  }
+  // 'Sortby Price','Sortby review', sortBy
+  const handleSort = (sortByValue) => {
+    const change = { ...filters, sortBy: sortByValue }
+    filterAll(change)
+  }
+
+  // filter the results based on the global filter state object
   const filterAll = (filters) => {
     // start by setting it to neutral
     let res = hotelsresults
-    console.log(filters, '121')
 
     // begin applying all special cases of filters that are ON
     if (filters.hotelsOnly) {
@@ -147,25 +153,7 @@ export const HotelList = () => {
     setFilters(filters)
   }
 
-  // ["3 STARS", "4 STARS"] starRatings
-  const updateStarRating = (proby) => {
-    console.log(proby, 'here')
-    const change = { ...filters, starRating: proby }
-    filterAll(change)
-
-    // setTempFilteredHotels(res)
-  }
-  // [2, 100] priceFilter
-  const updatePriceResults = (sliderrange) => {
-    const change = { ...filters, priceFilter: sliderrange }
-    filterAll(change)
-  }
-  // 'Sortby Price','Sortby review', sortBy
-  const handleSort = (sortByValue) => {
-    const change = { ...filters, sortBy: sortByValue }
-    filterAll(change)
-  }
-
+  // quick check to see which array to be mapped, an already filtered array or the original with no filters applied
   const resultsToMap = (arr1, arr) => {
     if (arr1.length > 0) {
       return arr1
@@ -174,7 +162,6 @@ export const HotelList = () => {
     }
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
-  console.log(valueToMap, 'value to map')
 
   const style = {
     height: '100%',
@@ -219,7 +206,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-        </div>}
+          </div>}
     </>
   )
 }
