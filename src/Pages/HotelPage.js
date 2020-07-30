@@ -4,21 +4,19 @@ import RoomCarousel from '../components/thumbilCarousel'
 import StarRatingDisplay from '../components/StarRatingDisplay'
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../components/DateRange/NewDateRange'
-import { HotelCarousel } from '../components/HotelCarousel'
+import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartDrawer } from '../components/CartDrawerN'
-import { addCartItem, showCancelationPolicy, getAmenitiesArray, sumUp, getUnique, truncateString } from '../Helper/Helper'
+import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
+import { masterLinkLarge } from '../Helper/Constants'
 
 const HotelPage = React.memo((props) => {
-  console.log(props, 'props')
   const { project, setProject } = useContext(ProjectContext)
   const [totalSelectedRoomsInfo, setTotalSelectedRoomsInfo] = useState([])
   const [totalSelectedExtrasInfo, setTotalSelectedExtrasInfo] = useState([])
-  // console.log(totalSelectedRoomsInfo, 'totalSelectedRoomsInfo')
-  // console.log(totalSelectedExtrasInfo, 'totalSelectedextrassInfo')
   const [extrasnum, setExtrasNum] = useState([])
   const [extraspricearr, setExtrasPriceArr] = useState([])
   const [redirect, setRedirect] = useState(false)
@@ -28,22 +26,20 @@ const HotelPage = React.memo((props) => {
   if (!currentSelection) {
     return <Redirect exact push to='/searchresults' />
   }
-  console.log(currentSelection, 'current')
+
   // if (!Object.keys(currentSelection).length) return null
   const facilitiesArray = currentSelection.facilities
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
-  // console.log(currentSelection, 'hotel object')
   const roomy = currentSelection.apiRooms
-
-  const keyFacts = currentSelection.description
-  const keyFacts1 = keyFacts.content
-
+  const imagesArray = getLargePictures(currentSelection.images, masterLinkLarge)
+  const keyFacts = currentSelection.description.content
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
   const readyAmenities1 = getUnique(readyAmenities, 'name')
 
+  // wrapper to summarise the room and extra selection
   const selectionWrapper = (showme) => {
     const roomSelectionInfo = showme.rateKey ? showme : null
     const ExtrasSelectionInfo = showme.summary ? showme : null
@@ -91,7 +87,7 @@ const HotelPage = React.memo((props) => {
         <p>Edit your dates</p>
         <DateRangePicker />
       </div>
-      <HotelCarousel currentSelection={currentSelection} />
+      <SearchResultsCarousel currentSelection={imagesArray} />
 
       <div>
         <p>Amenities:</p>
@@ -103,7 +99,7 @@ const HotelPage = React.memo((props) => {
 
       </div>
       <p>Key facts</p>
-      <p>{truncateString(keyFacts1, 5000)} </p>
+      <p>{truncateString(keyFacts, 4000)} </p>
       <img src='' alt='TA' />
 
       <StarRatingDisplay currentSelection={currentSelection} />

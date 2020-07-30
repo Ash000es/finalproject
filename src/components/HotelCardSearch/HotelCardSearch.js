@@ -62,10 +62,6 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
-  const stopRerendering = useMemo(() => {
-    return <SearchResultsCarousel images={readyImages} />
-  }, [1])
-  // console.log(props.hotel.city.content, 'see')
 
   return (
     <>
@@ -81,7 +77,7 @@ export const HotelCardSearch = (props) => {
 
           >
             <div className={classes.column} id='cardImage'>
-              {stopRerendering}
+              <SearchResultsCarousel images={readyImages} />
 
             </div>
             <div className='threeCon'>

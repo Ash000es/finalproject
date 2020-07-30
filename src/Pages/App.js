@@ -15,13 +15,10 @@ import ProjectProvider, { ProjectContext } from '../providers/Provider'
 import MapPopUp from '../components/Map/MapPopUp'
 import getSteps from '../components/PaymentCout/Stepper'
 import { HotelList } from './HoteList'
-import { testing } from '../components/Test'
 import { LoginButton } from '../components/LoginButton'
 import ShoppingCart from '../components/ShoppingCard'
 
 function App (props) {
-  // const { project, setProject } = useContext(ProjectContext)
-
   return (
     <ProjectProvider>
       <FirebaseContext.Provider value={db}>

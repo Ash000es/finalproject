@@ -10,7 +10,6 @@ import NewDateRange from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { requestAvailableHotels } from '../../handlers/ApiHandler'
-import { Spinning } from '../Spinner'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -60,13 +59,13 @@ const SearchBar = (props) => {
     setProject(
       { ...project, results: [] }
     )
-    console.log(project, 'results here')
+
     props.startLoading()
     const payLoad = { occupancies, destination, stay, reviews }
     // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
-        console.log(hotelsProject, 'before setting to context')
+        console.log(project, 'results here')
         setProject(
           { ...project, results: hotelsProject }
         )
