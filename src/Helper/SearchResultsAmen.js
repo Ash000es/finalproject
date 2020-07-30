@@ -46,6 +46,20 @@ import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
 import WcOutlinedIcon from '@material-ui/icons/WcOutlined'
 import KitchenOutlinedIcon from '@material-ui/icons/KitchenOutlined'
 import surfing from '../assets/surfing.svg'
+import waterski from '../assets/waterski.svg'
+import smokedetector from '../assets/smokedetector.svg'
+import towels from '../assets/towels.svg'
+import personsurfing from '../assets/personsurfing.svg'
+import jetski from '../assets/jetski.svg'
+import iron from '../assets/iron.svg'
+import garden from '../assets/garden.svg'
+import hairdryer from '../assets/hairdryer.svg'
+import babybed from '../assets/babybed.svg'
+import bananaboat from '../assets/bananaboat.svg'
+import desk from '../assets/desk.svg'
+import toiletries from '../assets/toiletries.svg'
+import waterslide from '../assets/waterslide.svg'
+import diving from '../assets/diving.svg'
 
 export const searchResultsAmen = [
 
@@ -344,7 +358,7 @@ export const hotelAmen = [
   {
     FacilityCode: 610,
     FacilityGroupCode: 73,
-    icon: 12,
+    icon: <img src={waterslide} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'WaterSlides'
 
   },
@@ -372,7 +386,7 @@ export const hotelAmen = [
   {
     FacilityCode: 327,
     FacilityGroupCode: 60,
-    icon: 12,
+    icon: <img src={towels} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Towels and bed linen at surcharge'
 
   },
@@ -423,7 +437,7 @@ export const hotelAmen = [
   {
     FacilityCode: 12,
     FacilityGroupCode: 70,
-    icon: 3,
+    icon: <img src={smokedetector} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Smoke detector'
 
   },
@@ -458,14 +472,14 @@ export const hotelAmen = [
   {
     FacilityCode: 147,
     FacilityGroupCode: 60,
-    icon: 3,
+    icon: <img src={iron} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Ironing set'
 
   },
   {
     FacilityCode: 160,
     FacilityGroupCode: 90,
-    icon: 12,
+    icon: <img src={bananaboat} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Banana boating'
 
   },
@@ -479,14 +493,14 @@ export const hotelAmen = [
   {
     FacilityCode: 170,
     FacilityGroupCode: 90,
-    icon: 12,
+    icon: <img src={waterski} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Waterskiing'
 
   },
   {
     FacilityCode: 180,
     FacilityGroupCode: 90,
-    icon: 12,
+    icon: <img src={jetski} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Jet ski'
 
   },
@@ -500,7 +514,7 @@ export const hotelAmen = [
   {
     FacilityCode: 200,
     FacilityGroupCode: 90,
-    icon: 12,
+    icon: <img src={diving} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Diving'
 
   },
@@ -643,14 +657,14 @@ export const roomsAmen = [
   {
     FacilityCode: 276,
     FacilityGroupCode: 60,
-    icon: 3,
+    icon: <img src={toiletries} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Toiletries'
 
   },
   {
     FacilityCode: 264,
     FacilityGroupCode: 60,
-    icon: 22,
+    icon: <img src={babybed} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Cot on demand'
 
   },

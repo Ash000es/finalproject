@@ -183,7 +183,7 @@ const HomePageResults = (props) => {
             </Row>
 
           </CardDeck>
-        </>}
+          </>}
     </div>
   )
 }
