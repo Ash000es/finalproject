@@ -813,7 +813,7 @@ export const roomsAmen = [
   {
     FacilityCode: 279,
     FacilityGroupCode: 60,
-    icon: 3,
+    icon: <img src={desk} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Desk'
 
   },
