@@ -14,7 +14,13 @@ export const HomePage = () => {
   console.log(redirect, 'redirect from homepage')
   const [isloading, setIsLoading] = useState(false)
   // console.log(isloading, 'isloading')
-
+  const style = {
+    width: '100%',
+    height: '100%',
+    postion: 'fixed',
+    marginRight: 0,
+    marginLeft: 0
+  }
   const onCompelet = () => {
     setIsLoading(false)
     setRedirect(true)
@@ -26,10 +32,10 @@ export const HomePage = () => {
     return <Redirect exact push to='/searchresults' />
   }
   return (
-    <>
+    <div style={style}>
       <HomePageHero />
       <SearchBar done={onCompelet} fullbar={false} startLoading={startLoading} />
       {isloading ? <Spinning /> : <HomePageResults />}
-    </>
+    </div>
   )
 }

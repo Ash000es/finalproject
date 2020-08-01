@@ -77,7 +77,7 @@ const HotelPage = React.memo((props) => {
 
   return (
 
-    <div className='fillit'>
+    <div className='fillit' style={{ height: '80%', width: '80%' }}>
 
       <h4>This hotel have spceial offer for you</h4>
 
@@ -91,7 +91,7 @@ const HotelPage = React.memo((props) => {
 
       <div>
         <p>Amenities:</p>
-        <ul style={{ listStyleType: 'none' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
+        <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
           <li key={i} item={item}>{item.icon}{item.name}</li>
 
         )}

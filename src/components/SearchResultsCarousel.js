@@ -9,7 +9,7 @@ import { masterLinkSmall } from '../Helper/Constants'
 
 export const SearchResultsCarousel = (props) => {
   const style2 = { width: '340px', height: '250px', display: 'show' }
-  const style1 = { width: '100%', height: '80%' }
+  const style1 = { width: '70%', height: '70%' }
   let styleToShow
   const ValueToMap = () => {
     if (props.currentSelection) {

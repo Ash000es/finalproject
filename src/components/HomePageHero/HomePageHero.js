@@ -3,14 +3,16 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from '@material-ui/core/Button'
 import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card'
+import SearchBar from '../SearchBar/SearchBar'
 import './Hero.css'
+import cover from '../../assets/cover.svg'
 
 const HomePageHero = () => {
   return (
-    <div className='bigCon'>
-      <div className='con1'>
-        <Card className='bg-dark text-white '>
-          <Card.Img src='https://source.unsplash.com/random' alt='Card image' style={{ height: '400px' }} />
+    <>
+      <div className='bigCon'>
+        {/* <Card className='img'>
+          <Card.Img src='https://source.unsplash.com/random' alt='Card image' />
           <Card.ImgOverlay>
             <Card.Title>Card title</Card.Title>
             <Card.Text>
@@ -18,12 +20,14 @@ const HomePageHero = () => {
               additional content. This content is a little bit longer.
             </Card.Text>
 
-          </Card.ImgOverlay>
-        </Card>
+        {/* </Card.ImgOverlay> */}
+        {/* </Card> */}
+        <p>Your one stop shop</p>
+        {/* <SearchBar /> */}
       </div>
-      <div className='wrapDiv'>
+      <div className='splitCon'>
         <div className='con2'>
-          <Card className='bg-dark text-white '>
+          {/* <Card className='bg-dark text-white '>
             <Card.Img src='https://source.unsplash.com/random' alt='Card image' style={{ height: '190px' }} />
             <Card.ImgOverlay>
               <Card.Title>Card title</Card.Title>
@@ -33,10 +37,11 @@ const HomePageHero = () => {
               </Card.Text>
               <Card.Text>Last updated 3 mins ago</Card.Text>
             </Card.ImgOverlay>
-          </Card>
+          </Card> */}
+          <p>Where are you </p>
         </div>
         <div className='con3'>
-          <Card className='bg-dark text-white '>
+          {/* <Card className='bg-dark text-white '>
             <Card.Img src='https://source.unsplash.com/random' alt='Card image' style={{ height: '190px' }} />
             <Card.ImgOverlay>
               <Card.Title>Card title</Card.Title>
@@ -46,10 +51,14 @@ const HomePageHero = () => {
               </Card.Text>
               <Card.Text>Last updated 3 mins ago</Card.Text>
             </Card.ImgOverlay>
-          </Card>
+          </Card> */}
+          <p>I am here</p>
         </div>
       </div>
+      {/* <div className='con1'>
 
-    </div>
+      {/* </div> */}
+
+    </>
   )
 }; export default HomePageHero

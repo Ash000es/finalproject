@@ -67,8 +67,8 @@ export default function OccSelector (props) {
 
             input={<BootstrapInput />}
           >
-            <MenuItem value=''>
-              <em>None</em>
+            <MenuItem value='0'>
+              <em>0</em>
             </MenuItem>
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>

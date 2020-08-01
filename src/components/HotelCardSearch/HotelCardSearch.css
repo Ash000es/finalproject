@@ -52,17 +52,22 @@ display:block;
     
 }
 
-#ament, ul{
+#ament{
     /* background-color: green; */
     display: flex;
     /* flex-grow: 2; */
-    flex-wrap: wrap;
+    
     align-content:space-between;
-    height: 80%;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    list-style-type: none;
+    /* height: 80%;
+    margin-bottom: 5px; */
     /* margin-top: 10px; */
 }
 li{
     margin: 5px;
+}
+.searchCard{
+    margin:2rem auto;
 }
 

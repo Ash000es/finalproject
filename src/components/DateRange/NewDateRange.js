@@ -1,47 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import DateRangePicker from '@wojtekmaj/react-daterange-picker'
 
-class NewDateRange extends React.Component {
-  constructor (props) {
-    super(props)
-    // console.log(props)
-    this.state = {
-      date: [new Date(), new Date()]
-    }
-    this.handleDateChange = this.handleDateChange.bind(this)
+const NewDateRange = (props) => {
+  const [date, setDate] = useState([new Date(), new Date()])
+
+  const handleDateChange = date => {
+    console.log(date, 'orgin')
+    setDate(date)
+    //  console.log(date)
+    const date1 = date.map(i => i.toLocaleDateString())
+
+    //  console.log(date1, '1')
+
+    const date2 = date1.map(i => i.replace('/', '-').replace('/', '-'))
+    //  console.log(date2, '2')
+    const date3 = date2.map(i => i.split('-'))
+    //  console.log(date3, '3')
+
+    const date4 = date3.map(i => i.reverse())
+    //  console.log(date4, '4')
+
+    const finalDate = date4.map(i => i.join('-'))
+    props.onChange(finalDate)
+    //  console.log(finalDate, 'fin')
   }
 
-  // onChange = date => this.setState({ date })
-   handleDateChange = date => {
-     console.log(date, 'orgin')
-     this.setState(date)
-     //  console.log(date)
-     const date1 = date.map(i => i.toLocaleDateString())
-
-     //  console.log(date1, '1')
-
-     const date2 = date1.map(i => i.replace('/', '-').replace('/', '-'))
-     //  console.log(date2, '2')
-     const date3 = date2.map(i => i.split('-'))
-     //  console.log(date3, '3')
-
-     const date4 = date3.map(i => i.reverse())
-     //  console.log(date4, '4')
-
-     const finalDate = date4.map(i => i.join('-'))
-     this.props.onChange(finalDate)
-     //  console.log(finalDate, 'fin')
-   }
-
-   render () {
-     return (
-       <div>
-         <DateRangePicker
-           onChange={this.handleDateChange}
-           value={this.state.date}
-         />
-       </div>
-     )
-   }
+  return (
+    <div>
+      <DateRangePicker
+        onChange={handleDateChange}
+        value={date}
+      />
+    </div>
+  )
 }; export default NewDateRange

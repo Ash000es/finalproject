@@ -67,7 +67,7 @@ export const HotelCardSearch = (props) => {
     <>
 
       <div className={classes.root}>
-        <ExpansionPanel expanded={expanded} square={false}>
+        <ExpansionPanel className='searchCard' expanded={expanded} square={false}>
           <ExpansionPanelSummary
 
             expandIcon={<ExpandMoreIcon onClick={() => setExpanded(!expanded)} />}
@@ -85,8 +85,9 @@ export const HotelCardSearch = (props) => {
 
               <div className={classes.column} id='ament'>
 
-                <ul style={{ listStyleType: 'none' }} id=' amentItems'> {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
+                <ul id='ament' style={{ listStyleType: 'none' }}><p>Amenities:</p> {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
                   <li key={i} item={item}>{item.icon}{item.name}  </li>
+
                 )}
                 </ul>
               </div>

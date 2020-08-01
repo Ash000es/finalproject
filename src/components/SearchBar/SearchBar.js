@@ -118,7 +118,7 @@ const SearchBar = (props) => {
         <AmenitiesSelect onChange={props.handleAmenSelection} />
         <StarRatingFilter onChange={props.onClick} />
 
-      </div>}
+                        </div>}
 
     </>
 

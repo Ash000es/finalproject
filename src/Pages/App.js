@@ -46,7 +46,7 @@ function App (props) {
               </LinkContainer>
             </Nav>
           </Navbar>
-          <Container className='pt-3'>
+          <Container className='pt-3' fluid>
             <Switch>
 
               <Route path='/hotelpage' exact component={HotelPage} />
