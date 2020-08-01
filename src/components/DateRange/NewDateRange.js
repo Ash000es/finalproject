@@ -25,12 +25,15 @@ const NewDateRange = (props) => {
     props.onChange(finalDate)
     //  console.log(finalDate, 'fin')
   }
-
+  const style = { height: 45, width: 250, color: 'red' }
   return (
     <div>
       <DateRangePicker
         onChange={handleDateChange}
         value={date}
+
+        // tileClassName={style}
+        className={style}
       />
     </div>
   )

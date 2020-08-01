@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import SearchField from '../SearchField/SearchField'
-import OccSelector from '../OccSelector/OccSelector'
+
 import FirebaseContext from '../../providers/Firebase'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from '../PriceSlider'
@@ -10,6 +10,7 @@ import NewDateRange from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { requestAvailableHotels } from '../../handlers/ApiHandler'
+import NewOccSelector from '../NewOccSelector'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -85,14 +86,16 @@ const SearchBar = (props) => {
   }
 
   const handleOccChange = (event) => {
-    const newOcc = event.target.value
+    const newOcc = event
+    console.log(newOcc, 'newocc')
     const { rooms, adults, children } = occupancies
 
     setOccupancies([{ rooms: 1, adults: newOcc, children: 0 }])
   }
 
   const handleOccChange2 = (event) => {
-    const newOcc = event.target.value
+    const newOcc = event
+    console.log(newOcc, 'child')
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
@@ -104,9 +107,10 @@ const SearchBar = (props) => {
 
         <SearchField onChange={handleLocationChange} />
 
-        <NewDateRange onChange={handleDateChange1} />
-        <OccSelector label='Adult' onChange={handleOccChange} />
-        <OccSelector label='Children' onChange={handleOccChange2} />
+        <NewDateRange label='Adult' onChange={handleDateChange1} />
+        <NewOccSelector onChange={handleOccChange} />
+        <NewOccSelector onChange={handleOccChange2} />
+
         {/* <Link to='/searchresults'> */}
         <Button variant='primary' onClick={handleClickButton}>Search</Button>{' '}
         {/* </Link> */}
