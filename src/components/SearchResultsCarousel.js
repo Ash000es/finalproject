@@ -8,7 +8,6 @@ import { getSmallPictures, removeDuplicates } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 
 export const SearchResultsCarousel = (props) => {
-  console.log(props.currentSelection, 'current props')
   const style2 = { width: '340px', height: '250px', display: 'show' }
   const style1 = { width: '100%', height: '80%' }
   let styleToShow
@@ -29,14 +28,11 @@ export const SearchResultsCarousel = (props) => {
 
   const [isloading, setIsLoading] = useState(true)
 
-  console.log(newimages, 'and here')
-
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
 
   const handleImageError = (i) => {
-    console.log('filtering...', i)
     const filteredImages = [...newimages]
     filteredImages.splice(i, 1)
 
