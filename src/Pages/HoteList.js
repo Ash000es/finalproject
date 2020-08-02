@@ -48,6 +48,8 @@ export const HotelList = () => {
   const allHotelsResults = project.results
   const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
+  console.log(filters, 'filters')
+  console.log(tempfilteredhotels, 'temp')
 
   // fetch from context first 5 results to display
   useEffect(() => {
@@ -129,7 +131,7 @@ export const HotelList = () => {
     if (filters.villasOnly) {
       res = showHomesOnly(res, hotelsresults, hotelcodes)
     }
-    if (filters.starRating.includes('3 STARS') || filters.starRating.includes('4 STARS') || filters.starRating.includes('5 STARS')) {
+    if (filters.starRating.includes('3 stars') || filters.starRating.includes('4 stars') || filters.starRating.includes('5 stars')) {
       res = updateStarRatings(res, hotelsresults, filters.starRating)
     }
     if (filters.Amenities.length > 0) {

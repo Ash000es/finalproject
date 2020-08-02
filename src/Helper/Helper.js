@@ -30,29 +30,30 @@ export function truncateString (str, num) {
   return str.slice(0, num) + '...'
 }
 export const filterAmenSelection = (arr1, arr2, arr3) => {
-  // console.log(arr1, arr2, arr3, 'Working...')
-  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
+  console.log(arr1, arr2, arr3, 'Working...')
+  const valueToFilter = arr1.length > 0 ? arr1 : arr2
 
   // function here
   const finalHotels = []
   const hotelsresultsAmen = valueToFilter.map(hotel => {
     const amenAmen = hotel.facilities
 
-    amenAmen.map(hotelResAmen => arr3.forEach(amenArr => {
-      if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.GroupCode === amenArr.GroupCode) {
+    amenAmen.map(hotelResAmen => arr3.filter(amenArr => {
+      if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.facilityGroupCode === amenArr.FacilityGroupCode) {
         finalHotels.push(hotel)
       }
     }))
-    return finalHotels
+    // return finalHotels
   })
-  // console.log(finalHotels, 'final hotels')
-  return finalHotels
+  console.log(finalHotels, 'final hotels')
+  return removeDuplicates(finalHotels)
 }
 
 export const updateStarRatings = (arr1, arr2, arr3) => {
+  console.log('filtering..')
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
-  const res = valueToFilter.filter(hotel => arr3.includes(hotel.categoryName))
-  // console.log(res, 'filtrest hotels with star rating')
+  const res = valueToFilter.filter(hotel => arr3.includes(hotel.categoryName.toLowerCase()))
+  console.log(res, 'filtrest hotels with star rating')
   return res
 }
 export const readyTheArgument = (propey) => {
