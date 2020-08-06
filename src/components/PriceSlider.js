@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
   margin: {
     height: theme.spacing(3)
+
   }
 }))
 
@@ -40,6 +41,7 @@ const PrettoSlider = withStyles({
     color: colorStyles.orange,
     height: 8,
     marginBottom: -3
+
   },
   thumb: {
     height: 20,
@@ -83,7 +85,7 @@ export default function PriceSlider (props) {
     <div className={classes.root}>
 
       <div className={classes.margin} />
-      <Typography gutterBottom style={{ fontSize: 14 }}><p>Total price</p></Typography>
+      <Typography gutterBottom style={{ fontSize: 12 }}><p>Total price</p></Typography>
 
       <PrettoSlider max={1000} onChange={(_, v) => onChangeSlider(v)} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
