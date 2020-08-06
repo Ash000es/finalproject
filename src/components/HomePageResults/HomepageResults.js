@@ -1,16 +1,53 @@
 import React, { useState, useEffect, useContext } from 'react'
-import CardDeck from 'react-bootstrap/CardDeck'
-import Card from 'react-bootstrap/Card'
+// import CardDeck from 'react-bootstrap/CardDeck'
+// import Card from 'react-bootstrap/Card'
 import SearchBar from '../SearchBar/SearchBar'
-import Row from 'react-bootstrap/Row'
+// import Row from 'react-bootstrap/Row'
 import { findCheapestHotel, handleHomePageSearch } from '../../Helper/Helper'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import FirebaseContext from '../../providers/Firebase'
 import { fetchPopularDestData } from '../../handlers/ApiHandler'
 import { Redirect } from 'react-router'
 import { Spinning } from '../Spinner'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 450,
+    maxHeight: 650,
+    margin: 20
+  },
+  media: {
+    height: 450
+  },
+  container: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    alignContent: 'space-around'
+
+  },
+  Popular: {
+    border: '1px solid black',
+    width: '25%',
+    textAlign: 'center',
+    fontWeight: '350',
+    margin: '1rem auto'
+  }
+
+})
 
 const HomePageResults = (props) => {
+  const classes = useStyles()
   const [desResults, setDesResults] = useState()
   const [redirect, setRedirect] = useState(false)
   const [isloading, setIsLoading] = useState(false)
@@ -53,25 +90,25 @@ const HomePageResults = (props) => {
   //   ALL_RESULTS.push(res)
 
   // }
-  // useEffect(() => {
-  //   const fetchDestinations = async () => {
-  //     const res1 = await handleHomePageSearch(popularCities[0], state)
-  //     // console.log(res1, 'ress')
-  //     const res2 = await handleHomePageSearch(popularCities[1], state)
-  //     const res3 = await handleHomePageSearch(popularCities[2], state)
-  //     const res4 = await handleHomePageSearch(popularCities[3], state)
-  //     const res5 = await handleHomePageSearch(popularCities[4], state)
-  //     const res6 = await handleHomePageSearch(popularCities[5], state)
-  //     const res7 = await handleHomePageSearch(popularCities[6], state)
-  //     const res8 = await handleHomePageSearch(popularCities[7], state)
-  //     const res9 = await handleHomePageSearch(popularCities[8], state)
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      const res1 = await handleHomePageSearch(popularCities[0], state)
+      // console.log(res1, 'ress')
+      const res2 = await handleHomePageSearch(popularCities[1], state)
+      const res3 = await handleHomePageSearch(popularCities[2], state)
+      const res4 = await handleHomePageSearch(popularCities[3], state)
+      const res5 = await handleHomePageSearch(popularCities[4], state)
+      const res6 = await handleHomePageSearch(popularCities[5], state)
+      const res7 = await handleHomePageSearch(popularCities[6], state)
+      const res8 = await handleHomePageSearch(popularCities[7], state)
+      const res9 = await handleHomePageSearch(popularCities[8], state)
 
-  //     return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
-  //   }
-  //   fetchDestinations().then(destinationsResults => {
-  //     setDesResults(destinationsResults)
-  //   })
-  // }, [])
+      return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
+    }
+    fetchDestinations().then(destinationsResults => {
+      setDesResults(destinationsResults)
+    })
+  }, [])
 
   const handleClick = (des) => {
     setIsLoading(true)
@@ -88,87 +125,50 @@ const HomePageResults = (props) => {
   }
 
   return (
-    <div className='cardsDeck'>
-      <p>Popular destinations</p>
-      {isloading ? <Spinning />
-        : <>
-          <CardDeck>
-            <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-              {desResults && desResults.map((des, i) => {
+    <>
+      <h4 className={classes.Popular}>Popular destinations</h4>
+      <div className={classes.container}>
+
+        {isloading ? <Spinning />
+          : <>
+            {
+              desResults && desResults.map((des, i) => {
                 const cheap = findCheapestHotel(des)
+                return (
 
-                if (i <= 2) {
-                  return (
-                    <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
-                      <Card.Img variant='top' src='https://source.unsplash.com/random' />
-                      <Card.Body>
-                        <Card.Title>{des[0].destinationName}</Card.Title>
-                        <Card.Text>
+                  <Card className={classes.root} key={i} des={des} onClick={() => handleClick(des)}>
+                    <CardActionArea>
+                      <CardMedia
+                        component='img'
+                        className={classes.media}
+                        image='https://source.unsplash.com/random'
+
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant='h5' component='h2'>
+                          {des[0].destinationName}
+                        </Typography>
+                        <Typography variant='body2' color='textSecondary' component='p'>
                           Hotels from {cheap.minRate}¢
-                        </Card.Text>
-                      </Card.Body>
-                      <Card.Footer>
-                        <small className='text-muted'>Last updated 3 mins ago</small>
-                      </Card.Footer>
-                    </Card>
-                  )
-                }
-              })}
-            </Row>
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button size='small' color='primary'>
+                        Buy Now
+                      </Button>
+                      <Button size='small' color='primary'>
+                        Add to Cart
+                      </Button>
+                    </CardActions>
+                  </Card>
+                )
+              })
+            }
+            </>}
+      </div>
+    </>
 
-          </CardDeck>
-          <CardDeck>
-            <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-              {desResults && desResults.map((des, i) => {
-                const cheap = findCheapestHotel(des)
-
-                if (i > 2 && i <= 5) {
-                  return (
-                    <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
-                      <Card.Img variant='top' src='https://source.unsplash.com/random' />
-                      <Card.Body>
-                        <Card.Title>{des[0].destinationName}</Card.Title>
-                        <Card.Text>
-                          Hotels from {cheap.minRate}¢
-                        </Card.Text>
-                      </Card.Body>
-                      <Card.Footer>
-                        <small className='text-muted'>Last updated 3 mins ago</small>
-                      </Card.Footer>
-                    </Card>
-                  )
-                }
-              })}
-            </Row>
-
-          </CardDeck>
-          <CardDeck>
-            <Row style={{ marginTop: '20px', marginBottom: '20px' }}>
-              {desResults && desResults.map((des, i) => {
-                const cheap = findCheapestHotel(des)
-
-                if (i > 5) {
-                  return (
-                    <Card className='cardHomePage' key={i} des={des} onClick={() => handleClick(des)}>
-                      <Card.Img variant='top' src='https://source.unsplash.com/random' />
-                      <Card.Body>
-                        <Card.Title>{des[0].destinationName}</Card.Title>
-                        <Card.Text>
-                          Hotels from {cheap.minRate}¢
-                        </Card.Text>
-                      </Card.Body>
-                      <Card.Footer>
-                        <small className='text-muted'>Last updated 3 mins ago</small>
-                      </Card.Footer>
-                    </Card>
-                  )
-                }
-              })}
-            </Row>
-
-          </CardDeck>
-        </>}
-    </div>
   )
 }
 

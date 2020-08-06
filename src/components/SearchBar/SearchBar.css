@@ -1,13 +1,13 @@
 .SearchBar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   width: 80%;
   margin: 0.5rem auto;
 }
 .SearchBarFilters {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   width: 70%;
   margin: 0.5rem auto;

@@ -111,13 +111,15 @@ const SearchBar = (props) => {
         {/* </Link> */}
 
       </div>
-      {props.fullbar && <div className='SearchBarFilters'>
+      {/* {props.fullbar &&  */}
+      <div className='SearchBarFilters'>
 
         <PriceSlider onChange={props.onChange} />
         <NewAmenitiesSelect onChange={props.handleAmenSelection} />
         <StartRatingSelect onChange={props.onClick} />
 
-                        </div>}
+      </div>
+      {/* } */}
 
     </>
 
