@@ -176,6 +176,21 @@ export const getSmallPictures = (imageArr, masterLinkSmall) => {
   })
   return hotels
 }
+
+export const convertDates = (startDate, endDate) => {
+  const checkIn = startDate._d
+  console.log(typeof checkIn, 'type')
+  const checkOut = endDate._d
+  const datesArray = Array.of(checkIn, checkOut)
+
+  const date1 = datesArray.map(i => i.toLocaleDateString())
+  console.log(typeof date1[0], 'look here')
+  const date2 = date1.map(i => i.replace('/', '-').replace('/', '-'))
+  const date3 = date2.map(i => i.split('-'))
+  const date4 = date3.map(i => i.reverse())
+  const finalDate = date4.map(i => i.join('-'))
+  return finalDate
+}
 // export const getSmallPictures = (image, masterLinkSmall) => {
 //   const imageObjectPath = image.path
 //   const newPath = `${masterLinkSmall}${imageObjectPath}`

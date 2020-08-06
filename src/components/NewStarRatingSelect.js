@@ -17,7 +17,7 @@ const StartRatingSelect = (props) => {
   return (
     <Select
       mode='multiple'
-      placeholder='Inserted are removed'
+      placeholder='Star ratings'
       value={selectedItems}
       onChange={handleChange}
       style={{ width: '25%' }}

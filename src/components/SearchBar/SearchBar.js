@@ -11,6 +11,8 @@ import { requestAvailableHotels } from '../../handlers/ApiHandler'
 import NewOccSelector from '../NewOccSelector'
 import StartRatingSelect from '../NewStarRatingSelect'
 import NewAmenitiesSelect from '../NewAmenitiesSelect'
+import DateRangePickerWrapper from '../AirDateRange'
+import { convertDates } from '../../Helper/Helper'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -80,9 +82,11 @@ const SearchBar = (props) => {
   }
 
   const handleDateChange1 = (NewDate1) => {
+    console.log(NewDate1, 'date arrived')
     const checkIn = NewDate1[0]
     const checkOut = NewDate1[1]
     setStay({ ...stay, checkIn, checkOut })
+    console.log(stay, 'stay')
   }
 
   const handleOccChange = (event) => {
@@ -106,11 +110,9 @@ const SearchBar = (props) => {
       <div className='SearchBar'>
 
         <SearchField onChange={handleLocationChange} />
-
-        <NewDateRange label='Adult' onChange={handleDateChange1} />
+        <DateRangePickerWrapper onChange={handleDateChange1} />
         <NewOccSelector onChange={handleOccChange} />
         <NewOccSelector onChange={handleOccChange2} />
-
         {/* <Link to='/searchresults'> */}
         <Button variant='primary' onClick={handleClickButton}>Search</Button>{' '}
         {/* </Link> */}

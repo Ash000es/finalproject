@@ -28,7 +28,7 @@ const NewAmenitiesSelect = (props) => {
   return (
     <Select
       mode='multiple'
-      placeholder='Inserted are removed'
+      placeholder='Choose Amenities'
       value={amenitiesName}
       onChange={handleChange}
       style={{ width: '25%' }}
