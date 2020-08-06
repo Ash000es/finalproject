@@ -3,8 +3,6 @@ import SearchField from '../SearchField/SearchField'
 import FirebaseContext from '../../providers/Firebase'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from '../PriceSlider'
-
-import NewDateRange from '../DateRange/NewDateRange'
 import './SearchBar.css'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 import { requestAvailableHotels } from '../../handlers/ApiHandler'
@@ -12,7 +10,6 @@ import NewOccSelector from '../NewOccSelector'
 import StartRatingSelect from '../NewStarRatingSelect'
 import NewAmenitiesSelect from '../NewAmenitiesSelect'
 import DateRangePickerWrapper from '../AirDateRange'
-import { convertDates } from '../../Helper/Helper'
 
 const SearchBar = (props) => {
   const intialState = {
@@ -82,16 +79,13 @@ const SearchBar = (props) => {
   }
 
   const handleDateChange1 = (NewDate1) => {
-    console.log(NewDate1, 'date arrived')
     const checkIn = NewDate1[0]
     const checkOut = NewDate1[1]
     setStay({ ...stay, checkIn, checkOut })
-    console.log(stay, 'stay')
   }
 
   const handleOccChange = (event) => {
     const newOcc = event
-    console.log(newOcc, 'newocc')
     const { rooms, adults, children } = occupancies
 
     setOccupancies([{ rooms: 1, adults: newOcc, children: 0 }])
@@ -99,7 +93,6 @@ const SearchBar = (props) => {
 
   const handleOccChange2 = (event) => {
     const newOcc = event
-    console.log(newOcc, 'child')
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
@@ -114,7 +107,7 @@ const SearchBar = (props) => {
         <NewOccSelector onChange={handleOccChange} />
         <NewOccSelector onChange={handleOccChange2} />
         {/* <Link to='/searchresults'> */}
-        <Button variant='primary' onClick={handleClickButton}>Search</Button>{' '}
+        <Button variant='primary' style={{ height: '2.975rem' }} onClick={handleClickButton}>Search</Button>{' '}
         {/* </Link> */}
 
       </div>
@@ -124,7 +117,7 @@ const SearchBar = (props) => {
         <NewAmenitiesSelect onChange={props.handleAmenSelection} />
         <StartRatingSelect onChange={props.onClick} />
 
-      </div>}
+                        </div>}
 
     </>
 

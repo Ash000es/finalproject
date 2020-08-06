@@ -1,13 +1,14 @@
-.SearchBar{
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    /* background-color: cornflowerblue; */
-    width: 80%;
-    margin: 0.5rem auto;
+.SearchBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  margin: 0.5rem auto;
 }
-.SearchBarFilters{
-    display:flex;
-    justify-content:flex-start;
-    align-items: center;
+.SearchBarFilters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 70%;
+  margin: 0.5rem auto;
 }

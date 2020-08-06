@@ -3,12 +3,15 @@ import { InputNumber } from 'antd'
 
 const NewOccSelector = (props) => {
   function onChange (value) {
-    console.log('changed', value)
+
+  }
+  const style = {
+    height: '2.975rem'
   }
   return (
     <>
 
-      <InputNumber size='large' min={0} max={10} defaultValue={0} onChange={props.onChange} />
+      <InputNumber size='large' type='number' placeholder='adult' style={style} min={0} max={10} defaultValue={0} onChange={props.onChange} />
     </>
   )
 }; export default NewOccSelector

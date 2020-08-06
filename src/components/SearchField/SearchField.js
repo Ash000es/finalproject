@@ -10,14 +10,15 @@ const useStyles = makeStyles(theme => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400
+    width: '28rem',
+    height: '2.975rem'
   },
   input: {
     marginLeft: theme.spacing(1),
     flex: 1
   },
   iconButton: {
-    padding: 10
+    padding: '0.625rem'
   }
 
 }))
@@ -27,7 +28,7 @@ export default function CustomizedInputBase (props) {
 
   const handleChange = (e) => {
     const name = e.target.value
-    console.log(name)
+    // console.log(name)
     props.onChange(name)
   }
 

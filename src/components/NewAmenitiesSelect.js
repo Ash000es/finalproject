@@ -8,21 +8,15 @@ const NewAmenitiesSelect = (props) => {
 
   const handleChange = (amenitiesName) => {
     const nestedArr = amenitiesName.map(item => {
-      console.log(item, 'item')
+      // console.log(item, 'item')
       return amenDirectory[item]
     })
     const res = nestedArr.flat()
-    console.log(res, 'nested here')
+    // console.log(res, 'nested here')
     setChossenAmenities(res)
     setamenitiesName(amenitiesName)
     props.onChange(res)
   }
-
-  //   const handleChange = amenitiesName => {
-  //     // console.log(selectedItems, 'selected')
-  //     setamenitiesName(amenitiesName)
-  //     props.onChange(amenitiesName)
-  //   }
 
   const filteredOptions = amenitiesToFilter.filter(o => !amenitiesName.includes(o))
   return (
@@ -31,10 +25,14 @@ const NewAmenitiesSelect = (props) => {
       placeholder='Choose Amenities'
       value={amenitiesName}
       onChange={handleChange}
+      className='amenFilter'
       style={{ width: '25%' }}
+      size='large'
+      bordered
+
     >
       {filteredOptions.map(item => (
-        <Select.Option key={item} value={item}>
+        <Select.Option key={item} value={item} className='amenFilter'>
           {item}
         </Select.Option>
       ))}

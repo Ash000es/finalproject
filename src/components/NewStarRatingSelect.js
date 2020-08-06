@@ -21,6 +21,8 @@ const StartRatingSelect = (props) => {
       value={selectedItems}
       onChange={handleChange}
       style={{ width: '25%' }}
+      size='large'
+      bordered
     >
       {filteredOptions.map(item => (
         <Select.Option key={item} value={item}>

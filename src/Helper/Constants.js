@@ -28,6 +28,28 @@ export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <St
 export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/'
 export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/original/'
 // cont
+const blue = '#0088BC'
+const orange = '#FF8B00'
+const lightGrey = '#E6E6E6'
+const grey = '#6B6B6B'
+const black = '#404040'
+const redish = '#FF5A5A'
+const lightWhite = '#F2F2F2'
+const fontFamily1 = 'robot'
+const fontFamily2 = 'Gotham'
+const fontSizePara = 16
+const fontSizeHead = 29
+const fontSizeSubHead = 22
+const border = '1px solid lightgrey'
+
+export const colorStyles = {
+  blue: blue,
+  orange: orange,
+  lightGrey: lightGrey,
+  grey: grey,
+  black: black,
+  redish: redish
+}
 const codes_Gym = [
   {
     FacilityCode: 470,

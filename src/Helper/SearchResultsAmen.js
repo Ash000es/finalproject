@@ -60,6 +60,7 @@ import desk from '../assets/desk.svg'
 import toiletries from '../assets/toiletries.svg'
 import waterslide from '../assets/waterslide.svg'
 import diving from '../assets/diving.svg'
+import single from '../assets/single.svg'
 
 export const searchResultsAmen = [
 

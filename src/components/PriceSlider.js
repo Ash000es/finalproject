@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
 import HomePageResults from './HomePageResults/HomepageResults'
 import { debounce } from 'debounce'
+import { colorStyles } from '../Helper/Constants'
+import { red } from '@material-ui/core/colors'
 export const DEFAULT_SLIDER_VALUE = [0, 1000]
 
 const useStyles = makeStyles(theme => ({
@@ -35,15 +37,16 @@ ValueLabelComponent.propTypes = {
 
 const PrettoSlider = withStyles({
   root: {
-    color: '#52af77',
-    height: 8
+    color: colorStyles.orange,
+    height: 8,
+    marginBottom: -3
   },
   thumb: {
-    height: 24,
-    width: 24,
+    height: 20,
+    width: 20,
     backgroundColor: '#fff',
     border: '2px solid currentColor',
-    marginTop: -8,
+    marginTop: -7,
     marginLeft: -12,
     '&:focus, &:hover, &$active': {
       boxShadow: 'inherit'
@@ -80,7 +83,7 @@ export default function PriceSlider (props) {
     <div className={classes.root}>
 
       <div className={classes.margin} />
-      <Typography gutterBottom>Price Slider</Typography>
+      <Typography gutterBottom style={{ fontSize: 14 }}><p>Total price</p></Typography>
 
       <PrettoSlider max={1000} onChange={(_, v) => onChangeSlider(v)} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
     </div>
