@@ -63,6 +63,6 @@ export const LoginButton = (props) => {
   }
 
   return (
-    <Button onClick={onClickAuth} variant='secondary'>{authbuttonlabel}</Button>
+    <Button onClick={onClickAuth} variant='success'>{authbuttonlabel}</Button>
   )
 }

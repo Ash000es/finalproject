@@ -2,9 +2,9 @@
   width: 100%;
 
   display: flex;
-  max-height: 450px;
+  /* max-height: 450px; */
   align-items: center;
-  height: 25rem;
+  /* height: 25rem; */
   background-color: green;
 
   margin-top: 1rem;
