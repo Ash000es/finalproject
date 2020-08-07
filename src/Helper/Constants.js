@@ -2,6 +2,12 @@
 import StarRateIcon from '@material-ui/icons/StarRate'
 import React from 'react'
 import SelectRoom from '../components/SelectRoom'
+import travelShoe from '../assets/travelShoe.jpg'
+import swimSuite from '../assets/swimSuite.jpg'
+import travelBag from '../assets/travelBag.jpg'
+import boatHire from '../assets/boatHire.jpg'
+import barcaAttraction from '../assets/barcaAttraction.jpg'
+import aqua from '../assets/aqua.jpg'
 // homepage results const
 export const googleAPIKey = 'AIzaSyArQla27kHz9uEus_Zyhh-rDHhg6nYTXEs'
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleAPIKey}`
@@ -379,4 +385,57 @@ export const objectToMap = [{
 
 }
 
+]
+export const ShopHomepage = [
+  {
+    id: 1,
+    title: 'Huarache',
+    subtitle: 'Gripp',
+    image: travelShoe
+    // eslint-disable-next-line max-len
+
+  },
+  {
+    id: 2,
+    title: 'Air Max',
+    subtitle: '270 P',
+    image: swimSuite
+    // eslint-disable-next-line max-len
+
+  },
+  {
+    id: 3,
+    title: 'Air Max',
+    subtitle: 'Deluxe',
+    image: travelBag
+    // eslint-disable-next-line max-len
+
+  }
+]
+
+export const ActivityHomepage = [
+  {
+    id: 1,
+    title: 'Huarache',
+    subtitle: 'Gripp',
+    image: aqua
+    // eslint-disable-next-line max-len
+
+  },
+  {
+    id: 2,
+    title: 'Air Max',
+    subtitle: '270 P',
+    image: boatHire
+    // eslint-disable-next-line max-len
+
+  },
+  {
+    id: 3,
+    title: 'Air Max',
+    subtitle: 'Deluxe',
+    image: barcaAttraction
+    // eslint-disable-next-line max-len
+
+  }
 ]

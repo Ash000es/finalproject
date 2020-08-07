@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import SearchField from '../SearchField/SearchField'
+import { withStyles } from '@material-ui/styles'
 import FirebaseContext from '../../providers/Firebase'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from '../PriceSlider'
@@ -10,7 +11,15 @@ import NewOccSelector from '../NewOccSelector'
 import StartRatingSelect from '../NewStarRatingSelect'
 import NewAmenitiesSelect from '../NewAmenitiesSelect'
 import DateRangePickerWrapper from '../AirDateRange'
-
+import { colorStyles } from '../../Helper/Constants'
+const styles = {
+  Button:
+  {
+    height: '2.975rem',
+    backgroundColor: colorStyles.orange,
+    borderColor: colorStyles.orange
+  }
+}
 const SearchBar = (props) => {
   const intialState = {
     results: {},
@@ -86,6 +95,7 @@ const SearchBar = (props) => {
 
   const handleOccChange = (event) => {
     const newOcc = event
+    console.log(typeof newOcc, 'here')
     const { rooms, adults, children } = occupancies
 
     setOccupancies([{ rooms: 1, adults: newOcc, children: 0 }])
@@ -103,23 +113,22 @@ const SearchBar = (props) => {
       <div className='SearchBar'>
 
         <SearchField onChange={handleLocationChange} />
-        <DateRangePickerWrapper onChange={handleDateChange1} />
+        <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' />
         <NewOccSelector onChange={handleOccChange} />
         <NewOccSelector onChange={handleOccChange2} />
         {/* <Link to='/searchresults'> */}
-        <Button variant='primary' style={{ height: '2.975rem' }} onClick={handleClickButton}>Search</Button>{' '}
+        <Button style={styles.Button} onClick={handleClickButton}>Search</Button>{' '}
         {/* </Link> */}
 
       </div>
-      {/* {props.fullbar &&  */}
-      <div className='SearchBarFilters'>
+      {props.fullbar &&
+        <div className='SearchBarFilters'>
 
-        <PriceSlider onChange={props.onChange} />
-        <NewAmenitiesSelect onChange={props.handleAmenSelection} />
-        <StartRatingSelect onChange={props.onClick} />
+          <PriceSlider onChange={props.onChange} />
+          <NewAmenitiesSelect onChange={props.handleAmenSelection} />
+          <StartRatingSelect onChange={props.onClick} />
 
-      </div>
-      {/* } */}
+        </div>}
 
     </>
 

@@ -8,10 +8,11 @@ const NewOccSelector = (props) => {
   const style = {
     height: '2.975rem'
   }
+
   return (
     <>
 
-      <InputNumber size='large' type='number' placeholder='adult' style={style} min={0} max={10} defaultValue={0} onChange={props.onChange} />
+      <InputNumber size='large' type='number' prefix='Adult' style={style} min={0} max={10} defaultValue={0} onChange={props.onChange} />
     </>
   )
 }; export default NewOccSelector

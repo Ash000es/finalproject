@@ -6,6 +6,8 @@ import Card from 'react-bootstrap/Card'
 import SearchBar from '../SearchBar/SearchBar'
 import './Hero.css'
 import cover from '../../assets/cover.svg'
+import HomePageCarousel from '../HomePageCarousel'
+import { ShopHomepage, ActivityHomepage } from '../../Helper/Constants'
 
 const HomePageHero = () => {
   return (
@@ -18,32 +20,12 @@ const HomePageHero = () => {
       </div>
       <div className='splitCon'>
         <div className='con2'>
-          {/* <Card className='bg-dark text-white '>
-            <Card.Img src='https://source.unsplash.com/random' alt='Card image' style={{ height: '190px' }} />
-            <Card.ImgOverlay>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </Card.ImgOverlay>
-          </Card> */}
-          <p>Where are you </p>
+
+          <HomePageCarousel ShopHomepage={ShopHomepage} />
+
         </div>
         <div className='con3'>
-          {/* <Card className='bg-dark text-white '>
-            <Card.Img src='https://source.unsplash.com/random' alt='Card image' style={{ height: '190px' }} />
-            <Card.ImgOverlay>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </Card.ImgOverlay>
-          </Card> */}
-          <p>I am here</p>
+          <HomePageCarousel ShopHomepage={ActivityHomepage} />
         </div>
       </div>
       {/* <div className='con1'>
