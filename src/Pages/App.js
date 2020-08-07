@@ -24,30 +24,36 @@ function App (props) {
     <ProjectProvider>
       <FirebaseContext.Provider value={db}>
         <MemoryRouter>
-          <Navbar id='nav' expand='sm' bg='dark' variant='dark'>
-            <Navbar.Brand>Website</Navbar.Brand>
-            <Nav className='mr-auto'>
-              <LinkContainer to='/home'>
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/reviewcart'>
-                <Nav.Link>Things to do</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/Travelessentials'>
-                <Nav.Link>Travel Essentials</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/about'>
-                <Nav.Link>About</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='#'>
-                <Nav.Link><LoginButton /></Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='#'>
-                <Nav.Link>Cart Items</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar>
-          <Container className='pt-3' fluid>
+          <Container className='pt-3' fixed>
+            <Navbar collapseOnSelect bg='light' expand='md'>
+              <Navbar.Brand href='#home'>Logo</Navbar.Brand>
+              <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+              <Navbar.Collapse id='responsive-navbar-nav'>
+                <Nav className='mr-auto'>
+                  <LinkContainer to='/home'>
+                    <Nav.Link href='#features'><p>Home</p></Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/reviewcart'>
+                    <Nav.Link href='#pricing'><p>Things to do</p></Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/Travelessentials'>
+                    <Nav.Link href='#pricing'><p>Travel essential</p></Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/about'>
+                    <Nav.Link href='#pricing'><p>About</p></Nav.Link>
+                  </LinkContainer>
+
+                </Nav>
+                <Nav>
+                  <Nav.Link href='#deets'><LoginButton /></Nav.Link>
+                  <Nav.Link eventKey={2} href='#memes'>
+                    Cart items
+                  </Nav.Link>
+                </Nav>
+
+              </Navbar.Collapse>
+            </Navbar>
+
             <Switch>
 
               <Route path='/hotelpage' exact component={HotelPage} />

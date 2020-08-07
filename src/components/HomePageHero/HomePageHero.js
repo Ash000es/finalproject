@@ -14,7 +14,7 @@ const HomePageHero = () => {
     <>
       <div className='bigCon'>
 
-        <img src={cover} alt='Card image' />
+        {/* <img src={cover} alt='Card image' /> */}
 
         {/* <SearchBar /> */}
       </div>

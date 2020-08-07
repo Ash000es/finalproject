@@ -10,7 +10,7 @@ export default function HomePageCarousel (props) {
   }
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel activeIndex={index} onSelect={handleSelect} touch pause={false} controls={false} fade indicators={false} keyboard interval={3000} wrap={false}>
       {ShopHomepage.map((item, i) => {
         return (
           <Carousel.Item item={item} key={i}>
