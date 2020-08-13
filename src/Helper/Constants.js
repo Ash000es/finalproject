@@ -2,7 +2,7 @@
 import StarRateIcon from '@material-ui/icons/StarRate'
 import React from 'react'
 import SelectRoom from '../components/SelectRoom'
-import travelShoe from '../assets/travelShoe.jpg'
+import travelShoe from '../assets/travelShoe.png'
 import swimSuite from '../assets/swimSuite.jpg'
 import travelBag from '../assets/travelBag.jpg'
 import boatHire from '../assets/boatHire.jpg'
@@ -388,6 +388,14 @@ export const objectToMap = [{
 ]
 export const ShopHomepage = [
   {
+    id: 3,
+    title: 'Air Max',
+    subtitle: 'Deluxe',
+    image: travelBag
+    // eslint-disable-next-line max-len
+
+  },
+  {
     id: 1,
     title: 'Huarache',
     subtitle: 'Gripp',
@@ -402,23 +410,16 @@ export const ShopHomepage = [
     image: swimSuite
     // eslint-disable-next-line max-len
 
-  },
-  {
-    id: 3,
-    title: 'Air Max',
-    subtitle: 'Deluxe',
-    image: travelBag
-    // eslint-disable-next-line max-len
-
   }
+
 ]
 
 export const ActivityHomepage = [
   {
-    id: 1,
-    title: 'Huarache',
-    subtitle: 'Gripp',
-    image: aqua
+    id: 3,
+    title: 'Air Max',
+    subtitle: 'Deluxe',
+    image: barcaAttraction
     // eslint-disable-next-line max-len
 
   },
@@ -431,11 +432,12 @@ export const ActivityHomepage = [
 
   },
   {
-    id: 3,
-    title: 'Air Max',
-    subtitle: 'Deluxe',
-    image: barcaAttraction
+    id: 1,
+    title: 'Huarache',
+    subtitle: 'Gripp',
+    image: aqua
     // eslint-disable-next-line max-len
 
   }
+
 ]

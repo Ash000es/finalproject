@@ -2,49 +2,67 @@
   width: 100%;
 
   display: flex;
+  
   /* max-height: 450px; */
   align-items: center;
   /* height: 25rem; */
-  background-color: green;
-
+  border:1px solid green;
   margin-top: 1rem;
-
-  right: 0rem;
-
-  left: 0rem;
-
+  margin-right: 0rem;
+  margin-left: 0rem;
   background-size: cover;
   background-position: bottom center;
+  
 }
 
 .splitCon {
-  width: 100%;
-
+  /* background-color: salmon; */
+  max-width: 100%;
+  max-height:32rem;
+  margin: 1rem auto;
   display: flex;
-  height: 30rem;
-  justify-content: space-between;
-  align-items: center;
-  max-height: 400px;
-  /* background-color: red; */
+  flex-wrap: row wrap;
 
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 
 .con2 {
-  background-color: white;
-  max-width: 850px;
-  width: 100%;
-  height: 80%;
+  /* background-color:blue; */
+  width: 50%;
+  min-width: 25%;
+ height: 70% ;
+ padding:0.35rem;
+  overflow:hidden;
+  
 }
 
 .con3 {
-  background-color: yellow;
-  max-width: 850px;
-  width: 100%;
-  height: 80%;
+  /* background-color: yellow; */
+  width: 50%;
+  min-width: 25%;
+  height: 70% ;
+  padding:0.35rem;
+  overflow:hidden;
+}
+@media screen and (max-width: 928px) {
+  /* start of large tablet styles */
+  .splitCon {
+    display:block;
+    max-height:30rem;
+    
+  }
+  .con2{
+    /* display:block; */
+    width:100%;
+    max-height:50%; 
+    overflow:hidden;
+    padding:0.55rem;
+  }
+  .con3{
+   /* display:block; */
+    width:100%;
+    max-height:50%; 
+    overflow:hidden;
+    padding:0.55rem;
+    margin-bottom: 1.5rem;
+  }
 }

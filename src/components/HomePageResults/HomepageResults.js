@@ -17,28 +17,31 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 450,
-    maxHeight: 650,
-    margin: 20
+    maxWidth: '20rem',
+    maxHeight: '20rem',
+    margin: '0.625rem auto'
   },
   media: {
-    height: 450
+    height: '12rem'
   },
   container: {
     display: 'flex',
-    // backgroundColor: 'red',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap',
-    alignContent: 'space-around'
+    flexWrap: 'wrap'
 
   },
   Popular: {
-    border: '1px solid black',
-    width: '25%',
-    textAlign: 'center',
-    fontWeight: '350',
-    margin: '1rem auto'
+    borderBottom: '0.0625rem solid grey',
+    display: 'flex',
+    justifyContent: 'center',
+    fontWeight: 'medium',
+    margin: '1rem auto',
+    fontSize: '1.2rem',
+    padding: '0.0625rem',
+    maxWidth: 300,
+    minWidth: 100
+    // backgroundColor: 'pink'
   }
 
 })
@@ -57,8 +60,8 @@ const HomePageResults = (props) => {
     {
 
       stay: {
-        checkIn: '2020-11-15',
-        checkOut: '2020-11-16'
+        checkIn: '2021-05-15',
+        checkOut: '2021-05-16'
       },
       occupancies: [
         {
@@ -90,14 +93,21 @@ const HomePageResults = (props) => {
   // useEffect(() => {
   //   const fetchDestinations = async () => {
   //     const res1 = await handleHomePageSearch(popularCities[0], state)
-  //     // console.log(res1, 'ress')
+  //     console.log(res1, 'ress')
   //     const res2 = await handleHomePageSearch(popularCities[1], state)
+  //     console.log(res2, 'ress')
   //     const res3 = await handleHomePageSearch(popularCities[2], state)
+  //     console.log(res3, 'ress')
   //     const res4 = await handleHomePageSearch(popularCities[3], state)
+  //     console.log(res4, 'ress')
   //     const res5 = await handleHomePageSearch(popularCities[4], state)
+  //     console.log(res5, 'ress')
   //     const res6 = await handleHomePageSearch(popularCities[5], state)
+  //     console.log(res6, 'ress')
   //     const res7 = await handleHomePageSearch(popularCities[6], state)
+  //     console.log(res7, 'ress')
   //     const res8 = await handleHomePageSearch(popularCities[7], state)
+  //     console.log(res8, 'ress')
   //     const res9 = await handleHomePageSearch(popularCities[8], state)
 
   //     return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
@@ -120,10 +130,13 @@ const HomePageResults = (props) => {
   if (redirect) {
     return <Redirect exact push to='/searchresults' />
   }
-
+  console.log(desResults, 'des')
   return (
     <>
-      <h4 className={classes.Popular}>Popular destinations</h4>
+      <div className={classes.Popular}>
+        <p>Popular destinations</p>
+      </div>
+
       <div className={classes.container}>
 
         {isloading ? <Spinning />
@@ -162,7 +175,7 @@ const HomePageResults = (props) => {
                 )
               })
             }
-          </>}
+            </>}
       </div>
     </>
 

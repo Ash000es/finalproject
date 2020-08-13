@@ -38,6 +38,17 @@ export const SearchResultsCarousel = (props) => {
 
     setNewImages(filteredImages)
   }
+  const style = {
+    display: 'block !important',
+    height: '100% !important',
+    width: '100% !important',
+    position: 'absolute !important',
+    top: '0px !important',
+    left: ' 0px !important',
+    zIndex: ' 1 !important',
+    backgroundColor: 'red',
+    objectFit: 'cover'
+  }
 
   return (
     <>
@@ -55,6 +66,7 @@ export const SearchResultsCarousel = (props) => {
                   className='d-block w-100'
                   src={imagLink}
                   alt='Hotel Pictures'
+                  style={style}
 
                   onLoad={() => setIsLoading(false)}
                   onError={() => handleImageError(i)}
@@ -62,9 +74,7 @@ export const SearchResultsCarousel = (props) => {
                 {isloading && 'Loading'}
                 <i className='iconHeart'><FavoriteIcon /></i>
                 <i className='iconHeart'><FavoriteBorderIcon /></i>
-                <Carousel.Caption>
 
-                </Carousel.Caption>
               </Carousel.Item>
 
             )

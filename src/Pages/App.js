@@ -25,7 +25,7 @@ function App (props) {
       <FirebaseContext.Provider value={db}>
         <MemoryRouter>
           <Container className='pt-3' fixed>
-            <Navbar collapseOnSelect bg='light' expand='md'>
+            <Navbar collapseOnSelect bg='light' expand='md' className='navBar'>
               <Navbar.Brand href='#home'>Logo</Navbar.Brand>
               <Navbar.Toggle aria-controls='responsive-navbar-nav' />
               <Navbar.Collapse id='responsive-navbar-nav'>

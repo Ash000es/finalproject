@@ -17,7 +17,7 @@ const HomePageHero = () => {
         <img src={cover} style={{ width: '100%', height: '100%' }} alt='Card image' />
 
       </div>
-      <h4>All you need for your holiday</h4>
+
       <div className='splitCon'>
         <div className='con2'>
 

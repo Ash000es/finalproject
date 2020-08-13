@@ -37,7 +37,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   column: {
+
     flexBasis: '100%'
+    // backgroundColor: 'yellow'
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -73,22 +75,24 @@ export const HotelCardSearch = (props) => {
             expandIcon={<ExpandMoreIcon onClick={() => setExpanded(!expanded)} />}
             aria-controls='panel1c-content'
             id='panel1c-header'
-            className='bigDiv'
+            className='bigdiv'
 
           >
-            <div className={classes.column} id='cardImage'>
+            <div id='cardImage' className={classes.column}>
               <SearchResultsCarousel images={readyImages} />
 
             </div>
             <div className='threeCon'>
-              <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.categoryCode.content}</Typography>
+              <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
 
-              <div className={classes.column} id='ament'>
+              <div className={classes.column}>
 
-                <ul id='ament' style={{ listStyleType: 'none' }}><p>Amenities:</p> {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
-                  <li key={i} item={item}>{item.icon}{item.name}  </li>
+                <ul id='ament' style={{ listStyleType: 'none' }}>
+                  <p>Amenities:</p>
+                  {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
+                    <li key={i} item={item}>{item.icon}{item.name}  </li>
 
-                )}
+                  )}
                 </ul>
               </div>
 
@@ -101,7 +105,7 @@ export const HotelCardSearch = (props) => {
               </div>
             </div>
 
-            <div id='bookButton' className={classes.column} style={{ width: '170px' }}>
+            <div id='bookButton' className={classes.column}>
               <SelectPrice done={props.done} hotel={props.hotel} />
             </div>
           </ExpansionPanelSummary>

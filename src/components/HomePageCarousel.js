@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import './HomePageCarousel.css'
 
 export default function HomePageCarousel (props) {
   const { ShopHomepage } = props
@@ -10,21 +11,25 @@ export default function HomePageCarousel (props) {
   }
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} touch pause={false} controls={false} fade indicators={false} keyboard interval={3000} wrap={false}>
+    <Carousel className='caro' activeIndex={index} onSelect={handleSelect} touch pause={false} controls={false} fade indicators={false} keyboard interval={3000} wrap={false}>
       {ShopHomepage.map((item, i) => {
         return (
-          <Carousel.Item item={item} key={i}>
+
+          <Carousel.Item item={item} key={i} className='carousel-item'>
+
             <img
-              className='d-block w-100'
+              className='img-responsive'
               src={item.image}
               alt={item.title}
-              style={{ maxWidth: 850, maxHeight: 320, width: '100%', height: '80%' }}
+
             />
+
             <Carousel.Caption>
-              <h3>{item.title}</h3>
-              <p>{item.subtitle}</p>
+              {/* <h6>{item.title}</h6>  */}
+              {/* <p>{item.subtitle}</p> */}
             </Carousel.Caption>
           </Carousel.Item>
+
         )
       }
 

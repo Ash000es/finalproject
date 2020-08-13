@@ -17,7 +17,8 @@ const styles = {
   {
     height: '2.975rem',
     backgroundColor: colorStyles.orange,
-    borderColor: colorStyles.orange
+    borderColor: colorStyles.orange,
+    position: 'relative'
   }
 }
 const SearchBar = (props) => {

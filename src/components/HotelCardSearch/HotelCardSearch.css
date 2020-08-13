@@ -1,73 +1,89 @@
-.bigDiv{
-    display:flex;
-    background-color:black;
+.bigdiv {
+  display: flex;
+  width: 100%;
+  /* background-color: rgb(135, 168, 203); */
+  margin: 1rem auto;
+  padding: 0.25rem;
+  border: 1px dotted rgb(17, 17, 57);
 }
-#cardImage{
-   
-     margin-bottom: 10px; 
-     margin-top:10px;
-     padding: 5px;
-     /* background-color: salmon; */
-     display:inline-flex;
-    justify-content:center;
-    width: 50%;
-    /* height:100% */
+.bigDiv2{
+    /* background-color:red; */
+    height: 100%;
+    width: 100%;
+    margin: 1rem auto;
+  padding: 0.25rem;
+  border: 2px solid rgb(216, 123, 8);
+}
+#cardImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(230, 10, 197);
 
+  /* background-color: salmon; */
 }
-.threeCon{
-height: 300px;
-/* background-color: yellow; */
-display:block;
-
-
-
-}
-#amentItems{
-    
-}
-.labelBar{
-    /* background-color: saddlebrown; */
-    width: 490px;
-    display: flex;
-    align-items: flex-end;
-    /* height:10% */
-    
-
-}
-#typo{
-    /* background-color: red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height:10%
-  
-    
-}
-#bookButton{
+.threeCon {
   height: 100%;
-    /* background-color: seagreen; */
-    display: flex;
-    justify-content: flex-end;
-    /* flex-grow: 1; */
-    
+  /* background-color: rgb(160, 136, 74); */
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-start ;
+  flex-direction: column;
+  border: 3px solid grey;
+}
+#amentItems {
+}
+.labelBar {
+  /* background-color: saddlebrown; */
+  width: 100%;
+  height:20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-basis: 100%;
+  border: 2px solid red;
+  /* padding: 1; */
+  margin: 0 auto;
+  /* background-color: violet; */
+  /* height:10% */
+}
+#typo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: yellowgreen; */
+  border: 2px solid green;
+  width: 100%;
+  flex-basis: 100%;
+  height: 20%;
+}
+#bookButton {
+  height: 100%;
+  width:30%;
+  
+  /* background-color: seagreen; */
+  display: flex;
+  justify-content: flex-end;
+  align-items:flex-end;
+  flex-flow: column wrap;
+  border: 2px solid black;
+  /* flex-grow: 1; */
 }
 
-#ament{
-    /* background-color: green; */
-    display: flex;
-    /* flex-grow: 2; */
-    
-    align-content:space-between;
-    flex-wrap: wrap;
-    list-style-type: none;
-    /* height: 80%;
-    margin-bottom: 5px; */
-    /* margin-top: 10px; */
+#ament {
+  /* background-color: rgb(146, 205, 146); */
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  flex-basis: 100%;
+  border: 2px solid blue;
 }
-li{
-    margin: 5px;
+li {
+  margin: 5px;
 }
-.searchCard{
-    margin:2rem auto;
+.searchCard {
+  margin: 2rem auto;
 }
-

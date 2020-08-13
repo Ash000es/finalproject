@@ -140,7 +140,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       reviews
     }
   }
-  // console.log(JSON.stringify(createRequestBody()))
+  console.log(JSON.stringify(createRequestBody()))
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
       method: 'POST',
@@ -155,7 +155,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       body: JSON.stringify(createRequestBody())
     }).then(res => res.json()).then(Response => {
     const { hotels } = Response
-    // console.log(hotels, 'res')
+    console.log(hotels, 'res')
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut

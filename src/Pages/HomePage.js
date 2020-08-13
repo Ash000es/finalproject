@@ -17,9 +17,10 @@ export const HomePage = () => {
   const style = {
     width: '100%',
     height: '100%',
-    postion: 'fixed',
+    // display: 'flex',
     marginRight: 0,
     marginLeft: 0
+    // backgroundColor: 'pink'
   }
   const onCompelet = () => {
     setIsLoading(false)

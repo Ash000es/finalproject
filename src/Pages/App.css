@@ -27,7 +27,17 @@
 .pt-3{
   width: 100%;
   height: 100%;
-  background-color: darkgoldenrod;
+  display:flex;
+  justify-content: space-around;
+  align-items:flex-start;
+  flex-wrap: wrap;
+  align-content: space-around;
+  /* flex-direction: column; */
+  /* background-color: darkgoldenrod; */
+}
+.navBar{
+  width: 100%;
+ 
 }
 
 .App-link {
