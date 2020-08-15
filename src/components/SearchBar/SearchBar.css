@@ -4,6 +4,7 @@
   align-items:flex-end;
   width: 80%;
   margin: 0.5rem auto;
+  border: 1px solid black;
 }
 .SearchBarFilters {
   display: flex;
@@ -12,7 +13,4 @@
   width: 70%;
   margin: 0.5rem auto;
 }
-.datePick {
-  width: 200px;
-  flex-shrink: 1;
-}
+

@@ -28,17 +28,5 @@
 .CalendarDay__hovered_span {
   background:#FF8B00;
 }
-.DateRangePickerInput{
-    width: 15.8rem;
-    flex-shrink: 1;
 
-}
- .DateRangePickerInput_1.DateRangePickerInput__withBorder{
-    /* width: 6.25rem; */
-    flex-shrink: 1;
- }
- .DateInput.DateInput_1{
-    width: 6.25rem;
-    flex-shrink: 1;
- }
  

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
 import moment from 'moment'
 import 'react-dates/initialize'
 import { DateRangePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import { convertDates } from '../Helper/Helper'
 import './airDate.css'
-import { Container } from '@material-ui/core'
-import { colorStyles } from '../Helper/Constants'
 
 const DateRangePickerWrapper = (props) => {
   const [state, setState] = useState({
