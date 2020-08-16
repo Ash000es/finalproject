@@ -16,6 +16,7 @@ export const HomePage = () => {
   const [isloading, setIsLoading] = useState(false)
   const size = useWindowSize()
   const width = size.width
+  console.log(width, 'wid')
 
   // console.log(isloading, 'isloading')
   const style = {

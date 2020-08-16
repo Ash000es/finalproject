@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     margin: '0.625rem auto'
   },
   media: {
-    height: '12rem'
+    maxHeight: '12rem'
   },
   container: {
     display: 'flex',

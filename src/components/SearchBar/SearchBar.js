@@ -23,7 +23,7 @@ const SearchBar = (props) => {
     position: 'relative'
   },
     size: width >= 928 ? 'lg' : 'sm',
-    block: !(width >= 479)
+    block: (width <= 479)
   }
   const intialState = {
     results: {},

@@ -22,6 +22,10 @@ const DateRangePickerWrapper = (props) => {
       block = false
       small = true
       regular = false
+    } if (width <= 455) {
+      block = true
+      small = false
+      regular = false
     }
   }
   changeSize()
@@ -34,6 +38,7 @@ const DateRangePickerWrapper = (props) => {
       props.onChange(final)
     }
   }, [state])
+  console.log(block, 'block')
 
   return (
     <div className='DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2'>

@@ -25,9 +25,10 @@ const useStyles = makeStyles(theme => ({
 export default function SearchField (props) {
   const classes = useStyles()
   const screenWidth = props.width
+  const fullWidth = screenWidth <= 479
   const style = {
     height: screenWidth <= 928 ? '1.953125rem' : '100%',
-    width: screenWidth <= 928 ? '18rem' : '100%'
+    width: !fullWidth && screenWidth <= 928 ? '17.875rem' : '100%'
 
   }
 
@@ -45,7 +46,7 @@ export default function SearchField (props) {
         className={classes.input}
         placeholder='Where to?'
         inputProps={{ 'aria-label': 'Where to?' }}
-        fullWidth={false}
+        fullWidth={fullWidth}
         margin='dense'
         required
         type='search'
