@@ -10,19 +10,43 @@ import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
-const lowestPrice = 30
-const extraPrice = 40
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
+
     margin: theme.spacing(3)
   },
   button: {
     margin: theme.spacing(1, 1, 0, 0)
+  },
+  root: {
+
+    // display: 'flex',
+    // justifyContent: 'flex-end',
+    // alignContent: 'center',
+    // // flexFlow: 'column wrap',
+    border: '1px solid black',
+    position: 'relative',
+
+    left: '5%',
+
+    maxWidth: '70%',
+    height: '100%',
+    marginTop: 0,
+    marginRight: 0
+    // marginLeft: '10%',
+    // paddingLeft: '20%'
+
+  },
+  insideRoot: {
+    position: 'absolute',
+    right: 0,
+    backgroundColor: 'red',
+    top: 1
   }
 }))
 
 export default function SelectPrice (props) {
-  const roomOnlyPrice = 30
   const roomPlusPrice = 40
   const classes = useStyles()
 
@@ -34,15 +58,10 @@ export default function SelectPrice (props) {
   // console.log(value1, 'value1')
   const [value1checked, setValue1Checked] = React.useState(false)
   // console.log(value1checked, 'value1 is checked ?')
-  const [extraprice, setExtraPrice] = React.useState(false)
-  const [showprice, SetShowPrice] = React.useState(roomOnlyPrice)
+
   const [showpriceplus, SetShowPricePlus] = React.useState(roomPlusPrice)
-
   const [helperText, setHelperText] = React.useState('')
-
-  const { project, setProject } = useContext(ProjectContext)
   const [error, setError] = React.useState(false)
-  const [redirect, setRedirect] = React.useState(false)
 
   const handleRadioChange = (event) => {
     console.log(event)
@@ -89,8 +108,9 @@ export default function SelectPrice (props) {
   // }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormControl component='fieldset' error={error} className={classes.formControl}>
+
+    <form onSubmit={handleSubmit} className={classes.root}>
+      <FormControl component='fieldset' error={error} id={classes.insideRoot} className={classes.formControl}>
         {/* value={value} onChange={handleRadioChange} */}
         <RadioGroup aria-label='quiz' name='quiz' value={value} value1={value1}>
           {value ? <div>
@@ -118,11 +138,12 @@ export default function SelectPrice (props) {
               <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                 continue
               </Button>
-            </div>}
+              </div>}
 
         </RadioGroup>
 
       </FormControl>
     </form>
+
   )
 }

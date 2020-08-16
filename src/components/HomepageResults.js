@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import SearchBar from '../SearchBar/SearchBar'
-import { findCheapestHotel, handleHomePageSearch } from '../../Helper/Helper'
-import { MyProvider, ProjectContext } from '../../providers/Provider'
-import FirebaseContext from '../../providers/Firebase'
-import { fetchPopularDestData } from '../../handlers/ApiHandler'
+import SearchBar from './SearchBar/SearchBar'
+import { findCheapestHotel, handleHomePageSearch } from '../Helper/Helper'
+import { MyProvider, ProjectContext } from '../providers/Provider'
+import FirebaseContext from '../providers/Firebase'
+import { fetchPopularDestData } from '../handlers/ApiHandler'
 import { Redirect } from 'react-router'
-import { Spinning } from '../Spinner'
+import { Spinning } from './Spinner'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -185,7 +185,7 @@ const HomePageResults = (props) => {
                 )
               })
             }
-          </>}
+            </>}
       </div>
     </>
 

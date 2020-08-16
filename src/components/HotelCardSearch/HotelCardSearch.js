@@ -19,7 +19,8 @@ import { masterLinkSmall } from '../../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%'
+    width: '100%',
+    margin: '1rem auto'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15)
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary
   },
+
   icon: {
     verticalAlign: 'bottom',
     height: 20,
@@ -38,8 +40,12 @@ const useStyles = makeStyles((theme) => ({
   },
   column: {
 
-    flexBasis: '100%'
-    // backgroundColor: 'yellow'
+    flexBasis: '35.33%'
+
+  },
+  smallColumn: {
+    flexBasis: '15%'
+    // border: '1px solid blue'
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -75,19 +81,24 @@ export const HotelCardSearch = (props) => {
             expandIcon={<ExpandMoreIcon onClick={() => setExpanded(!expanded)} />}
             aria-controls='panel1c-content'
             id='panel1c-header'
-            className='bigdiv'
+            // className='bigdiv'
 
           >
+            {/* first div  */}
             <div id='cardImage' className={classes.column}>
               <SearchResultsCarousel images={readyImages} />
 
             </div>
-            <div className='threeCon'>
-              <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
+            {/* secound div wrraper  */}
+            <div id='threeCon' className={classes.column}>
+              {/* first inside div  */}
+              <div className='firstDiv'>
+                <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
+              </div>
+              {/* secound inside div  */}
+              <div className='secoundDiv'>
 
-              <div className={classes.column}>
-
-                <ul id='ament' style={{ listStyleType: 'none' }}>
+                <ul className='secondDivList'>
                   <p>Amenities:</p>
                   {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
                     <li key={i} item={item}>{item.icon}{item.name}  </li>
@@ -95,25 +106,31 @@ export const HotelCardSearch = (props) => {
                   )}
                 </ul>
               </div>
+              {/* third inside div  */}
 
-              <div className='labelBar'>
+              <div className='thirdDiv'>
                 <p>{hardHotelObject.label.posh}</p>
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.address.content}</p>
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content}</p>
               </div>
+              {/* end of secound div wrraper  */}
             </div>
 
-            <div id='bookButton' className={classes.column}>
+            {/* third div */}
+            <div id='thirdDivOutside' className={classes.smallColumn}>
               <SelectPrice done={props.done} hotel={props.hotel} />
             </div>
+
+            {/* ends here  */}
           </ExpansionPanelSummary>
 
           <ExpansionPanelDetails className={classes.details}>
-            <div className={classes.column}>
-              <ExtrasList />
-            </div>
+
+            {/* <div className={classes.column}> */}
+            <ExtrasList />
+            {/* </div> */}
           </ExpansionPanelDetails>
 
         </ExpansionPanel>

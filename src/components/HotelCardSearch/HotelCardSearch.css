@@ -1,30 +1,23 @@
-.bigdiv {
+/* .bigdiv {
   display: flex;
   width: 100%;
-  /* background-color: rgb(135, 168, 203); */
+  
   margin: 1rem auto;
   padding: 0.25rem;
   border: 1px dotted rgb(17, 17, 57);
 }
 .bigDiv2{
-    /* background-color:red; */
+   
     height: 100%;
     width: 100%;
     margin: 1rem auto;
   padding: 0.25rem;
   border: 2px solid rgb(216, 123, 8);
 }
-#cardImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid rgb(230, 10, 197);
 
-  /* background-color: salmon; */
-}
 .threeCon {
   height: 100%;
-  /* background-color: rgb(160, 136, 74); */
+ 
   display: flex;
   justify-content: flex-start;
   align-items:flex-start ;
@@ -34,7 +27,7 @@
 #amentItems {
 }
 .labelBar {
-  /* background-color: saddlebrown; */
+
   width: 100%;
   height:20%;
   display: flex;
@@ -42,16 +35,16 @@
   align-items: flex-end;
   flex-basis: 100%;
   border: 2px solid red;
-  /* padding: 1; */
+
   margin: 0 auto;
-  /* background-color: violet; */
-  /* height:10% */
+ 
+ 
 }
 #typo {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: yellowgreen; */
+ 
   border: 2px solid green;
   width: 100%;
   flex-basis: 100%;
@@ -61,17 +54,17 @@
   height: 100%;
   width:30%;
   
-  /* background-color: seagreen; */
+
   display: flex;
   justify-content: flex-end;
   align-items:flex-end;
   flex-flow: column wrap;
   border: 2px solid black;
-  /* flex-grow: 1; */
+ 
 }
 
 #ament {
-  /* background-color: rgb(146, 205, 146); */
+ 
   height: 70%;
   display: flex;
   justify-content: space-between;
@@ -86,4 +79,74 @@ li {
 }
 .searchCard {
   margin: 2rem auto;
+} */
+#cardImage {
+  
+  border: 2px solid rgb(230, 10, 197);
+  /* height:50%; */
+  /* position: absolute !important; */
+    /* top: 10% !important */
+    /* left: ' 0px !important', */
+    flex-grow: 1;
+    width:30%;
+}
+#threeCon {
+  min-height: 100%;
+  width:60%;
+ 
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-start ;
+  flex-flow: column wrap;
+  border: 3px solid grey;
+  flex-grow: 2;
+}
+.firstDiv { 
+  flex-grow: 1;
+  display:flex;
+  justify-content:flex-start; 
+  border: 3px solid green;
+  width:100%;
+  /* flex-basis: 10%; */
+}
+.secoundDiv{
+  width:100%;
+  flex-grow: 2;
+  display:flex;
+  /* flex-basis: 70%; */
+  border: 3px solid red;
+}
+.secondDivList{
+  flex-grow: 2;
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:space-around ;
+  align-items:flex-end;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  border: 3px solid red;
+  
+  list-style-type: none;
+ 
+  
+}
+.thirdDiv { 
+  flex-grow: 1;
+  display:flex;
+  justify-content:flex-start; 
+  border: 3px solid pink;
+  /* flex-basis: 20%; */
+  width:100%;
+}
+#thirdDivOutside{
+  width: 10%;
+  border-bottom: 3px solid brown;
+  flex-grow: 1;
+  /* padding-left:5%; */
+  /* position: relative;
+  left:20%; */
+   /* display: flex;
+   justify-content: flex-end; */
+
 }

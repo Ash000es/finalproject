@@ -52,7 +52,7 @@ export const SearchResultsCarousel = (props) => {
 
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect} style={styleToShow} interval={null} touch pause='hover'>
+      <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
         {
 

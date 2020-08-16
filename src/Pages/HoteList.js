@@ -200,7 +200,7 @@ export const HotelList = () => {
                 <br />
 
                 {valueToMap && valueToMap.map(hotel => {
-                  return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
+                  return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} style={{ margin: '10 auto' }} />
                 })}
 
               </div>
