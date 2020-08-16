@@ -1,4 +1,5 @@
 import React from 'react'
+import 'react-dates/initialize'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './Pages/App'
