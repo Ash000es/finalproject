@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import SearchField from '../SearchField/SearchField'
+import SearchField from '../SearchField'
 import { withStyles } from '@material-ui/styles'
 import FirebaseContext from '../../providers/Firebase'
 import Button from 'react-bootstrap/Button'
@@ -12,16 +12,19 @@ import StartRatingSelect from '../NewStarRatingSelect'
 import NewAmenitiesSelect from '../NewAmenitiesSelect'
 import DateRangePickerWrapper from '../AirDateRange'
 import { colorStyles } from '../../Helper/Constants'
-const styles = {
-  Button:
+
+const SearchBar = (props) => {
+  const width = props.width
+  const styles = {
+    Button:
   {
-    height: '2.975rem',
     backgroundColor: colorStyles.orange,
     borderColor: colorStyles.orange,
     position: 'relative'
+  },
+    size: width >= 928 ? 'lg' : 'sm',
+    block: !(width >= 479)
   }
-}
-const SearchBar = (props) => {
   const intialState = {
     results: {},
     hotels: [],
@@ -113,13 +116,13 @@ const SearchBar = (props) => {
 
       <div className='SearchBar'>
 
-        <SearchField onChange={handleLocationChange} />
-        <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' />
-        <NewOccSelector onChange={handleOccChange} />
-        <NewOccSelector onChange={handleOccChange2} />
-        {/* <Link to='/searchresults'> */}
-        <Button style={styles.Button} onClick={handleClickButton}>Search</Button>{' '}
-        {/* </Link> */}
+        <SearchField onChange={handleLocationChange} width={props.width} />
+        <>
+          <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' width={props.width} />
+          <NewOccSelector onChange={handleOccChange} width={props.width} />
+          <NewOccSelector onChange={handleOccChange2} width={props.width} />
+        </>
+        <Button variant='primary' block={styles.block} style={styles.Button} size={styles.size} onClick={handleClickButton}>Search</Button>{' '}
 
       </div>
       {props.fullbar &&

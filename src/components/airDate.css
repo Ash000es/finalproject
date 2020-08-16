@@ -1,9 +1,9 @@
 /* // NOTE: the order of these styles DO matter
 
 // Will edit everything selected including everything between a range of dates */
-.dateContainer{
+/* .dateContainer{
     display:flex;
-}
+} */
 .CalendarDay__selected_span {
   background:#FF8B00; 
   color: white; /*//text*/
@@ -29,4 +29,13 @@
   background:#FF8B00;
 }
 
- 
+.DateRangePickerInput__withBorder .DateRangePickerInput__withBorder_2{
+  display:flex;
+/* width:14rem;
+height:auto; */
+}
+.DateRangePickerInput .DateRangePickerInput_1 {
+  display:flex;
+/* width:7rem;
+height:auto; */
+}

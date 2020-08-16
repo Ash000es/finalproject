@@ -1,6 +1,6 @@
+import 'react-dates/initialize'
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import 'react-dates/initialize'
 import { DateRangePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import { convertDates } from '../Helper/Helper'
@@ -13,6 +13,18 @@ const DateRangePickerWrapper = (props) => {
 
   })
   const [focus, setFocus] = useState({ focusedInput: null })
+  const width = props.width
+  let block = false
+  let small = false
+  let regular = true
+  const changeSize = () => {
+    if (width <= 928) {
+      block = false
+      small = true
+      regular = false
+    }
+  }
+  changeSize()
 
   useEffect(() => {
     if ((state.startDate !== null) && (state.endDate !== null)) {
@@ -24,7 +36,7 @@ const DateRangePickerWrapper = (props) => {
   }, [state])
 
   return (
-    <div className='dateContainer'>
+    <div className='DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2'>
       <DateRangePicker
         startDate={state.startDate} // momentPropTypes.momentObj or null,
         startDateId='your_unique_start_date_id' // PropTypes.string.isRequired,
@@ -33,6 +45,10 @@ const DateRangePickerWrapper = (props) => {
         onDatesChange={({ startDate, endDate }) => setState({ startDate, endDate })}
         focusedInput={focus.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
         onFocusChange={focusedInput => setFocus({ focusedInput })}
+        block={block}
+        small={small}
+        regular={regular}
+        noBorder
 
       />
     </div>

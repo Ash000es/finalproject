@@ -54,7 +54,6 @@ const HomePageResults = (props) => {
   const [popularCities, setPopularCities] = useState([{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }])
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
-  console.log(desResults, 'des results')
 
   const [state, setState] = useState(
     {
@@ -130,7 +129,7 @@ const HomePageResults = (props) => {
   if (redirect) {
     return <Redirect exact push to='/searchresults' />
   }
-  console.log(desResults, 'des')
+
   return (
     <>
       <div className={classes.Popular}>

@@ -5,14 +5,18 @@ const NewOccSelector = (props) => {
   function onChange (value) {
 
   }
-  const style = {
-    height: '2.975rem'
-  }
+  const width = props.width
+  const style1 = {
+    height: '3rem'
 
+  }
+  const style2 = {
+    heightSmall: '2rem'
+  }
   return (
     <>
 
-      <InputNumber size='large' type='number' prefix='Adult' style={style} min={0} max={10} defaultValue={0} onChange={props.onChange} />
+      <InputNumber style={width >= 928 ? style1 : style2} type='number' min={0} max={10} defaultValue={0} onChange={props.onChange} />
     </>
   )
 }; export default NewOccSelector

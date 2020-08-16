@@ -9,9 +9,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center',
-    width: '28rem',
-    height: '2.975rem'
+    alignItems: 'center'
+
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -23,8 +22,14 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-export default function CustomizedInputBase (props) {
+export default function SearchField (props) {
   const classes = useStyles()
+  const screenWidth = props.width
+  const style = {
+    height: screenWidth <= 928 ? '1.953125rem' : '100%',
+    width: screenWidth <= 928 ? '18rem' : '100%'
+
+  }
 
   const handleChange = (e) => {
     const name = e.target.value
@@ -33,13 +38,17 @@ export default function CustomizedInputBase (props) {
   }
 
   return (
-    <Paper component='form' className={classes.root}>
+    <Paper component='form' style={style} className={classes.root}>
 
       <InputBase
         onChange={handleChange}
         className={classes.input}
         placeholder='Where to?'
         inputProps={{ 'aria-label': 'Where to?' }}
+        fullWidth={false}
+        margin='dense'
+        required
+        type='search'
       />
       <IconButton type='submit' className={classes.iconButton} aria-label='search'>
         <SearchIcon />
