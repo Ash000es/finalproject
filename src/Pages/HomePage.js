@@ -22,10 +22,10 @@ export const HomePage = () => {
   const style = {
     width: '100%',
     height: '100%',
-    // display: 'flex',
+
     marginRight: 0,
     marginLeft: 0
-    // backgroundColor: 'pink'
+
   }
   const onCompelet = () => {
     setIsLoading(false)
@@ -42,7 +42,7 @@ export const HomePage = () => {
     <div style={style}>
       <HomePageHero />
       <SearchBar done={onCompelet} fullbar={false} startLoading={startLoading} width={width} />
-      {isloading ? <Spinning /> : <HomePageResults />}
+      {isloading ? <Spinning /> : <HomePageResults width={width} />}
     </div>
   )
 }

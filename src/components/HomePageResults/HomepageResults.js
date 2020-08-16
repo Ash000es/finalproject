@@ -17,18 +17,28 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: '20rem',
-    maxHeight: '20rem',
-    margin: '0.625rem auto'
+    maxWidth: screenWidth =>
+      screenWidth <= 768 ? '15rem' : '20rem',
+    maxHeight: screenWidth =>
+      screenWidth <= 768 ? '15rem' : '20rem',
+    margin: '0.625rem auto',
+    backgroundColor: 'pink',
+    width: screenWidth =>
+      screenWidth <= 425 ? '25rem' : '20rem'
+
   },
   media: {
-    maxHeight: '12rem'
+    maxHeight: screenWidth =>
+      screenWidth <= 768 ? '10rem' : '12rem'
+
   },
   container: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    backgroundColor: 'yellow',
+    flexShrink: 1
 
   },
   Popular: {
@@ -47,7 +57,8 @@ const useStyles = makeStyles({
 })
 
 const HomePageResults = (props) => {
-  const classes = useStyles()
+  const screenWidth = props.width
+  const classes = useStyles(screenWidth)
   const [desResults, setDesResults] = useState()
   const [redirect, setRedirect] = useState(false)
   const [isloading, setIsLoading] = useState(false)
@@ -174,7 +185,7 @@ const HomePageResults = (props) => {
                 )
               })
             }
-            </>}
+          </>}
       </div>
     </>
 
