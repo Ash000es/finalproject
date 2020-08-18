@@ -1,11 +1,12 @@
 import React, { useState, useContext, useMemo } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import './HotelPCarousel.css'
+// import './HotelPCarousel.css'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { getSmallPictures, removeDuplicates } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
+import './HotelCardSearch.css'
 
 export const SearchResultsCarousel = (props) => {
   const style2 = { width: '340px', height: '250px', display: 'show' }
@@ -51,37 +52,45 @@ export const SearchResultsCarousel = (props) => {
   }
 
   return (
-    <>
-      <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
-        {
+    <div className='outer-wrapper'>
+      <div className='frame'>
 
-          newimages.map((image, i) => {
-            const imagLink = image.path
+        <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
-            return (
-              <Carousel.Item key={i} image={image}>
+          {
 
-                <img
-                  className='d-block w-100'
-                  src={imagLink}
-                  alt='Hotel Pictures'
-                  style={style}
+            newimages.map((image, i) => {
+              const imagLink = image.path
 
-                  onLoad={() => setIsLoading(false)}
-                  onError={() => handleImageError(i)}
-                />
-                {isloading && 'Loading'}
-                <i className='iconHeart'><FavoriteIcon /></i>
-                <i className='iconHeart'><FavoriteBorderIcon /></i>
+              return (
+                <Carousel.Item key={i} image={image}>
 
-              </Carousel.Item>
+                  <img
+                    // className='d-block w-100'
+                    src={imagLink}
+                    alt='Hotel Pictures'
+                    // style={style}
+                    id='caroImage'
 
+                    onLoad={() => setIsLoading(false)}
+                    onError={() => handleImageError(i)}
+                  />
+                  {isloading && 'Loading'}
+                  {/* <div style={{ backgroundImage: imagLink, backgroundSize: 'cover', borderRadius: 0 }} /> */}
+                  {/* <i className='iconHeart'><FavoriteIcon /></i>
+                  <i className='iconHeart'><FavoriteBorderIcon /></i> */}
+
+                </Carousel.Item>
+
+              )
+            }
             )
           }
-          )
-        }
-      </Carousel>
-    </>
+        </Carousel>
+      </div>
+
+    </div>
+
   )
 }

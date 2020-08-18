@@ -1,0 +1,259 @@
+/* .bigdiv {
+  display: flex;
+  width: 100%;
+  
+  margin: 1rem auto;
+  padding: 0.25rem;
+  border: 1px dotted rgb(17, 17, 57);
+}
+.bigDiv2{
+   
+    height: 100%;
+    width: 100%;
+    margin: 1rem auto;
+  padding: 0.25rem;
+  border: 2px solid rgb(216, 123, 8);
+}
+
+.threeCon {
+  height: 100%;
+ 
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-start ;
+  flex-direction: column;
+  border: 3px solid grey;
+}
+#amentItems {
+}
+.labelBar {
+
+  width: 100%;
+  height:20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-basis: 100%;
+  border: 2px solid red;
+
+  margin: 0 auto;
+ 
+ 
+}
+#typo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  border: 2px solid green;
+  width: 100%;
+  flex-basis: 100%;
+  height: 20%;
+}
+#bookButton {
+  height: 100%;
+  width:30%;
+  
+
+  display: flex;
+  justify-content: flex-end;
+  align-items:flex-end;
+  flex-flow: column wrap;
+  border: 2px solid black;
+ 
+}
+
+#ament {
+ 
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  flex-basis: 100%;
+  border: 2px solid blue;
+}
+/* li {
+  margin: 5px;
+} 
+.searchCard {
+  margin: 2rem auto;
+} */
+.searchCard{
+  /* border: 2px solid rgb(10, 208, 230); */
+  margin:0.2rem;
+  
+}
+#firstDiv {
+  
+  /* border: 2px solid rgb(230, 10, 197); */
+  /* height:50%; */
+  /* position: absolute !important; */
+    /* top: 10% !important */
+    /* left: ' 0px !important', */
+    
+   max-width:30%;
+}
+#secoundDivWrraper {
+  min-height: 100%;
+  max-width:50%;
+ 
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-start ;
+  flex-flow: column wrap;
+  /* border: 3px solid grey; */
+  flex-grow: 2;
+}
+.firstDiv { 
+  flex-grow: 1;
+  display:flex;
+  justify-content:flex-start; 
+  flex-flow: column wrap;
+  /* border: 3px solid green; */
+  width:100%;
+  text-transform: capitalize;
+  /* flex-basis: 10%; */
+}
+.secoundDiv{
+  width:100%;
+  flex-grow: 2;
+  display:flex;
+  /* flex-basis: 70%; */
+  /* border: 3px solid red; */
+}
+.secondDivList{
+  flex-grow: 2;
+   height:100%;
+  /* width:100%;  */
+  display:flex;
+  justify-content:space-between ;
+  align-items:flex-end;
+  flex-wrap: wrap;
+  align-content:flex-start;
+ 
+  /* border: 3px solid red; */
+  
+  list-style-type: none;
+ 
+  
+}
+li{
+  margin:5px;
+  
+  
+}
+.thirdDivInner { 
+  
+  display:flex;
+  justify-content:flex-start; 
+  /* border: 3px solid pink; */
+  text-transform: capitalize;
+  margin-bottom: 0px;
+  margin-top: 5px;
+
+ 
+  
+  width:100%;
+}
+.thirdDivInner p {
+  margin-bottom: 0px;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top:0.5rem;
+
+}
+
+#thirdDivOutside{
+  max-width: 20%;
+  /* border: 3px solid brown; */
+  flex-grow: 1;
+  margin-right:0;
+  /* padding-left:5%; */
+  /* position: relative;
+  left:20%; */
+   /* display: flex;
+   justify-content: flex-end; */
+
+}
+
+
+/* search results carousel css, styling the image and 2 wrapping divs */
+/* .outerOuterDiv{
+  display:block;
+  height: 100% !important;
+    width: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+.outer-wrapper{
+  display: block;
+  width: 100% !important;
+    height: 100% !important;
+    white-space: nowrap !important;
+  
+}
+.frame{  
+  display: inline-block !important;
+    height: 100% !important;
+    width: 100% !important;
+    vertical-align: middle !important;
+ 
+
+}  
+.oneMoreDiv{
+  display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    width: 100%;
+    min-height: 1px;
+}  
+#caroImage{
+  object-fit: cover;
+  vertical-align: bottom;
+  border-radius: 0px;
+  max-height: 100% !important;
+   max-width: 100% !important;
+    position: static !important;
+}
+.sisterDiv{
+  background-size: cover;
+    border-radius: 0px;
+    display: none !important;
+    background-image: none !important;
+    vertical-align: top!important;
+    height: 100% !important;
+    width: 100% !important;
+    background-position: 50% 50% !important;
+    /* background-repeat: no-repeat !important; */
+/* }  */
+
+.outer-wrapper{
+  display: inline-block; 
+  margin-top:0;
+  margin-left:2rem;
+  /* margin: 1rem; */
+  overflow: hidden;
+  /* border: 5px solid rgb(11, 0, 128); */
+}
+.frame{  
+  width: 250px;
+  height: 200px;
+  margin-top:0;
+  /* border: 1px solid red; */
+  vertical-align: top;
+  text-align: center;
+  display: table-cell;
+  overflow: hidden;
+  object-fit:cover;
+ 
+}    
+#caroImage{
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit:cover;
+  /* border: 3px solid green; */
+}

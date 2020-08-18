@@ -57,7 +57,7 @@ function Row (props) {
         {/* 2 */}
         <TableCell align='right'>
           <p>2</p>
-          {/* {showCancelationPolicy(rate)} */}
+          {showCancelationPolicy(rate)}
         </TableCell>
         {/* 3 */}
         <TableCell align='right'> {rate.boardName}</TableCell>

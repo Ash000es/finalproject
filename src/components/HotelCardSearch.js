@@ -7,23 +7,25 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { SearchResultsCarousel } from '../SearchResultsCarousel'
-import { hardHotelObject } from '../../assets/HardCode'
-import SelectPrice from '../SelectPrice'
-import { ExtrasList } from '../ExtrasList'
+import { SearchResultsCarousel } from './SearchResultsCarousel'
+import { hardHotelObject } from '../assets/HardCode'
+import SelectPrice from './SelectPrice'
+import { ExtrasList } from './ExtrasList'
 import Divider from '@material-ui/core/Divider'
-import { MyProvider, ProjectContext } from '../../providers/Provider'
-import { searchResultsAmen } from '../../Helper/SearchResultsAmen'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique } from '../../Helper/Helper'
-import { masterLinkSmall } from '../../Helper/Constants'
+import { MyProvider, ProjectContext } from '../providers/Provider'
+import { searchResultsAmen } from '../Helper/SearchResultsAmen'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique } from '../Helper/Helper'
+import { masterLinkSmall } from '../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    margin: '1rem auto'
+    margin: '2rem auto'
+    // border: '1px solid blue'
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15)
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: 'bold'
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -70,6 +72,7 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
+  console.log(readyImages, 'ready images')
 
   return (
     <>
@@ -85,21 +88,22 @@ export const HotelCardSearch = (props) => {
 
           >
             {/* first div  */}
-            <div id='cardImage' className={classes.column}>
+            <div id='firstDiv' className={classes.column}>
               <SearchResultsCarousel images={readyImages} />
 
             </div>
             {/* secound div wrraper  */}
-            <div id='threeCon' className={classes.column}>
+            <div id='secoundDivWrraper' className={classes.column}>
               {/* first inside div  */}
               <div className='firstDiv'>
                 <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
+                <div style={{ FontSize: 14, marginBottom: 1 }}><p>{props.hotel.address.content.toLowerCase()}</p></div>
               </div>
               {/* secound inside div  */}
               <div className='secoundDiv'>
-
+                <p style={{ fontSize: 14 }}>Amenities:</p>
                 <ul className='secondDivList'>
-                  <p>Amenities:</p>
+
                   {amenitiesToMap1 && amenitiesToMap1.map((item, i) =>
                     <li key={i} item={item}>{item.icon}{item.name}  </li>
 
@@ -108,12 +112,14 @@ export const HotelCardSearch = (props) => {
               </div>
               {/* third inside div  */}
 
-              <div className='thirdDiv'>
+              <div className='thirdDivInner'>
+
                 <p>{hardHotelObject.label.posh}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{props.hotel.address.content}</p>
+                <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />
-                <p>{props.hotel.city.content}</p>
+                <p> Reviews here</p>
+
               </div>
               {/* end of secound div wrraper  */}
             </div>

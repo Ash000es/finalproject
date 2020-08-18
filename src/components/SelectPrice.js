@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
+import './HotelCardSearch.css'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -21,18 +22,19 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
 
-    // display: 'flex',
-    // justifyContent: 'flex-end',
-    // alignContent: 'center',
-    // // flexFlow: 'column wrap',
-    border: '1px solid black',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignContent: 'center',
+    // flexFlow: 'column wrap',
+    // border: '1px solid black',
     position: 'relative',
+    right: 0,
 
-    left: '5%',
+    left: '10%',
 
-    maxWidth: '70%',
+    maxWidth: '90%',
     height: '100%',
-    marginTop: 0,
+    // marginTop: 0,
     marginRight: 0
     // marginLeft: '10%',
     // paddingLeft: '20%'
@@ -43,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     backgroundColor: 'red',
     top: 1
+  },
+  pStyling: {
+    fontSize: 14,
+    color: 'grey',
+    marginTop: 5
   }
 }))
 
@@ -114,7 +121,7 @@ export default function SelectPrice (props) {
         {/* value={value} onChange={handleRadioChange} */}
         <RadioGroup aria-label='quiz' name='quiz' value={value} value1={value1}>
           {value ? <div>
-            <FormLabel component='legend'>Room only</FormLabel>
+            <FormLabel component='legend'><p className={classes.pStyling}>Rooms from</p></FormLabel>
             <FormControlLabel value control={<Radio />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} checked />
 
             <FormHelperText>{helperText}</FormHelperText>
@@ -123,14 +130,14 @@ export default function SelectPrice (props) {
               continue
             </Button>
 
-            <FormLabel component='legend'>Room plus extra</FormLabel>
+            <FormLabel component='legend'><p className={classes.pStyling}>Extras from</p></FormLabel>
             <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
-                   </div>
+          </div>
 
             : <div>
-              <FormLabel component='legend'>Room only</FormLabel>
+              <FormLabel component='legend'><p className={classes.pStyling}>Rooms from</p></FormLabel>
               <FormControlLabel checked={false} value={!value} control={<Radio onChange={showRoomOnlyPrice} />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} />
-              <FormLabel component='legend'>Room plus extra</FormLabel>
+              <FormLabel component='legend'><p className={classes.pStyling}>Extras from</p></FormLabel>
 
               <FormControlLabel value1={!value1} checked control={<Radio />} label={showpriceplus} />
 
@@ -138,7 +145,7 @@ export default function SelectPrice (props) {
               <Button type='submit' variant='outlined' color='primary' className={classes.button}>
                 continue
               </Button>
-              </div>}
+            </div>}
 
         </RadioGroup>
 

@@ -1,6 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { makeStyles } from '@material-ui/core/styles'
 import React, { useContext, useState, useEffect } from 'react'
-import { HotelCardSearch } from '../components/HotelCardSearch/HotelCardSearch'
+import { HotelCardSearch } from '../components/HotelCardSearch'
 import { DropDownFilter } from '../components/DropDownFilter/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
 import SearchBar from '../components/SearchBar/SearchBar'
@@ -15,6 +16,13 @@ import { Spinning } from '../components/Spinner'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
 import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
+
+const useStyles = makeStyles((theme) => ({
+  filters: {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  }
+}))
 
 const style = {
   height: 30,
@@ -35,6 +43,7 @@ const initialFilterState = {
 }
 
 export const HotelList = () => {
+  const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
   const [hotelsresults, setHotelsResults] = useState([])
@@ -82,7 +91,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -188,12 +197,18 @@ export const HotelList = () => {
             }
           >
             <div className='HotelList'>
-              <SearchResultsHero />
-              <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               <div>
-                <HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} />
-                <Typography />
+                <SearchResultsHero />
+              </div>
+              <div>
+                <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
+              </div>
+              <div className={classes.filters}>
+                <MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /><HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} />
 
+              </div>
+              <div style={{ border: '1px solid grey' }}>
+                <Typography>{allHotelsResults[0].destinationName}</Typography>
                 <div className='sortButton'>
                   <DropDownFilter onClick={handleSort} />
                 </div>
@@ -208,7 +223,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }
