@@ -67,117 +67,117 @@ export const searchResultsAmen = [
   {
     FacilityCode: 500,
     FacilityGroupCode: 70,
-    icon: <LocalParkingOutlinedIcon />,
+    icon: <LocalParkingOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'parking'
 
   },
   {
     FacilityCode: 560,
     FacilityGroupCode: 70,
-    icon: <LocalParkingOutlinedIcon />,
+    icon: <LocalParkingOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'parking'
 
   },
   {
     FacilityCode: 330,
     FacilityGroupCode: 70,
-    icon: <LocalParkingOutlinedIcon />,
+    icon: <LocalParkingOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'parking'
 
   },
   {
     FacilityCode: 460,
     FacilityGroupCode: 74,
-    icon: <SpaOutlinedIcon />,
+    icon: <SpaOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Spa'
 
   },
   {
     FacilityCode: 620,
     FacilityGroupCode: 74,
-    icon: <SpaOutlinedIcon />,
+    icon: <SpaOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Spa'
 
   },
   {
     FacilityCode: 535,
     FacilityGroupCode: 70,
-    icon: <PetsOutlinedIcon />,
+    icon: <PetsOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pets allowed'
 
   },
   {
     FacilityCode: 540,
     FacilityGroupCode: 70,
-    icon: <PetsOutlinedIcon />,
+    icon: <PetsOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pets allowed'
 
   },
   {
     FacilityCode: 250,
     FacilityGroupCode: 70,
-    icon: <WifiOutlinedIcon />,
+    icon: <WifiOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Internet'
 
   },
   {
     FacilityCode: 100,
     FacilityGroupCode: 60,
-    icon: <WifiOutlinedIcon />,
+    icon: <WifiOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Internet'
 
   },
   {
     FacilityCode: 261,
     facilityGroupCode: 60,
-    icon: <WifiOutlinedIcon />,
+    icon: <WifiOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Wi-fi'
   },
   {
     FacilityCode: 550,
     facilityGroupCode: 70,
-    icon: <WifiOutlinedIcon />,
+    icon: <WifiOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Wi-fi'
   },
   {
     FacilityCode: 306,
     FacilityGroupCode: 60,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 326,
     FacilityGroupCode: 60,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Private Pool'
 
   },
   {
     FacilityCode: 363,
     FacilityGroupCode: 73,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 364,
     FacilityGroupCode: 73,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 365,
     FacilityGroupCode: 73,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 360,
     FacilityGroupCode: 73,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
@@ -185,98 +185,98 @@ export const searchResultsAmen = [
   {
     FacilityCode: 361,
     FacilityGroupCode: 73,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 362,
     FacilityGroupCode: 73,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 313,
     FacilityGroupCode: 60,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'pool'
 
   },
   {
     FacilityCode: 573,
     FacilityGroupCode: 70,
-    icon: <PoolOutlinedIcon />,
+    icon: <PoolOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Private pool'
 
   },
   {
     FacilityCode: 20,
     FacilityGroupCode: 30,
-    icon: <AcUnitOutlinedIcon />,
+    icon: <AcUnitOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Air conditioning'
 
   },
   {
     FacilityCode: 180,
     FacilityGroupCode: 60,
-    icon: <AcUnitOutlinedIcon />,
+    icon: <AcUnitOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Air conditioning'
 
   },
   {
     FacilityCode: 470,
     FacilityGroupCode: 70,
-    icon: <FitnessCenterOutlinedIcon />,
+    icon: <FitnessCenterOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Gym'
 
   },
   {
     FacilityCode: 295,
     FacilityGroupCode: 90,
-    icon: <FitnessCenterOutlinedIcon />,
+    icon: <FitnessCenterOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Gym'
 
   },
   {
     FacilityCode: 308,
     FacilityGroupCode: 60,
-    icon: <FitnessCenterOutlinedIcon />,
+    icon: <FitnessCenterOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Gym'
 
   },
   {
     FacilityCode: 35,
     FacilityGroupCode: 80,
-    icon: <FreeBreakfastOutlinedIcon />,
+    icon: <FreeBreakfastOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Breakfast'
 
   },
   {
     FacilityCode: 180,
     FacilityGroupCode: 80,
-    icon: <FreeBreakfastOutlinedIcon />,
+    icon: <FreeBreakfastOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Breakfast'
 
   },
   {
     FacilityCode: 264,
     FacilityGroupCode: 80,
-    icon: <FreeBreakfastOutlinedIcon />,
+    icon: <FreeBreakfastOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Breakfast'
 
   },
   {
     FacilityCode: 30,
     FacilityGroupCode: 80,
-    icon: <FreeBreakfastOutlinedIcon />,
+    icon: <FreeBreakfastOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'Breakfast'
 
   },
   {
     FacilityCode: 320,
     FacilityGroupCode: 70,
-    icon: <LocalParkingOutlinedIcon />,
+    icon: <LocalParkingOutlinedIcon style={{ color: '#0088BC' }} />,
     name: 'parking'
 
   }

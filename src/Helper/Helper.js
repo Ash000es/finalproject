@@ -8,6 +8,7 @@ import LabelEssential from '../components/LabelEssential'
 import LabelBold from '../components/LabelBold'
 import LabelHomes from '../components/LabelHomes'
 import LabelPosh from '../components/LabelPosh'
+import ReviewsLabel from '../components/ReviewsLabel'
 
 // export const getRoomPicture = (resultsarray, hotelsarray) => {
 //   const [rooms] = project.results.hotels.rooms
@@ -27,6 +28,18 @@ import LabelPosh from '../components/LabelPosh'
 // }
 
 // }
+const VeryGood = 'Very good'
+const Fabulous = 'Fabulous'
+const Superb = 'Superb'
+export const reviewSummaryReturn = (reviewsObj) => {
+  if (reviewsObj.rate === 3 || reviewsObj.rate === 3.5) {
+    return <ReviewsLabel label={VeryGood} reviewsObj={reviewsObj} />
+  } else if (reviewsObj.rate === 4 || reviewsObj.rate === 4.5) {
+    return <ReviewsLabel label={Fabulous} reviewsObj={reviewsObj} />
+  } else if (reviewsObj.rate === 5) {
+    return <ReviewsLabel label={Superb} reviewsObj={reviewsObj} />
+  }
+}
 export const labelReturn = (code) => {
   if (poshCodes.includes(code)) {
     return <LabelPosh />

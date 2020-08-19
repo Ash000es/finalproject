@@ -32,6 +32,7 @@ export const extras = [
   { title: 'House Red', price: 30, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
 
 ]
+
 export const stars3 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const stars4 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]
 export const stars5 = [<StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />, <StarRateIcon />]

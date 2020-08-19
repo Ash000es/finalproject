@@ -14,7 +14,7 @@ import { ExtrasList } from './ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { searchResultsAmen } from '../Helper/SearchResultsAmen'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique, labelReturn } from '../Helper/Helper'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique, labelReturn, reviewSummaryReturn } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +72,7 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
-  console.log(readyImages, 'ready images')
+  // console.log(readyImages, 'ready images')
 
   return (
     <>
@@ -118,7 +118,7 @@ export const HotelCardSearch = (props) => {
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />
-                <p> Reviews here</p>
+                {props.hotel.reviews[0] && reviewSummaryReturn(props.hotel.reviews[0])}
 
               </div>
               {/* end of secound div wrraper  */}

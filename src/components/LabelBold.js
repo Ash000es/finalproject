@@ -6,7 +6,7 @@ const LabelBold = () => {
   return (
     <div>
 
-      <Badge className='text-white font-weight-normal' style={{ background: color }}>Bold</Badge>{' '}
+      <Badge className='text-white font-weight-normal' style={{ background: color, width: '3.125rem' }}>Bold</Badge>{' '}
     </div>
   )
 }; export default LabelBold
