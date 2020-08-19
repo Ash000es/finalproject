@@ -1,9 +1,13 @@
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import React, { useContext, useState, useEffect } from 'react'
-import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities } from './Constants.js'
+import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities, poshCodes, boldCodes, essentialCodes, homesCodes } from './Constants.js'
 import { requestPopularDest } from '../handlers/ApiHandler'
 import { maxTime } from 'date-fns/esm'
 import { OmitProps } from 'antd/lib/transfer/ListBody'
+import LabelEssential from '../components/LabelEssential'
+import LabelBold from '../components/LabelBold'
+import LabelHomes from '../components/LabelHomes'
+import LabelPosh from '../components/LabelPosh'
 
 // export const getRoomPicture = (resultsarray, hotelsarray) => {
 //   const [rooms] = project.results.hotels.rooms
@@ -23,6 +27,19 @@ import { OmitProps } from 'antd/lib/transfer/ListBody'
 // }
 
 // }
+export const labelReturn = (code) => {
+  if (poshCodes.includes(code)) {
+    return <LabelPosh />
+  } if (boldCodes.includes(code)) {
+    return <LabelBold />
+  } if (essentialCodes.includes(code)) {
+    return <LabelEssential />
+  } if (homesCodes.includes(code)) {
+    return <LabelHomes />
+  } else {
+    return null
+  }
+}
 export function useWindowSize () {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/

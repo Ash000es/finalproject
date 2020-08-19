@@ -14,7 +14,7 @@ import { ExtrasList } from './ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { searchResultsAmen } from '../Helper/SearchResultsAmen'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique } from '../Helper/Helper'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique, labelReturn } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -114,7 +114,7 @@ export const HotelCardSearch = (props) => {
 
               <div className='thirdDivInner'>
 
-                <p>{hardHotelObject.label.posh}</p>
+                <p>{labelReturn(props.hotel.categoryCode)}</p>
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />
