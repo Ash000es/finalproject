@@ -12,6 +12,7 @@ import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
 import { masterLinkLarge } from '../Helper/Constants'
+import './HotelPage.css'
 
 const HotelPage = React.memo((props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -77,51 +78,66 @@ const HotelPage = React.memo((props) => {
 
   return (
 
-    <div className='fillit' style={{ height: '80%', width: '80%' }}>
+    <div>
+      <div className='hotelPage-text'>
+        <h4>This hotel have spceial offer for you</h4>
+      </div>
 
-      <h4>This hotel have spceial offer for you</h4>
-
-      <p>{currentSelection.name.content}{hardHotelObject.label.posh}{currentSelection.address.content},{currentSelection.destinationName} show on map</p>
-
-      <div>
+      <div className='dateEdit'>
         <p>Edit your dates</p>
         <DateRangePicker />
       </div>
-      <SearchResultsCarousel currentSelection={imagesArray} />
+      <div className='hotelpage-outerdiv'>
+        <div className='hotelAdress'>
+          <p>{currentSelection.name.content}</p>{hardHotelObject.label.posh}
+          <p>{currentSelection.address.content},{currentSelection.destinationName} show on map</p>
+        </div>
 
-      <div>
-        <p>Amenities:</p>
-        <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
-          <li key={i} item={item}>{item.icon}{item.name}</li>
+        <SearchResultsCarousel currentSelection={imagesArray} />
+        <div className='information-section'>
+          <div>
+            <p>Amenities:</p>
+            <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
+              <li key={i} item={item}>{item.icon}{item.name}</li>
 
-        )}
-        </ul>
-
-      </div>
-      <p>Key facts</p>
-      <p>{truncateString(keyFacts, 4000)} </p>
-      <img src='' alt='TA' />
-
-      <StarRatingDisplay currentSelection={currentSelection} />
-      <div><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
-
-      {totalSelectedRoomsInfo.length > 0 &&
-        <div>
-
-          <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
-          <p>Total price: {roomspricearr.reduce(sumUp)}</p>
-          <Button onClick={(room) => handleClickButton(room)} variant='primary'>continue</Button>{' '}
-
-        </div>}
-      {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
-        return (
-          <div key={i} extra={extra}>
-            <p>{extra.title}</p>
-            <p>{extra.price}</p>
+            )}
+            </ul>
 
           </div>
-        )
-      })}
+          <div>
+            <p>Key facts</p>
+            <p>{truncateString(keyFacts, 4000)} </p>
+          </div>
+          <div className='starRating-Reviews'>
+
+            <StarRatingDisplay currentSelection={currentSelection} />
+            <img src='' alt='TA' />
+          </div>
+        </div>
+        {/* table and float selction  */}
+        <div className='table-float'>
+          <div><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
+          <div className='floatedInfo'>
+            {totalSelectedRoomsInfo.length > 0 &&
+              <div>
+
+                <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
+                <p>Total price: {roomspricearr.reduce(sumUp)}</p>
+                <Button onClick={(room) => handleClickButton(room)} variant='primary'>continue</Button>{' '}
+
+              </div>}
+            {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
+              return (
+                <div key={i} extra={extra}>
+                  <p>{extra.title}</p>
+                  <p>{extra.price}</p>
+
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
 
     </div>
 

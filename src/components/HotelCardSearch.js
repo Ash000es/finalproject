@@ -84,7 +84,6 @@ export const HotelCardSearch = (props) => {
             expandIcon={<ExpandMoreIcon onClick={() => setExpanded(!expanded)} />}
             aria-controls='panel1c-content'
             id='panel1c-header'
-            // className='bigdiv'
 
           >
             {/* first div  */}
@@ -134,9 +133,8 @@ export const HotelCardSearch = (props) => {
 
           <ExpansionPanelDetails className={classes.details}>
 
-            {/* <div className={classes.column}> */}
             <ExtrasList />
-            {/* </div> */}
+
           </ExpansionPanelDetails>
 
         </ExpansionPanel>

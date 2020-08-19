@@ -359,7 +359,8 @@ export const hotelAmen = [
   {
     FacilityCode: 610,
     FacilityGroupCode: 73,
-    icon: <img src={waterslide} alt='surfing' style={{ width: 24, height: 24 }} />,
+    icon: 3,
+    // <img src={waterslide} alt='surfing' style={{ width: 24, height: 24 }} />
     name: 'WaterSlides'
 
   },
@@ -438,7 +439,8 @@ export const hotelAmen = [
   {
     FacilityCode: 12,
     FacilityGroupCode: 70,
-    icon: <img src={smokedetector} alt='surfing' style={{ width: 24, height: 24 }} />,
+    icon: 3,
+    // <img src={smokedetector} alt='surfing' style={{ width: 24, height: 24 }} />
     name: 'Smoke detector'
 
   },
@@ -473,7 +475,8 @@ export const hotelAmen = [
   {
     FacilityCode: 147,
     FacilityGroupCode: 60,
-    icon: <img src={iron} alt='surfing' style={{ width: 24, height: 24 }} />,
+    icon: 3,
+    // <img src={iron} alt='surfing' style={{ width: 24, height: 24 }} />
     name: 'Ironing set'
 
   },
@@ -494,14 +497,16 @@ export const hotelAmen = [
   {
     FacilityCode: 170,
     FacilityGroupCode: 90,
-    icon: <img src={waterski} alt='surfing' style={{ width: 24, height: 24 }} />,
+    icon: 3,
+    // <img src={waterski} alt='surfing' style={{ width: 24, height: 24 }} />
     name: 'Waterskiing'
 
   },
   {
     FacilityCode: 180,
     FacilityGroupCode: 90,
-    icon: <img src={jetski} alt='surfing' style={{ width: 24, height: 24 }} />,
+    icon: 3,
+    // <img src={jetski} alt='surfing' style={{ width: 24, height: 24 }} />
     name: 'Jet ski'
 
   },

@@ -1,0 +1,25 @@
+.hotelPage-text{
+    border: 1px solid red;
+}
+.dateEdit{
+    border: 1px solid black;
+}
+.hotelAdress{
+    border: 1px solid green;
+}
+.information-section{
+    border: 1px solid blueviolet;
+}
+.starRating-Reviews{
+    border: 1px solid blue;
+}
+.table-float{
+    border: 1px solid brown;
+}
+.floatedInfo{
+    border: 1px solid yellow;
+}
+.hotelpage-outerdiv{
+    border: 3px solid pink;
+    margin: 3rem auto;
+}
