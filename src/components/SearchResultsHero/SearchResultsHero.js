@@ -1,91 +1,58 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Button from '@material-ui/core/Button'
-import CameraIcon from '@material-ui/icons/PhotoCamera'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Grid from '@material-ui/core/Grid'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Button from 'react-bootstrap/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import Link from '@material-ui/core/Link'
+import searchresultsHero from '../../assets/searchresultsHero.jpg'
+
+const useStyles = makeStyles(theme => ({
+
+  dealText: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    fontWeight: '600',
+    color: 'white'
+  },
+  imageSetting: {
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    objectFit: 'contain',
+    border: '2px solid red'
+  },
+  root: {
+    width: '100%',
+    maxHeight: '30rem',
+    overflow: 'hidden',
+    position: 'relative',
+    margin: '4rem auto',
+    borderRadius: '1.25rem',
+    border: '2px solid blue'
+    // backgroundSize: 'cover'
+
+  }
+}))
 
 export const SearchResultsHero = () => {
   const classes = useStyles()
   return (
-    <Container maxWidth='sm'>
-
-      <Typography
-        component='h1'
-        variant='h2'
-        align='center'
-        color='textPrimary'
-
-        gutterBottom
-      >
-        Hotels
-      </Typography>
-      <div> <img
-
-        src='/static/images/cards/paella.jpg'
-            />
+    <div className={classes.root}>
+      <div>
+        <img
+          className={classes.imageSetting}
+          src={searchresultsHero}
+        />
+      </div>
+      <div className={classes.dealText}>
+        <h1 style={{ color: 'white' }}>Deal of the day</h1>
+        <p>
+          Stay for 2 night and pay for 3 at the NH hotel Barcelona
+        </p>
+        <p>
+          <Button size='sm' variant='primary'>Learn more</Button>
+        </p>
       </div>
 
-      <Typography variant='h5' align='center' color='textSecondary' paragraph>
-        Deal of the day
-        Stay 3 nights and pay for 2 all inclusive at the Monty beach hotel
-      </Typography>
-      <div className={classes.heroButtons}>
-        <Grid container spacing={2} justify='center'>
-          <Grid item>
-            <Button variant='contained' color='primary'>
-              Visit Ibiza
-            </Button>
-          </Grid>
-          <Grid item>
-            <p>360 euros</p>
-            <Button variant='outlined' color='primary'>
-              Book
-            </Button>
-          </Grid>
-        </Grid>
-      </div>
-    </Container>
+    </div>
   )
 }
-
-const useStyles = makeStyles(theme => ({
-  icon: {
-    marginRight: theme.spacing(2)
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6)
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4)
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8)
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  cardMedia: {
-    paddingTop: '56.25%' // 16:9
-  },
-  cardContent: {
-    flexGrow: 1
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6)
-  }
-}))

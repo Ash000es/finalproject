@@ -230,6 +230,8 @@ li{
     /* background-repeat: no-repeat !important; */
 /* }  */
 
+
+/* carousel for search results  */
 .outer-wrapper{
   display: inline-block; 
   margin-top:0;
@@ -257,4 +259,9 @@ li{
   margin: 0 auto;
   object-fit:cover;
   /* border: 3px solid green; */
+}
+/* carousel for hotel page  */
+.outer-wrapper-hotelpage .frame-hotelpage {
+  height:100%;
+  width:100%;
 }

@@ -11,7 +11,7 @@ import './HotelCardSearch.css'
 export const SearchResultsCarousel = (props) => {
   const style2 = { width: '340px', height: '250px', display: 'show' }
   const style1 = { width: '70%', height: '70%' }
-  let styleToShow
+  let styleToShow = props.currentSelection
   const ValueToMap = () => {
     if (props.currentSelection) {
       styleToShow = style1
@@ -39,22 +39,11 @@ export const SearchResultsCarousel = (props) => {
 
     setNewImages(filteredImages)
   }
-  const style = {
-    display: 'block !important',
-    height: '100% !important',
-    width: '100% !important',
-    position: 'absolute !important',
-    top: '0px !important',
-    left: ' 0px !important',
-    zIndex: ' 1 !important',
-    backgroundColor: 'red',
-    objectFit: 'cover'
-  }
 
   return (
 
-    <div className='outer-wrapper'>
-      <div className='frame'>
+    <div className={styleToShow ? 'outer-wrapper-hotelpage' : 'outer-wrapper'}>
+      <div className={styleToShow ? 'frame-hotelpage' : 'frame'}>
 
         <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
@@ -71,7 +60,7 @@ export const SearchResultsCarousel = (props) => {
                     src={imagLink}
                     alt='Hotel Pictures'
                     // style={style}
-                    id='caroImage'
+                    id={styleToShow ? 'd-block w-100' : 'caroImage'}
 
                     onLoad={() => setIsLoading(false)}
                     onError={() => handleImageError(i)}
