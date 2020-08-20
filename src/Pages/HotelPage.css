@@ -1,25 +1,121 @@
+.hotelpage-outerdiv{
+    border: 2px solid darkgrey;
+    padding: 10px;
+    
+   
+}
+
 .hotelPage-text{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    text-align: center;
+    min-height: 5rem;
+    margin:2rem auto;
+    
+}
+h4{
+    color:rgb(106, 101, 101);
+    font-weight: 900;
 }
 .dateEdit{
-    border: 1px solid black;
+    /* border: 1px solid black;  */
+    margin-bottom: 0;
+}
+.dateEditPart1, .dateEditPart2{
+display:flex;
+justify-content: flex-end;
+align-items: baseline;
+align-content: flex-end;
+
+   /* border: 1px dotted red; */
+}
+.dateEditPart1{
+    max-height:1.4rem ;
+
 }
 .hotelAdress{
-    border: 1px solid green;
+    min-width: 50%;
+    /* border:1px solid green; */
 }
+.hotel-Name-Label-div {
+    display:flex;
+    justify-content: flex-start;
+    align-content: flex-end;
+    align-items: baseline;
+    /* margin: 5px; */
+    /* background-color: teal; */
+    max-width:100%;
+    height:40%;
+   
+}
+.hotel-Name-Label-div  p{
+    font-weight:600;
+    font-size: 1.3rem;
+    
+}
+.address-div{
+    /* background-color: thistle; */
+    /* padding-top:15px; */
+    max-width:100%;
+    /* smargin: 5px; */
+    display:flex;
+    justify-content: flex-start;
+    align-content: flex-end;
+    align-items: baseline;
+    height:60%;
+    
+    
+    }
+.spaceMe{
+    margin-right:10px;
+}  
+    
+.TA-Div{
+    /* border: 1px solid blue; */
+   
+    min-height:100%;
+    display:flex;
+/* justify-content: space-between; */
+    flex-direction: row-reverse; 
+    min-width: 50%;
+    /* padding-right:10px; */
+    /* background-color: turquoise; */
+    max-width:50%;
+}
+#RatingText{
+    font-weight:300;
+    font-size: 1rem;
+    
+}
+
+
+.Headline_TA-Wrapper{
+    display:flex;
+    justify-content: space-between;
+ height: 6rem;
+ /* border:4px solid red; */
+}
+
+
+
+
+
+
+
+
+
+
+
 .information-section{
-    border: 1px solid blueviolet;
+    border: 2px solid blueviolet;
 }
 .starRating-Reviews{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 .table-float{
     border: 1px solid brown;
+    max-width: 80%;
 }
 .floatedInfo{
-    border: 1px solid yellow;
-}
-.hotelpage-outerdiv{
-    border: 3px solid pink;
-    margin: 3rem auto;
+    border: 2px solid yellow;
+    float: right;
 }

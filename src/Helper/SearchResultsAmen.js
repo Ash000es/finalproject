@@ -520,7 +520,8 @@ export const hotelAmen = [
   {
     FacilityCode: 200,
     FacilityGroupCode: 90,
-    icon: <img src={diving} alt='surfing' style={{ width: 24, height: 24 }} />,
+    icon: 3,
+    // <img src={diving} alt='surfing' style={{ width: 24, height: 24 }} />,
     name: 'Diving'
 
   },

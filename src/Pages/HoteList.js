@@ -200,7 +200,7 @@ export const HotelList = () => {
               <div>
                 <SearchResultsHero />
               </div>
-              <div>
+              <div style={{ margin: '3rem auto' }}>
                 <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               </div>
               <div className={classes.filters}>

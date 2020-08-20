@@ -13,6 +13,7 @@ import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
 import { masterLinkLarge } from '../Helper/Constants'
 import './HotelPage.css'
+import CustomizedRatings from '../components/TripAdvisorRating'
 
 const HotelPage = React.memo((props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -81,16 +82,27 @@ const HotelPage = React.memo((props) => {
     <div>
       <div className='hotelPage-text'>
         <h4>This hotel have spceial offer for you</h4>
+        <p>Save up to <p style={{ color: 'red' }}>50% </p>by adding extra to your accomodation</p>
       </div>
 
       <div className='dateEdit'>
-        <p>Edit your dates</p>
-        <DateRangePicker />
+
+        <div className='dateEditPart1'>
+          <p>Edit your dates</p>
+        </div>
+        <div className='dateEditPart2'>
+          <DateRangePicker />
+        </div>
+
       </div>
       <div className='hotelpage-outerdiv'>
-        <div className='hotelAdress'>
-          <p>{currentSelection.name.content}</p>{hardHotelObject.label.posh}
-          <p>{currentSelection.address.content},{currentSelection.destinationName} show on map</p>
+        <div className='Headline_TA-Wrapper'>
+          <div className='hotelAdress'>
+            <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{hardHotelObject.label.posh}</div></div>
+            <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} <a href='' target=''>Show on map</a></p></div></div>
+
+          </div>
+          <div className='TA-Div'><CustomizedRatings TAReviews={currentSelection.reviews[0]} /></div>
         </div>
 
         <SearchResultsCarousel currentSelection={imagesArray} />
@@ -111,7 +123,7 @@ const HotelPage = React.memo((props) => {
           <div className='starRating-Reviews'>
 
             <StarRatingDisplay currentSelection={currentSelection} />
-            <img src='' alt='TA' />
+
           </div>
         </div>
         {/* table and float selction  */}
