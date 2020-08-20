@@ -7,7 +7,7 @@ import DateRangePicker from '../components/DateRange/NewDateRange'
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartDrawer } from '../components/CartDrawerN'
-import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString } from '../Helper/Helper'
+import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
@@ -98,7 +98,7 @@ const HotelPage = React.memo((props) => {
       <div className='hotelpage-outerdiv'>
         <div className='Headline_TA-Wrapper'>
           <div className='hotelAdress'>
-            <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{hardHotelObject.label.posh}</div></div>
+            <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{labelReturn(currentSelection.categoryCode)}</div></div>
             <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} <a href='' target=''>Show on map</a></p></div></div>
 
           </div>
@@ -130,6 +130,7 @@ const HotelPage = React.memo((props) => {
         <div className='table-float'>
           <div className='tableAlone'><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
           <div className='floatedInfo'>
+            <div className='emptyDiv-Background'>empty</div>
             {totalSelectedRoomsInfo.length > 0 &&
               <div>
 

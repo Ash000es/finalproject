@@ -106,6 +106,7 @@ function Row (props) {
                     <TableCell>Amount</TableCell>
                     <TableCell align='right'>summary</TableCell>
                     <TableCell align='right'>Total price ($)</TableCell>
+
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -158,19 +159,20 @@ export default function CollapsibleTable (props) {
     <TableContainer component={Paper}>
       <Table aria-label='collapsible table'>
         <TableHead>
-          <TableRow>
+          <TableRow style={{ backgroundColor: '#0088BC' }}>
             {/* 0 */}
             <TableCell />
             {/* 1 */}
-            <TableCell align='left'>Room Type</TableCell>
+            <TableCell align='left' style={{ color: 'white' }}>Room Type</TableCell>
             {/* 2 */}
-            <TableCell align='left'>sleeps</TableCell>
+            <TableCell align='left' style={{ color: 'white' }}>sleeps</TableCell>
             {/* 3 */}
-            <TableCell align='left'>Included</TableCell>
+            <TableCell align='left' style={{ color: 'white' }}>Included</TableCell>
             {/* 4 */}
-            <TableCell align='left'>selectrooms</TableCell>
+            <TableCell align='left' style={{ color: 'white' }}>selectrooms</TableCell>
             {/* 5 */}
-            <TableCell align='left'>price</TableCell>
+            <TableCell align='left' style={{ color: 'white' }}>price</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>

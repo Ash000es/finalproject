@@ -108,7 +108,6 @@ align-content: flex-end;
 
 
 
-
 .information-section{
     /* border: 2px solid blueviolet; */
 }
@@ -116,10 +115,27 @@ align-content: flex-end;
     /* border: 1px solid blue; */
 }
 .tableAlone{
-    /* border: 1px solid brown; */
-    max-width: 80%;
+    border: 1px solid brown;
+    max-width: 85%;
 }
 .floatedInfo{
-    /* border: 2px solid yellow; */
-    float: right;
+    border: 2px solid yellow;
+    /* float: right; */
+    max-width: 15%;
+    /* margin-left:2rem; */
+    max-height: 80%;
+}
+
+.table-float{
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-between;
+}
+.emptyDiv-Background{
+    min-width:110;
+   min-height:100;
+    background-color: #0088BC;
+    margin-bottom:1rem;
+  
+    border:1px solid blue;
 }
