@@ -1,6 +1,10 @@
 .hotelpage-outerdiv{
     border: 2px solid darkgrey;
-    padding: 10px;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    padding-right:2rem;
+    padding-left:2rem;
+    
     
    
 }
@@ -106,16 +110,16 @@ align-content: flex-end;
 
 
 .information-section{
-    border: 2px solid blueviolet;
+    /* border: 2px solid blueviolet; */
 }
 .starRating-Reviews{
     /* border: 1px solid blue; */
 }
-.table-float{
-    border: 1px solid brown;
+.tableAlone{
+    /* border: 1px solid brown; */
     max-width: 80%;
 }
 .floatedInfo{
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
     float: right;
 }

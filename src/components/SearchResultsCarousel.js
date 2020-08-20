@@ -9,15 +9,12 @@ import { masterLinkSmall } from '../Helper/Constants'
 import './HotelCardSearch.css'
 
 export const SearchResultsCarousel = (props) => {
-  const style2 = { width: '340px', height: '250px', display: 'show' }
-  const style1 = { width: '70%', height: '70%' }
-  let styleToShow = props.currentSelection
+  const styleToShow = props.currentSelection
+  console.log(styleToShow, 'styletoshow')
   const ValueToMap = () => {
     if (props.currentSelection) {
-      styleToShow = style1
       return props.currentSelection
     } else {
-      styleToShow = style2
       return props.images
     }
   }
@@ -42,8 +39,8 @@ export const SearchResultsCarousel = (props) => {
 
   return (
 
-    <div className={styleToShow ? 'outer-wrapper-hotelpage' : 'outer-wrapper'}>
-      <div className={styleToShow ? 'frame-hotelpage' : 'frame'}>
+    <div className={styleToShow && styleToShow.length ? 'outer-wrapper-hotelpage' : 'outer-wrapper'}>
+      <div className={styleToShow && styleToShow.length ? 'frame-hotelpage' : 'frame'}>
 
         <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
 
@@ -60,7 +57,7 @@ export const SearchResultsCarousel = (props) => {
                     src={imagLink}
                     alt='Hotel Pictures'
                     // style={style}
-                    id={styleToShow ? 'd-block w-100' : 'caroImage'}
+                    id={styleToShow && styleToShow.length ? 'caroImage' : 'caroImage'}
 
                     onLoad={() => setIsLoading(false)}
                     onError={() => handleImageError(i)}

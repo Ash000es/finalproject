@@ -2,9 +2,9 @@
 import React, { useContext, useState, useMemo } from 'react'
 import './HotelCardSearch.css'
 import { makeStyles } from '@material-ui/core/styles'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import Accordion from '@material-ui/core/Accordion'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { SearchResultsCarousel } from './SearchResultsCarousel'
@@ -72,14 +72,13 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
-  // console.log(readyImages, 'ready images')
 
   return (
     <>
 
       <div className={classes.root}>
-        <ExpansionPanel className='searchCard' expanded={expanded} square={false}>
-          <ExpansionPanelSummary
+        <Accordion className='searchCard' expanded={expanded} square={false}>
+          <AccordionSummary
 
             expandIcon={<ExpandMoreIcon onClick={() => setExpanded(!expanded)} />}
             aria-controls='panel1c-content'
@@ -129,15 +128,15 @@ export const HotelCardSearch = (props) => {
             </div>
 
             {/* ends here  */}
-          </ExpansionPanelSummary>
+          </AccordionSummary>
 
-          <ExpansionPanelDetails className={classes.details}>
+          <AccordionDetails className={classes.details}>
 
             <ExtrasList />
 
-          </ExpansionPanelDetails>
+          </AccordionDetails>
 
-        </ExpansionPanel>
+        </Accordion>
       </div>
     </>
   )

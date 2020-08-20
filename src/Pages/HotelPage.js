@@ -128,7 +128,7 @@ const HotelPage = React.memo((props) => {
         </div>
         {/* table and float selction  */}
         <div className='table-float'>
-          <div><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
+          <div className='tableAlone'><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
           <div className='floatedInfo'>
             {totalSelectedRoomsInfo.length > 0 &&
               <div>
