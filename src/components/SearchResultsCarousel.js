@@ -50,14 +50,14 @@ export const SearchResultsCarousel = (props) => {
               const imagLink = image.path
 
               return (
-                <Carousel.Item key={i} image={image}>
+                <Carousel.Item key={i} image={image} id={styleToShow && styleToShow.length ? 'frame-hotelpage' : ''}>
 
                   <img
                     // className='d-block w-100'
                     src={imagLink}
                     alt='Hotel Pictures'
                     // style={style}
-                    id={styleToShow && styleToShow.length ? 'caroImage' : 'caroImage'}
+                    id='caroImage'
 
                     onLoad={() => setIsLoading(false)}
                     onError={() => handleImageError(i)}

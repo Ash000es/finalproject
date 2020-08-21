@@ -156,7 +156,7 @@ align-content: flex-end;
 }
 #freeCancel{
     color:#249D3C;
-    /* font-weight:400; */
+    font-weight:600;
     font-size:12px;
 }
 #roomsName{
