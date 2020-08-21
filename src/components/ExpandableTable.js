@@ -59,7 +59,7 @@ function Row (props) {
         {/* 2 */}
         <TableCell align='right' id={cancelationPolicy === 'None refundable' ? 'roomsInfo' : 'freeCancel'}>
 
-          {cancelationPolicy}
+          <p>{cancelationPolicy}</p>
         </TableCell>
         {/* 3 */}
         <TableCell align='right' id='roomsInfo'> {rate.boardName.toLowerCase()}</TableCell>
@@ -161,13 +161,13 @@ export default function CollapsibleTable (props) {
     <TableContainer component={Paper}>
       <Table aria-label='collapsible table'>
         <TableHead>
-          <TableRow style={{ backgroundColor: '#0088BC' }}>
+          <TableRow style={{ backgroundColor: '#0088BC', fontWeight: '550' }}>
             {/* 0 */}
             <TableCell />
             {/* 1 */}
             <TableCell align='left' style={{ color: 'white' }}>Room Type</TableCell>
             {/* 2 */}
-            <TableCell align='left' style={{ color: 'white' }}>sleeps</TableCell>
+            <TableCell align='left' style={{ color: 'white', fontWeight: '550' }}>sleeps</TableCell>
             {/* 3 */}
             <TableCell align='left' style={{ color: 'white' }}>Included</TableCell>
             {/* 4 */}

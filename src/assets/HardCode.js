@@ -3,9 +3,7 @@
 
 import React from 'react'
 import { FaGlassMartiniAlt, FaParking, FaWineGlassAlt, FaSpa, FaBath, FaSuitcaseRolling } from 'react-icons/fa'
-import LabelBold from '../components/LabelBold'
-import LabelEssential from '../components/LabelEssential'
-import Labelposh from '../components/LabelPosh'
+
 import AcUnitIcon from '@material-ui/icons/AcUnit'
 import FitnessCenter from '@material-ui/icons/AcUnit'
 import PoolIcon from '@material-ui/icons/AcUnit'
@@ -70,9 +68,6 @@ export const hardHotelObject = {
 
   }],
   label: {
-    posh: <Labelposh />,
-    essential: <LabelEssential />,
-    bold: <LabelBold />
 
   },
   images: [{ type: 'bar', path: '"00/000008/000008a_hb_ro_064.jpg",' }, { type: 'Double room', path: 'http://photos.hotelbeds.com/giata/00/000001/000001a_hb_ro_005.jpg' }],

@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import { hardHotelObject } from '../../assets/HardCode'
 import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded'
 import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded'
-import LabelEssential from '../LabelEssential'
 
 const variant = ''
 
@@ -18,7 +17,7 @@ const FavCard = () => {
         <Card.ImgOverlay>
           <FavoriteRoundedIcon style={{ color: 'rgb(255,139,0)' }} />
           <Card.Title>{hardHotelObject.name}</Card.Title>
-          <LabelEssential />
+
           <Card.Text>{hardHotelObject.city.toLowerCase()}</Card.Text><Card.Text>2.5 km to city centre </Card.Text>
           <Card.Text> {hardHotelObject.reviewScore} Stars review</Card.Text>
 

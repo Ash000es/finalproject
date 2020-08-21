@@ -4,10 +4,7 @@ import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCitie
 import { requestPopularDest } from '../handlers/ApiHandler'
 import { maxTime } from 'date-fns/esm'
 import { OmitProps } from 'antd/lib/transfer/ListBody'
-import LabelEssential from '../components/LabelEssential'
-import LabelBold from '../components/LabelBold'
-import LabelHomes from '../components/LabelHomes'
-import LabelPosh from '../components/LabelPosh'
+import CatLabel from '../components/CatLabel'
 import ReviewsLabel from '../components/ReviewsLabel'
 
 // export const getRoomPicture = (resultsarray, hotelsarray) => {
@@ -42,13 +39,13 @@ export const reviewSummaryReturn = (reviewsObj) => {
 }
 export const labelReturn = (code) => {
   if (poshCodes.includes(code)) {
-    return <LabelPosh />
+    return <CatLabel name='Posh' look={{ background: 'rgb(97,39,92)', width: '3.125rem', fontWeight: '450' }} />
   } if (boldCodes.includes(code)) {
-    return <LabelBold />
+    return <CatLabel name='Bold' look={{ background: 'rgb(5,94,112)', width: '3.125rem', fontWeight: '450' }} />
   } if (essentialCodes.includes(code)) {
-    return <LabelEssential />
+    return <CatLabel name='Essential' look={{ background: 'rgb(42,120,24)', fontWeight: '450' }} />
   } if (homesCodes.includes(code)) {
-    return <LabelHomes />
+    return <CatLabel name='Homes' look={{ background: 'rgb(244,165,48)', width: '3.125rem', fontWeight: '450' }} />
   } else {
     return null
   }
