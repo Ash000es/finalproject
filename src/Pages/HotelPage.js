@@ -1,7 +1,7 @@
 import React, { useState, useContext, useMemo } from 'react'
 import { hardHotelObject } from '../assets/HardCode'
 import RoomCarousel from '../components/thumbilCarousel'
-import StarRatingDisplay from '../components/StarRatingDisplay'
+
 import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../components/DateRange/NewDateRange'
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
@@ -14,6 +14,7 @@ import { hotelAmen } from '../Helper/SearchResultsAmen'
 import { masterLinkLarge } from '../Helper/Constants'
 import './HotelPage.css'
 import CustomizedRatings from '../components/TripAdvisorRating'
+import StarRatings from '../components/StarRatings'
 
 const HotelPage = React.memo((props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -122,7 +123,7 @@ const HotelPage = React.memo((props) => {
           </div>
           <div className='starRating-Reviews'>
 
-            <StarRatingDisplay currentSelection={currentSelection} />
+            <StarRatings currentSelection={currentSelection} />
 
           </div>
         </div>
