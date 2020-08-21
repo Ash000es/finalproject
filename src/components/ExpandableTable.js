@@ -18,6 +18,7 @@ import SelectRoom from '../components/SelectRoom'
 import { extras } from '../Helper/Constants'
 import { roomsCost, showCancelationPolicy } from '../Helper/Helper'
 import SelectExtra from '../components/SelectExtra'
+import '../Pages/HotelPage.css'
 
 const useRowStyles = makeStyles({
   root: {
@@ -52,21 +53,22 @@ function Row (props) {
   }
 
   const renderRow = (rate, i) => {
+    const cancelationPolicy = showCancelationPolicy(rate)
     return (
       <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)}>
         {/* 2 */}
-        <TableCell align='right'>
-          <p>2</p>
-          {showCancelationPolicy(rate)}
+        <TableCell align='right' id={cancelationPolicy === 'None refundable' ? 'roomsInfo' : 'freeCancel'}>
+
+          {cancelationPolicy}
         </TableCell>
         {/* 3 */}
-        <TableCell align='right'> {rate.boardName}</TableCell>
+        <TableCell align='right' id='roomsInfo'> {rate.boardName.toLowerCase()}</TableCell>
 
         {/* 4 */}
         <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
 
         {/* 5 */}
-        <TableCell align='right'> {rate.mySellingRate}</TableCell>
+        <TableCell align='right' id='roomsInfo'> {rate.mySellingRate}</TableCell>
       </TableRow>
     )
   }
@@ -83,7 +85,7 @@ function Row (props) {
         </TableCell>
 
         {/* 1 */}
-        <TableCell scope='row'>{row.name}</TableCell>
+        <TableCell scope='row' id='roomsName'>{row.name.toLowerCase()}</TableCell>
         <TableCell colSpan={4}>
           {row.rates.map((r, i) => {
             return renderRow(r, i)

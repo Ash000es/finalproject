@@ -259,6 +259,14 @@ export const convertDates = (startDate, endDate) => {
 //   return imageObject
 // }
 //  imagesArray, props.room, masterLinkSmall)
+export function isFreeCancelAvailabe (arg) {
+  console.log(arg, 'arg')
+  return arg.map(rate => {
+    if (rate.rateClass !== 'NRF') {
+      return 'NOR'
+    }
+  })
+}
 
 export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
   return arr1.map(imageObject => arr2.filter(roomObject => {
@@ -317,17 +325,3 @@ export const sumUp = (accumulator, currentValue) => accumulator + currentValue
 //   }
 // })
 // })
-
-// cancellationPolicies: [Array(1)
-// 0: {amount: "103.68", from: "2020-11-12T16:00:00+01:00"}
-// ]
-
-// {
-//   "imageTypeCode": "HAB",
-//   "path": "00/000016/000016a_hb_ro_253.jpg",
-//   "roomCode": "APT.VM-2",
-//   "roomType": "APT",
-//   "characteristicCode": "VM-2",
-//   "order": 253,
-//   "visualOrder": 100
-// },

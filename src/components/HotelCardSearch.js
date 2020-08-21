@@ -14,7 +14,7 @@ import { ExtrasList } from './ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { searchResultsAmen } from '../Helper/SearchResultsAmen'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique, labelReturn, reviewSummaryReturn } from '../Helper/Helper'
+import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique, labelReturn, reviewSummaryReturn, isFreeCancelAvailabe } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -72,6 +72,8 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
+  const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms[0].rates)
+  console.log(freeCancel, 'showeee')
 
   return (
     <>
@@ -96,6 +98,8 @@ export const HotelCardSearch = (props) => {
               <div className='firstDiv'>
                 <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
                 <div style={{ FontSize: 14, marginBottom: 1 }}><p>{props.hotel.address.content.toLowerCase()}</p></div>
+                {(freeCancel[0] === 'NOR') ? <p style={{ color: '#249D3C', fontWeight: '450', fontSize: '0.8rem' }}>Free cancelation available!</p> : null}
+
               </div>
               {/* secound inside div  */}
               <div className='secoundDiv'>

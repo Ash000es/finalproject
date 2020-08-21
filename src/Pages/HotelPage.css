@@ -114,28 +114,51 @@ align-content: flex-end;
 .starRating-Reviews{
     /* border: 1px solid blue; */
 }
-.tableAlone{
-    border: 1px solid brown;
-    max-width: 85%;
-}
-.floatedInfo{
-    border: 2px solid yellow;
-    /* float: right; */
-    max-width: 15%;
-    /* margin-left:2rem; */
-    max-height: 80%;
-}
 
 .table-float{
-    border: 1px solid green;
+    /* border: 2px solid green; */
     display: flex;
     justify-content: space-between;
+    width:100%;
+    min-width:100%;
+}
+
+.floatedInfo{
+    /* border: 1px solid yellow; */
+    /* float: right; */
+    width: 20%;
+    /* margin-left:2rem; */
+    min-height: 100%;
 }
 .emptyDiv-Background{
-    min-width:110;
-   min-height:100;
+    width:100%;
+   height:56px;
     background-color: #0088BC;
     margin-bottom:1rem;
+    margin-top:0;
   
-    border:1px solid blue;
+    
+}    
+.tableAlone{
+    /* border: 5px solid brown; */
+    width: 80%;
+}
+
+
+
+/* styling the text inside the table */
+#roomsInfo{
+    font-weight:450;
+    text-transform: capitalize;
+    /* font-size:1.5rem; */
+    
+}
+#freeCancel{
+    color:#249D3C;
+    font-weight:600;
+}
+#roomsName{
+    font-size:1.3rem;
+    font-weight:450;
+    text-transform: capitalize;
 }
