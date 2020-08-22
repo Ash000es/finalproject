@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     maxHeight: screenWidth =>
       screenWidth <= 768 ? '15rem' : '20rem',
     margin: '0.625rem auto',
-    backgroundColor: 'pink',
+    // backgroundColor: 'pink',
     width: screenWidth =>
       screenWidth <= 425 ? '25rem' : '20rem'
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     flexShrink: 1
 
   },
