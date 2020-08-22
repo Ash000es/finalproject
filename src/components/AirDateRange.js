@@ -14,21 +14,21 @@ const DateRangePickerWrapper = (props) => {
   })
   const [focus, setFocus] = useState({ focusedInput: null })
   const width = props.width
-  let block = false
-  let small = false
-  let regular = true
-  const changeSize = () => {
-    if (width <= 928) {
-      block = false
-      small = true
-      regular = false
-    } if (width <= 455) {
-      block = true
-      small = false
-      regular = false
-    }
-  }
-  changeSize()
+  const block = false
+  const small = false
+  const regular = true
+  // const changeSize = () => {
+  //   if (width <= 928) {
+  //     block = false
+  //     small = true
+  //     regular = false
+  //   } if (width <= 455) {
+  //     block = true
+  //     small = false
+  //     regular = false
+  //   }
+  // }
+  // changeSize()
 
   useEffect(() => {
     if ((state.startDate !== null) && (state.endDate !== null)) {
@@ -41,7 +41,7 @@ const DateRangePickerWrapper = (props) => {
   console.log(block, 'block')
 
   return (
-    <div className='DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2'>
+    <div>
       <DateRangePicker
         startDate={state.startDate} // momentPropTypes.momentObj or null,
         startDateId='your_unique_start_date_id' // PropTypes.string.isRequired,
@@ -53,7 +53,7 @@ const DateRangePickerWrapper = (props) => {
         block={block}
         small={small}
         regular={regular}
-        noBorder
+        // noBorder
 
       />
     </div>

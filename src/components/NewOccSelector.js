@@ -7,17 +7,17 @@ const NewOccSelector = (props) => {
   }
   let style
   const style1 = {
-    height: '3rem',
-    width: '6rem'
+    // height: '3rem',
+    // width: '6rem'
 
   }
   const style2 = {
-    height: '2rem'
+    // height: '2rem'
     // width: '2rem'
   }
   const style3 = {
-    height: '2rem',
-    width: '8.9rem'
+    // height: '2rem',
+    // width: '8.9rem'
   }
   const screenWidth = props.width
   if (screenWidth <= 928) {

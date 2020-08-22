@@ -29,13 +29,77 @@
   background:#FF8B00;
 }
 
-.DateRangePickerInput__withBorder .DateRangePickerInput__withBorder_2{
-  display:flex;
-/* width:14rem;
-height:auto; */
+.DateRangePickerInput, .DateRangePickerInput_1, .DateRangePickerInput__withBorder, .DateRangePickerInput__withBorder_2{
+  display:flex !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
 }
-.DateRangePickerInput .DateRangePickerInput_1 {
-  display:flex;
-/* width:7rem;
-height:auto; */
+
+.DateRangePickerInput, .DateRangePickerInput_1{
+  display:flex !important;
+  justify-content: flex-start !important;
+
+}
+
+@media screen and (max-width: 928px) {
+  /* start of large tablet styles */
+
+.DateRangePickerInput, .DateRangePickerInput_1,.DateRangePickerInput__withBorder, .DateRangePickerInput__withBorder_2{
+  display:flex !important;
+  justify-content: flex-start !important;
+  width:173px;
+  max-width: 173px;
+  height:auto;
+    flex-shrink: 1;
+    /* font-size:9px !important; */
+    line-height: 10px;
+}
+  
+  .DateInput, .DateInput_1,.DateInput_input__regular, .DateInput_input__regular_2 {
+width: 86.5px !important;
+height:auto;
+flex-shrink:1;
+font-size:10px;
+font-weight:600;
+line-height: 10px !important;
+ 
+  }
+  .DateRangePickerInput_arrow_svg, .DateRangePickerInput_arrow_svg_1{
+    width: 18px !important;
+    height: 24px !important;
+  }
+  .DateRangePickerInput_arrow, .DateRangePickerInput_arrow_1{
+    /* something here  */
+  }
+ 
+}
+@media only screen and (max-width: 767px) {
+  .DateRangePickerInput, .DateRangePickerInput_1, .DateRangePickerInput__withBorder, .DateRangePickerInput__withBorder_2{
+    display:flex !important;
+    justify-content: flex-start !important;
+    width:115px !important;
+    max-width: 115px;
+    /* flex-wrap: nowrap; */
+    height:auto;
+    line-height: 8px;
+    flex-shrink:1;
+    font-size:8px !important;
+  }
+ 
+  .DateInput, .DateInput_1, .DateInput_input__regular, .DateInput_input__regular_2 {
+    width: 57.5px !important;
+    height:auto;
+    flex-shrink:1;
+    font-size:8px !important;
+    line-height: 10px !important;
+    font-weight:600;
+   
+      }
+      .DateRangePickerInput_arrow, .DateRangePickerInput_arrow_1, .DateRangePickerInput_arrow_svg, .DateRangePickerInput_arrow_svg_1{
+        font-size:8px !important;
+        display:flex !important;
+        width:20px !important;
+      }
+
 }

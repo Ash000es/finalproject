@@ -107,7 +107,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -229,17 +229,17 @@ export const HotelList = () => {
                   <DropDownFilter onClick={handleSort} />
                 </div>
                 <br />
-
-                {valueToMap && valueToMap.map(hotel => {
-                  return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} style={{ margin: '10 auto' }} />
-                })}
-
+                <div>
+                  {valueToMap && valueToMap.map(hotel => {
+                    return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} style={{ margin: '10 auto' }} />
+                  })}
+                </div>
               </div>
 
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }

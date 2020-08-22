@@ -4,7 +4,7 @@
   align-items:flex-end;
   width: 100%;
   margin: 0.5rem auto;
-  /* border: 1px solid #d00088BC; */
+  border: 1px solid #d00088BC;
 }
 .SearchBarFilters {
   display: flex;

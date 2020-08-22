@@ -20,7 +20,7 @@ import { masterLinkSmall } from '../Helper/Constants'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    margin: '2rem auto'
+    margin: '1rem auto'
     // border: '1px solid blue'
   },
   heading: {
@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const HotelCardSearch = (props) => {
+  console.log(props, 'props from hotel search ')
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
@@ -65,8 +66,12 @@ export const HotelCardSearch = (props) => {
   const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms[0].rates)
   console.log(freeCancel, 'showeee')
   const openExtras = () => {
-    setExpanded(!expanded)
+    if (!expanded) {
+      setExpanded(!expanded)
+    }
   }
+  const hotelName = props.hotel.name.content
+  const hotelName2 = props.hotel.name
 
   return (
     <>
@@ -90,7 +95,7 @@ export const HotelCardSearch = (props) => {
               {/* first inside div  */}
               <div className='firstDiv'>
                 {/* <div style={{ backgroundColor: 'red', height: 27 }}> */}
-                <Typography className={classes.secondaryHeading}>{props.hotel.name.content}</Typography>
+                <Typography className={classes.secondaryHeading}>{hotelName || hotelName2}</Typography>
                 <div style={{ FontSize: 14, marginBottom: 1 }}><p>{props.hotel.address.content.toLowerCase()}</p></div>
                 {(freeCancel.map(can => can === 'NOR')) ? <p style={{ color: '#249D3C', fontWeight: '450', fontSize: '0.8rem' }}>Free cancelation available!</p> : null}
 
@@ -110,7 +115,7 @@ export const HotelCardSearch = (props) => {
 
               <div className='thirdDivInner'>
 
-                <p>{labelReturn(props.hotel.categoryCode)}</p>
+                <div>{labelReturn(props.hotel.categoryCode)}</div>
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />
