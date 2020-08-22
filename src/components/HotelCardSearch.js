@@ -49,17 +49,6 @@ const useStyles = makeStyles((theme) => ({
   smallColumn: {
     flexBasis: '15%'
     // border: '1px solid blue'
-  },
-  helper: {
-    borderLeft: `2px solid ${theme.palette.divider}`,
-    padding: theme.spacing(1, 2)
-  },
-  link: {
-    color: theme.palette.primary.main,
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'underline'
-    }
   }
 }))
 
@@ -100,7 +89,8 @@ export const HotelCardSearch = (props) => {
             <div id='secoundDivWrraper' className={classes.column}>
               {/* first inside div  */}
               <div className='firstDiv'>
-                <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
+                {/* <div style={{ backgroundColor: 'red', height: 27 }}> */}
+                <Typography className={classes.secondaryHeading}>{props.hotel.name.content}</Typography>
                 <div style={{ FontSize: 14, marginBottom: 1 }}><p>{props.hotel.address.content.toLowerCase()}</p></div>
                 {(freeCancel.map(can => can === 'NOR')) ? <p style={{ color: '#249D3C', fontWeight: '450', fontSize: '0.8rem' }}>Free cancelation available!</p> : null}
 
