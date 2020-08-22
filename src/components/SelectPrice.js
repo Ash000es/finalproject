@@ -18,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3)
   },
   button: {
-    margin: theme.spacing(1, 1, 0, 0)
+    margin: theme.spacing(1, 1, 0, 0),
+    // borderColor: '#FF8B00',
+    backgroundColor: '#FF8B00',
+    color: 'white',
+    textTransform: 'capitalize'
   },
   root: {
 
@@ -122,27 +126,27 @@ export default function SelectPrice (props) {
         <RadioGroup aria-label='quiz' name='quiz' value={value} value1={value1}>
           {value ? <div>
             <FormLabel component='legend'><p className={classes.pStyling}>Rooms from</p></FormLabel>
-            <FormControlLabel value control={<Radio />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} checked />
+            <FormControlLabel value control={<Radio style={{ color: '#FF8B00' }} />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} checked />
 
             <FormHelperText>{helperText}</FormHelperText>
 
-            <Button type='submit' variant='outlined' color='primary' onClick={sendCurrentHotel} className={classes.button}>
+            <Button type='submit' onClick={sendCurrentHotel} className={classes.button}>
               continue
             </Button>
 
             <FormLabel component='legend'><p className={classes.pStyling}>Extras from</p></FormLabel>
-            <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} />} label={showpriceplus} />
+            <FormControlLabel checked={false} value1={value1} control={<Radio onChange={showRoomPlusPrice} style={{ color: '#FF8B00' }} />} label={showpriceplus} onClick={() => props.openExtras()} />
           </div>
 
             : <div>
               <FormLabel component='legend'><p className={classes.pStyling}>Rooms from</p></FormLabel>
-              <FormControlLabel checked={false} value={!value} control={<Radio onChange={showRoomOnlyPrice} />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} />
+              <FormControlLabel checked={false} value={!value} control={<Radio onChange={showRoomOnlyPrice} style={{ color: '#FF8B00' }} />} label={props.hotel.apiRooms[0].rates[0].mySellingRate} />
               <FormLabel component='legend'><p className={classes.pStyling}>Extras from</p></FormLabel>
 
-              <FormControlLabel value1={!value1} checked control={<Radio />} label={showpriceplus} />
+              <FormControlLabel value1={!value1} checked control={<Radio style={{ color: '#FF8B00' }} />} label={showpriceplus} onClick={() => props.openExtras()} />
 
               <FormHelperText>{helperText}</FormHelperText>
-              <Button type='submit' variant='outlined' color='primary' className={classes.button}>
+              <Button type='submit' onClick={sendCurrentHotel} className={classes.button}>
                 continue
               </Button>
             </div>}

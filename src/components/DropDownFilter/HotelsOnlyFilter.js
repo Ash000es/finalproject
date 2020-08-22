@@ -6,17 +6,22 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1)
+    },
+    Button: {
+      borderColor: '#FF8B00',
+      color: '#FF8B00',
+      textTransform: 'capitalize'
     }
   }
 }))
 
 export const HotelsOnly = (props) => {
-  const classes = useStyles
+  const classes = useStyles()
 
   return (
-    <div className={classes.root}>
-      <Button onClick={props.onClick} variant='outlined'>Hotels</Button>
+    // <div id={classes.Button}>
+    <Button onClick={props.onClick} size='small' variant='outlined'>Hotels</Button>
 
-    </div>
+    // </div>
   )
 }

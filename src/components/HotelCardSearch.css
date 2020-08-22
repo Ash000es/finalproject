@@ -188,3 +188,7 @@ overflow: hidden;
   border-radius:10px;
   /* border: 4px solid yellow; */
 }
+ /* drop down sort */
+ .dropdown-item{
+color: whitesmoke ;
+ }

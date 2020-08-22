@@ -20,7 +20,23 @@ import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
 const useStyles = makeStyles((theme) => ({
   filters: {
     display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
+
+  },
+  hotelHomeButton: {
+    display: 'flex',
     justifyContent: 'flex-end'
+
+  },
+  destinationName: {
+    textAlign: 'center',
+    fontSize: theme.typography.pxToRem(17),
+    color: theme.palette.text.primary,
+    fontWeight: theme.typography.fontWeightMedium,
+    textDecoration: 'underline',
+    marginTop: '1.375rem'
+
   }
 }))
 
@@ -91,7 +107,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-    />
+           />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -204,11 +220,11 @@ export const HotelList = () => {
                 <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               </div>
               <div className={classes.filters}>
-                <MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /><HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} />
+                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /></div>
 
               </div>
               <div style={{ border: '1px solid grey' }}>
-                <Typography>{allHotelsResults[0].destinationName}</Typography>
+                <Typography className={classes.destinationName}>{allHotelsResults[0].destinationName}</Typography>
                 <div className='sortButton'>
                   <DropDownFilter onClick={handleSort} />
                 </div>
@@ -223,7 +239,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-        </div>}
+          </div>}
     </>
   )
 }

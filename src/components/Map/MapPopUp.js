@@ -10,26 +10,28 @@ const MapPopUp = (props) => {
   const [show, setShow] = useState(false)
 
   return (
-    <>
+    < >
 
-      <Button variant='primary' onClick={() => setShow(true)}>
-        Show on Map
+      <Button variant='outline-success' size='sm' onClick={() => setShow(true)}>
+        Show map
       </Button>
 
       <Modal
         show={show}
+        size='xl'
         onHide={() => setShow(false)}
         dialogClassName='modal-2000w'
         aria-labelledby='example-custom-modal-styling-title'
+
       >
         <Modal.Header closeButton>
-          <Modal.Title id='example-custom-modal-styling-title'>
+          {/* <Modal.Title id='example-custom-modal-styling-title'>
             Custom Modal Styling
-          </Modal.Title>
+          </Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
 
-          <div style={{ width: '100%', height: '600px' }}>
+          <div style={{ width: 1000, height: 500 }}>
             <WrapperMap
               googleMapURL={googleURL}
               loadingElement={<div style={{ height: '100%' }} />}

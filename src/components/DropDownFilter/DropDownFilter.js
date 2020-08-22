@@ -4,10 +4,10 @@ import Dropdown from 'react-bootstrap/Dropdown'
 
 export const DropDownFilter = (props) => {
   return (
-    <DropdownButton id='dropdown-item-button' title='Sort by'>
-      <Dropdown.Item onClick={(e) => props.onClick(e.target.value)} value='Sortby Price' as='button'>Sort by Price</Dropdown.Item>
-      <Dropdown.Item onClick={(e) => props.onClick(e.target.value)} value='Sortby review' as='button'>Sort by Review</Dropdown.Item>
-      <Dropdown.Item onClick={(e) => props.onClick(e.target.value)} value='Sortby recommended' as='button'>Sort by recommended</Dropdown.Item>
+    <DropdownButton id='dropdown-item-button' size='sm' variant='outline-dark' title='Sort by'>
+      <Dropdown.Item variant='outline-dark' onClick={(e) => props.onClick(e.target.value)} value='Sortby Price' as='button'>Sort by Price</Dropdown.Item>
+      <Dropdown.Item variant='outline-dark' onClick={(e) => props.onClick(e.target.value)} value='Sortby review' as='button'>Sort by Review</Dropdown.Item>
+      <Dropdown.Item variant='outline-dark' onClick={(e) => props.onClick(e.target.value)} value='Sortby recommended' as='button'>Sort by recommended</Dropdown.Item>
     </DropdownButton>
   )
 }

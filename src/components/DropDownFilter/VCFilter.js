@@ -14,9 +14,9 @@ export const VacationRental = (props) => {
   const classes = useStyles
 
   return (
-    <div className={classes.root}>
-      <Button onClick={props.onClick} variant='outlined'>Homes</Button>
+    // <div className={classes.root}>
+    <Button onClick={props.onClick} size='small' variant='outlined'>Homes</Button>
 
-    </div>
+    // </div>
   )
 }

@@ -28,8 +28,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary
+    fontSize: theme.typography.pxToRem(18),
+    color: theme.palette.text.primary,
+    fontWeight: theme.typography.fontWeightMedium
   },
 
   icon: {
@@ -74,6 +75,9 @@ export const HotelCardSearch = (props) => {
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
   const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms[0].rates)
   console.log(freeCancel, 'showeee')
+  const openExtras = () => {
+    setExpanded(!expanded)
+  }
 
   return (
     <>
@@ -98,7 +102,7 @@ export const HotelCardSearch = (props) => {
               <div className='firstDiv'>
                 <Typography className={classes.secondaryHeading} id='typo'>{props.hotel.name.content}</Typography>
                 <div style={{ FontSize: 14, marginBottom: 1 }}><p>{props.hotel.address.content.toLowerCase()}</p></div>
-                {(freeCancel[0] === 'NOR') ? <p style={{ color: '#249D3C', fontWeight: '450', fontSize: '0.8rem' }}>Free cancelation available!</p> : null}
+                {(freeCancel.map(can => can === 'NOR')) ? <p style={{ color: '#249D3C', fontWeight: '450', fontSize: '0.8rem' }}>Free cancelation available!</p> : null}
 
               </div>
               {/* secound inside div  */}
@@ -128,7 +132,7 @@ export const HotelCardSearch = (props) => {
 
             {/* third div */}
             <div id='thirdDivOutside' className={classes.smallColumn}>
-              <SelectPrice done={props.done} hotel={props.hotel} />
+              <SelectPrice done={props.done} hotel={props.hotel} openExtras={openExtras} />
             </div>
 
             {/* ends here  */}
