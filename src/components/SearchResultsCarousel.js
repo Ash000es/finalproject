@@ -64,8 +64,8 @@ export const SearchResultsCarousel = (props) => {
                   />
                   {isloading && 'Loading'}
                   {/* <div style={{ backgroundImage: imagLink, backgroundSize: 'cover', borderRadius: 0 }} /> */}
-                  {/* <i className='iconHeart'><FavoriteIcon /></i>
-                  <i className='iconHeart'><FavoriteBorderIcon /></i> */}
+                  {/* <i ><FavoriteIcon /></i>
+                  <i ><FavoriteBorderIcon /></i> */}
 
                 </Carousel.Item>
 

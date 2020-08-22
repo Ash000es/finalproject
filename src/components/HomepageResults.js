@@ -185,7 +185,7 @@ const HomePageResults = (props) => {
                 )
               })
             }
-            </>}
+          </>}
       </div>
     </>
 

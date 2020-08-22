@@ -1,24 +1,4 @@
-.carousel-item, .caro {
-   
-    /* height:100% !important; */
-     
-  
-      /* width: 100% !important;
-      height: 100% !important; */
-     
-     /* 
-     width: 100% !important;
-     object-fit: cover !important; 
-     max-height:16rem !important;
-     margin:0  ; 
-     width: 100% ;   */
-     
- }
-/* .d-block w-100{
-   
-    object-fit: cover !important;
-    
-}  */
+
 img {
     object-fit: cover;
      width: 100% !important;
@@ -35,12 +15,9 @@ img {
       object-fit: contain;
 
       
-      /* flex-flow: column wrap;
-      align-content:flex-start; */
+     
     }
-    /* .carousel-item, .caro {
-        height: 50% !important;
-    } */
+   
     
   }
      
