@@ -130,6 +130,7 @@ align-content: flex-end;
     width: 15%;
     /* margin-left:2rem; */
     min-height: 100%;
+    background-color:#E8F1FF ;
 }
 .emptyDiv-Background{
     width:100%;
@@ -231,4 +232,26 @@ align-content: flex-end;
     position: relative;
     left:25%;
     top:10%;
+}
+/* table right side summary button css */
+ .roomsSummary, .extrasSummary{
+     text-align:center;
+     /* border: 1px solid green; */
+     
+     font-size:1rem;
+     padding:5px;
+     
+     
+
+
+ }
+ p .roomsSummary, .extrasSummary {
+   color:grey;
+   font-size:14px;
+   font-weight:450;
+  padding:10px;
+  line-height: 10px;
+    
+
+
 }

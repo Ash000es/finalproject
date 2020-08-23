@@ -69,7 +69,7 @@ function Row (props) {
         <TableCell align='right' id='roomsInfo3'> <div className='selectRooms-div'><SelectRoom rate={rate} /> </div></TableCell>
 
         {/* 5 */}
-        <TableCell align='right' id='roomsInfo4'> {rate.mySellingRate}</TableCell>
+        <TableCell align='right' id='roomsInfo4'> ${rate.mySellingRate}</TableCell>
       </TableRow>
     )
   }

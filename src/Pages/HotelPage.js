@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo } from 'react'
 import { hardHotelObject } from '../assets/HardCode'
 import RoomCarousel from '../components/thumbilCarousel'
 
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 import DateRangePicker from '../components/DateRange/NewDateRange'
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
@@ -15,6 +15,7 @@ import { masterLinkLarge } from '../Helper/Constants'
 import './HotelPage.css'
 import CustomizedRatings from '../components/TripAdvisorRating'
 import StarRatings from '../components/StarRatings'
+import Button from '@material-ui/core/Button'
 
 const HotelPage = React.memo((props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -133,18 +134,21 @@ const HotelPage = React.memo((props) => {
           <div className='floatedInfo'>
             <div className='emptyDiv-Background' />
             {totalSelectedRoomsInfo.length > 0 &&
-              <div>
+              <div className='roomsSummary'>
 
                 <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
-                <p>Total price: {roomspricearr.reduce(sumUp)}</p>
-                <Button onClick={(room) => handleClickButton(room)} variant='primary'>continue</Button>{' '}
+                <strong><p>Total price: {roomspricearr.reduce(sumUp)}$</p></strong>
+                <Button onClick={(room) => handleClickButton(room)} size='medium' style={{ backgroundColor: '#FF8B00', color: 'white' }}>continue</Button>
 
               </div>}
             {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
               return (
-                <div key={i} extra={extra}>
+                <div key={i} extra={extra} className='extrasSummary'>
+
+                  <strong><p>Extras item:</p></strong>
                   <p>{extra.title}</p>
-                  <p>{extra.price}</p>
+                  <p>{extra.price}$</p>
+                  <Button color='secondary' size='medium'>Remove</Button>
 
                 </div>
               )
