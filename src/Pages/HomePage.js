@@ -12,11 +12,11 @@ export const HomePage = () => {
   const [redirect, setRedirect] = useState(false)
   const { project, setProject } = useContext(ProjectContext)
   const hotelResults = project.results
-  // console.log(redirect, 'redirect from homepage')
+  console.log(redirect, 'redirect from homepage')
   const [isloading, setIsLoading] = useState(false)
   const size = useWindowSize()
   const width = size.width
-  console.log(width, 'wid')
+  // console.log(width, 'wid')
 
   // console.log(isloading, 'isloading')
   const style = {

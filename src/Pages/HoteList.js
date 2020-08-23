@@ -2,13 +2,13 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { makeStyles } from '@material-ui/core/styles'
 import React, { useContext, useState, useEffect } from 'react'
 import { HotelCardSearch } from '../components/HotelCardSearch'
-import { DropDownFilter } from '../components/DropDownFilter/DropDownFilter'
+import { DropDownFilter } from '../components/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
 import SearchBar from '../components/SearchBar/SearchBar'
 import { SearchResultsHero } from '../components/SearchResultsHero/SearchResultsHero'
 import './HotelList.css'
 
-import { AccomodationTypeFilter } from '../components/DropDownFilter/AccomodationTypeFilter'
+import { AccomodationTypeFilter } from '../components/AccomodationTypeFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
@@ -37,15 +37,12 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'underline',
     marginTop: '1.375rem'
 
+  },
+  scrollRoot: {
+    width: '100%',
+    height: '100%'
   }
 }))
-
-const style = {
-  height: 30,
-  border: '1px solid green',
-  margin: 6,
-  padding: 8
-}
 
 const PRICE_FILTER_MIN = 0
 const PRICE_FILTER_MAX = 1000
@@ -101,6 +98,7 @@ export const HotelList = () => {
   }
 
   // when a user selects a hotel, props is passed to <HotelPage/> via redirect
+  console.log(redirect, 'redirect from hotellist')
   if (redirect) {
     return <Redirect
       to={{
@@ -189,12 +187,10 @@ export const HotelList = () => {
     }
   }
   const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
-
   const style = {
     height: '100%',
     width: '100%'
   }
-
   return (
     <>
       {!allHotelsResults.length ? <Spinning />
@@ -229,9 +225,9 @@ export const HotelList = () => {
                   <DropDownFilter onClick={handleSort} />
                 </div>
                 <br />
-                <div>
+                <div style={{ margin: '10 auto' }}>
                   {valueToMap && valueToMap.map(hotel => {
-                    return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} style={{ margin: '10 auto' }} />
+                    return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
                   })}
                 </div>
               </div>

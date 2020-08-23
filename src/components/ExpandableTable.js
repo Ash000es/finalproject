@@ -55,20 +55,21 @@ function Row (props) {
   const renderRow = (rate, i) => {
     const cancelationPolicy = showCancelationPolicy(rate)
     return (
-      <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)}>
+
+      <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)} id='poten-row'>
         {/* 2 */}
-        <TableCell align='right' id={cancelationPolicy === 'None refundable' ? 'roomsInfo' : 'freeCancel'}>
+        <TableCell align='right' id={cancelationPolicy === 'None refundable' ? 'roomsInfo1' : 'freeCancel'}>
 
           <p>{cancelationPolicy}</p>
         </TableCell>
         {/* 3 */}
-        <TableCell align='right' id='roomsInfo'> {rate.boardName.toLowerCase()}</TableCell>
+        <TableCell align='right' id='roomsInfo2'> {rate.boardName.toLowerCase()}</TableCell>
 
         {/* 4 */}
-        <TableCell align='right'> <SelectRoom rate={rate} /></TableCell>
+        <TableCell align='right' id='roomsInfo3'> <div className='selectRooms-div'><SelectRoom rate={rate} /> </div></TableCell>
 
         {/* 5 */}
-        <TableCell align='right' id='roomsInfo'> {rate.mySellingRate}</TableCell>
+        <TableCell align='right' id='roomsInfo4'> {rate.mySellingRate}</TableCell>
       </TableRow>
     )
   }
@@ -78,7 +79,7 @@ function Row (props) {
 
       <TableRow className={classes.root}>
         {/* 0 */}
-        <TableCell>
+        <TableCell id='outerMainRow'>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
@@ -86,7 +87,7 @@ function Row (props) {
 
         {/* 1 */}
         <TableCell scope='row' id='roomsName'>{row.name.toLowerCase()}</TableCell>
-        <TableCell colSpan={4}>
+        <TableCell colSpan={4} id='padding-source'>
           {row.rates.map((r, i) => {
             return renderRow(r, i)
           })}
@@ -167,13 +168,13 @@ export default function CollapsibleTable (props) {
             {/* 1 */}
             <TableCell align='left' style={{ color: 'white' }}>Room Type</TableCell>
             {/* 2 */}
-            <TableCell align='left' style={{ color: 'white', fontWeight: '550' }}>sleeps</TableCell>
+            <TableCell align='right' style={{ color: 'white', fontWeight: '550' }}>sleeps</TableCell>
             {/* 3 */}
-            <TableCell align='left' style={{ color: 'white' }}>Included</TableCell>
+            <TableCell align='right' style={{ color: 'white' }}>Included</TableCell>
             {/* 4 */}
-            <TableCell align='left' style={{ color: 'white' }}>selectrooms</TableCell>
+            <TableCell align='right' style={{ color: 'white' }}>selectrooms</TableCell>
             {/* 5 */}
-            <TableCell align='left' style={{ color: 'white' }}>price</TableCell>
+            <TableCell align='right' style={{ color: 'white' }}>price</TableCell>
 
           </TableRow>
         </TableHead>

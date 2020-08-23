@@ -33,11 +33,17 @@ export const AccomodationTypeFilter = (props) => {
 
     props.onClick()
   }
+  const style = {
+    border: '0.5px solid black',
+    // color: '#FF8B00',
+    textTransform: 'capitalize',
+    fontWeight: '400'
 
+  }
   return (
-    <div className={classes.Button}>
+    <div>
 
-      <Button variant={state} size='sm' onClick={hanldeOnClick} className={classes.root}>
+      <Button variant={state} size='sm' onClick={hanldeOnClick} style={style}>
         {props.name}
       </Button>
 
