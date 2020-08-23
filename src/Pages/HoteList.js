@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import SearchBar from '../components/SearchBar/SearchBar'
 import { SearchResultsHero } from '../components/SearchResultsHero/SearchResultsHero'
 import './HotelList.css'
-import { VacationRental } from '../components/DropDownFilter/VCFilter'
-import { HotelsOnly } from '../components/DropDownFilter/HotelsOnlyFilter'
+
+import { AccomodationTypeFilter } from '../components/DropDownFilter/AccomodationTypeFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
 import MapPopUp from '../components/Map/MapPopUp'
@@ -107,7 +107,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-    />
+           />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -220,7 +220,7 @@ export const HotelList = () => {
                 <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               </div>
               <div className={classes.filters}>
-                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><HotelsOnly onClick={handleFilteredHotels} /><VacationRental onClick={handleFilteredHomes} /></div>
+                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><AccomodationTypeFilter onClick={handleFilteredHotels} name='Show hotels' /><AccomodationTypeFilter onClick={handleFilteredHomes} name='Show homes' /></div>
 
               </div>
               <div style={{ border: '1px solid grey' }}>
@@ -239,7 +239,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-        </div>}
+          </div>}
     </>
   )
 }
