@@ -22,7 +22,7 @@ const SearchBar = (props) => {
     borderColor: colorStyles.orange,
     position: 'relative'
   },
-    size: width >= 928 ? 'lg' : 'sm',
+    size: width >= 992 ? 'lg' : 'sm',
     block: (width <= 479)
   }
   const intialState = {
@@ -112,18 +112,28 @@ const SearchBar = (props) => {
   }
 
   return (
-    <>
+    <div className='searchBar-outerDiv'>
 
       <div className='SearchBar'>
-
-        <SearchField onChange={handleLocationChange} width={props.width} />
-        <>
+        <div className='searchBar-searchField'>
+          <SearchField onChange={handleLocationChange} width={props.width} />
+        </div>
+        <div className='searchBar-datePicker'>
           <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' width={props.width} />
-          <NewOccSelector onChange={handleOccChange} width={props.width} />
-          <NewOccSelector onChange={handleOccChange2} width={props.width} />
-        </>
-        <Button variant='primary' block={styles.block} style={styles.Button} size={styles.size} onClick={handleClickButton}>Search</Button>{' '}
+        </div>
+        <div className='searchBar-occSelector'>
+          <div>
+            <NewOccSelector onChange={handleOccChange} width={props.width} />
+          </div>
 
+          <div>
+            <NewOccSelector onChange={handleOccChange2} width={props.width} />
+          </div>
+        </div>
+
+        <div className='searchBar-Button'>
+          <Button variant='primary' block={styles.block} style={styles.Button} size={styles.size} onClick={handleClickButton}>Search</Button>{' '}
+        </div>
       </div>
       {props.fullbar &&
         <div className='SearchBarFilters'>
@@ -134,7 +144,7 @@ const SearchBar = (props) => {
 
         </div>}
 
-    </>
+    </div>
 
   )
 }

@@ -42,7 +42,7 @@
 
 }
 
-@media screen and (max-width: 928px) {
+@media screen and (max-width: 992px) {
   /* start of large tablet styles */
 
 .DateRangePickerInput, .DateRangePickerInput_1,.DateRangePickerInput__withBorder, .DateRangePickerInput__withBorder_2{

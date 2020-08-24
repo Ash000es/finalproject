@@ -27,8 +27,8 @@ export default function SearchField (props) {
   const screenWidth = props.width
   const fullWidth = screenWidth <= 479
   const style = {
-    height: screenWidth <= 928 ? '1.953125rem' : '100%',
-    width: !fullWidth && screenWidth <= 928 ? '17.875rem' : '100%'
+    height: screenWidth <= 992 ? 36 : '100%',
+    width: !fullWidth && screenWidth <= 992 ? 219.72 : '100%'
 
   }
 

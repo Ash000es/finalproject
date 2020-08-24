@@ -1,11 +1,58 @@
-.SearchBar {
-  display: flex;
-  justify-content: center;
-  align-items:flex-end;
+/* search bar css styling  */
+.searchBar-outerDiv{
+  display:flex;
+  align-items:center;
+  flex-direction: column;
   width: 100%;
-  margin: 0.5rem auto;
-  border: 1px solid #d00088BC;
+  height: auto;
+  border: 1px solid green;
+
 }
+.SearchBar {
+  display: flex; 
+  justify-content: flex-start; 
+  align-items:flex-end;  
+  width: 100%;
+  margin: 1rem ;
+  /* border: 1px solid #d00088BC; */
+  height:52px
+}
+
+.searchBar-searchField{
+  /* max-width:40%; */
+  /* border: 1px solid yellow; */
+  margin:1 auto;
+  flex-basis:40% ;
+}
+.searchBar-datePicker{
+  /* max-width:30%; */
+  /* border: 1px solid blue; */
+  margin:1 auto;
+  flex-basis:25%;
+}
+.searchBar-occSelector{
+  /* max-width:20%; */
+  /* border: 1px solid red; */
+  min-height:100%;
+  margin:1 auto;
+  display: flex;
+  align-items: flex-end;
+  margin-left:1px;
+  
+  flex-basis:16% ;
+}
+.searchBar-occSelector2{
+  /* max-width:10%; */
+  border: 1px solid red;
+  height:48px;
+}
+.searchBar-Button{
+  /* width:10%; */
+  /* border: 1px solid rgb(7, 125, 87); */
+  margin:1 auto;
+  flex-basis:10% ;
+}
+
 .SearchBarFilters {
   display: flex;
   justify-content: space-evenly;
@@ -13,6 +60,14 @@
   width: 70%;
   margin: 0.5rem auto;
 }
+
+
+/*  first point of break for the occ slector it goes down to 52,8 width, that's 60% */
+/* first point of break of search filed goes down to 219,72 width, that's 60% */
+/* first point to the button and everything else except datepicker it needs to go down to 34 height */
+/*  first point of break is at 992 where all the above applies   */
+/* secound point to be determind after first point is done but around 770  */
+
 
 
 @media screen and (min-width: 456px) and (max-width: 479px) {
