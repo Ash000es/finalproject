@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
+import './SearchField.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles(theme => ({
   },
   iconButton: {
     padding: '0.625rem'
+  },
+  searchInput: {
+
   }
 
 }))
@@ -28,7 +32,8 @@ export default function SearchField (props) {
   const fullWidth = screenWidth <= 479
   const style = {
     height: screenWidth <= 992 ? 36 : '100%',
-    width: !fullWidth && screenWidth <= 992 ? 219.72 : '100%'
+    // width: screenWidth <= 992 ? 219.72 : '100%'
+    block: screenWidth <= 779
 
   }
 
@@ -43,10 +48,10 @@ export default function SearchField (props) {
 
       <InputBase
         onChange={handleChange}
-        className={classes.input}
+        // className={classes.input}
         placeholder='Where to?'
         inputProps={{ 'aria-label': 'Where to?' }}
-        fullWidth={fullWidth}
+        fullWidth={style.block}
         margin='dense'
         required
         type='search'

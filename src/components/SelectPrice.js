@@ -11,7 +11,11 @@ import { Link } from 'react-router-dom'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
 import './HotelCardSearch.css'
-
+const style = {
+  borderColor: '#FF8B00',
+  backgroundColor: '#FF8B00',
+  color: 'white'
+}
 const useStyles = makeStyles((theme) => ({
   formControl: {
 
@@ -19,10 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1, 1, 0, 0),
-    // borderColor: '#FF8B00',
-    backgroundColor: '#FF8B00',
-    color: 'white',
-    textTransform: 'capitalize'
+    borderColor: '#FF8B00',
+    backgroundColor: '#FF8B00'
+
   },
   root: {
 
@@ -130,7 +133,7 @@ export default function SelectPrice (props) {
 
             <FormHelperText>{helperText}</FormHelperText>
 
-            <Button type='submit' onClick={sendCurrentHotel} className={classes.button}>
+            <Button size='medium' variant='contained' onClick={sendCurrentHotel} style={style}>
               continue
             </Button>
 
@@ -146,7 +149,7 @@ export default function SelectPrice (props) {
               <FormControlLabel value1={!value1} checked control={<Radio style={{ color: '#FF8B00' }} />} label={showpriceplus} onClick={() => props.openExtras()} />
 
               <FormHelperText>{helperText}</FormHelperText>
-              <Button type='submit' onClick={sendCurrentHotel} className={classes.button}>
+              <Button size='medium' variant='contained' onClick={sendCurrentHotel} style={style}>
                 continue
               </Button>
             </div>}

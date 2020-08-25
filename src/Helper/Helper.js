@@ -45,7 +45,7 @@ export const labelReturn = (code) => {
   } if (essentialCodes.includes(code)) {
     return <CatLabel name='Essential' look={{ background: 'rgb(42,120,24)', fontWeight: '450' }} />
   } if (homesCodes.includes(code)) {
-    return <CatLabel name='Homes' look={{ background: 'rgb(244,165,48)', width: '3.125rem', fontWeight: '450' }} />
+    return <CatLabel name='Homelike' look={{ background: 'rgb(244,165,48)', width: '3.125rem', fontWeight: '450' }} />
   } else {
     return null
   }

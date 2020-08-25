@@ -7,13 +7,14 @@ import { convertDates } from '../Helper/Helper'
 import './airDate.css'
 
 const DateRangePickerWrapper = (props) => {
+  const screenWidth = props.width
   const [state, setState] = useState({
     startDate: null,
     endDate: null
 
   })
   const [focus, setFocus] = useState({ focusedInput: null })
-  const width = props.width
+
   const block = false
   const small = false
   const regular = true
@@ -50,7 +51,7 @@ const DateRangePickerWrapper = (props) => {
         onDatesChange={({ startDate, endDate }) => setState({ startDate, endDate })}
         focusedInput={focus.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
         onFocusChange={focusedInput => setFocus({ focusedInput })}
-        block={block}
+        block={screenWidth <= 779}
         small={small}
         regular={regular}
         // noBorder

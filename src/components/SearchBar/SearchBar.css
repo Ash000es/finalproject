@@ -70,10 +70,10 @@
 
 
 
-@media screen and (min-width: 456px) and (max-width: 479px) {
+/* @media screen and (min-width: 456px) and (max-width: 479px) {
   /* start of phone styles */
   /* It's possible to hide the image if the screen becomes too small */
-  .SearchBar {
+  /* .SearchBar {
     display:block;
     max-width:24rem;
     min-width:19.625rem;
@@ -83,12 +83,12 @@
 
 @media only screen and (min-width: 200px) and (max-width: 455px) {
   /* ruleset for 480px - 600px */
-  .SearchBar {
+  /* .SearchBar {
     display:block;
     width:17.875rem;
    
     /* background-color:yellow; */
     
     
-  }
-}
+  /* } */
+/* }   */ 

@@ -14,16 +14,17 @@ import DateRangePickerWrapper from '../AirDateRange'
 import { colorStyles } from '../../Helper/Constants'
 
 const SearchBar = (props) => {
-  const width = props.width
+  const screenWidth = props.width
   const styles = {
     Button:
   {
     backgroundColor: colorStyles.orange,
     borderColor: colorStyles.orange,
-    position: 'relative'
-  },
-    size: width >= 992 ? 'lg' : 'sm',
-    block: (width <= 479)
+    height: screenWidth <= 992 ? 36 : 48
+
+  }
+    // size: width >= 992 ? 'lg' : 'sm',
+    // block: (width <= 479)
   }
   const intialState = {
     results: {},
@@ -110,6 +111,7 @@ const SearchBar = (props) => {
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
+  const size = screenWidth > 992 ? 'lg' : 'sm'
 
   return (
     <div className='searchBar-outerDiv'>
@@ -132,7 +134,7 @@ const SearchBar = (props) => {
         </div>
 
         <div className='searchBar-Button'>
-          <Button variant='primary' block={styles.block} style={styles.Button} size={styles.size} onClick={handleClickButton}>Search</Button>{' '}
+          <Button variant='primary' block={screenWidth <= 779} style={styles.Button} size={size} onClick={handleClickButton}>Search</Button>{' '}
         </div>
       </div>
       {props.fullbar &&
