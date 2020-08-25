@@ -105,7 +105,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -216,7 +216,7 @@ export const HotelList = () => {
                 <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               </div>
               <div className={classes.filters}>
-                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><AccomodationTypeFilter onClick={handleFilteredHotels} name='Show hotels' /><AccomodationTypeFilter onClick={handleFilteredHomes} name='Show homes' /></div>
+                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><AccomodationTypeFilter onClick={handleFilteredHotels} name='Hotels' /><AccomodationTypeFilter onClick={handleFilteredHomes} name='homelike' /></div>
 
               </div>
               <div style={{ border: '1px solid grey' }}>
@@ -235,7 +235,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }
