@@ -72,7 +72,6 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     return fetchHotels(destination.code, hotelIDS, db)
       .then(dbHotels => {
         const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
-        console.log(hotelsProject, 'results')
 
         return hotelsProject
       })
@@ -196,4 +195,34 @@ export const fetchPopularDestData = (des, db) => {
 
       return hotelsProject
     })
+}
+
+export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => {
+  const D = new Date()
+
+  const getSignature = () => {
+    return Sign(apikey + sec + Math.round(D.getTime() / 1000))
+  }
+
+  const createRequestBody = () => {
+    return {
+      stay,
+      occupancies,
+      hotels
+    }
+  }
+  console.log(JSON.stringify(createRequestBody()))
+  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+    {
+      method: 'POST',
+      headers: {
+        'Api-Key': apikey,
+        'X-Signature': getSignature(),
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'gzip'
+      },
+
+      body: JSON.stringify(createRequestBody())
+    }).then(res => console.log(res.json(), 'respose'))
 }

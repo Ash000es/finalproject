@@ -10,7 +10,7 @@ import './HotelCardSearch.css'
 
 export const SearchResultsCarousel = (props) => {
   const styleToShow = props.currentSelection
-  console.log(styleToShow, 'styletoshow')
+
   const ValueToMap = () => {
     if (props.currentSelection) {
       return props.currentSelection

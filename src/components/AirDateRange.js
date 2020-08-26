@@ -39,7 +39,6 @@ const DateRangePickerWrapper = (props) => {
       props.onChange(final)
     }
   }, [state])
-  console.log(block, 'block')
 
   return (
     <div>

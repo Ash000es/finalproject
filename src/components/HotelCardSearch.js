@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const HotelCardSearch = (props) => {
-  console.log(props, 'props from hotel search ')
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [expanded, setExpanded] = useState(false)
@@ -64,7 +63,7 @@ export const HotelCardSearch = (props) => {
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
   const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms[0].rates)
-  console.log(freeCancel, 'showeee')
+
   const openExtras = () => {
     if (!expanded) {
       setExpanded(!expanded)

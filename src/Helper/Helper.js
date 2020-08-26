@@ -257,7 +257,6 @@ export const convertDates = (startDate, endDate) => {
 // }
 //  imagesArray, props.room, masterLinkSmall)
 export function isFreeCancelAvailabe (arg) {
-  console.log(arg, 'arg')
   return arg.map(rate => {
     if (rate.rateClass !== 'NRF') {
       return 'NOR'

@@ -19,7 +19,6 @@ export const StarRating = withStyles({
 export default function StarRatings (props) {
   let starsRatings
   const displayStarCount = (props) => {
-    console.log(props, 'props here ')
     if (props.currentSelection.categoryName === '3 STARS') {
       starsRatings = { starsName: '3 Stars hotel', starNumber: 3 }
       return starsRatings
@@ -34,11 +33,9 @@ export default function StarRatings (props) {
       return starsRatings
     }
   }
-  //   useEffect(() => {
-  //     displayStarCount(props)
-  //   }, [])
+
   displayStarCount(props)
-  console.log(starsRatings, 'staryyy')
+
   return (
     <div>
       <Box component='fieldset' mb={3} borderColor='transparent'>

@@ -3,112 +3,96 @@ import { MyProvider, ProjectContext } from '../../providers/Provider'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
+import ListGroup from 'react-bootstrap/ListGroup'
+
 import Row from 'react-bootstrap/Row'
+import CardGroup from 'react-bootstrap/CardGroup'
 import { hardHotelObject } from '../../assets/HardCode'
 import './ReviewCart.css'
+import '../Payment.css'
 
 const ReviewCart = () => {
   const { project, setProject } = useContext(ProjectContext)
   const hotelsCartArr = []
   const extrasCartArr = []
   const cartItemsToMap = project.cartItems
-  // console.log(cartItemsToMap, 'here')
-
+  console.log(cartItemsToMap, 'here')
+  const style = {
+    borderColor: '#FF8B00',
+    backgroundColor: '#FF8B00',
+    color: 'white'
+  }
   const removeFromCart = (item, e) => {
     console.log(e, 'e')
     console.log(item, 'show')
   }
 
   return (
-    <>
-      <h4>Your Cart</h4>
-      <div className='bigCon'>
+    <div className='cartContainerDiv'>
+      <div className='CartSelectionSummary'>
         {cartItemsToMap && cartItemsToMap.map((item, i) => {
           if (item.rooms) {
             return (
-
-              <div className='cardRow' item={item} key={i}>
-
-                <Image src={item.image} rounded style={{ width: '16.875rem', height: '16.875rem' }} />
-                <Card style={{ width: '50%', height: '16.875rem' }}>
-                  <Card.Header style={{ 'text-transform': 'capitalize', fontWeight: 'bold' }}> Stay in {item.hotelName.content.toLowerCase()}</Card.Header>
+              <div className='hotelCheckoutCar'>
+                <Card style={{ width: '18rem' }}>
+                  <Card.Img variant='top' src={item.image} style={{ width: 100, height: 180 }} />
                   <Card.Body>
-                    <Card.Title>{item.roomType.toLowerCase()}</Card.Title>
-                    <Card.Text>
-                      {item.boardName.toLowerCase()} basis
+                    <Card.Title>{item.hotelName.content}</Card.Title>
+                    <Card.Subtitle className='mb-2 text-muted'>{item.roomNumber}{item.roomType}</Card.Subtitle>
 
-                    </Card.Text>
                     <Card.Text>
-                      {item.checkinDate}
+                      {item.checkinDate}-{item.checkoutDate}
                     </Card.Text>
-                    <Card.Text>
-                      {item.checkoutDate}
-                    </Card.Text>
-                    <Button variant='primary'>Edit</Button>
-                    <Button onClick={(e) => removeFromCart(item, i, e)} variant='danger'>Remove</Button>
+                    <Card.Text>{item.mySellingRate}$</Card.Text>
+                    <Button variant='outline-danger'>remove</Button>
                   </Card.Body>
                 </Card>
-
               </div>
-
             )
-          } if (item.summary) {
+          }
+        })}
+        {cartItemsToMap && cartItemsToMap.map((item, i) => {
+          if (item.summary) {
             console.log(item, i, 'look here')
-            return (
-              <div className='cardRow' item={item} key={i}>
 
-                <Image src={item.image} rounded style={{ width: '16.875rem', height: '16.875rem' }} />
-                <Card style={{ width: '50%', height: '16.875rem' }}>
-                  <Card.Header style={{ 'text-transform': 'capitalize', fontWeight: 'bold' }}> {item.title}</Card.Header>
+            return (
+              <div className='extraCheckoutCar'>
+                <Card>
+                  {/* src='holder.js/100px160' */}
+                  <Card.Img variant='top' src={item.image} style={{ width: 100, height: 160 }} />
                   <Card.Body>
-                    <Card.Title>{item.extraSelectionNum}</Card.Title>
+                    <Card.Title>{item.extraSelectionNum || item.num}{item.title}</Card.Title>
                     <Card.Text>
                       {item.summary}
-
                     </Card.Text>
+                    <Card.Text>{item.ExtraPrice || item.price}$</Card.Text>
 
-                    <Button onClick={(e) => removeFromCart(item, i, e)} variant='danger'>Remove</Button>
                   </Card.Body>
                 </Card>
-
               </div>
-
             )
           }
         })}
 
-        <Row className='totalAmountCard'>
-          <Card>
-
-            <Card.Body>
-              <Card.Title>SubTotal:{hardHotelObject.rooms[0].rates[0].net}</Card.Title>
-              <Card.Text>
-                taxes and fees: {hardHotelObject.rooms[0].rates[0].taxes.taxes[0].amount}
-              </Card.Text>
-              <Card.Text>
-                City Tax (to pay at the hotel){3}
-              </Card.Text>
-              <Card.Text>
-                Total: {hardHotelObject.rooms[0].rates[0].net + hardHotelObject.rooms[0].rates[0].taxes.taxes[0].amount + 3}
-              </Card.Text>
-              <Button variant='primary'>Proceed to checkout</Button>
-
-            </Card.Body>
-          </Card>
-        </Row>
       </div>
-    </>
+
+      <div className='cartPaymentSummary'>
+        <Card style={{ width: '18rem' }}>
+          <ListGroup variant='flush'>
+            <ListGroup.Item>SubTotal $</ListGroup.Item>
+            <ListGroup.Item>Taxes and fees $</ListGroup.Item>
+            <ListGroup.Item>Total</ListGroup.Item>
+            <ListGroup.Item>
+              <Button size='medium' variant='contained' style={style}>
+                Proceed to payment
+              </Button>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card>
+      </div>
+    </div>
+
   )
 }
 
 export default ReviewCart
-
-const styles = {
-  card: {
-    width: '20%',
-
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
-}
