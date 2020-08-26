@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { GoogleMapPopUp, WrapperMap } from './GoogleMapPopUp'
-import Button from 'react-bootstrap/Button'
+import Button from '@material-ui/core/Button'
 import { googleAPIKey, googleURL } from '../../Helper/Constants'
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 
 const MapPopUp = (props) => {
-  // console.log(props, 'map pop up')
+  console.log(props, 'map pop up')
   const [show, setShow] = useState(false)
 
   return (
     < >
-
-      <Button variant='outline-success' size='sm' onClick={() => setShow(true)}>
+      <Button style={{ color: props.mapHotelsResults.length ? 'green' : 'blue' }} size='small' color='primary' onClick={() => setShow(true)}>
         Show map
       </Button>
 

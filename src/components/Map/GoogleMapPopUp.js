@@ -3,11 +3,9 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'reac
 import { MyProvider, ProjectContext } from '../../providers/Provider'
 
 export const GoogleMapPopUp = (props) => {
-  console.log(props, 'props from map')
   const { project, setProject } = useContext(ProjectContext)
   const [selectedhotel, setSelectedHotel] = useState(null)
   const [hotelsArray, setHotelsArray] = useState(props.mapHotelsResults)
-  console.log(hotelsArray, 'to map in google')
 
   const firstLaty = parseFloat(props.lat)
   const firstLong = parseFloat(props.long)
@@ -24,7 +22,7 @@ export const GoogleMapPopUp = (props) => {
 
     <GoogleMap defaultZoom={10} defaultCenter={firstLatLong}>
 
-      {hotelsArray && hotelsArray.map(hotel => {
+      {hotelsArray.length && hotelsArray.map(hotel => {
         const laty = parseFloat(hotel.latitude)
         const longy = parseFloat(hotel.longitude)
         const newHotel = { ...hotel, latitude: laty, longitude: longy }
@@ -42,7 +40,22 @@ export const GoogleMapPopUp = (props) => {
 
         )
       }
+
       )}
+      {Object.keys(hotelsArray).length
+        ? (
+          <Marker
+          // key={hotelsArray.code}
+            position={{
+              lat: firstLaty,
+              lng: firstLong
+            }}
+
+            onClick={() => setSelectedHotel(hotelsArray)}
+          />
+        )
+
+        : null}
 
       {selectedhotel &&
       (

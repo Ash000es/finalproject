@@ -17,6 +17,7 @@ import CustomizedRatings from '../components/TripAdvisorRating'
 import StarRatings from '../components/StarRatings'
 import Button from '@material-ui/core/Button'
 import { Spinning } from '../components/Spinner'
+import MapPopUp from '../components/Map/MapPopUp'
 
 const HotelPage = React.memo((props) => {
   const { project, setProject } = useContext(ProjectContext)
@@ -102,7 +103,7 @@ const HotelPage = React.memo((props) => {
             <div className='Headline_TA-Wrapper'>
               <div className='hotelAdress'>
                 <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{labelReturn(currentSelection.categoryCode)}</div></div>
-                <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} <a href='' target=''>Show on map</a></p></div></div>
+                <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} </p></div><MapPopUp lat={currentSelection.latitude} long={currentSelection.longitude} mapHotelsResults={currentSelection} /></div>
 
               </div>
               <div className='TA-Div'><CustomizedRatings TAReviews={currentSelection.reviews[0]} /></div>
@@ -157,7 +158,7 @@ const HotelPage = React.memo((props) => {
               </div>
             </div>
           </div>
-        </>
+          </>
         : <Spinning />}
 
     </div>
