@@ -4,7 +4,6 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
 import ListGroup from 'react-bootstrap/ListGroup'
-
 import Row from 'react-bootstrap/Row'
 import CardGroup from 'react-bootstrap/CardGroup'
 import { hardHotelObject } from '../../assets/HardCode'
