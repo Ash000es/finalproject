@@ -5,11 +5,11 @@ import RoomCarousel from '../components/thumbilCarousel'
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartDrawer } from '../components/CartDrawerN'
-import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn } from '../Helper/Helper'
+import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn, roomPictureMatch, constfirstRoomImage } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
-import { masterLinkLarge } from '../Helper/Constants'
+import { masterLinkLarge, masterLinkSmall } from '../Helper/Constants'
 import './HotelPage.css'
 import CustomizedRatings from '../components/TripAdvisorRating'
 import StarRatings from '../components/StarRatings'
@@ -40,7 +40,12 @@ const HotelPage = React.memo((props) => {
   const hotelName = currentSelection.name
   const roomy = currentSelection.apiRooms
   const images = currentSelection.images
+  console.log(roomPictureMatch(roomy, images), 'here')
   const imagesArray = getLargePictures(currentSelection.images, masterLinkLarge)
+  const firstImage = constfirstRoomImage(images)
+  const imageObjectPath = firstImage.path
+  const newPath = `${masterLinkSmall}${imageObjectPath}`
+  console.log(newPath, 'first image hee ')
   const keyFacts = currentSelection.description.content
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
@@ -57,7 +62,7 @@ const HotelPage = React.memo((props) => {
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
     const num = Number(roomSelectionInfo.roomNumber)
     const price = roomSelectionInfo.totalSelectionPrice
-    const newRoomSelectionInfo = { ...roomSelectionInfo, image: 'https://source.unsplash.com/random', checkinDate, checkoutDate, hotelName }
+    const newRoomSelectionInfo = { ...roomSelectionInfo, image: newPath, checkinDate, checkoutDate, hotelName }
     setRoomsNum(roomsnum.concat(num))
     setRoomsPriceArr(roomspricearr.concat(price))
     setTotalSelectedRoomsInfo(totalSelectedRoomsInfo.concat(newRoomSelectionInfo))

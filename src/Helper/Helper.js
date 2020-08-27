@@ -25,11 +25,15 @@ import ReviewsLabel from '../components/ReviewsLabel'
 // }
 
 // }
+export const constfirstRoomImage = (arr) => {
+  return arr.find(image => image.imageTypeCode && image.imageTypeCode === 'HAB')
+}
+
 export const roomPictureMatch = (roomObj, arr2) => {
   const roomCode = roomObj.code
   return arr2.map(image => {
     const imageCode = image.code
-    if (imageCode === roomCode) return image
+    if (imageCode === roomCode) return image.path
     // console.log(matchingImage, 'image obj')
     // return matchingImage
   })

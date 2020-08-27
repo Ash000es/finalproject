@@ -16,7 +16,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import SelectRoom from '../components/SelectRoom'
 import { extras } from '../Helper/Constants'
-import { roomsCost, showCancelationPolicy, roomPictureMatch } from '../Helper/Helper'
+import { roomsCost, showCancelationPolicy } from '../Helper/Helper'
 import SelectExtra from '../components/SelectExtra'
 import '../Pages/HotelPage.css'
 
