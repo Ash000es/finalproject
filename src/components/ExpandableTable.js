@@ -16,7 +16,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import SelectRoom from '../components/SelectRoom'
 import { extras } from '../Helper/Constants'
-import { roomsCost, showCancelationPolicy } from '../Helper/Helper'
+import { roomsCost, showCancelationPolicy, roomPictureMatch } from '../Helper/Helper'
 import SelectExtra from '../components/SelectExtra'
 import '../Pages/HotelPage.css'
 
@@ -29,9 +29,12 @@ const useRowStyles = makeStyles({
 })
 
 function Row (props) {
-  const { room } = props
+  console.log(props, 'props here')
+  const room = props.room
+  const images = props.images
   const row = room
-  // console.log(row, 'row')
+  console.log(row, 'row')
+  console.log(images, 'images')
 
   const [open, setOpen] = React.useState(false)
   const classes = useRowStyles()

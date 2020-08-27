@@ -25,6 +25,15 @@ import ReviewsLabel from '../components/ReviewsLabel'
 // }
 
 // }
+export const roomPictureMatch = (roomObj, arr2) => {
+  const roomCode = roomObj.code
+  return arr2.map(image => {
+    const imageCode = image.code
+    if (imageCode === roomCode) return image
+    // console.log(matchingImage, 'image obj')
+    // return matchingImage
+  })
+}
 const VeryGood = 'Very good'
 const Fabulous = 'Fabulous'
 const Superb = 'Superb'

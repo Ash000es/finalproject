@@ -39,6 +39,7 @@ const HotelPage = React.memo((props) => {
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
   const roomy = currentSelection.apiRooms
+  const images = currentSelection.images
   const imagesArray = getLargePictures(currentSelection.images, masterLinkLarge)
   const keyFacts = currentSelection.description.content
   const cartItems = project.cartItems
@@ -130,7 +131,7 @@ const HotelPage = React.memo((props) => {
             </div>
             {/* table and float selction  */}
             <div className='table-float'>
-              <div className='tableAlone'><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
+              <div className='tableAlone'><CollapsibleTable rooms={roomy} onChange={selectionWrapper} images={images} /></div>
               <div className='floatedInfo'>
                 <div className='emptyDiv-Background' />
                 {totalSelectedRoomsInfo.length > 0 &&
