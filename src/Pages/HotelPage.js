@@ -27,7 +27,6 @@ const HotelPage = React.memo((props) => {
   const [roomsnum, setRoomsNum] = useState([])
   const [roomspricearr, setRoomsPriceArr] = useState([])
   const [currentSelection, setCurrentSelection] = useState(props.location.state.currentHotel)
-  console.log(currentSelection, 'ccc')
 
   if (!currentSelection) {
     return <Redirect exact push to='/searchresults' />
@@ -39,10 +38,10 @@ const HotelPage = React.memo((props) => {
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
   const roomy1 = currentSelection.apiRooms
-  console.log(roomy1, 'crazy!!!')
+
   const images = currentSelection.images
   const roomy = roomPictureMatch(roomy1, images, masterLinkSmall)
-  console.log(roomy, 'roomy here')
+
   const imagesArray = getLargePictures(currentSelection.images, masterLinkLarge)
   const firstImage = constfirstRoomImage(images)
   const imageObjectPath = firstImage.path
@@ -75,7 +74,7 @@ const HotelPage = React.memo((props) => {
     const ExtraPrice = num * ExtrasSelectionInfo.price
 
     const newExtrasSelectionInfo = { ...ExtrasSelectionInfo, num, ExtraPrice }
-    console.log(newExtrasSelectionInfo, 'new extra')
+
     setExtrasNum(extrasnum.concat(num))
     setExtrasPriceArr(extraspricearr.concat(ExtraPrice))
     setTotalSelectedExtrasInfo(totalSelectedExtrasInfo.concat(newExtrasSelectionInfo))
@@ -92,7 +91,6 @@ const HotelPage = React.memo((props) => {
   if (redirect) {
     return <Redirect exact push to='/reviewcart' />
   }
-  console.log(totalSelectedExtrasInfo, 'total extra')
 
   return (
 
