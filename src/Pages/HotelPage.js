@@ -38,9 +38,10 @@ const HotelPage = React.memo((props) => {
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
-  const roomy = currentSelection.apiRooms
+  const roomy1 = currentSelection.apiRooms
   const images = currentSelection.images
-  console.log(roomPictureMatch(roomy, images), 'here')
+  const roomy = roomPictureMatch(roomy1, images, masterLinkSmall)
+  console.log(roomy, 'roomy here')
   const imagesArray = getLargePictures(currentSelection.images, masterLinkLarge)
   const firstImage = constfirstRoomImage(images)
   const imageObjectPath = firstImage.path
@@ -96,74 +97,72 @@ const HotelPage = React.memo((props) => {
 
     <div>
 
-      {currentSelection
-        ? <>
-          <div className='hotelPage-text'>
-            <h4>This hotel have spceial offer for you</h4>
-            <p>Save up to <p style={{ color: 'red' }}>50% </p>by adding extra to your accomodation</p>
+      <>
+        <div className='hotelPage-text'>
+          <h4>This hotel have spceial offer for you</h4>
+          <p>Save up to <p style={{ color: 'red' }}>50% </p>by adding extra to your accomodation</p>
+        </div>
+
+        <div className='hotelpage-outerdiv'>
+          <div className='Headline_TA-Wrapper'>
+            <div className='hotelAdress'>
+              <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{labelReturn(currentSelection.categoryCode)}</div></div>
+              <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} </p></div><MapPopUp lat={currentSelection.latitude} long={currentSelection.longitude} mapHotelsResults={currentSelection} /></div>
+
+            </div>
+            <div className='TA-Div'><CustomizedRatings TAReviews={currentSelection.reviews[0]} /></div>
           </div>
 
-          <div className='hotelpage-outerdiv'>
-            <div className='Headline_TA-Wrapper'>
-              <div className='hotelAdress'>
-                <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{labelReturn(currentSelection.categoryCode)}</div></div>
-                <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} </p></div><MapPopUp lat={currentSelection.latitude} long={currentSelection.longitude} mapHotelsResults={currentSelection} /></div>
+          <SearchResultsCarousel currentSelection={imagesArray} />
+          <div className='information-section'>
+            <div>
+              <p>Amenities:</p>
+              <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
+                <li key={i} item={item} style={{ marginRight: 15 }}>{item.icon}{item.name}</li>
 
-              </div>
-              <div className='TA-Div'><CustomizedRatings TAReviews={currentSelection.reviews[0]} /></div>
+              )}
+              </ul>
+
             </div>
-
-            <SearchResultsCarousel currentSelection={imagesArray} />
-            <div className='information-section'>
-              <div>
-                <p>Amenities:</p>
-                <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
-                  <li key={i} item={item} style={{ marginRight: 15 }}>{item.icon}{item.name}</li>
-
-                )}
-                </ul>
-
-              </div>
-              <div>
-                <p>Key facts</p>
-                <p>{truncateString(keyFacts, 4000)} </p>
-              </div>
-              <div className='starRating-Reviews'>
-
-                <StarRatings currentSelection={currentSelection} />
-
-              </div>
+            <div>
+              <p>Key facts</p>
+              <p>{truncateString(keyFacts, 4000)} </p>
             </div>
-            {/* table and float selction  */}
-            <div className='table-float'>
-              <div className='tableAlone'><CollapsibleTable rooms={roomy} onChange={selectionWrapper} images={images} /></div>
-              <div className='floatedInfo'>
-                <div className='emptyDiv-Background' />
-                {totalSelectedRoomsInfo.length > 0 &&
-                  <div className='roomsSummary'>
+            <div className='starRating-Reviews'>
 
-                    <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
-                    <strong><p>Total price: {roomspricearr.reduce(sumUp)}$</p></strong>
-                    <Button onClick={(room) => handleClickButton(room)} size='medium' style={{ backgroundColor: '#FF8B00', color: 'white' }}>continue</Button>
+              <StarRatings currentSelection={currentSelection} />
 
-                  </div>}
-                {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
-                  return (
-                    <div key={i} extra={extra} className='extrasSummary'>
-
-                      <strong><p>Extras item:</p></strong>
-                      <p>{extra.num || 1}{extra.title}</p>
-                      <p>{extra.ExtraPrice || extra.price}$</p>
-                      <Button color='secondary' size='medium'>Remove</Button>
-
-                    </div>
-                  )
-                })}
-              </div>
             </div>
           </div>
-        </>
-        : <Spinning />}
+          {/* table and float selction  */}
+          <div className='table-float'>
+            <div className='tableAlone'><CollapsibleTable rooms={roomy} onChange={selectionWrapper} /></div>
+            <div className='floatedInfo'>
+              <div className='emptyDiv-Background' />
+              {totalSelectedRoomsInfo.length > 0 &&
+                <div className='roomsSummary'>
+
+                  <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
+                  <strong><p>Total price: {roomspricearr.reduce(sumUp)}$</p></strong>
+                  <Button onClick={(room) => handleClickButton(room)} size='medium' style={{ backgroundColor: '#FF8B00', color: 'white' }}>continue</Button>
+
+                </div>}
+              {totalSelectedExtrasInfo && totalSelectedExtrasInfo.map((extra, i) => {
+                return (
+                  <div key={i} extra={extra} className='extrasSummary'>
+
+                    <strong><p>Extras item:</p></strong>
+                    <p>{extra.num || 1}{extra.title}</p>
+                    <p>{extra.ExtraPrice || extra.price}$</p>
+                    <Button color='secondary' size='medium'>Remove</Button>
+
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </>
 
     </div>
 

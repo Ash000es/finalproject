@@ -31,7 +31,7 @@ const useRowStyles = makeStyles({
 function Row (props) {
   console.log(props, 'props here')
   const room = props.room
-  const images = props.images
+  const images = props.homar
   const row = room
   console.log(row, 'row')
   console.log(images, 'images')
