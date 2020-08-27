@@ -1,12 +1,12 @@
 
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
-// import Rating from '@material-ui/lab/Rating'
+
 import { Rating } from '@material-ui/lab'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import tripadvisor from '../assets/tripadvisor.svg'
+
 import '../Pages/HotelPage.css'
 
 const StyledRating = withStyles({

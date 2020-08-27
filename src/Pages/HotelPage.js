@@ -2,8 +2,6 @@ import React, { useState, useContext, useMemo } from 'react'
 import { hardHotelObject } from '../assets/HardCode'
 import RoomCarousel from '../components/thumbilCarousel'
 
-// import Button from 'react-bootstrap/Button'
-import NewDateRange from '../components/DateRange/NewDateRange'
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { CartDrawer } from '../components/CartDrawerN'
@@ -158,7 +156,7 @@ const HotelPage = React.memo((props) => {
               </div>
             </div>
           </div>
-          </>
+        </>
         : <Spinning />}
 
     </div>
