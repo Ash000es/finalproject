@@ -39,6 +39,7 @@ const HotelPage = React.memo((props) => {
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name
   const roomy1 = currentSelection.apiRooms
+  console.log(roomy1, 'crazy!!!')
   const images = currentSelection.images
   const roomy = roomPictureMatch(roomy1, images, masterLinkSmall)
   console.log(roomy, 'roomy here')

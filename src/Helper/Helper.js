@@ -29,23 +29,18 @@ export const constfirstRoomImage = (arr) => {
   return arr.find(image => image.imageTypeCode && image.imageTypeCode === 'HAB')
 }
 
-export const roomPictureMatch = (roomArr, imageArr, masterLinkSmall) => {
-  const value1 = []
-  console.log(roomArr, imageArr, masterLinkSmall)
-  roomArr.forEach(room => {
-    console.log(room, imageArr, 'hola')
-    imageArr.map(image => {
-      if (room.code === image.roomCode) {
-        const roomPath = image.path
-        const newPath = `${masterLinkSmall}${roomPath}`
-        const newRoomOb = { ...room, newimage: newPath }
-        console.log(newRoomOb, 'Iam newww')
-        value1.push(newRoomOb)
-      }
-    })
-  })
-  return value1
+export const roomPictureMatch = (roomArr, imagesArr, masterLinkSmall) => {
+  return roomArr.map(room => {
+    const roomCode = room.code
+    const imageArr = imagesArr.filter(image => image.roomCode && image.roomCode === roomCode)
+    const newRoom = { ...room, roomImagePath: imageArr }
+
+    return newRoom
+  }
+
+  )
 }
+
 const VeryGood = 'Very good'
 const Fabulous = 'Fabulous'
 const Superb = 'Superb'
