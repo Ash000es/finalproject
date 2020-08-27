@@ -365,7 +365,7 @@ export const hotelAmen = [
   {
     FacilityCode: 610,
     FacilityGroupCode: 73,
-    icon: <WaterSlides />,
+    icon: <WaterSlides style={style} />,
     name: 'WaterSlides'
 
   },
@@ -480,7 +480,7 @@ export const hotelAmen = [
   {
     FacilityCode: 147,
     FacilityGroupCode: 60,
-    icon: <Iron />,
+    icon: <Iron style={style} />,
 
     name: 'Ironing set'
 
