@@ -3,7 +3,7 @@ export function Toiletries (props:React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
-      viewBox='0 0 422.207 422.207' style='enable-background:new 0 0 422.207 422.207;' xmlSpace='preserve'
+      viewBox='0 0 422.207 422.207' style='enable-background:new 0 0 422.207 422.207;' xmlSpace='preserve' {...props}
     >
       <path
         id='XMLID_348_' d='M128.235,259.092h-0.215v-26.716c0-14.036-11.418-25.455-25.453-25.455H85.305

@@ -4,7 +4,7 @@ export function Thermometer (props:React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
-      viewBox='0 0 471.1 471.1' style='enable-background:new 0 0 471.1 471.1;' xmlSpace='preserve'
+      viewBox='0 0 471.1 471.1' style='enable-background:new 0 0 471.1 471.1;' xmlSpace='preserve' {...props}
     >
       <g transform='translate(0 -540.36)'>
         <g>
