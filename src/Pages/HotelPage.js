@@ -112,7 +112,7 @@ const HotelPage = React.memo((props) => {
               <div>
                 <p>Amenities:</p>
                 <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
-                  <li key={i} item={item}>{item.icon}{item.name}</li>
+                  <li key={i} item={item} style={{ marginRight: 15 }}>{item.icon}{item.name}</li>
 
                 )}
                 </ul>

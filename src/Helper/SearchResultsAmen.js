@@ -44,14 +44,14 @@ import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
 import WcOutlinedIcon from '@material-ui/icons/WcOutlined'
 import KitchenOutlinedIcon from '@material-ui/icons/KitchenOutlined'
 import { BabyBed } from '../components/IconsComp/BabayBed'
-import { BananaBoat } from '../components/IconsComp/BananaBoat'
+// import { BananaBoat } from '../components/IconsComp/BananaBoat'
 import { Desk } from '../components/IconsComp/Desk'
 import { Diving } from '../components/IconsComp/Diving'
 import { Garden } from '../components/IconsComp/Garden'
 import { HairDryer } from '../components/IconsComp/HairDryer'
 import { Iron } from '../components/IconsComp/Iron'
 import { JetSki } from '../components/IconsComp/JetSki'
-import { PersonSurfing } from '../components/IconsComp/PersonSurfing'
+// import { PersonSurfing } from '../components/IconsComp/PersonSurfing'
 import { Safe } from '../components/IconsComp/Safe'
 import { Skiing } from '../components/IconsComp/Skiing'
 import { SmokeDetector } from '../components/IconsComp/SmokeDetector'
@@ -65,8 +65,12 @@ import { WaterSlides } from '../components/IconsComp/WaterSlides'
 const style = {
   width: 24,
   height: 24,
-  color: '#0088BC',
-  fill: '#0088BC'
+  // color: #0088BC,
+  fill: '#0088BC',
+  position: 'relative',
+  right: 5,
+  bottom: 5
+
 }
 export const searchResultsAmen = [
 
@@ -358,7 +362,7 @@ export const hotelAmen = [
   {
     FacilityCode: 410,
     FacilityGroupCode: 90,
-    icon: <PersonSurfing style={style} />,
+    icon: <Surfing style={style} />,
     name: 'Surfing'
 
   },
@@ -485,13 +489,13 @@ export const hotelAmen = [
     name: 'Ironing set'
 
   },
-  {
-    FacilityCode: 160,
-    FacilityGroupCode: 90,
-    icon: <BananaBoat style={style} />,
-    name: 'Banana boating'
+  // {
+  //   FacilityCode: 160,
+  //   FacilityGroupCode: 90,
+  //   icon: <BananaBoat style={style} />,
+  //   name: 'Banana boating'
 
-  },
+  // },
   {
     FacilityCode: 250,
     FacilityGroupCode: 60,
@@ -537,7 +541,7 @@ export const hotelAmen = [
   {
     FacilityCode: 210,
     FacilityGroupCode: 90,
-    icon: <PersonSurfing style={style} />,
+    icon: <Surfing style={style} />,
     name: 'Windsurfing'
 
   },
