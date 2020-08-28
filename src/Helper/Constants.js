@@ -8,6 +8,10 @@ import travelBag from '../assets/travelBag.jpg'
 import boatHire from '../assets/boatHire.jpg'
 import barcaAttraction from '../assets/barcaAttraction.jpg'
 import aqua from '../assets/aqua.jpg'
+import breakfast from '../assets/breakfast.jpg'
+import cake from '../assets/cake.jpg'
+import wine from '../assets/wine.jpg'
+import sushi from '../assets/sushi.jpg'
 // homepage results const
 export const googleAPIKey = 'AIzaSyArQla27kHz9uEus_Zyhh-rDHhg6nYTXEs'
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleAPIKey}`
@@ -26,10 +30,11 @@ export const essentialCodes = ['3EST', 'APTH3', 'BB3', 'H3_5', 'H3S', 'HRS']
 export const homesCodes = ['3LL', '4LL', '5LL', 'VILLA', 'AT3', 'VTV']
 export const categoryCodes = ['3EST', '4EST', '4LUX', '5EST', '5LUX', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'BOU', 'BB4', 'BB5', 'BB3', 'HR4', 'HR5', 'HRS', '3LL', '4LL', '5LL', 'APTH3', 'APTH4', 'APTH5', 'AT3', 'VILLA', 'VTV']
 export const extras = [
-  { title: 'Kings Breakfast ', price: 10, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
+  { title: 'Kings Breakfast ', price: 10, alotment: 6, image: breakfast, summary: 'Kings Breakfast is served in bed and includes: orange juice, pastry, posh eggs, a selection of cheeses, coffee' },
 
-  { title: 'Double trouble', price: 20, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
-  { title: 'House Red', price: 30, alotment: 6, image: 'https://source.unsplash.com/random', summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' }
+  { title: 'Double trouble', price: 20, alotment: 6, image: cake, summary: 'We call it death by chocolate, two layers of dark and white chocolate infusion will send you to seven heavens' },
+  { title: 'House Red', price: 30, alotment: 6, image: wine, summary: 'our !995 red merlot is famous for its sweet berry tasts, ideal to accompany chicken or fish dishes' },
+  { title: 'Save 50% on our sushi delight', price: 30, alotment: 6, image: sushi, summary: 'Book now and get a 50% discount on our Sushi resturant ' }
 
 ]
 
