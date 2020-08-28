@@ -20,7 +20,7 @@ import { masterLinkSmall } from '../Helper/Constants'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    margin: '1rem auto'
+    margin: '2rem auto'
     // border: '1px solid blue'
   },
   heading: {

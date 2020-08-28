@@ -27,18 +27,19 @@ import mykonos from '../assets/mykonos.jpg'
 const useStyles = makeStyles({
   root: {
     maxWidth: screenWidth =>
-      screenWidth <= 768 ? '15rem' : '20rem',
+      screenWidth <= 768 ? '15rem' : 350,
     maxHeight: screenWidth =>
-      screenWidth <= 768 ? '15rem' : '20rem',
-    margin: '0.625rem auto',
-    // backgroundColor: 'pink',
+      screenWidth <= 768 ? '15rem' : 270,
+    margin: '1rem auto',
+
     width: screenWidth =>
-      screenWidth <= 425 ? '25rem' : '20rem'
+      screenWidth <= 425 ? '20rem' : '20rem'
 
   },
   media: {
     maxHeight: screenWidth =>
-      screenWidth <= 768 ? '10rem' : '12rem'
+      screenWidth <= 768 ? '12rem' : '12rem',
+    borderRadius: 5
 
   },
   container: {
@@ -46,9 +47,17 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
-    // backgroundColor: 'yellow',
-    flexShrink: 1
 
+    flexShrink: 1,
+    marginBottom: 10
+
+  },
+  Button: {
+    color: '#0088BC'
+
+  },
+  cardText: {
+    maxheight: '4.375rem'
   },
   Popular: {
     borderBottom: '0.0625rem solid grey',
@@ -111,32 +120,32 @@ const HomePageResults = (props) => {
 
   // }
 
-  useEffect(() => {
-    const fetchDestinations = async () => {
-      const res1 = await handleHomePageSearch(popularCities[0], state)
-      console.log(res1, 'ress')
-      const res2 = await handleHomePageSearch(popularCities[1], state)
-      console.log(res2, 'ress')
-      const res3 = await handleHomePageSearch(popularCities[2], state)
-      console.log(res3, 'ress')
-      const res4 = await handleHomePageSearch(popularCities[3], state)
-      console.log(res4, 'ress')
-      const res5 = await handleHomePageSearch(popularCities[4], state)
-      console.log(res5, 'ress')
-      const res6 = await handleHomePageSearch(popularCities[5], state)
-      console.log(res6, 'ress')
-      const res7 = await handleHomePageSearch(popularCities[6], state)
-      console.log(res7, 'ress')
-      const res8 = await handleHomePageSearch(popularCities[7], state)
-      console.log(res8, 'ress')
-      const res9 = await handleHomePageSearch(popularCities[8], state)
+  // useEffect(() => {
+  //   const fetchDestinations = async () => {
+  //     const res1 = await handleHomePageSearch(popularCities[0], state)
+  //     console.log(res1, 'ress')
+  //     const res2 = await handleHomePageSearch(popularCities[1], state)
+  //     console.log(res2, 'ress')
+  //     const res3 = await handleHomePageSearch(popularCities[2], state)
+  //     console.log(res3, 'ress')
+  //     const res4 = await handleHomePageSearch(popularCities[3], state)
+  //     console.log(res4, 'ress')
+  //     const res5 = await handleHomePageSearch(popularCities[4], state)
+  //     console.log(res5, 'ress')
+  //     const res6 = await handleHomePageSearch(popularCities[5], state)
+  //     console.log(res6, 'ress')
+  //     const res7 = await handleHomePageSearch(popularCities[6], state)
+  //     console.log(res7, 'ress')
+  //     const res8 = await handleHomePageSearch(popularCities[7], state)
+  //     console.log(res8, 'ress')
+  //     const res9 = await handleHomePageSearch(popularCities[8], state)
 
-      return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
-    }
-    fetchDestinations().then(destinationsResults => {
-      setDesResults(destinationsResults)
-    })
-  }, [])
+  //     return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
+  //   }
+  //   fetchDestinations().then(destinationsResults => {
+  //     setDesResults(destinationsResults)
+  //   })
+  // }, [])
 
   const handleClick = (des) => {
     setIsLoading(true)
@@ -175,31 +184,23 @@ const HomePageResults = (props) => {
                         className={classes.media}
 
                         image={popularImages[i]}
-
                       />
 
-                      <CardContent>
+                      <CardContent className={classes.cardText}>
                         <Typography gutterBottom variant='h5' component='h2'>
                           {des[0].destinationName}
                         </Typography>
                         <Typography variant='body2' color='textSecondary' component='p'>
-                          Hotels from {cheap.minRate}¢
+                          Stay from {cheap.minRate}$
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    <CardActions>
-                      <Button size='small' color='primary'>
-                        Buy Now
-                      </Button>
-                      <Button size='small' color='primary'>
-                        Add to Cart
-                      </Button>
-                    </CardActions>
+
                   </Card>
                 )
               })
             }
-          </>}
+            </>}
       </div>
     </>
 

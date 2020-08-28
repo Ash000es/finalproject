@@ -42,7 +42,7 @@ export const HomePage = () => {
     <div style={style}>
       <HomePageHero />
       <SearchBar done={onCompelet} fullbar={false} startLoading={startLoading} width={width} />
-      {isloading ? <Spinning /> : <HomePageResults width={width} />}
+      {isloading ? <div style={{ display: 'flex', justifyContent: 'center' }}><Spinning /> </div> : <HomePageResults width={width} />}
     </div>
   )
 }

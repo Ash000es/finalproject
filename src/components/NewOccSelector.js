@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { InputNumber } from 'antd'
+import 'antd/dist/antd.css'
 
 const NewOccSelector = (props) => {
   function onChange (value) {

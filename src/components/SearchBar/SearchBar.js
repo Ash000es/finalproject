@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import 'antd/dist/antd.css'
 import SearchField from '../SearchField'
 import { withStyles } from '@material-ui/styles'
 import FirebaseContext from '../../providers/Firebase'

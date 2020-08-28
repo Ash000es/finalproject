@@ -225,7 +225,7 @@ export const HotelList = () => {
                   <DropDownFilter onClick={handleSort} />
                 </div>
                 <br />
-                <div style={{ margin: '10 auto' }}>
+                <div style={{ margin: '1rem auto' }}>
                   {valueToMap && valueToMap.map(hotel => {
                     return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
                   })}

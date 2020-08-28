@@ -6,6 +6,7 @@ export const GoogleMapPopUp = (props) => {
   const { project, setProject } = useContext(ProjectContext)
   const [selectedhotel, setSelectedHotel] = useState(null)
   const [hotelsArray, setHotelsArray] = useState(props.mapHotelsResults)
+  console.log(selectedhotel, 'selected hotel')
 
   const firstLaty = parseFloat(props.lat)
   const firstLong = parseFloat(props.long)
@@ -61,8 +62,8 @@ export const GoogleMapPopUp = (props) => {
       (
         <InfoWindow
           position={{
-            lat: selectedhotel.latitude,
-            lng: selectedhotel.longitude
+            lat: parseFloat(selectedhotel.latitude),
+            lng: parseFloat(selectedhotel.longitude)
           }}
 
           onCloseClick={() => setSelectedHotel(null)}
