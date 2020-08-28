@@ -2,7 +2,7 @@ import React from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import searchresultsHero from '../../assets/searchresultsHero.jpg'
+import resort from '../../assets/resort.jpg'
 
 const useStyles = makeStyles(theme => ({
 
@@ -15,10 +15,10 @@ const useStyles = makeStyles(theme => ({
   },
   imageSetting: {
     width: '100%',
-    height: '100%',
+    // height: '100%',
     display: 'block',
-    objectFit: 'contain',
-    border: '2px solid red'
+    objectFit: 'cover'
+    // border: '2px solid red'
   },
   root: {
     width: '100%',
@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     position: 'relative',
     margin: '4rem auto',
-    borderRadius: '1.25rem',
-    border: '2px solid blue'
+    borderRadius: '1.25rem'
+    // border: '2px solid blue'
     // backgroundSize: 'cover'
 
   }
@@ -40,7 +40,7 @@ export const SearchResultsHero = () => {
       <div>
         <img
           className={classes.imageSetting}
-          src={searchresultsHero}
+          src={resort}
         />
       </div>
       <div className={classes.dealText}>

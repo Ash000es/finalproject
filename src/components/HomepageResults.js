@@ -110,6 +110,7 @@ const HomePageResults = (props) => {
   //   ALL_RESULTS.push(res)
 
   // }
+
   useEffect(() => {
     const fetchDestinations = async () => {
       const res1 = await handleHomePageSearch(popularCities[0], state)
@@ -168,12 +169,15 @@ const HomePageResults = (props) => {
 
                   <Card className={classes.root} key={i} des={des} onClick={() => handleClick(des)}>
                     <CardActionArea>
+
                       <CardMedia
                         component='img'
                         className={classes.media}
-                        image={popularImages.map(image => image)}
+
+                        image={popularImages[i]}
 
                       />
+
                       <CardContent>
                         <Typography gutterBottom variant='h5' component='h2'>
                           {des[0].destinationName}

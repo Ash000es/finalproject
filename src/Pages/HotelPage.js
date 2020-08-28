@@ -105,7 +105,7 @@ const HotelPage = React.memo((props) => {
         <div className='hotelpage-outerdiv'>
           <div className='Headline_TA-Wrapper'>
             <div className='hotelAdress'>
-              <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content}</p></div><div>{labelReturn(currentSelection.categoryCode)}</div></div>
+              <div className='hotel-Name-Label-div'><div className='spaceMe'><p>{currentSelection.name.content || currentSelection.name}</p></div><div>{labelReturn(currentSelection.categoryCode)}</div></div>
               <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} </p></div><MapPopUp lat={currentSelection.latitude} long={currentSelection.longitude} mapHotelsResults={currentSelection} /></div>
 
             </div>
