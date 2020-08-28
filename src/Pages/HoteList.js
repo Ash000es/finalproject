@@ -5,7 +5,7 @@ import { HotelCardSearch } from '../components/HotelCardSearch'
 import { DropDownFilter } from '../components/DropDownFilter'
 import Typography from '@material-ui/core/Typography'
 import SearchBar from '../components/SearchBar/SearchBar'
-import { SearchResultsHero } from '../components/SearchResultsHero/SearchResultsHero'
+import { SearchResultsHero } from '../components/SearchResultsHero'
 import './HotelList.css'
 
 import { AccomodationTypeFilter } from '../components/AccomodationTypeFilter'
@@ -105,7 +105,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-    />
+           />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -235,7 +235,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-        </div>}
+          </div>}
     </>
   )
 }

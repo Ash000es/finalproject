@@ -4,7 +4,7 @@ import RoomCarousel from '../components/thumbilCarousel'
 
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
-import { CartDrawer } from '../components/CartDrawerN'
+
 import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn, roomPictureMatch, constfirstRoomImage } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'

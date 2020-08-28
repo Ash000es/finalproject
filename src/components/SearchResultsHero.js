@@ -2,7 +2,7 @@ import React from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import resort from '../../assets/resort.jpg'
+import resort from '../assets/resort.jpg'
 
 const useStyles = makeStyles(theme => ({
 
