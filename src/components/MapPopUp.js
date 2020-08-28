@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { GoogleMapPopUp, WrapperMap } from './GoogleMapPopUp'
 import Button from '@material-ui/core/Button'
-import { googleAPIKey, googleURL } from '../../Helper/Constants'
-import { MyProvider, ProjectContext } from '../../providers/Provider'
+import { googleAPIKey, googleURL } from '../Helper/Constants'
+import { MyProvider, ProjectContext } from '../providers/Provider'
 
 const MapPopUp = (props) => {
   console.log(props, 'map pop up')

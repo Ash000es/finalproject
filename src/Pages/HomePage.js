@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import SearchBar from '../components/SearchBar/SearchBar'
 import HomePageResults from '../components/HomepageResults'
-import HomePageHero from '../components/HomePageHero/HomePageHero'
+import HomePageHero from '../components/HomePageHero'
 import { Redirect } from 'react-router'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Spinning } from '../components/Spinner'

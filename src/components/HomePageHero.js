@@ -3,11 +3,11 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from '@material-ui/core/Button'
 import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card'
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar from './SearchBar/SearchBar'
 import './Hero.css'
-import cover from '../../assets/cover.svg'
-import HomePageCarousel from '../HomePageCarousel'
-import { ShopHomepage, ActivityHomepage } from '../../Helper/Constants'
+import cover from '../assets/cover.svg'
+import HomePageCarousel from './HomePageCarousel'
+import { ShopHomepage, ActivityHomepage } from '../Helper/Constants'
 
 const HomePageHero = () => {
   return (

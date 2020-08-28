@@ -15,7 +15,7 @@ import CustomizedRatings from '../components/TripAdvisorRating'
 import StarRatings from '../components/StarRatings'
 import Button from '@material-ui/core/Button'
 import { Spinning } from '../components/Spinner'
-import MapPopUp from '../components/Map/MapPopUp'
+import MapPopUp from '../components/MapPopUp'
 
 const HotelPage = React.memo((props) => {
   const { project, setProject } = useContext(ProjectContext)

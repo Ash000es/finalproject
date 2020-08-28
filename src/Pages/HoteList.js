@@ -11,7 +11,7 @@ import './HotelList.css'
 import { AccomodationTypeFilter } from '../components/AccomodationTypeFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
-import MapPopUp from '../components/Map/MapPopUp'
+import MapPopUp from '../components/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
 import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection } from '../Helper/Helper'
@@ -105,7 +105,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -235,7 +235,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }
