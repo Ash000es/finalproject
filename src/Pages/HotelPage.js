@@ -36,7 +36,7 @@ const HotelPage = React.memo((props) => {
   const facilitiesArray = currentSelection.facilities
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
-  const hotelName = currentSelection.name
+  const hotelName = currentSelection.name || currentSelection.name.content
   const roomy1 = currentSelection.apiRooms
 
   const images = currentSelection.images
