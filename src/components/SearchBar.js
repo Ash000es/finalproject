@@ -21,7 +21,8 @@ const SearchBar = (props) => {
   {
     backgroundColor: colorStyles.orange,
     borderColor: colorStyles.orange,
-    height: screenWidth <= 992 ? 36 : 48
+    height: screenWidth <= 992 ? 36 : 48,
+    width: screenWidth > 992 ? 94.8 : 53
 
   }
     // size: width >= 992 ? 'lg' : 'sm',
@@ -135,7 +136,7 @@ const SearchBar = (props) => {
         </div>
 
         <div className='searchBar-Button'>
-          <Button variant='primary' block={screenWidth <= 779} style={styles.Button} size={size} onClick={handleClickButton}>Search</Button>{' '}
+          <Button variant='primary' block={screenWidth <= 779} style={styles.Button} onClick={handleClickButton}>Search</Button>{' '}
         </div>
       </div>
       {props.fullbar &&

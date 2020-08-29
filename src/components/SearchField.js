@@ -30,28 +30,28 @@ export default function SearchField (props) {
   const classes = useStyles()
   const screenWidth = props.width
   const fullWidth = screenWidth <= 479
-  const style = {
-    height: screenWidth <= 992 ? 36 : '100%',
-    // width: screenWidth <= 992 ? 219.72 : '100%'
-    block: screenWidth <= 779
+  // const style = {
+  //   height: screenWidth <= 992 ? 36 : '100%',
+  //   // width: screenWidth <= 992 ? 219.72 : '100%'
+  //   block: screenWidth <= 779
 
-  }
+  // }
 
   const handleChange = (e) => {
     const name = e.target.value
-    // console.log(name)
+
     props.onChange(name)
   }
 
   return (
-    <Paper component='form' style={style} className={classes.root}>
+    <Paper component='form' className={classes.root}>
 
       <InputBase
         onChange={handleChange}
-        // className={classes.input}
+        className={classes.input}
         placeholder='Where to?'
         inputProps={{ 'aria-label': 'Where to?' }}
-        fullWidth={style.block}
+        // fullWidth={style.block}
         margin='dense'
         required
         type='search'
