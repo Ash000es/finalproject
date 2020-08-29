@@ -36,7 +36,7 @@ const ReviewCart = () => {
                 <Card style={{ width: '18rem' }}>
                   <Card.Img variant='top' src={item.image} style={{ width: 100, height: 180 }} />
                   <Card.Body>
-                    <Card.Title>{item.hotelName.content}</Card.Title>
+                    <Card.Title>{item.hotelName}</Card.Title>
                     <Card.Subtitle className='mb-2 text-muted'>{item.roomNumber}{item.roomType}</Card.Subtitle>
 
                     <Card.Text>
