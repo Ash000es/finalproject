@@ -42,8 +42,8 @@
 
 }
 
-@media screen and (max-width: 992px) {
-  /* start of large tablet styles */
+@media screen and (min-width: 835px) and (max-width: 992px) {
+  
 
 .DateRangePickerInput, .DateRangePickerInput_1,.DateRangePickerInput__withBorder, .DateRangePickerInput__withBorder_2{
   display:flex !important;
@@ -52,7 +52,7 @@
   max-width: 173px;
   height:auto;
     flex-shrink: 1;
-    /* font-size:9px !important; */
+    
     line-height: 10px;
 }
   
@@ -70,38 +70,43 @@ line-height: 10px !important;
     height: 24px !important;
   }
   .DateRangePickerInput_arrow, .DateRangePickerInput_arrow_1{
-    /* something here  */
+    
   }
  
 }
 
 /* delet the below , at 779 it needs to go block level, search field needs to go flex clumn at this range  */
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 835px) {
   .DateRangePickerInput, .DateRangePickerInput_1, .DateRangePickerInput__withBorder, .DateRangePickerInput__withBorder_2{
     display:flex !important;
-    justify-content: flex-start !important;
-    width:115px !important;
-    max-width: 115px;
-    /* flex-wrap: nowrap; */
-    height:auto;
+    justify-content: flex-start !important; */
+    /* width:115px !important;
+    max-width: 115px; */
+   
+    /* height:auto;
     line-height: 8px;
     flex-shrink:1;
-    font-size:8px !important;
-  }
+    font-size:8px !important; */
+  /* } */
  
   .DateInput, .DateInput_1, .DateInput_input__regular, .DateInput_input__regular_2 {
-    width: 57.5px !important;
+    /* width: 57.5px !important;
     height:auto;
     flex-shrink:1;
     font-size:8px !important;
     line-height: 10px !important;
-    font-weight:600;
+    font-weight:600; */
    
       }
       .DateRangePickerInput_arrow, .DateRangePickerInput_arrow_1, .DateRangePickerInput_arrow_svg, .DateRangePickerInput_arrow_svg_1{
-        font-size:8px !important;
+        /* font-size:8px !important;
         display:flex !important;
-        width:20px !important;
+        width:20px !important; */
       }
 
+/* } */
+
+
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+  /* ruleset for 480px - 600px */
 }

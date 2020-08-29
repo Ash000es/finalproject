@@ -15,7 +15,7 @@ const DateRangePickerWrapper = (props) => {
   })
   const [focus, setFocus] = useState({ focusedInput: null })
 
-  const block = false
+  const block = screenWidth < 835
   const small = false
   const regular = true
   // const changeSize = () => {
@@ -39,7 +39,7 @@ const DateRangePickerWrapper = (props) => {
       props.onChange(final)
     }
   }, [state])
-
+  console.log(block, 'block')
   return (
     <div>
       <DateRangePicker
@@ -50,7 +50,7 @@ const DateRangePickerWrapper = (props) => {
         onDatesChange={({ startDate, endDate }) => setState({ startDate, endDate })}
         focusedInput={focus.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
         onFocusChange={focusedInput => setFocus({ focusedInput })}
-        block={screenWidth <= 779}
+        block={block}
         small={small}
         regular={regular}
         // noBorder

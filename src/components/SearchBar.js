@@ -16,6 +16,25 @@ import { colorStyles } from '../Helper/Constants'
 
 const SearchBar = (props) => {
   const screenWidth = props.width
+  let style
+  const style1 = {
+    backgroundColor: colorStyles.orange,
+    borderColor: colorStyles.orange,
+    height: 48,
+    width: 95
+    // border: '1px solid black'
+  }
+  const style2 = {
+    backgroundColor: colorStyles.orange,
+    borderColor: colorStyles.orange,
+    height: 36,
+    width: 94.8
+  }
+  const style3 = {
+    backgroundColor: colorStyles.orange,
+    borderColor: colorStyles.orange
+
+  }
   const styles = {
     Button:
   {
@@ -113,7 +132,14 @@ const SearchBar = (props) => {
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
   }
-  const size = screenWidth > 992 ? 'lg' : 'sm'
+
+  if (screenWidth > 992) {
+    style = style1
+  } if (screenWidth <= 992 && screenWidth >= 835) {
+    style = style2
+  } if (screenWidth < 835) {
+    style = style3
+  }
 
   return (
     <div className='searchBar-outerDiv'>
@@ -123,20 +149,22 @@ const SearchBar = (props) => {
           <SearchField onChange={handleLocationChange} width={props.width} />
         </div>
         <div className='searchBar-datePicker'>
-          <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' width={props.width} />
-        </div>
-        <div className='searchBar-occSelector'>
-          <div>
-            <NewOccSelector onChange={handleOccChange} width={props.width} />
+          <div className='extraDiv'>
+            <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' width={props.width} />
           </div>
+          <div className='searchBar-occSelector'>
+            <div>
+              <NewOccSelector onChange={handleOccChange} width={props.width} />
+            </div>
 
-          <div>
-            <NewOccSelector onChange={handleOccChange2} width={props.width} />
+            <div>
+              <NewOccSelector onChange={handleOccChange2} width={props.width} />
+            </div>
           </div>
         </div>
 
         <div className='searchBar-Button'>
-          <Button variant='primary' block={screenWidth <= 779} style={styles.Button} onClick={handleClickButton}>Search</Button>{' '}
+          <Button variant='primary' block={screenWidth < 835} style={style} onClick={handleClickButton}>Search</Button>{' '}
         </div>
       </div>
       {props.fullbar &&
