@@ -127,14 +127,14 @@ export const searchResultsAmen = [
     FacilityCode: 250,
     FacilityGroupCode: 70,
     icon: <WifiOutlinedIcon style={style} />,
-    name: 'Internet'
+    name: 'Wi-fi'
 
   },
   {
     FacilityCode: 100,
     FacilityGroupCode: 60,
     icon: <WifiOutlinedIcon style={style} />,
-    name: 'Internet'
+    name: 'Wi-fi'
 
   },
   {

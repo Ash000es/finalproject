@@ -26,19 +26,16 @@ import mykonos from '../assets/mykonos.jpg'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: screenWidth =>
-      screenWidth <= 768 ? '15rem' : 350,
-    maxHeight: screenWidth =>
-      screenWidth <= 768 ? '15rem' : 270,
-    margin: '1rem auto',
+    maxWidth: 360,
+    maxHeight: 280,
+    margin: '1rem auto'
 
-    width: screenWidth =>
-      screenWidth <= 425 ? '20rem' : '20rem'
+    // width: screenWidth =>
+    //   screenWidth <= 425 ? '20rem' : '20rem'
 
   },
   media: {
-    maxHeight: screenWidth =>
-      screenWidth <= 768 ? '12rem' : '12rem',
+    maxHeight: 200,
     borderRadius: 5
 
   },
@@ -47,6 +44,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
+    flexFlow: 'row wrap',
 
     flexShrink: 1,
     marginBottom: 10

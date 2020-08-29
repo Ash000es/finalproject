@@ -42,7 +42,7 @@ export default function SearchField (props) {
   }
   const style2 = {
     height: 36
-    // width: 219
+
   }
   const style3 = {
     maxWidth: 686

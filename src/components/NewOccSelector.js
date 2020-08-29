@@ -26,7 +26,7 @@ const NewOccSelector = (props) => {
     style = style1
   } if (screenWidth <= 992 && screenWidth >= 835) {
     style = style2
-  } if (screenWidth < 835) {
+  } if (screenWidth < 835 && screenWidth >= 463) {
     style = style3
   }
 
