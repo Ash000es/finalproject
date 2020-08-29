@@ -1,6 +1,6 @@
 
 import React, { useContext, useState, useEffect } from 'react'
-import SearchBar from '../components/SearchBar/SearchBar'
+import SearchBar from '../components/SearchBar'
 import HomePageResults from '../components/HomepageResults'
 import HomePageHero from '../components/HomePageHero'
 import { Redirect } from 'react-router'

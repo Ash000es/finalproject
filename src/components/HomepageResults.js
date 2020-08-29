@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import SearchBar from './SearchBar/SearchBar'
+import SearchBar from './SearchBar'
 import { findCheapestHotel, handleHomePageSearch } from '../Helper/Helper'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import FirebaseContext from '../providers/Firebase'
@@ -200,7 +200,7 @@ const HomePageResults = (props) => {
                 )
               })
             }
-            </>}
+          </>}
       </div>
     </>
 

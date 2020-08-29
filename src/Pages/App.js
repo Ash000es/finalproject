@@ -17,7 +17,7 @@ import getSteps from '../components/PaymentCout/Stepper'
 import { HotelList } from './HoteList'
 import { LoginButton } from '../components/LoginButton'
 import ShoppingCart from '../components/ShoppingCard'
-import SearchBar from '../components/SearchBar/SearchBar'
+import SearchBar from '../components/SearchBar'
 
 function App (props) {
   return (
