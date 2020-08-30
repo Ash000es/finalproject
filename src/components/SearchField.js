@@ -10,7 +10,20 @@ const useStyles = makeStyles(theme => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    maxWidth: 500
+    maxWidth: 500,
+    [theme.breakpoints.up(992)]: {
+      height: '100%',
+      width: '100%'
+
+    },
+    [theme.breakpoints.between(835, 992)]: {
+      height: 36
+
+    },
+    [theme.breakpoints.down(835)]: {
+      maxWidth: 686
+
+    }
 
   },
   input: {
@@ -35,35 +48,16 @@ export default function SearchField (props) {
   const screenWidth = props.width
   const fullWidth = screenWidth < 835
 
-  let style
-  const style1 = {
-    height: '100%',
-    width: '100%'
-  }
-  const style2 = {
-    height: 36
-
-  }
-  const style3 = {
-    maxWidth: 686
-  }
-
   const handleChange = (e) => {
     const name = e.target.value
 
     props.onChange(name)
   }
 
-  if (screenWidth > 992) {
-    style = style1
-  } if (screenWidth <= 992 && screenWidth >= 835) {
-    style = style2
-  } if (screenWidth < 835) {
-    style = style3
-  }
-
   return (
-    <Paper component='form' style={style} className={classes.root}>
+    <Paper
+      component='form' className={classes.root}
+    >
 
       <InputBase
         onChange={handleChange}
@@ -74,7 +68,6 @@ export default function SearchField (props) {
         margin='dense'
         required
         type='search'
-        style={style}
 
       />
       <IconButton type='submit' className={classes.iconButton} aria-label='search'>
