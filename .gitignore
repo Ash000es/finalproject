@@ -6,6 +6,23 @@
 /.pnp
 .pnp.js
 ./src/Keys.json
+./src/components/MyProfile/Avatar.js
+./src/components/MyProfile/DatePicker.js
+./src/components/MyProfile/FavCard.js
+./src/components/MyProfile/FormExample.js
+./src/components/MyProfile/HardCode.js
+./src/components/MyProfile/ModalPassword.js
+./src/components/MyProfile/MyBooking.js
+./src/components/MyProfile/MyFav.js
+./src/components/MyProfile/NewDateRange.js
+./src/components/MyProfile/OldvsNew.js
+./src/components/MyProfile/PopUP.js
+./src/components/MyProfile/PrevCancelled.js
+./src/components/MyProfile/ProfileContainer.js
+./src/components/MyProfile/SimpleMenu.js
+./src/components/MyProfile/UpComing.js
+
+
 
 # testing
 /coverage
