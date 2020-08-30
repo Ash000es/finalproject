@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import firebase from 'firebase'
+
 import Button from 'react-bootstrap/Button'
+import { ProjectContext } from '../providers/Provider'
 import FirebaseContext, { db, onClickLogin, provider } from '../providers/Firebase'
 import { BrowserRouter as Router, MemoryRouter, Switch, Route, Link } from 'react-router-dom'
 
@@ -20,6 +22,7 @@ export const LoginButton = (props) => {
   })
   const handleUserSignedin = (user) => {
     setUser(user)
+
     setAuthButtonLabel('Logout')
     if (user.providerData.length) {
       console.log(user.providerData[0], 'userData')
@@ -63,6 +66,9 @@ export const LoginButton = (props) => {
   }
 
   return (
-    <Button onClick={onClickAuth} variant='success'>{authbuttonlabel}</Button>
+    <>
+      <Button onClick={onClickAuth} variant='success'>{authbuttonlabel}</Button>
+
+    </>
   )
 }

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import ChangeDatesDiff from './OldvsNew'
 import { ShowDatePicker } from './DatePicker'
-import DateRangePicker from '../DateRange/NewDateRange'
+import NewDateRange from './NewDateRange'
 
 function MyVerticallyCenteredModal (props) {
   const [showDatePicker, setShowDatePicker] = React.useState(true)
@@ -24,7 +24,7 @@ function MyVerticallyCenteredModal (props) {
         <h4>Centered Modal</h4>
         <p>
 
-          {showDatePicker ? <DateRangePicker /> : <ChangeDatesDiff />}
+          {showDatePicker ? <NewDateRange /> : <ChangeDatesDiff />}
         </p>
       </Modal.Body>
       <Modal.Footer>

@@ -16,6 +16,7 @@ import { HotelList } from './HoteList'
 import { LoginButton } from '../components/LoginButton'
 import ShoppingCart from '../components/ShoppingCard'
 import ReviewCart from '../Pages/ReviewCart'
+import ProfileContainer from '../components/MyProfile/ProfileContainer'
 
 function App (props) {
   return (
@@ -45,7 +46,7 @@ function App (props) {
                 <Nav>
                   <Nav.Link href='#deets'><LoginButton /></Nav.Link>
                   <Nav.Link eventKey={2} href='#memes'>
-                    Cart items
+                    {/* Cart items */}
                   </Nav.Link>
                 </Nav>
 
@@ -55,7 +56,7 @@ function App (props) {
             <Switch>
 
               <Route path='/hotelpage' exact component={HotelPage} />
-              <Route path='/about' exact component={AboutUs} />
+              <Route path='/about' exact component={ProfileContainer} />
               <Route path='/reviewcart' excat component={ReviewCart} />
               <Route path='/Travelessentials' exact component={ShoppingCart} />
               <Route path='/searchresults' exact component={HotelList} />

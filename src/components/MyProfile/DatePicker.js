@@ -1,10 +1,10 @@
 import React from 'react'
-import DateRange from '../DateRange/DateRange'
+import NewDateRange from './NewDateRange'
 
 export const ShowDatePicker = () => {
   return (
     <>
-      <DateRange />
+      <NewDateRange />
     </>
   )
 }

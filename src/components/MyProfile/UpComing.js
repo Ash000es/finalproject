@@ -1,9 +1,9 @@
 import React from 'react'
-import { hardHotelObject } from '../assets/HardCode'
+import { hardHotelObject } from './HardCode'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import { ChangeDatePopup } from '../ChangeDates/PopUP'
+import { ChangeDatePopup } from './PopUP'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 

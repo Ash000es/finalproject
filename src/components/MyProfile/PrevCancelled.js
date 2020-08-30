@@ -1,5 +1,5 @@
 import React from 'react'
-import { hardHotelObject } from '../assets/HardCode'
+import { hardHotelObject } from './HardCode'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
