@@ -12,13 +12,10 @@ import FirebaseContext, { db, onClickLogin, provider } from '../providers/Fireba
 import AboutUs from './AboutUs'
 import { HomePage } from './HomePage'
 import ProjectProvider, { ProjectContext } from '../providers/Provider'
-import MapPopUp from '../components/MapPopUp'
-import getSteps from '../components/PaymentCout/Stepper'
 import { HotelList } from './HoteList'
 import { LoginButton } from '../components/LoginButton'
 import ShoppingCart from '../components/ShoppingCard'
-import SearchBar from '../components/SearchBar'
-import ReviewCart from '../components/ReviewCart'
+import ReviewCart from '../Pages/ReviewCart'
 
 function App (props) {
   return (

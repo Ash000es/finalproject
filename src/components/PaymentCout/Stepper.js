@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import BasicTextFields from './PaymentCout'
 import ConfirmationPage from './ConfirmationPage'
-import ReviewCart from '../ReviewCart'
+import ReviewCart from '../../Pages/ReviewCart'
 
 const useStyles = makeStyles((theme) => ({
   root: {

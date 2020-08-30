@@ -82,7 +82,7 @@ const HotelPage = React.memo((props) => {
   }
 
   const handleClickExtra = (e, value) => {
-    e.persist()
+    // e.persist()
 
     console.log(value, 'e')
 
