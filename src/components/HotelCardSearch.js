@@ -8,7 +8,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { SearchResultsCarousel } from './SearchResultsCarousel'
-import { hardHotelObject } from '../assets/HardCode'
+
 import SelectPrice from './SelectPrice'
 import { ExtrasList } from './ExtrasList'
 import Divider from '@material-ui/core/Divider'

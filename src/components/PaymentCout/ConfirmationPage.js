@@ -1,5 +1,5 @@
 import React from 'react'
-import { hardHotelObject } from '../../assets/HardCode'
+import { hardHotelObject } from './HardCode'
 import Typography from '@material-ui/core/Typography'
 import DisableElevation from './PaymentButton'
 

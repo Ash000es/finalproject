@@ -4,7 +4,6 @@ import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
-import './SearchField.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     marginLeft: theme.spacing(1),
-    // flex: 1,
+    flex: 1,
     width: '100%'
   },
   iconButton: {
@@ -24,8 +23,8 @@ const useStyles = makeStyles(theme => ({
   },
   searchInput: {
     width: '100%',
-    marginLeft: theme.spacing(1)
-    // flex: 1
+    marginLeft: theme.spacing(1),
+    flex: 1
 
   }
 
@@ -34,6 +33,7 @@ const useStyles = makeStyles(theme => ({
 export default function SearchField (props) {
   const classes = useStyles()
   const screenWidth = props.width
+  const fullWidth = screenWidth < 835
 
   let style
   const style1 = {
@@ -61,7 +61,7 @@ export default function SearchField (props) {
   } if (screenWidth < 835) {
     style = style3
   }
-  const fullWidth = screenWidth < 835
+
   return (
     <Paper component='form' style={style} className={classes.root}>
 

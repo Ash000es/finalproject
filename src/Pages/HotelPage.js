@@ -1,5 +1,5 @@
 import React, { useState, useContext, useMemo } from 'react'
-import { hardHotelObject } from '../assets/HardCode'
+
 import RoomCarousel from '../components/thumbilCarousel'
 
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
