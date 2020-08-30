@@ -14,7 +14,7 @@ import { Redirect } from 'react-router'
 import MapPopUp from '../components/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection, useWindowSize } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -70,8 +70,11 @@ export const HotelList = () => {
   const allHotelsResults = project.results
   const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
+
   console.log(filters, 'filters')
   console.log(tempfilteredhotels, 'temp')
+  const size = useWindowSize()
+  const width = size.width
 
   // fetch from context first 5 results to display
   useEffect(() => {
@@ -105,7 +108,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-    />
+           />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -213,7 +216,7 @@ export const HotelList = () => {
                 <SearchResultsHero />
               </div>
               <div style={{ margin: '3rem auto' }}>
-                <SearchBar startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
+                <SearchBar width={width} startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               </div>
               <div className={classes.filters}>
                 <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><AccomodationTypeFilter onClick={handleFilteredHotels} name='Hotels' /><AccomodationTypeFilter onClick={handleFilteredHomes} name='homelike' /></div>
@@ -235,7 +238,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-        </div>}
+          </div>}
     </>
   )
 }
