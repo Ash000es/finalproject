@@ -8,13 +8,12 @@ import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { SearchResultsCarousel } from './SearchResultsCarousel'
-
 import SelectPrice from './SelectPrice'
 import { ExtrasList } from './ExtrasList'
 import Divider from '@material-ui/core/Divider'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { searchResultsAmen } from '../Helper/SearchResultsAmen'
-import { getAmenitiesArray, getSmallPictures, removeDuplicates, getUnique, labelReturn, reviewSummaryReturn, isFreeCancelAvailabe } from '../Helper/Helper'
+import { getAmenitiesArray, getSmallPictures, getUnique, labelReturn, reviewSummaryReturn, isFreeCancelAvailabe, constfirstRoomImage } from '../Helper/Helper'
 import { masterLinkSmall } from '../Helper/Constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -58,19 +57,24 @@ export const HotelCardSearch = (props) => {
   const [expanded, setExpanded] = useState(false)
   const [facilitiesArr, setFacilitiesArr] = useState(props.hotel.facilities)
   const imagesarray = props.hotel.images
+  const firstImage = constfirstRoomImage(imagesarray)
+  if (Object.keys(firstImage)) {
+    imagesarray.unshift(firstImage)
+  }
   const amenitiesToMap = getAmenitiesArray(facilitiesArr, searchResultsAmen)
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
+
   const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms[0].rates)
+  const hotelName = props.hotel.name.content
+  const hotelName2 = props.hotel.name
 
   const openExtras = () => {
     if (!expanded) {
       setExpanded(!expanded)
     }
   }
-  const hotelName = props.hotel.name.content
-  const hotelName2 = props.hotel.name
 
   return (
     <>
@@ -93,7 +97,7 @@ export const HotelCardSearch = (props) => {
             <div id='secoundDivWrraper' className={classes.column}>
               {/* first inside div  */}
               <div className='firstDiv'>
-                {/* <div style={{ backgroundColor: 'red', height: 27 }}> */}
+
                 <Typography className={classes.secondaryHeading}>{hotelName || hotelName2}</Typography>
                 <div style={{ FontSize: 14, marginBottom: 1 }}><p>{props.hotel.address.content.toLowerCase()}</p></div>
                 {(freeCancel.map(can => can === 'NOR')) ? <p style={{ color: '#249D3C', fontWeight: '450', fontSize: '0.8rem' }}>Free cancelation available!</p> : null}
@@ -114,7 +118,7 @@ export const HotelCardSearch = (props) => {
 
               <div className='thirdDivInner'>
 
-                <div>{labelReturn(props.hotel.categoryCode)}</div>
+                <div><p>{labelReturn(props.hotel.categoryCode)}</p></div>
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />

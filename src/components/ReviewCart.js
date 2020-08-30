@@ -19,19 +19,27 @@ const ReviewCart = () => {
     backgroundColor: '#FF8B00',
     color: 'white'
   }
-  const removeFromCart = (item, e) => {
-    console.log(e, 'e')
-    console.log(item, 'show')
+  const handleClickButton = (e, value) => {
+    e.preventDefault()
+    e.persist()
+
+    console.log(value, 'e')
+
+    const filteredCartItems = cartItemsToMap.filter(cartitems => value !== cartitems)
+    console.log(filteredCartItems, 'filtred')
+    setProject({ ...project, cartItems: filteredCartItems })
   }
 
   return (
     <div className='cartContainerDiv'>
+      <div> style={{ marginBottom: '1.5rem' }}<h6>Your cart items</h6></div>
       <div className='CartSelectionSummary'>
         {cartItemsToMap && cartItemsToMap.map((item, i) => {
+          console.log(item, i, 'look here')
           if (item.rooms) {
             return (
-              <div className='hotelCheckoutCar'>
-                <Card style={{ width: '18rem' }}>
+              <div className='hotelCheckoutCar' key={i} item={item}>
+                <Card style={{ width: '18rem' }} key={i} item={item}>
                   <Card.Img variant='top' src={item.image} style={{ width: 100, height: 180 }} />
                   <Card.Body>
                     <Card.Title>{item.hotelName}</Card.Title>
@@ -41,7 +49,7 @@ const ReviewCart = () => {
                       {item.checkinDate}-{item.checkoutDate}
                     </Card.Text>
                     <Card.Text>{item.mySellingRate}$</Card.Text>
-                    <Button variant='outline-danger'>remove</Button>
+                    <Button variant='outline-danger' key={i} value={item} onClick={(e) => handleClickButton(e, item)}>remove</Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -63,6 +71,7 @@ const ReviewCart = () => {
                       {item.summary}
                     </Card.Text>
                     <Card.Text>{item.ExtraPrice || item.price}$</Card.Text>
+                    <Button variant='outline-danger' key={i} item={item} onClick={(e) => handleClickButton(e, item)}>remove</Button>
 
                   </Card.Body>
                 </Card>

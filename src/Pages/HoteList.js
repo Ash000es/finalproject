@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography'
 import SearchBar from '../components/SearchBar'
 import { SearchResultsHero } from '../components/SearchResultsHero'
 import './HotelList.css'
-
 import { AccomodationTypeFilter } from '../components/AccomodationTypeFilter'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { Redirect } from 'react-router'
@@ -51,7 +50,7 @@ const initialFilterState = {
   villasOnly: false,
   starRating: [],
   Amenities: [],
-  priceFilter: [PRICE_FILTER_MIN, PRICE_FILTER_MAX],
+  priceFilter: [DEFAULT_SLIDER_VALUE[0], DEFAULT_SLIDER_VALUE[1]],
   sortBy: ''
 }
 
@@ -70,9 +69,6 @@ export const HotelList = () => {
   const allHotelsResults = project.results
   const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
-
-  console.log(filters, 'filters')
-  console.log(tempfilteredhotels, 'temp')
   const size = useWindowSize()
   const width = size.width
 
@@ -101,7 +97,7 @@ export const HotelList = () => {
   }
 
   // when a user selects a hotel, props is passed to <HotelPage/> via redirect
-  console.log(redirect, 'redirect from hotellist')
+
   if (redirect) {
     return <Redirect
       to={{
@@ -150,7 +146,7 @@ export const HotelList = () => {
     // start by setting it to neutral
     let res = hotelsresults
 
-    // begin applying all special cases of filters that are ON
+    // applying all special cases of filters that are ON
     if (filters.hotelsOnly) {
       res = showHotelsOnly(res, hotelsresults, vcCodes)
     }
@@ -162,7 +158,6 @@ export const HotelList = () => {
     }
     if (filters.Amenities.length > 0) {
       res = filterAmenSelection(res, hotelsresults, filters.Amenities)
-      // .name.includes('Pool') || filters.Amenities.name.includes('Pet Friendly') || filters.Amenities.name.includes('Internet') || filters.Amenities.name.includes('Spa') || filters.Amenities.name.includes('Parking') || filters.Amenities.name.includes('Gym') || filters.Amenities.name.includes('Restaurant') || filters.Amenities.name.includes('Bar') || filters.Amenities.names.includes('Room service')
     }
     if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
       res = updatePrice(filters.priceFilter[0], filters.priceFilter[1], res, hotelsresults)
@@ -176,7 +171,7 @@ export const HotelList = () => {
     if (filters.sortBy === 'Sortby recommended') {
       res = sortByRecommended(res, hotelsresults)
     }
-    console.log(res, 'resy here')
+
     setTempFilteredHotels(res)
     setFilters(filters)
   }

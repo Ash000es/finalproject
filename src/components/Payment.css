@@ -32,6 +32,7 @@
 }
 .extraCheckoutCar{
     display:inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     margin:1rem ;
+    max-width:290px;
 }

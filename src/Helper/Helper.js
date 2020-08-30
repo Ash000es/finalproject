@@ -25,8 +25,14 @@ import ReviewsLabel from '../components/ReviewsLabel'
 // }
 
 // }
+// for (let i = 0; i < popularCities.length; i++) {
+//   const res = await handleHomePageSearch(popularCities[i], state)
+//   ALL_RESULTS.push(res)
+
+// }
 export const constfirstRoomImage = (arr) => {
-  return arr.find(image => image.imageTypeCode && image.imageTypeCode === 'HAB')
+  return arr.find(image => image.imageTypeCode && image.imageTypeCode === 'HAB'
+  )
 }
 
 export const roomPictureMatch = (roomArr, imagesArr, masterLinkSmall) => {
@@ -55,13 +61,13 @@ export const reviewSummaryReturn = (reviewsObj) => {
 }
 export const labelReturn = (code) => {
   if (poshCodes.includes(code)) {
-    return <CatLabel name='Posh' look={{ background: 'rgb(97,39,92)', width: '3.125rem', fontWeight: '450' }} />
+    return <CatLabel name='Posh' look={{ background: 'rgb(97,39,92)', width: '3.125rem', fontWeight: '450', marginBottom: 0 }} />
   } if (boldCodes.includes(code)) {
-    return <CatLabel name='Bold' look={{ background: 'rgb(5,94,112)', width: '3.125rem', fontWeight: '450' }} />
+    return <CatLabel name='Bold' look={{ background: 'rgb(5,94,112)', width: '3.125rem', fontWeight: '450', marginBottom: 0 }} />
   } if (essentialCodes.includes(code)) {
-    return <CatLabel name='Essential' look={{ background: 'rgb(42,120,24)', fontWeight: '450' }} />
+    return <CatLabel name='Essential' look={{ background: 'rgb(42,120,24)', fontWeight: '450', marginBottom: 0 }} />
   } if (homesCodes.includes(code)) {
-    return <CatLabel name='Homelike' look={{ background: 'rgb(244,165,48)', fontWeight: '450' }} />
+    return <CatLabel name='Homelike' look={{ background: 'rgb(244,165,48)', fontWeight: '450', marginBottom: 0 }} />
   } else {
     return null
   }

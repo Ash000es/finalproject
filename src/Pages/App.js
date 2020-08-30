@@ -18,6 +18,7 @@ import { HotelList } from './HoteList'
 import { LoginButton } from '../components/LoginButton'
 import ShoppingCart from '../components/ShoppingCard'
 import SearchBar from '../components/SearchBar'
+import ReviewCart from '../components/ReviewCart'
 
 function App (props) {
   return (
@@ -33,7 +34,7 @@ function App (props) {
                   <LinkContainer to='/home'>
                     <Nav.Link href='#features'><p>Home</p></Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to='/reviewcart'>
+                  <LinkContainer to='/'>
                     <Nav.Link href='#pricing'><p>Things to do</p></Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/Travelessentials'>
@@ -57,8 +58,8 @@ function App (props) {
             <Switch>
 
               <Route path='/hotelpage' exact component={HotelPage} />
-              <Route path='/about' exact component={SearchBar} />
-              <Route path='/reviewcart' excat component={getSteps} />
+              <Route path='/about' exact component={AboutUs} />
+              <Route path='/reviewcart' excat component={ReviewCart} />
               <Route path='/Travelessentials' exact component={ShoppingCart} />
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />

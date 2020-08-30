@@ -30,7 +30,7 @@ const MapPopUp = (props) => {
         </Modal.Header>
         <Modal.Body>
 
-          <div style={{ width: 1000, height: 500 }}>
+          <div style={{ width: 1100, height: 600 }}>
             <WrapperMap
               googleMapURL={googleURL}
               loadingElement={<div style={{ height: '100%' }} />}

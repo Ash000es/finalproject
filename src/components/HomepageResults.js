@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import SearchBar from './SearchBar'
 import { findCheapestHotel, handleHomePageSearch } from '../Helper/Helper'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import FirebaseContext from '../providers/Firebase'
@@ -9,10 +8,8 @@ import { Spinning } from './Spinner'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import barcelona from '../assets/barcelona.jpg'
 import ibiza from '../assets/ibiza.jpg'
@@ -26,28 +23,27 @@ import mykonos from '../assets/mykonos.jpg'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 360,
+    maxWidth: screenWidth =>
+      screenWidth < 992 ? 650 : 360,
     maxHeight: 280,
-    margin: '1rem auto'
-
-    // width: screenWidth =>
-    //   screenWidth <= 425 ? '20rem' : '20rem'
+    margin: '1rem '
 
   },
   media: {
-    maxHeight: 200,
+    maxHeight: 190,
+    maxWidth: screenWidth =>
+      screenWidth < 992 ? 650 : 320,
     borderRadius: 5
 
   },
   container: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     flexWrap: 'wrap',
-    flexFlow: 'row wrap',
 
     flexShrink: 1,
-    marginBottom: 10
+    margin: '1rem auto'
 
   },
   Button: {
@@ -58,16 +54,17 @@ const useStyles = makeStyles({
     maxheight: '4.375rem'
   },
   Popular: {
-    borderBottom: '0.0625rem solid grey',
+
     display: 'flex',
     justifyContent: 'center',
     fontWeight: 'medium',
     margin: '1rem auto',
     fontSize: '1.2rem',
     padding: '0.0625rem',
-    maxWidth: 300,
-    minWidth: 100
-    // backgroundColor: 'pink'
+    maxWidth: '100%',
+    minWidth: 100,
+    textDecoration: 'underline'
+
   }
 
 })
@@ -109,14 +106,6 @@ const HomePageResults = (props) => {
 
     }
   )
-
-  const ALL_RESULTS = []
-
-  // for (let i = 0; i < popularCities.length; i++) {
-  //   const res = await handleHomePageSearch(popularCities[i], state)
-  //   ALL_RESULTS.push(res)
-
-  // }
 
   // useEffect(() => {
   //   const fetchDestinations = async () => {
@@ -180,7 +169,6 @@ const HomePageResults = (props) => {
                       <CardMedia
                         component='img'
                         className={classes.media}
-
                         image={popularImages[i]}
                       />
 
@@ -198,7 +186,7 @@ const HomePageResults = (props) => {
                 )
               })
             }
-          </>}
+            </>}
       </div>
     </>
 

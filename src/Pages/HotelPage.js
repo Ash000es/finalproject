@@ -1,11 +1,7 @@
 import React, { useState, useContext, useMemo } from 'react'
-
-import RoomCarousel from '../components/thumbilCarousel'
-
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
 import { MyProvider, ProjectContext } from '../providers/Provider'
-
-import { addCartItem, getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn, roomPictureMatch, constfirstRoomImage } from '../Helper/Helper'
+import { getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn, roomPictureMatch, constfirstRoomImage } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
 import { hotelAmen } from '../Helper/SearchResultsAmen'
@@ -14,7 +10,6 @@ import './HotelPage.css'
 import CustomizedRatings from '../components/TripAdvisorRating'
 import StarRatings from '../components/StarRatings'
 import Button from '@material-ui/core/Button'
-import { Spinning } from '../components/Spinner'
 import MapPopUp from '../components/MapPopUp'
 
 const HotelPage = React.memo((props) => {
@@ -37,7 +32,6 @@ const HotelPage = React.memo((props) => {
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name.content || currentSelection.name
-  console.log(hotelName, 'hotel name')
   const roomy1 = currentSelection.apiRooms
 
   const images = currentSelection.images
@@ -47,7 +41,7 @@ const HotelPage = React.memo((props) => {
   const firstImage = constfirstRoomImage(images)
   const imageObjectPath = firstImage.path
   const newPath = `${masterLinkSmall}${imageObjectPath}`
-  console.log(newPath, 'first image hee ')
+
   const keyFacts = currentSelection.description.content
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)
@@ -57,10 +51,10 @@ const HotelPage = React.memo((props) => {
   const selectionWrapper = (showme) => {
     const roomSelectionInfo = showme.rateKey ? showme : null
     const ExtrasSelectionInfo = showme.summary ? showme : null
-
     roomSelectionInfo && displaySelectedRoomInfo(roomSelectionInfo)
     ExtrasSelectionInfo && displaySelectedExtrasInfo(ExtrasSelectionInfo)
   }
+
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
     const num = Number(roomSelectionInfo.roomNumber)
     const price = roomSelectionInfo.totalSelectionPrice
@@ -71,9 +65,7 @@ const HotelPage = React.memo((props) => {
   }
   const displaySelectedExtrasInfo = (ExtrasSelectionInfo) => {
     const num = ExtrasSelectionInfo.extraSelectionNum
-
     const ExtraPrice = num * ExtrasSelectionInfo.price
-
     const newExtrasSelectionInfo = { ...ExtrasSelectionInfo, num, ExtraPrice }
 
     setExtrasNum(extrasnum.concat(num))
@@ -89,6 +81,16 @@ const HotelPage = React.memo((props) => {
     setRedirect(true)
   }
 
+  const handleClickExtra = (e, value) => {
+    e.persist()
+
+    console.log(value, 'e')
+
+    const filteredCartItems = totalSelectedExtrasInfo.filter(extraitems => value !== extraitems)
+    console.log(filteredCartItems, 'filtred')
+    setTotalSelectedExtrasInfo(filteredCartItems)
+  }
+
   if (redirect) {
     return <Redirect exact push to='/reviewcart' />
   }
@@ -100,7 +102,7 @@ const HotelPage = React.memo((props) => {
       <>
         <div className='hotelPage-text'>
           <h4>This hotel have spceial offer for you</h4>
-          <p>Save up to <p style={{ color: 'red' }}>50% </p>by adding extra to your accomodation</p>
+          <p>Save up to <p style={{ color: 'red' }}>30% </p>by adding extra to your accomodation</p>
         </div>
 
         <div className='hotelpage-outerdiv'>
@@ -116,7 +118,7 @@ const HotelPage = React.memo((props) => {
           <SearchResultsCarousel currentSelection={imagesArray} />
           <div className='information-section'>
             <div>
-              <p>Amenities:</p>
+              <p className='subheadingText'>Amenities:</p>
               <ul style={{ listStyleType: 'none', display: 'flex', alignContent: 'space-between', flexWrap: 'wrap' }}>{readyAmenities1 && readyAmenities1.map((item, i) =>
                 <li key={i} item={item} style={{ marginRight: 15 }}>{item.icon}{item.name}</li>
 
@@ -125,7 +127,7 @@ const HotelPage = React.memo((props) => {
 
             </div>
             <div>
-              <p>Key facts</p>
+              <p className='subheadingText'>Key facts:</p>
               <p>{truncateString(keyFacts, 4000)} </p>
             </div>
             <div className='starRating-Reviews'>
@@ -154,7 +156,7 @@ const HotelPage = React.memo((props) => {
                     <strong><p>Extras item:</p></strong>
                     <p>{extra.num || 1}{extra.title}</p>
                     <p>{extra.ExtraPrice || extra.price}$</p>
-                    <Button color='secondary' size='medium'>Remove</Button>
+                    <Button color='secondary' size='medium' onClick={(e) => handleClickExtra(e, extra)}>Remove</Button>
 
                   </div>
                 )
