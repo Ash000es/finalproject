@@ -12,17 +12,21 @@ import breakfast from '../assets/breakfast.jpg'
 import cake from '../assets/cake.jpg'
 import wine from '../assets/wine.jpg'
 import sushi from '../assets/sushi.jpg'
-import { REACT_APP_googleAPIKey } from '../Keys.json'
+
 // homepage results const
 
+let keys
+if (process.env.NODE_ENV === 'production') {
+  keys = process.env
+} else {
+  keys = require('../Keys.json')
+}
+const { REACT_APP_googleAPIKey } = keys
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_googleAPIKey}`
 export const popularCities = [{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }]
-export const apikey = 'kw7vpx3nefnq47b8dk6kehg4'
-export const sec = 'nyM8qx6n8S'
+
 export const D = new Date()
-export const getSignature = () => {
-  return (apikey + sec + Math.round(D.getTime() / 1000))
-}
+
 export const vcCodes = ['3LL', '4LL', '5LL', 'VILLA', 'AT3', 'VTV']
 export const hotelcodes = ['3EST', '4EST', '5EST', '4LUX', '5LUX', 'APTH3', 'APTH4', 'APTH5', 'BB3', 'BB4', 'BB5', 'BOU', 'SUP', 'HIST', 'RSORT', 'H5_5', 'H4_4', 'H3_5', 'H3S', 'HR4', 'HR5', 'HRS']
 export const poshCodes = ['5EST', '4LUX', '5LUX', 'APTH5', 'BOU', 'H5_5', 'HR5']

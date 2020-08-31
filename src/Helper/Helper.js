@@ -74,7 +74,7 @@ export const labelReturn = (code) => {
 }
 export function useWindowSize () {
   // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+ 
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined
@@ -113,19 +113,25 @@ export const filterAmenSelection = (arr1, arr2, arr3) => {
   const valueToFilter = arr1.length > 0 ? arr1 : arr2
 
   // function here
-  const finalHotels = []
-  const hotelsresultsAmen = valueToFilter.map(hotel => {
+  // const finalHotels = []
+return  valueToFilter.map(hotel => {
     const amenAmen = hotel.facilities
+    return finalHotels
+    const finalHotels= amenAmen.filter(hotelResAmen=> {
+      if (hotelResAmen.facilityCode === arr3.FacilityCode && hotelResAmen.facilityGroupCode === arr3.FacilityGroupCode)
+      return hotel
+    })
 
-    amenAmen.map(hotelResAmen => arr3.filter(amenArr => {
-      if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.facilityGroupCode === amenArr.FacilityGroupCode) {
-        finalHotels.push(hotel)
-      }
-    }))
+    // amenAmen.map(hotelResAmen => arr3.filter(amenArr => {
+    //   if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.facilityGroupCode === amenArr.FacilityGroupCode) {
+    //     finalHotels.push(hotel)
+    //   }
+    // }))
     // return finalHotels
+    console.log(finalHotels, 'final hotels')
   })
-  console.log(finalHotels, 'final hotels')
-  return removeDuplicates(finalHotels)
+  
+  // return removeDuplicates(finalHotels)
 }
 
 export const updateStarRatings = (arr1, arr2, arr3) => {

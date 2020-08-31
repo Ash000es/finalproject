@@ -1,10 +1,17 @@
 
 import Sign from 'js-sha256'
-import { REACT_APP_apikey, REACT_APP_sec } from '../Keys.json'
 import { removeDuplicates } from '../Helper/Helper'
 import { amenities } from '../Helper/amenities'
 import { masterLinkLarge, masterLinkSmall, categoryCodes } from '../Helper/Constants.js'
 import { TableCell } from '@material-ui/core'
+
+let keys
+if (process.env.NODE_ENV === 'production') {
+  keys = process.env
+} else {
+  keys = require('../Keys.json')
+}
+const { REACT_APP_apikey, REACT_APP_sec } = keys
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
   const D = new Date()
