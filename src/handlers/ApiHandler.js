@@ -1,6 +1,6 @@
 
 import Sign from 'js-sha256'
-import { apikey, sec } from '../Keys.json'
+import { REACT_APP_apikey, REACT_APP_sec } from '../Keys.json'
 import { removeDuplicates } from '../Helper/Helper'
 import { amenities } from '../Helper/amenities'
 import { masterLinkLarge, masterLinkSmall, categoryCodes } from '../Helper/Constants.js'
@@ -10,7 +10,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
   const D = new Date()
 
   const getSignature = () => {
-    return Sign(apikey + sec + Math.round(D.getTime() / 1000))
+    return Sign(REACT_APP_apikey + REACT_APP_sec + Math.round(D.getTime() / 1000))
   }
 
   const createRequestBody = () => {
@@ -27,7 +27,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     {
       method: 'POST',
       headers: {
-        'Api-Key': apikey,
+        'Api-Key': REACT_APP_apikey,
         'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
   const D = new Date()
 
   const getSignature = () => {
-    return Sign(apikey + sec + Math.round(D.getTime() / 1000))
+    return Sign(REACT_APP_apikey + REACT_APP_sec + Math.round(D.getTime() / 1000))
   }
 
   const createRequestBody = () => {
@@ -145,7 +145,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
     {
       method: 'POST',
       headers: {
-        'Api-Key': apikey,
+        'Api-Key': REACT_APP_apikey,
         'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => 
   const D = new Date()
 
   const getSignature = () => {
-    return Sign(apikey + sec + Math.round(D.getTime() / 1000))
+    return Sign(REACT_APP_apikey + REACT_APP_sec + Math.round(D.getTime() / 1000))
   }
 
   const createRequestBody = () => {
@@ -216,7 +216,7 @@ export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => 
     {
       method: 'POST',
       headers: {
-        'Api-Key': apikey,
+        'Api-Key': REACT_APP_apikey,
         'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',

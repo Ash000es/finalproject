@@ -12,9 +12,10 @@ import breakfast from '../assets/breakfast.jpg'
 import cake from '../assets/cake.jpg'
 import wine from '../assets/wine.jpg'
 import sushi from '../assets/sushi.jpg'
+import { REACT_APP_googleAPIKey } from '../Keys.json'
 // homepage results const
-export const googleAPIKey = 'AIzaSyArQla27kHz9uEus_Zyhh-rDHhg6nYTXEs'
-export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleAPIKey}`
+
+export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_googleAPIKey}`
 export const popularCities = [{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }]
 export const apikey = 'kw7vpx3nefnq47b8dk6kehg4'
 export const sec = 'nyM8qx6n8S'

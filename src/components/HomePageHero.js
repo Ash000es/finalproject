@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card'
 import SearchBar from './SearchBar'
 import './Hero.css'
-import cover from '../assets/cover.svg'
+import beach from '../assets/beach.jpg'
 import HomePageCarousel from './HomePageCarousel'
 import { ShopHomepage, ActivityHomepage } from '../Helper/Constants'
 
@@ -14,7 +14,7 @@ const HomePageHero = () => {
     <>
       <div className='bigCon'>
 
-        <img src={cover} style={{ width: '100%', height: '100%' }} alt='Card image' />
+        <img src={beach} style={{ width: '100%', height: '45%' }} alt='Card image' />
 
       </div>
 
