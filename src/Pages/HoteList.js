@@ -13,8 +13,9 @@ import { Redirect } from 'react-router'
 import MapPopUp from '../components/MapPopUp'
 import { Spinning } from '../components/Spinner'
 import { DEFAULT_SLIDER_VALUE } from '../components/PriceSlider'
-import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection, useWindowSize } from '../Helper/Helper'
+import { updatePrice, showHotelsOnly, showHomesOnly, updateStarRatings, sortbyPrice, sortByReview, sortByRecommended, filterAmenSelection, useWindowSize, createNewAmenitiesArray, removeAmenDuplicates } from '../Helper/Helper'
 import { vcCodes, hotelcodes, amenCodes } from '../Helper/Constants'
+import { searchResultsAmen } from '../Helper/SearchResultsAmen'
 
 const useStyles = makeStyles((theme) => ({
   filters: {
@@ -75,7 +76,15 @@ export const HotelList = () => {
   // fetch from context first 5 results to display
   useEffect(() => {
     const intialLoad = allHotelsResults.slice(resultsstart, resultsPerPage)
-    setHotelsResults(intialLoad)
+    const addAmenArr = intialLoad.map(hotel => {
+      const amenitiesToMap = createNewAmenitiesArray(hotel.facilities, searchResultsAmen)
+      const newAmenFinal = removeAmenDuplicates(amenitiesToMap)
+      const newHotel = { ...hotel, newAmen: newAmenFinal }
+
+      return newHotel
+    })
+
+    setHotelsResults(addAmenArr)
   }, [])
 
   const onCompelet = (currentHotel) => {
@@ -91,7 +100,14 @@ export const HotelList = () => {
   const fetchMoreData = () => {
     const indexOfFirstHotel = resultsstart + resultsPerPage
     const indexOfFLastHotel = indexOfFirstHotel + resultsPerPage
-    const newLoad = allHotelsResults.slice(indexOfFirstHotel, indexOfFLastHotel)
+    const newLoad1 = allHotelsResults.slice(indexOfFirstHotel, indexOfFLastHotel)
+    const newLoad = newLoad1.map(hotel => {
+      const amenitiesToMap = createNewAmenitiesArray(hotel.facilities, searchResultsAmen)
+      const newHotelFinal = removeAmenDuplicates(amenitiesToMap)
+      const newHotel = { ...hotel, newAmen: newHotelFinal }
+
+      return newHotel
+    })
     setResultsStart(indexOfFirstHotel)
     setHotelsResults(hotelsresults.concat(newLoad))
   }
@@ -104,7 +120,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -119,6 +135,7 @@ export const HotelList = () => {
   }
   // ['TV', 'Pool']
   const handleAmenSelection = (arr) => {
+    console.log(arr, 'hotel list')
     const change = { ...filters, Amenities: arr }
 
     filterAll(change)
@@ -157,6 +174,7 @@ export const HotelList = () => {
       res = updateStarRatings(res, hotelsresults, filters.starRating)
     }
     if (filters.Amenities.length > 0) {
+      console.log(filters.Amenities, 'iam going to be filtered against')
       res = filterAmenSelection(res, hotelsresults, filters.Amenities)
     }
     if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
@@ -178,7 +196,7 @@ export const HotelList = () => {
 
   // quick check to see which array to be mapped, an already filtered array or the original with no filters applied
   const resultsToMap = (arr1, arr) => {
-    if (arr1.length > 0) {
+    if (arr1.length && arr1.length > 0) {
       return arr1
     } else {
       return arr
@@ -233,7 +251,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }

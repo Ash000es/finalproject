@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 const { REACT_APP_apikey, REACT_APP_sec } = keys
 
-export function requestAvailableHotels (db, { occupancies, destination, stay, reviews }) {
+export function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
 
   const getSignature = () => {
@@ -25,7 +25,8 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       stay,
       occupancies,
       destination,
-      reviews
+      reviews,
+      dailyRate
     }
   }
 

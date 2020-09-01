@@ -5,17 +5,19 @@ import { amenitiesToFilter, amenDirectory } from '../Helper/Constants.js'
 const NewAmenitiesSelect = (props) => {
   const [amenitiesName, setamenitiesName] = useState([])
   const [chossenAmenities, setChossenAmenities] = useState()
+  // chossenAmenties is all the chosen amenites in an array of objects which includes codes and name
 
   const handleChange = (amenitiesName) => {
-    const nestedArr = amenitiesName.map(item => {
-      // console.log(item, 'item')
-      return amenDirectory[item]
-    })
-    const res = nestedArr.flat()
+    // const nestedArr = amenitiesName.map(item => {
+    //   console.log(item, 'item')
+    //   return amenDirectory[item]
+    // })
+    // console.log(nestedArr, ' imporatnt look here')
+    // const res = nestedArr.flat()
     // console.log(res, 'nested here')
-    setChossenAmenities(res)
+    setChossenAmenities(amenitiesName)
     setamenitiesName(amenitiesName)
-    props.onChange(res)
+    props.onChange(amenitiesName)
   }
 
   const filteredOptions = amenitiesToFilter.filter(o => !amenitiesName.includes(o))

@@ -90,6 +90,7 @@ const SearchBar = (props) => {
     }
   ]
   )
+  const dailyRate = true
 
   const handleClickButton = () => {
     setProject(
@@ -97,7 +98,7 @@ const SearchBar = (props) => {
     )
 
     props.startLoading()
-    const payLoad = { occupancies, destination, stay, reviews }
+    const payLoad = { occupancies, destination, stay, reviews, dailyRate }
     // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {

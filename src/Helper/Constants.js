@@ -305,10 +305,10 @@ export const amenDirectory = {
 }
 
 export const amenitiesToFilter = [
-  ...Object.keys(amenDirectory),
-  'Restaurant',
-  'Bar',
-  'Room service'
+  ...Object.keys(amenDirectory)
+  // 'Restaurant',
+  // 'Bar',
+  // 'Room service'
 
 ]
 

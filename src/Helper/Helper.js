@@ -74,7 +74,7 @@ export const labelReturn = (code) => {
 }
 export function useWindowSize () {
   // Initialize state with undefined width/height so server and client renders match
- 
+
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined
@@ -108,37 +108,73 @@ export function truncateString (str, num) {
   }
   return str.slice(0, num) + '...'
 }
+// export const filterAmenSelection = (arr1, arr2, arr3) => {
+//   console.log(arr1, arr2, arr3, 'Working...')
+//   const finalHotels = []
+//   // arguments are either temp or all results and the chosen array of amenities with codes and names
+//   const valueToFilter = arr1.length && arr1.length > 0 ? arr1 : arr2
+//   valueToFilter.map(hotel => {
+//     const amenAmen = hotel.newAmen
+//     const doesItInclude = amenAmen.includes(arr3)
+//     if (doesItInclude) {
+//       finalHotels.push(hotel)
+//     }
+//   })
+//   // const checker = (arr3, valueToFilter) => valueToFilter.every(v => arr3.includes(v))
+//   // if (checker) {
+//   //   finalHotels.push(v)
+//   // }
+
+//   console.log(finalHotels, 'final hotels')
+//   // return removeDuplicates(finalHotels)
+//   return finalHotels
+// }
+
+// const getArraysDifference = (longerArray, array2) => {
+//   const difference = []
+
+//   longerArray.forEach(el1 => { /* 1 */
+//     el1IsPresentInArr2 = array2.some(el2 => el2.value === el1.value) /* 2 */
+
+//     if (!el1IsPresentInArr2) { /* 3 */
+//       difference.push(el1) /* 4 */
+//     }
+//   })
+
+//   return difference
+// }
+
 export const filterAmenSelection = (arr1, arr2, arr3) => {
   console.log(arr1, arr2, arr3, 'Working...')
-  const valueToFilter = arr1.length > 0 ? arr1 : arr2
-
-  // function here
-  // const finalHotels = []
-return  valueToFilter.map(hotel => {
-    const amenAmen = hotel.facilities
-    return finalHotels
-    const finalHotels= amenAmen.filter(hotelResAmen=> {
-      if (hotelResAmen.facilityCode === arr3.FacilityCode && hotelResAmen.facilityGroupCode === arr3.FacilityGroupCode)
-      return hotel
-    })
-
-    // amenAmen.map(hotelResAmen => arr3.filter(amenArr => {
-    //   if (hotelResAmen.facilityCode === amenArr.FacilityCode && hotelResAmen.facilityGroupCode === amenArr.FacilityGroupCode) {
-    //     finalHotels.push(hotel)
-    //   }
-    // }))
-    // return finalHotels
-    console.log(finalHotels, 'final hotels')
+  console.log(typeof arr3[0])
+  const valueToFilter = arr1.length && arr1.length > 0 ? arr1 : arr2
+  const finalHotels = []
+  valueToFilter.map(hotel => {
+    const amenAmen = hotel.newAmen
+    console.log(typeof amenAmen[0])
+    const isitTrue = arr3.every(v => amenAmen.includes(v))
+    console.log(isitTrue, 'is it ')
+    if (isitTrue) {
+      finalHotels.push(hotel)
+    }
   })
-  
-  // return removeDuplicates(finalHotels)
-}
 
+  // valueToFilter.forEach(el1 => { /* 1 */
+  //   const el1IsPresentInArr2 = arr3.some(el2 => el2 === el1.newAmen) /* 2 */
+
+  //   if (el1IsPresentInArr2) { /* 3 */
+  //     difference.push(el1) /* 4 */
+  //   }
+  console.log(finalHotels, 'is it finally working ')
+  // })
+
+  return finalHotels
+}
 export const updateStarRatings = (arr1, arr2, arr3) => {
   console.log('filtering..')
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
   const res = valueToFilter.filter(hotel => arr3.includes(hotel.categoryName.toLowerCase()))
-  console.log(res, 'filtrest hotels with star rating')
+
   return res
 }
 export const readyTheArgument = (propey) => {
@@ -217,10 +253,29 @@ export const getAmenitiesArray = (arr1, arr2) => {
   }))
   return finalArray
 }
+export const createNewAmenitiesArray = (arr1, arr2) => {
+  // console.log(arr1, arr2, 'array')
+  const finalArray = []
+  const arr3 = arr1.filter(item => item.facilityGroupCode === 70 || 60 || 73)
+  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70 || 60 || 73)
+  const final = arr3.map(itemAPI => arr4.forEach(itemHardCode => {
+    if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
+      finalArray.push(itemHardCode.name)
+    }
+
+    return finalArray
+  }))
+  return finalArray
+}
 export const removy = (arr) => arr.filter((v, i) => arr.indexOf(v) === i)
 
 export function removeDuplicates (arr) {
   return [...new Set(arr)]
+}
+export const removeAmenDuplicates = (arr) => {
+  const uniqueSet = new Set(arr)
+  const backToArr = [...uniqueSet]
+  return backToArr
 }
 export function getUnique (arr, comp) {
   // store the comparison  values in array

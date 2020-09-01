@@ -62,6 +62,7 @@ export const HotelCardSearch = (props) => {
     imagesarray.unshift(firstImage)
   }
   const amenitiesToMap = getAmenitiesArray(facilitiesArr, searchResultsAmen)
+
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
 
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
