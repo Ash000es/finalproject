@@ -151,8 +151,9 @@ export const filterAmenSelection = (arr1, arr2, arr3) => {
   const finalHotels = []
   valueToFilter.map(hotel => {
     const amenAmen = hotel.newAmen
-    console.log(typeof amenAmen[0])
+    console.log(amenAmen)
     const isitTrue = arr3.every(v => amenAmen.includes(v))
+
     console.log(isitTrue, 'is it ')
     if (isitTrue) {
       finalHotels.push(hotel)

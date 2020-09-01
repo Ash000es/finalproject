@@ -187,27 +187,27 @@ const codes_Internet = [
     FacilityCode: 250,
     FacilityGroupCode: 70,
     icon: 22,
-    name: 'Internet'
+    name: 'Wi-fi'
 
   },
   {
     FacilityCode: 100,
     FacilityGroupCode: 60,
     icon: 22,
-    name: 'Internet'
+    name: 'Wi-fi'
 
   },
   {
     FacilityCode: 261,
     facilityGroupCode: 60,
     icon: 22,
-    name: 'Internet'
+    name: 'Wi-fi'
   },
   {
     FacilityCode: 550,
     facilityGroupCode: 70,
     icon: 22,
-    name: 'Internet'
+    name: 'Wi-fi'
   }
 ]
 const codes_petFriendly = [
@@ -277,28 +277,28 @@ const codes_Parking = [
     FacilityCode: 500,
     FacilityGroupCode: 70,
     icon: 12,
-    name: ' parking'
+    name: 'Parking'
 
   },
   {
     FacilityCode: 560,
     FacilityGroupCode: 70,
     icon: 12,
-    name: ' parking'
+    name: 'Parking'
 
   },
   {
     FacilityCode: 330,
     FacilityGroupCode: 70,
     icon: 12,
-    name: ' parking'
+    name: 'Parking'
 
   }
 ]
 export const amenDirectory = {
   Pool: codes_Pool,
   'Pet Friendly': codes_petFriendly,
-  Internet: codes_Internet,
+  'Wi-fi': codes_Internet,
   Spa: codes_Spa,
   Parking: codes_Parking,
   Gym: codes_Gym

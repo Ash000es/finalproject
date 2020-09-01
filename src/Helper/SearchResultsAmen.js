@@ -153,42 +153,42 @@ export const searchResultsAmen = [
     FacilityCode: 306,
     FacilityGroupCode: 60,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 326,
     FacilityGroupCode: 60,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'Private Pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 363,
     FacilityGroupCode: 73,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 364,
     FacilityGroupCode: 73,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 365,
     FacilityGroupCode: 73,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 360,
     FacilityGroupCode: 73,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
 
@@ -196,28 +196,28 @@ export const searchResultsAmen = [
     FacilityCode: 361,
     FacilityGroupCode: 73,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 362,
     FacilityGroupCode: 73,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 313,
     FacilityGroupCode: 60,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'pool'
+    name: 'Pool'
 
   },
   {
     FacilityCode: 573,
     FacilityGroupCode: 70,
     icon: <PoolOutlinedIcon style={style} />,
-    name: 'Private pool'
+    name: 'Pool'
 
   },
   {
@@ -287,7 +287,7 @@ export const searchResultsAmen = [
     FacilityCode: 320,
     FacilityGroupCode: 70,
     icon: <LocalParkingOutlinedIcon style={style} />,
-    name: 'parking'
+    name: 'Parking'
 
   }
 
