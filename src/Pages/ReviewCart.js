@@ -17,7 +17,7 @@ const ReviewCart = () => {
   const handleClickButton = (e, value) => {
     e.preventDefault()
     const filteredCartItems = cartItemsToMap.filter(cartitems => value !== cartitems)
-    console.log(filteredCartItems, 'filtred')
+
     setProject({ ...project, cartItems: filteredCartItems })
   }
 
@@ -27,27 +27,30 @@ const ReviewCart = () => {
       <div className='cartContainerDiv'>
 
         <div className='CartSelectionSummary'>
-          {cartItemsToMap && cartItemsToMap.map((item, i) => {
-            if (item.rooms) {
-              return (
-                <div className='hotelCheckoutCar' key={i} item={item}>
-                  <Card style={{ width: '18rem' }} key={i} item={item}>
-                    <Card.Img variant='top' src={item.image} style={{ width: 100, height: 180 }} />
-                    <Card.Body>
-                      <Card.Title>{item.hotelName}</Card.Title>
-                      <Card.Subtitle className='mb-2 text-muted'>{item.roomNumber}{item.roomType}</Card.Subtitle>
+          {!cartItemsToMap.length
+            ? <div><h2> Your cart is empty </h2></div>
 
-                      <Card.Text>
-                        {item.checkinDate}-{item.checkoutDate}
-                      </Card.Text>
-                      <Card.Text>{item.mySellingRate}$</Card.Text>
-                      <Button variant='outline-danger' key={i} value={item} onClick={(e) => handleClickButton(e, item)}>Remove</Button>
-                    </Card.Body>
-                  </Card>
-                </div>
-              )
-            }
-          })}
+            : cartItemsToMap.map((item, i) => {
+              if (item.rooms) {
+                return (
+                  <div className='hotelCheckoutCar' key={i} item={item}>
+                    <Card style={{ width: '18rem' }} key={i} item={item}>
+                      <Card.Img variant='top' src={item.image} style={{ width: 100, height: 180 }} />
+                      <Card.Body>
+                        <Card.Title>{item.hotelName}</Card.Title>
+                        <Card.Subtitle className='mb-2 text-muted'>{item.roomNumber}{item.roomType}</Card.Subtitle>
+
+                        <Card.Text>
+                          {item.checkinDate}-{item.checkoutDate}
+                        </Card.Text>
+                        <Card.Text>{item.mySellingRate}$</Card.Text>
+                        <Button variant='outline-danger' key={i} value={item} onClick={(e) => handleClickButton(e, item)}>Remove</Button>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                )
+              }
+            })}
           {cartItemsToMap && cartItemsToMap.map((item, i) => {
             if (item.summary) {
               return (

@@ -1,8 +1,16 @@
 import firebase from 'firebase'
 import 'firebase/firestore'
 import React from 'react'
+
+let keys
+if (process.env.NODE_ENV === 'production') {
+  keys = process.env
+} else {
+  keys = require('../Keys.json')
+}
+const { React_APP_firebaseKey } = keys
 const firebaseConfig = {
-  apiKey: 'AIzaSyBuIr6mPdVxv2t1xWwUTvrJzxmUkRxsblE',
+  apiKey: React_APP_firebaseKey,
   authDomain: 'hotels-62fad.firebaseapp.com',
   databaseURL: 'https://hotels-62fad.firebaseio.com',
   projectId: 'hotels-62fad',
@@ -19,5 +27,5 @@ firebase.initializeApp({
 })
 export const db = firebase.firestore()
 export const provider = new firebase.auth.GoogleAuthProvider()
-const FirebaseContext = React.createContext(db)
+export const FirebaseContext = React.createContext(db)
 export default FirebaseContext

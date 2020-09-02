@@ -26,7 +26,7 @@ export default function SimplePopover (props) {
   const id = open ? 'simple-popover' : undefined
 
   return (
-    <div>
+    <div style={{ marginRight: 10 }}>
       <Button aria-describedby={id} size='small' variant='contained' color='primary' onClick={handleClick}>
         Learn more
       </Button>

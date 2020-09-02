@@ -12,9 +12,9 @@ const NewAmenitiesSelect = (props) => {
     //   console.log(item, 'item')
     //   return amenDirectory[item]
     // })
-    // console.log(nestedArr, ' imporatnt look here')
+
     // const res = nestedArr.flat()
-    // console.log(res, 'nested here')
+
     setChossenAmenities(amenitiesName)
     setamenitiesName(amenitiesName)
     props.onChange(amenitiesName)
