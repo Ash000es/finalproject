@@ -5,7 +5,7 @@
 /node_modules
 /.pnp
 .pnp.js
-./src/keys.json
+
 ./src/components/MyProfile/Avatar.js
 ./src/components/MyProfile/DatePicker.js
 ./src/components/MyProfile/FavCard.js
