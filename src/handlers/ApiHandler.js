@@ -9,15 +9,15 @@ let keys
 if (process.env.NODE_ENV === 'production') {
   keys = process.env
 } else {
-  keys = require('../Keys.json')
+  keys = require('../keys.json')
 }
 const { REACT_APP_apikey, REACT_APP_sec } = keys
 
-export function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
+export async function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
 
   const getSignature = () => {
-    return Sign(REACT_APP_apikey + REACT_APP_sec + Math.round(D.getTime() / 1000))
+    return Sign(REACT_APP_apikey + REACT_APP_sec + Math.round(new Date().getTime() / 1000))
   }
 
   const createRequestBody = () => {
@@ -25,27 +25,41 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       stay,
       occupancies,
       destination,
-      reviews,
+      // reviews,
       dailyRate
     }
   }
 
   console.log(JSON.stringify(createRequestBody()))
-  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-    {
-      method: 'POST',
-      headers: {
-        'Api-Key': REACT_APP_apikey,
-        'X-Signature': getSignature(),
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Accept-Encoding': 'gzip'
-      },
+  // return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+  //   {
+  //     method: 'POST',
+  //     headers: {
+  //       'Api-Key': REACT_APP_apikey,
+  //       'X-Signature': getSignature(),
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'Accept-Encoding': 'gzip'
+  //     },
 
-      body: JSON.stringify(createRequestBody())
-    }).then(res => res.json()).then(Response => {
-    console.log(Response)
-    const { hotels } = Response
+  //     body: JSON.stringify(createRequestBody())
+  //   })
+  const options = {
+    method: 'POST',
+    headers: {
+      'Api-Key': REACT_APP_apikey,
+      'X-Signature': getSignature(),
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Accept-Encoding': 'gzip'
+    },
+
+    body: JSON.stringify(createRequestBody())
+  }
+  console.log(options, 'options')
+  return await window.fetch('http://localhost:9000/api/gethomepage', options).then(Res => {
+    console.log(Res)
+    const { hotels } = Res
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
@@ -133,7 +147,6 @@ const mapResultToHotel = (a1, a2) =>
   }))
   // popular destinations initial handler
 export function requestPopularDest ({ occupancies, destination, stay, reviews }) {
-  console.log({ occupancies, destination, stay, reviews }, 'populardest()')
   const D = new Date()
 
   const getSignature = () => {
@@ -161,37 +174,41 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       },
 
       body: JSON.stringify(createRequestBody())
-    }).then(res => res.json()).then(Response => {
-    const { hotels } = Response
-    console.log(hotels, 'res')
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(Response => {
+      const { hotels } = Response
+      console.log(hotels, 'res')
 
-    const checkInDate = hotels.checkIn
-    const checkInOut = hotels.checkOut
-    const hotelsOnly = hotels.hotels
+      const checkInDate = hotels.checkIn
+      const checkInOut = hotels.checkOut
+      const hotelsOnly = hotels.hotels
 
-    const insertDates = hotelsOnly.map(hotel => {
-      const apiRooms = hotel.rooms
-      const hotelRoom = apiRooms.map(room => {
-        const roomRatesArray = room.rates.map(rate => {
-          const mySellingRate1 = (rate.net * 113) / 100
-          const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
-          const newRateObject = { ...rate, mySellingRate }
+      const insertDates = hotelsOnly.map(hotel => {
+        const apiRooms = hotel.rooms
+        const hotelRoom = apiRooms.map(room => {
+          const roomRatesArray = room.rates.map(rate => {
+            const mySellingRate1 = (rate.net * 113) / 100
+            const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
+            const newRateObject = { ...rate, mySellingRate }
 
-          return newRateObject
+            return newRateObject
+          })
+          const newRoom = { ...room, rates: roomRatesArray }
+          return newRoom
         })
-        const newRoom = { ...room, rates: roomRatesArray }
-        return newRoom
+
+        const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+
+        return newHotel
       })
 
-      const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
-
-      return newHotel
+      const apiHotelResults1 = insertDates
+      const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
+      return apiHotelResults
     })
-
-    const apiHotelResults1 = insertDates
-    const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
-    return apiHotelResults
-  })
 }
 // popular destinations secound handler
 export const fetchPopularDestData = (des, db) => {

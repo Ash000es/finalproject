@@ -6,7 +6,7 @@ let keys
 if (process.env.NODE_ENV === 'production') {
   keys = process.env
 } else {
-  keys = require('../Keys.json')
+  keys = require('../keys.json')
 }
 const { React_APP_firebaseKey } = keys
 const firebaseConfig = {

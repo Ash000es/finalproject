@@ -19,7 +19,7 @@ let keys
 if (process.env.NODE_ENV === 'production') {
   keys = process.env
 } else {
-  keys = require('../Keys.json')
+  keys = require('../keys.json')
 }
 const { REACT_APP_googleAPIKey } = keys
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_googleAPIKey}`
