@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
@@ -30,19 +30,16 @@ const useRowStyles = makeStyles({
 
 function Row (props) {
   const { room } = props
-
   const row = room
-
   const [open, setOpen] = React.useState(false)
   const classes = useRowStyles()
   const collectValues = (rate, roomName, event) => {
     const roomType = roomName
     const roomNumber = event.target.value
     const price = rate.mySellingRate
-    // console.log(price, 'shoiuld be realp')
     const totalSelectionPrice = roomsCost(price, roomNumber)
     const roomSelectionInfo = { ...rate, roomType, roomNumber, totalSelectionPrice }
-    // console.log(roomSelectionInfo, 'here iam')
+
     props.onChange(roomSelectionInfo)
   }
   const collectExtrasValues = (extraRow, e) => {
@@ -55,28 +52,39 @@ function Row (props) {
   const renderRow = (rate, i) => {
     const cancelationPolicy = showCancelationPolicy(rate)
     return (
-
       <TableRow key={i} onChange={(e) => collectValues(rate, row.name, e)} id='poten-row'>
         {/* 2 */}
-        <TableCell align='right' id={cancelationPolicy === 'None refundable' ? 'roomsInfo1' : 'freeCancel'}>
-
+        <TableCell
+          align='right'
+          id={cancelationPolicy === 'None refundable' ? 'roomsInfo1' : 'freeCancel'}
+        >
           <p>{cancelationPolicy}</p>
         </TableCell>
         {/* 3 */}
-        <TableCell align='right' id='roomsInfo2'> {rate.boardName.toLowerCase()}</TableCell>
+        <TableCell align='right' id='roomsInfo2'>
+          {' '}
+          {rate.boardName.toLowerCase()}
+        </TableCell>
 
         {/* 4 */}
-        <TableCell align='right' id='roomsInfo3'> <div className='selectRooms-div'><SelectRoom rate={rate} /> </div></TableCell>
+        <TableCell align='right' id='roomsInfo3'>
+          {' '}
+          <div className='selectRooms-div'>
+            <SelectRoom rate={rate} />{' '}
+          </div>
+        </TableCell>
 
         {/* 5 */}
-        <TableCell align='right' id='roomsInfo4'> ${rate.mySellingRate}</TableCell>
+        <TableCell align='right' id='roomsInfo4'>
+          {' '}
+          ${rate.mySellingRate}
+        </TableCell>
       </TableRow>
     )
   }
-  // key={i} onChange={(e) => collectValues(rate, row.name, e)}
+
   return (
     <>
-
       <TableRow className={classes.root}>
         {/* 0 */}
         <TableCell id='outerMainRow'>
@@ -86,13 +94,14 @@ function Row (props) {
         </TableCell>
 
         {/* 1 */}
-        <TableCell scope='row' id='roomsName'>{row.name.toLowerCase()}</TableCell>
+        <TableCell scope='row' id='roomsName'>
+          {row.name.toLowerCase()}
+        </TableCell>
         <TableCell colSpan={4} id='padding-source'>
           {row.rates.map((r, i) => {
             return renderRow(r, i)
           })}
         </TableCell>
-
       </TableRow>
 
       <TableRow>
@@ -109,30 +118,29 @@ function Row (props) {
                     <TableCell>Amount</TableCell>
                     <TableCell align='right'>summary</TableCell>
                     <TableCell align='right'>Total price ($)</TableCell>
-
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {extras.map((extraRow) => (
-                    <TableRow key={extraRow.title} onChange={(e) => collectExtrasValues(extraRow, e, extraRow.title)}>
+                    <TableRow
+                      key={extraRow.title}
+                      onChange={(e) => collectExtrasValues(extraRow, e, extraRow.title)}
+                    >
                       <TableCell component='th' scope='row'>
                         {extraRow.title}
                       </TableCell>
-                      <TableCell><SelectExtra extraRow={extraRow} /></TableCell>
-                      <TableCell align='right'>{extraRow.summary}</TableCell>
-                      <TableCell align='right'>
-                        {extraRow.price}
+                      <TableCell>
+                        <SelectExtra extraRow={extraRow} />
                       </TableCell>
+                      <TableCell align='right'>{extraRow.summary}</TableCell>
+                      <TableCell align='right'>{extraRow.price}</TableCell>
                     </TableRow>
                   ))}
-
                 </TableBody>
               </Table>
             </Box>
           </Collapse>
-
         </TableCell>
-
       </TableRow>
     </>
   )
@@ -156,7 +164,6 @@ Row.propTypes = {
 
 export default function CollapsibleTable (props) {
   const { rooms } = props
-  // console.log(rooms, 'roomy here')
 
   return (
     <TableContainer component={Paper}>
@@ -166,23 +173,31 @@ export default function CollapsibleTable (props) {
             {/* 0 */}
             <TableCell />
             {/* 1 */}
-            <TableCell align='left' style={{ color: 'white' }}>Room Type</TableCell>
+            <TableCell align='left' style={{ color: 'white' }}>
+              Room Type
+            </TableCell>
             {/* 2 */}
-            <TableCell align='right' style={{ color: 'white', fontWeight: '550' }}>sleeps</TableCell>
+            <TableCell align='right' style={{ color: 'white', fontWeight: '550' }}>
+              sleeps
+            </TableCell>
             {/* 3 */}
-            <TableCell align='right' style={{ color: 'white' }}>Included</TableCell>
+            <TableCell align='right' style={{ color: 'white' }}>
+              Included
+            </TableCell>
             {/* 4 */}
-            <TableCell align='right' style={{ color: 'white' }}>selectrooms</TableCell>
+            <TableCell align='right' style={{ color: 'white' }}>
+              selectrooms
+            </TableCell>
             {/* 5 */}
-            <TableCell align='right' style={{ color: 'white' }}>price</TableCell>
-
+            <TableCell align='right' style={{ color: 'white' }}>
+              price
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rooms.map((room, i) => (
             <Row key={i} room={room} onChange={props.onChange} />
           ))}
-
         </TableBody>
       </Table>
     </TableContainer>

@@ -1,226 +1,180 @@
-.hotelpage-outerdiv{
-    border: 2px solid darkgrey;
-    padding-top:1rem;
-    padding-bottom:1rem;
-    padding-right:2rem;
-    padding-left:2rem;
-    
-    
-   
+.hotelpage-outerdiv {
+  border: 2px solid darkgrey;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
-.hotelPage-text{
-    /* border: 1px solid red; */
-    text-align: center;
-    min-height: 5rem;
-    margin:2rem auto;
-    
+.hotelPage-text {
+  text-align: center;
+  min-height: 5rem;
+  margin: 2rem auto;
 }
-h4{
-    color:rgb(106, 101, 101);
-    font-weight: 900;
+h4 {
+  color: rgb(106, 101, 101);
+  font-weight: 900;
 }
 
-.hotelAdress{
-    min-width: 50%;
-    /* border:1px solid green; */
+.hotelAdress {
+  min-width: 50%;
 }
 .hotel-Name-Label-div {
-    display:flex;
-    justify-content: flex-start;
-    align-content: flex-end;
-    align-items: baseline;
-    max-width:100%;
-    height:40%;
-   
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-end;
+  align-items: baseline;
+  max-width: 100%;
+  height: 40%;
 }
-.hotel-Name-Label-div  p{
-    font-weight:600;
-    font-size: 1.3rem;
-    
+.hotel-Name-Label-div p {
+  font-weight: 600;
+  font-size: 1.3rem;
 }
-.address-div{
-  
-    max-width:100%;
-    display:flex;
-    justify-content: flex-start;
-    align-content: flex-end;
-    align-items: baseline;
-    height:60%;
-    
-    
-    }
-.spaceMe{
-    margin-right:10px;
-}  
-    
-.TA-Div{
-   
-   
-    min-height:100%;
-    display:flex;
-
-    flex-direction: row-reverse; 
-    min-width: 50%;
-   
-    max-width:50%;
+.address-div {
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-end;
+  align-items: baseline;
+  height: 60%;
 }
-#RatingText{
-    font-weight:300;
-    font-size: 1rem;
-    
+.spaceMe {
+  margin-right: 10px;
 }
 
+.TA-Div {
+  min-height: 100%;
+  display: flex;
 
-.Headline_TA-Wrapper{
-    display:flex;
-    justify-content: space-between;
- height: 6rem;
- 
+  flex-direction: row-reverse;
+  min-width: 50%;
+
+  max-width: 50%;
 }
-.subheadingText{
-    text-decoration:underline ;
-   
-}
-
-
-
-.table-float{
-    
-    display: flex;
-    justify-content: space-between;
-    width:100%;
-    min-width:100%;
-    margin-bottom:2rem;
+#RatingText {
+  font-weight: 300;
+  font-size: 1rem;
 }
 
-.floatedInfo{
-   
-    width: 15%;
-   
-    min-height: 100%;
-    background-color:#E8F1FF ;
+.Headline_TA-Wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 6rem;
 }
-.emptyDiv-Background{
-    width:100%;
-   height:56px;
-    background-color: #0088BC;
-    margin-bottom:1rem;
-    margin-top:0;
-  
-    
-}    
-.tableAlone{
-   
-    width: 85%;
+.subheadingText {
+  text-decoration: underline;
 }
 
+.table-float {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 100%;
+  margin-bottom: 2rem;
+}
 
+.floatedInfo {
+  width: 15%;
+  min-height: 100%;
+  background-color: #e8f1ff;
+}
+.emptyDiv-Background {
+  width: 100%;
+  height: 56px;
+  background-color: #0088bc;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+.tableAlone {
+  width: 85%;
+}
 
 /* styling the text and cell position inside the hotel page table */
 
-
-#roomsName{
-    font-size:1.2rem;
-    font-weight:450;
-    text-transform: capitalize;
-    max-width:252px !important;
-
+#roomsName {
+  font-size: 1.2rem;
+  font-weight: 450;
+  text-transform: capitalize;
+  max-width: 252px !important;
 }
 
 /* Table cells css */
-#poten-row{
-    display:flex !important;
-   
-    flex-wrap: nowrap;
-   
-    align-content: center;
-   
-
+#poten-row {
+  display: flex !important;
+  flex-wrap: nowrap;
+  align-content: center;
 }
-#padding-source{
-    padding:0px !important;
+#padding-source {
+  padding: 0px !important;
 }
-#freeCancel{
-    color:#249D3C;
-    font-weight:600;
-    font-size:12px;
-    /* border:1px solid rgb(3, 101, 14); */
-    
-    padding:10px !important;
-    flex-grow: 2;
-    min-height:100%;
-    text-align: left;
-    flex-basis: 20%;
+#freeCancel {
+  color: #249d3c;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 10px !important;
+  flex-grow: 2;
+  min-height: 100%;
+  text-align: left;
+  flex-basis: 20%;
 }
-#roomsInfo1{
-    /* border:1px solid rgb(4, 134, 30); */
-    padding:10px !important;
-    font-weight:450;
-    text-transform: capitalize;
-    flex-grow: 2;
-    min-height:100%;
-    text-align: left;
-    flex-basis: 20%;
-    flex-shrink:2 ;
+#roomsInfo1 {
+  padding: 10px !important;
+  font-weight: 450;
+  text-transform: capitalize;
+  flex-grow: 2;
+  min-height: 100%;
+  text-align: left;
+  flex-basis: 20%;
+  flex-shrink: 2;
 }
-#roomsInfo2{
-    /* border:1px solid rgb(4, 134, 30); */
-    padding:10px !important;
-    font-weight:450;
-    text-transform: capitalize;
-    flex-grow: 2;
-    min-height:100%;
-    text-align: center;
-    flex-basis: 30%;
-    flex-shrink:2 
+#roomsInfo2 {
+  padding: 10px !important;
+  font-weight: 450;
+  text-transform: capitalize;
+  flex-grow: 2;
+  min-height: 100%;
+  text-align: center;
+  flex-basis: 30%;
+  flex-shrink: 2;
 }
-#roomsInfo3{
-    /* border:1px solid rgb(4, 134, 30); */
-    padding:10px !important;  
-    font-weight:450;
-    text-transform: capitalize;
-    flex-grow: 1;
-    min-height:100%;
-    flex-basis: 20%;
-    text-align: center;
-    flex-shrink:1;
+#roomsInfo3 {
+  padding: 10px !important;
+  font-weight: 450;
+  text-transform: capitalize;
+  flex-grow: 1;
+  min-height: 100%;
+  flex-basis: 20%;
+  text-align: center;
+  flex-shrink: 1;
 }
-#roomsInfo4{
-    /* border:1px solid rgb(4, 134, 30); */
-    padding:10px !important; 
-    font-weight:450;
-    text-transform: capitalize;
-    flex-grow: 1;
-    min-height:100%;
-    text-align: right;
-    flex-basis: 20%;
-    flex-shrink:1 ;
+#roomsInfo4 {
+  padding: 10px !important;
+  font-weight: 450;
+  text-transform: capitalize;
+  flex-grow: 1;
+  min-height: 100%;
+  text-align: right;
+  flex-basis: 20%;
+  flex-shrink: 1;
 }
-.selectRooms-div{
-    position: relative;
-    left:25%;
-    top:10%;
+.selectRooms-div {
+  position: relative;
+  left: 25%;
+  top: 10%;
 }
 /* table right side summary button css */
- .roomsSummary, .extrasSummary{
-     text-align:center;
-     /* border: 1px solid green; */
-     
-     font-size:1rem;
-     padding:5px;
-     
-     
-
-
- }
- p .roomsSummary, .extrasSummary {
-   color:grey;
-   font-size:14px;
-   font-weight:450;
-  padding:10px;
+.roomsSummary,
+.extrasSummary {
+  text-align: center;
+  font-size: 1rem;
+  padding: 5px;
+}
+p .roomsSummary,
+.extrasSummary {
+  color: grey;
+  font-size: 14px;
+  font-weight: 450;
+  padding: 10px;
   line-height: 10px;
-    
-
-
 }

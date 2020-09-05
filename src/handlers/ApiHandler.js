@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 const { REACT_APP_apikey, REACT_APP_sec } = keys
 
-export async function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
+export function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
 
   const getSignature = () => {
@@ -25,7 +25,7 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
       stay,
       occupancies,
       destination,
-      // reviews,
+      reviews,
       dailyRate
     }
   }
@@ -44,6 +44,7 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
 
   //     body: JSON.stringify(createRequestBody())
   //   })
+
   const options = {
     method: 'POST',
     headers: {
@@ -52,52 +53,56 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
       Accept: 'application/json',
       'Content-Type': 'application/json',
       'Accept-Encoding': 'gzip'
+
     },
 
     body: JSON.stringify(createRequestBody())
   }
   console.log(options, 'options')
-  return await window.fetch('http://localhost:9000/api/gethomepage', options).then(Res => {
-    console.log(Res)
-    const { hotels } = Res
+  return window.fetch('http://localhost:9000/api/gethomepage', options)
+    .then(res => {
+      return res.json()
+    }).then(Res => {
+      console.log(Res)
+      const { hotels } = Res
 
-    const checkInDate = hotels.checkIn
-    const checkInOut = hotels.checkOut
-    const hotelsOnly = hotels.hotels
+      const checkInDate = hotels.checkIn
+      const checkInOut = hotels.checkOut
+      const hotelsOnly = hotels.hotels
 
-    const insertDates = hotelsOnly.map(hotel => {
-      const apiRooms = hotel.rooms
-      const hotelRoom = apiRooms.map(room => {
-        const roomRatesArray = room.rates.map(rate => {
-          const mySellingRate1 = (rate.net * 113) / 100
-          const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
-          const newRateObject = { ...rate, mySellingRate }
-          // console.log(newRateObject, 'new rate')
-          return newRateObject
+      const insertDates = hotelsOnly.map(hotel => {
+        const apiRooms = hotel.rooms
+        const hotelRoom = apiRooms.map(room => {
+          const roomRatesArray = room.rates.map(rate => {
+            const mySellingRate1 = (rate.net * 113) / 100
+            const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
+            const newRateObject = { ...rate, mySellingRate }
+            // console.log(newRateObject, 'new rate')
+            return newRateObject
+          })
+          const newRoom = { ...room, rates: roomRatesArray }
+          return newRoom
         })
-        const newRoom = { ...room, rates: roomRatesArray }
-        return newRoom
+        // console.log(hotelRoom, 'newrooms')
+
+        const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+
+        return newHotel
       })
-      // console.log(hotelRoom, 'newrooms')
+      const apiHotelResults1 = insertDates
 
-      const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+      const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
-      return newHotel
+      // console.log(apiHotelResults)
+      const hotelIDS = apiHotelResults.map(hotel => hotel.code)
+
+      return fetchHotels(destination.code, hotelIDS, db)
+        .then(dbHotels => {
+          const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
+
+          return hotelsProject
+        })
     })
-    const apiHotelResults1 = insertDates
-
-    const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
-
-    // console.log(apiHotelResults)
-    const hotelIDS = apiHotelResults.map(hotel => hotel.code)
-
-    return fetchHotels(destination.code, hotelIDS, db)
-      .then(dbHotels => {
-        const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
-
-        return hotelsProject
-      })
-  })
 }
 
 const fetchHotels = (destination, hotelIDS, db) => {
@@ -116,29 +121,6 @@ const fetchHotels = (destination, hotelIDS, db) => {
       })
   })
 }
-// const mapResultToHotel = (dbHotels, apiHotelResults) => {
-//   const final = []
-//   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
-//     // const { address, images, description, interestPoints, lastUpdate, license } = dbHotel
-//     const address = dbHotel.address
-//     const images = dbHotel.images
-//     console.log(images, ' images in api hand')
-//     const description = dbHotel.description
-//     const interestPoints = dbHotel.interestPoints
-//     const lastUpdate = dbHotel.lastUpdate
-//     const license = dbHotel.license
-//     const amenities1 = dbHotel.facilities
-//     const amenities2 = removeDuplicates(amenities1)
-//     // console.log(amenities2, 'iam 2')
-
-//     if (dbHotel.code === apiHotel.code) {
-//       apiHotel = { ...apiHotel, amenities2, address, images, description, interestPoints, lastUpdate, license }
-//       // console.log(apiHotel, 'new')
-//       final.push(apiHotel)
-//     }
-//   }))
-//   return final
-// }
 
 const mapResultToHotel = (a1, a2) =>
   a2.map(itm => ({
@@ -251,3 +233,26 @@ export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => 
       body: JSON.stringify(createRequestBody())
     }).then(res => console.log(res.json(), 'respose'))
 }
+// const mapResultToHotel = (dbHotels, apiHotelResults) => {
+//   const final = []
+//   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
+//     // const { address, images, description, interestPoints, lastUpdate, license } = dbHotel
+//     const address = dbHotel.address
+//     const images = dbHotel.images
+//     console.log(images, ' images in api hand')
+//     const description = dbHotel.description
+//     const interestPoints = dbHotel.interestPoints
+//     const lastUpdate = dbHotel.lastUpdate
+//     const license = dbHotel.license
+//     const amenities1 = dbHotel.facilities
+//     const amenities2 = removeDuplicates(amenities1)
+//     // console.log(amenities2, 'iam 2')
+
+//     if (dbHotel.code === apiHotel.code) {
+//       apiHotel = { ...apiHotel, amenities2, address, images, description, interestPoints, lastUpdate, license }
+//       // console.log(apiHotel, 'new')
+//       final.push(apiHotel)
+//     }
+//   }))
+//   return final
+// }

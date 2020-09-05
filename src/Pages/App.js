@@ -122,7 +122,7 @@ function App (props) {
             <Switch>
 
               <Route path='/hotelpage' exact component={HotelPage} />
-              <Route path='/about' exact component={ProfileContainer} />
+              <Route path='/about' exact component={AboutUs} />
               <Route path='/reviewcart' excat component={ReviewCart} />
               <Route path='/Travelessentials' exact component={ShoppingCart} />
               <Route path='/searchresults' exact component={HotelList} />

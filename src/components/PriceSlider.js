@@ -1,22 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
-import HomePageResults from './HomepageResults'
 import { debounce } from 'debounce'
 import { colorStyles } from '../Helper/Constants'
-import { red } from '@material-ui/core/colors'
+
 export const DEFAULT_SLIDER_VALUE = [0, 1000]
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: 300 + theme.spacing(3) * 2
   },
   margin: {
     height: theme.spacing(3)
-
   }
 }))
 
@@ -41,7 +39,6 @@ const PrettoSlider = withStyles({
     color: colorStyles.orange,
     height: 8,
     marginBottom: -3
-
   },
   thumb: {
     height: 20,
@@ -83,12 +80,20 @@ export default function PriceSlider (props) {
 
   return (
     <div className={classes.root}>
-
       <div className={classes.margin} />
-      <Typography gutterBottom style={{ fontSize: 12 }}>Total price</Typography>
+      <Typography gutterBottom style={{ fontSize: 12 }}>
+        Total price
+      </Typography>
 
-      <PrettoSlider max={1000} onChange={(_, v) => onChangeSlider(v)} tempfilteredhotels={props.tempfilteredhotels} hotelsresults={props.hotelsresults} valueLabelDisplay='auto' getAriaLabel={(index: number) => 'Pretto Slider'} defaultValue={DEFAULT_SLIDER_VALUE} />
+      <PrettoSlider
+        max={1000}
+        onChange={(_, v) => onChangeSlider(v)}
+        tempfilteredhotels={props.tempfilteredhotels}
+        hotelsresults={props.hotelsresults}
+        valueLabelDisplay='auto'
+        getAriaLabel={(index: number) => 'Pretto Slider'}
+        defaultValue={DEFAULT_SLIDER_VALUE}
+      />
     </div>
-
   )
 }

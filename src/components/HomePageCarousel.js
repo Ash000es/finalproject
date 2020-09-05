@@ -11,30 +11,28 @@ export default function HomePageCarousel (props) {
   }
 
   return (
-    <Carousel className='caro' activeIndex={index} onSelect={handleSelect} touch pause={false} controls={false} fade indicators={false} keyboard interval={3000} wrap={false}>
+    <Carousel
+      className='caro'
+      activeIndex={index}
+      onSelect={handleSelect}
+      touch
+      pause={false}
+      controls={false}
+      fade
+      indicators={false}
+      keyboard
+      interval={3000}
+      wrap={false}
+    >
       {ShopHomepage.map((item, i) => {
         return (
-
           <Carousel.Item item={item} key={i} className='carousel-item'>
+            <img className='img-responsive' src={item.image} alt={item.title} />
 
-            <img
-              className='img-responsive'
-              src={item.image}
-              alt={item.title}
-
-            />
-
-            <Carousel.Caption>
-              {/* <h6>{item.title}</h6>  */}
-              {/* <p>{item.subtitle}</p> */}
-            </Carousel.Caption>
+            <Carousel.Caption />
           </Carousel.Item>
-
         )
-      }
-
-      )}
+      })}
     </Carousel>
-
   )
 }

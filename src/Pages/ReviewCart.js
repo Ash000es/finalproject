@@ -8,7 +8,6 @@ import './Payment.css'
 const ReviewCart = () => {
   const { project, setProject } = useContext(ProjectContext)
   const cartItemsToMap = project.cartItems
-  // console.log(cartItemsToMap, 'here')
   const style = {
     borderColor: '#FF8B00',
     backgroundColor: '#FF8B00',
@@ -56,7 +55,7 @@ const ReviewCart = () => {
               return (
                 <div className='extraCheckoutCar'>
                   <Card>
-                    {/* src='holder.js/100px160' */}
+
                     <Card.Img variant='top' src={item.image} style={{ width: 100, height: 160 }} />
                     <Card.Body>
                       <Card.Title>{item.extraSelectionNum || item.num}{item.title}</Card.Title>

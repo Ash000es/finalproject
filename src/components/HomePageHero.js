@@ -1,9 +1,4 @@
 import React from 'react'
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Button from '@material-ui/core/Button'
-import Image from 'react-bootstrap/Image'
-import Card from 'react-bootstrap/Card'
-import SearchBar from './SearchBar'
 import './Hero.css'
 import beach from '../assets/beach.jpg'
 import HomePageCarousel from './HomePageCarousel'
@@ -13,25 +8,18 @@ const HomePageHero = () => {
   return (
     <>
       <div className='bigCon'>
-
         <img src={beach} style={{ width: '100%', height: '45%' }} alt='Card image' />
-
       </div>
 
       <div className='splitCon'>
         <div className='con2'>
-
           <HomePageCarousel ShopHomepage={ShopHomepage} />
-
         </div>
         <div className='con3'>
           <HomePageCarousel ShopHomepage={ActivityHomepage} />
         </div>
       </div>
-      {/* <div className='con1'>
-
-      {/* </div> */}
-
     </>
   )
-}; export default HomePageHero
+}
+export default HomePageHero

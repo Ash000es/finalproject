@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   gridList: {
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
   },
   title: {
@@ -35,7 +34,6 @@ export const ExtrasList = () => {
   return (
 
     <div className={classes.root}>
-      {/* {console.log('yaay', extras)} */}
 
       <GridList
         className={classes.gridList} cols={3}

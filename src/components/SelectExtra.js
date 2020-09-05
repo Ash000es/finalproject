@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import Form from 'react-bootstrap/Form'
 
 const SelectExtra = (props) => {
-//   console.log(props, 'props from extras')
   const size = {
     height: '20px', width: '40px'
   }

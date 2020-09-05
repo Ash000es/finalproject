@@ -1,50 +1,28 @@
-import { MyProvider, ProjectContext } from '../providers/Provider'
-import React, { useContext, useState, useEffect } from 'react'
-import { db, project, setProject, masterLinkLarge, masterLinkSmall, popularCities, poshCodes, boldCodes, essentialCodes, homesCodes } from './Constants.js'
+
+import React, { useState, useEffect } from 'react'
+import {
+  poshCodes,
+  boldCodes,
+  essentialCodes,
+  homesCodes
+} from './Constants.js'
 import { requestPopularDest } from '../handlers/ApiHandler'
-import { maxTime } from 'date-fns/esm'
-import { OmitProps } from 'antd/lib/transfer/ListBody'
+
 import CatLabel from '../components/CatLabel'
 import ReviewsLabel from '../components/ReviewsLabel'
 
-// export const getRoomPicture = (resultsarray, hotelsarray) => {
-//   const [rooms] = project.results.hotels.rooms
-//   const [images] = project.hotels.images
-
-//   for (const room of rooms) {
-//     for (const image of images) {
-//       if (room.code === image.roomCode) return [image.path]
-//       break
-//     }
-//   }
-// }
-
-// export const handleClick = (hotel.code) => {
-//     addToCart(code)=>setProject({...project,addedItems:code})
-
-// }
-
-// }
-// for (let i = 0; i < popularCities.length; i++) {
-//   const res = await handleHomePageSearch(popularCities[i], state)
-//   ALL_RESULTS.push(res)
-
-// }
 export const constfirstRoomImage = (arr) => {
-  return arr.find(image => image.imageTypeCode && image.imageTypeCode === 'HAB'
-  )
+  return arr.find((image) => image.imageTypeCode && image.imageTypeCode === 'HAB')
 }
 
 export const roomPictureMatch = (roomArr, imagesArr, masterLinkSmall) => {
-  return roomArr.map(room => {
+  return roomArr.map((room) => {
     const roomCode = room.code
-    const imageArr = imagesArr.filter(image => image.roomCode && image.roomCode === roomCode)
+    const imageArr = imagesArr.filter((image) => image.roomCode && image.roomCode === roomCode)
     const newRoom = { ...room, roomImagePath: imageArr }
 
     return newRoom
-  }
-
-  )
+  })
 }
 
 const VeryGood = 'Very good'
@@ -61,13 +39,46 @@ export const reviewSummaryReturn = (reviewsObj) => {
 }
 export const labelReturn = (code) => {
   if (poshCodes.includes(code)) {
-    return <CatLabel name='Posh' look={{ background: 'rgb(97,39,92)', width: '3.125rem', fontWeight: '450', marginBottom: 0 }} />
-  } if (boldCodes.includes(code)) {
-    return <CatLabel name='Bold' look={{ background: 'rgb(5,94,112)', width: '3.125rem', fontWeight: '450', marginBottom: 0 }} />
-  } if (essentialCodes.includes(code)) {
-    return <CatLabel name='Essential' look={{ background: 'rgb(42,120,24)', fontWeight: '450', marginBottom: 0 }} />
-  } if (homesCodes.includes(code)) {
-    return <CatLabel name='Homelike' look={{ background: 'rgb(244,165,48)', fontWeight: '450', marginBottom: 0 }} />
+    return (
+      <CatLabel
+        name='Posh'
+        look={{
+          background: 'rgb(97,39,92)',
+          width: '3.125rem',
+          fontWeight: '450',
+          marginBottom: 0
+        }}
+      />
+    )
+  }
+  if (boldCodes.includes(code)) {
+    return (
+      <CatLabel
+        name='Bold'
+        look={{
+          background: 'rgb(5,94,112)',
+          width: '3.125rem',
+          fontWeight: '450',
+          marginBottom: 0
+        }}
+      />
+    )
+  }
+  if (essentialCodes.includes(code)) {
+    return (
+      <CatLabel
+        name='Essential'
+        look={{ background: 'rgb(42,120,24)', fontWeight: '450', marginBottom: 0 }}
+      />
+    )
+  }
+  if (homesCodes.includes(code)) {
+    return (
+      <CatLabel
+        name='Homelike'
+        look={{ background: 'rgb(244,165,48)', fontWeight: '450', marginBottom: 0 }}
+      />
+    )
   } else {
     return null
   }
@@ -108,73 +119,28 @@ export function truncateString (str, num) {
   }
   return str.slice(0, num) + '...'
 }
-// export const filterAmenSelection = (arr1, arr2, arr3) => {
-//   console.log(arr1, arr2, arr3, 'Working...')
-//   const finalHotels = []
-//   // arguments are either temp or all results and the chosen array of amenities with codes and names
-//   const valueToFilter = arr1.length && arr1.length > 0 ? arr1 : arr2
-//   valueToFilter.map(hotel => {
-//     const amenAmen = hotel.newAmen
-//     const doesItInclude = amenAmen.includes(arr3)
-//     if (doesItInclude) {
-//       finalHotels.push(hotel)
-//     }
-//   })
-//   // const checker = (arr3, valueToFilter) => valueToFilter.every(v => arr3.includes(v))
-//   // if (checker) {
-//   //   finalHotels.push(v)
-//   // }
-
-//   console.log(finalHotels, 'final hotels')
-//   // return removeDuplicates(finalHotels)
-//   return finalHotels
-// }
-
-// const getArraysDifference = (longerArray, array2) => {
-//   const difference = []
-
-//   longerArray.forEach(el1 => { /* 1 */
-//     el1IsPresentInArr2 = array2.some(el2 => el2.value === el1.value) /* 2 */
-
-//     if (!el1IsPresentInArr2) { /* 3 */
-//       difference.push(el1) /* 4 */
-//     }
-//   })
-
-//   return difference
-// }
 
 export const filterAmenSelection = (arr1, arr2, arr3) => {
   console.log(arr1, arr2, arr3, 'Working...')
   console.log(typeof arr3[0])
   const valueToFilter = arr1.length && arr1.length > 0 ? arr1 : arr2
   const finalHotels = []
-  valueToFilter.map(hotel => {
+  valueToFilter.map((hotel) => {
     const amenAmen = hotel.newAmen
     console.log(amenAmen)
-    const isitTrue = arr3.every(v => amenAmen.includes(v))
+    const isitTrue = arr3.every((v) => amenAmen.includes(v))
 
     console.log(isitTrue, 'is it ')
     if (isitTrue) {
       finalHotels.push(hotel)
     }
   })
-
-  // valueToFilter.forEach(el1 => { /* 1 */
-  //   const el1IsPresentInArr2 = arr3.some(el2 => el2 === el1.newAmen) /* 2 */
-
-  //   if (el1IsPresentInArr2) { /* 3 */
-  //     difference.push(el1) /* 4 */
-  //   }
-  console.log(finalHotels, 'is it finally working ')
-  // })
-
-  return finalHotels
 }
+
 export const updateStarRatings = (arr1, arr2, arr3) => {
   console.log('filtering..')
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
-  const res = valueToFilter.filter(hotel => arr3.includes(hotel.categoryName.toLowerCase()))
+  const res = valueToFilter.filter((hotel) => arr3.includes(hotel.categoryName.toLowerCase()))
 
   return res
 }
@@ -189,24 +155,22 @@ export const readyTheArgument = (propey) => {
 export const showHotelsOnly = (arr1, arr2, arr3) => {
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
 
-  const res = valueToFilter.filter(hotel => !arr3.includes(hotel.categoryCode))
-  // console.log(res, 'filtrest hotels only')
+  const res = valueToFilter.filter((hotel) => !arr3.includes(hotel.categoryCode))
 
   return res
 }
 export const showHomesOnly = (arr1, arr2, arr3) => {
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
-  const res = valueToFilter.filter(hotel => !arr3.includes(hotel.categoryCode))
-  // console.log(res, 'filtrest homes only')
+  const res = valueToFilter.filter((hotel) => !arr3.includes(hotel.categoryCode))
 
   return res
 }
-// export const updatePrice = (arr1, arr2, arr3) => {
+
 // go through results and remove hotels that are not within the price range
 export const updatePrice = (min, max, arr1, arr2) => {
   const resultsToFilter = arr1.length >= 1 ? arr1 : arr2
   console.log('filtering holtes between ', min, max)
-  const results = resultsToFilter.filter(hotel => {
+  const results = resultsToFilter.filter((hotel) => {
     const hotelMinRate = Number(hotel.minRate)
     const hotelMaxRate = Number(hotel.maxRate)
 
@@ -228,7 +192,9 @@ export const sortByRecommended = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {
     console.log('sorting recommended..')
-    return Number(b.reviews[0].rate) - Number(a.reviews[0].rate) || Number(a.minRate) - Number(b.minRate)
+    return (
+      Number(b.reviews[0].rate) - Number(a.reviews[0].rate) || Number(a.minRate) - Number(b.minRate)
+    )
   })
 }
 
@@ -236,36 +202,41 @@ export const sortByReview = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {
     console.log('sorting review..')
-    return Number(b.reviews[0].rate) - Number(a.reviews[0].rate) || Number(b.reviews[0].reviewCount) - Number(a.reviews[0].reviewCount)
+    return (
+      Number(b.reviews[0].rate) - Number(a.reviews[0].rate) ||
+      Number(b.reviews[0].reviewCount) - Number(a.reviews[0].reviewCount)
+    )
   })
 }
 
 export const getAmenitiesArray = (arr1, arr2) => {
-  // console.log(arr1, arr2, 'array')
   const finalArray = []
-  const arr3 = arr1.filter(item => item.facilityGroupCode === 70 || 60 || 73)
-  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70 || 60 || 73)
-  const final = arr3.map(itemAPI => arr4.forEach(itemHardCode => {
-    if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
-      finalArray.push({ name: itemHardCode.name, icon: itemHardCode.icon })
-    }
+  const arr3 = arr1.filter((item) => item.facilityGroupCode === 70 || 60 || 73)
+  const arr4 = arr2.filter((item) => item.FacilityGroupCode === 70 || 60 || 73)
+  const final = arr3.map((itemAPI) =>
+    arr4.forEach((itemHardCode) => {
+      if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
+        finalArray.push({ name: itemHardCode.name, icon: itemHardCode.icon })
+      }
 
-    return finalArray
-  }))
+      return finalArray
+    })
+  )
   return finalArray
 }
 export const createNewAmenitiesArray = (arr1, arr2) => {
-  // console.log(arr1, arr2, 'array')
   const finalArray = []
-  const arr3 = arr1.filter(item => item.facilityGroupCode === 70 || 60 || 73)
-  const arr4 = arr2.filter(item => item.FacilityGroupCode === 70 || 60 || 73)
-  const final = arr3.map(itemAPI => arr4.forEach(itemHardCode => {
-    if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
-      finalArray.push(itemHardCode.name)
-    }
+  const arr3 = arr1.filter((item) => item.facilityGroupCode === 70 || 60 || 73)
+  const arr4 = arr2.filter((item) => item.FacilityGroupCode === 70 || 60 || 73)
+  const final = arr3.map((itemAPI) =>
+    arr4.forEach((itemHardCode) => {
+      if (itemAPI.facilityCode === itemHardCode.FacilityCode) {
+        finalArray.push(itemHardCode.name)
+      }
 
-    return finalArray
-  }))
+      return finalArray
+    })
+  )
   return finalArray
 }
 export const removy = (arr) => arr.filter((v, i) => arr.indexOf(v) === i)
@@ -280,13 +251,15 @@ export const removeAmenDuplicates = (arr) => {
 }
 export function getUnique (arr, comp) {
   // store the comparison  values in array
-  const unique = arr.map(e => e[comp])
+  const unique = arr
+    .map((e) => e[comp])
 
-  // store the indexes of the unique objects
+    // store the indexes of the unique objects
     .map((e, i, final) => final.indexOf(e) === i && i)
 
-  // eliminate the false indexes & return unique objects
-    .filter((e) => arr[e]).map(e => arr[e])
+    // eliminate the false indexes & return unique objects
+    .filter((e) => arr[e])
+    .map((e) => arr[e])
 
   return unique
 }
@@ -295,7 +268,7 @@ export function getUnique (arr, comp) {
 
 export const getLargePictures = (imageArr, masterLinkLarge) => {
   const hotelsLarge = []
-  imageArr.map(imageObject => {
+  imageArr.map((imageObject) => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkLarge}${imageObjectPath}`
 
@@ -307,7 +280,7 @@ export const getLargePictures = (imageArr, masterLinkLarge) => {
 }
 export const getSmallPictures = (imageArr, masterLinkSmall) => {
   const hotels = []
-  imageArr.forEach(imageObject => {
+  imageArr.forEach((imageObject) => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkSmall}${imageObjectPath}`
 
@@ -324,24 +297,17 @@ export const convertDates = (startDate, endDate) => {
   const checkOut = endDate._d
   const datesArray = Array.of(checkIn, checkOut)
 
-  const date1 = datesArray.map(i => i.toLocaleDateString())
+  const date1 = datesArray.map((i) => i.toLocaleDateString())
   console.log(typeof date1[0], 'look here')
-  const date2 = date1.map(i => i.replace('/', '-').replace('/', '-'))
-  const date3 = date2.map(i => i.split('-'))
-  const date4 = date3.map(i => i.reverse())
-  const finalDate = date4.map(i => i.join('-'))
+  const date2 = date1.map((i) => i.replace('/', '-').replace('/', '-'))
+  const date3 = date2.map((i) => i.split('-'))
+  const date4 = date3.map((i) => i.reverse())
+  const finalDate = date4.map((i) => i.join('-'))
   return finalDate
 }
-// export const getSmallPictures = (image, masterLinkSmall) => {
-//   const imageObjectPath = image.path
-//   const newPath = `${masterLinkSmall}${imageObjectPath}`
 
-//   const imageObject = { ...image, path: newPath }
-//   return imageObject
-// }
-//  imagesArray, props.room, masterLinkSmall)
 export function isFreeCancelAvailabe (arg) {
-  return arg.map(rate => {
+  return arg.map((rate) => {
     if (rate.rateClass !== 'NRF') {
       return 'NOR'
     }
@@ -349,17 +315,17 @@ export function isFreeCancelAvailabe (arg) {
 }
 
 export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
-  return arr1.map(imageObject => arr2.filter(roomObject => {
-    if (imageObject.roomCode === roomObject.code) {
-      const newPath = `${masterLinkSmall}${imageObject.path}`
-      console.log(newPath, 'newpath')
-      return newPath
-      // maybe I need to skip  mapping the secound arr?
-    }
-  }))
+  return arr1.map((imageObject) =>
+    arr2.filter((roomObject) => {
+      if (imageObject.roomCode === roomObject.code) {
+        const newPath = `${masterLinkSmall}${imageObject.path}`
+        console.log(newPath, 'newpath')
+        return newPath
+      }
+    })
+  )
 }
 export const showCancelationPolicy = (rate) => {
-  // room.rates.map(rate => {
   const cancelationArray = rate.cancellationPolicies
   const cancelationFeeFrom = cancelationArray[0].from
   const newDate = cancelationFeeFrom.slice(0, 10)
@@ -370,7 +336,6 @@ export const showCancelationPolicy = (rate) => {
   } else {
     return `Free Cancelation before ${newDate}`
   }
-  // })
 }
 export const roomsCost = (a, b) => {
   return a * b
@@ -391,17 +356,14 @@ export const findCheapestHotel = (arr) => {
 }
 
 export const sumUp = (accumulator, currentValue) => accumulator + currentValue
-
-// arr.map(des => {
-//   const lowestRates = [des.minRate]
-//   // const lowestRate = Math.min(...lowestRates)
-//   console.log(lowestRates, 'yop')
-
+// const nestedArr = amenitiesName.map(item => {
+//   console.log(item, 'item')
+//   return amenDirectory[item]
 // })
 
-// return arr.reduce(function (prev, curr) {
-//   if (prev.minRate < curr.minRate) {
-//     return prev.minRate
-//   }
-// })
-// })
+// const res = nestedArr.flat()
+// for (let i = 0; i < popularCities.length; i++) {
+//   const res = await handleHomePageSearch(popularCities[i], state)
+//   ALL_RESULTS.push(res)
+
+// }

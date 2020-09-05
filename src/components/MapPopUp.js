@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
-import { GoogleMapPopUp, WrapperMap } from './GoogleMapPopUp'
+import { WrapperMap } from './GoogleMapPopUp'
 import Button from '@material-ui/core/Button'
-import { googleAPIKey, googleURL } from '../Helper/Constants'
-import { MyProvider, ProjectContext } from '../providers/Provider'
+import { googleURL } from '../Helper/Constants'
 
 const MapPopUp = (props) => {
-  console.log(props, 'map pop up')
   const [show, setShow] = useState(false)
 
   return (
-    < >
-      <Button style={{ color: props.mapHotelsResults.length ? 'green' : 'blue' }} size='small' color='primary' onClick={() => setShow(true)}>
+    <>
+      <Button
+        style={{ color: props.mapHotelsResults.length ? 'green' : 'blue' }}
+        size='small'
+        color='primary'
+        onClick={() => setShow(true)}
+      >
         Show map
       </Button>
 
@@ -21,15 +24,9 @@ const MapPopUp = (props) => {
         onHide={() => setShow(false)}
         dialogClassName='modal-2000w'
         aria-labelledby='example-custom-modal-styling-title'
-
       >
-        <Modal.Header closeButton>
-          {/* <Modal.Title id='example-custom-modal-styling-title'>
-            Custom Modal Styling
-          </Modal.Title> */}
-        </Modal.Header>
+        <Modal.Header closeButton />
         <Modal.Body>
-
           <div style={{ width: 1100, height: 600 }}>
             <WrapperMap
               googleMapURL={googleURL}
@@ -45,4 +42,5 @@ const MapPopUp = (props) => {
       </Modal>
     </>
   )
-}; export default MapPopUp
+}
+export default MapPopUp

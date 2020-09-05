@@ -2,68 +2,57 @@
   width: 100%;
 
   display: flex;
-  
-  /* max-height: 450px; */
+
   align-items: center;
-  /* height: 25rem; */
-  border:1px solid green;
+
+  border: 1px solid green;
   margin-top: 1rem;
   margin-right: 0rem;
   margin-left: 0rem;
   background-size: cover;
   background-position: bottom center;
-  
 }
 
-
 .splitCon {
-  /* background-color: salmon; */
   max-width: 100%;
-  max-height:32rem;
+  max-height: 32rem;
   margin: 1rem auto;
   display: flex;
   flex-wrap: row wrap;
-
 }
 
 .con2 {
-  /* background-color:blue; */
   width: 50%;
   min-width: 25%;
- height: 70% ;
- padding:0.35rem;
-  overflow:hidden;
-  
+  height: 70%;
+  padding: 0.35rem;
+  overflow: hidden;
 }
 
 .con3 {
-  /* background-color: yellow; */
   width: 50%;
   min-width: 25%;
-  height: 70% ;
-  padding:0.35rem;
-  overflow:hidden;
+  height: 70%;
+  padding: 0.35rem;
+  overflow: hidden;
 }
 @media screen and (max-width: 928px) {
   /* start of large tablet styles */
   .splitCon {
-    display:block;
-    height:25rem;
-    
+    display: block;
+    height: 25rem;
   }
-  .con2{
-    /* display:block; */
-    width:100%;
-    height:50%; 
-    overflow:hidden;
-    padding:0.55rem;
+  .con2 {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    padding: 0.55rem;
   }
-  .con3{
-   /* display:block; */
-    width:100%;
-    height:50%; 
-    overflow:hidden;
-    padding:0.55rem;
+  .con3 {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    padding: 0.55rem;
     margin-bottom: 1rem;
   }
 }

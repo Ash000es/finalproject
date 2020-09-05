@@ -5,7 +5,7 @@ import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
@@ -14,17 +14,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up(992)]: {
       height: '100%',
       width: '100%'
-
     },
     [theme.breakpoints.between(835, 992)]: {
       height: 36
-
     },
     [theme.breakpoints.down(835)]: {
       maxWidth: 686
-
     }
-
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -38,9 +34,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     marginLeft: theme.spacing(1),
     flex: 1
-
   }
-
 }))
 
 export default function SearchField (props) {
@@ -55,10 +49,7 @@ export default function SearchField (props) {
   }
 
   return (
-    <Paper
-      component='form' className={classes.root}
-    >
-
+    <Paper component='form' className={classes.root}>
       <InputBase
         onChange={handleChange}
         className={classes.input}
@@ -68,12 +59,10 @@ export default function SearchField (props) {
         margin='dense'
         required
         type='search'
-
       />
       <IconButton type='submit' className={classes.iconButton} aria-label='search'>
         <SearchIcon />
       </IconButton>
-
     </Paper>
   )
 }

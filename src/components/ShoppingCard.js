@@ -21,7 +21,6 @@ const useStyles = makeStyles({
   },
   container: {
     display: 'flex',
-    // backgroundColor: 'red',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     alignContent: 'space-around'

@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 const style = {
@@ -9,10 +8,12 @@ const style = {
 const ReviewsLabel = (props) => {
   return (
     <>
-
-      <p style={style}>{props.label}</p><p>based on {props.reviewsObj.reviewCount}{' reviews'}</p>
-      {/* <p>{props.reviewsObj.rate}</p> */}
-
+      <p style={style}>{props.label}</p>
+      <p>
+        based on {props.reviewsObj.reviewCount}
+        {' reviews'}
+      </p>
     </>
   )
-}; export default ReviewsLabel
+}
+export default ReviewsLabel

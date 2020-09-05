@@ -1,6 +1,6 @@
-import React, { useState, useContext, useMemo } from 'react'
+import React, { useState, useContext } from 'react'
 import { SearchResultsCarousel } from '../components/SearchResultsCarousel'
-import { MyProvider, ProjectContext } from '../providers/Provider'
+import { ProjectContext } from '../providers/Provider'
 import { getLargePictures, getAmenitiesArray, sumUp, getUnique, truncateString, labelReturn, roomPictureMatch, constfirstRoomImage } from '../Helper/Helper'
 import CollapsibleTable from '../components/ExpandableTable'
 import { Redirect } from 'react-router'
@@ -27,21 +27,17 @@ const HotelPage = React.memo((props) => {
     return <Redirect exact push to='/searchresults' />
   }
 
-  // if (!Object.keys(currentSelection).length) return null
   const facilitiesArray = currentSelection.facilities
   const checkinDate = currentSelection.checkInDate
   const checkoutDate = currentSelection.checkInOut
   const hotelName = currentSelection.name.content || currentSelection.name
   const roomy1 = currentSelection.apiRooms
-
   const images = currentSelection.images
   const roomy = roomPictureMatch(roomy1, images, masterLinkSmall)
-
   const imagesArray = getLargePictures(currentSelection.images, masterLinkLarge)
   const firstImage = constfirstRoomImage(images)
   const imageObjectPath = firstImage.path
   const newPath = `${masterLinkSmall}${imageObjectPath}`
-
   const keyFacts = currentSelection.description.content
   const cartItems = project.cartItems
   const readyAmenities = getAmenitiesArray(facilitiesArray, hotelAmen)

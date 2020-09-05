@@ -23,18 +23,14 @@ import mykonos from '../assets/mykonos.jpg'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: screenWidth =>
-      screenWidth < 992 ? 650 : 360,
+    maxWidth: (screenWidth) => (screenWidth < 992 ? 650 : 360),
     maxHeight: 280,
     margin: '1rem '
-
   },
   media: {
     maxHeight: 190,
-    maxWidth: screenWidth =>
-      screenWidth < 992 ? 650 : 320,
+    maxWidth: (screenWidth) => (screenWidth < 992 ? 650 : 320),
     borderRadius: 5
-
   },
   container: {
     display: 'flex',
@@ -44,17 +40,14 @@ const useStyles = makeStyles({
 
     flexShrink: 1,
     margin: '1rem auto'
-
   },
   Button: {
     color: '#0088BC'
-
   },
   cardText: {
     maxheight: '4.375rem'
   },
   Popular: {
-
     display: 'flex',
     justifyContent: 'center',
     fontWeight: 'medium',
@@ -64,9 +57,7 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     minWidth: 100,
     textDecoration: 'underline'
-
   }
-
 })
 
 const HomePageResults = (props) => {
@@ -75,37 +66,54 @@ const HomePageResults = (props) => {
   const [desResults, setDesResults] = useState()
   const [redirect, setRedirect] = useState(false)
   const [isloading, setIsLoading] = useState(false)
-  const [popularCities, setPopularCities] = useState([{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }])
-  const popularImages = [santorini, barcelona, ibiza, lisbon, majorca, menorca, mykonos, napoli, monto3]
+  const [popularCities, setPopularCities] = useState([
+    { code: 'SAT' },
+    { code: 'BCN' },
+    { code: 'IBZ' },
+    { code: 'LIS' },
+    { code: 'PMI' },
+    { code: 'MAH' },
+    { code: 'MKS' },
+    { code: 'NAP' },
+    { code: 'TIV' }
+  ])
+  const popularImages = [
+    santorini,
+    barcelona,
+    ibiza,
+    lisbon,
+    majorca,
+    menorca,
+    mykonos,
+    napoli,
+    monto3
+  ]
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
 
-  const [state, setState] = useState(
-    {
-
-      stay: {
-        checkIn: '2021-05-15',
-        checkOut: '2021-05-16'
-      },
-      occupancies: [
-        {
-          rooms: 1,
-          adults: 1,
-          children: 0
-        }
-      ],
-      destination: {
-        code: ''
-
-      },
-      reviews: [{
+  const [state, setState] = useState({
+    stay: {
+      checkIn: '2021-05-15',
+      checkOut: '2021-05-16'
+    },
+    occupancies: [
+      {
+        rooms: 1,
+        adults: 1,
+        children: 0
+      }
+    ],
+    destination: {
+      code: ''
+    },
+    reviews: [
+      {
         type: 'TRIPADVISOR',
         minRate: 3,
         minReviewCount: 3
-      }]
-
-    }
-  )
+      }
+    ]
+  })
 
   // useEffect(() => {
   //   const fetchDestinations = async () => {
@@ -138,10 +146,10 @@ const HomePageResults = (props) => {
     setIsLoading(true)
     fetchPopularDestData(des, db)
       .then((hotelsProject) => {
-        setProject(
-          { ...project, results: hotelsProject }
-        )
-      }).then(() => setIsLoading(false)).then(() => setRedirect(true))
+        setProject({ ...project, results: hotelsProject })
+      })
+      .then(() => setIsLoading(false))
+      .then(() => setRedirect(true))
     console.log(project, 'project')
   }
   if (redirect) {
@@ -155,17 +163,16 @@ const HomePageResults = (props) => {
       </div>
 
       <div className={classes.container}>
-
-        {isloading ? <Spinning />
-          : <>
-            {
-              desResults && desResults.map((des, i) => {
+        {isloading ? (
+          <Spinning />
+        ) : (
+          <>
+            {desResults &&
+              desResults.map((des, i) => {
                 const cheap = findCheapestHotel(des)
                 return (
-
                   <Card className={classes.root} key={i} des={des} onClick={() => handleClick(des)}>
                     <CardActionArea>
-
                       <CardMedia
                         component='img'
                         className={classes.media}
@@ -181,15 +188,13 @@ const HomePageResults = (props) => {
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-
                   </Card>
                 )
-              })
-            }
-            </>}
+              })}
+          </>
+        )}
       </div>
     </>
-
   )
 }
 

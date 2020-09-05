@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Select } from 'antd'
-import { amenitiesToFilter, amenDirectory } from '../Helper/Constants.js'
+import { amenitiesToFilter } from '../Helper/Constants.js'
 
 const NewAmenitiesSelect = (props) => {
   const [amenitiesName, setamenitiesName] = useState([])
@@ -8,19 +8,12 @@ const NewAmenitiesSelect = (props) => {
   // chossenAmenties is all the chosen amenites in an array of objects which includes codes and name
 
   const handleChange = (amenitiesName) => {
-    // const nestedArr = amenitiesName.map(item => {
-    //   console.log(item, 'item')
-    //   return amenDirectory[item]
-    // })
-
-    // const res = nestedArr.flat()
-
     setChossenAmenities(amenitiesName)
     setamenitiesName(amenitiesName)
     props.onChange(amenitiesName)
   }
 
-  const filteredOptions = amenitiesToFilter.filter(o => !amenitiesName.includes(o))
+  const filteredOptions = amenitiesToFilter.filter((o) => !amenitiesName.includes(o))
   return (
     <Select
       mode='multiple'
@@ -31,13 +24,13 @@ const NewAmenitiesSelect = (props) => {
       style={{ width: '25%' }}
       size='large'
       bordered
-
     >
-      {filteredOptions.map(item => (
+      {filteredOptions.map((item) => (
         <Select.Option key={item} value={item} className='amenFilter'>
           {item}
         </Select.Option>
       ))}
     </Select>
   )
-}; export default NewAmenitiesSelect
+}
+export default NewAmenitiesSelect

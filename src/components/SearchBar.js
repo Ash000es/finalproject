@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import 'antd/dist/antd.css'
 import SearchField from './SearchField'
-import { withStyles } from '@material-ui/styles'
 import FirebaseContext from '../providers/Firebase'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from './PriceSlider'
@@ -23,7 +22,6 @@ const SearchBar = (props) => {
     borderColor: colorStyles.orange,
     height: 48,
     width: 95
-    // border: '1px solid black'
   }
   const style2 = {
     backgroundColor: colorStyles.orange,
@@ -34,19 +32,14 @@ const SearchBar = (props) => {
   const style3 = {
     backgroundColor: colorStyles.orange,
     borderColor: colorStyles.orange
-
   }
   const styles = {
-    Button:
-  {
-    backgroundColor: colorStyles.orange,
-    borderColor: colorStyles.orange,
-    height: screenWidth <= 992 ? 36 : 48,
-    width: screenWidth > 992 ? 94.8 : 53
-
-  }
-    // size: width >= 992 ? 'lg' : 'sm',
-    // block: (width <= 479)
+    Button: {
+      backgroundColor: colorStyles.orange,
+      borderColor: colorStyles.orange,
+      height: screenWidth <= 992 ? 36 : 48,
+      width: screenWidth > 992 ? 94.8 : 53
+    }
   }
   const intialState = {
     results: {},
@@ -56,57 +49,43 @@ const SearchBar = (props) => {
   const db = useContext(FirebaseContext)
   const { project, setProject } = useContext(ProjectContext)
   const [state, setState] = useState(intialState)
-  // console.log(fullbar, 'fullbar')
   const [isloading, setIsLoading] = useState(false)
-  // console.log(isloading, 'isloading')
   const [destination, setDestination] = useState({
     code: 'IBZ'
-  }
-  )
+  })
 
-  const [reviews, setReviews] = useState(
-    [{
+  const [reviews, setReviews] = useState([
+    {
       type: 'TRIPADVISOR',
       minRate: 3,
       minReviewCount: 3
-    }]
-  )
-  const [stay, setStay] = useState(
-    {
-      checkIn: '2020-11-15',
-      checkOut: '2020-11-16'
     }
-  )
+  ])
+  const [stay, setStay] = useState({
+    checkIn: '2020-11-15',
+    checkOut: '2020-11-16'
+  })
 
   const [occupancies, setOccupancies] = useState([
     {
       rooms: 1,
       adults: 1,
       children: 0
-      // paxes: [{
-      // type: '',
-      // age: 0
-      // }]
     }
-  ]
-  )
+  ])
   const dailyRate = true
 
   const handleClickButton = () => {
-    setProject(
-      { ...project, results: [] }
-    )
+    setProject({ ...project, results: [] })
 
     props.startLoading()
     const payLoad = { occupancies, destination, stay, reviews, dailyRate }
-    // console.log(payLoad, 'payload')
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
         console.log(project, 'results here')
-        setProject(
-          { ...project, results: hotelsProject }
-        )
-      }).then(() => {
+        setProject({ ...project, results: hotelsProject })
+      })
+      .then(() => {
         props.done()
       })
   }
@@ -137,22 +116,27 @@ const SearchBar = (props) => {
 
   if (screenWidth > 992) {
     style = style1
-  } if (screenWidth <= 992 && screenWidth >= 835) {
+  }
+  if (screenWidth <= 992 && screenWidth >= 835) {
     style = style2
-  } if (screenWidth < 835) {
+  }
+  if (screenWidth < 835) {
     style = style3
   }
 
   return (
     <div className='searchBar-outerDiv'>
-
       <div className='SearchBar'>
         <div className='searchBar-searchField'>
           <SearchField onChange={handleLocationChange} width={props.width} />
         </div>
         <div className='searchBar-datePicker'>
           <div className='extraDiv'>
-            <DateRangePickerWrapper onChange={handleDateChange1} className='datePick' width={props.width} />
+            <DateRangePickerWrapper
+              onChange={handleDateChange1}
+              className='datePick'
+              width={props.width}
+            />
           </div>
           <div className='searchBar-occSelector'>
             <div>
@@ -166,20 +150,24 @@ const SearchBar = (props) => {
         </div>
 
         <div className='searchBar-Button'>
-          <Button variant='primary' block={screenWidth < 835} style={style} onClick={handleClickButton}>Search</Button>{' '}
+          <Button
+            variant='primary'
+            block={screenWidth < 835}
+            style={style}
+            onClick={handleClickButton}
+          >
+            Search
+          </Button>{' '}
         </div>
       </div>
-      {props.fullbar &&
+      {props.fullbar && (
         <div className='SearchBarFilters'>
-
           <PriceSlider onChange={props.onChange} />
           <NewAmenitiesSelect onChange={props.handleAmenSelection} />
           <StartRatingSelect onChange={props.onClick} />
-
-        </div>}
-
+        </div>
+      )}
     </div>
-
   )
 }
 

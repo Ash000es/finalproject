@@ -1,12 +1,10 @@
 
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
-
 import { Rating } from '@material-ui/lab'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-
 import '../Pages/HotelPage.css'
 
 const StyledRating = withStyles({
@@ -21,7 +19,6 @@ const StyledRating = withStyles({
 export default function CustomizedRatings (props) {
   return (
     <div className='RatingOuterDiv'>
-      {/* <img src={tripadvisor} style={{ width: 25, height: 25 }} /> */}
       <Box component='fieldset' mb={3} borderColor='transparent'>
         <Typography component='legend'>Tripadvisor reviews</Typography>
 

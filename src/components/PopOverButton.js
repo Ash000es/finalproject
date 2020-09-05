@@ -27,7 +27,13 @@ export default function SimplePopover (props) {
 
   return (
     <div style={{ marginRight: 10 }}>
-      <Button aria-describedby={id} size='small' variant='contained' color='primary' onClick={handleClick}>
+      <Button
+        aria-describedby={id}
+        size='small'
+        variant='contained'
+        color='primary'
+        onClick={handleClick}
+      >
         Learn more
       </Button>
       <Popover
