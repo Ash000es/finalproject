@@ -10,6 +10,7 @@ import breakfast from '../assets/breakfast.jpg'
 import cake from '../assets/cake.jpg'
 import wine from '../assets/wine.jpg'
 import sushi from '../assets/sushi.jpg'
+import 
 
 // homepage results const
 
@@ -19,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   keys = require('../keys.json')
 }
-const { REACT_APP_googleAPIKey } = keys
+const { REACT_APP_googleAPIKey} = keys
 export const googleURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_googleAPIKey}`
 export const popularCities = [{ code: 'SAT' }, { code: 'BCN' }, { code: 'IBZ' }, { code: 'LIS' }, { code: 'PMI' }, { code: 'MAH' }, { code: 'MKS' }, { code: 'NAP' }, { code: 'TIV' }]
 
