@@ -72,6 +72,7 @@ export const HotelList = () => {
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
   const size = useWindowSize()
   const width = size.width
+  console.log(hotelsresults, tempfilteredhotels, 'value to map')
 
   // fetch from context first 5 results to display
   useEffect(() => {
@@ -172,8 +173,8 @@ export const HotelList = () => {
       res = updateStarRatings(res, hotelsresults, filters.starRating)
     }
     if (filters.Amenities.length > 0) {
-      console.log(filters.Amenities, 'iam going to be filtered against')
       res = filterAmenSelection(res, hotelsresults, filters.Amenities)
+      console.log(res, 'res amen here')
     }
     if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
       res = updatePrice(filters.priceFilter[0], filters.priceFilter[1], res, hotelsresults)

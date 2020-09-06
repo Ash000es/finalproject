@@ -121,24 +121,23 @@ export function truncateString (str, num) {
 }
 
 export const filterAmenSelection = (arr1, arr2, arr3) => {
-  console.log(arr1, arr2, arr3, 'Working...')
-  console.log(typeof arr3[0])
   const valueToFilter = arr1.length && arr1.length > 0 ? arr1 : arr2
   const finalHotels = []
   valueToFilter.map((hotel) => {
     const amenAmen = hotel.newAmen
-    console.log(amenAmen)
-    const isitTrue = arr3.every((v) => amenAmen.includes(v))
+    console.log(amenAmen, 'Working...')
 
-    console.log(isitTrue, 'is it ')
+    const isitTrue = arr3.every((v) => amenAmen.includes(v))
+    console.log(isitTrue, 'Working true...')
+
     if (isitTrue) {
       finalHotels.push(hotel)
     }
   })
+  return finalHotels
 }
 
 export const updateStarRatings = (arr1, arr2, arr3) => {
-  console.log('filtering..')
   const valueToFilter = arr1.length >= 1 ? arr1 : arr2
   const res = valueToFilter.filter((hotel) => arr3.includes(hotel.categoryName.toLowerCase()))
 

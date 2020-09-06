@@ -1,6 +1,6 @@
 import React from 'react'
 import './Hero.css'
-import beach from '../assets/beach.jpg'
+import cover from '../assets/cover.svg'
 import HomePageCarousel from './HomePageCarousel'
 import { ShopHomepage, ActivityHomepage } from '../Helper/Constants'
 
@@ -8,7 +8,7 @@ const HomePageHero = () => {
   return (
     <>
       <div className='bigCon'>
-        <img src={beach} style={{ width: '100%', height: '45%' }} alt='Card image' />
+        <img src={cover} style={{ width: '100%', height: '45%' }} alt='Card image' />
       </div>
 
       <div className='splitCon'>

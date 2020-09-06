@@ -89,7 +89,7 @@ function App (props) {
     <ProjectProvider>
       <FirebaseContext.Provider value={db}>
         <MemoryRouter>
-          <Container className='pt-3' fixed>
+          <Container className='pt-3'>
             <Navbar collapseOnSelect bg='light' expand='md' className='navBar'>
               <Navbar.Brand href='#home'>Logo</Navbar.Brand>
               <Navbar.Toggle aria-controls='responsive-navbar-nav' />

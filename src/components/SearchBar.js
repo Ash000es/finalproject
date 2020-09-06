@@ -15,7 +15,7 @@ import { colorStyles } from '../Helper/Constants'
 
 const SearchBar = (props) => {
   const screenWidth = props.width
-  console.log(screenWidth, 'searchbar')
+
   let style
   const style1 = {
     backgroundColor: colorStyles.orange,

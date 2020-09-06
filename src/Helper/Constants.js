@@ -43,8 +43,8 @@ export const extras = [
 
 ]
 
-export const masterLinkSmall = 'https://photos.hotelbeds.com/giata/'
-export const masterLinkLarge = 'https://photos.hotelbeds.com/giata/bigger/'
+export const masterLinkSmall = 'http://photos.hotelbeds.com/giata/'
+export const masterLinkLarge = 'http://photos.hotelbeds.com/giata/bigger/'
 // cont
 const blue = '#0088BC'
 const orange = '#FF8B00'

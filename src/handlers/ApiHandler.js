@@ -1,9 +1,6 @@
 
 import Sign from 'js-sha256'
-import { removeDuplicates } from '../Helper/Helper'
-import { amenities } from '../Helper/amenities'
-import { masterLinkLarge, masterLinkSmall, categoryCodes } from '../Helper/Constants.js'
-import { TableCell } from '@material-ui/core'
+import { categoryCodes } from '../Helper/Constants.js'
 
 let keys
 if (process.env.NODE_ENV === 'production') {
@@ -30,79 +27,56 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     }
   }
 
-  console.log(JSON.stringify(createRequestBody()))
-  // return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-  //   {
-  //     method: 'POST',
-  //     headers: {
-  //       'Api-Key': REACT_APP_apikey,
-  //       'X-Signature': getSignature(),
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //       'Accept-Encoding': 'gzip'
-  //     },
+  console.log('fetching api..')
+  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+    {
+      method: 'POST',
+      headers: {
+        'Api-Key': REACT_APP_apikey,
+        'X-Signature': getSignature(),
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'gzip'
+      },
 
-  //     body: JSON.stringify(createRequestBody())
-  //   })
+      body: JSON.stringify(createRequestBody())
+    }).then(res => {
+    return res.json()
+  }).then(Res => {
+    console.log(Res)
+    const { hotels } = Res
 
-  const options = {
-    method: 'POST',
-    headers: {
-      'Api-Key': REACT_APP_apikey,
-      'X-Signature': getSignature(),
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'Accept-Encoding': 'gzip'
+    const checkInDate = hotels.checkIn
+    const checkInOut = hotels.checkOut
+    const hotelsOnly = hotels.hotels
 
-    },
+    const insertDates = hotelsOnly.map(hotel => {
+      const apiRooms = hotel.rooms
+      const hotelRoom = apiRooms.map(room => {
+        const roomRatesArray = room.rates.map(rate => {
+          const mySellingRate1 = (rate.net * 113) / 100
+          const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
+          const newRateObject = { ...rate, mySellingRate }
 
-    body: JSON.stringify(createRequestBody())
-  }
-  console.log(options, 'options')
-  return window.fetch('http://localhost:9000/api/gethomepage', options)
-    .then(res => {
-      return res.json()
-    }).then(Res => {
-      console.log(Res)
-      const { hotels } = Res
-
-      const checkInDate = hotels.checkIn
-      const checkInOut = hotels.checkOut
-      const hotelsOnly = hotels.hotels
-
-      const insertDates = hotelsOnly.map(hotel => {
-        const apiRooms = hotel.rooms
-        const hotelRoom = apiRooms.map(room => {
-          const roomRatesArray = room.rates.map(rate => {
-            const mySellingRate1 = (rate.net * 113) / 100
-            const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
-            const newRateObject = { ...rate, mySellingRate }
-            // console.log(newRateObject, 'new rate')
-            return newRateObject
-          })
-          const newRoom = { ...room, rates: roomRatesArray }
-          return newRoom
+          return newRateObject
         })
-        // console.log(hotelRoom, 'newrooms')
-
-        const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
-
-        return newHotel
+        const newRoom = { ...room, rates: roomRatesArray }
+        return newRoom
       })
-      const apiHotelResults1 = insertDates
 
-      const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
-
-      // console.log(apiHotelResults)
-      const hotelIDS = apiHotelResults.map(hotel => hotel.code)
-
-      return fetchHotels(destination.code, hotelIDS, db)
-        .then(dbHotels => {
-          const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
-
-          return hotelsProject
-        })
+      const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+      return newHotel
     })
+    const apiHotelResults1 = insertDates
+    const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
+    const hotelIDS = apiHotelResults.map(hotel => hotel.code)
+    return fetchHotels(destination.code, hotelIDS, db)
+      .then(dbHotels => {
+        const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
+
+        return hotelsProject
+      })
+  })
 }
 
 const fetchHotels = (destination, hotelIDS, db) => {
@@ -143,7 +117,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       reviews
     }
   }
-  console.log(JSON.stringify(createRequestBody()))
+
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
       method: 'POST',
@@ -162,7 +136,6 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
     })
     .then(Response => {
       const { hotels } = Response
-      console.log(hotels, 'res')
 
       const checkInDate = hotels.checkIn
       const checkInOut = hotels.checkOut
@@ -194,6 +167,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
 }
 // popular destinations secound handler
 export const fetchPopularDestData = (des, db) => {
+  console.log('fetching api..')
   const destinationCode = des[0].destinationCode
   const hotelIDS = des.map(hotel => hotel.code)
   return fetchHotels(destinationCode, hotelIDS, db)

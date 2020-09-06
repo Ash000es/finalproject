@@ -18,13 +18,11 @@ const DateRangePickerWrapper = (props) => {
 
   useEffect(() => {
     if (state.startDate !== null && state.endDate !== null) {
-      console.log('true..')
       const final = convertDates(state.startDate, state.endDate)
-      console.log(final, 'true..')
       props.onChange(final)
     }
   }, [state])
-  console.log(block, 'block')
+
   return (
     <div>
       <DateRangePicker
