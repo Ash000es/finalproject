@@ -1,46 +1,44 @@
 import React, { useContext, useState } from 'react'
 import 'antd/dist/antd.css'
+import './SearchBar.css'
 import SearchField from './SearchField'
 import FirebaseContext from '../providers/Firebase'
 import Button from 'react-bootstrap/Button'
 import PriceSlider from './PriceSlider'
-import './SearchBar.css'
 import { MyProvider, ProjectContext } from '../providers/Provider'
 import { requestAvailableHotels } from '../handlers/ApiHandler'
 import NewOccSelector from './NewOccSelector'
 import StartRatingSelect from './NewStarRatingSelect'
 import NewAmenitiesSelect from './NewAmenitiesSelect'
 import DateRangePickerWrapper from './AirDateRange'
-import { colorStyles } from '../Helper/Constants'
+import { makeStyles } from '@material-ui/core/styles'
 
-const SearchBar = (props) => {
-  const screenWidth = props.width
-
-  let style
-  const style1 = {
-    backgroundColor: colorStyles.orange,
-    borderColor: colorStyles.orange,
-    height: 48,
-    width: 95
-  }
-  const style2 = {
-    backgroundColor: colorStyles.orange,
-    borderColor: colorStyles.orange,
-    height: 36,
-    width: 94.8
-  }
-  const style3 = {
-    backgroundColor: colorStyles.orange,
-    borderColor: colorStyles.orange
-  }
-  const styles = {
-    Button: {
-      backgroundColor: colorStyles.orange,
-      borderColor: colorStyles.orange,
-      height: screenWidth <= 992 ? 36 : 48,
-      width: screenWidth > 992 ? 94.8 : 53
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(1),
+    [theme.breakpoints.up(992)]: {
+      backgroundColor: '#FF8B00 !important',
+      borderColor: '#FF8B00 !important',
+      height: 48,
+      width: 95
+    },
+    [theme.breakpoints.between(835, 992)]: {
+      backgroundColor: '#FF8B00 !important',
+      borderColor: '#FF8B00 !important',
+      height: 36,
+      width: 94.8
+    },
+    [theme.breakpoints.down(835)]: {
+      backgroundColor: '#FF8B00 !important',
+      borderColor: '#FF8B00 !important',
+      block: true
     }
   }
+}))
+const SearchBar = (props) => {
+  const screenWidth = props.width
+  const classes = useStyles()
+
   const intialState = {
     results: {},
     hotels: [],
@@ -102,7 +100,6 @@ const SearchBar = (props) => {
 
   const handleOccChange = (event) => {
     const newOcc = event
-    console.log(typeof newOcc, 'here')
     const { rooms, adults, children } = occupancies
 
     setOccupancies([{ rooms: 1, adults: newOcc, children: 0 }])
@@ -112,16 +109,6 @@ const SearchBar = (props) => {
     const newOcc = event
     const { rooms, adults, children } = occupancies
     setOccupancies([{ rooms: 1, adults: 1, children: newOcc }])
-  }
-
-  if (screenWidth > 992) {
-    style = style1
-  }
-  if (screenWidth <= 992 && screenWidth >= 835) {
-    style = style2
-  }
-  if (screenWidth < 835) {
-    style = style3
   }
 
   return (
@@ -151,10 +138,10 @@ const SearchBar = (props) => {
 
         <div className='searchBar-Button'>
           <Button
-            variant='primary'
-            block={screenWidth < 835}
-            style={style}
+
+            block={classes.root}
             onClick={handleClickButton}
+            className={classes.root}
           >
             Search
           </Button>{' '}

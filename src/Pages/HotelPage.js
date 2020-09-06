@@ -79,11 +79,7 @@ const HotelPage = React.memo((props) => {
 
   const handleClickExtra = (e, value) => {
     // e.persist()
-
-    console.log(value, 'e')
-
     const filteredCartItems = totalSelectedExtrasInfo.filter(extraitems => value !== extraitems)
-    console.log(filteredCartItems, 'filtred')
     setTotalSelectedExtrasInfo(filteredCartItems)
   }
 

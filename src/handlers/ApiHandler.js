@@ -43,7 +43,6 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     }).then(res => {
     return res.json()
   }).then(Res => {
-    console.log(Res)
     const { hotels } = Res
 
     const checkInDate = hotels.checkIn
@@ -192,7 +191,7 @@ export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => 
       hotels
     }
   }
-  console.log(JSON.stringify(createRequestBody()))
+
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
       method: 'POST',
@@ -205,7 +204,7 @@ export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => 
       },
 
       body: JSON.stringify(createRequestBody())
-    }).then(res => console.log(res.json(), 'respose'))
+    }).then(res => res.json())
 }
 // const mapResultToHotel = (dbHotels, apiHotelResults) => {
 //   const final = []
@@ -213,18 +212,18 @@ export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => 
 //     // const { address, images, description, interestPoints, lastUpdate, license } = dbHotel
 //     const address = dbHotel.address
 //     const images = dbHotel.images
-//     console.log(images, ' images in api hand')
+//
 //     const description = dbHotel.description
 //     const interestPoints = dbHotel.interestPoints
 //     const lastUpdate = dbHotel.lastUpdate
 //     const license = dbHotel.license
 //     const amenities1 = dbHotel.facilities
 //     const amenities2 = removeDuplicates(amenities1)
-//     // console.log(amenities2, 'iam 2')
+//
 
 //     if (dbHotel.code === apiHotel.code) {
 //       apiHotel = { ...apiHotel, amenities2, address, images, description, interestPoints, lastUpdate, license }
-//       // console.log(apiHotel, 'new')
+//
 //       final.push(apiHotel)
 //     }
 //   }))

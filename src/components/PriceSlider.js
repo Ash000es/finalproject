@@ -70,11 +70,9 @@ export default function PriceSlider (props) {
   const [sliderPrice, setSliderPrice] = useState(DEFAULT_SLIDER_VALUE)
 
   const debouncedOnChange = debounce((v) => {
-    console.log('debounce called')
     props.onChange(v)
   }, 2000)
   const onChangeSlider = (v) => {
-    console.log('onchange slider called')
     debouncedOnChange(v)
   }
 

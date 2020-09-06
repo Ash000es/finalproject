@@ -125,10 +125,8 @@ export const filterAmenSelection = (arr1, arr2, arr3) => {
   const finalHotels = []
   valueToFilter.map((hotel) => {
     const amenAmen = hotel.newAmen
-    console.log(amenAmen, 'Working...')
 
     const isitTrue = arr3.every((v) => amenAmen.includes(v))
-    console.log(isitTrue, 'Working true...')
 
     if (isitTrue) {
       finalHotels.push(hotel)
@@ -292,12 +290,9 @@ export const getSmallPictures = (imageArr, masterLinkSmall) => {
 
 export const convertDates = (startDate, endDate) => {
   const checkIn = startDate._d
-  console.log(typeof checkIn, 'type')
   const checkOut = endDate._d
   const datesArray = Array.of(checkIn, checkOut)
-
   const date1 = datesArray.map((i) => i.toLocaleDateString())
-  console.log(typeof date1[0], 'look here')
   const date2 = date1.map((i) => i.replace('/', '-').replace('/', '-'))
   const date3 = date2.map((i) => i.split('-'))
   const date4 = date3.map((i) => i.reverse())
@@ -318,7 +313,7 @@ export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
     arr2.filter((roomObject) => {
       if (imageObject.roomCode === roomObject.code) {
         const newPath = `${masterLinkSmall}${imageObject.path}`
-        console.log(newPath, 'newpath')
+
         return newPath
       }
     })
@@ -365,4 +360,8 @@ export const sumUp = (accumulator, currentValue) => accumulator + currentValue
 //   const res = await handleHomePageSearch(popularCities[i], state)
 //   ALL_RESULTS.push(res)
 
+// }
+// const firstImage = constfirstRoomImage(imagesarray)
+// if (Object.keys(firstImage)) {
+//   imagesarray.unshift(firstImage)
 // }

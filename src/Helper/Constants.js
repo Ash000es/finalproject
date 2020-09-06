@@ -1,7 +1,5 @@
 
-import StarRateIcon from '@material-ui/icons/StarRate'
 import React from 'react'
-import SelectRoom from '../components/SelectRoom'
 import travelShoe from '../assets/travelShoe.png'
 import swimSuite from '../assets/swimSuite.jpg'
 import travelBag from '../assets/travelBag.jpg'

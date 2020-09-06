@@ -72,7 +72,6 @@ export const HotelList = () => {
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
   const size = useWindowSize()
   const width = size.width
-  console.log(hotelsresults, tempfilteredhotels, 'value to map')
 
   // fetch from context first 5 results to display
   useEffect(() => {
@@ -136,7 +135,6 @@ export const HotelList = () => {
   }
   // ['TV', 'Pool']
   const handleAmenSelection = (arr) => {
-    console.log(arr, 'hotel list')
     const change = { ...filters, Amenities: arr }
 
     filterAll(change)

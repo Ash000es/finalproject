@@ -10,7 +10,7 @@ const ProjectProvider = (props) => {
       cartItems: []
 
     })
-  console.log(project, 'project results')
+
   return (
     <ProjectContext.Provider value={{ project, setProject }}>
 

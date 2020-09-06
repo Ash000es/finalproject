@@ -67,8 +67,9 @@ export default function SelectPrice (props) {
     setValueChecked(!event.target.checked)
     setValue1Checked(event.target.checked)
   }
-  const sendCurrentHotel = () => {
+  const sendCurrentHotel = (event) => {
     const currentHotel = props.hotel
+    event.preventDefault()
 
     props.done(currentHotel)
   }
@@ -89,7 +90,7 @@ export default function SelectPrice (props) {
                 checked
               />
 
-              <Button size='medium' variant='contained' onClick={sendCurrentHotel} style={style}>
+              <Button size='medium' variant='contained' onClick={(e) => sendCurrentHotel(e)} style={style}>
                 continue
               </Button>
 
@@ -127,7 +128,7 @@ export default function SelectPrice (props) {
                 onClick={() => props.openExtras()}
               />
 
-              <Button size='medium' variant='contained' onClick={sendCurrentHotel} style={style}>
+              <Button size='medium' variant='contained' onClick={(e) => sendCurrentHotel(e)} style={style}>
                 continue
               </Button>
             </div>

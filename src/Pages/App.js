@@ -29,7 +29,7 @@ function App (props) {
 
     setAuthButtonLabel('Logout')
     if (user.providerData.length) {
-      console.log(user.providerData[0], 'userData')
+
     }
   }
 
@@ -65,10 +65,10 @@ function App (props) {
     firebase.auth().signInWithPopup(provider).then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const token = result.credential.accessToken
-      console.log(token, 'token')
+
       // The signed-in user info.
       const user = result.user
-      console.log(user, 'user')
+
       handleUserSignedin(user)
       window.localStorage.setItem('user', JSON.stringify(user))
       // ...

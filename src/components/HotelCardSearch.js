@@ -59,10 +59,7 @@ export const HotelCardSearch = (props) => {
   const [expanded, setExpanded] = useState(false)
   const [facilitiesArr, setFacilitiesArr] = useState(props.hotel.facilities)
   const imagesarray = props.hotel.images
-  const firstImage = constfirstRoomImage(imagesarray)
-  if (Object.keys(firstImage)) {
-    imagesarray.unshift(firstImage)
-  }
+
   const amenitiesToMap = getAmenitiesArray(facilitiesArr, searchResultsAmen)
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
