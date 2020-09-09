@@ -1,6 +1,6 @@
 import React from 'react'
 import './Hero.css'
-import beach from '../assets/cover.jpg'
+import beach from '../assets/beach.jpg'
 import HomePageCarousel from './HomePageCarousel'
 import { ShopHomepage, ActivityHomepage } from '../Helper/Constants'
 

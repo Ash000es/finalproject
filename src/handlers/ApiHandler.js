@@ -26,6 +26,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       dailyRate
     }
   }
+  console.log(getSignature())
 
   console.log('fetching api..')
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',

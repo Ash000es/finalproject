@@ -16,7 +16,7 @@ import { HotelList } from './HoteList'
 
 import ShoppingCart from '../components/ShoppingCard'
 import ReviewCart from '../Pages/ReviewCart'
-import ProfileContainer from '../components/MyProfile/ProfileContainer'
+
 import Button from 'react-bootstrap/Button'
 
 function App (props) {
