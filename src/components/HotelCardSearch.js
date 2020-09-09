@@ -63,7 +63,7 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap = getAmenitiesArray(facilitiesArr, searchResultsAmen)
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
-  const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms[0].rates)
+  const freeCancel = isFreeCancelAvailabe(props.hotel.apiRooms && props.hotel.apiRooms[0].rates)
   const hotelName = props.hotel.name.content
   const hotelName2 = props.hotel.name
 
@@ -124,7 +124,7 @@ export const HotelCardSearch = (props) => {
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />
-                {props.hotel.reviews[0] && reviewSummaryReturn(props.hotel.reviews[0])}
+                {props.hotel.reviews && reviewSummaryReturn(props.hotel.reviews[0])}
               </div>
               {/* end of secound div wrraper  */}
             </div>

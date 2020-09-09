@@ -51,7 +51,7 @@ const initialFilterState = {
   villasOnly: false,
   starRating: [],
   Amenities: [],
-  priceFilter: [DEFAULT_SLIDER_VALUE[0], DEFAULT_SLIDER_VALUE[1]],
+  priceFilter: [PRICE_FILTER_MIN, PRICE_FILTER_MAX],
   sortBy: ''
 }
 
@@ -116,6 +116,7 @@ export const HotelList = () => {
 
   if (redirect) {
     return <Redirect
+
       to={{
         pathname: '/hotelpage',
         state: { currentHotel }
@@ -233,7 +234,7 @@ export const HotelList = () => {
 
               </div>
               <div style={{ border: '1px solid grey' }}>
-                <Typography className={classes.destinationName}>{allHotelsResults[0].destinationName}</Typography>
+                <Typography className={classes.destinationName}>{allHotelsResults ? allHotelsResults[0].destinationName : null}</Typography>
                 <div className='sortButton'>
                   <DropDownFilter onClick={handleSort} />
                 </div>

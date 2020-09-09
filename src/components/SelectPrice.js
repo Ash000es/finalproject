@@ -86,7 +86,7 @@ export default function SelectPrice (props) {
               <FormControlLabel
                 value
                 control={<Radio style={{ color: '#FF8B00' }} />}
-                label={props.hotel.apiRooms[0].rates[0].mySellingRate}
+                label={props.hotel.apiRooms && props.hotel.apiRooms[0].rates[0].mySellingRate}
                 checked
               />
 
@@ -114,7 +114,7 @@ export default function SelectPrice (props) {
                 checked={false}
                 value={!value}
                 control={<Radio onChange={showRoomOnlyPrice} style={{ color: '#FF8B00' }} />}
-                label={props.hotel.apiRooms[0].rates[0].mySellingRate}
+                label={props.hotel.apiRooms && props.hotel.apiRooms[0].rates[0].mySellingRate}
               />
               <FormLabel component='legend'>
                 <p className={classes.pStyling}>Extras from</p>
