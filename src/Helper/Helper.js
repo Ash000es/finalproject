@@ -189,8 +189,8 @@ export const sortByRecommended = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {
     console.log('sorting recommended..')
-    const BB = b.reviews ? b.reviews[0].rate : null
-    const AA = a.reviews ? b.reviews[0].rate : null
+    const BB = b.reviews.length ? b.reviews[0].rate : null
+    const AA = a.reviews.length ? b.reviews[0].rate : null
     return (
       Number(BB) - Number(AA) || Number(a.minRate) - Number(b.minRate)
     )
@@ -201,8 +201,8 @@ export const sortByReview = (arr1, arr2) => {
   const valueToSort = arr1.length >= 1 ? arr1 : arr2
   return valueToSort.sort(function (a, b) {
     console.log('sorting review..')
-    const BB = b.reviews ? b.reviews[0].rate : null
-    const AA = a.reviews ? b.reviews[0].rate : null
+    const BB = b.reviews.length ? b.reviews[0].rate : null
+    const AA = a.reviews.length ? b.reviews[0].rate : null
     return (
       Number(BB) - Number(AA) ||
       Number(BB) - Number(AA)
@@ -325,9 +325,9 @@ export const getRoomPicture = (arr1, arr2, masterLinkSmall) => {
 }
 export const showCancelationPolicy = (rate) => {
   const cancelationArray = rate.cancellationPolicies
-  const cancelationFeeFrom = cancelationArray ? cancelationArray[0].from : null
+  const cancelationFeeFrom = cancelationArray.length ? cancelationArray[0].from : null
   const newDate = cancelationFeeFrom.slice(0, 10)
-  const cancelationFee = cancelationArray ? cancelationArray[0].amount : null
+  const cancelationFee = cancelationArray.length ? cancelationArray[0].amount : null
   const refundableStatus = rate.rateClass
   if (refundableStatus === 'NRF') {
     return 'None refundable'

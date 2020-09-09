@@ -173,7 +173,7 @@ const HomePageResults = (props) => {
 
                       <CardContent className={classes.cardText}>
                         <Typography gutterBottom variant='h5' component='h2'>
-                          {des[0].destinationName && des[0].destinationName}
+                          {des.length && des[0].destinationName}
                         </Typography>
                         <Typography variant='body2' color='textSecondary' component='p'>
                           Stay from {cheap.minRate}$

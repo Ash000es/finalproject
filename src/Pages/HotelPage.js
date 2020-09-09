@@ -104,7 +104,7 @@ const HotelPage = React.memo((props) => {
               <div className='address-div'><div><p className='spaceMe'>{currentSelection.address.content}</p></div><div><p>{currentSelection.destinationName} </p></div><MapPopUp lat={currentSelection.latitude} long={currentSelection.longitude} mapHotelsResults={currentSelection} /></div>
 
             </div>
-            <div className='TA-Div'><CustomizedRatings TAReviews={currentSelection ? currentSelection.reviews[0] : null} /></div>
+            <div className='TA-Div'><CustomizedRatings TAReviews={currentSelection.reviews.length ? currentSelection.reviews[0] : null} /></div>
           </div>
 
           <SearchResultsCarousel currentSelection={imagesArray} />
