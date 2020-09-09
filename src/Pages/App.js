@@ -11,7 +11,7 @@ import HotelPage from './HotelPage'
 import FirebaseContext, { db, provider } from '../providers/Firebase'
 import AboutUs from './AboutUs'
 import { HomePage } from './HomePage'
-import ProjectProvider, { ProjectContext } from '../providers/Provider'
+import ProjectProvider from '../providers/Provider'
 import { HotelList } from './HoteList'
 
 import ShoppingCart from '../components/ShoppingCard'
