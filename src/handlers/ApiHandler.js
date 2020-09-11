@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'production') {
   keys = require('../keys.json')
 }
 const { REACT_APP_apikey, REACT_APP_sec } = keys
+console.log(keys, 'keys')
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
