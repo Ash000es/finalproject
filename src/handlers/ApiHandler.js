@@ -45,9 +45,11 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
 
       body: JSON.stringify(createRequestBody())
     }).then(res => {
+    console.log(res)
     return res.json()
   }).then(Res => {
     const { hotels } = Res
+    console.log(Res)
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
