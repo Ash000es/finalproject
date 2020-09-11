@@ -32,7 +32,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
   console.log(REACT_APP_apikey)
 
   console.log('fetching api..')
-  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+  return window.fetch('https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
       method: 'POST',
       headers: {
