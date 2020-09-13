@@ -8,9 +8,9 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   keys = require('../keys.json')
 }
-const { React_APP_firebaseKey } = keys
+const { REACT_APP_firebaseKey } = keys
 const firebaseConfig = {
-  apiKey: React_APP_firebaseKey,
+  apiKey: REACT_APP_firebaseKey,
   authDomain: 'hotels-62fad.firebaseapp.com',
   databaseURL: 'https://hotels-62fad.firebaseio.com',
   projectId: 'hotels-62fad',

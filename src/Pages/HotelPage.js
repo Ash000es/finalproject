@@ -53,7 +53,7 @@ const HotelPage = React.memo((props) => {
 
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
     const num = Number(roomSelectionInfo.roomNumber)
-    const price = roomSelectionInfo.totalSelectionPrice
+    const price = Number(roomSelectionInfo.totalSelectionPrice).toFixed(2)
     const newRoomSelectionInfo = { ...roomSelectionInfo, image: newPath, checkinDate, checkoutDate, hotelName }
     setRoomsNum(roomsnum.concat(num))
     setRoomsPriceArr(roomspricearr.concat(price))
