@@ -7,7 +7,6 @@ import {
   homesCodes
 } from './Constants.js'
 import { requestPopularDest } from '../handlers/ApiHandler'
-
 import CatLabel from '../components/CatLabel'
 import ReviewsLabel from '../components/ReviewsLabel'
 

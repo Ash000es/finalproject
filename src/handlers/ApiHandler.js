@@ -78,7 +78,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     return fetchHotels(destination.code, hotelIDS, db)
       .then(dbHotels => {
         const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
-
+        console.log(hotelsProject)
         return hotelsProject
       })
   })

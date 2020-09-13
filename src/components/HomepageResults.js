@@ -142,7 +142,6 @@ const HomePageResults = (props) => {
       })
       .then(() => setIsLoading(false))
       .then(() => setRedirect(true))
-    console.log(project, 'project')
   }
   if (redirect) {
     return <Redirect exact push to='/searchresults' />

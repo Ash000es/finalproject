@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import PeopleIcon from '@material-ui/icons/People'
 import PersonIcon from '@material-ui/icons/Person'
 import HotelOutlinedIcon from '@material-ui/icons/HotelOutlined'
