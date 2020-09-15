@@ -49,7 +49,7 @@ const SearchBar = (props) => {
   const [state, setState] = useState(intialState)
   const [isloading, setIsLoading] = useState(false)
   const [destination, setDestination] = useState({
-    code: 'IBZ'
+    code: 'BCN'
   })
 
   const [reviews, setReviews] = useState([
