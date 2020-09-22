@@ -9,7 +9,6 @@ if (process.env.NODE_ENV === 'production') {
   keys = require('../keys.json')
 }
 const { REACT_APP_apikey, REACT_APP_sec } = keys
-console.log(keys, 'keys')
 
 export function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
@@ -27,9 +26,6 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       dailyRate
     }
   }
-  console.log(getSignature())
-  console.log(createRequestBody())
-  console.log(REACT_APP_apikey)
 
   console.log('fetching api..')
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
@@ -45,11 +41,9 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
 
       body: JSON.stringify(createRequestBody())
     }).then(res => {
-    console.log(res)
     return res.json()
   }).then(Res => {
     const { hotels } = Res
-    console.log(Res)
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut

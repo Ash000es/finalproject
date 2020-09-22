@@ -21,23 +21,38 @@ import napoli from '../assets/napoli.jpg'
 import menorca from '../assets/menorca.jpg'
 import mykonos from '../assets/mykonos.jpg'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: (screenWidth) => (screenWidth < 992 ? 650 : 360),
-    maxHeight: 280,
-    margin: '1rem '
+
+    margin: '1rem ',
+    [theme.breakpoints.up(992)]: {
+      maxWidth: 280,
+      maxHeight: 250
+    },
+
+    [theme.breakpoints.down(992)]: {
+      maxWidth: 650,
+      maxHeight: 280
+    }
   },
   media: {
-    maxHeight: 190,
-    maxWidth: (screenWidth) => (screenWidth < 992 ? 650 : 320),
-    borderRadius: 5
+
+    borderRadius: 5,
+    [theme.breakpoints.up(992)]: {
+      maxWidth: 260,
+      height: 150
+    },
+
+    [theme.breakpoints.down(992)]: {
+      maxWidth: 650,
+      maxHeight: 190
+    }
   },
   container: {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
     flexWrap: 'wrap',
-
     flexShrink: 1,
     margin: '1rem auto'
   },
@@ -58,11 +73,11 @@ const useStyles = makeStyles({
     minWidth: 100,
     textDecoration: 'underline'
   }
-})
+}))
 
 const HomePageResults = (props) => {
   const screenWidth = props.width
-  const classes = useStyles(screenWidth)
+  const classes = useStyles()
   const [desResults, setDesResults] = useState()
   const [redirect, setRedirect] = useState(false)
   const [isloading, setIsLoading] = useState(false)
