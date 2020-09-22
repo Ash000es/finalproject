@@ -78,21 +78,21 @@ export const searchResultsAmen = [
     FacilityCode: 500,
     FacilityGroupCode: 70,
     icon: <LocalParkingOutlinedIcon style={style} />,
-    name: 'parking'
+    name: 'Parking'
 
   },
   {
     FacilityCode: 560,
     FacilityGroupCode: 70,
     icon: <LocalParkingOutlinedIcon style={style} />,
-    name: 'parking'
+    name: 'Parking'
 
   },
   {
     FacilityCode: 330,
     FacilityGroupCode: 70,
     icon: <LocalParkingOutlinedIcon style={style} />,
-    name: 'parking'
+    name: 'Parking'
 
   },
   {
@@ -113,14 +113,14 @@ export const searchResultsAmen = [
     FacilityCode: 535,
     FacilityGroupCode: 70,
     icon: <PetsOutlinedIcon style={style} />,
-    name: 'pets allowed'
+    name: 'Pets allowed'
 
   },
   {
     FacilityCode: 540,
     FacilityGroupCode: 70,
     icon: <PetsOutlinedIcon style={style} />,
-    name: 'pets allowed'
+    name: 'Pets allowed'
 
   },
   {
