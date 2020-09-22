@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
+    border: '0.5px solid #d9d9d9',
+    boxShadow: theme.shadows[0],
     alignItems: 'center',
     maxWidth: 500,
     [theme.breakpoints.up(992)]: {
@@ -26,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     flex: 1,
     width: '100%'
+
   },
   iconButton: {
     padding: '0.625rem'
