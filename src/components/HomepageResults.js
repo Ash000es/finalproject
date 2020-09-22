@@ -115,24 +115,24 @@ const HomePageResults = (props) => {
     ]
   })
 
-  // useEffect(() => {
-  //   const fetchDestinations = async () => {
-  //     const res1 = await handleHomePageSearch(popularCities[0], state)
-  //     const res2 = await handleHomePageSearch(popularCities[1], state)
-  //     const res3 = await handleHomePageSearch(popularCities[2], state)
-  //     const res4 = await handleHomePageSearch(popularCities[3], state)
-  //     const res5 = await handleHomePageSearch(popularCities[4], state)
-  //     const res6 = await handleHomePageSearch(popularCities[5], state)
-  //     const res7 = await handleHomePageSearch(popularCities[6], state)
-  //     const res8 = await handleHomePageSearch(popularCities[7], state)
-  //     const res9 = await handleHomePageSearch(popularCities[8], state)
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      const res1 = await handleHomePageSearch(popularCities[0], state)
+      const res2 = await handleHomePageSearch(popularCities[1], state)
+      const res3 = await handleHomePageSearch(popularCities[2], state)
+      const res4 = await handleHomePageSearch(popularCities[3], state)
+      const res5 = await handleHomePageSearch(popularCities[4], state)
+      const res6 = await handleHomePageSearch(popularCities[5], state)
+      const res7 = await handleHomePageSearch(popularCities[6], state)
+      const res8 = await handleHomePageSearch(popularCities[7], state)
+      const res9 = await handleHomePageSearch(popularCities[8], state)
 
-  //     return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
-  //   }
-  //   fetchDestinations().then(destinationsResults => {
-  //     setDesResults(destinationsResults)
-  //   })
-  // }, [])
+      return [res1, res2, res3, res4, res5, res6, res7, res8, res9]
+    }
+    fetchDestinations().then(destinationsResults => {
+      setDesResults(destinationsResults)
+    })
+  }, [])
 
   const handleClick = (des) => {
     setIsLoading(true)
