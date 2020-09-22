@@ -7,30 +7,8 @@
 /.pnp
 .pnp.js
 ./src/keys.json
-./src/components/MyProfile/Avatar.js
-./src/components/MyProfile/DatePicker.js
-./src/components/MyProfile/FavCard.js
-./src/components/MyProfile/FormExample.js
-./src/components/MyProfile/HardCode.js
-./src/components/MyProfile/ModalPassword.js
-./src/components/MyProfile/MyBooking.js
-./src/components/MyProfile/MyFav.js
-./src/components/MyProfile/NewDateRange.js
-./src/components/MyProfile/OldvsNew.js
-./src/components/MyProfile/PopUP.js
-./src/components/MyProfile/PrevCancelled.js
-./src/components/MyProfile/ProfileContainer.js
-./src/components/MyProfile/SimpleMenu.js
-./src/components/MyProfile/UpComing.js
-./src/components/PaymentCout/CardType.js
-./src/components/PaymentCout/CheckBox.js
-./src/components/PaymentCout/ConfirmationCard.js
-./src/components/PaymentCout/ConfirmationPage.js
-./src/components/PaymentCout/PaymentButton.js
-./src/components/PaymentCout/SpecialRequest.js
-./src/components/PaymentCout/Stepper.js
-./src/components/PaymentCout/TitleSelect.js
-./src/components/PaymentCout/PaymentCout.js
+
+
 
 
 
