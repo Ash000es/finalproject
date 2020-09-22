@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
     fontWeight: '600',
-    color: 'white'
+    color: theme.palette.primary.contrastText
   },
   imageSetting: {
     width: '100%',
@@ -37,11 +37,7 @@ export const SearchResultsHero = () => {
       <div className={classes.dealText}>
         <h1 style={{ color: 'white' }}>Deal of the day</h1>
         <p>Stay for 2 night and pay for 3 at the NH hotel Barcelona</p>
-        <p>
-          <Button size='sm' variant='primary'>
-            Learn more
-          </Button>
-        </p>
+
       </div>
     </div>
   )
