@@ -6,7 +6,7 @@
 /node_modules
 /.pnp
 .pnp.js
-./src/keys.json
+/src/keys.json
 
 
 
