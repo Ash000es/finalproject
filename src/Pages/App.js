@@ -1,7 +1,7 @@
 
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import firebase from 'firebase'
-import { BrowserRouter as Router, MemoryRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, MemoryRouter, Switch, Route } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -14,7 +14,7 @@ import { HomePage } from './HomePage'
 import ProjectProvider from '../providers/Provider'
 import { HotelList } from './HoteList'
 
-import ShoppingCart from '../components/ShoppingCard'
+import TravelItemCard from '../components/TravelItemCard'
 import ReviewCart from '../Pages/ReviewCart'
 
 import Button from 'react-bootstrap/Button'
@@ -124,7 +124,7 @@ function App (props) {
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
               <Route path='/reviewcart' excat component={ReviewCart} />
-              <Route path='/Travelessentials' exact component={ShoppingCart} />
+              <Route path='/Travelessentials' exact component={TravelItemCard} />
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />
 
