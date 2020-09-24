@@ -13,10 +13,8 @@ import AboutUs from './AboutUs'
 import { HomePage } from './HomePage'
 import ProjectProvider from '../providers/Provider'
 import { HotelList } from './HoteList'
-
 import TravelItemCard from '../components/TravelItemCard'
 import ReviewCart from '../Pages/ReviewCart'
-
 import Button from 'react-bootstrap/Button'
 
 function App (props) {
