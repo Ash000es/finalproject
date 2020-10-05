@@ -116,7 +116,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       reviews
     }
   }
-
+  console.log('fetching api..')
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
       method: 'POST',
@@ -166,7 +166,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
 }
 // popular destinations secound handler
 export const fetchPopularDestData = (des, db) => {
-  console.log('fetching api..')
+  console.log('fetching db..')
   const destinationCode = des[0].destinationCode
   const hotelIDS = des.map(hotel => hotel.code)
   return fetchHotels(destinationCode, hotelIDS, db)
@@ -177,35 +177,6 @@ export const fetchPopularDestData = (des, db) => {
     })
 }
 
-export const fetchCurrentHotelNewAvail = (db, { stay, occupancies, hotels }) => {
-  const D = new Date()
-
-  const getSignature = () => {
-    return Sign(REACT_APP_apikey + REACT_APP_sec + Math.round(D.getTime() / 1000))
-  }
-
-  const createRequestBody = () => {
-    return {
-      stay,
-      occupancies,
-      hotels
-    }
-  }
-
-  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-    {
-      method: 'POST',
-      headers: {
-        'Api-Key': REACT_APP_apikey,
-        'X-Signature': getSignature(),
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Accept-Encoding': 'gzip'
-      },
-
-      body: JSON.stringify(createRequestBody())
-    }).then(res => res.json())
-}
 // const mapResultToHotel = (dbHotels, apiHotelResults) => {
 //   const final = []
 //   dbHotels.forEach(dbHotel => apiHotelResults.forEach(apiHotel => {
