@@ -116,6 +116,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       reviews
     }
   }
+  console.log('fetching api..')
 
   return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
     {
@@ -166,7 +167,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
 }
 // popular destinations secound handler
 export const fetchPopularDestData = (des, db) => {
-  console.log('fetching api..')
+  console.log('fetching db..')
   const destinationCode = des[0].destinationCode
   const hotelIDS = des.map(hotel => hotel.code)
   return fetchHotels(destinationCode, hotelIDS, db)
