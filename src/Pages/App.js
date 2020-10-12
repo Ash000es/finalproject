@@ -88,7 +88,7 @@ function App (props) {
       <FirebaseContext.Provider value={db}>
         <MemoryRouter>
           <Container className='pt-3'>
-            <Navbar collapseOnSelect bg='light' expand='md' className='navBar'>
+            <Navbar collapseOnSelect expand='md' className='navBar'>
               <Navbar.Brand href='#home'>Logo</Navbar.Brand>
               <Navbar.Toggle aria-controls='responsive-navbar-nav' />
               <Navbar.Collapse id='responsive-navbar-nav'>
@@ -96,7 +96,7 @@ function App (props) {
                   <LinkContainer to='/home'>
                     <Nav.Link href='#features'><p>Home</p></Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to='/'>
+                  <LinkContainer to='/nothing'>
                     <Nav.Link href='#pricing'><p>Things to do</p></Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/Travelessentials'>

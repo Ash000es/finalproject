@@ -190,7 +190,7 @@ export const sortByRecommended = (arr1, arr2) => {
   return valueToSort.sort(function (a, b) {
     console.log('sorting recommended..')
     const BB = b.reviews.length ? b.reviews[0].rate : null
-    const AA = a.reviews.length ? b.reviews[0].rate : null
+    const AA = a.reviews.length ? a.reviews[0].rate : null
     return (
       Number(BB) - Number(AA) || Number(a.minRate) - Number(b.minRate)
     )
@@ -202,7 +202,7 @@ export const sortByReview = (arr1, arr2) => {
   return valueToSort.sort(function (a, b) {
     console.log('sorting review..')
     const BB = b.reviews.length ? b.reviews[0].rate : null
-    const AA = a.reviews.length ? b.reviews[0].rate : null
+    const AA = a.reviews.length ? a.reviews[0].rate : null
     return (
       Number(BB) - Number(AA) ||
       Number(BB) - Number(AA)

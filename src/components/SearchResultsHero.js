@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
     fontWeight: '600',
+    backgroundColor: 'rgb(54,49,43)',
+    opacity: 0.7,
     color: theme.palette.primary.contrastText
   },
   imageSetting: {

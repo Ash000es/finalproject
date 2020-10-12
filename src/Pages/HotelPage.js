@@ -93,7 +93,7 @@ const HotelPage = React.memo((props) => {
 
       <>
         <div className='hotelPage-text'>
-          <h4>This hotel have spceial offer for you</h4>
+          <h4>This hotel have special offer for you</h4>
           <p>Save up to <p style={{ color: 'red' }}>30% </p>by adding extra to your accomodation</p>
         </div>
 

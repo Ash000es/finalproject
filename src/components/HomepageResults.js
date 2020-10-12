@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
     borderRadius: 5,
     [theme.breakpoints.up(992)]: {
-      maxWidth: 260,
+      maxWidth: 280,
       height: 150
     },
 
