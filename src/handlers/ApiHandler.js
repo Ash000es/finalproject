@@ -28,7 +28,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
   }
 
   console.log('fetching api..')
-  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+  return window.fetch('https://server2021.herokuapp.com/api/hotels',
     {
       method: 'POST',
       headers: {
@@ -118,7 +118,7 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
   }
   console.log('fetching api..')
 
-  return window.fetch('https://cors-anywhere.herokuapp.com/https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
+  return window.fetch('https://server2021.herokuapp.com/api/hotels',
     {
       method: 'POST',
       headers: {
