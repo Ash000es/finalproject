@@ -122,7 +122,7 @@ function App (props) {
               <Route path='/hotelpage' exact component={HotelPage} />
               <Route path='/about' exact component={AboutUs} />
               <Route path='/reviewcart' excat component={ReviewCart} />
-              <Route path='/Travelessentials' exact component={TravelItemCard} />
+              {/* <Route path='/Travelessentials' exact component={TravelItemCard} /> */}
               <Route path='/searchresults' exact component={HotelList} />
               <Route path='/' component={HomePage} />
 
