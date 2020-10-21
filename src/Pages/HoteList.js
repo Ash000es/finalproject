@@ -72,7 +72,7 @@ export const HotelList = () => {
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
   const size = useWindowSize()
   const width = size.width
-  console.log(width, 'width')
+  console.log(hotelsresults, 'hotelsresults')
 
   // fetch from context first 5 results to display
   useEffect(() => {
@@ -122,7 +122,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -174,6 +174,10 @@ export const HotelList = () => {
     }
     if (filters.Amenities.length > 0) {
       res = filterAmenSelection(res, hotelsresults, filters.Amenities)
+      // real word case would be take the hotelresults ARR, get the codes
+      // crud find(filter,options)
+      //  make a new DB query with these codes and apply filter on the server side then return new db arr
+      // then new dbarr needs to be pathced with api retunred arr to get full object to map
       console.log(res, 'res amen here')
     }
     if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
@@ -250,7 +254,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }
