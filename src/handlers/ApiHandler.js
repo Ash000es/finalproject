@@ -43,7 +43,8 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     }).then(res => {
     return res.json()
   }).then(Res => {
-    const { hotels } = Res
+    const { hotels1 } = Res
+    const hotels = hotels1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
@@ -66,8 +67,8 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
       const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
       return newHotel
     })
-    const apiHotelResults1 = insertDates
-    const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
+    const apiHotelResults = insertDates
+
     const hotelIDS = apiHotelResults.map(hotel => hotel.code)
     return fetchHotels(destination.code, hotelIDS, db)
       .then(dbHotels => {

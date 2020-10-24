@@ -67,8 +67,8 @@ export default function SelectPrice (props) {
     setValueChecked(!event.target.checked)
     setValue1Checked(event.target.checked)
   }
-  const sendCurrentHotel = (event) => {
-    event.preventDefault()
+  const sendCurrentHotel = (e) => {
+    e.preventDefault()
     const currentHotel = props.hotel
 
     props.done(currentHotel)
