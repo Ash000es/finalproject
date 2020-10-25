@@ -53,8 +53,8 @@ const ReviewCart = () => {
           {cartItemsToMap && cartItemsToMap.map((item, i) => {
             if (item.summary) {
               return (
-                <div className='extraCheckoutCar'>
-                  <Card>
+                <div className='extraCheckoutCar' key={i} item={item}>
+                  <Card item={item} key={i}>
 
                     <Card.Img variant='top' src={item.image} style={{ width: 100, height: 160 }} />
                     <Card.Body>

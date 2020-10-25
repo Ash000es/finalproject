@@ -111,7 +111,7 @@ function Row (props) {
               <Typography variant='h6' gutterBottom component='div'>
                 Extras
               </Typography>
-              <Table size='large' aria-label='purchases'>
+              <Table size='medium' aria-label='purchases'>
                 <TableHead>
                   <TableRow>
                     <TableCell>Name</TableCell>
