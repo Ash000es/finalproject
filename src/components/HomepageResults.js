@@ -127,7 +127,8 @@ const HomePageResults = (props) => {
         minRate: 3,
         minReviewCount: 3
       }
-    ]
+    ],
+    dailyRate: true
   })
 
   useEffect(() => {

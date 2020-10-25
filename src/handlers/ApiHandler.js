@@ -43,12 +43,11 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     }).then(res => {
     return res.json()
   }).then(Res => {
-    const { hotels1 } = Res
-    const hotels = hotels1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
-
+    const { hotels } = Res
+    console.log(hotels, 'apihotels')
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
-    const hotelsOnly = hotels.hotels
+    const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
     const insertDates = hotelsOnly.map(hotel => {
       const apiRooms = hotel.rooms
@@ -102,7 +101,7 @@ const mapResultToHotel = (a1, a2) =>
     ...itm
   }))
   // popular destinations initial handler
-export function requestPopularDest ({ occupancies, destination, stay, reviews }) {
+export function requestPopularDest ({ occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
 
   const getSignature = () => {
@@ -114,7 +113,8 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
       stay,
       occupancies,
       destination,
-      reviews
+      reviews,
+      dailyRate
     }
   }
   console.log('fetching api..')
@@ -137,10 +137,9 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
     })
     .then(Response => {
       const { hotels } = Response
-
       const checkInDate = hotels.checkIn
       const checkInOut = hotels.checkOut
-      const hotelsOnly = hotels.hotels
+      const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
       const insertDates = hotelsOnly.map(hotel => {
         const apiRooms = hotel.rooms
@@ -157,12 +156,10 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews })
         })
 
         const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
-
         return newHotel
       })
 
-      const apiHotelResults1 = insertDates
-      const apiHotelResults = apiHotelResults1.filter(hotel => categoryCodes.includes(hotel.categoryCode))
+      const apiHotelResults = insertDates
       return apiHotelResults
     })
 }

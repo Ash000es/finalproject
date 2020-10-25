@@ -1,11 +1,5 @@
-
 import React, { useState, useEffect } from 'react'
-import {
-  poshCodes,
-  boldCodes,
-  essentialCodes,
-  homesCodes
-} from './Constants.js'
+import { poshCodes, boldCodes, essentialCodes, homesCodes } from './Constants.js'
 import { requestPopularDest } from '../handlers/ApiHandler'
 
 import CatLabel from '../components/CatLabel'
@@ -191,9 +185,7 @@ export const sortByRecommended = (arr1, arr2) => {
     console.log('sorting recommended..')
     const BB = b.reviews.length ? b.reviews[0].rate : null
     const AA = a.reviews.length ? a.reviews[0].rate : null
-    return (
-      Number(BB) - Number(AA) || Number(a.minRate) - Number(b.minRate)
-    )
+    return Number(BB) - Number(AA) || Number(a.minRate) - Number(b.minRate)
   })
 }
 
@@ -203,10 +195,7 @@ export const sortByReview = (arr1, arr2) => {
     console.log('sorting review..')
     const BB = b.reviews.length ? b.reviews[0].rate : null
     const AA = a.reviews.length ? a.reviews[0].rate : null
-    return (
-      Number(BB) - Number(AA) ||
-      Number(BB) - Number(AA)
-    )
+    return Number(BB) - Number(AA) || Number(BB) - Number(AA)
   })
 }
 
@@ -340,9 +329,9 @@ export const roomsCost = (a, b) => {
 }
 
 export const handleHomePageSearch = (destination1, state) => {
-  const { occupancies, stay, reviews } = state
+  const { occupancies, stay, reviews, dailyRate } = state
   const destination = destination1
-  const payLoad = { occupancies, destination, stay, reviews }
+  const payLoad = { occupancies, destination, stay, reviews, dailyRate }
   return requestPopularDest(payLoad)
 }
 export const findCheapestHotel = (arr) => {

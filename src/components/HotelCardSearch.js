@@ -119,9 +119,8 @@ export const HotelCardSearch = (props) => {
               {/* third inside div  */}
 
               <div className='thirdDivInner'>
-                <div>
-                  <p>{labelReturn(props.hotel.categoryCode)}</p>
-                </div>
+
+                <p>{labelReturn(props.hotel.categoryCode)}</p>
                 <Divider orientation='vertical' flexItem />
                 <p>{props.hotel.city.content.toLowerCase()}</p>
                 <Divider orientation='vertical' flexItem />

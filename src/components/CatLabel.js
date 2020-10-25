@@ -3,11 +3,11 @@ import React from 'react'
 
 const CatLabel = (props) => {
   return (
-    <div style={{ marginBottom: 0 }}>
-      <Badge className='text-white font-weight-normal' style={props.look}>
-        {props.name}
-      </Badge>{' '}
-    </div>
+
+    <Badge className='text-white font-weight-normal' style={props.look}>
+      {props.name}
+    </Badge>
+
   )
 }
 export default CatLabel
