@@ -94,7 +94,7 @@ const HotelPage = React.memo((props) => {
       <>
         <div className='hotelPage-text'>
           <h4>This hotel have special offer for you</h4>
-          <p>Save up to <p style={{ color: 'red' }}>30% </p>by adding extra to your accomodation</p>
+          <p>Add extra to your accomodation</p> <p>and save upto</p><h6 style={{ color: 'red', fontWeight: 600 }}>30% </h6>
         </div>
 
         <div className='hotelpage-outerdiv'>

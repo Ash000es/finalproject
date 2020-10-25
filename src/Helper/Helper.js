@@ -261,7 +261,6 @@ export const getLargePictures = (imageArr, masterLinkLarge) => {
   imageArr.map((imageObject) => {
     const imageObjectPath = imageObject.path
     const newPath = `${masterLinkLarge}${imageObjectPath}`
-
     imageObject = { ...imageObject, path: newPath }
 
     hotelsLarge.push(imageObject)
@@ -272,8 +271,7 @@ export const getSmallPictures = (imageArr, masterLinkSmall) => {
   const hotels = []
   imageArr.forEach((imageObject) => {
     const imageObjectPath = imageObject.path
-    const newPath = `${masterLinkSmall}${imageObjectPath}`
-
+    const newPath = masterLinkSmall.concat(imageObjectPath)
     imageObject = { ...imageObject, path: newPath }
 
     hotels.push(imageObject)

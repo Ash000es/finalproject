@@ -146,21 +146,21 @@ function Row (props) {
   )
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    sleeps: PropTypes.string.isRequired,
-    selectrooms: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    extras: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        summary: PropTypes.string.isRequired
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired
-}
+// Row.propTypes = {
+//   row: PropTypes.shape({
+//     sleeps: PropTypes.string.isRequired,
+//     selectrooms: PropTypes.string.isRequired,
+//     price: PropTypes.number.isRequired,
+//     extras: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         price: PropTypes.number.isRequired,
+//         summary: PropTypes.string.isRequired
+//       })
+//     ).isRequired,
+//     name: PropTypes.string.isRequired
+//   }).isRequired
+// }
 
 export default function CollapsibleTable (props) {
   const { rooms } = props
