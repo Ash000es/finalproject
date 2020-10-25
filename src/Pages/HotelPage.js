@@ -20,7 +20,9 @@ const HotelPage = React.memo((props) => {
   const [extraspricearr, setExtrasPriceArr] = useState([])
   const [redirect, setRedirect] = useState(false)
   const [roomsnum, setRoomsNum] = useState([])
+  console.log(roomsnum, 'array rooms')
   const [roomspricearr, setRoomsPriceArr] = useState([])
+  console.log(roomspricearr, 'array price')
   const [currentSelection, setCurrentSelection] = useState(props.location.state.currentHotel)
 
   if (!currentSelection) {
@@ -52,8 +54,10 @@ const HotelPage = React.memo((props) => {
   }
 
   const displaySelectedRoomInfo = (roomSelectionInfo) => {
-    const num = Number(roomSelectionInfo.roomNumber)
-    const price = Number(roomSelectionInfo.totalSelectionPrice).toFixed(2)
+    const num = parseInt(roomSelectionInfo.roomNumber)
+    const price = parseFloat(roomSelectionInfo.totalSelectionPrice)
+    console.log(typeof price)
+    console.log(typeof num)
     const newRoomSelectionInfo = { ...roomSelectionInfo, image: newPath, checkinDate, checkoutDate, hotelName }
     setRoomsNum(roomsnum.concat(num))
     setRoomsPriceArr(roomspricearr.concat(price))
@@ -86,7 +90,10 @@ const HotelPage = React.memo((props) => {
   if (redirect) {
     return <Redirect exact push to='/reviewcart' />
   }
-
+  const reducePrice = (roomspricearr) => {
+    const final = roomspricearr.reduce(sumUp)
+    return final
+  }
   return (
 
     <div>
@@ -136,8 +143,8 @@ const HotelPage = React.memo((props) => {
               {totalSelectedRoomsInfo.length > 0 &&
                 <div className='roomsSummary'>
 
-                  <p>Rooms count: {roomsnum.reduce(sumUp)}</p>
-                  <strong><p>Total price: {roomspricearr.reduce(sumUp)}$</p></strong>
+                  <p>Rooms count: {roomsnum.reduce(sumUp).toFixed(2)}</p>
+                  <strong><p>Total price: {reducePrice(roomspricearr)}$</p></strong>
                   <Button onClick={(room) => handleClickButton(room)} size='medium' style={{ backgroundColor: '#FF8B00', color: 'white' }}>continue</Button>
 
                 </div>}
