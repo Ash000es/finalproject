@@ -36,7 +36,6 @@ export const SearchResultsCarousel = (props) => {
         <Carousel activeIndex={index} onSelect={handleSelect} interval={null} touch pause='hover'>
           {newimages.map((image, i) => {
             const imagLink = image.path
-            console.log(imagLink, 'link')
 
             return (
               <Carousel.Item

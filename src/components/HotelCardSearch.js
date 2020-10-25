@@ -63,7 +63,6 @@ export const HotelCardSearch = (props) => {
   const amenitiesToMap = getAmenitiesArray(facilitiesArr, searchResultsAmen)
   const amenitiesToMap1 = getUnique(amenitiesToMap, 'name')
   const readyImages = useMemo(() => getSmallPictures(imagesarray, masterLinkSmall), [imagesarray])
-  console.log(readyImages, 'inages')
   const isCancelTrue = props.hotel.apiRooms.length ? props.hotel.apiRooms[0].rates : null
   const freeCancel = isFreeCancelAvailabe(isCancelTrue)
   const hotelName = props.hotel.name.content
