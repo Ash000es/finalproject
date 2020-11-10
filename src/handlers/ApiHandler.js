@@ -101,7 +101,7 @@ const mapResultToHotel = (a1, a2) =>
     ...itm
   }))
   // popular destinations initial handler
-export function requestPopularDest ({ occupancies, destination, stay, reviews, dailyRate }) {
+export const requestPopularDest = ({ occupancies, destination, stay, reviews, dailyRate }) => {
   const D = new Date()
 
   const getSignature = () => {
@@ -131,37 +131,36 @@ export function requestPopularDest ({ occupancies, destination, stay, reviews, d
       },
 
       body: JSON.stringify(createRequestBody())
-    })
-    .then(res => {
-      return res.json()
-    })
-    .then(Response => {
-      const { hotels } = Response
-      const checkInDate = hotels.checkIn
-      const checkInOut = hotels.checkOut
-      const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
+    }).then(res => {
+    return res.json()
+  }).then(Response => {
+    const { hotels } = Response
+    console.log(hotels, 'res')
+    const checkInDate = hotels.checkIn
+    const checkInOut = hotels.checkOut
+    const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
-      const insertDates = hotelsOnly.map(hotel => {
-        const apiRooms = hotel.rooms
-        const hotelRoom = apiRooms.map(room => {
-          const roomRatesArray = room.rates.map(rate => {
-            const mySellingRate1 = (rate.net * 113) / 100
-            const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
-            const newRateObject = { ...rate, mySellingRate }
+    const insertDates = hotelsOnly.map(hotel => {
+      const apiRooms = hotel.rooms
+      const hotelRoom = apiRooms.map(room => {
+        const roomRatesArray = room.rates.map(rate => {
+          const mySellingRate1 = (rate.net * 113) / 100
+          const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
+          const newRateObject = { ...rate, mySellingRate }
 
-            return newRateObject
-          })
-          const newRoom = { ...room, rates: roomRatesArray }
-          return newRoom
+          return newRateObject
         })
-
-        const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
-        return newHotel
+        const newRoom = { ...room, rates: roomRatesArray }
+        return newRoom
       })
 
-      const apiHotelResults = insertDates
-      return apiHotelResults
+      const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+      return newHotel
     })
+
+    const apiHotelResults = insertDates
+    return apiHotelResults
+  })
 }
 // popular destinations secound handler
 export const fetchPopularDestData = (des, db) => {
