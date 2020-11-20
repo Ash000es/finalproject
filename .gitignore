@@ -8,7 +8,7 @@
 .pnp.js
 /src/keys.json
 .env
-./src/components/test
+/src/components/test
 
 
 

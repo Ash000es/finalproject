@@ -5,6 +5,10 @@ import { requestPopularDest } from '../handlers/ApiHandler'
 import CatLabel from '../components/CatLabel'
 import ReviewsLabel from '../components/ReviewsLabel'
 
+const totalHotelRooms = order => order.items.filter(x => !x.shipping).reduce((prev, cur) => prev + (cur.price * cur.quantity), 0)
+
+const totalshippingItems = order => order.items.filter(x => x.shipping).reduce((prev, cur) => prev + (cur.price * cur.quantity) + cur.shippingPrice, 0)
+
 export const constfirstRoomImage = (arr) => {
   return arr.find((image) => image.imageTypeCode && image.imageTypeCode === 'HAB')
 }
