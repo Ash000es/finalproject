@@ -59,20 +59,20 @@ export const HotelList = () => {
   const classes = useStyles()
   const { project, setProject } = useContext(ProjectContext)
   const [redirect, setRedirect] = useState(false)
+  const allHotelsResults = project.results
   const [hotelsresults, setHotelsResults] = useState([])
   const [resultsstart, setResultsStart] = useState(0)
   const [hasmore, setHasMore] = useState(true)
   const [isloading, setIsLoading] = useState(false)
-  const [tempfilteredhotels, setTempFilteredHotels] = useState([])
+
   const [filters, setFilters] = useState(initialFilterState)
   const [currentHotel, setCurrentHotel] = useState({})
   const resultsPerPage = 5
-  const allHotelsResults = project.results
+
   const googleLandingLat = (allHotelsResults.length) ? allHotelsResults[0].latitude : null
   const googleLandingLong = (allHotelsResults.length) ? allHotelsResults[0].longitude : null
   const size = useWindowSize()
   const width = size.width
-  console.log(hotelsresults, 'hotelsresults')
 
   // fetch from context first 5 results to display
   useEffect(() => {
@@ -122,90 +122,80 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-    />
+           />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
   const handleFilteredHomes = () => {
     const change = { ...filters, villasOnly: !filters.villasOnly }
-    filterAll(change)
+    setFilters(change)
+    // filterAll(change)
   }
   // ture= on false= off hotelsOnly
   const handleFilteredHotels = (e) => {
     const change = { ...filters, hotelsOnly: !filters.hotelsOnly }
-    filterAll(change)
+    setFilters(change)
+    // filterAll(change)
   }
   // ['TV', 'Pool']
   const handleAmenSelection = (arr) => {
     const change = { ...filters, Amenities: arr }
 
-    filterAll(change)
+    setFilters(change)
+    // filterAll(change)
   }
   // ["3 STARS", "4 STARS"] starRatings
   const updateStarRating = (proby) => {
     const change = { ...filters, starRating: proby }
-    filterAll(change)
+    setFilters(change)
+    // filterAll(change)
   }
   // [2, 100] priceFilter
   const updatePriceResults = (sliderrange) => {
     const change = { ...filters, priceFilter: sliderrange }
-    filterAll(change)
+    setFilters(change)
+    // filterAll(change)
   }
   // 'Sortby Price','Sortby review', sortBy
   const handleSort = (sortByValue) => {
     const change = { ...filters, sortBy: sortByValue }
-    filterAll(change)
+    setFilters(change)
+    // filterAll(change)
   }
 
-  // filter the results based on the global filter state object
-  const filterAll = (filters) => {
+  const applyFilters = (items) => {
     // start by setting it to neutral
-    let res = hotelsresults
+    let res = [...items]
 
     // applying all special cases of filters that are ON
     if (filters.hotelsOnly) {
-      res = showHotelsOnly(res, hotelsresults, vcCodes)
+      res = showHotelsOnly(res, vcCodes)
     }
     if (filters.villasOnly) {
-      res = showHomesOnly(res, hotelsresults, hotelcodes)
+      res = showHomesOnly(res, hotelcodes)
     }
     if (filters.starRating.includes('3 stars') || filters.starRating.includes('4 stars') || filters.starRating.includes('5 stars')) {
-      res = updateStarRatings(res, hotelsresults, filters.starRating)
+      res = updateStarRatings(res, filters.starRating)
     }
     if (filters.Amenities.length > 0) {
-      res = filterAmenSelection(res, hotelsresults, filters.Amenities)
-      // real word case would be take the hotelresults ARR, get the codes
-      // crud find(filter,options)
-      //  make a new DB query with these codes and apply filter on the server side then return new db arr
-      // then new dbarr needs to be pathced with api retunred arr to get full object to map
-      console.log(res, 'res amen here')
+      res = filterAmenSelection(res, filters.Amenities)
     }
     if (filters.priceFilter[0] > PRICE_FILTER_MIN || filters.priceFilter[1] < PRICE_FILTER_MAX) {
-      res = updatePrice(filters.priceFilter[0], filters.priceFilter[1], res, hotelsresults)
+      res = updatePrice(filters.priceFilter[0], filters.priceFilter[1], res)
     }
     if (filters.sortBy === 'Sortby Price') {
-      res = sortbyPrice(res, hotelsresults)
+      res = sortbyPrice(res)
     }
     if (filters.sortBy === 'Sortby review') {
-      res = sortByReview(res, hotelsresults)
+      res = sortByReview(res)
     }
     if (filters.sortBy === 'Sortby recommended') {
-      res = sortByRecommended(res, hotelsresults)
+      res = sortByRecommended(res)
     }
 
-    setTempFilteredHotels(res)
-    setFilters(filters)
+    return res
   }
 
-  // quick check to see which array to be mapped, an already filtered array or the original with no filters applied
-  const resultsToMap = (arr1, arr) => {
-    if (arr1.length && arr1.length > 0) {
-      return arr1
-    } else {
-      return arr
-    }
-  }
-  const valueToMap = resultsToMap(tempfilteredhotels, hotelsresults)
   const style = {
     height: '100%',
     width: '100%'
@@ -216,9 +206,9 @@ export const HotelList = () => {
         : <div style={style}>
           <InfiniteScroll
             style={style}
-            dataLength={valueToMap.length}
+            dataLength={hotelsresults.length}
             next={fetchMoreData}
-            hasMore={valueToMap.length < allHotelsResults.length}
+            hasMore={hotelsresults.length < allHotelsResults.length}
             // loader={valueToMap.length >= 1 ? null : <h4>Loading...</h4>}
             scrollThreshold={0.8}
             endMessage={
@@ -235,7 +225,7 @@ export const HotelList = () => {
                 <SearchBar width={width} startLoading={startLoading} done={onCompelet} onChange={updatePriceResults} onClick={updateStarRating} handleAmenSelection={handleAmenSelection} fullbar />
               </div>
               <div className={classes.filters}>
-                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={valueToMap} /></div> <div className={classes.hotelHomeButton}><AccomodationTypeFilter onClick={handleFilteredHotels} name='Hotels' /><AccomodationTypeFilter onClick={handleFilteredHomes} name='homelike' /></div>
+                <div><MapPopUp lat={googleLandingLat} long={googleLandingLong} mapHotelsResults={applyFilters(hotelsresults)} /></div> <div className={classes.hotelHomeButton}><AccomodationTypeFilter onClick={handleFilteredHotels} name='Hotels' /><AccomodationTypeFilter onClick={handleFilteredHomes} name='homelike' /></div>
 
               </div>
               <div style={{ border: '1px solid grey' }}>
@@ -245,7 +235,7 @@ export const HotelList = () => {
                 </div>
                 <br />
                 <div style={{ margin: '1rem auto' }}>
-                  {valueToMap && valueToMap.map(hotel => {
+                  {hotelsresults && applyFilters(hotelsresults).map(hotel => {
                     return <HotelCardSearch done={onCompelet} key={hotel.code} hotel={hotel} />
                   })}
                 </div>
@@ -254,7 +244,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-        </div>}
+          </div>}
     </>
   )
 }

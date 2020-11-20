@@ -44,7 +44,7 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     return res.json()
   }).then(Res => {
     const { hotels } = Res
-    console.log(hotels, 'apihotels')
+
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
     const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))

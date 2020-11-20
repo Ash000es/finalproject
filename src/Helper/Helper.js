@@ -114,10 +114,9 @@ export function truncateString (str, num) {
   return str.slice(0, num) + '...'
 }
 
-export const filterAmenSelection = (arr1, arr2, arr3) => {
-  const valueToFilter = arr1.length && arr1.length > 0 ? arr1 : arr2
+export const filterAmenSelection = (arr1, arr3) => {
   const finalHotels = []
-  valueToFilter.map((hotel) => {
+  arr1.map((hotel) => {
     const amenAmen = hotel.newAmen
 
     const isitTrue = arr3.every((v) => amenAmen.includes(v))
@@ -129,9 +128,8 @@ export const filterAmenSelection = (arr1, arr2, arr3) => {
   return finalHotels
 }
 
-export const updateStarRatings = (arr1, arr2, arr3) => {
-  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
-  const res = valueToFilter.filter((hotel) => arr3.includes(hotel.categoryName.toLowerCase()))
+export const updateStarRatings = (arr1, arr3) => {
+  const res = arr1.filter((hotel) => arr3.includes(hotel.categoryName.toLowerCase()))
 
   return res
 }
@@ -143,25 +141,23 @@ export const readyTheArgument = (propey) => {
     return checkMe
   }
 }
-export const showHotelsOnly = (arr1, arr2, arr3) => {
-  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
+export const showHotelsOnly = (arr1, arr3) => {
+  // const valueToFilter = arr1.length >= 1 ? arr1 : arr2
 
-  const res = valueToFilter.filter((hotel) => !arr3.includes(hotel.categoryCode))
+  const res = arr1.filter((hotel) => !arr3.includes(hotel.categoryCode))
 
   return res
 }
-export const showHomesOnly = (arr1, arr2, arr3) => {
-  const valueToFilter = arr1.length >= 1 ? arr1 : arr2
-  const res = valueToFilter.filter((hotel) => !arr3.includes(hotel.categoryCode))
+export const showHomesOnly = (arr1, arr3) => {
+  const res = arr1.filter((hotel) => !arr3.includes(hotel.categoryCode))
 
   return res
 }
 
 // go through results and remove hotels that are not within the price range
-export const updatePrice = (min, max, arr1, arr2) => {
-  const resultsToFilter = arr1.length >= 1 ? arr1 : arr2
+export const updatePrice = (min, max, arr1) => {
   console.log('filtering holtes between ', min, max)
-  const results = resultsToFilter.filter((hotel) => {
+  const results = arr1.filter((hotel) => {
     const hotelMinRate = Number(hotel.minRate)
     const hotelMaxRate = Number(hotel.maxRate)
 
@@ -172,16 +168,14 @@ export const updatePrice = (min, max, arr1, arr2) => {
   return results
 }
 
-export const sortbyPrice = (arr1, arr2) => {
-  const valueToSort = arr1.length >= 1 ? arr1 : arr2
-  return valueToSort.sort(function (a, b) {
+export const sortbyPrice = (arr1) => {
+  return arr1.sort(function (a, b) {
     console.log('sorting price..')
     return Number(a.minRate) - Number(b.minRate)
   })
 }
-export const sortByRecommended = (arr1, arr2) => {
-  const valueToSort = arr1.length >= 1 ? arr1 : arr2
-  return valueToSort.sort(function (a, b) {
+export const sortByRecommended = (arr1) => {
+  return arr1.sort(function (a, b) {
     console.log('sorting recommended..')
     const BB = b.reviews.length ? b.reviews[0].rate : null
     const AA = a.reviews.length ? a.reviews[0].rate : null
@@ -189,9 +183,8 @@ export const sortByRecommended = (arr1, arr2) => {
   })
 }
 
-export const sortByReview = (arr1, arr2) => {
-  const valueToSort = arr1.length >= 1 ? arr1 : arr2
-  return valueToSort.sort(function (a, b) {
+export const sortByReview = (arr1) => {
+  return arr1.sort(function (a, b) {
     console.log('sorting review..')
     const BB = b.reviews.length ? b.reviews[0].rate : null
     const AA = a.reviews.length ? a.reviews[0].rate : null
