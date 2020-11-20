@@ -32,8 +32,6 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
     {
       method: 'POST',
       headers: {
-        'Api-Key': REACT_APP_apikey,
-        'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'Accept-Encoding': 'gzip'
@@ -123,8 +121,6 @@ export const requestPopularDest = ({ occupancies, destination, stay, reviews, da
     {
       method: 'POST',
       headers: {
-        'Api-Key': REACT_APP_apikey,
-        'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'Accept-Encoding': 'gzip'
