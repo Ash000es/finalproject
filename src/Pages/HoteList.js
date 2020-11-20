@@ -62,7 +62,6 @@ export const HotelList = () => {
   const allHotelsResults = project.results
   const [hotelsresults, setHotelsResults] = useState([])
   const [resultsstart, setResultsStart] = useState(0)
-  const [hasmore, setHasMore] = useState(true)
   const [isloading, setIsLoading] = useState(false)
 
   const [filters, setFilters] = useState(initialFilterState)
@@ -122,7 +121,7 @@ export const HotelList = () => {
         pathname: '/hotelpage',
         state: { currentHotel }
       }}
-           />
+    />
   }
   // Each Filter state is managed below to feed into the global filter state Object
   // ture= on false= off villasOnly
@@ -244,7 +243,7 @@ export const HotelList = () => {
             </div>
 
           </InfiniteScroll>
-          </div>}
+        </div>}
     </>
   )
 }

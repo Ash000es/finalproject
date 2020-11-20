@@ -10,12 +10,12 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     fontWeight: '600',
     backgroundColor: 'rgb(54,49,43)',
+    borderRadius: '1.25rem',
     opacity: 0.7,
     color: theme.palette.primary.contrastText
   },
   imageSetting: {
     width: '100%',
-
     display: 'block',
     objectFit: 'cover'
   },
@@ -37,7 +37,8 @@ export const SearchResultsHero = () => {
         <img className={classes.imageSetting} src={resort} />
       </div>
       <div className={classes.dealText}>
-        <h1 style={{ color: 'white' }}>Deal of the day</h1>
+
+        <h1 style={{ color: 'white', textAlign: 'center' }}>Deal of the day</h1>
         <p>Stay for 2 night and pay for 3 at the NH hotel Barcelona</p>
 
       </div>
