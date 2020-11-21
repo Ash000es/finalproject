@@ -115,7 +115,6 @@ export const requestPopularDest = ({ occupancies, destination, stay, reviews, da
       dailyRate
     }
   }
-  console.log('fetching api..')
 
   return window.fetch('https://server2021.herokuapp.com/api/hotels',
     {
@@ -131,7 +130,6 @@ export const requestPopularDest = ({ occupancies, destination, stay, reviews, da
     return res.json()
   }).then(Response => {
     const { hotels } = Response
-    console.log(hotels, 'res')
     const checkInDate = hotels.checkIn
     const checkInOut = hotels.checkOut
     const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
@@ -160,7 +158,6 @@ export const requestPopularDest = ({ occupancies, destination, stay, reviews, da
 }
 // popular destinations secound handler
 export const fetchPopularDestData = (des, db) => {
-  console.log('fetching db..')
   const destinationCode = des[0].destinationCode
   const hotelIDS = des.map(hotel => hotel.code)
   return fetchHotels(destinationCode, hotelIDS, db)
