@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 const { REACT_APP_apikey, REACT_APP_sec } = keys
 
-export function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
+export async function requestAvailableHotels (db, { occupancies, destination, stay, reviews, dailyRate }) {
   const D = new Date()
 
   const getSignature = () => {
@@ -28,52 +28,57 @@ export function requestAvailableHotels (db, { occupancies, destination, stay, re
   }
 
   console.log('fetching api..')
-  return window.fetch('https://server2021.herokuapp.com/api/hotels',
+  return await window.fetch('https://server2021.herokuapp.com/api/hotels',
+    // 'http://localhost:4000/api/hotels',
     {
       method: 'POST',
       headers: {
+        'Api-Key': REACT_APP_apikey,
+        'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'Accept-Encoding': 'gzip'
       },
 
       body: JSON.stringify(createRequestBody())
-    }).then(res => {
-    return res.json()
-  }).then(Res => {
-    const { hotels } = Res
-
-    const checkInDate = hotels.checkIn
-    const checkInOut = hotels.checkOut
-    const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
-
-    const insertDates = hotelsOnly.map(hotel => {
-      const apiRooms = hotel.rooms
-      const hotelRoom = apiRooms.map(room => {
-        const roomRatesArray = room.rates.map(rate => {
-          const mySellingRate1 = (rate.net * 113) / 100
-          const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
-          const newRateObject = { ...rate, mySellingRate }
-
-          return newRateObject
-        })
-        const newRoom = { ...room, rates: roomRatesArray }
-        return newRoom
-      })
-
-      const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
-      return newHotel
     })
-    const apiHotelResults = insertDates
+    .then(res => {
+      return res.json()
+    })
+    .then(Res => {
+      const { hotels } = Res
 
-    const hotelIDS = apiHotelResults.map(hotel => hotel.code)
-    return fetchHotels(destination.code, hotelIDS, db)
-      .then(dbHotels => {
-        const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
+      const checkInDate = hotels.checkIn
+      const checkInOut = hotels.checkOut
+      const hotelsOnly = hotels.hotels.filter(hotel => categoryCodes.includes(hotel.categoryCode))
 
-        return hotelsProject
+      const insertDates = hotelsOnly.map(hotel => {
+        const apiRooms = hotel.rooms
+        const hotelRoom = apiRooms.map(room => {
+          const roomRatesArray = room.rates.map(rate => {
+            const mySellingRate1 = (rate.net * 113) / 100
+            const mySellingRate = parseFloat(mySellingRate1).toFixed(2)
+            const newRateObject = { ...rate, mySellingRate }
+
+            return newRateObject
+          })
+          const newRoom = { ...room, rates: roomRatesArray }
+          return newRoom
+        })
+
+        const newHotel = { ...hotel, checkInDate, checkInOut, apiRooms: hotelRoom }
+        return newHotel
       })
-  })
+      const apiHotelResults = insertDates
+
+      const hotelIDS = apiHotelResults.map(hotel => hotel.code)
+      return fetchHotels(destination.code, hotelIDS, db)
+        .then(dbHotels => {
+          const hotelsProject = mapResultToHotel(apiHotelResults, dbHotels)
+
+          return hotelsProject
+        })
+    })
 }
 
 const fetchHotels = (destination, hotelIDS, db) => {
@@ -115,11 +120,15 @@ export const requestPopularDest = ({ occupancies, destination, stay, reviews, da
       dailyRate
     }
   }
-
+  console.log('fetching api..')
   return window.fetch('https://server2021.herokuapp.com/api/hotels',
+    // 'http://localhost:4000/api/hotels',
+
     {
       method: 'POST',
       headers: {
+        'Api-Key': REACT_APP_apikey,
+        'X-Signature': getSignature(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'Accept-Encoding': 'gzip'
