@@ -78,8 +78,10 @@ const SearchBar = (props) => {
 
     props.startLoading()
     const payLoad = { occupancies, destination, stay, reviews, dailyRate }
+    console.log(payLoad)
     requestAvailableHotels(db, payLoad)
       .then((hotelsProject) => {
+      console.log(hotelsProject)
         setProject({ ...project, results: hotelsProject })
       })
       .then(() => {
