@@ -60,8 +60,8 @@ const SearchBar = (props) => {
     }
   ])
   const [stay, setStay] = useState({
-    checkIn: '2021-03-15',
-    checkOut: '2021-03-16'
+    checkIn: '2021-10-15',
+    checkOut: '2021-10-16'
   })
 
   const [occupancies, setOccupancies] = useState([
