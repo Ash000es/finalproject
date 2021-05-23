@@ -27,7 +27,8 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
     }
   }
 
-  console.log('fetching api..', createRequestBody())
+  console.log('fetching api..')
+  console.log(JSON.stringify(createRequestBody()))
   return await window.fetch('https://server2021.herokuapp.com/api/hotels',
     // 'http://localhost:4000/api/hotels',
     {
