@@ -27,7 +27,7 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
     }
   }
 
-  console.log('fetching api..')
+  console.log('fetching api..', createRequestBody())
   return await window.fetch('https://server2021.herokuapp.com/api/hotels',
     // 'http://localhost:4000/api/hotels',
     {
@@ -82,7 +82,7 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
 }
 
 const fetchHotels = (destination, hotelIDS, db) => {
-  console.log('fetching db..', createRequestBody)
+  console.log('fetching db..')
   const hotels = []
   return new Promise(resolve => {
     db.collection('hotels-limited').where('destinationCode', '==', destination)
