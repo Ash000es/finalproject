@@ -108,8 +108,8 @@ const HomePageResults = (props) => {
 
   const [state, setState] = useState({
     stay: {
-      checkIn: '2021-05-15',
-      checkOut: '2021-05-16'
+      checkIn: '2021-10-15',
+      checkOut: '2021-10-16'
     },
     occupancies: [
       {
