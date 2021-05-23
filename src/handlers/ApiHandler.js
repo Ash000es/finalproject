@@ -82,7 +82,7 @@ export async function requestAvailableHotels (db, { occupancies, destination, st
 }
 
 const fetchHotels = (destination, hotelIDS, db) => {
-  console.log('fetching db..')
+  console.log('fetching db..', createRequestBody)
   const hotels = []
   return new Promise(resolve => {
     db.collection('hotels-limited').where('destinationCode', '==', destination)
